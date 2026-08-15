@@ -32,39 +32,35 @@ Weak, restricted, rejected and dead options must stay documented so later runs d
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs 001–004 are complete.
+Runs 001–005 are complete.
 
 Latest files:
-- `research/RUN_004_RELAYER_INTENT_PROVER_EXPANSION.md`
-- `research/SOURCES_RUN_004.md`
+- `research/RUN_005_COMPUTE_STORAGE_EXPANSION.md`
+- `research/SOURCES_RUN_005.md`
 
-### Run 004 strong validated additions
-- Succinct/SP1 prover: permissionless proof market, reverse auctions, PROVE payments, stake/delegation and slashing.
-- SQD worker: server-native historical-data worker with 4 vCPU / 16 GB / 1 TB SSD / 1 Gbit requirements and traffic+liveness+stake rewards.
-- Across relayer: permissionless open-source relayer with modest server requirements but material working capital; explicit relayer fees.
-- UniswapX filler: permissionless autonomous order execution; profit from economically favorable fills, not fixed emission.
-- Presearch node: outside-server/Docker operation and node rewards, currently requiring minimum 4,000 PRE stake for reward eligibility.
-- Cysic prover: current mainnet GPU prover path with bid-price competition and 1,000 CYS reserve per prover worker.
+### Run 005 strong validated additions
+- **io.net Supplier / IO Worker**: live GPU/CPU supplier path with customer compute-job payments plus hourly block rewards. Current official docs state 0.25% fee on worker earnings, no fee on block rewards, device-specific $IO stake for reward/Cluster Ready eligibility, 14-day unstake cooldown and slashing framework.
+- **Clore.ai Host**: live GPU-server rental marketplace. Host sets on-demand and spot pricing. Current base host fee share is 5% on-demand and 1.25% spot; renter payments in BTC/USDT/USDC add a 15% host-side fee unless reduced through MFP Lock. Server/bare-metal hosting is explicitly part of the product.
+- **Swarm Bee Full Node**: full node can earn two distinct streams: storage Redistribution Game rewards and SWAP bandwidth incentives. Current docs require at least 10 xBZZ baseline stake for storage incentives and explicitly describe that stake as non-refundable; bandwidth incentives are available to full nodes without that storage-game stake. Current recommended full-node specs are roughly dual-core 2 GHz, 8 GB RAM, 30 GB SSD and stable high-speed internet.
 
-### Run 004 restricted / nuanced
-- CoW solver: paid bonded solver role verified; exact production onboarding/bond thresholds still need normalization.
-- 1inch Fusion resolver: approved/top-Unicorn-Power resolver set; legitimate but strongly capital/admission constrained.
-- Gevulot/zkCloud: prover reward mechanism verified; exact current operator deployment economics still need a separate pass.
+### Important modeling lessons from Run 005
+- Separate actual customer-paid utilization from token emissions/subsidies.
+- Treat stake differently depending on reversibility: io.net has cooldown/slashing exposure; Swarm baseline storage stake is non-refundable; Clore fee optimization can require optional token holdings/locks.
+- Distinguish expensive dedicated-GPU server opportunities from low-spec VPS daemons even when both are server-native.
+- One node may expose multiple paid resources; model each revenue stream independently before combining them.
 
-### Critical policy distinction
-Presearch search-usage rewards are explicitly protected against bot/fake searching and must NOT be automated. Only the node operator role belongs in this project.
-
-## Run 005 priority
-Broaden to decentralized compute/GPU, storage and relay infrastructure:
-1. Lagrange operator/proving roles.
-2. Meson bandwidth/CDN economics.
-3. io.net, Clore.ai, TensorDock, Hyperbolic, RunPod provider programs.
-4. Render provider onboarding and cloud eligibility.
-5. Salad server/datacenter limits.
-6. Swarm Bee, Arweave, Crust, ScPrime, Autonomi production rewards.
-7. Additional server-permitted relay/CDN/VPN networks.
-
-Then begin dedicated Bittensor subnet-miner and AI-incentive sweeps.
+## Run 006 priority
+Finish unresolved compute/storage/relay expansion before moving to the Bittensor/decentralized-AI sweep:
+1. Lagrange proving/operator opportunities.
+2. Meson bandwidth/CDN provider economics.
+3. TensorDock host/provider program status.
+4. Hyperbolic provider status.
+5. RunPod community/provider program status.
+6. Render provider onboarding/cloud-host eligibility.
+7. Salad server/datacenter restrictions.
+8. Arweave current mining/storage roles.
+9. Crust, ScPrime and Autonomi production rewards.
+10. Additional server-permitted relay/CDN/VPN networks.
 
 ## Research discipline
 A runnable daemon is not enough. Prove all of the following separately:
@@ -80,6 +76,8 @@ Examples already learned:
 - 1inch resolver software may be technically automatable but profitable participation is restricted by resolver admission/stake.
 - Across is permissionless but capital-heavy because relayers front liquidity.
 - Succinct proving is permissionless, yet stake controls auction eligibility and missed deadlines can slash stake.
+- io.net is server-compatible supply-side compute but required stake/hardware economics must be normalized per device.
+- Swarm's low hardware requirement does not imply cheap participation because storage incentives carry non-refundable xBZZ stake and recurring gas/RPC costs.
 
 Do not infer profitability from token APY, headline rewards, or generic node tutorials.
 
