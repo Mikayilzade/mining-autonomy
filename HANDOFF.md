@@ -16,8 +16,8 @@ Do not reconstruct this project from chat memory.
 3. Trust repository state over remembered chat state.
 4. Continue from `STATUS.md -> Next run priority`.
 5. Search the live web because platform rules, rewards, availability and economics are time-sensitive.
-6. Prefer primary sources for validation.
-7. Update run-specific research/source files plus STATUS, RUN_LOG and this HANDOFF before ending the run. Avoid unsafe whole-file replacement of the central catalog if its full current contents cannot be fetched reliably.
+6. Prefer current primary sources.
+7. Update run-specific research/source files plus STATUS and this HANDOFF before ending the run. Update RUN_LOG when full current contents can be safely preserved; never truncate historical state merely to append a new run. Central CATALOG may lag run-specific findings until a safe normalization pass.
 
 ## User intent
 The user wants an exhaustive theoretical inventory first, implementation later.
@@ -29,83 +29,96 @@ Secondary target: all other passive/semi-passive income mechanisms, including ho
 Weak, restricted, rejected and dead options must stay documented so later runs do not rediscover and re-hype them.
 
 ## User interaction preference
-Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when completion gate is genuinely met.
+Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when the completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs 001–008 are complete.
+Runs **001–009** are complete.
 
 Latest files:
-- `research/RUN_008_RESIDENTIAL_DEVICE_BANDWIDTH.md`
-- `research/SOURCES_RUN_008.md`
+- `research/RUN_009_PHYSICAL_DEPIN.md`
+- `research/SOURCES_RUN_009.md`
 
-### Run 008 strongest additions / confirmations
-- **EarnFM Fleetshare Supplier** is a major server-native addition. Current official supplier docs accept 20+ IPs from application users, servers or devices, with integration types including Fleetshare server and Docker. Authorized datacenter connections have no fixed upper account limit. Current published rates: residential $0.10/GB, datacenter $0.04/GB; supplier approval, KYC/KYB and signed agreement are required.
-- **EarnApp** remains explicitly residential/personal-device only; VM, Docker, hosting, cloud and monetization servers are prohibited and datacenter IPs are blocked.
-- **Honeygain** demonstrates the Docker trap: Docker/Linux is supported technically, but datacenter IP classes are unsupported and VPS/VM use is risky. Current account limits: max 10 gathering devices and 1 active device/IP. Azerbaijan appears in the current Tipalti payout-country list.
-- **PacketStream** currently publishes unusually transparent Packeter economics: $0.10/GB eligible residential traffic, $5 minimum cashout, 3% platform cashout fee, PayPal; demand is not guaranteed.
-- **Pawns.app** supports Linux/Docker technically but current help identifies DCH-classified IPs as an unsupported/VPN-error condition.
-- **TraffMonetizer** consumer app explicitly requires residential IP and prohibits servers/VPN/proxies despite a Docker download. Its separate approved developer SDK is a valid build-once bandwidth revenue family.
-- **Repocket** prohibits VPN/proxy/emulator/VM use for ordinary earning.
-- **Grass Stage 2** has current official USDC reward-allocation material; residential non-VPN nodes and high-stability/high-demand geography receive preference, with traffic strongly concentrated among a minority of nodes.
-- **DAWN Validator Extension** reward points are not current cash income: Terms explicitly say points have no monetary value and are not redeemable/transferable.
-- **Nodepay** has shifted from passive-bandwidth branding toward active predictive-signal contribution. Current docs emphasize genuine active participation and anti-spam quality, so do not design engagement bots for it.
+`STATUS.md` is the authoritative current checkpoint and next-run pointer.
 
-### Run 008 new taxonomy lessons
-- Split bandwidth markets into: residential proxy exit-node supply; authorized datacenter bandwidth supply; embedded consent-based SDK monetization; proof-of-bandwidth point systems; active data/signal participation.
-- Never infer datacenter eligibility from Docker/Linux support.
-- Search supplier/partner/developer portals separately from consumer product docs; server-native opportunities can be hidden there.
-- User consent requirements for SDK bandwidth monetization are mandatory; no deceptive bundling or covert proxy installs.
-- Residential proxy income carries IP reputation/ISP/privacy risk even when the platform itself is legitimate.
+## Run 009 durable findings
+Physical DePIN was decomposed into distinct paid commodities rather than one generic category:
+- wireless traffic carriage — Helium;
+- road imagery — Hivemapper;
+- vehicle telemetry — DIMO;
+- GNSS/RTK correction data — GEODNET;
+- weather telemetry — WeatherXM;
+- ADS-B aircraft positional data — Wingbits;
+- smartphone road-scene metadata — NATIX;
+- smartphone BLE relay — Nodle;
+- mobile connectivity measurements — Roam;
+- environmental/noise measurements — Silencio;
+- navigation/driver data — MapMetrics;
+- embedded publisher SDK device monetization — Nodle SDK and analogous SDK families.
 
-### Remaining Run 008 follow-ups for later normalization
-- Pawns bandwidth rate, payout methods/threshold and explicit Azerbaijan payout path.
-- Repocket current rate/threshold/country rules.
-- Grass exact country/KYC/device limits and Stage 2 claim/economics details.
-- EarnFM Azerbaijan supplier eligibility and real datacenter demand by geography.
-- Honeygain Web Intelligence SDK as a build-once revenue model.
-- Additional bandwidth competitors/successors and dead-project cross-check: ByteLixir, PacketShare, Peer2Profit successors, ProxyRack-style supplier programs, measurement/telemetry panels.
+### Strong physical/device confirmations
+- **Helium IoT**: any compatible LoRaWAN gateway can be onboarded permissionlessly and earn HNT for carried device data. Current docs also support a `multi-gateway` architecture where one server fronts many physical gateways.
+- **Helium Mobile/converted Wi-Fi**: eligible carrier-offload traffic can earn HNT. Commercial/high-traffic deployments have Helium Plus pathways.
+- **Important Helium correction**: current official docs say Proof-of-Coverage was removed on **2026-07-06**. Never use old beacon/witness farming assumptions as current economics.
+- **Hivemapper**: certified physical camera + authentic road imagery required; reward value depends on freshness/saturation/data utility. Synthetic/replayed imagery is excluded.
+- **DIMO**: real connected vehicle/integration required for driver rewards; baseline issuance and marketplace data demand are separate revenue components.
+- **GEODNET**: physical GNSS station earning is real; uptime/quality/density matter.
+- **WeatherXM**: approved real weather station/gateway required; rewards depend on data quality, proof of location and cell capacity.
+- **Nodle**: real smartphone BLE/location/Internet contribution; background operation can be highly autonomous, but a generic VPS cannot replace the phone/radio/geographic contribution.
 
-## Run 009 priority
-Dedicated physical DePIN / sensor / mapping / wireless / vehicle / environmental / energy-device sweep:
-1. Helium Mobile/IoT hotspot/operator economics and current hardware/location constraints.
-2. Hivemapper, DIMO, GEODNET, WeatherXM, Wingbits, Silencio, NATIX, MapMetrics, Nodle/Roam and current successors/competitors.
-3. Separate hardware purchase, movement/location requirements and token/points rewards from real liquid revenue.
-4. Check whether any project has a server-native/light-daemon role despite consumer physical-hardware branding.
-5. Record Azerbaijan availability/coverage where current primary docs expose it.
-6. Identify dead/renamed/scam projects and separate customer-paid data/service demand from token-emission subsidies.
-7. Expand into opt-in measurement panels, environmental sensing, connectivity measurement, vehicle/phone telemetry and low-resource device contribution programs.
+### Server-native leads discovered inside physical ecosystems
+These are important for later Tier-A control passes:
+1. **NATIX xNodes** — docs describe staked validator nodes earning from uptime/validation tasks, but current public production onboarding/hardware/stake/payout remain unproven. WATCHLIST.
+2. **DIMO Storage Nodes** — deployed economics allocate a portion of paid data-access demand to storage entities, but current developer docs still say `Coming Soon`. WATCHLIST.
+3. **DIMO data validators** — current developer docs still `Coming Soon`. WATCHLIST.
+4. **Helium multi-gateway server** — legitimate server control-plane role for fleets, but not standalone VPS income because physical radios create the paid commodity.
+5. **Nodle publisher SDK** — BUILD-ONCE app monetization: integrate an opt-in SDK so user phones provide IoT connectivity and publisher earns revenue/rewards.
+6. **Physical-DePIN fleet orchestration SaaS** — newly identified BUILD-ONCE family: paid monitoring/accounting/uptime/firmware/location optimization service for device fleets.
 
-After Run 009 continue capital yield, build-once systems, rejected/dead cross-checks, profitability normalization, Azerbaijan/KYC filtering and saturation/control passes.
+### Restricted/watchlist findings
+- **Wingbits**: reward mechanics and approved ADS-B/GNSS/security hardware are real; current docs still describe beta/devnet-to-mainnet transition, so do not yet count as proven liquid cash yield.
+- **Roam Network**: Android connectivity-measurement contribution is real, but current docs still describe pre-TGE points and future XRO conversion. Points are not current cash.
+- **Silencio**: Terms say in-app Noise-Coins cannot be redeemed for cash from Silencio; newer SLC tokenomics describes a transferable token economy. Exact current contribution-to-liquid-token path needs validation.
+- **MapMetrics**: current official FAQ advertises MMAP earning and global usage, including headline SPT token/hour figures. Treat as unnormalized marketing economics until token liquidity, hardware cost, caps and realized withdrawals are verified.
 
-## Research discipline
-A runnable daemon is not enough. Prove all of the following separately:
-- current reward path;
-- supply-side admission;
-- intended server/device environment allowed by docs/ToS;
-- hidden stake/license/collateral;
-- payout/reward mechanism;
-- utilization or demand driver.
+### New strategy lesson
+**Physical DePIN stacking** is a separate strategy family. Wingbits documents HYFIX MGW310 as a combined Wingbits/GEODNET device. Later economics should search other legal multi-network combinations where hardware/site/power/backhaul are shared.
 
-Examples already learned:
-- EarnApp is not server-native because its policy prohibits VM/Docker/hosting/cloud/server monetization.
-- Honeygain Linux/Docker support does not make DCH/VPS IPs eligible.
-- TraffMonetizer Docker availability does not override its explicit residential-IP/server prohibition.
-- EarnFM shows the opposite case: a separately approved supplier program can explicitly permit server/datacenter supply even when the consumer product is bandwidth sharing.
-- 1inch resolver software may be technically automatable but profitable participation is restricted by resolver admission/stake.
-- Across is permissionless but capital-heavy because relayers front liquidity.
-- Succinct proving is permissionless, yet stake controls auction eligibility and missed deadlines can slash stake.
-- io.net is server-compatible supply-side compute but required stake/hardware economics must be normalized per device.
-- Swarm's low hardware requirement does not imply cheap participation because storage incentives carry non-refundable xBZZ stake and recurring gas/RPC costs.
-- Autonomi is unusually close to the cheap-daemon target because virtual/headless operation and low per-node storage are explicitly supported, but real net revenue still requires measurement.
-- ScPrime shows why protocol permissionlessness and customer-demand accessibility must be checked separately.
-- Bittensor shows why a single ecosystem label can hide many fundamentally different earning mechanisms.
-- Gensyn shows why a live/testnet technical contribution path must not be mistaken for current production income.
-- DAWN shows why reward points must not be called money when Terms explicitly deny monetary/redeemable value.
+### Hard boundary reinforced by Run 009
+Real-world verification is the product, not an obstacle to bypass. GPS/GNSS, radio reception, cryptographic hardware, authentic imagery, vehicle telemetry and environmental measurements cannot be faked/emulated merely to collect rewards. Such strategies are out of scope.
 
-Do not infer profitability from token APY, headline rewards, points, or generic node tutorials.
+## Earlier durable lessons still active
+- Docker/Linux support never proves VPS/datacenter eligibility.
+- A runnable daemon is not enough: separately prove reward path, supply-side admission, permitted environment, hidden stake/license/collateral, payout mechanism and demand/utilization.
+- Consumer brands can hide separate supplier/partner/developer programs; search those portals explicitly.
+- Customer-paid utilization must be separated from temporary token/provider subsidies.
+- Points/testnet/devnet units are not money without a current redeemable/liquid path.
+- Bittensor must be decomposed by subnet/commodity, not treated as one generic miner.
+- Competitive AI/solver networks require expected-share modeling, not simple hourly-rate assumptions.
+- Permissionless software can still require significant stake, liquidity or hardware.
+- Residential IP monetization and generic datacenter bandwidth monetization are separate commodities.
+- Embedded SDK monetization requires explicit disclosure/consent and platform compliance; no deceptive bundling.
 
-## Non-negotiable exclusions
-Do not operationalize CAPTCHA bypass, fake engagement, ad fraud, spam, prohibited multi-accounting, KYC/geofence evasion, unauthorized access/scraping, cryptojacking or deceptive/illegal activity.
+## Current next run
+**Run 010 — capital-based passive/semi-passive income universe.**
+
+Research broadly before profitability ranking:
+- bank deposits/savings/term deposits;
+- money-market funds/instruments;
+- sovereign bills/bonds and inflation-linked instruments;
+- investment-grade/high-yield bond structures;
+- index/dividend/REIT/infrastructure/preferred/BDC/royalty securities;
+- P2P/private credit/invoice financing/real-estate debt/revenue-share financing;
+- PoS staking, liquid staking, restaking;
+- crypto lending/stablecoin yield;
+- AMM/LP yield and concentrated liquidity;
+- fixed-rate DeFi;
+- basis/funding/cash-and-carry and other market-neutral-looking strategies, explicitly without claiming guarantees;
+- tokenized RWAs/revenue-share assets;
+- automated treasury/vault/API strategies where current platform rules permit automation.
+
+For each family record what actually pays the return, capital-loss modes, counterparty/custody/smart-contract risk, liquidity/lockup, KYC/geography, automation level, fees and a net-return formula.
+
+After Run 010 continue build-once digital systems, automated task/API markets, dead/scam cross-check, profitability normalization, Azerbaijan/KYC filtering, and saturation/control passes.
 
 ## Completion
-Only mark `COMPLETE` after repeated broad + niche saturation passes stop producing new independent mechanisms and produce negligible new viable projects. Document final control passes in RUN_LOG and disable the recurring research task only then.
+Only mark `COMPLETE` after repeated broad + niche saturation passes stop producing new independent mechanisms and produce negligible new viable projects. Document the final control passes, then disable the recurring research task.
