@@ -12,11 +12,12 @@ Do not reconstruct this project from chat memory.
    - `RUN_LOG.md`
    - `CATALOG.md`
    - `SOURCES.md`
+   - latest files in `research/` named in STATUS/RUN_LOG
 3. Trust repository state over remembered chat state.
 4. Continue from `STATUS.md -> Next run priority`.
 5. Search the live web because platform rules, rewards, availability and economics are time-sensitive.
 6. Prefer primary sources for validation.
-7. Update the catalog/evidence/status/log before ending the run.
+7. Update the catalog/evidence/status/log before ending the run. If the central catalog is too large for a safe whole-file replacement, create a durable run-specific catalog/source file under `research/`, then point STATUS and RUN_LOG to it rather than risking data loss.
 
 ## User intent
 The user wants an exhaustive theoretical inventory first, implementation later.
@@ -33,6 +34,15 @@ When the user sends `го`, continue the next research stage. Unless the user as
 ## Run sizing
 Work in medium coherent passes and save durable checkpoints. The user's ideal is roughly half-hour-sized research stages rather than tiny minute-by-minute fragments or fragile marathon runs. If a prior stage was clearly too small, broaden the next one.
 
+## Current durable checkpoint
+Run 002 is complete. Details are in:
+- `research/RUN_002_SERVER_NATIVE_EXPANSION.md`
+- `research/SOURCES_RUN_002.md`
+
+Important verified additions include Mysterium VPS/datacenter nodes, Pocket Network Suppliers and commercial Gateways, The Graph Indexers, Aztec mainnet provers, Aethir Checker nodes, Render node/operator rewards and NKN Proof-of-Relay mechanism. Do not re-research these from zero; deepen economics later.
+
+Run 003 priority is RPC/indexer/oracle + ZK/prover + keeper/solver infrastructure. Read STATUS for exact candidate list.
+
 ## Hourly automation
 An hourly continuation task is active. Each scheduled run should read repository state first and continue from there. If repository status becomes `COMPLETE`, no further research should be performed and the recurring task should be disabled.
 
@@ -41,6 +51,8 @@ Do not operationalize CAPTCHA bypass, fake engagement, ad fraud, spam, prohibite
 
 ## Research discipline
 A technically possible server installation is not enough. Confirm that platform policy permits the intended environment. Example already learned: EarnApp technically has software clients but explicitly prohibits VM/Docker/hosting/cloud/server monetization, so it belongs in residential/device research rather than server-native research.
+
+Also separate server cost from required stake/license/collateral. A cheap VPS does not make an opportunity low-capital if participation rights require an expensive NFT/token stake.
 
 ## Completion
 Only mark `COMPLETE` after repeated broad + niche saturation passes stop producing new independent mechanisms and produce negligible new viable projects. Document those final control passes in `RUN_LOG.md`.
