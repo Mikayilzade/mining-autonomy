@@ -88,3 +88,40 @@ Run 005: decentralized compute/GPU + storage + relay expansion. Priority: Lagran
 - Restricted/partially normalized roles: 3
 - New mechanism refinements: several
 - Conclusion: discovery remains productive and completion gate is nowhere near met.
+
+---
+
+## Run 005 — 2026-08-15
+Status: **completed**
+Stage: Compute/GPU + Swarm storage expansion
+
+### Work performed
+- Validated current supplier economics for io.net using official worker, reward, staking and tokenomics documentation.
+- Validated Clore.ai's host program, pricing control and current host-side fee structure using official documentation.
+- Validated Swarm Bee full-node storage and bandwidth reward mechanisms, hardware requirements, stake requirements and penalties.
+- Split Swarm into two economically distinct roles: storage Redistribution Game and SWAP bandwidth forwarding.
+
+### Strong newly validated roles
+1. **io.net Supplier / IO Worker** — live GPU/CPU supplier path; compute-job income plus hourly block rewards; current docs show 0.25% worker earnings fee, device-specific $IO stake for block-reward/Cluster Ready eligibility, 14-day unstake cooldown and slashing framework.
+2. **Clore.ai Host** — live GPU server marketplace; host controls on-demand/spot price. Current host base-fee share is 5% for on-demand and 1.25% for spot; BTC/USDT/USDC renter payments can add a 15% host-side fee unless reduced through MFP Lock.
+3. **Swarm Bee Full Node** — server-native storage + bandwidth daemon. Storage incentives use postage-funded redistribution, require a fully synced full node and at least 10 xBZZ baseline stake; official docs describe that stake as non-refundable. SWAP bandwidth incentives are separate and do not require storage-incentive stake.
+
+### Taxonomy refinements
+- Customer-demand revenue and token/emission revenue must be modeled separately even on the same compute marketplace.
+- Stake/collateral must be classified by economic reversibility: cooldown stake, slashable stake, and non-refundable stake have very different costs.
+- 'Server-native' has two subtypes worth keeping separate: expensive dedicated GPU hosts and low-spec VPS-compatible daemons.
+- Swarm demonstrates that one daemon can expose multiple paid resources (disk + bandwidth), but each revenue stream needs separate break-even analysis.
+
+### Durable outputs
+- `research/RUN_005_COMPUTE_STORAGE_EXPANSION.md`
+- `research/SOURCES_RUN_005.md`
+- `STATUS.md` advanced to Run 006.
+
+### Next stage
+Run 006: finish unresolved compute/storage/relay queue: Lagrange, Meson, TensorDock, Hyperbolic, RunPod, Render cloud/provider status, Salad datacenter restrictions, Arweave, Crust, ScPrime, Autonomi and additional server-permitted relay/CDN/VPN networks.
+
+### Saturation metrics
+- Control/saturation passes completed: 0
+- Strong newly validated roles this run: 3
+- New mechanism refinements: 4
+- Conclusion: discovery remains productive; project remains IN PROGRESS.
