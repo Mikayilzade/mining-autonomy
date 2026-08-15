@@ -118,3 +118,52 @@ Run 007: dedicated decentralized-AI / Bittensor / inference / distributed-traini
 - Restricted/watchlist branches clarified: 4+
 - New independent income family discovered: 1 (compute-template/repository revenue share)
 - Conclusion: research remains **IN PROGRESS** and discovery is still productive.
+
+---
+
+## Run 007 — 2026-08-15
+Status: **completed**
+Stage: Decentralized AI / Bittensor / inference / distributed training
+
+### Work performed
+- Decomposed Bittensor from one generic miner entry into economically distinct subnet-worker families.
+- Validated Chutes SN64 GPU compute/inference mining, Omron SN2 verifiable inference, Nous finetuning, Macrocosmos pretraining, IOTA distributed training, Data Universe data mining, Apex autonomous solver competitions, Mainframe scientific compute and TensorUSD prediction/liquidation mechanisms.
+- Validated Allora inference/forecast workers and stake-dependent reputers from current official docs.
+- Clarified Prime Intellect GPU provider admission as curated/contact-based.
+- Downgraded Gensyn RL Swarm from implied earning opportunity to WATCHLIST because current docs say official swarms/hosted nodes are paused and published current rewards include test-only units.
+- Failed to establish a sufficiently current official inference.net/Kuzco worker reward path; retained as UNVERIFIED/WATCHLIST rather than guessing.
+
+### Strong current findings
+1. **Chutes SN64** — highly automated GPU miner stack; incentives based on compute time and inference bounties.
+2. **Omron SN2** — AI/zk inference path with published CPU/RAM/NVMe/network requirements; important non-GPU-heavy AI worker family.
+3. **Apex SN1** — autonomous agents explicitly accepted as solvers; machine-scored competitions with winner-takes-all emissions.
+4. **IOTA** — permissionless heterogeneous distributed-training workers processing activations; distinct from raw GPU rental and whole-model contests.
+5. **Mainframe** — scientific optimization/simulation jobs with top-K rewards.
+6. **Allora worker** — consumer-fee-funded inference/forecast contribution rewards outside Bittensor.
+
+### Restricted/watchlist conclusions
+- Data Universe: rewarded/autonomous but source-data law/ToS makes implementation restricted pending source-by-source compliance.
+- Prime Intellect provider: real supplier network, but onboarding is not clearly self-service.
+- Gensyn RL Swarm: no current production-income classification.
+- inference.net/Kuzco: current official earning path unresolved.
+
+### New taxonomy/economics lessons
+- Competitive AI networks need expected-emission/share modeling, not simple hourly-rate modeling.
+- `Bittensor mining` must always be decomposed by subnet and commodity.
+- Autonomous machine-scored competition markets are a separate income family from compute rental.
+- Distributed training can pay for partial pipeline work/activations, not only complete model training.
+- AI/data workers can be technically autonomous while still carrying platform-ToS/privacy constraints from their upstream data sources.
+
+### Durable outputs
+- `research/RUN_007_DECENTRALIZED_AI_BITTENSOR.md`
+- `research/SOURCES_RUN_007.md`
+- `STATUS.md` advanced to Run 008.
+
+### Next stage
+Run 008: residential/device passive income + bandwidth/IP/browser/device DePIN sweep, with explicit VPS restrictions, payout types, Azerbaijan availability, KYC and dead/scam checks.
+
+### Saturation metrics
+- Control/saturation passes completed: 0
+- New/strengthened distinct paid mechanisms: 12+
+- Major watchlist/restriction outcomes: 4+
+- Conclusion: discovery remains strongly productive; project is **IN PROGRESS**.
