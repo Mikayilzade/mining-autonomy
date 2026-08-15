@@ -32,79 +32,64 @@ Weak, restricted, rejected, dead and points-only options must stay documented to
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when the completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs **001–021** are complete.
+Runs **001–022** are complete.
 
 Latest files:
-- `research/RUN_021_ALT_VOCAB_CONTROL_4.md`
-- `research/SOURCES_RUN_021.md`
+- `research/RUN_022_ROLE_RELEASE_TAIL_SWEEP.md`
+- `research/SOURCES_RUN_022.md`
 
 `STATUS.md` is the authoritative checkpoint and next-run pointer.
 
-## Saturation state after Run 021
-Four deliberate control passes now produced **0 new top-level economic mechanisms**, so taxonomy confidence is high.
+## Saturation state after Run 022
+Five deliberately different control passes have produced **0 new top-level economic mechanisms**, so taxonomy confidence is high.
 
-However Run 021 still found three material provider projects plus a major Fluence upgrade, so project-level saturation is still insufficient for COMPLETE.
+Project tail is still not fully saturated because Run 022 discovered two material live provider projects:
+- **ThreeFold Farming** — compute/storage/network 3Node provider path; mostly autonomous dedicated hardware under Zero-OS; current economics/geography still need normalization.
+- **ParalonCloud GPU Provider** — current Docker-based NVIDIA provider agent, automatic scheduling, 80% provider revenue share, per-minute USDC/USDT payout, official no-KYC claim; utilization/geography/security economics still need validation.
 
-Material Run 021 additions/upgrades:
-- **DeNet Datakeeper** — current official GitHub node software supports Linux server/headless operation; Datakeepers earn from storage users; v4.1.0 released 2026-07-21. Needs license/payout/utilization/geography economics.
-- **Iagon Storage / Compute Node Provider** — current official docs show storage and compute node roles and current subscriber-fee distribution; 90% of storage/compute subscriber fees go to provider side under current docs. Compute role carries capacity-linked IAG stake. Needs hardware/VPS policy, utilization and Azerbaijan/payout validation.
-- **OpenGPU Provider** — current provider suite for Linux/Windows/macOS with GPU-task rewards and automatic routing. Needs reward formula/liquidity, hardware, datacenter/VPS, KYC and demand checks.
-- **Fluence Compute Provider** — current 2025–2026 provider app/customer/idle-server evidence resolves prior staleness. Provider path is real but appears bare-metal/data-center oriented; classify VERIFIED/RESTRICTED.
+Run 022 also strengthened:
+- **OpenGPU**: datacenters/cloud operators/home rigs explicitly eligible; Docker/Linux provider path; automatic routing; completed-task OGPU rewards; active provider/task explorer surface.
+- **Iagon**: current docs allocate 90% of compute subscriber fees to compute providers and 90% of storage subscriber fees to storage nodes/delegators; both carry IAG staking/opportunity cost.
+- **DeNet**: current server/headless path and July 2026 release confirmed; Datakeeper license required; license price/payout/utilization still unresolved.
 
-Still unresolved/restricted:
-- iExec current ordinary self-service worker/workerpool onboarding.
-- Fleek current production/mainnet/liquid node payout.
-- Spheron open third-party supplier onboarding; current supply appears curated through certified data-center partners.
-- dTelecom exact operator admission/stake/hardware details.
-- Edge explicit VPS/datacenter acceptance and current fiat-equivalent economics.
-
-## Durable geography/economics lessons
+## Durable lessons
 - Paid utilization is the dominant hidden variable.
 - Owned spare resources generally beat retail-cloud re-rental.
 - Compare opportunity cost across GPU/CPU/disk/bandwidth/IP uses.
 - Collateral must be priced as capital with lock/liquidity/slashing risk.
-- Customer-paid revenue share / subscriber-fee allocation is stronger evidence than headline token emissions, but still requires real demand.
-- Device/license requirements can dominate ROI.
-- Curated supplier onboarding is common even in decentralized networks.
-- Linux/server compatibility does not itself prove public-cloud/VPS permission.
-- A current provider software release materially strengthens evidence that a project is live.
-- Consumer, supplier, SDK, reseller, fleet and professional-hardware roles must be checked separately.
-- A live protocol contract proves mechanism existence, not simple public supplier admission.
-- Marketing earnings calculators are discovery/economics inputs, not guaranteed profitability.
+- Customer-paid revenue share is stronger evidence than token emissions, but it still requires real demand.
+- Explicit provider shares help normalization but do not imply profit.
+- Linux/server compatibility does not itself prove every public-cloud host permits the workload.
+- Current provider software/releases materially strengthen evidence that an earning path is live.
 - Small measured pilots should precede CAPEX.
-- Azerbaijan must be validated through live KYC/onboarding/payout before spending capital; silence in docs is not confirmation.
+- Azerbaijan must be validated through live onboarding/payout/geofencing before spending capital; silence in docs is not confirmation.
 
 ## Current next run
-**Run 022 — role-name / repository-release tail sweep + economics normalization.**
+**Run 023 — tight provider-tail convergence pass.**
 
-Purpose: test whether remaining provider-project discovery is finally converging.
-
-Search role vocabulary:
-- datakeeper
-- farmer / farm node
-- executor / workerpool
+Search vocabulary:
+- farmer / farming node
 - hoster / host node
-- supplier / resource supplier
-- contributor / capacity provider
-- edge worker
+- provider agent / provider Docker
+- earn with GPU
+- capacity provider
+- cloud host rewards
+- storage node operator
+- render provider
 - inference provider
-- render worker
-- storage farmer
-- GPU provider suite
-- server monetization provider app
+- server monetization agent
 
 Actions:
-1. sweep current official repositories/releases/docs for live provider software that broad directory searches miss;
-2. deep-check DeNet license/payout economics;
-3. deep-check Iagon node economics/hardware/onboarding;
-4. deep-check OpenGPU reward/admission/hardware details;
-5. revisit iExec/Fleek/Spheron/dTelecom/Edge only where fresh evidence appears;
-6. track net-new material providers per query family, duplicates/renames and restricted/dead outcomes.
+1. favor current 2025–2026 provider guides/releases over old directories;
+2. search for live provider software/revenue paths missed by generic DePIN terms;
+3. normalize fee splits, payout rails and automation;
+4. dedupe against ThreeFold, Paralon, OpenGPU, DeNet, Iagon and prior catalog;
+5. classify material new providers separately from weak/restricted leads and duplicates.
 
 ### Completion logic
-If Run 022 produces:
+If Run 023 produces:
 - **0 new mechanisms**, and
-- only **0–2 weak/restricted** genuinely new viable projects,
-then perform one final short saturation check. If that final check also yields no material novelty, mark `STATUS.md` **COMPLETE**, document the final saturation evidence and stop recurring research.
+- only **0–2 weak/restricted** genuinely new projects,
+then perform one final short saturation check. If that final check also yields no material novelty, mark `STATUS.md` **COMPLETE**, document final saturation evidence and stop recurring research.
 
-If Run 022 still finds several material provider projects, remain IN PROGRESS and continue until the project-level tail converges.
+If Run 023 still finds material provider projects, remain IN PROGRESS and continue until the project-level tail converges.
