@@ -32,56 +32,50 @@ Weak, restricted, rejected, dead and points-only options must stay documented to
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when the completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs **001–016** are complete.
+Runs **001–017** are complete.
 
 Latest files:
-- `research/RUN_016_PROFITABILITY_DEPLOYMENT_ECONOMICS.md`
-- `research/SOURCES_RUN_016.md`
+- `research/RUN_017_AZERBAIJAN_KYC_PAYOUT_GEOGRAPHY.md`
+- `research/SOURCES_RUN_017.md`
 
 `STATUS.md` is the authoritative checkpoint and next-run pointer.
 
-## Run 016 durable findings
-A profitability/deployment-economics normalization pass was completed for representative high-priority autonomous resource markets.
+## Run 017 durable findings
+A dedicated Azerbaijan/KYC/payout/geography pass was completed for the representative highest-priority autonomous resource markets.
 
-### Cross-market economics
-- Paid utilization is the critical hidden variable. Listed/online capacity is not automatically paid capacity.
-- Owned spare hardware has a structural advantage over renting retail cloud resources and attempting to resell them.
-- Always compare opportunity cost across competing uses of the same GPU, CPU, disk, bandwidth and IP resources.
-- Collateral must be priced as capital with financing/opportunity cost plus expected slashing/loss.
-- Later implementation should begin with small measured pilots rather than CAPEX based on headline rewards.
+### Strongest geography-compatible candidates
+- **Golem:** provider is paid directly in GLM on Polygon/Ethereum; reviewed provider/payment docs expose no ordinary provider KYC and no Azerbaijan-specific exclusion. Best low-capital technical pilot after saturation, assuming local legal/tax/off-ramp review.
+- **Storj:** token payout via Ethereum L1 or optional zkSync L2; current Node Operator Terms use sanctions/export restrictions rather than naming Azerbaijan as excluded. Scaling rules matter: one node per IP and shared payout-address requirements.
+- **Sia:** host-owned Siacoin wallet and protocol storage contracts avoid a centralized fiat payout account; practical barrier is multi-TB storage, collateral and uptime rather than Azerbaijan onboarding.
+- **Akash:** provider operation remains wallet/on-chain and location-aware; technically open but operational/audit overhead makes it a later experiment.
+- **Filecoin:** protocol/FIL path remains valid but is infrastructure/collateral/proving heavy; ≥10 TiB storage power is required for WinningPoSt block-reward eligibility and verified-data programs may add KYC/due diligence.
 
-### Representative normalized candidates
-- **Vast.ai:** host-set GPU/storage/bandwidth pricing; net return depends on occupied rental hours, electricity, depreciation and networking. Strongest with owned/low-cost GPU hardware.
-- **Akash:** provider earns tenant lease revenue through automated bidding. Real server/cloud business with Kubernetes/networking/domain/operations overhead; better suited to a cluster or wholesale infrastructure than trivial VPS arbitrage.
-- **Golem:** pay-per-use GLM resource market; CPU pricing is per utilized thread-hour. Very low barrier for an already-paid server, but utilization/demand is the bottleneck.
-- **EarnFM Fleetshare:** official supplier docs explicitly target Linux servers running 24/7, require 20+ IPs plus KYC/KYB and agreement, and currently publish $0.04/GB datacenter / $0.10/GB residential rates. One of the best later empirical tests because unit revenue is explicit; actual GB/IP/day is still unknown.
-- **Storj:** current official rates remain $1.50/TB-month storage and $2/TB egress/audit-repair. Thin storage economics favor sunk/cheap disks rather than rented cloud storage.
-- **Sia:** current host guidance is roughly $1/TB-month storage and >$5/TB egress, with collateral. Again favors cheap owned storage and reliable uptime.
-- **Filecoin:** capital/operations-heavy storage infrastructure business. Requires FIL collateral and continuous proofs; ≥10 TiB storage power for WinningPoSt eligibility. Profit depends on deal flow, token price, quality-adjusted power, fees and slashing risk.
+### Centralized payout/onboarding constraints
+- **Vast.ai:** current host payout documentation references PayPal, Wise, Stripe and other payment integrations. PayPal's own current country documentation says Azerbaijan accounts cannot receive payments. Wise can send funds to Azerbaijani local bank accounts and Stripe has some Azerbaijan-capable Connect stablecoin products, but neither fact proves Vast exposes that exact host payout route. Live onboarding/payout confirmation is mandatory before GPU CAPEX.
+- **EarnFM Fleetshare:** supplier program requires 20+ IPs, application acceptance, Didit KYC/KYB and signed supplier agreement. Current rates remain $0.10/GB residential and $0.04/GB datacenter, standard payout minimum $15, while >$300/month invoice bank transfer is documented as SEPA/ACH. Azerbaijan standard payout route remains an onboarding unknown.
 
-### Economic formulas now mandatory
-Resource marketplaces:
-`Net = paid utilization revenue + incentives - infrastructure - electricity - bandwidth - depreciation - fees - capital/slashing loss - maintenance - tax`
+### Geography is also economics
+- IP geography/reputation can change paid traffic volume in bandwidth markets.
+- Compute-provider location can alter matching/latency/customer preference even without a country ban.
+- Crypto-native provider admission and centralized fiat off-ramp availability are separate questions.
 
-Break-even utilization:
-`paid_hours_break_even = fixed_cost / (revenue_per_paid_hour - variable_cost_per_active_hour)`
-
-Bandwidth:
-`GB_break_even = fixed_monthly_cost / (payout_per_GB - incremental_cost_per_GB)`
-
-Storage:
-`Net/TB-month = storage_rate*occupied_fraction + egress_rate*egress_TB - disk/power/network/depreciation - collateral/loss cost`
-
-### Later low-capital experiment priority
-Only after geography filtering and research saturation:
+### Later empirical test order, not yet implementation
 1. Golem on an already-paid server.
-2. EarnFM Fleetshare with economically sourced eligible controlled IPs.
-3. Storj/Sia on already-owned spare disk.
-4. Vast.ai/other GPU markets where owned GPU hardware exists.
+2. Storj on already-owned spare disk/bandwidth.
+3. Sia where spare multi-TB storage already exists.
+4. EarnFM only after Azerbaijan KYC/payout confirmation.
+5. Vast only with existing GPU hardware and confirmed Azerbaijan payout route.
+6. Akash as later infrastructure pilot.
+7. Filecoin only as dedicated infrastructure-business case.
 
 No candidate is assumed to provide guaranteed profit.
 
 ## Earlier durable lessons still active
+- Paid utilization is the dominant hidden variable; online/listed capacity is not paid capacity.
+- Owned spare resources generally have a structural advantage over retail-cloud re-rental.
+- Always compare opportunity cost across GPU/CPU/disk/bandwidth/IP uses.
+- Collateral must be priced as capital with financing/opportunity cost and expected slashing/loss.
+- Small measured pilots should precede CAPEX.
 - A runnable daemon is not enough: prove reward path, supplier admission, permitted environment, stake/license/collateral, payout mechanics and demand/utilization.
 - Customer-paid utilization must be separated from token/provider subsidies.
 - Testnet/devnet/points units are not money without liquid/redeemable path.
@@ -101,19 +95,11 @@ No candidate is assumed to provide guaranteed profit.
 - Consumer, supplier, SDK, reseller and fleet roles must be checked separately.
 
 ## Current next run
-**Run 017 — Azerbaijan / KYC / payout / geography filtering.**
+**Run 018 — broad saturation/control pass #1.**
 
-For the highest-priority shortlist, verify:
-- Azerbaijan individual/business onboarding;
-- unsupported-country/sanctions/KYC lists;
-- KYC/KYB requirements;
-- payout rails available from Azerbaijan;
-- crypto-only vs fiat settlement;
-- SEPA/ACH/business-entity requirements where relevant;
-- demand differences by IP geography;
-- which platforms are practically testable from Azerbaijan.
+Use deliberately different vocabulary and discovery routes from the earlier universe-building runs: machine economy, idle-resource monetization, node operator income, capacity marketplace, provider/supplier/reseller/partner programs, daemon earnings, distributed infrastructure rewards, decentralized service markets, machine-to-machine work markets, underused-hardware monetization and hidden supplier/developer portals behind consumer brands.
 
-After Run 017 begin repeated broad and niche saturation/control passes using alternate terminology and ecosystem directories.
+Track net-new mechanisms and viable projects per query family. Distinguish genuinely new economics from renamed duplicates. After Run 018 perform at least one niche saturation/control pass using alternate ecosystem terminology/directories.
 
 ## Completion
 Only mark `COMPLETE` after repeated differently-worded broad + niche searches converge, producing no new independent earning mechanisms and negligible new viable projects, with all remaining uncertainty documented. Then record final saturation checks and disable the recurring research task.
