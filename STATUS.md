@@ -2,7 +2,7 @@
 
 Project state: **IN PROGRESS**
 
-Last completed run: **Run 016 — profitability / deployment-economics normalization**
+Last completed run: **Run 017 — Azerbaijan / KYC / payout / geography filtering**
 Last updated: **2026-08-15**
 
 ## Completed research runs
@@ -22,10 +22,11 @@ Last updated: **2026-08-15**
 - Run 014 — proof-of-work / mining / hashpower normalization.
 - Run 015 — scam/dead/misleading-opportunity cross-check.
 - Run 016 — profitability/deployment economics normalization.
+- Run 017 — Azerbaijan/KYC/payout/geography filtering.
 
 Run-specific files under `research/` are the durable detailed record. Latest:
-- `research/RUN_016_PROFITABILITY_DEPLOYMENT_ECONOMICS.md`
-- `research/SOURCES_RUN_016.md`
+- `research/RUN_017_AZERBAIJAN_KYC_PAYOUT_GEOGRAPHY.md`
+- `research/SOURCES_RUN_017.md`
 
 ## Current validated server-native / highly autonomous highlights
 - Compute/GPU: Golem provider; Akash provider; Vast.ai host; Nosana/Golem GPU providers; io.net Supplier; Clore.ai Host; TensorDock Host; Runpod Community Cloud Host.
@@ -35,33 +36,43 @@ Run-specific files under `research/` are the durable detailed record. Latest:
 - AI incentive networks: selected Bittensor subnets/roles, Omron, Chutes, Nous/Macrocosmos variants, Allora workers/reputers and related competitive compute/agent roles documented in prior run files.
 - Machine-service monetization: Apify paid Actors; RapidAPI providers; GitHub Marketplace paid Apps; AWS/Microsoft/Google cloud marketplace SaaS; Databricks commercial listings.
 - Mining/hashpower: owned-hardware PoW pool mining; merged mining; NiceHash-style selling; MiningRigRentals rig seller; explicitly permitted MRR API broker/reseller strategy.
-- Supplier bandwidth: EarnFM Fleetshare remains especially notable because current official docs explicitly price residential traffic at $0.10/GB and datacenter traffic at $0.04/GB for accepted suppliers.
+- Supplier bandwidth: EarnFM Fleetshare remains notable because official docs explicitly price residential traffic at $0.10/GB and datacenter traffic at $0.04/GB for accepted suppliers.
 
-## Run 016 — durable findings
-This pass converted the high-priority server/resource universe from platform descriptions into comparable unit-economics models.
-
-### Cross-market rules
+## Run 016 — durable economics findings
 - **Paid utilization, not uptime, is the dominant hidden variable.** A listed but idle GPU/CPU/disk/IP is not revenue-producing.
 - **Owned spare resources have a structural advantage.** Retail cloud arbitrage usually stacks an upstream provider margin underneath a competitive earning market.
 - **Opportunity cost must be explicit.** Compare expected net $/GPU-hour, $/CPU-thread-hour, $/TB-month and $/GB across competing markets before deployment.
 - **Collateral has financing cost and loss risk even when normally returned.**
 - **Small empirical pilots should precede CAPEX.** Measure actual paid utilization first.
 
-### Platform economics normalized
-- **Vast.ai:** host sets GPU/storage/bandwidth prices; earnings depend on occupied rental hours. Strongest for owned/low-cost GPU hardware rather than retail cloud re-rental.
-- **Akash:** real server/cloud provider business with automated bidding, but Kubernetes/networking/domain/operations overhead favors a cluster or wholesale infrastructure rather than a tiny passive VPS.
-- **Golem:** low-barrier server-native CPU/GPU provider; real GLM pay-per-use, but demand/utilized thread-hours determine viability. Good low-cost experiment on already-paid servers.
-- **EarnFM Fleetshare:** current supplier docs explicitly target 24/7 Linux servers, require 20+ IPs plus KYC/agreement, and publish $0.04/GB datacenter / $0.10/GB residential rates. Strong candidate for later measured GB/IP/day experiment.
-- **Storj:** current official rate remains $1.50/TB-month storage and $2/TB egress/audit-repair. Thin storage rent strongly favors otherwise-idle disk.
-- **Sia:** current host guidance is roughly $1/TB-month storage and >$5/TB egress with collateral. Again favors cheap/sunk storage plus reliable uptime.
-- **Filecoin:** infrastructure/mining business rather than simple VPS arbitrage; requires collateral, proving, operational reliability and at least 10 TiB power for WinningPoSt eligibility. Rewards, token price, deal flow and slashing risk all matter.
+Representative normalized economics:
+- Vast.ai: host sets GPU/storage/bandwidth prices; earnings depend on occupied rental hours.
+- Akash: real provider business with Kubernetes/networking/operations overhead; better suited to infrastructure than trivial VPS arbitrage.
+- Golem: low-barrier CPU/GPU provider with GLM pay-per-use; utilization is the bottleneck.
+- EarnFM Fleetshare: 20+ IP supplier program; $0.04/GB datacenter / $0.10/GB residential.
+- Storj: thin storage rent favors otherwise-idle disk.
+- Sia: thin storage rent + collateral favors cheap/sunk storage and reliable uptime.
+- Filecoin: infrastructure/mining business with collateral, proving, operational reliability and ≥10 TiB power for WinningPoSt eligibility.
 
-### Recommended implementation priority later
-For low-capital empirical tests after research saturation/geography review:
+## Run 017 — durable geography/KYC/payout findings
+- **Crypto-native provider rails survive the Azerbaijan filter best.** Golem, Storj, Sia, Filecoin and Akash provider roles use wallet/protocol settlement rather than depending on PayPal-style receiving capability.
+- **Golem** is currently the cleanest low-capital geography fit: Linux server provider, GLM wallet payout, no ordinary provider KYC or Azerbaijan-specific exclusion found in reviewed provider/payment docs. Fiat off-ramp/tax remains separate.
+- **Storj** pays STORJ via Ethereum L1 or optional zkSync L2; current Node Operator Terms use sanctions/export restrictions rather than naming Azerbaijan as excluded. Terms also constrain scaling: one node per IP and common payout-address rules.
+- **Sia** uses a host-owned Siacoin wallet and protocol contracts; geography is less of an onboarding bottleneck than hardware/collateral/storage economics.
+- **Filecoin** likewise has protocol/FIL economics, but is too infrastructure/collateral/proving-heavy for an early low-capital pilot; Filecoin Plus programs can introduce separate KYC/due-diligence requirements.
+- **Akash** remains technically open/wallet-based and exposes provider location as a market attribute; current provider/audit overhead makes it a later experiment.
+- **Vast.ai** remains viable but Azerbaijan payout needs a live onboarding check. Vast references PayPal/Wise/Stripe and other payment integrations, while PayPal's own official country table says Azerbaijan accounts cannot receive payments. Wise can deliver to Azerbaijani local bank accounts, but Vast-specific use of that route is not proven.
+- **EarnFM Fleetshare** requires supplier approval, 20+ IPs, Didit KYC/KYB and agreement. Standard payout has a $15 minimum; >$300/month invoice bank transfer is documented as SEPA/ACH, so Azerbaijan-specific standard payout availability still needs portal confirmation.
+- Geography is also an economics variable: EarnFM explicitly says traffic depends on IP geography/reputation; compute-provider location can affect matching/latency even when account creation is allowed.
+
+### Later low-capital experiment priority after research saturation
 1. Golem on an already-paid server.
-2. EarnFM Fleetshare where 20+ eligible controlled IPs can be sourced economically.
-3. Storj/Sia on already-owned unused disks.
-4. Vast.ai or competing GPU markets where owned GPU hardware exists.
+2. Storj on already-owned unused disk/bandwidth.
+3. Sia where spare multi-TB storage already exists.
+4. EarnFM Fleetshare only after Azerbaijan KYC/payout confirmation and economically sourced eligible controlled IPs.
+5. Vast.ai only with existing GPU hardware and a confirmed Azerbaijan host-payout route.
+6. Akash as a later infrastructure/provider pilot.
+7. Filecoin only as a dedicated infrastructure-business case.
 
 This is **not** yet an implementation decision; research remains theoretical.
 
@@ -77,25 +88,35 @@ This is **not** yet an implementation decision; research remains theoretical.
 - OpenAI GPT direct monetization: not a general builder-income rail in the prior validation pass.
 
 ## Current phase
-**Phase 1 universe construction is broad and high-priority unit economics are now normalized, but research is NOT saturated.**
+**Phase 1 universe construction is broad and high-priority economics/geography are normalized, but research is NOT saturated.**
 
 Saturation/control passes completed: **0**.
 Completion confidence: **medium-low** because repeated differently-worded broad/niche control passes have not yet converged.
 
 ## Next run priority
-**Run 017 — Azerbaijan / KYC / payout / geography filtering.**
+**Run 018 — broad saturation/control pass #1.**
 
-For the highest-priority autonomous/server-native shortlist, verify:
-1. Azerbaijan individual/business onboarding;
-2. KYC/KYB requirements and unsupported-country lists;
-3. payout rails available from Azerbaijan;
-4. crypto-only vs fiat settlement;
-5. bank/SEPA/ACH or business-entity requirements;
-6. IP/geographic demand effects where material;
-7. sanctions/compliance exclusions without guessing;
-8. which candidates are realistically testable from Azerbaijan.
+Use deliberately different vocabulary and discovery paths from prior runs:
+- machine economy;
+- idle-resource monetization;
+- node operator income;
+- capacity marketplace;
+- provider/supplier/reseller/partner programs;
+- daemon/service earnings;
+- distributed infrastructure rewards;
+- decentralized service markets;
+- machine-to-machine work markets;
+- underused hardware monetization;
+- ecosystem/directories that may expose supplier portals hidden behind consumer brands.
 
-After Run 017: repeated broad + niche saturation/control passes using alternate terminology, ecosystem directories and rediscovery checks.
+Track:
+1. new independent economic mechanisms;
+2. new viable projects inside existing mechanisms;
+3. renamed duplicates;
+4. restricted/dead/rejected rediscoveries;
+5. net-new viable count by query family.
+
+After Run 018, perform at least one niche saturation/control pass with alternate ecosystem terminology before considering completion.
 
 ## Completion gate
 Do **not** mark complete until multiple differently worded broad and niche control passes add no new independent earning mechanisms and almost no new viable projects. Remaining unknowns must be explicitly documented rather than guessed.
