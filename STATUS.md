@@ -2,147 +2,148 @@
 
 Project state: **IN PROGRESS**
 
-Last completed run: **Run 019 — niche saturation/control pass #2**
-Last updated: **2026-08-15**
+Last completed run: **Run 020 — provider/repository & tokenomics control pass #3**
+Last updated: **2026-08-16**
 
 ## Completed research runs
-- Run 001 — initial universe / structure.
-- Run 002 — server-native expansion.
-- Run 003 — RPC / ZK / keepers / solvers.
-- Run 004 — relayer / intent / prover expansion.
-- Run 005 — compute / storage expansion.
-- Run 006 — compute / storage / relay completion.
-- Run 007 — decentralized AI / Bittensor.
-- Run 008 — residential / device bandwidth.
-- Run 009 — physical DePIN.
-- Run 010 — capital-yield universe.
-- Run 011 — build-once digital income.
-- Run 012 — automated task / API / job markets.
-- Run 013 — marketplace / royalty / distribution gaps.
-- Run 014 — proof-of-work / mining / hashpower normalization.
-- Run 015 — scam/dead/misleading-opportunity cross-check.
-- Run 016 — profitability/deployment economics normalization.
-- Run 017 — Azerbaijan/KYC/payout/geography filtering.
-- Run 018 — broad saturation/control pass #1.
-- Run 019 — niche saturation/control pass #2.
+Runs **001–020** are complete.
 
-Run-specific files under `research/` are the durable detailed record. Latest:
-- `research/RUN_019_NICHE_SATURATION_CONTROL_2.md`
-- `research/SOURCES_RUN_019.md`
+Major sequence:
+- 001 initial universe/structure
+- 002–006 server-native compute/storage/relay expansion
+- 007 decentralized AI/Bittensor
+- 008 residential/device bandwidth
+- 009 physical DePIN
+- 010 capital-yield universe
+- 011 build-once digital income
+- 012 automated task/API/job markets
+- 013 marketplace/royalty/distribution gaps
+- 014 PoW/mining/hashpower normalization
+- 015 scam/dead/misleading cross-check
+- 016 profitability/deployment economics
+- 017 Azerbaijan/KYC/payout/geography filter
+- 018 broad saturation/control #1
+- 019 niche saturation/control #2
+- 020 provider/repository/tokenomics control #3
 
-## Current validated server-native / highly autonomous highlights
+Latest durable files:
+- `research/RUN_020_PROVIDER_REPOSITORY_TOKENOMICS_CONTROL_3.md`
+- `research/SOURCES_RUN_020.md`
+
+## Saturation state
+Three deliberate control passes (Runs 018–020) have produced **0 new top-level economic mechanisms**. Taxonomy saturation confidence is now **high**.
+
+Project-level saturation is still **medium-high, not complete** because Run 020 produced several material provider upgrades rather than only duplicates:
+- dTelecom SFU Node Operator
+- Edge Network Host
+- StorX Storage/Farm Node
+- Impossible Cloud Network Hardware Provider / ScalerNode
+- YOM resolved into a current device-gated GPU/session model
+
+Therefore the completion gate is **not yet met**.
+
+## Current validated/high-priority server-native highlights
 - Compute/GPU: Golem provider; Akash provider; Vast.ai host; Nosana/Golem GPU providers; io.net Supplier; Clore.ai Host; TensorDock Host; Runpod Community Cloud Host; NodeOps Cloud Compute Provider.
-- Media/storage: Livepeer Orchestrator; Filecoin, Sia, Storj, ScPrime; Swarm Bee; Autonomi Node; Arweave Miner; CESS Storage Node.
-- Relay/network: Mysterium datacenter/VPS relay; EarnFM Fleetshare supplier; Pocket Network Supplier; Lava RPC Provider; Streamr Operator; SQD worker; Diode Relay Node; CESS CD2N Retriever/Cacher.
-- Index/proof/solver: The Graph Indexer; Aztec Prover; Boundless/RISC Zero proving; Succinct/SP1 prover; Cysic prover; Across relayer; UniswapX filler; Presearch node; SubQuery Indexer/RPC Provider.
-- AI incentive networks: selected Bittensor subnets/roles, Omron, Chutes, Nous/Macrocosmos variants, Allora workers/reputers and related competitive compute/agent roles documented in prior run files.
-- Machine-service monetization: Apify paid Actors; RapidAPI providers; GitHub Marketplace paid Apps; AWS/Microsoft/Google cloud marketplace SaaS; Databricks commercial listings; IDLE Protocol pay-per-call GPU/agent/API/data/resource endpoints; NodeOps paid template marketplace.
-- Mining/hashpower: owned-hardware PoW pool mining; merged mining; NiceHash-style selling; MiningRigRentals rig seller; explicitly permitted MRR API broker/reseller strategy.
-- Supplier bandwidth: EarnFM Fleetshare remains notable because official docs explicitly price residential traffic at $0.10/GB and datacenter traffic at $0.04/GB for accepted suppliers.
-- New from Run 019: **Fleek Network node operator** is a strong server-native edge-compute/bandwidth/service-execution mechanism, but current 2026 production admission, staking and liquid payout still need a dedicated revalidation before deployment.
+- Media/storage: Livepeer Orchestrator; Filecoin; Sia; Storj; ScPrime; Swarm Bee; Autonomi Node; Arweave Miner; CESS; **StorX Storage/Farm Node**.
+- Relay/network: Mysterium relay; EarnFM Fleetshare; Pocket Supplier; Lava RPC; Streamr Operator; SQD worker; Diode Relay; CESS CD2N; **dTelecom SFU Node Operator**.
+- Edge/general resource: **Edge Network Host** contributes compute/storage/bandwidth and earns XE/EDGE rewards; current community onboarding exists for Host.
+- Index/proof/solver: The Graph Indexer; Aztec Prover; Boundless/RISC Zero; Succinct/SP1; Cysic; Across relayer; UniswapX filler; Presearch; SubQuery.
+- AI incentive networks: selected Bittensor subnet roles, Omron, Chutes, Nous/Macrocosmos variants, Allora workers/reputers and related competitive compute/agent roles.
+- Machine-service monetization: Apify paid Actors; RapidAPI providers; GitHub Marketplace paid Apps; cloud marketplace SaaS; Databricks commercial listings; IDLE Protocol pay-per-call resources; NodeOps paid templates.
+- Mining/hashpower: owned-hardware PoW pool mining; merged mining; NiceHash-style selling; MiningRigRentals rig seller; permitted MRR API broker/reseller strategy.
+
+## Run 020 durable findings
+### dTelecom
+Current official site/docs now make the operator economics materially clearer: node operators can run decentralized SFU infrastructure and the official site advertises **75% of customer payments** to operators. Solana mainnet registry discovery and live x402 WebRTC/STT/TTS customer services are current. Marked **VERIFIED mechanism / RESTRICTED deployment** until exact public operator onboarding/stake/hardware details are normalized.
+
+### Edge Network
+Current official site/wiki confirms a live community **Host** role using Linux/Docker/mainnet CLI. Hosts contribute compute/storage/bandwidth, stake XE, and earn based on jobs/performance. Current wiki lists 100 XE Host stake, subject to change. Marked **VERIFIED**; VPS/datacenter policy and measured economics still need pilot-level confirmation.
+
+### StorX
+Current official pages explicitly describe storage/farm node rewards, SRX staking, reputation and a VPS/server setup path. Marked **VERIFIED/RESTRICTED** pending actual reward rate, token liquidity, geography and rented-server economics.
+
+### Impossible Cloud Network
+The ICN protocol has a real Hardware Provider/ScalerNode earning path: storage/compute capacity, utilization rewards plus temporary capacity subsidies, ICNT collateral and slashing. Current onboarding is contact/verification based and hardware-provider commitments are long (initially 36 months in current docs). Marked **RESTRICTED**, professional-infrastructure territory rather than a low-capital VPS experiment.
+
+### YOM
+Current model is real but device-gated: gaming PC + NANO/license serves streaming sessions, with utilization-driven YOM settlement. Official docs currently show a 40/55/5 operator/foundation/burn split. NaaS/datacenter delegation is targeted for Q3 2026 and is not yet active. Tier B/device opportunity, not generic VPS supply today.
+
+### iExec / Fleek / Fluence / Spheron
+- iExec PoCo repository is current and protocol worker economics are real, but a simple 2026 self-service ordinary-VPS worker onboarding path remains unresolved.
+- Fleek mechanism remains strong but surfaced official docs still contain alpha/testnet/pre-mainnet wording; liquid current production payout remains unresolved.
+- Fluence compute-provider/stake mechanism is credible, but current 2026 provider onboarding/economics evidence remains insufficiently fresh.
+- Spheron Community GPU supply exists, but current public supplier onboarding/reward documentation remains unproven.
 
 ## Durable economics findings
-- **Paid utilization, not uptime, is the dominant hidden variable.** A listed but idle GPU/CPU/disk/IP is not revenue-producing.
-- **Owned spare resources have a structural advantage.** Retail cloud arbitrage usually stacks an upstream provider margin underneath a competitive earning market.
-- **Opportunity cost must be explicit.** Compare expected net $/GPU-hour, $/CPU-thread-hour, $/TB-month and $/GB across competing markets before deployment.
-- **Collateral has financing cost and loss risk even when normally returned.**
-- **Small empirical pilots should precede CAPEX.** Measure actual paid utilization first.
+- **Paid utilization, not uptime, is the dominant hidden variable.**
+- Owned spare resources structurally outperform retail-cloud re-rental unless the earning market pays an unusual premium.
+- Compare net $/GPU-hour, $/CPU-hour, $/TB-month, $/GB and $/IP across opportunities.
+- Stake/collateral has opportunity cost, liquidity risk and possible slashing loss.
+- Device/license requirements can dominate apparent “passive” ROI.
+- Curated supplier onboarding is common even in decentralized networks.
+- Customer revenue share is stronger evidence than token-emission marketing, but still requires real demand.
+- Small empirical pilots should precede CAPEX.
 
-Representative normalized economics:
-- Vast.ai: host sets GPU/storage/bandwidth prices; earnings depend on occupied rental hours.
-- Akash: real provider business with Kubernetes/networking/operations overhead; better suited to infrastructure than trivial VPS arbitrage.
-- Golem: low-barrier CPU/GPU provider with GLM pay-per-use; utilization is the bottleneck.
-- EarnFM Fleetshare: 20+ IP supplier program; $0.04/GB datacenter / $0.10/GB residential.
-- Storj: thin storage rent favors otherwise-idle disk.
-- Sia: thin storage rent + collateral favors cheap/sunk storage and reliable uptime.
-- Filecoin: infrastructure/mining business with collateral, proving, operational reliability and meaningful scale requirements.
+## Geography/KYC status
+Crypto-native provider rails remain relatively promising for Azerbaijan, but absence of a published exclusion is **not** confirmation of eligibility. Any CAPEX candidate must still pass live Azerbaijan onboarding/KYC, payout/liquidity and geofencing checks.
 
-## Durable geography/KYC/payout findings
-- **Crypto-native provider rails survive the Azerbaijan filter best.** Golem, Storj, Sia, Filecoin and Akash provider roles use wallet/protocol settlement rather than depending on PayPal-style receiving capability.
-- **Golem** is currently the cleanest low-capital geography fit found so far.
-- **Storj/Sia** remain plausible where spare disk/bandwidth already exists.
-- **Filecoin** is infrastructure/collateral/proving-heavy and not an early low-capital pilot.
-- **Vast.ai** remains viable but Azerbaijan payout needs a live onboarding check.
-- **EarnFM Fleetshare** needs supplier approval, KYC/KYB and Azerbaijan-specific payout confirmation.
-- Geography is also an economics variable because location affects traffic, matching and latency.
-
-### Later low-capital experiment priority after research saturation
-1. Golem on an already-paid server.
+Low-capital experiment priority remains broadly:
+1. Golem on already-paid hardware/server.
 2. Storj on already-owned unused disk/bandwidth.
-3. Sia where spare multi-TB storage already exists.
-4. EarnFM Fleetshare only after Azerbaijan KYC/payout confirmation and economically sourced eligible controlled IPs.
-5. Vast.ai only with existing GPU hardware and a confirmed Azerbaijan host-payout route.
-6. Fleek only after current production/stake/payout and demand are revalidated.
-7. Akash as a later infrastructure/provider pilot.
-8. Filecoin only as a dedicated infrastructure-business case.
+3. Sia on spare multi-TB storage.
+4. EarnFM Fleetshare after supplier/KYC/payout confirmation.
+5. Edge Host after VPS/datacenter policy + token/reward economics check.
+6. StorX on sunk storage/server after stake/reward economics check.
+7. Vast.ai with existing GPU and confirmed payout route.
+8. dTelecom after operator onboarding + bandwidth economics check.
+9. Akash as later provider-infrastructure pilot.
+10. Filecoin / ICN only as dedicated infrastructure-business cases.
 
-This is **not** yet an implementation decision; research remains theoretical.
-
-## Run 018 — saturation/control findings
-- Broad alternate-term searches produced **0 new top-level economic classes**, but multiple genuinely new or materially upgraded projects, so saturation was not reached.
-- IDLE Protocol emerged as a close match to the original “server does tiny jobs forever” concept: arbitrary GPU/agent/API/data resources behind metered endpoints; demand still requires empirical validation.
-- NodeOps Cloud Marketplace explicitly supports VM providers/resellers and adds a paid-template revenue layer.
-- SubQuery validates paid RPC/indexing supply with meaningful stake/service risk.
-- Diode validates a lightweight Linux/VM relay whose earnings depend on routed bandwidth.
-- CESS adds storage plus a distinct retrieval/cache role.
-- Acurast validates autonomous smartphone compute but is Tier B/device-only.
-
-## Run 019 — niche saturation/control findings
-- **0 new top-level economic mechanisms** were discovered. Late-stage searches are converging by mechanism.
-- **Fleek Network** materially strengthened as a server-native edge compute/bandwidth/service node: official docs tie rewards to measured CPU/bandwidth/service work and provide Linux/Docker node-operation instructions. Current 2026 mainnet/supplier economics still need direct verification.
-- **OORT Edge / Deimos** is a real rewarded autonomous storage/compute/bandwidth path, but current mining is tied to Deimos/approved edge hardware rather than arbitrary VPS capacity. Reward vesting, uptime score, 360-day service period and collateral/penalty rules make it Tier B.
-- **OORT witness node** is a separate server-native watchlist role with cloud/datacenter instructions and reward language, but current admission/stake/reward details remain incomplete.
-- **dTelecom** has a real decentralized Solana-registered SFU server network, but public node-operator reward/onboarding evidence remains insufficient.
-- **Spheron** clearly has Community GPU supply, but a current self-service supplier-onboarding/reward specification was not found.
-- **Impossible Cloud** current primary docs validate distributor/channel-partner resale, not permissionless spare-storage mining. Keep the ICN protocol question separate from the commercial storage/channel program.
-- **Fluence** remains a high-priority watchlist: official material describes compute-provider FLT rewards and stake per CPU, but current 2026 onboarding/economics need direct docs/repository validation.
-- iExec, Edge/XE, StorX and YOM remain unresolved tails under the current evidence standard.
-
-## Important restricted/watchlist findings carried forward
-- Lagrange: paid/slashable prover economics but public production admission not clearly self-service.
-- Hyperbolic: external GPU providers exist; public supplier onboarding/payout unresolved.
-- Meson/Crust/selected oracle, executor and solver roles: mechanism exists but current admission/economics need normalization.
-- CoW solver, 1inch Fusion resolver, Gevulot/zkCloud: legitimate but constrained/onboarding-dependent.
-- Macrocosmos Data Universe: data-source legality/ToS can constrain implementation.
-- Gensyn RL Swarm and inference.net/Kuzco: production reward path not yet established.
-- AWS Data Exchange and Snowflake paid-provider eligibility have Azerbaijan-specific limitations recorded in prior runs.
-- Hugging Face Inference Provider: real economics but curated/integration-heavy.
-- OpenAI GPT direct monetization: not a general builder-income rail in the prior validation pass.
-- Run 019 unresolved: Fluence, iExec workerpool, dTelecom SFU operator, Spheron supplier admission, StorX, Edge/XE provider path, YOM, ICN protocol provider path.
+This is still **research**, not an implementation decision.
 
 ## Current phase
-**Phase 1 universe construction is broad and high-priority economics/geography are normalized, but research is NOT saturated.**
+Phase 1 universe construction is broad and taxonomy appears strongly converged, but project-level saturation needs at least one more differently-worded broad control pass.
 
-Saturation/control passes completed: **2** (Run 018 broad, Run 019 niche).
-Completion confidence: **medium-high on taxonomy, medium on project-level saturation**. No new top-level mechanism appeared in either control pass, but Run 019 still strengthened enough viable/watchlist projects that another differently-worded provider/repository pass is required.
+Completion confidence:
+- taxonomy: **high**
+- high-priority economics: **medium-high**
+- project-level saturation: **medium-high**
+- overall completion: **not yet**
 
 ## Next run priority
-**Run 020 — provider-repository / tokenomics control pass #3.**
+**Run 021 — broad cross-directory / alternative-vocabulary control pass #4.**
 
-Priority unresolved tails:
-- Fluence current compute-provider docs/repository and economics;
-- Fleek 2026 production/mainnet, stake and payout;
-- iExec current worker/workerpool path through PoCo repositories/contracts;
-- dTelecom SFU operator admission/rewards/registry;
-- Spheron Community GPU supplier onboarding;
-- StorX current node/reward docs/repository;
-- Edge/XE current node contribution/provider admission;
-- YOM provider/node program;
-- Impossible Cloud Network protocol, separated from Impossible Cloud commercial storage/reseller docs.
+Query families:
+- decentralized cloud provider earn capacity
+- idle server capacity marketplace provider
+- edge node operator customer revenue share
+- storage node VPS earn
+- GPU host/community provider onboarding
+- machine API marketplace provider revenue share
+- bandwidth/CDN node customer fees
+- DePIN hardware provider storage compute
+- workerpool/executor/prover/relayer supplier
+- autonomous service marketplace x402/pay-per-call/agent service provider
 
-Alternate role vocabulary:
-- capacity provider / supply node / workerpool / resource provider;
-- edge supplier / operator rewards / node rewards;
-- host marketplace / permissionless provider / capacity seller.
+Use directories only for discovery; validate every net-new project using current primary sources.
+
+Explicitly revisit:
+- Fluence current provider path
+- Fleek production/mainnet/liquid payout
+- iExec worker/workerpool onboarding
+- Spheron supplier onboarding
+- dTelecom operator onboarding details
+- Edge VPS/datacenter acceptance
+- renamed/relaunched compute/storage/bandwidth projects
 
 Track:
 1. new independent economic mechanisms;
-2. new viable projects inside existing mechanisms;
-3. duplicates / renamed projects;
+2. new viable projects in existing mechanisms;
+3. duplicates/renames;
 4. restricted/dead/rejected rediscoveries;
 5. net-new viable count by query family.
 
-If Run 020 again produces no new economic mechanism and only negligible new viable public provider projects, proceed to a final broad cross-directory/control pass. If it still produces material project-level discoveries, continue until that tail converges.
+If Run 021 finds **0 new mechanisms and only negligible (0–2 weak/restricted) new viable projects**, perform a final short saturation check and prepare `COMPLETE`. If it again finds several material providers, continue until the project tail converges.
 
 ## Completion gate
-Do **not** mark complete until multiple differently-worded broad + niche control passes add no new independent earning mechanisms and almost no new viable projects. Remaining unknowns must be explicitly documented rather than guessed.
+Do **not** mark complete until repeated broad + niche + alternative-vocabulary control passes add no new independent mechanism and almost no new viable projects, with remaining unknowns explicitly recorded rather than guessed.
