@@ -32,64 +32,70 @@ Weak, restricted, rejected, dead and points-only options must stay documented to
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when the completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs **001–022** are complete.
+Runs **001–023** are complete.
 
 Latest files:
-- `research/RUN_022_ROLE_RELEASE_TAIL_SWEEP.md`
-- `research/SOURCES_RUN_022.md`
+- `research/RUN_023_PROVIDER_TAIL_CONVERGENCE.md`
+- `research/SOURCES_RUN_023.md`
 
 `STATUS.md` is the authoritative checkpoint and next-run pointer.
 
-## Saturation state after Run 022
-Five deliberately different control passes have produced **0 new top-level economic mechanisms**, so taxonomy confidence is high.
+## Saturation state after Run 023
+Six deliberately different control/tail passes have produced **0 new top-level economic mechanisms**, so taxonomy confidence is high.
 
-Project tail is still not fully saturated because Run 022 discovered two material live provider projects:
-- **ThreeFold Farming** — compute/storage/network 3Node provider path; mostly autonomous dedicated hardware under Zero-OS; current economics/geography still need normalization.
-- **ParalonCloud GPU Provider** — current Docker-based NVIDIA provider agent, automatic scheduling, 80% provider revenue share, per-minute USDC/USDT payout, official no-KYC claim; utilization/geography/security economics still need validation.
+Project tail is still not saturated because Run 023 found three material current provider projects:
+- **DCP** — autonomous GPU/inference daemon, automatic demand routing, 75% provider share, SAR settlement; explicitly KSA-resident/in-Kingdom and therefore restricted for Azerbaijan unless later confirmed.
+- **WorldLand Cloud Provider** — Ubuntu/Docker/Kubernetes GPU provider, provider-set pricing, 90% service-fee share; idle GPU can also mine; realized economics remain early/testnet-sensitive.
+- **StorX Farm/Storage Node** — Server/VPS storage provider, SRX rewards, stake/reputation requirements and slashing exposure.
 
-Run 022 also strengthened:
-- **OpenGPU**: datacenters/cloud operators/home rigs explicitly eligible; Docker/Linux provider path; automatic routing; completed-task OGPU rewards; active provider/task explorer surface.
-- **Iagon**: current docs allocate 90% of compute subscriber fees to compute providers and 90% of storage subscriber fees to storage nodes/delegators; both carry IAG staking/opportunity cost.
-- **DeNet**: current server/headless path and July 2026 release confirmed; Datakeeper license required; license price/payout/utilization still unresolved.
+Additional restricted/watchlist leads:
+- **Abakos** — public sandbox, rent-first + idle-mining Provider Agent, mainnet still gated.
+- **IonDEX** — alpha Windows/WSL2 GPU provider agent and Base/USDC session flow.
+- **CryptoGPU** — provider daemon documented, but marketplace listings are explicitly samples pending launch.
+- **ComputeMarket** — provider-agent claims, insufficient public production/economics evidence.
+
+Run 023 therefore did **not** satisfy the prior convergence threshold.
 
 ## Durable lessons
 - Paid utilization is the dominant hidden variable.
 - Owned spare resources generally beat retail-cloud re-rental.
 - Compare opportunity cost across GPU/CPU/disk/bandwidth/IP uses.
 - Collateral must be priced as capital with lock/liquidity/slashing risk.
-- Customer-paid revenue share is stronger evidence than token emissions, but it still requires real demand.
+- Customer-paid revenue share is stronger evidence than token emissions, but still requires real demand.
 - Explicit provider shares help normalization but do not imply profit.
+- Early/testnet networks can publish precise reward splits without liquid realized economics.
 - Linux/server compatibility does not itself prove every public-cloud host permits the workload.
 - Current provider software/releases materially strengthen evidence that an earning path is live.
 - Small measured pilots should precede CAPEX.
 - Azerbaijan must be validated through live onboarding/payout/geofencing before spending capital; silence in docs is not confirmation.
+- Geography can override technical feasibility; DCP is a concrete example.
 
 ## Current next run
-**Run 023 — tight provider-tail convergence pass.**
+**Run 024 — non-GPU provider-tail convergence pass.**
 
 Search vocabulary:
-- farmer / farming node
-- hoster / host node
-- provider agent / provider Docker
-- earn with GPU
-- capacity provider
-- cloud host rewards
-- storage node operator
-- render provider
-- inference provider
-- server monetization agent
+- host node / hoster
+- storage provider / storage farmer
+- VPS node rewards
+- provider SDK
+- capacity marketplace
+- edge provider
+- CDN provider
+- bandwidth node operator
+- relay provider
+- server storage rewards
 
 Actions:
-1. favor current 2025–2026 provider guides/releases over old directories;
-2. search for live provider software/revenue paths missed by generic DePIN terms;
-3. normalize fee splits, payout rails and automation;
-4. dedupe against ThreeFold, Paralon, OpenGPU, DeNet, Iagon and prior catalog;
-5. classify material new providers separately from weak/restricted leads and duplicates.
+1. favor current 2025–2026 official docs and current repositories/releases;
+2. target storage, edge, bandwidth, CDN and generic host-provider software rather than repeating GPU-heavy queries;
+3. distinguish production mainnet from alpha/testnet/waitlist/dead states;
+4. normalize fee split, stake/collateral, hardware, payout rails and automation;
+5. dedupe against all prior catalog entries plus the Run 023 additions.
 
 ### Completion logic
-If Run 023 produces:
+If Run 024 produces:
 - **0 new mechanisms**, and
 - only **0–2 weak/restricted** genuinely new projects,
-then perform one final short saturation check. If that final check also yields no material novelty, mark `STATUS.md` **COMPLETE**, document final saturation evidence and stop recurring research.
+then perform one final cross-category saturation check. If that final check also yields no material novelty, mark `STATUS.md` **COMPLETE**, document final saturation evidence and stop recurring research.
 
-If Run 023 still finds material provider projects, remain IN PROGRESS and continue until the project-level tail converges.
+If Run 024 still finds material provider projects, remain IN PROGRESS and continue until the project-level tail converges.
