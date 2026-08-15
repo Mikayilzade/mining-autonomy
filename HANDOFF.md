@@ -32,59 +32,65 @@ Weak, restricted, rejected and dead options must stay documented so later runs d
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when the completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs **001–009** are complete.
+Runs **001–010** are complete.
 
 Latest files:
-- `research/RUN_009_PHYSICAL_DEPIN.md`
-- `research/SOURCES_RUN_009.md`
+- `research/RUN_010_CAPITAL_YIELD_UNIVERSE.md`
+- `research/SOURCES_RUN_010.md`
 
 `STATUS.md` is the authoritative current checkpoint and next-run pointer.
 
-## Run 009 durable findings
-Physical DePIN was decomposed into distinct paid commodities rather than one generic category:
-- wireless traffic carriage — Helium;
-- road imagery — Hivemapper;
-- vehicle telemetry — DIMO;
-- GNSS/RTK correction data — GEODNET;
-- weather telemetry — WeatherXM;
-- ADS-B aircraft positional data — Wingbits;
-- smartphone road-scene metadata — NATIX;
-- smartphone BLE relay — Nodle;
-- mobile connectivity measurements — Roam;
-- environmental/noise measurements — Silencio;
-- navigation/driver data — MapMetrics;
-- embedded publisher SDK device monetization — Nodle SDK and analogous SDK families.
+## Run 010 durable findings
+Capital-native income has been decomposed by the actual source of return rather than by the generic label `passive income`.
 
-### Strong physical/device confirmations
-- **Helium IoT**: any compatible LoRaWAN gateway can be onboarded permissionlessly and earn HNT for carried device data. Current docs also support a `multi-gateway` architecture where one server fronts many physical gateways.
-- **Helium Mobile/converted Wi-Fi**: eligible carrier-offload traffic can earn HNT. Commercial/high-traffic deployments have Helium Plus pathways.
-- **Important Helium correction**: current official docs say Proof-of-Coverage was removed on **2026-07-06**. Never use old beacon/witness farming assumptions as current economics.
-- **Hivemapper**: certified physical camera + authentic road imagery required; reward value depends on freshness/saturation/data utility. Synthetic/replayed imagery is excluded.
-- **DIMO**: real connected vehicle/integration required for driver rewards; baseline issuance and marketplace data demand are separate revenue components.
-- **GEODNET**: physical GNSS station earning is real; uptime/quality/density matter.
-- **WeatherXM**: approved real weather station/gateway required; rewards depend on data quality, proof of location and cell capacity.
-- **Nodle**: real smartphone BLE/location/Internet contribution; background operation can be highly autonomous, but a generic VPS cannot replace the phone/radio/geographic contribution.
+### Traditional/capital-market families now mapped
+- insured bank deposits, term deposits and cash sweeps;
+- money-market funds;
+- sovereign bills/notes/bonds/TIPS/floating-rate notes;
+- investment-grade/high-yield/floating-rate/bond funds;
+- dividend/index income, public and mortgage REITs, infrastructure, preferreds, BDC/private-credit vehicles and royalty structures;
+- P2P/private credit, invoice financing, real-estate/startup crowdfunding, revenue-share financing and private placements.
 
-### Server-native leads discovered inside physical ecosystems
-These are important for later Tier-A control passes:
-1. **NATIX xNodes** — docs describe staked validator nodes earning from uptime/validation tasks, but current public production onboarding/hardware/stake/payout remain unproven. WATCHLIST.
-2. **DIMO Storage Nodes** — deployed economics allocate a portion of paid data-access demand to storage entities, but current developer docs still say `Coming Soon`. WATCHLIST.
-3. **DIMO data validators** — current developer docs still `Coming Soon`. WATCHLIST.
-4. **Helium multi-gateway server** — legitimate server control-plane role for fleets, but not standalone VPS income because physical radios create the paid commodity.
-5. **Nodle publisher SDK** — BUILD-ONCE app monetization: integrate an opt-in SDK so user phones provide IoT connectivity and publisher earns revenue/rewards.
-6. **Physical-DePIN fleet orchestration SaaS** — newly identified BUILD-ONCE family: paid monitoring/accounting/uptime/firmware/location optimization service for device fleets.
+### Crypto/on-chain families now mapped
+- solo/delegated/pooled/liquid staking;
+- restaking/shared-security capital yield;
+- permissionless lending and curated lending vaults;
+- stablecoin/RWA yield and centralized custodial earn as separate counterparty families;
+- automated yield/allocator vaults;
+- full-range and concentrated AMM LP;
+- fixed/term yield-token markets;
+- basis/funding/cash-and-carry/option-carry strategies, explicitly as trading rather than guaranteed yield;
+- tokenized RWA/revenue-share wrappers.
 
-### Restricted/watchlist findings
-- **Wingbits**: reward mechanics and approved ADS-B/GNSS/security hardware are real; current docs still describe beta/devnet-to-mainnet transition, so do not yet count as proven liquid cash yield.
-- **Roam Network**: Android connectivity-measurement contribution is real, but current docs still describe pre-TGE points and future XRO conversion. Points are not current cash.
-- **Silencio**: Terms say in-app Noise-Coins cannot be redeemed for cash from Silencio; newer SLC tokenomics describes a transferable token economy. Exact current contribution-to-liquid-token path needs validation.
-- **MapMetrics**: current official FAQ advertises MMAP earning and global usage, including headline SPT token/hour figures. Treat as unnormalized marketing economics until token liquidity, hardware cost, caps and realized withdrawals are verified.
+### Strong mechanism validations
+- SEC Investor.gov: money-market funds are investment funds holding short-term debt/cash equivalents, not FDIC-insured deposits; cash-sweep implementations must be split by underlying vehicle.
+- TreasuryDirect: marketable Treasury families and bill discount/face-value mechanics verified.
+- Ethereum.org: solo, staking-as-a-service and pooled/liquid staking are economically distinct; validator capital faces downtime penalties/slashing.
+- Aave: supplier yield is variable and borrower-utilization-driven.
+- Morpho: vault yield can trace to borrower interest plus separately layered incentives/fees; current APIs/SDKs expose a BUILD-ONCE integration/allocator opportunity.
+- Uniswap: LP yield is trading-fee compensation for price/liquidity risk; concentrated liquidity adds active range management.
 
-### New strategy lesson
-**Physical DePIN stacking** is a separate strategy family. Wingbits documents HYFIX MGW310 as a combined Wingbits/GEODNET device. Later economics should search other legal multi-network combinations where hardware/site/power/backhaul are shared.
+### New server-adjacent capital opportunities
+1. Validator/validator-fleet operation.
+2. Validator-as-a-service / delegation business where protocol rules permit.
+3. Restaking operator services — later platform-specific validation required.
+4. Automated treasury/lending allocator daemon.
+5. Lending/vault integration product.
+6. Concentrated-liquidity management service.
+7. Cash-and-carry/funding bot through explicitly permitted APIs.
+8. Broker cash/Treasury sweep automation where broker ToS/API permits.
 
-### Hard boundary reinforced by Run 009
-Real-world verification is the product, not an obstacle to bypass. GPS/GNSS, radio reception, cryptographic hardware, authentic imagery, vehicle telemetry and environmental measurements cannot be faked/emulated merely to collect rewards. Such strategies are out of scope.
+### Capital modeling rule
+Always separate:
+1. passive capital holding;
+2. capital + node operation;
+3. capital + trading/allocator bot;
+4. capital + build-once fee-generating product.
+
+Do not freeze headline APY as durable evidence. Azerbaijan/KYC/tax/broker access is intentionally deferred to a dedicated filter pass.
+
+## Run 009 durable findings still active
+Physical DePIN was decomposed into paid commodities: wireless traffic, road imagery, vehicle telemetry, GNSS/RTK, weather, ADS-B, smartphone road metadata, BLE relay, connectivity measurements and environmental sensing. Real-world verification is the product and cannot be spoofed for rewards. Physical ecosystems can also hide server-native storage/validator/operator roles and BUILD-ONCE fleet-management opportunities.
 
 ## Earlier durable lessons still active
 - Docker/Linux support never proves VPS/datacenter eligibility.
@@ -97,28 +103,31 @@ Real-world verification is the product, not an obstacle to bypass. GPS/GNSS, rad
 - Permissionless software can still require significant stake, liquidity or hardware.
 - Residential IP monetization and generic datacenter bandwidth monetization are separate commodities.
 - Embedded SDK monetization requires explicit disclosure/consent and platform compliance; no deceptive bundling.
+- Tokenization is a wrapper, not a return source; trace tokenized products to the underlying payer/asset.
+- Market-neutral-looking automated strategies are not guaranteed; model hedge failure, fees, financing, liquidation, custody and execution risk.
 
 ## Current next run
-**Run 010 — capital-based passive/semi-passive income universe.**
+**Run 011 — build-once digital income systems universe.**
 
 Research broadly before profitability ranking:
-- bank deposits/savings/term deposits;
-- money-market funds/instruments;
-- sovereign bills/bonds and inflation-linked instruments;
-- investment-grade/high-yield bond structures;
-- index/dividend/REIT/infrastructure/preferred/BDC/royalty securities;
-- P2P/private credit/invoice financing/real-estate debt/revenue-share financing;
-- PoS staking, liquid staking, restaking;
-- crypto lending/stablecoin yield;
-- AMM/LP yield and concentrated liquidity;
-- fixed-rate DeFi;
-- basis/funding/cash-and-carry and other market-neutral-looking strategies, explicitly without claiming guarantees;
-- tokenized RWAs/revenue-share assets;
-- automated treasury/vault/API strategies where current platform rules permit automation.
+- micro-SaaS / niche SaaS / automation utilities;
+- paid APIs and machine-to-machine services;
+- data products/datasets/feeds with clean source rights;
+- templates, plugins, themes, extensions, code/assets and licensing;
+- stock media/music/SFX/3D/design assets;
+- ebooks/courses/reference/continuously updated knowledge products;
+- print-on-demand and digital storefronts;
+- affiliate/content/search/newsletter/lead-generation assets within platform rules;
+- app-store/browser-extension/chatbot monetization;
+- open-source sponsorship, hosted versions, support and dual licensing;
+- marketplace repository/template revenue-share programs;
+- automated B2B monitoring/reporting/alerting/orchestration/data transformation/reconciliation/optimization;
+- physical-DePIN/node-fleet orchestration dashboards;
+- models where one server can serve many paying customers with low marginal cost.
 
-For each family record what actually pays the return, capital-loss modes, counterparty/custody/smart-contract risk, liquidity/lockup, KYC/geography, automation level, fees and a net-return formula.
+For each family record initial build effort, maintenance, distribution/CAC dependency, gross margin, platform/ToS dependence, automation level, scalability, recurring infrastructure/API cost and defensibility.
 
-After Run 010 continue build-once digital systems, automated task/API markets, dead/scam cross-check, profitability normalization, Azerbaijan/KYC filtering, and saturation/control passes.
+After Run 011 continue legitimate automated task/API markets, dead/scam cross-check, profitability normalization, Azerbaijan/KYC filtering and saturation/control passes.
 
 ## Completion
-Only mark `COMPLETE` after repeated broad + niche saturation passes stop producing new independent mechanisms and produce negligible new viable projects. Document the final control passes, then disable the recurring research task.
+Only mark `COMPLETE` after repeated broad + niche saturation passes stop producing new independent mechanisms and produce negligible new viable projects. Document final control passes, then disable the recurring research task.
