@@ -32,42 +32,49 @@ Weak, restricted, rejected and dead options must stay documented so later runs d
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when the completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs **001–013** are complete.
+Runs **001–014** are complete.
 
 Latest files:
-- `research/RUN_013_MARKETPLACE_ROYALTY_DISTRIBUTION_GAPS.md`
-- `research/SOURCES_RUN_013.md`
+- `research/RUN_014_POW_MINING_HASHPOWER.md`
+- `research/SOURCES_RUN_014.md`
 
 `STATUS.md` is the authoritative current checkpoint and next-run pointer.
+
+## Run 014 durable findings
+PoW/mining/hashpower has now been normalized as a separate economic family.
+
+### Strong current mechanisms
+1. **Direct PoW pool mining** — protocol issuance + transaction fees; autonomous after setup but fundamentally hardware/electricity economics.
+2. **Merged/AuxPoW mining** — current f2pool docs verify BTC and LTC auxiliary-reward families; additive rewards can be earned without proportional extra hashrate.
+3. **NiceHash-style hashpower seller** — customer-paid algorithm-specific hashrate marketplace; keep separate from direct mining.
+4. **MiningRigRentals rig seller** — current official owner fee 3% of rental receipts.
+5. **MiningRigRentals API broker/reseller** — current policy expressly permits sourcing third-party hashrate, dynamic API listing/pricing/routing and retaining margin, subject to disclosure, performance and withdrawal rules. This is one of the more directly relevant autonomous-bot mechanisms discovered in the mining family.
+6. **Profit-switching / cross-market routing** — strategy layer that can route owned GPU/ASIC/CPU resources among pools, merged-mining destinations, hashrate markets or non-mining GPU compute markets.
+
+### Current cloud/VPS restriction map
+- Hetzner: **REJECTED** for mining; current terms explicitly prohibit mining/farming/plotting.
+- DigitalOcean: **RESTRICTED**; explicit written permission required.
+- Google Cloud: **RESTRICTED**; prior written approval required; Free Trial mining prohibited.
+- AWS: **RESTRICTED**; written approval required; Free Tier/credits cannot be used.
+- Linode/Akamai: **RESTRICTED**; shared CPU mining is not a compliant default; dedicated CPU may be possible only with current support/approval context.
+
+### Mining rules to carry forward
+- Mining = hardware/energy arbitrage; hashpower resale = customer-demand arbitrage.
+- Pool payout schemes affect variance/cash-flow, not physical efficiency.
+- Merged mining is a genuine additive mechanism and belongs in profitability models.
+- Cloud capability never proves permission.
+- Profit switching does not create return; it reallocates resources among existing return sources.
+- GPU assets have option value across mining, AI inference, rendering and generic GPU compute.
+- Hashrate brokerage is a separate automated business where platform rules explicitly permit it.
+- Proof-of-capacity/plotting and customer-paid storage are separate families.
+- Cloud-mining contracts are capital/counterparty products rather than direct resource operation.
 
 ## Run 013 durable findings
 Marketplace/royalty gaps were materially expanded and normalized.
 
-### Strong current channels
-1. **Microsoft Marketplace** — transactable SaaS and usage-based software; current standard store service fee is 3%. Official publisher-country and payout-region docs explicitly include Azerbaijan. Marketplace payouts are supported for Azerbaijan; PayPal payout is not. This is currently one of the strongest locally actionable B2B software channels.
-2. **Google Cloud Marketplace** — genuine vendor transaction and payout rail; current Vendor Net Revenue Schedule gives standard offers 97% vendor net revenue and qualifying private/renewal/migration deals 97–98.5%.
-3. **Snowflake Marketplace paid listings** — real paid data-listing mechanism with Stripe Express payout, but current provider billing-address eligibility excludes Azerbaijan. Keep RESTRICTED locally.
-4. **Databricks Marketplace** — commercial datasets, models, apps/notebooks and MCP servers are supported. Commercial provider-request transactions are real, but do not infer a universal self-service per-invocation MCP payout rail.
-5. **Unity Asset Store** — current publisher share 70% of revenue.
-6. **Fab (Epic)** — current publisher share 88% of product-sales revenue.
-7. **Envato Market** — July 2026 model uses a standard 50% Author Fee on the item-price component unless separately agreed otherwise.
-8. **Envato Elements** — authors share 50% of net base-subscription revenue under subscriber-share economics.
-9. **Shutterstock** — image/video royalty ladder currently 15–40%; separate data-licensing Contributor Fund documents average 20% corporate royalty rate on eligible data-license revenue.
+Strong channels include Microsoft Marketplace, Google Cloud Marketplace, Snowflake paid listings (Azerbaijan restriction), Databricks Marketplace commercial data/model/app/MCP listings, Unity Asset Store, Fab, Envato Market/Elements and Shutterstock contributor/data licensing.
 
-### New mechanism distinctions
-- cloud-procured usage-metered software resale;
-- cloud marketplace private-offer revenue share;
-- paid data listing with marketplace payout;
-- commercial data/MCP listing with negotiated/provider-approved transaction;
-- engine/plugin unit-sale royalty;
-- 3D/game/design asset unit-sale royalty;
-- creative-market item-sale royalty;
-- subscription-pool usage royalty;
-- stock-license royalty ladder;
-- dataset/AI-data pooled royalty.
-
-### Critical rule
-A free integration directory, template gallery, MCP directory or app showcase is not an independent earning mechanism unless a real payment path is proven. Marketplace discoverability can be only distribution.
+Critical rule: a free integration directory, template gallery, MCP directory or app showcase is not an independent earning mechanism unless a real payment path exists.
 
 ## Run 012 durable findings
 The original “bot does tiny jobs forever” concept is best represented by **metered machine services**, not by automating human microtask websites.
@@ -77,7 +84,7 @@ Strongly validated channels remain Apify Store paid Actors, RapidAPI providers, 
 ### Hard exclusion reinforced
 Do not turn human-only surveys, CAPTCHA, ad-clicks, usability tests, labeling, freelancing or microtask accounts into bot targets unless official rules explicitly provide a machine/API supplier role. Fake human activity, CAPTCHA bypass, evasion, deceptive automation and fraudulent engagement are rejected.
 
-## Run 011 durable findings still active
+## Run 011 durable findings
 Highest-priority build-once server models: niche/micro-SaaS, usage-based SaaS, paid APIs, licensed data products, automated B2B monitoring/reporting/alerting/reconciliation/data transformation, hosted open-source/open-core services and node/validator/DePIN fleet management.
 
 ## Earlier durable lessons still active
@@ -97,22 +104,19 @@ Highest-priority build-once server models: niche/micro-SaaS, usage-based SaaS, p
 - Commercial MCP discoverability is not automatically per-invocation monetization.
 
 ## Current next run
-**Run 014 — proof-of-work / mining / hashpower normalization.**
+**Run 015 — scam / dead / discontinued / misleading-opportunity cross-check.**
 
 Search broadly for:
-- CPU/GPU/ASIC mining mechanism families and current pool economics;
-- hashpower marketplaces and auto-switching profitability services;
-- NiceHash-style seller/buyer mechanisms and alternatives;
-- merge mining / auxiliary proof-of-work;
-- proof-of-capacity/storage mining not already classified as paid storage service;
-- cloud/VPS mining ToS restrictions and profitability rejection patterns;
-- bare-metal/GPU rentals where mining is explicitly allowed;
-- pool fees, payout schemes, variance, custody and minimum payouts;
-- differences between emission-funded mining and customer-paid compute markets;
-- dead/discontinued/scam-like mining projects;
-- Azerbaijan/KYC/payment constraints where primary sources expose them.
+- dead or abandoned projects from every prior category;
+- old reward pages that no longer represent production payouts;
+- testnet/points-only programs commonly described as “earning”;
+- fake/deceptive cloud mining and node-license schemes;
+- guaranteed-return claims and withdrawal-fee traps;
+- referral-only systems pretending to be resource income;
+- “AI mining”, “DePIN mining”, “GPU earning”, “node rewards”, “bandwidth earning”, “storage mining”, “cloud mining” rediscovery traps;
+- legitimate but geographically/ToS restricted projects that must not be mislabeled as scams.
 
-After Run 014: scam/dead cross-checks, profitability normalization, Azerbaijan/KYC filtering, then repeated saturation/control passes.
+After Run 015: profitability normalization, Azerbaijan/KYC filtering, then repeated broad + niche saturation/control passes.
 
 ## Completion
 Only mark `COMPLETE` after repeated broad + niche saturation passes stop producing new independent mechanisms and produce negligible new viable projects. Document final control passes, then disable the recurring research task.
