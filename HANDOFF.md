@@ -32,37 +32,54 @@ Weak, restricted, rejected, dead and points-only options must stay documented to
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when the completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs **001–015** are complete.
+Runs **001–016** are complete.
 
 Latest files:
-- `research/RUN_015_SCAM_DEAD_MISLEADING_CROSSCHECK.md`
-- `research/SOURCES_RUN_015.md`
+- `research/RUN_016_PROFITABILITY_DEPLOYMENT_ECONOMICS.md`
+- `research/SOURCES_RUN_016.md`
 
 `STATUS.md` is the authoritative checkpoint and next-run pointer.
 
-## Run 015 durable findings
-A defensive scam/dead/misleading-opportunity normalization pass was completed.
+## Run 016 durable findings
+A profitability/deployment-economics normalization pass was completed for representative high-priority autonomous resource markets.
 
-### Reward-path corrections
-- **DAWN:** current Terms explicitly say Rewards are points with no monetary value and may never convert into cash/crypto/assets. Reject as current income; watch future economics only.
-- **Nodepay:** current docs describe monthly conversion of eligible contribution points into Nodecoin ($NC), wallet claim and on-chain withdrawal. Upgrade from points-only ambiguity to restricted/current token reward path; bandwidth-specific economics still unresolved.
-- **Grass:** current official material confirms bandwidth can lead to Grass Token or USDC rewards. July 10 2026 Stage 2 notice says eligible participants receive USDC distribution. Points themselves still have no monetary value and future rewards are discretionary. Verified rewarded bandwidth, deterministic profitability restricted.
-- **EarnApp:** explicitly residential/personal-device only; VMs, Docker, cloud hosting, personal/home servers and business/monetization devices prohibited. Not server-native.
-- **Pawns.app:** traffic sharing requires residential IP; servers/VPNs/proxies disallowed. Not server-native.
-- **PacketStream:** current terms specify $0.10/GB, $5 minimum cashout, PayPal and 3% cashout fee. Live cash bandwidth mechanism; datacenter permission unresolved.
-- **TraffMonetizer:** current paid shared-traffic mechanism with $10 threshold; Docker exists but datacenter permission is not inferred.
-- **Repocket:** current cash bandwidth sharing exists, but current policy prohibits VPNs/proxies/emulators/VMs for access; reject VPS-farm interpretation.
-- **EarnFM Fleetshare:** especially strong supplier-side bandwidth role. Official SDK docs require supplier onboarding/KYC and 20+ active IPs and publish both residential ($0.10/GB) and datacenter ($0.04/GB) traffic rates. Treat consumer app and supplier/fleet role separately.
+### Cross-market economics
+- Paid utilization is the critical hidden variable. Listed/online capacity is not automatically paid capacity.
+- Owned spare hardware has a structural advantage over renting retail cloud resources and attempting to resell them.
+- Always compare opportunity cost across competing uses of the same GPU, CPU, disk, bandwidth and IP resources.
+- Collateral must be priced as capital with financing/opportunity cost plus expected slashing/loss.
+- Later implementation should begin with small measured pilots rather than CAPEX based on headline rewards.
 
-### Anti-scam rules now mandatory
-1. Never count a task/job requiring the worker to deposit/recharge own funds to complete work.
-2. Unexpected taxes/fees/deposits required to release existing balances are a fraud red flag.
-3. Fixed/high/guaranteed mining/staking/yield claims require enhanced fraud review; real mining economics fluctuate with hardware, energy, difficulty, utilization and market prices.
-4. Points are not revenue without a current redemption/conversion path.
-5. Consumer, supplier, SDK, reseller and fleet roles can have different ToS and must be validated separately.
-6. Linux/Docker compatibility never proves VPS/datacenter eligibility.
-7. Referral programs are distribution layers, not independent proof of economic value.
-8. Cloud-mining contracts are counterparty/investment products, not direct resource operation.
+### Representative normalized candidates
+- **Vast.ai:** host-set GPU/storage/bandwidth pricing; net return depends on occupied rental hours, electricity, depreciation and networking. Strongest with owned/low-cost GPU hardware.
+- **Akash:** provider earns tenant lease revenue through automated bidding. Real server/cloud business with Kubernetes/networking/domain/operations overhead; better suited to a cluster or wholesale infrastructure than trivial VPS arbitrage.
+- **Golem:** pay-per-use GLM resource market; CPU pricing is per utilized thread-hour. Very low barrier for an already-paid server, but utilization/demand is the bottleneck.
+- **EarnFM Fleetshare:** official supplier docs explicitly target Linux servers running 24/7, require 20+ IPs plus KYC/KYB and agreement, and currently publish $0.04/GB datacenter / $0.10/GB residential rates. One of the best later empirical tests because unit revenue is explicit; actual GB/IP/day is still unknown.
+- **Storj:** current official rates remain $1.50/TB-month storage and $2/TB egress/audit-repair. Thin storage economics favor sunk/cheap disks rather than rented cloud storage.
+- **Sia:** current host guidance is roughly $1/TB-month storage and >$5/TB egress, with collateral. Again favors cheap owned storage and reliable uptime.
+- **Filecoin:** capital/operations-heavy storage infrastructure business. Requires FIL collateral and continuous proofs; ≥10 TiB storage power for WinningPoSt eligibility. Profit depends on deal flow, token price, quality-adjusted power, fees and slashing risk.
+
+### Economic formulas now mandatory
+Resource marketplaces:
+`Net = paid utilization revenue + incentives - infrastructure - electricity - bandwidth - depreciation - fees - capital/slashing loss - maintenance - tax`
+
+Break-even utilization:
+`paid_hours_break_even = fixed_cost / (revenue_per_paid_hour - variable_cost_per_active_hour)`
+
+Bandwidth:
+`GB_break_even = fixed_monthly_cost / (payout_per_GB - incremental_cost_per_GB)`
+
+Storage:
+`Net/TB-month = storage_rate*occupied_fraction + egress_rate*egress_TB - disk/power/network/depreciation - collateral/loss cost`
+
+### Later low-capital experiment priority
+Only after geography filtering and research saturation:
+1. Golem on an already-paid server.
+2. EarnFM Fleetshare with economically sourced eligible controlled IPs.
+3. Storj/Sia on already-owned spare disk.
+4. Vast.ai/other GPU markets where owned GPU hardware exists.
+
+No candidate is assumed to provide guaranteed profit.
 
 ## Earlier durable lessons still active
 - A runnable daemon is not enough: prove reward path, supplier admission, permitted environment, stake/license/collateral, payout mechanics and demand/utilization.
@@ -78,23 +95,25 @@ A defensive scam/dead/misleading-opportunity normalization pass was completed.
 - Marketplace discoverability without a payment rail is distribution, not income.
 - Mining = hardware/energy economics; hashpower resale = customer-demand economics.
 - Merged mining is a genuine additive mechanism; profit switching is only a routing strategy.
+- No deposit-to-work or pay-to-withdraw schemes.
+- Guaranteed/high fixed mining or yield claims require enhanced fraud review.
+- Docker/Linux compatibility does not prove VPS/datacenter permission.
+- Consumer, supplier, SDK, reseller and fleet roles must be checked separately.
 
 ## Current next run
-**Run 016 — profitability / deployment-economics normalization.**
+**Run 017 — Azerbaijan / KYC / payout / geography filtering.**
 
-For the highest-priority autonomous/server-native candidates, normalize:
-- revenue unit/payer;
-- utilization;
-- minimum efficient scale;
-- hardware/server/electricity/network costs;
-- stake/collateral/capital;
-- fees/withdrawal friction;
-- maintenance and expected failure/loss;
-- breakeven formulas;
-- owned-vs-rented resource economics;
-- GPU/CPU/storage/bandwidth opportunity cost across competing markets.
+For the highest-priority shortlist, verify:
+- Azerbaijan individual/business onboarding;
+- unsupported-country/sanctions/KYC lists;
+- KYC/KYB requirements;
+- payout rails available from Azerbaijan;
+- crypto-only vs fiat settlement;
+- SEPA/ACH/business-entity requirements where relevant;
+- demand differences by IP geography;
+- which platforms are practically testable from Azerbaijan.
 
-After Run 016 perform Azerbaijan/KYC/geography filtering, then repeated broad and niche saturation/control passes.
+After Run 017 begin repeated broad and niche saturation/control passes using alternate terminology and ecosystem directories.
 
 ## Completion
 Only mark `COMPLETE` after repeated differently-worded broad + niche searches converge, producing no new independent earning mechanisms and negligible new viable projects, with all remaining uncertainty documented. Then record final saturation checks and disable the recurring research task.
