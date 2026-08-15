@@ -12,12 +12,12 @@ Do not reconstruct this project from chat memory.
    - `RUN_LOG.md`
    - `CATALOG.md`
    - `SOURCES.md`
-   - latest files in `research/` named in STATUS/RUN_LOG
+   - latest run-specific files named in STATUS.
 3. Trust repository state over remembered chat state.
 4. Continue from `STATUS.md -> Next run priority`.
 5. Search the live web because platform rules, rewards, availability and economics are time-sensitive.
 6. Prefer primary sources for validation.
-7. Update the catalog/evidence/status/log before ending the run. If the central catalog is too large for a safe whole-file replacement, create a durable run-specific catalog/source file under `research/`, then point STATUS and RUN_LOG to it rather than risking data loss.
+7. Update run-specific research/source files plus STATUS, RUN_LOG and this HANDOFF before ending the run. Avoid unsafe whole-file replacement of the central catalog if its full current contents cannot be fetched reliably.
 
 ## User intent
 The user wants an exhaustive theoretical inventory first, implementation later.
@@ -26,55 +26,65 @@ Primary target: autonomous online/server bots/nodes/services that can continuous
 
 Secondary target: all other passive/semi-passive income mechanisms, including home compute/storage/bandwidth, physical DePIN, capital-based yield, and systems that become passive after initial creation/investment.
 
-The aim is not to force a favorite idea. Keep weak, restricted and rejected options documented so future runs do not rediscover and re-hype them.
+Weak, restricted, rejected and dead options must stay documented so later runs do not rediscover and re-hype them.
 
-## User interaction preference for this research loop
-When the user sends `го`, continue the next research stage. Unless the user asks a substantive question, keep chat output minimal: `в процессе` while unfinished, `завершено` only when the completion gate is genuinely met.
-
-## Run sizing
-Work in medium coherent passes and save durable checkpoints. The user's ideal is roughly half-hour-sized research stages rather than tiny minute-by-minute fragments or fragile marathon runs. If a prior stage was clearly too small, broaden the next one.
+## User interaction preference
+Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs 001–003 are complete.
+Runs 001–004 are complete.
 
-Latest detailed files:
-- `research/RUN_003_RPC_ZK_KEEPERS_SOLVERS.md`
-- `research/SOURCES_RUN_003.md`
+Latest files:
+- `research/RUN_004_RELAYER_INTENT_PROVER_EXPANSION.md`
+- `research/SOURCES_RUN_004.md`
 
-Run 003 strong validated additions:
-- Lava RPC Node Provider: continuous paid relay service with proof-of-relay, QoS/reputation and per-service LAVA stake.
-- Boundless/RISC Zero: live proof-order market plus PoVW/ZK mining on GPU servers; collateral/stake and utilization matter.
-- Streamr Operator: server-native sponsored data relay with DATA stake, modest hardware requirements and automated recurring maintenance/inspection.
+### Run 004 strong validated additions
+- Succinct/SP1 prover: permissionless proof market, reverse auctions, PROVE payments, stake/delegation and slashing.
+- SQD worker: server-native historical-data worker with 4 vCPU / 16 GB / 1 TB SSD / 1 Gbit requirements and traffic+liveness+stake rewards.
+- Across relayer: permissionless open-source relayer with modest server requirements but material working capital; explicit relayer fees.
+- UniswapX filler: permissionless autonomous order execution; profit from economically favorable fills, not fixed emission.
+- Presearch node: outside-server/Docker operation and node rewards, currently requiring minimum 4,000 PRE stake for reward eligibility.
+- Cysic prover: current mainnet GPU prover path with bid-price competition and 1,000 CYS reserve per prover worker.
 
-Run 003 restricted/watchlist clarifications:
-- Chainlink: node/data-provider revenue is real, but production oracle revenue is not automatically available merely by running software.
-- Gelato: nodes receive execution fees but arbitrary operator admission to the core executor network was not proven; project-specific verifier-node licensing is a separate family.
-- Succinct/SP1: decentralized prover network exists; open prover admission and economics unverified.
-- SQD/Subsquid: indexing infrastructure exists; current permissionless paid worker role not yet proven.
-- CoW: solver/intent architecture is relevant; exact current solver onboarding/bond/reward rules still need validation.
+### Run 004 restricted / nuanced
+- CoW solver: paid bonded solver role verified; exact production onboarding/bond thresholds still need normalization.
+- 1inch Fusion resolver: approved/top-Unicorn-Power resolver set; legitimate but strongly capital/admission constrained.
+- Gevulot/zkCloud: prover reward mechanism verified; exact current operator deployment economics still need a separate pass.
 
-Run 004 priority:
-1. Succinct/SP1 admission and economics.
-2. SQD/Subsquid paid mainnet worker/indexer roles.
-3. CoW solver onboarding/bonding/rewards.
-4. Gevulot, Cysic, Lagrange paid proving versus testnet/points.
-5. Meson node/bandwidth economics.
-6. Presearch node rewards/server eligibility.
-7. Other intent/relayer markets: 1inch Fusion resolvers, UniswapX fillers, Across relayers and similar.
-8. Revisit Chainlink/Gelato only if stronger primary operator-admission evidence is found.
+### Critical policy distinction
+Presearch search-usage rewards are explicitly protected against bot/fake searching and must NOT be automated. Only the node operator role belongs in this project.
 
-## Hourly automation
-An hourly continuation task is active. Each scheduled run should read repository state first and continue from there. If repository status becomes `COMPLETE`, no further research should be performed and the recurring task should be disabled.
+## Run 005 priority
+Broaden to decentralized compute/GPU, storage and relay infrastructure:
+1. Lagrange operator/proving roles.
+2. Meson bandwidth/CDN economics.
+3. io.net, Clore.ai, TensorDock, Hyperbolic, RunPod provider programs.
+4. Render provider onboarding and cloud eligibility.
+5. Salad server/datacenter limits.
+6. Swarm Bee, Arweave, Crust, ScPrime, Autonomi production rewards.
+7. Additional server-permitted relay/CDN/VPN networks.
 
-## Non-negotiable exclusions
-Do not operationalize CAPTCHA bypass, fake engagement, ad fraud, spam, prohibited multi-accounting, KYC/geofence evasion, unauthorized access/scraping, cryptojacking or other deceptive/illegal activity.
+Then begin dedicated Bittensor subnet-miner and AI-incentive sweeps.
 
 ## Research discipline
-A technically possible server installation is not enough. Confirm that platform policy permits the intended environment. Example already learned: EarnApp technically has software clients but explicitly prohibits VM/Docker/hosting/cloud/server monetization, so it belongs in residential/device research rather than server-native research.
+A runnable daemon is not enough. Prove all of the following separately:
+- current reward path;
+- supply-side admission;
+- intended server/device environment allowed by docs/ToS;
+- hidden stake/license/collateral;
+- payout/reward mechanism;
+- utilization or demand driver.
 
-Also separate server cost from required stake/license/collateral. A cheap VPS does not make an opportunity low-capital if participation rights require an expensive NFT/token stake.
+Examples already learned:
+- EarnApp is not server-native because its policy prohibits VM/Docker/hosting/cloud/server monetization.
+- 1inch resolver software may be technically automatable but profitable participation is restricted by resolver admission/stake.
+- Across is permissionless but capital-heavy because relayers front liquidity.
+- Succinct proving is permissionless, yet stake controls auction eligibility and missed deadlines can slash stake.
 
-Do not infer earning from generic node/indexer tutorials. Prove a current reward path and supply-side admission separately.
+Do not infer profitability from token APY, headline rewards, or generic node tutorials.
+
+## Non-negotiable exclusions
+Do not operationalize CAPTCHA bypass, fake engagement, ad fraud, spam, prohibited multi-accounting, KYC/geofence evasion, unauthorized access/scraping, cryptojacking or deceptive/illegal activity.
 
 ## Completion
-Only mark `COMPLETE` after repeated broad + niche saturation passes stop producing new independent mechanisms and produce negligible new viable projects. Document those final control passes in `RUN_LOG.md`.
+Only mark `COMPLETE` after repeated broad + niche saturation passes stop producing new independent mechanisms and produce negligible new viable projects. Document final control passes in RUN_LOG and disable the recurring research task only then.
