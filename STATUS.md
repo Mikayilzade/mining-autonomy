@@ -2,42 +2,59 @@
 
 Project state: **IN PROGRESS**
 
-Last completed run: **Run 001 — foundation + broad seed discovery**
+Last completed run: **Run 002 — server-native opportunity expansion**
 Last updated: **2026-08-15**
 
 ## What is complete
 - Persistent research structure created.
 - Scope, safety boundaries, evidence hierarchy and completion/saturation rule defined.
 - Initial broad taxonomy created across server-native, residential/device, capital-based and build-once income.
-- First batch of current primary-source validations completed.
+- First and second batches of current primary-source validations completed.
 - Important server-vs-residential distinction established (e.g. EarnApp is explicitly not a VPS/server option).
-- Initial evidence register created.
+- Server-native universe expanded beyond raw compute into paid RPC relays, indexing/query service, ZK proving, licensed checker nodes, VPN/proxy relay and commercial decentralized API gateways.
+- Run 002 durable detail stored in `research/RUN_002_SERVER_NATIVE_EXPANSION.md` with sources in `research/SOURCES_RUN_002.md`.
 - Hourly continuation automation is active.
 
+## Current validated highlights
+- Mysterium: datacenter/VPS node explicitly supported; paid VPN/proxy relay; exit-node/legal risk requires separate treatment.
+- Pocket Network Supplier: paid usage-based RPC relay work; material POKT stake + proof/claim operations.
+- Pocket commercial Gateway: autonomous API/resale business mechanism, closer to BUILD-ONCE than mining.
+- The Graph Indexer: paid query/indexing service but minimum 100,000 GRT stake makes it capital-heavy.
+- Aztec Prover: current mainnet prover rewards documented; hardware requirements are data-center grade.
+- Aethir Checker: ordinary VPS explicitly supported but earning right requires node license NFT or delegation.
+- Render node/operator: GPU work + availability rewards verified; onboarding/cloud-host fit still needs validation.
+- NKN Proof of Relay: paid relay mechanism verified; current economics still pending.
+
 ## Current quantitative state
-These counts are provisional and should be recomputed as the catalog becomes structured:
-- Verified named platforms/mechanisms with current primary evidence: ~12
-- Additional named discovery leads: dozens
-- Unnamed mechanism families queued for systematic expansion: dozens
-- Saturation passes completed: 0
-- Project completion confidence: low; discovery is still early.
+Counts remain provisional until catalog normalization:
+- Verified named platforms/mechanisms with current primary evidence: >20 when Run 001 + Run 002 roles are counted separately.
+- Additional named discovery leads: dozens.
+- Unnamed mechanism families queued for systematic expansion: dozens.
+- Saturation passes completed: 0.
+- Project completion confidence: low; discovery remains early.
 
 ## Current research phase
 **Phase 1 — Universe construction.**
-Goal: turn the seed taxonomy into a much larger deduplicated universe before spending too much time on detailed profitability models.
+Goal: grow and deduplicate the universe before detailed profitability modeling.
 
 ## Next run priority
-Run 002 should be materially broader than Run 001 and focus on **server-native opportunity expansion**, especially:
-1. GPU/AI provider marketplaces beyond current verified set;
-2. relay/VPN/CDN/bandwidth nodes that explicitly accept servers/datacenters;
-3. RPC/indexer/oracle/search infrastructure;
-4. ZK/prover networks;
-5. keeper/solver/automation networks;
-6. current DePIN directories/ecosystem lists for missed categories.
+Run 003 should focus on **RPC/indexer/oracle + ZK/prover + keeper/solver infrastructure** and be at least as substantive as Run 002.
 
-For each new candidate, record at minimum: name, mechanism, likely server eligibility, source lead, and validation status. Validate high-value/server-native candidates against primary sources immediately where practical.
+Priority validations:
+1. Lava Network provider roles and economics;
+2. Subsquid/SQD workers/indexers;
+3. Boundless / RISC Zero proving market;
+4. Succinct/SP1 prover roles;
+5. Gevulot, Cysic, Lagrange and other prover networks — distinguish mainnet paid roles from testnet/points;
+6. Chainlink node/Automation operator accessibility — permissionless vs curated;
+7. Gelato executor accessibility;
+8. CoW and other solver/intent markets;
+9. Meson, Streamr, Presearch where relevant to server-native relay/data roles.
+
+For each new candidate record: economic mechanism, server eligibility, permissionless/admission status, stake/license/collateral, payout/reward type, automation level, and primary evidence.
 
 ## Following runs
+- Independent DePIN-directory/ecosystem sweep for missed categories.
 - Deep sweep Bittensor subnets and other AI incentive networks.
 - Deep sweep decentralized compute/GPU markets.
 - Deep sweep storage.
