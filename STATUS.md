@@ -2,7 +2,7 @@
 
 Project state: **IN PROGRESS**
 
-Last completed run: **Run 017 — Azerbaijan / KYC / payout / geography filtering**
+Last completed run: **Run 018 — broad saturation/control pass #1**
 Last updated: **2026-08-15**
 
 ## Completed research runs
@@ -23,18 +23,19 @@ Last updated: **2026-08-15**
 - Run 015 — scam/dead/misleading-opportunity cross-check.
 - Run 016 — profitability/deployment economics normalization.
 - Run 017 — Azerbaijan/KYC/payout/geography filtering.
+- Run 018 — broad saturation/control pass #1.
 
 Run-specific files under `research/` are the durable detailed record. Latest:
-- `research/RUN_017_AZERBAIJAN_KYC_PAYOUT_GEOGRAPHY.md`
-- `research/SOURCES_RUN_017.md`
+- `research/RUN_018_BROAD_SATURATION_CONTROL_1.md`
+- `research/SOURCES_RUN_018.md`
 
 ## Current validated server-native / highly autonomous highlights
-- Compute/GPU: Golem provider; Akash provider; Vast.ai host; Nosana/Golem GPU providers; io.net Supplier; Clore.ai Host; TensorDock Host; Runpod Community Cloud Host.
-- Media/storage: Livepeer Orchestrator; Filecoin, Sia, Storj, ScPrime; Swarm Bee; Autonomi Node; Arweave Miner.
-- Relay/network: Mysterium datacenter/VPS relay; EarnFM Fleetshare supplier; Pocket Network Supplier; Lava RPC Provider; Streamr Operator; SQD worker.
-- Index/proof/solver: The Graph Indexer; Aztec Prover; Boundless/RISC Zero proving; Succinct/SP1 prover; Cysic prover; Across relayer; UniswapX filler; Presearch node.
+- Compute/GPU: Golem provider; Akash provider; Vast.ai host; Nosana/Golem GPU providers; io.net Supplier; Clore.ai Host; TensorDock Host; Runpod Community Cloud Host; NodeOps Cloud Compute Provider.
+- Media/storage: Livepeer Orchestrator; Filecoin, Sia, Storj, ScPrime; Swarm Bee; Autonomi Node; Arweave Miner; CESS Storage Node.
+- Relay/network: Mysterium datacenter/VPS relay; EarnFM Fleetshare supplier; Pocket Network Supplier; Lava RPC Provider; Streamr Operator; SQD worker; Diode Relay Node; CESS CD2N Retriever/Cacher.
+- Index/proof/solver: The Graph Indexer; Aztec Prover; Boundless/RISC Zero proving; Succinct/SP1 prover; Cysic prover; Across relayer; UniswapX filler; Presearch node; SubQuery Indexer/RPC Provider.
 - AI incentive networks: selected Bittensor subnets/roles, Omron, Chutes, Nous/Macrocosmos variants, Allora workers/reputers and related competitive compute/agent roles documented in prior run files.
-- Machine-service monetization: Apify paid Actors; RapidAPI providers; GitHub Marketplace paid Apps; AWS/Microsoft/Google cloud marketplace SaaS; Databricks commercial listings.
+- Machine-service monetization: Apify paid Actors; RapidAPI providers; GitHub Marketplace paid Apps; AWS/Microsoft/Google cloud marketplace SaaS; Databricks commercial listings; IDLE Protocol pay-per-call GPU/agent/API/data/resource endpoints; NodeOps paid template marketplace.
 - Mining/hashpower: owned-hardware PoW pool mining; merged mining; NiceHash-style selling; MiningRigRentals rig seller; explicitly permitted MRR API broker/reseller strategy.
 - Supplier bandwidth: EarnFM Fleetshare remains notable because official docs explicitly price residential traffic at $0.10/GB and datacenter traffic at $0.04/GB for accepted suppliers.
 
@@ -76,6 +77,17 @@ Representative normalized economics:
 
 This is **not** yet an implementation decision; research remains theoretical.
 
+## Run 018 — saturation/control findings
+- Broad alternate-term searches produced **0 new top-level economic classes**, but multiple genuinely new or materially upgraded projects, so saturation is not reached.
+- **IDLE Protocol** is a particularly close match to the original “server does tiny jobs forever” concept: arbitrary GPU/agent/API/data resources can become metered endpoints; official docs state 85% provider share, USDC/Solana settlement and pay-per-call economics. Demand still needs empirical validation.
+- **NodeOps Cloud Marketplace** explicitly supports VM providers/resellers, including an official GCP path. Current provider entry requires 2,000 NODE + 200 NODE/CU bond and strict machine requirements. This is a rare explicit retail-cloud-resale lead worth later economics testing.
+- **NodeOps Templates** add a separate build-once revenue stream; official docs currently state 20% of workload fees during bootstrap for accepted public templates.
+- **SubQuery** concretely validates server-native paid RPC/indexing supply with productive-work + inflation rewards, but current registration needs 200,000 SQT stake and carries service/slashing risk.
+- **Diode** validates a lightweight Linux/VM relay node whose rewards depend on routed bandwidth and Fleet Contract economics.
+- **CESS** adds both storage mining and a distinct CD2N retrieval/cache role; storage entry currently requires at least 1 TiB and 2,000 CESS/TiB stake.
+- **Acurast** validates autonomous smartphone compute but remains Tier B/device-only, not a normal VPS path.
+- Directory sweep produced a substantial primary-source validation queue: Impossible Cloud Network, Fleek, Spheron, StorX, OORTech, Fluence, iExec, Edge/XE, dTelecom, YOM and related leads.
+
 ## Important restricted/watchlist findings carried forward
 - Lagrange: paid/slashable prover economics but public production admission not clearly self-service.
 - Hyperbolic: external GPU providers exist; public supplier onboarding/payout unresolved.
@@ -90,33 +102,37 @@ This is **not** yet an implementation decision; research remains theoretical.
 ## Current phase
 **Phase 1 universe construction is broad and high-priority economics/geography are normalized, but research is NOT saturated.**
 
-Saturation/control passes completed: **0**.
-Completion confidence: **medium-low** because repeated differently-worded broad/niche control passes have not yet converged.
+Saturation/control passes completed: **1 broad pass**.
+Completion confidence: **medium**. Taxonomy stability is improving, but the first control pass still produced several strong new projects inside existing mechanisms.
 
 ## Next run priority
-**Run 018 — broad saturation/control pass #1.**
+**Run 019 — niche saturation/control pass #2.**
 
-Use deliberately different vocabulary and discovery paths from prior runs:
-- machine economy;
-- idle-resource monetization;
-- node operator income;
-- capacity marketplace;
-- provider/supplier/reseller/partner programs;
-- daemon/service earnings;
-- distributed infrastructure rewards;
-- decentralized service markets;
-- machine-to-machine work markets;
-- underused hardware monetization;
-- ecosystem/directories that may expose supplier portals hidden behind consumer brands.
+Validate strongest directory-only server-native leads with primary sources:
+- Impossible Cloud Network;
+- Fleek;
+- Spheron;
+- StorX;
+- OORTech;
+- Fluence;
+- iExec;
+- Edge/XE;
+- dTelecom;
+- YOM.
+
+Use alternate role vocabulary:
+- worker / miner / provider / edge node / executor / processor / host / resource seller;
+- infrastructure supplier / compute seller / bandwidth seller / cache operator;
+- “earn”, “provider”, “host”, “supply”, “operator”, “rewards”, “mainnet” inside ecosystem docs.
 
 Track:
 1. new independent economic mechanisms;
 2. new viable projects inside existing mechanisms;
-3. renamed duplicates;
+3. duplicates / renamed projects;
 4. restricted/dead/rejected rediscoveries;
 5. net-new viable count by query family.
 
-After Run 018, perform at least one niche saturation/control pass with alternate ecosystem terminology before considering completion.
+If Run 019 still produces material net-new server-native projects, schedule another differently-worded control pass before considering completion.
 
 ## Completion gate
-Do **not** mark complete until multiple differently worded broad and niche control passes add no new independent earning mechanisms and almost no new viable projects. Remaining unknowns must be explicitly documented rather than guessed.
+Do **not** mark complete until multiple differently-worded broad + niche control passes add no new independent earning mechanisms and almost no new viable projects. Remaining unknowns must be explicitly documented rather than guessed.
