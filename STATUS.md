@@ -2,13 +2,13 @@
 
 Project state: **IN PROGRESS**
 
-Last completed run: **Run 013 — marketplace / royalty / digital-distribution gaps**
+Last completed run: **Run 014 — proof-of-work / mining / hashpower normalization**
 Last updated: **2026-08-15**
 
 ## What is complete
 - Persistent research structure, scope, safety boundaries, evidence hierarchy and saturation rule defined.
-- Broad taxonomy spans server-native compute, storage, bandwidth/relay, validators/RPC/indexers, ZK proving, solvers/relayers, decentralized AI workers, residential/device contribution, physical DePIN, capital yield, build-once digital systems, machine-executable paid service/job markets, cloud software marketplaces, commercial data/MCP listings and digital-asset royalty systems.
-- Thirteen substantial discovery/validation batches completed.
+- Broad taxonomy spans server-native compute, storage, bandwidth/relay, validators/RPC/indexers, ZK proving, solvers/relayers, decentralized AI workers, residential/device contribution, physical DePIN, capital yield, build-once digital systems, machine-executable paid service/job markets, cloud software marketplaces, commercial data/MCP listings, digital-asset royalty systems, PoW mining, merged mining and hashpower marketplaces.
+- Fourteen substantial discovery/validation batches completed.
 - Run 002: `research/RUN_002_SERVER_NATIVE_EXPANSION.md`.
 - Run 003: `research/RUN_003_RPC_ZK_KEEPERS_SOLVERS.md`.
 - Run 004: `research/RUN_004_RELAYER_INTENT_PROVER_EXPANSION.md`.
@@ -21,7 +21,8 @@ Last updated: **2026-08-15**
 - Run 011: `research/RUN_011_BUILD_ONCE_DIGITAL_INCOME.md`.
 - Run 012: `research/RUN_012_AUTOMATED_TASK_API_JOB_MARKETS.md`.
 - Run 013: `research/RUN_013_MARKETPLACE_ROYALTY_DISTRIBUTION_GAPS.md`.
-- Run 013 sources: `research/SOURCES_RUN_013.md`.
+- Run 014: `research/RUN_014_POW_MINING_HASHPOWER.md`.
+- Run 014 sources: `research/SOURCES_RUN_014.md`.
 
 ## Current validated server-native / highly autonomous highlights
 - Golem provider; Akash provider; Vast.ai host; Nosana/Golem GPU providers.
@@ -43,65 +44,53 @@ Last updated: **2026-08-15**
 - Apify paid Actors: pay-per-event/result hosted automation.
 - RapidAPI providers: subscription/pay-per-call API monetization.
 - GitHub Marketplace paid Apps: recurring B2B app revenue.
-- AWS Marketplace metered SaaS: usage-priced server services.
-- Microsoft Marketplace transactable SaaS/metered software; current publisher and payout docs explicitly support Azerbaijan.
-- Google Cloud Marketplace SaaS/software vendor revenue sharing.
-- Databricks Marketplace commercial data/model/app/MCP listings, with commercial transaction/provider-request model.
+- AWS Marketplace metered SaaS; Microsoft Marketplace transactable/metered SaaS; Google Cloud Marketplace vendor revenue; Databricks commercial data/model/app/MCP listings.
+- Owned-hardware PoW mining via pools; merged mining; NiceHash-style hashpower selling; MiningRigRentals own-rig seller and explicitly permitted API-driven hashrate broker/reseller model.
 
-## Run 013 — important findings
-Run 013 filled marketplace/royalty gaps and added multiple concrete build-once revenue rails.
+## Run 014 — important findings
+Run 014 normalized proof-of-work mining and separated it from customer-paid resource markets.
 
-### Strongly validated channels
-- **Microsoft Marketplace** — transactable SaaS and usage-based software; current standard store service fee 3%. Official publisher-country and payout-region tables explicitly include Azerbaijan; marketplace payouts are supported there, with a USD 50 general threshold and no PayPal payout for Azerbaijan.
-- **Google Cloud Marketplace** — true vendor transaction/payout rail. Current Vendor Net Revenue Schedule gives standard offers 97% vendor net revenue and qualifying deals 97–98.5% depending on deal type/TCV.
-- **Snowflake Marketplace paid listings** — providers can charge for listings and receive payouts via Stripe Express, but the current paid-provider billing-address list excludes Azerbaijan. Keep RESTRICTED locally.
-- **Databricks Marketplace** — datasets, AI models, apps/notebooks and MCP servers can be commercialized; provider program and commercial-request workflows are real, but do not assume a universal per-invocation payout for MCP tools.
-- **Unity Asset Store** — publishers retain 70% of sales revenue.
-- **Fab (Epic)** — publishers receive 88% of product-sales revenue.
-- **Envato Market** — current standard Author Fee is 50% of item-price component under the July 2026 non-exclusive model.
-- **Envato Elements** — 50% of net base-subscription revenue is distributed through subscriber-share economics.
-- **Shutterstock contributors** — image/video licensing royalty levels currently range 15–40%; separate data-licensing Contributor Fund pays an average 20% corporate royalty rate on eligible data-license revenue.
+### Strongly validated mechanisms
+- **Direct PoW pool mining** — emission + transaction-fee funded; near-hands-off after setup, but profitability is hardware/energy economics rather than generic server arbitrage.
+- **Merged / AuxPoW mining** — f2pool currently documents BTC with FB/HTR/NMC/ELA/NAT and LTC with DOGE/BELLS/PEP/LKY/DINGO plus current auxiliary additions. This is a genuine additive-revenue mechanism because one workstream can earn auxiliary rewards without proportional extra hashrate.
+- **MiningRigRentals rig seller** — current official rig-owner fee 3% of rental receipts.
+- **MiningRigRentals hashrate broker/reseller** — current explicit policy permits sourcing third-party hashrate, dynamic API listing/pricing/routing and retaining a margin, subject to disclosure/performance/withdrawal rules.
+- **NiceHash hashrate marketplace** — current official site continues to expose live marketplace/mining supply mechanisms; specific current fee normalization remains pending because JS-heavy official pages did not yield reliable fee text in this pass.
 
-### New mechanism taxonomy
-1. Cloud-procured usage-metered software resale.
-2. Cloud marketplace private-offer revenue share.
-3. Paid data listing with marketplace-collected payout.
-4. Commercial data/MCP listing with negotiated/provider-approved transaction.
-5. Engine/plugin marketplace unit-sale royalty.
-6. 3D/game/design asset marketplace unit-sale royalty.
-7. Creative marketplace item-sale royalty with author fee.
-8. Subscription-pool usage royalty.
-9. Stock-license royalty ladder.
-10. Dataset/AI-data pooled royalty.
+### Current cloud/VPS policy map
+- **Hetzner: REJECTED for mining.** Current Terms and dedicated-server agreement explicitly prohibit mining; wording also includes farming/plotting.
+- **DigitalOcean: RESTRICTED.** Current AUP prohibits cryptocurrency mining without explicit written permission.
+- **Google Cloud: RESTRICTED.** Current Terms require prior written approval; Free Trial cannot be used for mining.
+- **AWS: RESTRICTED.** Current AWS guidance states written approval is required and Free Tier/credits cannot be used for mining.
+- **Linode/Akamai: RESTRICTED.** Shared-CPU mining is not a compliant default; dedicated CPU may be permissible only with current support/approval context.
 
-### Durable marketplace rule
-A listing directory, template gallery, MCP directory, integration catalog or app showcase is not a separate earning mechanism unless a real payment path exists: marketplace-collected payment, documented royalty/revenue share, explicit commercial transaction, or independently billed owned service.
+### Pool-economics normalization
+Current f2pool docs demonstrate live PPS/PPLNS/PPS+/FPPS usage and fee/threshold variation by coin. Example current figures include BTC FPPS 4% or PPLNS 2%, LTC PPS 4%, BCH PPS 3%, ETC PPS 1%, DASH PPS 2%, ETHW PPS 1%. Payout scheme changes variance/cash-flow characteristics; it does not make inefficient hardware profitable.
 
-## Run 012 — durable findings still active
-The strongest current version of the original “bot does tiny paid jobs forever” concept is usually not a human microtask website. It is a **metered machine service** whose unit of value is an API call, result, event, inference, monitoring action, automation run, software unit or other programmatically measured output.
+### New durable mining rules
+1. Mining is hardware/energy arbitrage; hashpower resale is customer-demand arbitrage.
+2. Merged mining is a separate additive mechanism and must be included in pool comparison.
+3. Profit-switching is a strategy layer, not a source of return.
+4. Cloud capability never proves permission; provider mining rules must be validated individually.
+5. GPU assets have cross-market option value: mining vs AI/inference/rendering/compute rental.
+6. Hashrate brokerage is a distinct autonomous-bot opportunity where API resale is explicitly permitted.
+7. Proof-of-capacity/plotting and customer-paid storage are separate economic families.
+8. Cloud-mining contracts are capital/counterparty products, not equivalent to owning/operating mining hardware.
 
-Strong channels include Apify Store paid Actors, RapidAPI providers, GitHub Marketplace paid Apps and AWS Marketplace metered SaaS. Hugging Face Inference Providers remain a real but curated/integration-heavy provider channel. OpenAI GPT direct monetization remains restricted/watchlist rather than generally available. Zapier public integrations remain distribution rather than a generic per-task payout market.
+## Durable findings from Run 013
+- Microsoft Marketplace: transactable SaaS/usage-based software; standard store fee 3%; Azerbaijan supported for publisher/payout according to current official tables.
+- Google Cloud Marketplace: genuine vendor transaction/payout rail; current standard vendor net revenue 97%, higher on qualifying deal structures.
+- Snowflake paid listings: real provider payout but current paid-provider billing-address list excludes Azerbaijan.
+- Databricks Marketplace: commercial data/model/app/MCP listing mechanism, but not a universal per-invocation MCP payout rail.
+- Unity Asset Store publisher share 70%; Fab publisher share 88%; Envato Market/Elements and Shutterstock royalty mechanisms validated in Run 013.
 
-## Run 011 — durable findings still active
-Build-once digital income decomposes into distinct economic engines. Highest-priority server-scalable families remain niche/micro-SaaS, usage-based SaaS, paid APIs, licensed data products, automated B2B monitoring/reporting/alerting/reconciliation/data transformation, hosted open-source/open-core services and node/validator/DePIN fleet management.
+## Durable findings from Run 012
+The strongest current version of the original “bot does tiny paid jobs forever” concept is usually not a human microtask site. It is a **metered machine service** whose unit of value is an API call, result, event, inference, monitoring action, automation run, software unit or other programmatically measured output.
 
-Marketplace-installed software validated in earlier runs includes Shopify App Store, Atlassian Marketplace, Chrome Web Store and Google Play. Digital asset/royalty families include templates, scripts/code packs, plugins/themes, stock media, ebooks/POD, courses/reference libraries, affiliate/content assets, GitHub Sponsors and deployment/template/repository revenue share.
+Strong channels include Apify Store paid Actors, RapidAPI providers, GitHub Marketplace paid Apps and AWS Marketplace metered SaaS. Hugging Face Inference Providers remain real but curated/integration-heavy. OpenAI GPT direct monetization remains restricted/watchlist. Zapier public integrations remain distribution rather than a generic per-task payout market.
 
-## Durable classification lessons from all runs
-- Classify by what gets paid for, not marketing terminology.
-- Linux/Docker support never proves VPS/datacenter eligibility.
-- Distinguish customer-paid demand from token/provider subsidies.
-- Points/devnet/in-app credits are not income until a liquid/redeemable path is proven.
-- Real-world verification commodities cannot be simulated/spoofed.
-- Permissionless software may still require stake, collateral, hardware or curated admission.
-- Competitive AI/solver networks require expected-share modeling.
-- Tokenization is a wrapper, not a source of return.
-- Automated financial strategies are trading/optimization systems, not guaranteed passive yield.
-- Embedded bandwidth/data SDK monetization requires explicit consent and platform compliance.
-- Data products require source-specific licensing/privacy/redistribution validation.
-- A marketplace that sends leads but does not pay the developer is distribution, not an independent earning mechanism.
-- A daemon earning per task only has value if there is paid utilization; technical autonomy does not create demand.
-- Commercial MCP discoverability is not equivalent to a per-invocation payment rail.
+## Durable findings from Run 011
+Highest-priority build-once server models: niche/micro-SaaS, usage-based SaaS, paid APIs, licensed data products, automated B2B monitoring/reporting/alerting/reconciliation/data transformation, hosted open-source/open-core services and node/validator/DePIN fleet management.
 
 ## Important restricted/watchlist findings
 - Lagrange: live paid/slashable prover economics, but current public production admission not clearly self-service.
@@ -124,36 +113,30 @@ Marketplace-installed software validated in earlier runs includes Shopify App St
 
 ## Current quantitative state
 Counts remain provisional until catalog normalization:
-- Verified named platforms/mechanisms with primary evidence: **well above 100** when distinct paid roles/subnets/marketplace/royalty mechanisms are counted separately.
+- Verified named platforms/mechanisms with primary evidence: **well above 100** when distinct paid roles/subnets/marketplace/royalty/mining mechanisms are counted separately.
 - Capital universe contains **79+ normalized mechanism variants** before concrete platform-level deduplication.
 - Build-once run adds **20+ independent monetization mechanisms/families** plus numerous implementation subfamilies.
 - Run 012 normalizes **11 machine-market families** and strongly validates 4 additional concrete marketplace channels.
 - Run 013 adds/normalizes **10 marketplace/royalty mechanisms** and strongly validates 9+ concrete channels/roles.
+- Run 014 adds/normalizes **7 mining/hashpower strategy/mechanism families** and validates current cloud-policy restrictions.
 - Additional discovery/watchlist leads: dozens.
 - Saturation/control passes completed: **0**.
-- Completion confidence: low; discovery remains productive.
+- Completion confidence: low-to-medium; universe is broad but saturation has not begun.
 
 ## Current research phase
-**Phase 1 — Universe construction.**
-Goal: grow and deduplicate the opportunity universe before detailed profitability modeling.
+**Phase 1 — Universe construction, nearing normalization/control phase.**
 
 ## Next run priority
-**Run 014 — proof-of-work / mining / hashpower normalization.**
+**Run 015 — scam / dead / discontinued / misleading-opportunity cross-check.**
 
 Priority research:
-1. CPU/GPU/ASIC mining mechanism families and current pool economics.
-2. Hashpower marketplaces (seller vs buyer economics) and auto-switching profitability services.
-3. NiceHash-style marketplace mechanisms and alternatives.
-4. Merge mining and auxiliary proof-of-work.
-5. Proof-of-capacity/storage mining variants not already classified as customer-paid storage service.
-6. Ordinary cloud/VPS mining ToS restrictions and economic rejection patterns.
-7. Rented bare-metal/GPU mining only where host rules explicitly permit it.
-8. Mining-pool fees, payout schemes, variance and custody risk.
-9. Distinguish emission-funded mining from customer-paid compute/resource markets.
-10. Identify dead/discontinued/scam-like mining projects so they are not rediscovered later.
-11. Record Azerbaijan/KYC/payment constraints where primary sources expose them.
-
-After Run 014: scam/dead cross-checks, profitability normalization, Azerbaijan/KYC filtering, then saturation/control passes.
+1. Re-scan prior categories for dead, abandoned, points-only, testnet-only and deceptive projects.
+2. Distinguish current production payout from old token incentive pages and stale docs.
+3. Search “passive income”, “DePIN mining”, “AI mining”, “node rewards”, “bandwidth earning”, “cloud mining”, “storage mining”, “GPU earning”, “bot earning” ecosystems specifically for common rediscovery traps.
+4. Mark discontinued projects DEAD rather than silently dropping them.
+5. Create durable scam/anti-pattern taxonomy: guaranteed APY/mining-return claims, fake cloud mining, withdrawal-fee traps, referral-only economics, unverifiable hardware, fake node-license sales, non-cash points presented as earnings.
+6. Preserve legitimate-but-restricted opportunities separately from scams.
+7. After Run 015, perform profitability normalization and Azerbaijan/KYC filtering, then repeated saturation/control passes.
 
 ## Completion gate
 Do not mark complete until multiple differently-worded broad and niche control passes add no new independent earning mechanisms and almost no viable projects, with remaining uncertainty explicitly documented.
