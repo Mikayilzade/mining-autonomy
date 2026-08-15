@@ -32,35 +32,47 @@ Weak, restricted, rejected and dead options must stay documented so later runs d
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs 001–005 are complete.
+Runs 001–006 are complete.
 
 Latest files:
-- `research/RUN_005_COMPUTE_STORAGE_EXPANSION.md`
-- `research/SOURCES_RUN_005.md`
+- `research/RUN_006_COMPUTE_STORAGE_RELAY_COMPLETION.md`
+- `research/SOURCES_RUN_006.md`
 
-### Run 005 strong validated additions
-- **io.net Supplier / IO Worker**: live GPU/CPU supplier path with customer compute-job payments plus hourly block rewards. Current official docs state 0.25% fee on worker earnings, no fee on block rewards, device-specific $IO stake for reward/Cluster Ready eligibility, 14-day unstake cooldown and slashing framework.
-- **Clore.ai Host**: live GPU-server rental marketplace. Host sets on-demand and spot pricing. Current base host fee share is 5% on-demand and 1.25% spot; renter payments in BTC/USDT/USDC add a 15% host-side fee unless reduced through MFP Lock. Server/bare-metal hosting is explicitly part of the product.
-- **Swarm Bee Full Node**: full node can earn two distinct streams: storage Redistribution Game rewards and SWAP bandwidth incentives. Current docs require at least 10 xBZZ baseline stake for storage incentives and explicitly describe that stake as non-refundable; bandwidth incentives are available to full nodes without that storage-game stake. Current recommended full-node specs are roughly dual-core 2 GHz, 8 GB RAM, 30 GB SSD and stable high-speed internet.
+### Run 006 strong additions / confirmations
+- **Autonomi Node**: official docs allow headless computers, home servers and virtual environments; roughly 35 GB storage per node plus CPU/RAM/bandwidth; token rewards depend on storage/retrieval contribution and performance. This is currently one of the strongest low-cost autonomous-daemon candidates.
+- **TensorDock Host**: hosts still monetize GPU/CPU servers, but are vetted and expected to meet 99.99% uptime; treat as curated/datacenter-grade server marketplace.
+- **Runpod Community Cloud Host**: current Terms still define peer-to-peer GPU compute between Hosts and consumers.
+- **Render Node Operator**: paid rendering role is live, but new compute-node entry is application/waitlist based with material hardware/network requirements.
+- **Arweave Miner**: current mining docs remain active; storage-backed mining uses large uniquely packed partitions and delayed/slashable rewards; hardware/storage intensive rather than cheap VPS.
+- **ScPrime Storage Provider**: DIY PC/NAS/server support and customer contract rent remain live; broad provider incentives ended Aug 2025; some economically important demand requires a provider license.
+- **Runpod Hub repository revenue share**: separate BUILD-ONCE mechanism discovered; published repositories can earn a share of downstream Runpod compute revenue, paid as Runpod credits.
 
-### Important modeling lessons from Run 005
-- Separate actual customer-paid utilization from token emissions/subsidies.
-- Treat stake differently depending on reversibility: io.net has cooldown/slashing exposure; Swarm baseline storage stake is non-refundable; Clore fee optimization can require optional token holdings/locks.
-- Distinguish expensive dedicated-GPU server opportunities from low-spec VPS daemons even when both are server-native.
-- One node may expose multiple paid resources; model each revenue stream independently before combining them.
+### Run 006 watchlist/restricted outcomes
+- **Lagrange**: live paid/slashable prover network confirmed, current self-service production admission still unclear.
+- **Hyperbolic**: current external provider aggregation confirmed through Forge, but public self-service supplier onboarding/payout not found.
+- **Meson Network**: public infrastructure-marketplace project remains visible, but current production node reward/onboarding evidence is insufficient.
+- **Crust**: storage-market merchant/reward primitives are present in current chain docs, but new-provider operational path remains unclear.
+- **Salad**: remains primarily consumer/private-device compute supply. Do not promote to generic VPS/datacenter supplier without explicit supplier docs.
 
-## Run 006 priority
-Finish unresolved compute/storage/relay expansion before moving to the Bittensor/decentralized-AI sweep:
-1. Lagrange proving/operator opportunities.
-2. Meson bandwidth/CDN provider economics.
-3. TensorDock host/provider program status.
-4. Hyperbolic provider status.
-5. RunPod community/provider program status.
-6. Render provider onboarding/cloud-host eligibility.
-7. Salad server/datacenter restrictions.
-8. Arweave current mining/storage roles.
-9. Crust, ScPrime and Autonomi production rewards.
-10. Additional server-permitted relay/CDN/VPN networks.
+### Important modeling lessons from Run 006
+- Distinguish open host markets, vetted hosts, waitlist/application operators and private/aggregated provider networks.
+- Separate base customer-paid rent from temporary token/provider incentives.
+- Technical permissionlessness does not guarantee access to economically important demand channels.
+- Cloud-to-reward-network arbitrage (rent compute, run worker) is valid as a strategy class only after `worker revenue - cloud rental - fees` is positive.
+- Template/repository revenue share is a distinct build-once passive mechanism and belongs in the later digital-income sweep.
+
+## Run 007 priority
+Dedicated decentralized-AI / Bittensor / inference / training reward sweep:
+1. Decompose **Bittensor** into economically distinct subnet miner families rather than one generic miner entry.
+2. Validate **inference.net / Kuzco** current production worker rewards and token/points status.
+3. Sweep decentralized inference provider networks not already captured.
+4. Sweep distributed training/fine-tuning/model-serving networks: e.g. Prime Intellect, Gensyn and current competitors/successors.
+5. Validate AI prediction/worker/reputer networks such as Allora where paid automated work is explicit.
+6. Distinguish actual customer-paid work, token emissions, points/future-token speculation, and blended rewards.
+7. Record dead, testnet-only, permissioned and non-paying projects explicitly.
+8. Search both broad terms and niche ecosystem names so Run 007 is materially larger than a narrow platform checklist.
+
+After Run 007 continue device/residential passive income, physical DePIN, capital yield, build-once systems, rejected/dead cross-checks, profitability normalization, Azerbaijan/KYC filtering and saturation/control passes.
 
 ## Research discipline
 A runnable daemon is not enough. Prove all of the following separately:
@@ -78,8 +90,10 @@ Examples already learned:
 - Succinct proving is permissionless, yet stake controls auction eligibility and missed deadlines can slash stake.
 - io.net is server-compatible supply-side compute but required stake/hardware economics must be normalized per device.
 - Swarm's low hardware requirement does not imply cheap participation because storage incentives carry non-refundable xBZZ stake and recurring gas/RPC costs.
+- Autonomi is unusually close to the cheap-daemon target because virtual/headless operation and low per-node storage are explicitly supported, but real net revenue still requires measurement.
+- ScPrime shows why protocol permissionlessness and customer-demand accessibility must be checked separately.
 
-Do not infer profitability from token APY, headline rewards, or generic node tutorials.
+Do not infer profitability from token APY, headline rewards, points, or generic node tutorials.
 
 ## Non-negotiable exclusions
 Do not operationalize CAPTCHA bypass, fake engagement, ad fraud, spam, prohibited multi-accounting, KYC/geofence evasion, unauthorized access/scraping, cryptojacking or deceptive/illegal activity.
