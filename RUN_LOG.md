@@ -105,3 +105,41 @@ Run 003: RPC/indexer/oracle + ZK/prover + keeper/solver expansion, prioritizing 
 - Newly validated roles/mechanisms: several
 - New taxonomy refinements: at least 5
 - Conclusion: still far from saturation; continue.
+
+---
+
+## Run 003 — 2026-08-15
+Status: **completed**
+Stage: RPC / oracle / ZK prover / keeper-solver expansion
+
+### Work performed
+- Validated Lava Network RPC Provider as a strong server-native paid relay opportunity using current official provider/reward docs.
+- Validated Boundless/RISC Zero as a live GPU-server proof marketplace plus protocol-level ZK mining/PoVW mechanism.
+- Validated Streamr Operator as a modest-hardware server-native sponsored data-relay role with stake/slashing and highly automated node maintenance.
+- Clarified Chainlink node/data-provider economics versus production-network admission constraints.
+- Clarified Gelato core-node fee economics versus lack of proof that arbitrary external operators can join the core executor set; separated project-specific verifier-node licenses as a distinct family.
+- Kept Succinct/SP1, SQD/Subsquid and CoW solver roles on watchlist because current primary evidence was insufficient to prove open paid supply-side admission/economics.
+- Added anti-hype rule: running node/indexer software is not an earning opportunity unless a current reward path is proven.
+
+### Important findings
+1. Lava closely matches the target thesis: continuous machine-to-machine RPC work, cryptographic relay proofs, service-specific stake and rewards affected by QoS/reputation.
+2. Boundless is a particularly strong “bot/miner-like” candidate: GPU servers compete for useful proof jobs and can also participate in ZKC PoVW mining, but collateral/stake and utilization must be modeled.
+3. Streamr is another strong fit: operators run persistent nodes, relay sponsored streams and earn DATA; software automatically performs recurring maintenance and network inspections.
+4. Oracle/keeper ecosystems frequently separate technical permissionlessness from economic admission. A node can be runnable without being automatically eligible for production revenue.
+5. Testnet quests/points and generic full-node tutorials must never be counted as passive income without current mainnet rewards.
+6. Solver/intent markets deserve their own category because profit can depend on algorithms, liquidity/capital and competitive execution rather than raw CPU/GPU supply.
+
+### Durable outputs
+- `research/RUN_003_RPC_ZK_KEEPERS_SOLVERS.md`
+- `research/SOURCES_RUN_003.md`
+- `STATUS.md` advanced to Run 004 priority.
+
+### Next stage
+Run 004: finish unresolved prover/indexer/solver candidates (Succinct, SQD, CoW, Gevulot, Cysic, Lagrange), then broaden into Meson/Presearch and other intent/relayer markets such as 1inch Fusion resolvers, UniswapX fillers and Across relayers.
+
+### Saturation metrics
+- Control/saturation passes completed: 0
+- Newly validated strong server-native roles: Lava RPC Provider, Boundless prover/ZK miner, Streamr Operator
+- Newly refined restricted/watchlist roles: Chainlink, Gelato, Succinct, SQD, CoW
+- New mechanism-family refinements: proof-order auctions, useful ZK PoW, sponsored data relay, professional oracle admission, licensed verifier nodes, competitive solver markets
+- Conclusion: project remains far from saturation; continue.
