@@ -217,3 +217,61 @@ Run 009: physical DePIN / sensor / mapping / wireless / vehicle / environmental 
 - New/clarified build-once SDK income mechanisms: 2+
 - Major residential-only restrictions established: 5+
 - Conclusion: discovery remains productive; project is **IN PROGRESS**.
+
+---
+
+## Run 009 — 2026-08-15
+Status: **completed**
+Stage: Physical DePIN / sensors / mapping / wireless / vehicle / environmental sweep
+
+### Work performed
+- Decomposed physical DePIN by paid commodity: wireless traffic, road imagery, vehicle telemetry, GNSS/RTK, weather, ADS-B, smartphone road metadata, BLE relay, connectivity measurements and environmental sensing.
+- Validated Helium, Hivemapper, DIMO, GEODNET, WeatherXM, Nodle, NATIX and MapMetrics mechanisms and separated live earnings from points/devnet/watchlist systems.
+- Identified Wingbits, Roam and Silencio as watchlist/restricted pending current liquid reward normalization.
+- Discovered server-native roles inside physical ecosystems: NATIX xNodes, DIMO Storage Nodes/data validators, Helium multi-gateway server role, Nodle publisher SDK and fleet-orchestration SaaS.
+- Added physical-DePIN stacking as an explicit strategy family.
+
+### Durable outputs
+- `research/RUN_009_PHYSICAL_DEPIN.md`
+- `research/SOURCES_RUN_009.md`
+- `STATUS.md` advanced to Run 010.
+
+### Saturation metrics
+- Control/saturation passes completed: 0
+- Conclusion: discovery remains productive; project is **IN PROGRESS**.
+
+---
+
+## Run 010 — 2026-08-15
+Status: **completed**
+Stage: Capital-based passive / semi-passive income universe
+
+### Work performed
+- Built a mechanism-first universe spanning deposits/cash sweeps, money-market funds, sovereign debt, public debt/income securities, dividend/REIT/infrastructure/BDC/royalty income, private credit/crowdfunding, native/liquid staking, restaking, on-chain lending, automated vaults, AMM LP, fixed/term yield markets, basis/funding strategies and tokenized RWAs.
+- Used SEC Investor.gov and TreasuryDirect to distinguish bank deposits, money-market funds, sovereign securities, bond-fund risks, REIT income and crowdfunding/private-investment risks.
+- Used Ethereum official docs to separate solo, staking-as-a-service and pooled/liquid staking and record validator penalty/slashing exposure.
+- Used Aave and Morpho official docs to trace lending/vault yield to borrower-paid interest plus separately layered incentives and fees.
+- Used Uniswap official docs to classify LP return as trading-fee compensation for price/liquidity risk, with concentrated liquidity requiring range management.
+- Identified server-adjacent capital opportunities: validator fleets, validator/delegation services, restaking operators, automated treasury/lending allocators, vault integration products, concentrated-liquidity managers, permitted API basis/funding bots and broker cash/Treasury sweep automation.
+
+### Key durable outputs
+- `research/RUN_010_CAPITAL_YIELD_UNIVERSE.md`
+- `research/SOURCES_RUN_010.md`
+- `STATUS.md` advanced to Run 011.
+- `HANDOFF.md` updated through Run 010.
+
+### Important lessons
+- Always distinguish passive capital holding, capital + node operation, capital + trading/allocator bot and capital + build-once fee product.
+- High APY is not an economic mechanism; trace who pays the return.
+- Tokenization is a wrapper, not a return source.
+- Market-neutral-looking automation is not guaranteed yield and must model liquidation, hedge mismatch, financing, fees, custody and execution risk.
+- Azerbaijan/KYC/tax/broker/front-end availability remains a later dedicated filter rather than an assumption.
+
+### Next stage
+Run 011: build-once digital income systems universe, emphasizing products that one server can serve to many customers at low marginal cost.
+
+### Saturation metrics
+- Control/saturation passes completed: 0
+- Capital mechanism variants normalized: 79+
+- New server-adjacent opportunity families: 8
+- Conclusion: research remains **IN PROGRESS** and discovery remains productive.
