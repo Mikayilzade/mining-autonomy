@@ -17,106 +17,84 @@ Do not reconstruct this project from chat memory.
 4. Continue from `STATUS.md -> Next run priority`.
 5. Search the live web because platform rules, rewards, availability and economics are time-sensitive.
 6. Prefer current primary sources.
-7. Update run-specific research/source files plus STATUS and this HANDOFF before ending the run. Update RUN_LOG only when full current contents can be safely preserved; never truncate historical state merely to append a new run. Central CATALOG may lag run-specific findings until a safe normalization pass.
+7. Update run-specific research/source files plus STATUS and this HANDOFF before ending a run. Update RUN_LOG only when full current contents can be safely preserved; never truncate history merely to append.
 
 ## User intent
-The user wants an exhaustive theoretical inventory first, implementation later.
+Build an exhaustive theoretical inventory first; implementation comes later.
 
-Primary target: autonomous online/server bots/nodes/services that can continuously earn from legitimate simple work with minimal input.
+Primary target: autonomous online/server bots, nodes, services and machine markets that can continuously earn from legitimate simple work with minimal human input.
 
-Secondary target: all other passive/semi-passive income mechanisms, including home compute/storage/bandwidth, physical DePIN, capital-based yield, and systems that become passive after initial creation/investment.
+Secondary target: every other passive/semi-passive income mechanism, including home compute/storage/bandwidth, physical DePIN, capital yield, royalties and build-once automated businesses.
 
-Weak, restricted, rejected and dead options must stay documented so later runs do not rediscover and re-hype them.
+Weak, restricted, rejected, dead and points-only options must stay documented to prevent rediscovery and re-hype.
 
 ## User interaction preference
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when the completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs **001–014** are complete.
+Runs **001–015** are complete.
 
 Latest files:
-- `research/RUN_014_POW_MINING_HASHPOWER.md`
-- `research/SOURCES_RUN_014.md`
+- `research/RUN_015_SCAM_DEAD_MISLEADING_CROSSCHECK.md`
+- `research/SOURCES_RUN_015.md`
 
-`STATUS.md` is the authoritative current checkpoint and next-run pointer.
+`STATUS.md` is the authoritative checkpoint and next-run pointer.
 
-## Run 014 durable findings
-PoW/mining/hashpower has now been normalized as a separate economic family.
+## Run 015 durable findings
+A defensive scam/dead/misleading-opportunity normalization pass was completed.
 
-### Strong current mechanisms
-1. **Direct PoW pool mining** — protocol issuance + transaction fees; autonomous after setup but fundamentally hardware/electricity economics.
-2. **Merged/AuxPoW mining** — current f2pool docs verify BTC and LTC auxiliary-reward families; additive rewards can be earned without proportional extra hashrate.
-3. **NiceHash-style hashpower seller** — customer-paid algorithm-specific hashrate marketplace; keep separate from direct mining.
-4. **MiningRigRentals rig seller** — current official owner fee 3% of rental receipts.
-5. **MiningRigRentals API broker/reseller** — current policy expressly permits sourcing third-party hashrate, dynamic API listing/pricing/routing and retaining margin, subject to disclosure, performance and withdrawal rules. This is one of the more directly relevant autonomous-bot mechanisms discovered in the mining family.
-6. **Profit-switching / cross-market routing** — strategy layer that can route owned GPU/ASIC/CPU resources among pools, merged-mining destinations, hashrate markets or non-mining GPU compute markets.
+### Reward-path corrections
+- **DAWN:** current Terms explicitly say Rewards are points with no monetary value and may never convert into cash/crypto/assets. Reject as current income; watch future economics only.
+- **Nodepay:** current docs describe monthly conversion of eligible contribution points into Nodecoin ($NC), wallet claim and on-chain withdrawal. Upgrade from points-only ambiguity to restricted/current token reward path; bandwidth-specific economics still unresolved.
+- **Grass:** current official material confirms bandwidth can lead to Grass Token or USDC rewards. July 10 2026 Stage 2 notice says eligible participants receive USDC distribution. Points themselves still have no monetary value and future rewards are discretionary. Verified rewarded bandwidth, deterministic profitability restricted.
+- **EarnApp:** explicitly residential/personal-device only; VMs, Docker, cloud hosting, personal/home servers and business/monetization devices prohibited. Not server-native.
+- **Pawns.app:** traffic sharing requires residential IP; servers/VPNs/proxies disallowed. Not server-native.
+- **PacketStream:** current terms specify $0.10/GB, $5 minimum cashout, PayPal and 3% cashout fee. Live cash bandwidth mechanism; datacenter permission unresolved.
+- **TraffMonetizer:** current paid shared-traffic mechanism with $10 threshold; Docker exists but datacenter permission is not inferred.
+- **Repocket:** current cash bandwidth sharing exists, but current policy prohibits VPNs/proxies/emulators/VMs for access; reject VPS-farm interpretation.
+- **EarnFM Fleetshare:** especially strong supplier-side bandwidth role. Official SDK docs require supplier onboarding/KYC and 20+ active IPs and publish both residential ($0.10/GB) and datacenter ($0.04/GB) traffic rates. Treat consumer app and supplier/fleet role separately.
 
-### Current cloud/VPS restriction map
-- Hetzner: **REJECTED** for mining; current terms explicitly prohibit mining/farming/plotting.
-- DigitalOcean: **RESTRICTED**; explicit written permission required.
-- Google Cloud: **RESTRICTED**; prior written approval required; Free Trial mining prohibited.
-- AWS: **RESTRICTED**; written approval required; Free Tier/credits cannot be used.
-- Linode/Akamai: **RESTRICTED**; shared CPU mining is not a compliant default; dedicated CPU may be possible only with current support/approval context.
-
-### Mining rules to carry forward
-- Mining = hardware/energy arbitrage; hashpower resale = customer-demand arbitrage.
-- Pool payout schemes affect variance/cash-flow, not physical efficiency.
-- Merged mining is a genuine additive mechanism and belongs in profitability models.
-- Cloud capability never proves permission.
-- Profit switching does not create return; it reallocates resources among existing return sources.
-- GPU assets have option value across mining, AI inference, rendering and generic GPU compute.
-- Hashrate brokerage is a separate automated business where platform rules explicitly permit it.
-- Proof-of-capacity/plotting and customer-paid storage are separate families.
-- Cloud-mining contracts are capital/counterparty products rather than direct resource operation.
-
-## Run 013 durable findings
-Marketplace/royalty gaps were materially expanded and normalized.
-
-Strong channels include Microsoft Marketplace, Google Cloud Marketplace, Snowflake paid listings (Azerbaijan restriction), Databricks Marketplace commercial data/model/app/MCP listings, Unity Asset Store, Fab, Envato Market/Elements and Shutterstock contributor/data licensing.
-
-Critical rule: a free integration directory, template gallery, MCP directory or app showcase is not an independent earning mechanism unless a real payment path exists.
-
-## Run 012 durable findings
-The original “bot does tiny jobs forever” concept is best represented by **metered machine services**, not by automating human microtask websites.
-
-Strongly validated channels remain Apify Store paid Actors, RapidAPI providers, GitHub Marketplace paid Apps and AWS Marketplace metered SaaS. Hugging Face Inference Providers remain real but curated/integration-heavy. OpenAI GPT monetization remains restricted/watchlist. Zapier public integrations remain distribution rather than generic per-task payouts.
-
-### Hard exclusion reinforced
-Do not turn human-only surveys, CAPTCHA, ad-clicks, usability tests, labeling, freelancing or microtask accounts into bot targets unless official rules explicitly provide a machine/API supplier role. Fake human activity, CAPTCHA bypass, evasion, deceptive automation and fraudulent engagement are rejected.
-
-## Run 011 durable findings
-Highest-priority build-once server models: niche/micro-SaaS, usage-based SaaS, paid APIs, licensed data products, automated B2B monitoring/reporting/alerting/reconciliation/data transformation, hosted open-source/open-core services and node/validator/DePIN fleet management.
+### Anti-scam rules now mandatory
+1. Never count a task/job requiring the worker to deposit/recharge own funds to complete work.
+2. Unexpected taxes/fees/deposits required to release existing balances are a fraud red flag.
+3. Fixed/high/guaranteed mining/staking/yield claims require enhanced fraud review; real mining economics fluctuate with hardware, energy, difficulty, utilization and market prices.
+4. Points are not revenue without a current redemption/conversion path.
+5. Consumer, supplier, SDK, reseller and fleet roles can have different ToS and must be validated separately.
+6. Linux/Docker compatibility never proves VPS/datacenter eligibility.
+7. Referral programs are distribution layers, not independent proof of economic value.
+8. Cloud-mining contracts are counterparty/investment products, not direct resource operation.
 
 ## Earlier durable lessons still active
-- Linux/Docker support never proves VPS/datacenter eligibility.
-- A runnable daemon is not enough: prove reward path, supply-side admission, permitted environment, stake/license/collateral, payout mechanism and demand/utilization.
-- Consumer brands can hide separate supplier/partner/developer programs.
+- A runnable daemon is not enough: prove reward path, supplier admission, permitted environment, stake/license/collateral, payout mechanics and demand/utilization.
 - Customer-paid utilization must be separated from token/provider subsidies.
-- Points/testnet/devnet units are not money without a liquid/redeemable path.
+- Testnet/devnet/points units are not money without liquid/redeemable path.
 - Bittensor must be decomposed by subnet/commodity.
 - Competitive AI/solver networks require expected-share modeling.
-- Permissionless software can still require significant stake, liquidity or hardware.
+- Permissionless software can still require meaningful stake, liquidity or hardware.
 - Residential IP monetization and datacenter bandwidth are separate commodities.
-- Embedded SDK monetization requires explicit disclosure/consent and platform compliance.
+- Embedded SDK monetization requires explicit consent/disclosure and platform compliance.
 - Data products require source-by-source legal/ToS/licensing validation.
-- Market-neutral financial automation remains trading with execution/custody/liquidation risk.
-- Marketplace exposure without developer payout is distribution, not a separate income mechanism.
-- Commercial MCP discoverability is not automatically per-invocation monetization.
+- Market-neutral financial automation is still trading with execution/custody/liquidation risk.
+- Marketplace discoverability without a payment rail is distribution, not income.
+- Mining = hardware/energy economics; hashpower resale = customer-demand economics.
+- Merged mining is a genuine additive mechanism; profit switching is only a routing strategy.
 
 ## Current next run
-**Run 015 — scam / dead / discontinued / misleading-opportunity cross-check.**
+**Run 016 — profitability / deployment-economics normalization.**
 
-Search broadly for:
-- dead or abandoned projects from every prior category;
-- old reward pages that no longer represent production payouts;
-- testnet/points-only programs commonly described as “earning”;
-- fake/deceptive cloud mining and node-license schemes;
-- guaranteed-return claims and withdrawal-fee traps;
-- referral-only systems pretending to be resource income;
-- “AI mining”, “DePIN mining”, “GPU earning”, “node rewards”, “bandwidth earning”, “storage mining”, “cloud mining” rediscovery traps;
-- legitimate but geographically/ToS restricted projects that must not be mislabeled as scams.
+For the highest-priority autonomous/server-native candidates, normalize:
+- revenue unit/payer;
+- utilization;
+- minimum efficient scale;
+- hardware/server/electricity/network costs;
+- stake/collateral/capital;
+- fees/withdrawal friction;
+- maintenance and expected failure/loss;
+- breakeven formulas;
+- owned-vs-rented resource economics;
+- GPU/CPU/storage/bandwidth opportunity cost across competing markets.
 
-After Run 015: profitability normalization, Azerbaijan/KYC filtering, then repeated broad + niche saturation/control passes.
+After Run 016 perform Azerbaijan/KYC/geography filtering, then repeated broad and niche saturation/control passes.
 
 ## Completion
-Only mark `COMPLETE` after repeated broad + niche saturation passes stop producing new independent mechanisms and produce negligible new viable projects. Document final control passes, then disable the recurring research task.
+Only mark `COMPLETE` after repeated differently-worded broad + niche searches converge, producing no new independent earning mechanisms and negligible new viable projects, with all remaining uncertainty documented. Then record final saturation checks and disable the recurring research task.
