@@ -32,67 +32,53 @@ Weak, restricted, rejected and dead options must stay documented so later runs d
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when the completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs **001–011** are complete.
+Runs **001–012** are complete.
 
 Latest files:
-- `research/RUN_011_BUILD_ONCE_DIGITAL_INCOME.md`
-- `research/SOURCES_RUN_011.md`
+- `research/RUN_012_AUTOMATED_TASK_API_JOB_MARKETS.md`
+- `research/SOURCES_RUN_012.md`
 
 `STATUS.md` is the authoritative current checkpoint and next-run pointer.
 
-## Run 011 durable findings
-Build-once digital income was decomposed into real economic mechanisms.
+## Run 012 durable findings
+The original “bot does tiny jobs forever” concept is best represented by **metered machine services**, not by automating human microtask websites.
 
-### Most aligned with the primary autonomy goal
-1. Micro/niche SaaS.
-2. Usage-based SaaS.
-3. Paid APIs / machine-to-machine services.
-4. Subscription data products / metered data APIs with clean rights.
-5. Automated monitoring, reporting, alerting, reconciliation and data transformation.
-6. Hosted open-source / managed open-core services.
-7. Node/validator/DePIN fleet management and reward/accounting normalization.
+### Strongly validated current channels
+1. **Apify Store paid Actors** — closest literal fit. Server-side automation/AI Actors can charge per event/result. Current official PPE economics: `profit = (0.8 * revenue) - platform costs` when creator bears platform usage. Payout requires identity verification.
+2. **RapidAPI provider marketplace** — paid API plans, pay-per-use and overages. Current official marketplace fee: 20%.
+3. **GitHub Marketplace paid Apps** — flat-rate or per-unit recurring plans; publisher verification/financial onboarding; current GitHub transaction retention 5% after Jan 1 2021.
+4. **AWS Marketplace metered SaaS** — usage can be billed by users, hosts, bandwidth, data, tiers or custom units.
 
-These are important because one server can repeatedly perform small paid work units for many customers rather than relying on a reward token/network.
+### Restricted/strategic
+- **Hugging Face Inference Providers** — real M2M inference demand channel. Providers implement compatible APIs plus billing endpoint, but admission is integration-heavy/curated rather than open one-node mining.
+- **OpenAI GPT monetization** — current official FAQ says monetization is tested with only a handful of GPT Builders. Direct GPT Store income is RESTRICTED/WATCHLIST, not a universal program.
+- **Zapier public integrations** — valid distribution/retention channel for an owned paid SaaS/API, but current official docs do not establish a generic per-task payout to integration developers. Do not count it as an independent job market.
 
-### Marketplace software validated
-- Shopify App Store paid apps and current developer revenue-share structure.
-- Atlassian Marketplace paid B2B apps and current Forge/Connect/Data Center revenue shares.
-- Chrome Web Store extensions with developer-selected payment systems subject to policy/transparency.
-- Google Play paid apps, in-app products and subscriptions; 2026 fee rules vary by region/program.
+### Machine-market mechanisms now normalized
+- per-event hosted automation;
+- API subscription/pay-per-call;
+- installed B2B app subscription;
+- cloud procurement + metered SaaS;
+- inference routing/provider aggregation;
+- platform engagement revenue share;
+- distribution-only integration ecosystem;
+- self-hosted paid webhook/action service;
+- authorized data-processing service;
+- machine-scored competition/bounty;
+- resource execution market.
 
-### Digital asset/royalty families validated
-- templates/spreadsheets/scripts/code packs/automation recipes;
-- plugins/themes/add-ons;
-- stock media/reusable creative assets;
-- eBooks/reference/POD;
-- courses/reference libraries;
-- affiliate/content/newsletter/lead-generation assets;
-- GitHub Sponsors;
-- deployment/template/repository revenue share.
+### Hard exclusion reinforced
+Do not turn human-only surveys, CAPTCHA, ad-clicks, usability tests, labeling, freelancing or microtask accounts into bot targets unless official rules explicitly provide a machine/API supplier role. Fake human activity, CAPTCHA bypass, evasion, deceptive automation and fraudulent engagement are rejected.
 
-### Strong current evidence
-- Stripe officially supports recurring and usage-metered billing, including meters for requests/usage.
-- AWS Data Exchange supports subscription data products and APIs with per-request/per-success/per-data-transfer pricing.
-- AWS Data Exchange current provider-eligibility docs do **not** list Azerbaijan for direct paid-provider onboarding; mark that marketplace RESTRICTED for an Azerbaijan-based provider unless a lawful eligible-jurisdiction entity is used.
-- Gumroad supports automated digital-product sales/delivery, affiliates and creator payouts.
-- Adobe Stock publishes current contributor royalty rates.
-- Amazon KDP supports eBook/POD royalty models.
-- GitHub Sponsors supports recurring and one-time developer/organization sponsorships.
+### Important economics lesson
+A daemon with a positive nominal price per task is not passive income without paid utilization. Model contribution margin **and** demand:
 
-### Durable build-once lessons
-- Fulfillment automation does not equal revenue automation; customer acquisition can dominate effort.
-- Prefer businesses where customer value per request is far above variable compute/API cost.
-- Data visible on the web is not automatically licensed for scraping/resale.
-- Marketplace/API dependence is a material business risk.
-- Browser/plugin frontend + paid SaaS backend can combine distribution with recurring server revenue.
-- Automated exception/reporting products are a distinct attractive family because customers pay to stop checking manually.
-- Node/DePIN fleet software may be more durable than operating one mining network.
+`Net/request = selling price - marketplace share - compute - upstream APIs/models - data rights - bandwidth/storage - support/abuse/tax allocation`
 
-## Run 010 durable findings still active
-Capital-native income must be separated into passive holding, capital + node operation, capital + trading/allocator bot and capital + build-once fee product. High APY is not an economic mechanism; trace the payer. Tokenization is a wrapper. Market-neutral-looking automation is not guaranteed.
+Then estimate paid calls and break-even utilization.
 
-## Run 009 durable findings still active
-Physical DePIN was decomposed into paid commodities: wireless traffic, road imagery, vehicle telemetry, GNSS/RTK, weather, ADS-B, smartphone road metadata, BLE relay, connectivity measurements and environmental sensing. Real-world verification is the product and cannot be spoofed. Physical ecosystems can hide separate server-native/operator/build-once roles.
+## Run 011 durable findings still active
+Highest-priority build-once server models: niche/micro-SaaS, usage-based SaaS, paid APIs, licensed data products, automated B2B monitoring/reporting/alerting/reconciliation/data transformation, hosted open-source/open-core services and node/validator/DePIN fleet management.
 
 ## Earlier durable lessons still active
 - Linux/Docker support never proves VPS/datacenter eligibility.
@@ -107,26 +93,25 @@ Physical DePIN was decomposed into paid commodities: wireless traffic, road imag
 - Embedded SDK monetization requires explicit disclosure/consent and platform compliance.
 - Data products require source-by-source legal/ToS/licensing validation.
 - Market-neutral financial automation remains trading with execution/custody/liquidation risk.
+- Marketplace exposure without developer payout is distribution, not a separate income mechanism.
 
 ## Current next run
-**Run 012 — legitimate automated task/API/job markets deep sweep.**
+**Run 013 — remaining marketplace / royalty / digital-distribution gaps.**
 
 Search broadly for:
-- software-accepted machine jobs;
-- data transformation/validation markets;
-- model/inference/tool/agent marketplaces;
-- rendering/transcoding/testing/benchmarking jobs;
-- verification/bounty/action markets not already covered;
-- webhook/action/automation marketplaces;
-- authorized crawling/data-collection work only where target/platform rules permit;
-- API marketplaces and M2M service exchanges;
-- agent/tool marketplaces that pay developers/providers per invocation/use.
+- other API marketplaces with real provider payouts;
+- Azure/GCP and other cloud marketplace SaaS/API seller mechanics;
+- AI agent/tool/MCP marketplaces with open current per-invocation developer payments;
+- serverless/plugin/template marketplaces with direct creator payout;
+- automation template marketplaces, separating payout from exposure;
+- data/model/dataset marketplaces with commercial seller rights;
+- stock/3D/game/audio/design asset marketplaces;
+- code/library/package licensing and commercial open-source distribution;
+- royalty/revenue-share/reseller/white-label mechanisms;
+- dead/discontinued/non-paying creator marketplace claims;
+- Azerbaijan/KYC/seller eligibility where primary sources expose it.
 
-Explicitly record/reject human-only microtask, captcha, survey, ad-click, engagement or task sites whose rules do not allow bots. No bypass/evasion.
-
-For each serious candidate record who pays, paid commodity, server requirements, KYC/geography, payout, ToS automation permission, utilization, scaling constraints and whether revenue is customer demand, bounty, fee share or subsidy/emission.
-
-After Run 012: remaining marketplace/royalty gaps, PoW/mining normalization if needed, dead/scam cross-checks, profitability normalization, Azerbaijan/KYC filtering, then saturation/control passes.
+After Run 013: PoW/mining normalization if needed, dead/scam cross-checks, profitability normalization, Azerbaijan/KYC filtering, then saturation/control passes.
 
 ## Completion
 Only mark `COMPLETE` after repeated broad + niche saturation passes stop producing new independent mechanisms and produce negligible new viable projects. Document final control passes, then disable the recurring research task.
