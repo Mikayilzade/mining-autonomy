@@ -48,46 +48,13 @@ Saturation passes: 0. Conclusion: project remains far from saturation.
 Status: **completed**
 Stage: Relayer / intent / prover / data-worker expansion
 
-### Work performed
-- Revisited unresolved Succinct/SP1, SQD, CoW, Cysic and Gevulot branches using current primary documentation.
-- Broadened into Across relayers, UniswapX fillers, 1inch Fusion resolvers and Presearch nodes.
-- Recorded server requirements, stake/capital constraints, reward mechanisms, admission status, automation level and major risk drivers.
-- Explicitly separated legitimate Presearch node rewards from prohibited/fake automated search-usage farming.
+Validated Succinct/SP1 prover, SQD worker, Across relayer, UniswapX filler, Presearch node and Cysic prover. Kept CoW solver, 1inch Fusion resolver and Gevulot/zkCloud as restricted/partially normalized. Added explicit distinctions between solver rewards, execution spreads and liquidity-fronting relayer economics.
 
-### Strong newly validated roles
-1. **Succinct/SP1 prover** — permissionless proving market; reverse auctions; PROVE payments; stake/delegation; missed-deadline slashing; datacenter/home prover participation explicitly described.
-2. **SQD worker** — server-native historical-data worker; current docs specify 4 vCPU, 16 GB RAM, 1 TB SSD, 1 Gbit and public IP; rewards depend on liveness, traffic and stake/delegation.
-3. **Across relayer** — permissionless open-source bot; relayer fees compensate gas/capital/risk; modest server requirements but requires working liquidity across chains.
-4. **UniswapX filler** — permissionless order-filling bot; anyone can fill; profit derives from favorable execution after liquidity/gas/routing costs.
-5. **Presearch node** — outside-server/Docker-capable search node; current published reward eligibility requires minimum 4,000 PRE stake.
-6. **Cysic prover** — current mainnet GPU prover workflow; competitive bid pricing; 1,000 CYS reserve required per prover worker.
-
-### Restricted / nuanced findings
-- **CoW solver**: paid bonded solver role and weekly COW/reimbursement pipeline verified; exact new-production-solver onboarding/bond thresholds still require normalization.
-- **1inch Fusion resolver**: legitimate fee-earning role but current official docs restrict resolvers to approved/top Unicorn Power participants; not a low-capital permissionless bot.
-- **Gevulot/zkCloud prover**: proof-generation and verification rewards verified; exact current operator deployment/stake/hardware economics remain for follow-up.
-
-### Taxonomy refinements
-- Intent markets split into: protocol-rewarded solver (CoW), spread/execution-profit filler (UniswapX), and explicit relayer-fee + working-capital model (Across).
-- Server-native and capital-native can overlap; infrastructure cost and capital-at-risk must be modeled independently.
-- Permissionless software does not imply permissionless profitable order flow.
-- Human usage rewards and infrastructure-node rewards on the same platform must be treated as different opportunities.
-
-### Durable outputs
+Key durable outputs:
 - `research/RUN_004_RELAYER_INTENT_PROVER_EXPANSION.md`
 - `research/SOURCES_RUN_004.md`
-- `STATUS.md` advanced to Run 005.
-- `HANDOFF.md` refreshed.
 
-### Next stage
-Run 005: decentralized compute/GPU + storage + relay expansion. Priority: Lagrange, Meson, io.net, Clore.ai, TensorDock, Hyperbolic, RunPod provider status, Render provider onboarding, Salad server limits, Swarm Bee, Arweave, Crust, ScPrime, Autonomi and additional server-permitted relay/CDN/VPN networks.
-
-### Saturation metrics
-- Control/saturation passes completed: 0
-- Strong newly validated roles this run: 6
-- Restricted/partially normalized roles: 3
-- New mechanism refinements: several
-- Conclusion: discovery remains productive and completion gate is nowhere near met.
+Saturation passes: 0. Conclusion: discovery remains productive.
 
 ---
 
@@ -95,33 +62,59 @@ Run 005: decentralized compute/GPU + storage + relay expansion. Priority: Lagran
 Status: **completed**
 Stage: Compute/GPU + Swarm storage expansion
 
-### Work performed
-- Validated current supplier economics for io.net using official worker, reward, staking and tokenomics documentation.
-- Validated Clore.ai's host program, pricing control and current host-side fee structure using official documentation.
-- Validated Swarm Bee full-node storage and bandwidth reward mechanisms, hardware requirements, stake requirements and penalties.
-- Split Swarm into two economically distinct roles: storage Redistribution Game and SWAP bandwidth forwarding.
+Validated io.net Supplier / IO Worker, Clore.ai Host and Swarm Bee Full Node. Split Swarm storage Redistribution Game from SWAP bandwidth incentives and separated customer-paid utilization from token/emission revenue.
 
-### Strong newly validated roles
-1. **io.net Supplier / IO Worker** — live GPU/CPU supplier path; compute-job income plus hourly block rewards; current docs show 0.25% worker earnings fee, device-specific $IO stake for block-reward/Cluster Ready eligibility, 14-day unstake cooldown and slashing framework.
-2. **Clore.ai Host** — live GPU server marketplace; host controls on-demand/spot price. Current host base-fee share is 5% for on-demand and 1.25% for spot; BTC/USDT/USDC renter payments can add a 15% host-side fee unless reduced through MFP Lock.
-3. **Swarm Bee Full Node** — server-native storage + bandwidth daemon. Storage incentives use postage-funded redistribution, require a fully synced full node and at least 10 xBZZ baseline stake; official docs describe that stake as non-refundable. SWAP bandwidth incentives are separate and do not require storage-incentive stake.
-
-### Taxonomy refinements
-- Customer-demand revenue and token/emission revenue must be modeled separately even on the same compute marketplace.
-- Stake/collateral must be classified by economic reversibility: cooldown stake, slashable stake, and non-refundable stake have very different costs.
-- 'Server-native' has two subtypes worth keeping separate: expensive dedicated GPU hosts and low-spec VPS-compatible daemons.
-- Swarm demonstrates that one daemon can expose multiple paid resources (disk + bandwidth), but each revenue stream needs separate break-even analysis.
-
-### Durable outputs
+Key durable outputs:
 - `research/RUN_005_COMPUTE_STORAGE_EXPANSION.md`
 - `research/SOURCES_RUN_005.md`
-- `STATUS.md` advanced to Run 006.
+
+Saturation passes: 0. Conclusion: project remains IN PROGRESS.
+
+---
+
+## Run 006 — 2026-08-15
+Status: **completed**
+Stage: Finish compute/storage/relay queue
+
+### Work performed
+- Rechecked unresolved GPU/cloud provider programs and storage-node projects using current primary sources.
+- Validated TensorDock Host, Runpod Community Cloud Host, Render onboarding status, Arweave mining, ScPrime Storage Provider and Autonomi Node.
+- Rechecked Lagrange, Hyperbolic, Meson and Crust and kept them restricted/watchlist where current public admission or production-reward evidence remains incomplete.
+- Confirmed Salad remains primarily a consumer/private-device supplier model rather than a generic cloud-host program.
+- Discovered a separate BUILD-ONCE mechanism: Runpod Hub repository revenue share.
+
+### Strong current findings
+1. **Autonomi Node** — headless/home-server/virtual-environment support, ~35 GB storage per node, token rewards for storage/retrieval contribution; very close to the low-cost daemon target.
+2. **TensorDock Host** — external hosts monetize GPU/CPU servers; host vetting and 99.99% uptime expectation make admission curated and datacenter-oriented.
+3. **Runpod Community Cloud Host** — current Terms still define a P2P host/consumer GPU marketplace.
+4. **Render Node Operator** — paid GPU rendering remains live, but onboarding is application/waitlist based and current hardware requirements are substantial.
+5. **Arweave Miner** — active storage-backed mining with multiple node roles; block-reward delay/slashing documented; hardware/storage intensive.
+6. **ScPrime Storage Provider** — DIY PC/NAS/server providers earn contract rent, but broad historical incentives ended in Aug 2025 and important demand flow can require a license.
+
+### Restricted/watchlist conclusions
+- Lagrange: real live paid prover network, but self-serve production admission not established.
+- Hyperbolic: external provider aggregation is current, but public supplier onboarding/payout not found.
+- Meson: current infrastructure-marketplace branding exists, but current production mining economics/onboarding remain insufficiently documented.
+- Crust: protocol merchant/reward primitives exist, but current easy provider workflow remains unclear.
+
+### New taxonomy/economics lessons
+- GPU supply markets split into open host, vetted host, application/waitlist operator and private/aggregated supplier models.
+- Base customer rent must be separated from temporary provider incentives/subsidies.
+- A technically permissionless provider can still have economically important licensed/curated demand.
+- Renting cloud compute to run a third-party reward worker is an arbitrage strategy requiring strict net-profit modeling.
+- Revenue-sharing deployment repositories/templates are a distinct passive digital-asset family.
+
+### Durable outputs
+- `research/RUN_006_COMPUTE_STORAGE_RELAY_COMPLETION.md`
+- `research/SOURCES_RUN_006.md`
+- `STATUS.md` advanced to Run 007.
 
 ### Next stage
-Run 006: finish unresolved compute/storage/relay queue: Lagrange, Meson, TensorDock, Hyperbolic, RunPod, Render cloud/provider status, Salad datacenter restrictions, Arweave, Crust, ScPrime, Autonomi and additional server-permitted relay/CDN/VPN networks.
+Run 007: dedicated decentralized-AI / Bittensor / inference / distributed-training reward sweep.
 
 ### Saturation metrics
 - Control/saturation passes completed: 0
-- Strong newly validated roles this run: 3
-- New mechanism refinements: 4
-- Conclusion: discovery remains productive; project remains IN PROGRESS.
+- Strong roles validated/strengthened: 6
+- Restricted/watchlist branches clarified: 4+
+- New independent income family discovered: 1 (compute-template/repository revenue share)
+- Conclusion: research remains **IN PROGRESS** and discovery is still productive.
