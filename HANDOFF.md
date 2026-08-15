@@ -17,7 +17,7 @@ Do not reconstruct this project from chat memory.
 4. Continue from `STATUS.md -> Next run priority`.
 5. Search the live web because platform rules, rewards, availability and economics are time-sensitive.
 6. Prefer current primary sources.
-7. Update run-specific research/source files plus STATUS and this HANDOFF before ending the run. Update RUN_LOG when full current contents can be safely preserved; never truncate historical state merely to append a new run. Central CATALOG may lag run-specific findings until a safe normalization pass.
+7. Update run-specific research/source files plus STATUS and this HANDOFF before ending the run. Update RUN_LOG only when full current contents can be safely preserved; never truncate historical state merely to append a new run. Central CATALOG may lag run-specific findings until a safe normalization pass.
 
 ## User intent
 The user wants an exhaustive theoretical inventory first, implementation later.
@@ -32,102 +32,101 @@ Weak, restricted, rejected and dead options must stay documented so later runs d
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when the completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs **001–010** are complete.
+Runs **001–011** are complete.
 
 Latest files:
-- `research/RUN_010_CAPITAL_YIELD_UNIVERSE.md`
-- `research/SOURCES_RUN_010.md`
+- `research/RUN_011_BUILD_ONCE_DIGITAL_INCOME.md`
+- `research/SOURCES_RUN_011.md`
 
 `STATUS.md` is the authoritative current checkpoint and next-run pointer.
 
-## Run 010 durable findings
-Capital-native income has been decomposed by the actual source of return rather than by the generic label `passive income`.
+## Run 011 durable findings
+Build-once digital income was decomposed into real economic mechanisms.
 
-### Traditional/capital-market families now mapped
-- insured bank deposits, term deposits and cash sweeps;
-- money-market funds;
-- sovereign bills/notes/bonds/TIPS/floating-rate notes;
-- investment-grade/high-yield/floating-rate/bond funds;
-- dividend/index income, public and mortgage REITs, infrastructure, preferreds, BDC/private-credit vehicles and royalty structures;
-- P2P/private credit, invoice financing, real-estate/startup crowdfunding, revenue-share financing and private placements.
+### Most aligned with the primary autonomy goal
+1. Micro/niche SaaS.
+2. Usage-based SaaS.
+3. Paid APIs / machine-to-machine services.
+4. Subscription data products / metered data APIs with clean rights.
+5. Automated monitoring, reporting, alerting, reconciliation and data transformation.
+6. Hosted open-source / managed open-core services.
+7. Node/validator/DePIN fleet management and reward/accounting normalization.
 
-### Crypto/on-chain families now mapped
-- solo/delegated/pooled/liquid staking;
-- restaking/shared-security capital yield;
-- permissionless lending and curated lending vaults;
-- stablecoin/RWA yield and centralized custodial earn as separate counterparty families;
-- automated yield/allocator vaults;
-- full-range and concentrated AMM LP;
-- fixed/term yield-token markets;
-- basis/funding/cash-and-carry/option-carry strategies, explicitly as trading rather than guaranteed yield;
-- tokenized RWA/revenue-share wrappers.
+These are important because one server can repeatedly perform small paid work units for many customers rather than relying on a reward token/network.
 
-### Strong mechanism validations
-- SEC Investor.gov: money-market funds are investment funds holding short-term debt/cash equivalents, not FDIC-insured deposits; cash-sweep implementations must be split by underlying vehicle.
-- TreasuryDirect: marketable Treasury families and bill discount/face-value mechanics verified.
-- Ethereum.org: solo, staking-as-a-service and pooled/liquid staking are economically distinct; validator capital faces downtime penalties/slashing.
-- Aave: supplier yield is variable and borrower-utilization-driven.
-- Morpho: vault yield can trace to borrower interest plus separately layered incentives/fees; current APIs/SDKs expose a BUILD-ONCE integration/allocator opportunity.
-- Uniswap: LP yield is trading-fee compensation for price/liquidity risk; concentrated liquidity adds active range management.
+### Marketplace software validated
+- Shopify App Store paid apps and current developer revenue-share structure.
+- Atlassian Marketplace paid B2B apps and current Forge/Connect/Data Center revenue shares.
+- Chrome Web Store extensions with developer-selected payment systems subject to policy/transparency.
+- Google Play paid apps, in-app products and subscriptions; 2026 fee rules vary by region/program.
 
-### New server-adjacent capital opportunities
-1. Validator/validator-fleet operation.
-2. Validator-as-a-service / delegation business where protocol rules permit.
-3. Restaking operator services — later platform-specific validation required.
-4. Automated treasury/lending allocator daemon.
-5. Lending/vault integration product.
-6. Concentrated-liquidity management service.
-7. Cash-and-carry/funding bot through explicitly permitted APIs.
-8. Broker cash/Treasury sweep automation where broker ToS/API permits.
+### Digital asset/royalty families validated
+- templates/spreadsheets/scripts/code packs/automation recipes;
+- plugins/themes/add-ons;
+- stock media/reusable creative assets;
+- eBooks/reference/POD;
+- courses/reference libraries;
+- affiliate/content/newsletter/lead-generation assets;
+- GitHub Sponsors;
+- deployment/template/repository revenue share.
 
-### Capital modeling rule
-Always separate:
-1. passive capital holding;
-2. capital + node operation;
-3. capital + trading/allocator bot;
-4. capital + build-once fee-generating product.
+### Strong current evidence
+- Stripe officially supports recurring and usage-metered billing, including meters for requests/usage.
+- AWS Data Exchange supports subscription data products and APIs with per-request/per-success/per-data-transfer pricing.
+- AWS Data Exchange current provider-eligibility docs do **not** list Azerbaijan for direct paid-provider onboarding; mark that marketplace RESTRICTED for an Azerbaijan-based provider unless a lawful eligible-jurisdiction entity is used.
+- Gumroad supports automated digital-product sales/delivery, affiliates and creator payouts.
+- Adobe Stock publishes current contributor royalty rates.
+- Amazon KDP supports eBook/POD royalty models.
+- GitHub Sponsors supports recurring and one-time developer/organization sponsorships.
 
-Do not freeze headline APY as durable evidence. Azerbaijan/KYC/tax/broker access is intentionally deferred to a dedicated filter pass.
+### Durable build-once lessons
+- Fulfillment automation does not equal revenue automation; customer acquisition can dominate effort.
+- Prefer businesses where customer value per request is far above variable compute/API cost.
+- Data visible on the web is not automatically licensed for scraping/resale.
+- Marketplace/API dependence is a material business risk.
+- Browser/plugin frontend + paid SaaS backend can combine distribution with recurring server revenue.
+- Automated exception/reporting products are a distinct attractive family because customers pay to stop checking manually.
+- Node/DePIN fleet software may be more durable than operating one mining network.
+
+## Run 010 durable findings still active
+Capital-native income must be separated into passive holding, capital + node operation, capital + trading/allocator bot and capital + build-once fee product. High APY is not an economic mechanism; trace the payer. Tokenization is a wrapper. Market-neutral-looking automation is not guaranteed.
 
 ## Run 009 durable findings still active
-Physical DePIN was decomposed into paid commodities: wireless traffic, road imagery, vehicle telemetry, GNSS/RTK, weather, ADS-B, smartphone road metadata, BLE relay, connectivity measurements and environmental sensing. Real-world verification is the product and cannot be spoofed for rewards. Physical ecosystems can also hide server-native storage/validator/operator roles and BUILD-ONCE fleet-management opportunities.
+Physical DePIN was decomposed into paid commodities: wireless traffic, road imagery, vehicle telemetry, GNSS/RTK, weather, ADS-B, smartphone road metadata, BLE relay, connectivity measurements and environmental sensing. Real-world verification is the product and cannot be spoofed. Physical ecosystems can hide separate server-native/operator/build-once roles.
 
 ## Earlier durable lessons still active
-- Docker/Linux support never proves VPS/datacenter eligibility.
-- A runnable daemon is not enough: separately prove reward path, supply-side admission, permitted environment, hidden stake/license/collateral, payout mechanism and demand/utilization.
-- Consumer brands can hide separate supplier/partner/developer programs; search those portals explicitly.
-- Customer-paid utilization must be separated from temporary token/provider subsidies.
-- Points/testnet/devnet units are not money without a current redeemable/liquid path.
-- Bittensor must be decomposed by subnet/commodity, not treated as one generic miner.
-- Competitive AI/solver networks require expected-share modeling, not simple hourly-rate assumptions.
+- Linux/Docker support never proves VPS/datacenter eligibility.
+- A runnable daemon is not enough: prove reward path, supply-side admission, permitted environment, stake/license/collateral, payout mechanism and demand/utilization.
+- Consumer brands can hide separate supplier/partner/developer programs.
+- Customer-paid utilization must be separated from token/provider subsidies.
+- Points/testnet/devnet units are not money without a liquid/redeemable path.
+- Bittensor must be decomposed by subnet/commodity.
+- Competitive AI/solver networks require expected-share modeling.
 - Permissionless software can still require significant stake, liquidity or hardware.
-- Residential IP monetization and generic datacenter bandwidth monetization are separate commodities.
-- Embedded SDK monetization requires explicit disclosure/consent and platform compliance; no deceptive bundling.
-- Tokenization is a wrapper, not a return source; trace tokenized products to the underlying payer/asset.
-- Market-neutral-looking automated strategies are not guaranteed; model hedge failure, fees, financing, liquidation, custody and execution risk.
+- Residential IP monetization and datacenter bandwidth are separate commodities.
+- Embedded SDK monetization requires explicit disclosure/consent and platform compliance.
+- Data products require source-by-source legal/ToS/licensing validation.
+- Market-neutral financial automation remains trading with execution/custody/liquidation risk.
 
 ## Current next run
-**Run 011 — build-once digital income systems universe.**
+**Run 012 — legitimate automated task/API/job markets deep sweep.**
 
-Research broadly before profitability ranking:
-- micro-SaaS / niche SaaS / automation utilities;
-- paid APIs and machine-to-machine services;
-- data products/datasets/feeds with clean source rights;
-- templates, plugins, themes, extensions, code/assets and licensing;
-- stock media/music/SFX/3D/design assets;
-- ebooks/courses/reference/continuously updated knowledge products;
-- print-on-demand and digital storefronts;
-- affiliate/content/search/newsletter/lead-generation assets within platform rules;
-- app-store/browser-extension/chatbot monetization;
-- open-source sponsorship, hosted versions, support and dual licensing;
-- marketplace repository/template revenue-share programs;
-- automated B2B monitoring/reporting/alerting/orchestration/data transformation/reconciliation/optimization;
-- physical-DePIN/node-fleet orchestration dashboards;
-- models where one server can serve many paying customers with low marginal cost.
+Search broadly for:
+- software-accepted machine jobs;
+- data transformation/validation markets;
+- model/inference/tool/agent marketplaces;
+- rendering/transcoding/testing/benchmarking jobs;
+- verification/bounty/action markets not already covered;
+- webhook/action/automation marketplaces;
+- authorized crawling/data-collection work only where target/platform rules permit;
+- API marketplaces and M2M service exchanges;
+- agent/tool marketplaces that pay developers/providers per invocation/use.
 
-For each family record initial build effort, maintenance, distribution/CAC dependency, gross margin, platform/ToS dependence, automation level, scalability, recurring infrastructure/API cost and defensibility.
+Explicitly record/reject human-only microtask, captcha, survey, ad-click, engagement or task sites whose rules do not allow bots. No bypass/evasion.
 
-After Run 011 continue legitimate automated task/API markets, dead/scam cross-check, profitability normalization, Azerbaijan/KYC filtering and saturation/control passes.
+For each serious candidate record who pays, paid commodity, server requirements, KYC/geography, payout, ToS automation permission, utilization, scaling constraints and whether revenue is customer demand, bounty, fee share or subsidy/emission.
+
+After Run 012: remaining marketplace/royalty gaps, PoW/mining normalization if needed, dead/scam cross-checks, profitability normalization, Azerbaijan/KYC filtering, then saturation/control passes.
 
 ## Completion
 Only mark `COMPLETE` after repeated broad + niche saturation passes stop producing new independent mechanisms and produce negligible new viable projects. Document final control passes, then disable the recurring research task.
