@@ -32,47 +32,47 @@ Weak, restricted, rejected and dead options must stay documented so later runs d
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs 001–006 are complete.
+Runs 001–007 are complete.
 
 Latest files:
-- `research/RUN_006_COMPUTE_STORAGE_RELAY_COMPLETION.md`
-- `research/SOURCES_RUN_006.md`
+- `research/RUN_007_DECENTRALIZED_AI_BITTENSOR.md`
+- `research/SOURCES_RUN_007.md`
 
-### Run 006 strong additions / confirmations
-- **Autonomi Node**: official docs allow headless computers, home servers and virtual environments; roughly 35 GB storage per node plus CPU/RAM/bandwidth; token rewards depend on storage/retrieval contribution and performance. This is currently one of the strongest low-cost autonomous-daemon candidates.
-- **TensorDock Host**: hosts still monetize GPU/CPU servers, but are vetted and expected to meet 99.99% uptime; treat as curated/datacenter-grade server marketplace.
-- **Runpod Community Cloud Host**: current Terms still define peer-to-peer GPU compute between Hosts and consumers.
-- **Render Node Operator**: paid rendering role is live, but new compute-node entry is application/waitlist based with material hardware/network requirements.
-- **Arweave Miner**: current mining docs remain active; storage-backed mining uses large uniquely packed partitions and delayed/slashable rewards; hardware/storage intensive rather than cheap VPS.
-- **ScPrime Storage Provider**: DIY PC/NAS/server support and customer contract rent remain live; broad provider incentives ended Aug 2025; some economically important demand requires a provider license.
-- **Runpod Hub repository revenue share**: separate BUILD-ONCE mechanism discovered; published repositories can earn a share of downstream Runpod compute revenue, paid as Runpod credits.
+### Run 007 strongest additions / confirmations
+- **Bittensor must be modeled subnet-by-subnet**, not as one generic miner. Different subnets pay for different commodities and have different competition/cost structures.
+- **Chutes SN64**: strong server-native GPU candidate. Current miner repo says incentives depend on compute time and inference bounties; Kubernetes/Gepetto stack automates workload operation.
+- **Omron / Inference Labs SN2**: verifiable AI inference + ZK proof worker with published CPU/RAM/NVMe/network requirements, creating an important non-GPU-heavy AI family.
+- **Nous Finetuning** and **Macrocosmos Pretraining**: competitive model-improvement families where miners publish models and TAO rewards follow validator-measured quality.
+- **Macrocosmos IOTA**: distributed-training worker family; miners process activations in an orchestrated training pipeline, recommended current miner GPU >=16 GB VRAM.
+- **Macrocosmos Apex SN1**: explicitly accepts humans and autonomous agents as solvers; winner-takes-all machine-scored competitions. Conceptually close to the desired autonomous software-worker model, but expected value is highly competitive.
+- **Macrocosmos Mainframe**: scientific compute/optimization jobs, currently molecular dynamics, with top-K reward distribution.
+- **TensorUSD SN113**: prediction-agent and liquidation-auction miner mechanisms; liquidation requires capital/token inventory and chain fees.
+- **Allora workers**: current official docs confirm consumer-fee-funded inference/forecast worker rewards; **reputers** are a separate stake-dependent evaluation role.
 
-### Run 006 watchlist/restricted outcomes
-- **Lagrange**: live paid/slashable prover network confirmed, current self-service production admission still unclear.
-- **Hyperbolic**: current external provider aggregation confirmed through Forge, but public self-service supplier onboarding/payout not found.
-- **Meson Network**: public infrastructure-marketplace project remains visible, but current production node reward/onboarding evidence is insufficient.
-- **Crust**: storage-market merchant/reward primitives are present in current chain docs, but new-provider operational path remains unclear.
-- **Salad**: remains primarily consumer/private-device compute supply. Do not promote to generic VPS/datacenter supplier without explicit supplier docs.
+### Run 007 restricted/watchlist outcomes
+- **Macrocosmos Data Universe**: technically autonomous and rewarded, but implementation must remain RESTRICTED pending source-by-source lawful/ToS-compliant data acquisition. No unauthorized scraping.
+- **Prime Intellect GPU provider**: supplier network exists, including individuals, but current onboarding is contact-based rather than clearly self-service.
+- **Gensyn RL Swarm**: WATCHLIST, not current verified income. Current docs say official swarms/Gensyn-hosted nodes are paused; current published market material includes test-only rewards.
+- **inference.net / Kuzco**: no sufficiently current official worker reward/onboarding source established in Run 007; keep UNVERIFIED/WATCHLIST.
 
-### Important modeling lessons from Run 006
-- Distinguish open host markets, vetted hosts, waitlist/application operators and private/aggregated provider networks.
-- Separate base customer-paid rent from temporary token/provider incentives.
-- Technical permissionlessness does not guarantee access to economically important demand channels.
-- Cloud-to-reward-network arbitrage (rent compute, run worker) is valid as a strategy class only after `worker revenue - cloud rental - fees` is positive.
-- Template/repository revenue share is a distinct build-once passive mechanism and belongs in the later digital-income sweep.
+### Important modeling lessons from Run 007
+- Competitive AI networks require expected-emission modeling: `P(rank/reward) × reward - compute/API/data/registration costs`, not a simple hourly rate.
+- Autonomous machine-scored competitions are a separate earning family from raw compute rental.
+- Distributed training can monetize partial pipeline work rather than complete model delivery.
+- A machine-readable autonomous worker can still be legally unsuitable if its upstream data collection violates source-platform rules or privacy law.
+- Token emissions, customer fees, points/testnet units and capital-based spreads must never be merged into one “reward” number.
 
-## Run 007 priority
-Dedicated decentralized-AI / Bittensor / inference / training reward sweep:
-1. Decompose **Bittensor** into economically distinct subnet miner families rather than one generic miner entry.
-2. Validate **inference.net / Kuzco** current production worker rewards and token/points status.
-3. Sweep decentralized inference provider networks not already captured.
-4. Sweep distributed training/fine-tuning/model-serving networks: e.g. Prime Intellect, Gensyn and current competitors/successors.
-5. Validate AI prediction/worker/reputer networks such as Allora where paid automated work is explicit.
-6. Distinguish actual customer-paid work, token emissions, points/future-token speculation, and blended rewards.
-7. Record dead, testnet-only, permissioned and non-paying projects explicitly.
-8. Search both broad terms and niche ecosystem names so Run 007 is materially larger than a narrow platform checklist.
+## Run 008 priority
+Dedicated residential/device passive-income + bandwidth/IP/browser/device DePIN sweep:
+1. Revalidate **EarnApp**, **Honeygain**, **Pawns.app**, **PacketStream**, **Grass**, **Nodepay**, **Dawn**, **Repocket**, **TraffMonetizer**, **EarnFM** and current successors/competitors.
+2. For each, establish whether VPS/datacenter/cloud/VM/Docker operation is allowed, blocked or simply unsupported.
+3. Record payout type (cash/token/points), minimum payout, KYC, country restrictions, Azerbaijan availability, device/IP limits, referral dependence and privacy/abuse risk.
+4. Distinguish residential-IP monetization from generic bandwidth/CDN contribution.
+5. Expand into browser extensions, phone/device background contribution, telemetry/measurement panels and low-resource DePIN clients with real rewards.
+6. Identify dead, renamed, scammy or abandoned historical projects explicitly so they do not re-enter the queue.
+7. Keep the run broad enough to discover new mechanism families, not only validate the seed list.
 
-After Run 007 continue device/residential passive income, physical DePIN, capital yield, build-once systems, rejected/dead cross-checks, profitability normalization, Azerbaijan/KYC filtering and saturation/control passes.
+After Run 008 continue physical DePIN, capital yield, build-once systems, rejected/dead cross-checks, profitability normalization, Azerbaijan/KYC filtering and saturation/control passes.
 
 ## Research discipline
 A runnable daemon is not enough. Prove all of the following separately:
@@ -92,6 +92,8 @@ Examples already learned:
 - Swarm's low hardware requirement does not imply cheap participation because storage incentives carry non-refundable xBZZ stake and recurring gas/RPC costs.
 - Autonomi is unusually close to the cheap-daemon target because virtual/headless operation and low per-node storage are explicitly supported, but real net revenue still requires measurement.
 - ScPrime shows why protocol permissionlessness and customer-demand accessibility must be checked separately.
+- Bittensor shows why a single ecosystem label can hide many fundamentally different earning mechanisms.
+- Gensyn shows why a live/testnet technical contribution path must not be mistaken for current production income.
 
 Do not infer profitability from token APY, headline rewards, points, or generic node tutorials.
 
