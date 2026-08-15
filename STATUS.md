@@ -2,13 +2,13 @@
 
 Project state: **IN PROGRESS**
 
-Last completed run: **Run 011 — build-once digital income systems universe**
+Last completed run: **Run 012 — legitimate automated task/API/job markets deep sweep**
 Last updated: **2026-08-15**
 
 ## What is complete
 - Persistent research structure, scope, safety boundaries, evidence hierarchy and saturation rule defined.
-- Broad taxonomy spans server-native compute, storage, bandwidth/relay, validators/RPC/indexers, ZK proving, solvers/relayers, decentralized AI workers, residential/device contribution, physical DePIN, capital yield and build-once digital systems.
-- Eleven substantial discovery/validation batches completed.
+- Broad taxonomy spans server-native compute, storage, bandwidth/relay, validators/RPC/indexers, ZK proving, solvers/relayers, decentralized AI workers, residential/device contribution, physical DePIN, capital yield, build-once digital systems and machine-executable paid service/job markets.
+- Twelve substantial discovery/validation batches completed.
 - Run 002: `research/RUN_002_SERVER_NATIVE_EXPANSION.md`.
 - Run 003: `research/RUN_003_RPC_ZK_KEEPERS_SOLVERS.md`.
 - Run 004: `research/RUN_004_RELAYER_INTENT_PROVER_EXPANSION.md`.
@@ -19,7 +19,8 @@ Last updated: **2026-08-15**
 - Run 009: `research/RUN_009_PHYSICAL_DEPIN.md`.
 - Run 010: `research/RUN_010_CAPITAL_YIELD_UNIVERSE.md`.
 - Run 011: `research/RUN_011_BUILD_ONCE_DIGITAL_INCOME.md`.
-- Run 011 sources: `research/SOURCES_RUN_011.md`.
+- Run 012: `research/RUN_012_AUTOMATED_TASK_API_JOB_MARKETS.md`.
+- Run 012 sources: `research/SOURCES_RUN_012.md`.
 
 ## Current validated server-native / highly autonomous highlights
 - Golem provider; Akash provider; Vast.ai host; Nosana/Golem GPU providers.
@@ -38,75 +39,45 @@ Last updated: **2026-08-15**
 - Bittensor/Chutes SN64 GPU inference-compute miner; Omron SN2 zk-verifiable inference miner; Nous finetuning and Macrocosmos pretraining competition miners.
 - Macrocosmos IOTA distributed-training worker; Apex autonomous agent/solver competition; Mainframe scientific-compute miner.
 - Allora inference/forecast workers; Allora reputer as stake-dependent variant.
+- Apify paid Actors: pay-per-event/result hosted automation.
+- RapidAPI providers: subscription/pay-per-call API monetization.
+- GitHub Marketplace paid Apps: recurring B2B app revenue.
+- AWS Marketplace metered SaaS: usage-priced server services.
 
-## Run 009 — physical DePIN durable findings
-Physical DePIN was decomposed by actual paid commodity rather than label.
+## Run 012 — important findings
+The strongest current version of the original “bot does tiny paid jobs forever” concept is usually not a human microtask website. It is a **metered machine service** whose unit of value is an API call, result, event, inference, monitoring action, automation run, software unit or other programmatically measured output.
 
-Verified families/projects include Helium wireless traffic, Hivemapper imagery, DIMO vehicle telemetry, GEODNET GNSS/RTK, WeatherXM weather data, Nodle BLE contribution, NATIX road metadata and MapMetrics navigation contribution. Wingbits, Roam and Silencio remain watchlist/restricted pending current liquid reward normalization.
+### Strongly validated channels
+- **Apify Store** — developers can publish paid Actors and charge per event/result; current PPE profit formula is `(0.8 * revenue) - platform costs`; payout requires identity verification. This is the closest literal machine-task marketplace found in this run.
+- **RapidAPI** — API providers can use pay-per-use, freemium, paid subscriptions and overages; current official marketplace fee is 20%.
+- **GitHub Marketplace Apps** — paid flat-rate/per-unit plans, financial onboarding, current GitHub retention 5% of transactions after Jan 1 2021.
+- **AWS Marketplace SaaS** — hosted SaaS can meter users, hosts, bandwidth, data, tiers or custom units through AWS billing.
 
-New server/build-once overlays discovered: NATIX xNodes, DIMO future storage/validator roles, Helium multi-gateway control plane, Nodle publisher SDK, physical-DePIN fleet orchestration SaaS and compatible multi-network device stacking.
+### Strategic/restricted channels
+- **Hugging Face Inference Providers** — real inference-routing channel where providers expose compatible APIs and billing endpoints, but provider registration is integration-heavy/curated rather than an open “attach GPU and earn” worker market.
+- **OpenAI GPT monetization** — current official FAQ says monetization is being tested with only a handful of GPT Builders; classify direct GPT usage revenue as RESTRICTED/WATCHLIST, not generally available.
+- **Zapier public integrations** — useful distribution/retention channel for an owned SaaS/API, but current official docs do not establish a general per-task payout to integration developers; do not count as standalone job income.
 
-## Run 010 — capital-income durable findings
-Capital income is classified by actual source of return, not the word `passive`.
+### Machine-market taxonomy normalized
+1. Per-event hosted automation marketplace.
+2. API subscription/pay-per-call marketplace.
+3. Installed B2B app subscription marketplace.
+4. Cloud procurement + metered SaaS marketplace.
+5. Inference routing/provider aggregation.
+6. Platform engagement revenue share.
+7. Distribution-only integration ecosystem.
+8. Self-hosted paid webhook/action service.
+9. Authorized data-processing service.
+10. Machine-scored competition/bounty market.
+11. Resource execution market.
 
-Traditional/securities families mapped: deposits, sweeps, money-market funds, sovereign debt, corporate/floating-rate debt, dividend/index income, REITs, infrastructure, preferreds, BDC/private credit, royalties, P2P/private credit, invoice financing, crowdfunding and revenue-share structures.
+### Explicit exclusion
+Human-only survey, CAPTCHA, ad-click, usability, labeling, freelance and microtask sites are not bot opportunities unless official rules provide an explicit machine/API supplier role. Fake human activity, CAPTCHA bypass, platform-evasion and deceptive automation remain REJECTED.
 
-Crypto/on-chain families mapped: solo/delegated/pooled/liquid staking, restaking, lending, curated vaults, stablecoin/RWA yield, automated allocators, AMM LP, fixed/term yield markets, basis/funding strategies and tokenized RWA wrappers.
+## Run 011 — durable findings still active
+Build-once digital income decomposes into distinct economic engines. Highest-priority server-scalable families remain niche/micro-SaaS, usage-based SaaS, paid APIs, licensed data products, automated B2B monitoring/reporting/alerting/reconciliation/data transformation, hosted open-source/open-core services and node/validator/DePIN fleet management.
 
-Server-adjacent capital opportunities include validator fleets, validator/delegation services, restaking operators, treasury/lending allocators, vault integrations, concentrated-liquidity management, permitted API funding/basis bots and broker cash/Treasury sweep automation.
-
-Always separate:
-1. passive capital holding;
-2. capital + node operation;
-3. capital + trading/allocator bot;
-4. capital + build-once fee-generating product.
-
-## Run 011 — important findings
-Build-once digital income was decomposed into distinct economic engines rather than treated as generic `digital products`.
-
-### Highest-priority server-scalable families
-- niche/micro-SaaS subscriptions;
-- usage-based SaaS;
-- paid APIs / machine-to-machine services;
-- subscription data products and metered data APIs where source rights are clean;
-- automated B2B monitoring/reporting/alerting/reconciliation/data transformation;
-- hosted open-source / managed open-core services;
-- node/validator/DePIN fleet management, reward normalization and profitability telemetry.
-
-These are especially aligned to the project's primary autonomy target because one daemon/server can repeatedly perform small paid units of work for many customers.
-
-### Marketplace-installed software validated
-- **Shopify App Store** — paid app revenue path with explicit current developer revenue share.
-- **Atlassian Marketplace** — paid B2B apps with current Forge/Connect/Data Center revenue-share rules and Forge incentive structure.
-- **Chrome Web Store** — extension distribution plus developer-selected payments subject to disclosure/security rules.
-- **Google Play** — paid apps, one-time digital products and recurring subscriptions; fee schedules are region/program dependent and changed in 2026.
-
-### Digital asset / royalty families validated
-- templates/spreadsheets/scripts/code packs/automation recipes;
-- plugins/themes/add-ons;
-- stock media and reusable creative assets;
-- e-books/reference products and print-on-demand;
-- recorded courses/reference libraries;
-- affiliate/content/newsletter/lead-generation assets;
-- GitHub Sponsors as supplemental open-source funding;
-- deployment/template/repository revenue share.
-
-### Current primary-source examples
-- Stripe validates recurring + usage-metered billing infrastructure.
-- AWS Data Exchange validates subscription data products and APIs priced per request/successful request/data transfer; direct paid-provider eligibility currently excludes Azerbaijan, so this particular marketplace is RESTRICTED for an Azerbaijan-based provider unless a lawful eligible-jurisdiction entity is used.
-- Gumroad validates automated digital-product fulfillment, affiliates and creator payouts.
-- Adobe Stock validates reusable media royalties.
-- Amazon KDP validates eBook/POD royalties.
-- GitHub Sponsors validates recurring/one-time OSS sponsorships.
-
-### Build-once classification lessons
-- Fulfillment automation is not revenue automation; many `passive` digital products remain marketing-heavy.
-- Prefer products where customer value per request is much larger than variable compute/API cost.
-- Publicly viewable data does not imply commercial redistribution rights.
-- Marketplace dependence/API policy risk must be treated as a business risk.
-- A free browser/plugin frontend + paid backend can combine marketplace distribution with recurring server revenue.
-- Automated B2B exception reporting is a distinct attractive family because customers pay to avoid repeated checking.
-- Node/DePIN management software may be more durable than mining a single underlying network.
+Marketplace-installed software validated in earlier runs includes Shopify App Store, Atlassian Marketplace, Chrome Web Store and Google Play. Digital asset/royalty families include templates, scripts/code packs, plugins/themes, stock media, ebooks/POD, courses/reference libraries, affiliate/content assets, GitHub Sponsors and deployment/template/repository revenue share.
 
 ## Durable classification lessons from all runs
 - Classify by what gets paid for, not marketing terminology.
@@ -120,6 +91,8 @@ These are especially aligned to the project's primary autonomy target because on
 - Automated financial strategies are trading/optimization systems, not guaranteed passive yield.
 - Embedded bandwidth/data SDK monetization requires explicit consent and platform compliance.
 - Data products require source-specific licensing/privacy/redistribution validation.
+- A marketplace that sends leads but does not pay the developer is distribution, not an independent earning mechanism.
+- A daemon earning per task only has value if there is paid utilization; technical autonomy does not create demand.
 
 ## Important restricted/watchlist findings
 - Lagrange: live paid/slashable prover economics, but current public production admission not clearly self-service.
@@ -136,12 +109,15 @@ These are especially aligned to the project's primary autonomy target because on
 - DAWN points: no current cash/redemption value under current Terms.
 - Nodepay passive path not re-proven.
 - AWS Data Exchange paid-provider onboarding: current eligible-jurisdiction list excludes Azerbaijan.
+- Hugging Face Inference Provider: real provider economics, but curated/integration-heavy admission.
+- OpenAI GPT direct monetization: currently limited testing cohort, not general builder income.
 
 ## Current quantitative state
 Counts remain provisional until catalog normalization:
-- Verified named platforms/mechanisms with primary evidence: **well above 80** when distinct paid roles/subnet/build-once marketplace mechanisms are counted separately.
+- Verified named platforms/mechanisms with primary evidence: **well above 90** when distinct paid roles/subnet/build-once marketplace mechanisms are counted separately.
 - Capital universe contains **79+ normalized mechanism variants** before concrete platform-level deduplication.
 - Build-once run adds **20+ independent monetization mechanisms/families** plus numerous implementation subfamilies.
+- Run 012 normalizes **11 machine-market families** and strongly validates 4 additional concrete marketplace channels.
 - Additional discovery/watchlist leads: dozens.
 - Saturation/control passes completed: **0**.
 - Completion confidence: low; discovery remains productive.
@@ -151,23 +127,23 @@ Counts remain provisional until catalog normalization:
 Goal: grow and deduplicate the opportunity universe before detailed profitability modeling.
 
 ## Next run priority
-**Run 012 — legitimate automated task/API/job markets deep sweep.**
+**Run 013 — remaining marketplace / royalty / digital-distribution gaps.**
 
 Priority research:
-1. Systems where software can legally accept machine-executable paid jobs.
-2. Data processing/transformation/validation markets.
-3. Inference/model/tool/agent marketplaces.
-4. Rendering/transcoding/benchmark/testing jobs.
-5. Verification/proof/bounty/action markets not already covered by solver/prover runs.
-6. Webhook/action/automation marketplaces.
-7. Authorized crawling/data-collection jobs only where targets and platform rules explicitly permit automation.
-8. API marketplaces and machine-to-machine service exchanges.
-9. Agent/tool marketplaces that pay developers/providers per invocation/use.
-10. Explicitly identify and reject human-only microtask/captcha/survey/task sites whose rules prohibit bots.
-11. Track whether pay comes from real customer demand, platform subsidy/emissions, bounty pool or revenue share.
-12. Record server requirements, KYC/geography, payout, ToS automation permission, expected utilization and scaling constraints.
+1. Other real API marketplaces with provider payouts, not directories only.
+2. Azure/GCP and other cloud marketplaces for SaaS/API seller mechanics and seller geography.
+3. AI agent/tool/MCP marketplaces with current general per-invocation developer payment rails.
+4. Serverless/plugin/template marketplaces with direct creator revenue.
+5. Automation-template marketplaces: distinguish direct payout from mere exposure.
+6. Data/model/dataset marketplaces beyond AWS Data Exchange with clear commercial rights and payout.
+7. Stock/3D/game/audio/design asset marketplaces not yet normalized.
+8. Code/library/package licensing and commercial open-source distribution.
+9. Royalty/revenue-share marketplaces and reseller/white-label programs.
+10. Explicitly identify dead, discontinued or non-paying “creator marketplace” claims.
+11. Record Azerbaijan/KYC/seller eligibility when primary sources expose it.
+12. Preserve the distinction between marketplace revenue, referral revenue, customer-paid SaaS revenue and platform subsidy.
 
-After Run 012: remaining marketplace/royalty gaps, PoW/mining normalization where needed, dead/scam cross-checks, profitability normalization, Azerbaijan/KYC filtering, then saturation/control passes.
+After Run 013: PoW/mining normalization where needed, dead/scam cross-checks, profitability normalization, Azerbaijan/KYC filtering, then saturation/control passes.
 
 ## Completion gate
 Do not mark complete until multiple differently-worded broad and niche control passes add no new independent earning mechanisms and almost no viable projects, with remaining uncertainty explicitly documented.
