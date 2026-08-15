@@ -167,3 +167,53 @@ Run 008: residential/device passive income + bandwidth/IP/browser/device DePIN s
 - New/strengthened distinct paid mechanisms: 12+
 - Major watchlist/restriction outcomes: 4+
 - Conclusion: discovery remains strongly productive; project is **IN PROGRESS**.
+
+---
+
+## Run 008 — 2026-08-15
+Status: **completed**
+Stage: Residential/device passive income + bandwidth/IP/browser/device DePIN
+
+### Work performed
+- Revalidated EarnApp, Honeygain, PacketStream, Pawns.app, TraffMonetizer, Repocket, Grass, DAWN and Nodepay using current primary/support documentation.
+- Explicitly tested whether Docker/Linux compatibility implied VPS/datacenter permission; in several cases it did not.
+- Discovered and validated **EarnFM Fleetshare Supplier** as a separate authorized datacenter/server bandwidth market hidden behind a consumer-bandwidth brand.
+- Separated consumer residential proxy exit nodes from server/datacenter suppliers, developer SDK monetization and non-cash proof-of-bandwidth point systems.
+- Added Azerbaijan-specific evidence where primary sources exposed it.
+
+### Strong current findings
+1. **EarnFM Fleetshare Supplier** — current supplier docs accept 20+ IPs from application users, servers or devices; integration types include Fleetshare server and Docker. Authorized datacenter connections have no fixed upper limit. Current published rate: $0.04/GB datacenter, $0.10/GB residential. Approval + KYC/KYB + supplier agreement required.
+2. **PacketStream Packeter** — transparent residential supplier economics: $0.10/GB eligible traffic, $5 minimum, 3% PacketStream cashout fee, PayPal; demand not guaranteed.
+3. **Grass Stage 2** — current official USDC allocation path documented, with residential/non-VPN preference and strong traffic concentration by stability/geography.
+4. **TraffMonetizer developer SDK** — distinct build-once program where approved app developers earn from consenting users' bandwidth; consumer VPS use remains prohibited.
+
+### Restricted/rejected conclusions
+- EarnApp VPS/VM/Docker/cloud/server farming: explicitly prohibited.
+- Honeygain datacenter farm: DCH IP unsupported; VPS/VM use carries anti-fraud risk despite Docker support.
+- Pawns datacenter VPS: DCH classification triggers VPN/error behavior.
+- TraffMonetizer consumer server/VPS: explicitly prohibited by Terms.
+- Repocket VM/emulator/VPN/proxy use: prohibited.
+- DAWN Validator Extension points: current Terms say no monetary value and no redemption/transfer; not counted as cash income.
+- Nodepay: current reward design has shifted toward genuine active signals/campaign participation; not a clean passive autonomous bandwidth bot path.
+
+### New taxonomy/economics lessons
+- Residential IP value and generic bandwidth value must be modeled separately.
+- Docker availability is a technical property, not permission to monetize datacenter IPs.
+- Embedded bandwidth SDKs with explicit user consent form a distinct build-once revenue family.
+- Points/reward programs must not be counted as income when Terms explicitly disclaim monetary value.
+- A consumer brand can hide a separate enterprise/supplier program with very different server eligibility; future sweeps should search partner/supplier/developer portals, not only consumer apps.
+
+### Durable outputs
+- `research/RUN_008_RESIDENTIAL_DEVICE_BANDWIDTH.md`
+- `research/SOURCES_RUN_008.md`
+- `STATUS.md` advanced to Run 009.
+
+### Next stage
+Run 009: physical DePIN / sensor / mapping / wireless / vehicle / environmental / energy-device sweep.
+
+### Saturation metrics
+- Control/saturation passes completed: 0
+- New independent server-native mechanism/platform added: 1 major (EarnFM authorized datacenter supplier)
+- New/clarified build-once SDK income mechanisms: 2+
+- Major residential-only restrictions established: 5+
+- Conclusion: discovery remains productive; project is **IN PROGRESS**.
