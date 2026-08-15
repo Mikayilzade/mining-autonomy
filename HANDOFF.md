@@ -32,93 +32,83 @@ Weak, restricted, rejected, dead and points-only options must stay documented to
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when the completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs **001–019** are complete.
+Runs **001–020** are complete.
 
 Latest files:
-- `research/RUN_019_NICHE_SATURATION_CONTROL_2.md`
-- `research/SOURCES_RUN_019.md`
+- `research/RUN_020_PROVIDER_REPOSITORY_TOKENOMICS_CONTROL_3.md`
+- `research/SOURCES_RUN_020.md`
 
 `STATUS.md` is the authoritative checkpoint and next-run pointer.
 
-## Run 019 durable findings
-The second deliberate saturation/control pass again produced **no new top-level economic mechanism**, which is meaningful convergence. However it still produced enough strong project-level clarification that the project cannot be marked complete yet.
+## Saturation state after Run 020
+Three deliberate control passes now produced **0 new top-level economic mechanisms**. Taxonomy confidence is high.
 
-### Strongest result
-- **Fleek Network node operator:** official docs describe Linux/Docker edge nodes whose services consume measurable CPU/bandwidth commodities and whose Delivery Acknowledgements determine rewards. This fits the primary server-native target well. However current surfaced docs still include older alpha/testnet/pre-mainnet wording, so Run 020 must verify current 2026 production admission, stake, liquid payout and real utilization before any deployment priority is assigned.
+However Run 020 still surfaced/strengthened several real provider projects, so project-level saturation is not yet sufficient for COMPLETE.
 
-### Important classification changes
-- **OORT Edge / Deimos:** legitimate autonomous storage/compute/bandwidth rewards, but current mining is tied to Deimos/approved edge hardware, not arbitrary VPSs. Tier B/device-only. Rewards include delayed vesting; uptime score, 360-day service period and collateral/penalty rules matter.
-- **OORT witness node:** separate cloud/datacenter-capable server role, but current admission/stake/reward formula remains incomplete; WATCHLIST.
-- **dTelecom:** real decentralized Solana-registered SFU server architecture; current public operator reward/onboarding evidence insufficient; WATCHLIST.
-- **Spheron:** current docs prove `Community GPUs` exist in the marketplace, but do not yet prove self-service public supplier onboarding; RESTRICTED.
-- **Impossible Cloud:** current commercial docs prove Distributor/Channel Partner storage resale, not permissionless spare-disk mining. Keep `Impossible Cloud Network` protocol research separate from Impossible Cloud’s commercial S3/channel business.
-- **Fluence:** official material strongly supports a compute-provider mechanism with FLT rewards and stake per CPU, but current 2026 provider onboarding/economics still require direct current-doc/repository validation.
-- **iExec, Edge/XE, StorX, YOM:** remain unresolved tails under the current evidence standard.
+Material Run 020 upgrades:
+- **dTelecom SFU Node Operator** — current official site says operators earn 75% of customer payments; Solana mainnet node discovery and live customer services are current. Mechanism verified, exact operator admission/stake/hardware still restricted.
+- **Edge Network Host** — current community Host onboarding exists using Linux/Docker/mainnet CLI; contribute compute/storage/bandwidth; XE/EDGE rewards; current wiki lists 100 XE Host stake subject to change.
+- **StorX Storage/Farm Node** — current official pages explicitly support storage/farm node rewards, SRX stake/reputation and server/VPS setup path.
+- **Impossible Cloud Network Hardware Provider / ScalerNode** — real storage/compute hardware-provider economics with utilization + capacity rewards, ICNT collateral/slashing and long commitment; current onboarding is curated/contact-based, not low-capital permissionless VPS mining.
+- **YOM** — current real session-based GPU earnings, but self-hosting is gated by gaming PC + NANO/license; current operator payout docs show 40/55/5 split; NaaS/datacenter delegation not yet live, targeted Q3 2026.
 
-### Saturation implication
-Two control passes have now produced zero new top-level mechanism classes. Taxonomy confidence is therefore medium-high. Project-level saturation is only medium because both passes still produced useful viable/watchlist candidates.
+Unresolved after Run 020:
+- Fluence current 2026 self-service provider onboarding/economics.
+- Fleek current production/mainnet/liquid node payout; surfaced docs still include pre-mainnet/testnet wording.
+- iExec current ordinary worker/workerpool self-service supplier flow despite current PoCo protocol repository.
+- Spheron current Community GPU supplier onboarding/payout.
+- dTelecom exact public operator onboarding/stake/hardware gates.
+- Edge explicit VPS/datacenter acceptance and current fiat-equivalent economics.
 
-## Run 018 durable findings still active
-- **IDLE Protocol:** generalized pay-per-call resource marketplace; GPU/agent/API/PC/data resources behind metered endpoints; provider share and Solana/USDC settlement documented in that run. Real demand must be measured later.
-- **NodeOps Cloud Compute Provider:** explicit VM/cloud resale path with NODE stake/bond and workload-fee economics.
-- **NodeOps Templates:** build-once template revenue stream.
-- **SubQuery:** server-native RPC/indexing supply with productive-work/inflation rewards and meaningful SQT stake/service risk.
-- **Diode Relay:** lightweight Linux/VM relay rewarded by routed bandwidth/Fleet Contract economics.
-- **CESS:** storage plus distinct CD2N retrieval/cache roles.
-- **Acurast:** autonomous smartphone compute, Tier B/device-only.
-
-## Geography/KYC findings still active
-- Crypto-native provider rails generally survive the Azerbaijan filter better than centralized fiat payout programs.
-- Golem remains the cleanest low-capital geography fit discovered so far.
-- Storj/Sia remain plausible where spare disk/bandwidth already exists.
-- Vast.ai and EarnFM require live Azerbaijan payout/onboarding confirmation before CAPEX.
-- Geography can affect demand/utilization even where onboarding is technically open.
-
-## Durable lessons still active
-- Paid utilization is the dominant hidden variable; online/listed capacity is not paid capacity.
-- Owned spare resources generally have a structural advantage over retail-cloud re-rental.
-- Always compare opportunity cost across GPU/CPU/disk/bandwidth/IP uses.
-- Collateral must be priced as capital with financing/opportunity cost and expected slashing/loss.
+## Durable geography/economics lessons
+- Paid utilization is the dominant hidden variable.
+- Owned spare resources generally beat retail-cloud re-rental.
+- Compare opportunity cost across GPU/CPU/disk/bandwidth/IP uses.
+- Collateral must be priced as capital with lock/liquidity/slashing risk.
+- Customer-paid revenue share is better evidence than headline token emissions, but does not prove sufficient demand.
+- Device/license requirements can dominate ROI.
+- Curated supplier onboarding is common even in decentralized networks.
+- Linux/Docker compatibility does not itself prove VPS/datacenter permission.
+- Consumer, supplier, SDK, reseller, fleet and professional-hardware roles must be checked separately.
+- A live protocol contract proves mechanism existence, not simple public supplier admission.
+- Marketing earnings calculators are discovery/economics inputs, not guaranteed profitability.
 - Small measured pilots should precede CAPEX.
-- A runnable daemon is not enough: prove reward path, supplier admission, permitted environment, stake/license/collateral, payout mechanics and demand/utilization.
-- Customer-paid utilization must be separated from token/provider subsidies.
-- Testnet/devnet/points units are not money without a liquid/redeemable path.
-- Bittensor must be decomposed by subnet/commodity.
-- Competitive AI/solver networks require expected-share modeling.
-- Permissionless software can still require meaningful stake, liquidity or hardware.
-- Residential IP monetization and datacenter bandwidth are separate commodities.
-- Embedded SDK monetization requires explicit consent/disclosure and platform compliance.
-- Data products require source-by-source legal/ToS/licensing validation.
-- Market-neutral financial automation is still trading with execution/custody/liquidation risk.
-- Marketplace discoverability without a payment rail is distribution, not income.
-- Mining = hardware/energy economics; hashpower resale = customer-demand economics.
-- Merged mining is a genuine additive mechanism; profit switching is only a routing strategy.
-- No deposit-to-work or pay-to-withdraw schemes.
-- Guaranteed/high fixed mining or yield claims require enhanced fraud review.
-- Docker/Linux compatibility does not prove VPS/datacenter permission.
-- Consumer, supplier, SDK, reseller and fleet roles must be checked separately.
-- Customer-side marketplace listings do not prove open supplier admission.
-- Decentralized architecture does not prove a current permissionless earning path.
+- Azerbaijan must be validated through live KYC/onboarding/payout before spending capital; silence in docs is not confirmation.
 
 ## Current next run
-**Run 020 — provider-repository / tokenomics control pass #3.**
+**Run 021 — broad cross-directory / alternative-vocabulary control pass #4.**
 
-Validate with current primary docs/repositories/contracts:
-1. Fluence compute-provider onboarding, stake, rewards, customer demand.
-2. Fleek 2026 production/mainnet status, operator stake and payout.
-3. iExec worker/workerpool via current PoCo repositories/contracts.
-4. dTelecom SFU operator onboarding/rewards/on-chain registry.
-5. Spheron Community GPU supplier onboarding and payout.
-6. StorX node/reward current docs/repository.
-7. Edge/XE resource-provider admission and rewards.
-8. YOM provider/node program.
-9. Impossible Cloud Network protocol provider path, explicitly separated from Impossible Cloud commercial storage/reseller docs.
+Purpose: catch remaining projects, not invent new categories.
 
-Use alternate discovery terms: `capacity provider`, `supply node`, `workerpool`, `resource provider`, `edge supplier`, `operator rewards`, `node rewards`, `host marketplace`, `permissionless provider`, `capacity seller`.
+Search families:
+- decentralized cloud provider earn capacity
+- idle server capacity marketplace provider
+- edge node operator customer revenue share
+- storage node VPS earn
+- GPU host/community provider onboarding
+- machine API marketplace provider revenue share
+- bandwidth/CDN node customer fees
+- DePIN hardware provider storage compute
+- workerpool/executor/prover/relayer supplier
+- autonomous service marketplace x402/pay-per-call/agent service provider
 
-Track net-new viable count, duplicates, renamed projects, restricted/dead outcomes and any actual new economic mechanism.
+Use directories only as leads. Every candidate must be validated against current primary docs/repositories.
 
-If Run 020 produces no new mechanism and only negligible new viable public-provider projects, proceed to a final broad cross-directory/control pass. If it still yields material candidates, continue until the project-level tail converges.
+Explicitly revisit:
+1. Fluence.
+2. Fleek.
+3. iExec worker/workerpool.
+4. Spheron Community GPU supplier.
+5. dTelecom operator admission details.
+6. Edge VPS/datacenter policy.
+7. Renamed/relaunched compute/storage/bandwidth projects.
 
-## Completion
-Only mark `COMPLETE` after repeated differently-worded broad + niche searches converge, producing no new independent earning mechanisms and almost no new viable projects, with all remaining uncertainty documented. Then record final saturation checks and disable the recurring research task.
+Track net-new viable count, duplicates/renames, restricted/dead outcomes and any true new economic mechanism.
+
+### Completion logic
+If Run 021 produces:
+- **0 new mechanisms**, and
+- only **0–2 weak/restricted** genuinely new viable projects,
+then perform one final short saturation check. If that final check also yields no material novelty, mark `STATUS.md` **COMPLETE**, document the final saturation evidence and stop recurring research.
+
+If Run 021 still finds several material provider projects, remain IN PROGRESS and continue until the project-level tail converges.
