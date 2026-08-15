@@ -32,43 +32,50 @@ Weak, restricted, rejected, dead and points-only options must stay documented to
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when the completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs **001–017** are complete.
+Runs **001–018** are complete.
 
 Latest files:
-- `research/RUN_017_AZERBAIJAN_KYC_PAYOUT_GEOGRAPHY.md`
-- `research/SOURCES_RUN_017.md`
+- `research/RUN_018_BROAD_SATURATION_CONTROL_1.md`
+- `research/SOURCES_RUN_018.md`
 
 `STATUS.md` is the authoritative checkpoint and next-run pointer.
 
-## Run 017 durable findings
-A dedicated Azerbaijan/KYC/payout/geography pass was completed for the representative highest-priority autonomous resource markets.
+## Run 018 durable findings
+The first deliberate broad saturation/control pass used alternate discovery vocabulary and directory sweeps. It found **no new top-level economic mechanism**, but it still surfaced several concrete viable projects that were absent or insufficiently normalized. Therefore saturation has not been reached.
 
-### Strongest geography-compatible candidates
-- **Golem:** provider is paid directly in GLM on Polygon/Ethereum; reviewed provider/payment docs expose no ordinary provider KYC and no Azerbaijan-specific exclusion. Best low-capital technical pilot after saturation, assuming local legal/tax/off-ramp review.
-- **Storj:** token payout via Ethereum L1 or optional zkSync L2; current Node Operator Terms use sanctions/export restrictions rather than naming Azerbaijan as excluded. Scaling rules matter: one node per IP and shared payout-address requirements.
-- **Sia:** host-owned Siacoin wallet and protocol storage contracts avoid a centralized fiat payout account; practical barrier is multi-TB storage, collateral and uptime rather than Azerbaijan onboarding.
-- **Akash:** provider operation remains wallet/on-chain and location-aware; technically open but operational/audit overhead makes it a later experiment.
-- **Filecoin:** protocol/FIL path remains valid but is infrastructure/collateral/proving heavy; ≥10 TiB storage power is required for WinningPoSt block-reward eligibility and verified-data programs may add KYC/due diligence.
+### Strong new primary-target candidates
+- **IDLE Protocol:** generalized pay-per-call resource marketplace. Official docs say GPU, agent, API, PC and data resources can be exposed behind a metered gateway; provider receives 85% of usage fees in USDC on Solana with a $0.10 minimum payout. Agent/API hosting can be external/server-native. This is one of the closest current matches to the original “small autonomous server jobs” idea, but real demand must be measured later.
+- **NodeOps Cloud Compute Provider:** official docs explicitly permit controlled VMs and even cloud-VM resale; GCP tutorial exists. Current entry requires 2,000 NODE + 200 NODE per CU bond, strict 2-vCPU/4-GB/80-GB-NVMe/1-Gbps/public-IP class requirements and root-level integration. Current docs advertise up to 10 NODE/day per 2 CU in bootstrap rewards and a share of consumed-CU fees. Token subsidy vs customer-paid revenue must be separated.
+- **NodeOps Templates:** accepted public infrastructure/app templates currently earn 20% of workload fees during the bootstrapping phase. Treat as build-once income, not raw mining.
+- **SubQuery Node Operator:** current RPC/indexer operator path is live; productive-work revenue plus network-inflation rewards. Existing RPC endpoints can be connected and need not be dedicated. Current minimum registration stake is 200,000 SQT and service failures can cause slashing/reallocation.
+- **Diode Relay Node:** lightweight Linux/VM bandwidth relay. Fleet Contracts sponsor traffic; relay nodes earn DIODE based on bandwidth contribution. Actual routed traffic/location matters more than uptime.
+- **CESS:** validated both server-native Storage Nodes and distinct CD2N retrieval/cache roles. Storage currently requires at least 1 TiB and 2,000 CESS/TiB stake. CD2N rewards actual retrieval/cache service.
 
-### Centralized payout/onboarding constraints
-- **Vast.ai:** current host payout documentation references PayPal, Wise, Stripe and other payment integrations. PayPal's own current country documentation says Azerbaijan accounts cannot receive payments. Wise can send funds to Azerbaijani local bank accounts and Stripe has some Azerbaijan-capable Connect stablecoin products, but neither fact proves Vast exposes that exact host payout route. Live onboarding/payout confirmation is mandatory before GPU CAPEX.
-- **EarnFM Fleetshare:** supplier program requires 20+ IPs, application acceptance, Didit KYC/KYB and signed supplier agreement. Current rates remain $0.10/GB residential and $0.04/GB datacenter, standard payout minimum $15, while >$300/month invoice bank transfer is documented as SEPA/ACH. Azerbaijan standard payout route remains an onboarding unknown.
+### Secondary/device candidate
+- **Acurast Processor:** real autonomous smartphone compute with ACU rewards, optional staked-compute rewards and a deployment-execution bonus. It requires genuine supported smartphones/TEEs and therefore belongs in Tier B rather than VPS/server-native Tier A.
 
-### Geography is also economics
-- IP geography/reputation can change paid traffic volume in bandwidth markets.
-- Compute-provider location can alter matching/latency/customer preference even without a country ban.
-- Crypto-native provider admission and centralized fiat off-ramp availability are separate questions.
+### Niche validation queue created by Run 018
+Primary-source-check these next:
+- Impossible Cloud Network
+- Fleek
+- Spheron
+- StorX
+- OORTech
+- Fluence
+- iExec
+- Edge/XE
+- dTelecom
+- YOM
+- plus related directory leads if they expose an actually open provider/operator role.
 
-### Later empirical test order, not yet implementation
-1. Golem on an already-paid server.
-2. Storj on already-owned spare disk/bandwidth.
-3. Sia where spare multi-TB storage already exists.
-4. EarnFM only after Azerbaijan KYC/payout confirmation.
-5. Vast only with existing GPU hardware and confirmed Azerbaijan payout route.
-6. Akash as later infrastructure pilot.
-7. Filecoin only as dedicated infrastructure-business case.
+Directory entries alone are not evidence. Many will collapse into duplicates, closed programs, testnets, points-only rewards or non-server roles.
 
-No candidate is assumed to provide guaranteed profit.
+## Run 017 durable geography/KYC findings still active
+- Crypto-native provider rails generally survive the Azerbaijan filter better than centralized fiat payout programs.
+- Golem remains the cleanest low-capital geography fit discovered so far.
+- Storj/Sia remain plausible where spare disk/bandwidth already exists.
+- Vast.ai and EarnFM require live Azerbaijan payout/onboarding confirmation before CAPEX.
+- Geography can affect demand/utilization even where onboarding is technically open.
 
 ## Earlier durable lessons still active
 - Paid utilization is the dominant hidden variable; online/listed capacity is not paid capacity.
@@ -95,11 +102,11 @@ No candidate is assumed to provide guaranteed profit.
 - Consumer, supplier, SDK, reseller and fleet roles must be checked separately.
 
 ## Current next run
-**Run 018 — broad saturation/control pass #1.**
+**Run 019 — niche saturation/control pass #2.**
 
-Use deliberately different vocabulary and discovery routes from the earlier universe-building runs: machine economy, idle-resource monetization, node operator income, capacity marketplace, provider/supplier/reseller/partner programs, daemon earnings, distributed infrastructure rewards, decentralized service markets, machine-to-machine work markets, underused-hardware monetization and hidden supplier/developer portals behind consumer brands.
+Use primary docs to validate the server-native directory queue and deliberately alternate role vocabulary: worker, miner, provider, host, processor, edge node, executor, resource seller, infrastructure supplier, compute seller, bandwidth seller, cache operator. Search ecosystem docs directly for `earn`, `provider`, `host`, `supply`, `operator`, `rewards`, and `mainnet`.
 
-Track net-new mechanisms and viable projects per query family. Distinguish genuinely new economics from renamed duplicates. After Run 018 perform at least one niche saturation/control pass using alternate ecosystem terminology/directories.
+Track net-new viable count, duplicates and restricted/dead findings. If Run 019 still yields material net-new server-native projects, perform another control pass before completion.
 
 ## Completion
 Only mark `COMPLETE` after repeated differently-worded broad + niche searches converge, producing no new independent earning mechanisms and negligible new viable projects, with all remaining uncertainty documented. Then record final saturation checks and disable the recurring research task.
