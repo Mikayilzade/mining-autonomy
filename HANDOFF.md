@@ -32,32 +32,38 @@ Weak, restricted, rejected, dead and points-only options must stay documented to
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when the completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs **001–046** are complete.
+Runs **001–047** are complete.
 
 Latest files:
-- `research/RUN_046_FIFTH_PAID_MCP_AGENT_SERVICE_TAIL_AND_DEDUP.md`
-- `research/SOURCES_RUN_046.md`
-- `research/CATALOG_ADDITIONS_RUN_046.md`
+- `research/RUN_047_SIXTH_PAID_AGENT_SKILL_MCP_TAIL.md`
+- `research/SOURCES_RUN_047.md`
+- `research/CATALOG_ADDITIONS_RUN_047.md`
 
 `STATUS.md` is the authoritative checkpoint and next-run pointer.
 
-## Saturation state after Run 046
-Twenty-nine deliberately different control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation remains very high.
+## Saturation state after Run 047
+Thirty deliberately different control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation remains very high.
 
-Project/provider saturation is still incomplete because paid agent-skill / MCP / machine-payment seller vocabulary continues to produce independent commercial implementations at a non-negligible rate.
+Project/provider saturation is still incomplete because the paid agent-skill / MCP / machine-payment seller vocabulary continues to produce independent commercial implementations at a non-negligible rate.
 
-## Run-046 durable findings
+## Run-047 durable findings
+Newly validated/promoted implementations:
+- **Techne Skills** — 90% founding / 85% standard creator share for paid agent skills.
+- **MCPlug** — 85% creator share, Stripe, paid MCP/AI tools and assets.
+- **AgenticMarket** — per-call MCP monetization, 80–90% creator share, Wise/Razorpay payout paths.
+- **SkillExchange** — 80/20 MCP/A2A creator economics via Stripe Connect and self-reported execution activity.
+- **Atrium Hermes** — Base/USDC per-invocation agent skills, 2.5% protocol fee, visible settlement/invocation evidence; current scale small.
+- **SkillHQ** — 85% seller share, Stripe Connect, product-level sale counts.
+- **.ctx** — 80% seller share, Stripe Connect, visible sold counts for agent knowledge/assets.
+- **mcpmeter** — paid MCP metering proxy; Terms specify 10% founder / 20% standard platform take and monthly publisher payouts.
+- **SquidBay** — 90% seller share; one-time skill ownership and A2A remote per-job rentals.
+- **AI Agent Marketplace** — valid webhook-task seller model, 88% provider share, but $45/month fixed provider fee and currently zero listed agents.
+- **Callboard** — concrete priced agent job/bounty examples; payout rail still needs deeper validation.
+- **Skarnfall** — WATCHLIST because official surface currently shows zero tasks, agents and humans.
 
-### Validated/promoted provider implementations
-- **Logion** — verified early agent-native marketplace: 85% creator share, Stripe Connect creator payout, paid operational-knowledge bundles, referrals and funded bounties; CLI/SDK workflow is explicitly agent-native.
-- **xpay Tools** — verified MCP pay-per-call monetization/discovery proxy; provider registers internet-accessible MCP server and receives metered proxy/discovery surface. MCP path supports wallet/USDC settlement. Exact platform fee differs by xpay product surface and must be revalidated at implementation.
-- **Agent37** — hosted paid skill platform, 80% creator share, Stripe, subscriptions/trials; official creator page presents a creator example with 43 paying subscribers.
-- **Agensi** — current Terms show 70/30 creator/platform split, Stripe Connect, paid agent skills and MCP distribution; Skill Request Board is a useful demand-signalling surface.
-- **RuleSell** — live discovery/claiming marketplace with early/beta paid publishing; own pages advertise 85/15 and KYC/Stripe creator payouts, but seller-revenue evidence remains weak.
-
-### Unresolved leads
-- MCPChannel — current primary seller/payout implementation not established.
-- MarketNow — ambiguous naming; no verified independent paid-MCP seller market identified.
+Important naming clarification:
+- `ClaudeSkillsHQ.com` is a paid buyer marketplace but third-party seller economics remain unproven.
+- `Claudeskills.ai` is a separate project; Terms define 90% seller share via Stripe Connect but the homepage is still waitlist/pre-launch.
 
 ## Durable architecture split
 The cluster still reduces to five strategies:
@@ -67,28 +73,27 @@ The cluster still reduces to five strategies:
 4. build-once paid agent/data/content/knowledge asset;
 5. demand-signalled production using bounties/requests/usage evidence.
 
-No new top-level mechanism emerged in Run 046.
+No new top-level mechanism emerged in Run 047.
 
 ## Economics / risk lessons
 - Paid utilization/fill rate remains the decisive hidden variable.
-- Hosted skill markets trade server operations for product-market-fit/distribution risk.
-- MCP-native discovery is not evidence of demand by itself.
-- Request boards and funded bounties are stronger demand signals than catalog counts.
-- Direct wallet settlement reduces some Stripe friction but does not solve wallet/off-ramp, tax, sanctions, legal or country eligibility.
-- Product-specific fee schedules must not be mixed; xpay is a concrete example of one brand exposing different economics across products.
-- Azerbaijan remains unresolved at the specific-platform seller onboarding level and must be validated before CAPEX/subscription spend.
+- Catalog/download counts are weak demand evidence; prefer paid invocations, sold counts, funded jobs or on-chain settlements.
+- Metered per-call MCP/API/webhook execution remains the best conceptual fit for autonomous VPS-native earning.
+- Static paid skill assets reduce runtime cost but depend strongly on distribution, differentiation and maintenance.
+- A marketplace can have valid seller payment rails but essentially zero economic liquidity.
+- Azerbaijan remains unresolved at the specific-platform seller onboarding level and must be validated before any CAPEX/subscription spend.
 
 ## Current next run
-**Run 047 — sixth/final paid agent-skill/MCP tail pass before broad control.**
+**Run 048 — seventh paid-agent/MCP/machine-payment tail pass.**
 
 Priority:
-1. Validate additional paid agent-skill markets with real third-party creator payout paths, including ClaudeSkillsHQ seller availability versus buyer-only catalog.
-2. Search `sell agent skills Stripe creator`, `hosted AI skill marketplace creator revenue`, `MCP server creator 90% payout`, `AI agent asset marketplace seller payout`, `agent bounty marketplace Stripe`, `paid SKILL.md marketplace creator`.
-3. Require current primary evidence for payout split/rail and at least one demand signal.
+1. Validate `percall.dev`, Alysium AgentHub and `aimarkethub.ai` seller economics, payout rails and current demand.
+2. Search alternate vocabulary: `machine-payable endpoint`, `agent tool marketplace payout`, `A2A skill seller`, `agent capability marketplace`, `HTTP 402 paid API`, `x402 creator marketplace`, `agent webhook marketplace`.
+3. Require current primary evidence for payout path plus at least one liquidity/demand signal.
 4. Reject directories/aggregators without a creator-payment path.
-5. Deduplicate against Runs 041–046.
+5. Deduplicate against Runs 041–047.
 
 ### Completion logic
-If Run 047 yields only duplicates or negligible new viable projects, proceed to **Run 048 — final all-category saturation/control pass**.
+If Run 048 yields only duplicates or negligible new viable projects, proceed to **Run 049 — final all-category saturation/control pass**.
 
-Only if Run 048 also converges and remaining unknowns are explicitly recorded should `STATUS.md` be changed to **COMPLETE** and the recurring research automation disabled.
+Only if Run 049 also converges and remaining unknowns are explicitly recorded should `STATUS.md` be changed to **COMPLETE** and the recurring research automation disabled.
