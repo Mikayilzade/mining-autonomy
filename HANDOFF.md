@@ -32,71 +32,61 @@ Weak, restricted, rejected, dead and points-only options must stay documented to
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when the completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs **001–044** are complete.
+Runs **001–045** are complete.
 
 Latest files:
-- `research/RUN_044_THIRD_PAID_MCP_AGENT_SERVICE_CONVERGENCE_PASS.md`
-- `research/SOURCES_RUN_044.md`
-- `research/CATALOG_ADDITIONS_RUN_044.md`
+- `research/RUN_045_FOURTH_PAID_MCP_AGENT_MARKET_CONVERGENCE_PASS.md`
+- `research/SOURCES_RUN_045.md`
+- `research/CATALOG_ADDITIONS_RUN_045.md`
 
 `STATUS.md` is the authoritative checkpoint and next-run pointer.
 
-## Saturation state after Run 044
-Twenty-seven deliberately different control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation remains very high.
+## Saturation state after Run 045
+Twenty-eight deliberately different control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation remains very high.
 
-Project/provider saturation is still not complete because paid MCP/x402/agent-service/data-market seller vocabulary continues producing independent implementations.
+Project/provider saturation is still incomplete because paid MCP / agent-skill / machine-payment / digital-asset seller vocabulary continues producing independent implementations, though almost all map to already-known mechanisms.
 
-## Run-044 durable findings
+## Run-045 durable findings
 
 ### Newly discovered provider/seller implementations
-- Tollara — marketplace + billing/metering for APIs, AI agents, LLMs and MCP servers; seller can use Tollara gateway or own infrastructure.
-- AgenticMarket — paid MCP server marketplace; current docs state 80% standard creator share, with Founding Creator program terms up to 90%; detailed monetization docs list Wise/Razorpay payout paths.
-- MCPize — hosted MCP deployment + subscription + x402 pay-per-call monetization; current standard split 80/20; Stripe Connect and USDC/Base paths.
-- Loomal — x402 paywall for API/MCP plus hosted paid files/JSON; current seller guide states 5% settled-transaction fee, presently waived.
-- DataBazaar — programmatic agent-native dataset selling through MCP/REST, 3% fee, Stripe payouts and data bounties.
-
-### Strategy refinement
-Add a fifth operational subtype:
-**demand-signalled production** — use bounties, requested-data boards, subscriber analytics, usage telemetry or call activity to decide which software/data/content assets to create or refresh.
-
-This reduces demand uncertainty but is not a new top-level mechanism.
-
-### Azerbaijan payout gate
-- Stripe Connect currently lists Azerbaijan connected-account availability as **preview**.
-- Stripe stablecoin payouts documentation includes Azerbaijan for qualifying US-platform payouts to individuals/sole proprietors, but specific marketplaces may not expose that route.
-- Therefore Stripe-dependent marketplaces remain `VERIFY ONBOARDING / RESTRICTED` until the exact platform confirms Azerbaijan seller support.
+- MCP Marketplace — 85% creator / 15% platform, Stripe Connect Express, paid local/remote MCP monetization.
+- Zion — MCP/agent marketplace with 80/20 split and multiple pricing modes including bounties.
+- SkillExchange — MCP+A2A skill marketplace using Stripe Connect; public creator-share figures conflict between 80% and 85%, so exact onboarding economics must be verified.
+- Sigrix — live curated AI marketplace with MCP support; standard seller 80%, founding seller 85%; current catalog had no live MCP listings at evidence time.
+- Persona Markets — seeding-stage vault-to-MCP marketplace with 85% creator share and platform-managed hosting/billing.
+- Qatom — preview machine-native per-call API/MCP market using USD-TDN; 0% preview platform fee and immediate provider-side settlement claims.
+- MachinePal/x402proxy — enabling x402 payment gateway, not itself a customer-demand source.
+- Logion — agent-native operational-knowledge marketplace with 85/15 split, Stripe Connect, referrals and bounties; legal/geography validation deferred to next run.
 
 ## Durable architecture split
-Model the machine-paid endpoint/service cluster as five operational strategies:
+The cluster still reduces to five strategies:
 1. direct self-hosted paid endpoint;
 2. marketplace/proxy monetization layer;
 3. autonomous agent-job marketplace;
-4. build-once paid agent/data/content asset;
+4. build-once paid agent/data/content/knowledge asset;
 5. demand-signalled production using bounties/requests/usage evidence.
 
-These are not new top-level economic mechanisms; all monetize owned software/data/content/service.
+No new top-level mechanism emerged in Run 045.
 
 ## Economics / risk lessons
 - Paid utilization/fill rate remains the decisive hidden variable.
-- Catalog size, raw transaction count, headline provider share and platform-reported seller payouts are not profitability proof.
+- Creator revenue share, catalog size and platform-reported transaction/developer/creator counts are not profitability proof.
 - Stripe-based creator payouts require explicit platform-country onboarding verification.
-- Wallet-native settlement does not eliminate KYC, sanctions, tax, legal-entity, upstream-rights or geography constraints.
+- Wallet/machine-native settlement does not eliminate KYC, sanctions, tax, bank withdrawal, legal-entity, upstream-rights or geography constraints.
 - Azerbaijan remains unresolved at the specific-platform level and must be validated before CAPEX/subscription spend.
 
 ## Current next run
-**Run 045 — fourth provider-side paid-MCP / agent-market convergence pass.**
+**Run 046 — fifth paid-MCP / agent-service tail pass + explicit candidate-dedup check.**
 
 Priority:
-1. Search: `paid MCP hosting marketplace creator revenue`, `MCP server marketplace payouts`, `sell API to agents x402`, `agent native data marketplace seller API`, `AI agent bounty marketplace provider API`, `machine customer marketplace seller`, `MCP marketplace Wise payout`, `MCP creator marketplace Stripe Connect`, `pay per tool MCP hosting`, `AI agent buys datasets API seller`.
-2. Validate AgenticMarket legal operator / Terms / country policy.
-3. Validate Loomal legal operator / Terms / seller eligibility.
-4. Validate Tollara exact fees, payout rail and legal operator.
-5. Search provider-side commercial hosted MCP vendors, agent-native data/product marketplaces, API-bounty markets and non-custodial payment proxies.
-6. Search GitHub as a discovery source, but require official primary-source validation before upgrading a candidate.
-7. Continue demand-authenticity checks and distinguish platform marketing metrics from independently observable usage.
-8. Deduplicate every hit against Runs 041–044.
+1. Validate Logion legal operator / Terms / country policy / Stripe seller eligibility.
+2. Search and validate MCPChannel, MarketNow, RuleSell, xpay and related independent paid-MCP implementations.
+3. Search terms around `agent skill marketplace creator payout`, `MCP paid tool seller agreement`, `AI API bounty marketplace seller`, `agent marketplace pay per call creator`, `MCP marketplace bank payout`, `x402 marketplace provider directory`, `machine customer API marketplace`.
+4. Separate true monetization platforms from generic directories, gateway libraries, demos and articles.
+5. Search for demand authenticity: actual paid listings, active bounties, settlement/call telemetry and credible seller-revenue evidence.
+6. Deduplicate every hit against Runs 041–045.
 
 ### Completion logic
-If Run 045 produces **no or negligible new viable independent provider projects** in this cluster, move to **Run 046 — final all-category saturation/control pass**.
+If Run 046 produces only duplicates or negligible new viable independent projects, move to **Run 047 — final all-category saturation/control pass**.
 
-Only if Run 046 also converges and remaining unknowns are explicitly recorded should `STATUS.md` be changed to **COMPLETE**.
+Only if Run 047 also converges and remaining unknowns are explicitly recorded should `STATUS.md` be changed to **COMPLETE** and the recurring research automation disabled.
