@@ -32,76 +32,78 @@ Weak, restricted, rejected, dead and points-only options must stay documented to
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when the completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs **001–038** are complete.
+Runs **001–039** are complete.
 
 Latest files:
-- `research/RUN_038_FINAL_PROVIDER_TAIL_CONTROL.md`
-- `research/SOURCES_RUN_038.md`
-- `research/CATALOG_ADDITIONS_RUN_038.md`
+- `research/RUN_039_SUPPLIER_PROOF_NEIGHBOR_PASS.md`
+- `research/SOURCES_RUN_039.md`
+- `research/CATALOG_ADDITIONS_RUN_039.md`
 
 `STATUS.md` is the authoritative checkpoint and next-run pointer.
 
-## Saturation state after Run 038
-Twenty-one deliberately different control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation is very high.
+## Saturation state after Run 039
+Twenty-two deliberately different control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation remains very high.
 
-Project/provider saturation is still not complete because Run 038 found at least **two independent current supplier paths: Lilac and ResonTech**. Do not mark COMPLETE.
+Project/provider saturation is still not complete because Run 039 found **Keld**, **hosted.ai GPU Mesh**, and **Fluxenta** as independent current/intended provider implementations not present in the durable Run-038 checkpoint. Do not mark COMPLETE.
 
-## Run-038 durable findings
+## Run-039 durable findings
 
-### Lilac — new strong candidate
-- Idle professional GPU/Kubernetes capacity is automatically monetized with inference/batch workloads.
-- Official supplier economics: 70% of workload revenue to supplier, 30% to Lilac.
-- Official supplier payout documentation: monthly reporting and payout by wire transfer or ACH.
-- Revenue depends on available GPU-hours, demand routed to the cluster and model pricing.
-- Strong fit for already-owned/sunk-cost GPU capacity; do not assume buying new GPUs is profitable without utilization proof.
-- Supplier onboarding is curated and geography/entity/Azerbaijan eligibility are unresolved.
-- Classification: VERIFIED / RESTRICTED.
+### Keld — new material inference-provider implementation
+- Live enterprise marketplace matches jobs to independent model providers by price/deadline/quality/policy constraints.
+- Provider-side `Keld Trade` lists spare capacity/manages orders; micro-batching is designed to monetize otherwise-idle inference fleet headroom.
+- Marketplace economic unit is model output/inference, not raw GPU-hour rental.
+- Official July-2026 launch material says the exchange is live and matches across 100+ providers.
+- Provider settlement, marketplace fee, KYC/entity/geography, Azerbaijan feasibility and public provider/fill-rate proof remain unresolved.
+- Classification: `VERIFIED / RESTRICTED`.
 
-### ResonTech supplier network — new candidate
-- Professional GPU/HPC clusters can register, install an agent and receive automatically routed jobs/inference replicas.
-- Targets professional clusters rather than casual consumer GPU supply.
-- Commercial payout, fees, geography and onboarding proof remain insufficient.
-- Classification: WATCHLIST / RESTRICTED.
+### hosted.ai GPU Mesh — new material supplier + reseller path
+- Owners can publish GPU pools to GPU Mesh and get paid for consumption while continuing direct sales.
+- Businesses can buy wholesale GPU pools and resell under their own neocloud brand, including a zero-hardware-CAPEX path.
+- Metering, billing and orchestration are integrated.
+- Commercial payout/fee terms, supplier minimums, geography/entity requirements and Azerbaijan feasibility remain unresolved.
+- Classification: `VERIFIED / RESTRICTED`.
 
-### Atlara
-- Technical node path remains established through public Linux installer and network mode.
-- Strongest concrete provider reward page pays compute contribution in credits redeemable for AI APIs.
-- Cash/crypto withdrawal remains unverified; do not count those credits as cash income.
+### Fluxenta — new but pre-production
+- Intends headless, agent-first provider onboarding for idle GPU/CPU inference, secure tunnel and crypto-token settlement.
+- Official page explicitly says coming soon and provider onboarding has not started publicly.
+- Classification: `WATCHLIST / PRE-PRODUCTION`.
+
+### Lilac
+- Supplier share remains 70%; monthly wire/ACH payout remains explicit.
+- Supplier country list, Azerbaijan eligibility, entity/KYC requirements, minimum commercial cluster size and utilization distribution remain unresolved.
+- Keep `VERIFIED / RESTRICTED`.
+
+### ResonTech
+- Intended supplier profile is now clearer: professional 8+ GPU clusters; Slurm/K8s/bare-metal and automatic routing are explicit.
+- Public payout/fee/currency/geography/KYC terms remain insufficient.
+- Keep `WATCHLIST / RESTRICTED`.
 
 ### the402
-- Still a strong low-capital server-native match: agents/providers, automated webhooks, autonomous request bidding and USDC settlement are supported.
-- Exact current effective 5% fee mechanics should be checked from live settlement/account behavior because current official pages phrase the fee differently.
-- x402 ecosystem settlement volume is not independent-demand evidence.
-
-### Aeterna
-- Current pages describe inference/subnets/x402, but important components remain roadmap/upcoming and no strong live provider payout/job proof was found.
-- Treat as WATCHLIST / PRE-PRODUCTION for current earning deployment.
-
-### Evernode
-- Host-reputation and lease constraints remain verified.
-- Eligible-host denominator and tenant utilization remain the key missing economics inputs.
+- Public catalog and reputation schema expose provider completed-job counts/completion rates; catalog contains 100+ listings at evidence date.
+- This strengthens production evidence but does not prove marketplace-wide paid demand or a new provider's earnings.
+- Official current fee wording remains inconsistent between docs and marketing; verify live settlement before modeling.
 
 ## Durable lessons
-- Paid utilization remains the dominant hidden variable.
-- Explicit bank/stablecoin payout rails materially strengthen a supplier candidate versus points/credits.
+- Paid utilization/fill rate remains the dominant hidden variable.
 - Existing idle-capacity economics and new-hardware CAPEX economics must be modeled separately.
-- Credits are not cash income without withdrawal or transferable liquidity.
-- Payment facilitators/standards are enablers, not buyer demand.
-- Curated professional compute markets may be technically autonomous but operationally inaccessible to a small hobby operator.
+- Marketplace/provider count is not equivalent to buyer demand.
+- Professional provider markets can be technically autonomous but inaccessible without business onboarding/cluster scale/geographic eligibility.
+- Wholesale compute resale can remove hardware CAPEX but adds customer-acquisition/support/compliance requirements.
+- Enablers such as marketplace software, utilization optimizers and payment rails are not stand-alone income sources unless they also provide paying demand.
 - Azerbaijan remains a hard pre-CAPEX validation gate.
 
 ## Current next run
-**Run 039 — supplier-proof + newly discovered neighbor pass.**
+**Run 040 — second supplier-tail convergence pass.**
 
 Priority:
-1. Lilac supplier geography/KYC/entity requirements, minimum cluster scale, accepted hardware, utilization evidence and Azerbaijan feasibility.
-2. ResonTech supplier commercial terms, payout/fees, onboarding, geography and real demand proof.
-3. Search close neighbors: Kubernetes idle-GPU operator, enterprise GPU reclaim marketplace, HPC spare-capacity supplier, Slurm capacity seller, reserved-cloud-capacity resale, inference revenue-share operator.
-4. the402 public provider/catalog/completed-job evidence if exposed without private credentials.
-5. Atlara terms/cash-withdrawal proof; if still credit-only, retain non-cash restriction.
-6. Aeterna only upgrades if production supplier/payout evidence appears.
+1. Keld provider onboarding, settlement/payout, fees, KYC/entity/geography, Azerbaijan feasibility, public suppliers and fill/demand evidence.
+2. hosted.ai GPU Mesh supplier commercial terms, fees, payout rails, minimum infrastructure/business requirements and geography.
+3. Fluxenta production-launch check only; keep pre-production unless live onboarding/settlement exists.
+4. Search close neighbors using: inference exchange, model-provider exchange, GPU mesh, wholesale GPU resale, capacity clearing, token-level inference market, micro-batched provider fleet, sovereign GPU supplier, idle-capacity sales channel.
+5. Re-run non-GPU analogs: CPU/HPC/storage/bandwidth/API capacity exchanges and reseller networks.
+6. Deduplicate all discoveries against master catalog and run-addition files.
 
 ### Completion logic
-If Run 039 yields **no new material independent provider project** (or only dead/test/specification/duplicate/enabler entries), move to **Run 040 — final all-category saturation/control pass**.
+If Run 040 yields **no new material independent provider project** (only duplicates, enablers, dead/test/spec/pre-production projects), move to **Run 041 — final all-category saturation/control pass**.
 
-Only if Run 040 also converges and remaining unknowns are explicitly recorded should `STATUS.md` be changed to **COMPLETE**.
+Only if Run 041 also converges and remaining unknowns are explicitly recorded should `STATUS.md` be changed to **COMPLETE**.
