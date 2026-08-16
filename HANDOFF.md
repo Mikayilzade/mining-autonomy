@@ -32,81 +32,96 @@ Weak, restricted, rejected, dead and points-only options must stay documented to
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when the completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs **001–031** are complete.
+Runs **001–032** are complete.
 
 Latest files:
-- `research/RUN_031_COCOON_ECONOMICS_CONFIDENTIAL_INFERENCE_TAIL.md`
-- `research/SOURCES_RUN_031.md`
-- `research/CATALOG_ADDITIONS_RUN_031.md`
+- `research/RUN_032_C0MPUTE_ECONOMICS_INFERENCE_CONVERGENCE.md`
+- `research/SOURCES_RUN_032.md`
+- `research/CATALOG_ADDITIONS_RUN_032.md`
 
 `STATUS.md` is the authoritative checkpoint and next-run pointer.
 
-## Saturation state after Run 031
-Fourteen deliberately different control/tail passes have produced **0 new top-level economic mechanisms**, so taxonomy confidence remains very high.
+## Saturation state after Run 032
+Fifteen deliberately different control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation is very high.
 
-Project/provider tail is still not saturated because Run 031 found one material current supplier network missed previously:
+Project/provider saturation is still not complete because Run 032 found six fresh current inference-worker leads through contributor/native/browser-worker terminology:
+- Basis
+- Open Communication
+- Kunagi Systems
+- Jatevo decentralized inference
+- Kvasir
+- Senda
 
-### c0mpute
-- **Contributor GPU Worker** — VERIFIED current provider mechanism / economics pending.
-- Current public repository exposes browser/WebGPU and native/Ollama contributor workers.
-- Network has an OpenAI-compatible demand API plus orchestrator billing and Solana payout logic.
-- Public aggregate telemetry reports jobs, credits spent, cumulative USDC deposits and **USDC paid out to workers**.
-- This is economically customer-paid AI inference, not a new top-level mechanism, but it is a material project-level provider find.
-- Dedicated normalization is still required for native-worker hardware, admission, payout formula, utilization, withdrawal, KYC/geography and cloud-host compatibility.
+Several appear early/pre-launch and may ultimately remain watchlist-only, but they must be normalized before provider-tail convergence can be claimed.
 
-### Telegram COCOON
-- **GPU Worker / confidential inference provider** — VERIFIED current provider role / RESTRICTED economics.
-- Production requirements are now clear: Linux server, Intel TDX-capable CPU, NVIDIA H100+ confidential-computing GPU, QEMU TDX; consumer RTX is not supported for production.
-- H200 NVL is explicitly tested.
-- Workers receive request-linked TON payments; config includes TON owner wallet and a worker price coefficient.
-- One current worker instance maps to one GPU/TDX guest; multiple GPUs scale as multiple workers.
-- Provider setup is publicly documented and production worker distributions are downloadable.
-- Exact utilization, provider net TON/GPU-hour, proxy/network fee realization and Azerbaijan/KYC remain unresolved.
+## c0mpute — normalized checkpoint
+- **Contributor GPU Worker — VERIFIED current provider mechanism / economics pending.**
+- Native CLI can run unattended with explicit `--mode`, `--model` and `--gpu` flags.
+- Text worker: Ollama; 20GB+ VRAM; ~17GB model storage.
+- Image worker: ComfyUI; 24GB GPU recommended; ~14GB model storage.
+- Multi-GPU: one worker per NVIDIA GPU with supervisor/restart logic.
+- Current caps: 10 workers per IP and 10 per account.
+- Earnings are job-linked (text by tier/tokens, image per render).
+- First-party source code verifies an internal-worker-ledger withdrawal path to SPL USDC on a user-provided Solana address.
+- Public realized USD/token, USD/render, utilization distribution, minimum withdrawal and Azerbaijan/KYC remain unresolved.
+- Best future economics test: small 24–72 hour measured single-GPU pilot before hardware CAPEX.
 
-### DICOMPUTE
-- Provider path is technically verified but remains **public alpha / pilot**.
-- Linux/macOS/Windows; pure-Go CLI plus desktop app; CPU-only works for smaller models and GPU is optional.
-- Automatic model selection/download and background serving are real.
-- Reward unit, withdrawals, liquidity, payout history and utilization are not publicly normalized enough.
-- Keep **WATCHLIST**.
+## Fresh inference-worker tail
+### Basis
+- WATCHLIST / market opening.
+- OpenAI-compatible inference market on Base.
+- Workers register/heartbeat/serve; completed verified jobs earn `$BASIS`; failed jobs earn nothing.
+- First-party site reported no verified offers yet and contributor worker network being activated.
 
-### io.net
-- Supplier role is **VERIFIED** and should be upgraded from the original UNVERIFIED catalog entry.
-- Current Worker onboarding/binaries and supplier reward docs are live.
-- Customers pay in USDC; suppliers are compensated in IO; earnings dashboard tracks compute hours/jobs and claimable earnings.
-- Confidential compute is a capability extension of the existing supplier mechanism, not a new category.
+### Open Communication
+- WATCHLIST / very early.
+- Browser/native contributor GPU inference.
+- Advertises worker share of 70% of credits served.
+- Retrieved public site showed 0 active nodes; whitepaper is draft v0.1.
 
-### 0G Compute
-- Current first-party docs expose Compute and Provider Setup families, but Run 031 found no distinct new supplier mechanism beyond known decentralized compute/provider roles.
+### Kunagi Systems
+- WATCHLIST.
+- Native/browser provider workflow documented, including hardware benchmark, model listing and routed jobs.
+- Exact reward unit, withdrawal/liquidity and mature production demand not yet proven.
+
+### Jatevo decentralized inference
+- WATCHLIST / early access.
+- CUDA worker, `$JTVO` stake to join, `$JTVO` rewards for served requests.
+- Contributor path currently behind waitlist.
+
+### Kvasir
+- UNVERIFIED/WATCHLIST.
+- Layer/shard inference contribution across GPU/CPU/NPU/phone, OpenAI + Anthropic compatible gateway, claimed KVR earnings.
+- Need node software, KVR/liquidity, live jobs and payout proof.
+
+### Senda
+- WATCHLIST.
+- Mesh inference node, paid OpenAI-compatible `/v1` preview, contributor credits and possible peer-USD payout via bound wallet.
+- Exact payout/utilization/provider eligibility not yet normalized.
 
 ## Durable lessons
-- Paid utilization is the dominant hidden variable.
+- Paid utilization remains the dominant hidden variable.
 - The closest compliant implementation of “bots mining simple online tasks” is generally a daemon selling a machine-readable resource rather than automating human microtasks.
-- Confidential compute / TEE / attested compute / secure hardware / GPU owner / supply portal / confidential inference are mandatory alternate vocabularies for discovery.
-- After c0mpute, contributor-GPU / native-worker / browser-worker / serve-tokens / worker-payout vocabulary is also mandatory.
-- Strong provider candidates combine daemon/API-native operation, usage/customer-linked revenue, open onboarding, and no need to impersonate a human/residential user.
+- Alternate provider vocabulary keeps discovering projects: confidential compute/TEE, contributor GPU, native worker, browser worker, serve tokens, peer USD, sharded/layer inference.
 - Direct customer settlement and public payout telemetry are stronger evidence than generic token emissions, but real demand still has to be measured.
-- Owned qualifying hardware generally beats retail-cloud re-rental unless the earning market offers a specialty premium.
+- Owned qualifying hardware usually beats retail-cloud re-rental unless a specialty premium exists.
 - Collateral/stake/license cost must be priced as capital with lock/liquidity/slashing risk.
-- Testnet settlements are not production-income proof.
-- Roadmap revenue sharing is not present income.
+- Testnet/preview/roadmap rewards are not production-income proof.
 - Linux/server compatibility does not prove every public-cloud host permits the workload.
-- Small measured pilots should precede CAPEX.
-- Azerbaijan must be validated through live onboarding/payout/geofencing and exchange/off-ramp dependencies before spending capital; silence in docs is not confirmation.
+- Azerbaijan must be validated through live onboarding/payout/geofencing and exchange/off-ramp dependencies before spending capital.
 
 ## Current next run
-**Run 032 — c0mpute worker economics + final inference-provider convergence pass.**
+**Run 033 — normalize the six fresh inference-worker leads and test whether they are truly live/independent enough for the serious catalog.**
 
-Search/validation priorities:
-- c0mpute native worker hardware/runtime and unattended Linux/server operation;
-- payout formula, USDC settlement/withdrawal, admission/account requirements and anti-cheat constraints;
-- live worker count/utilization and any per-worker/per-token economics that can be reconstructed from public telemetry;
-- cloud GPU/bare-metal compatibility and upstream ToS constraints;
-- Azerbaijan/KYC/off-ramp dependencies;
-- discovery under `contributor GPU`, `native worker`, `browser worker`, `serve tokens earn`, `permissionless inference worker`, `decentralized OpenAI-compatible inference`, `USDC worker payout`, plus adjacent terms;
-- dedupe against COCOON, io.net, DICOMPUTE, Nosana, Golem GPU, Bittensor, Akash, Targon/Tenzro and all already catalogued compute/inference networks.
+Priority:
+1. Basis worker install/runtime, reward contract, payout/liquidity, provider admission and current offer/job counts.
+2. Open Communication source/runtime, implemented vs advertised 70% share and actual payout path.
+3. Kunagi executable/source, provider terms, reward unit and withdrawal.
+4. Jatevo status beyond waitlist, stake size, worker binary and realized payout evidence.
+5. Kvasir node package/source, KVR definition/liquidity and live reward evidence.
+6. Senda node runtime, peer-USD withdrawal mechanics, paid-mesh utilization and geography.
+7. Search exact project names plus `worker install`, `provider`, `earn`, `withdraw`, package registries, GitHub and on-chain/launch-status evidence.
+8. Dedupe against c0mpute, COCOON, io.net, DICOMPUTE, Nosana, Golem GPU, Bittensor, Akash, Targon/Tenzro and existing catalog.
 
 ### Completion logic
-If Run 032 produces **no new material provider cluster**, immediately perform the final all-category saturation/control pass. If that final pass also yields no material novelty, mark `STATUS.md` **COMPLETE**, document final saturation evidence and stop recurring research.
-
-If Run 032 finds another material provider/operator cluster, remain IN PROGRESS and continue until provider-level discovery converges.
+If Run 033 reduces these mostly to pre-launch/watchlist and finds no additional material provider project, run one more dedicated inference-tail control. If that converges, perform the final all-category saturation/control pass. Mark `STATUS.md` **COMPLETE** only if the final control also yields no material novelty; otherwise continue.
