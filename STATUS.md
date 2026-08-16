@@ -2,99 +2,88 @@
 
 Project state: **IN PROGRESS**
 
-Last completed run: **Run 041 — third supplier-tail convergence + authenticity/dedup pass**
+Last completed run: **Run 042 — x402 / MPP / own-endpoint supplier saturation pass**
 Last updated: **2026-08-16**
 
 ## Completed research runs
-Runs **001–041** are complete.
+Runs **001–042** are complete.
 
 Latest durable files:
-- `research/RUN_041_THIRD_SUPPLIER_TAIL_CONVERGENCE.md`
-- `research/SOURCES_RUN_041.md`
-- `research/CATALOG_ADDITIONS_RUN_041.md`
+- `research/RUN_042_X402_MPP_OWN_ENDPOINT_SUPPLIER_PASS.md`
+- `research/SOURCES_RUN_042.md`
+- `research/CATALOG_ADDITIONS_RUN_042.md`
 
 ## Saturation state
-Twenty-four deliberate control/tail passes (Runs 018–041) have produced **0 new top-level economic mechanisms**. Taxonomy saturation confidence is **very high**.
+Twenty-five deliberate control/tail passes (Runs 018–042) have produced **0 new top-level economic mechanisms**. Taxonomy saturation confidence is **very high**.
 
-Project-level saturation is still **not complete**. Run 041 found a materially productive cluster of independent API-capacity / own-endpoint seller markets that were absent from the durable Run-040 checkpoint: **Proxygate, JellyNet, cn2.ai, CreditSwap**, plus **GEPU Exchange** on the GPU-exchange side.
+Project-level saturation is still **not complete**. Run 042 confirmed that the machine-native API/payment cluster remains highly productive at the implementation level.
 
-This means supplier-tail discovery has shifted rather than converged: generic GPU-rental vocabulary is increasingly saturated, while machine-native API/endpoint marketplaces using x402/MPP/USDC settlement still produce fresh implementations.
+The most important refinement is a three-way split:
+1. **own endpoint / own data / own service** — preferred legal profile;
+2. **explicitly authorized reseller/enterprise capacity** — potentially compliant but contract-dependent;
+3. **ordinary third-party retail API-key/quota resale** — restricted by default until upstream terms explicitly permit resale/sublicensing/capacity sharing.
 
-## Material Run 041 findings
+## Material Run 042 findings
 
-### Proxygate — NEW, current API/endpoint seller marketplace
-- Sellers may list authorized upstream API capacity or endpoints they own/control.
-- Seller fee: 5%; seller receives 95% of listing price.
-- USDC/Solana settlement is automated and described as near-real-time / batched roughly every 10 minutes.
-- Seller application/moderation required.
-- Upstream resale authorization is explicitly the seller's responsibility.
-- Classification: `VERIFIED / RESTRICTED`.
+### New marketplace/provider implementations
+- **Agent402 Marketplace** — own-endpoint x402 listing/discovery; free registration, non-custodial USDC settlement; fees/legal identity/demand/geography still need validation.
+- **the402** — provider marketplace with API/webhook fulfillment, autonomous bidding, subscriptions and digital products; public docs state 95% provider / 5% platform split.
+- **x402 Bazaar** — 95% provider revenue advertised, but current public traction panel showed 0 external providers / $0 USDC volume; technically live, demand unproven.
+- **PayanAgent** — agent/API offers plus request/escrow market; public catalog claims require independent utilization validation.
+- **RelAI Marketplace** — own-endpoint x402 marketplace, multi-chain, free listing during beta; exact protocol fee unresolved.
+- **to402** — x402 proxy/marketplace with explicit API-reselling capability; own-endpoint use is cleaner, third-party resale remains restricted without upstream rights.
+- **PayAPI Market** — paid data/API marketplace, provider keeps 100% per public site; UK positioning/geography need validation.
+- **endpoint.farm** — alpha marketplace for paid API/MCP tools, non-custodial settlement, 100% provider price claimed; demand proof weak.
 
-### JellyNet — NEW, pooled API-capacity sharing
-- Suppliers contribute idle API capacity; paid calls are allocated through pooled routing.
-- Terms state supplier shares of 60% in native-call mode or 50% in default API-key-only mode, with a 10% platform fee structure and buyer discounts.
-- Earnings are distributed in 8-hour epochs; withdrawals via USDC on Solana or Stripe Connect where available.
-- Terms explicitly acknowledge upstream suspension/revocation risk.
-- Classification: `VERIFIED / RESTRICTED`.
+### Discovery/distribution layers
+- x402gle
+- Agentic Market
+- 402 Index
+- gate402
+- Decixa
 
-### cn2.ai — NEW, machine-payments API-key marketplace
-- Sellers list spare API capacity; buyers use proxy endpoints and machine-payment rails.
-- Seller KYC status is handled through Persona; payout preferences include wallet/bank rails.
-- Public site advertises USDC, Stripe, Lightning or wire payouts.
-- Exact seller fee/split and payout thresholds still need first-party confirmation.
-- Classification: `VERIFIED / RESTRICTED`.
+These matter as distribution surfaces for a paid endpoint but are not automatically direct earning counterparties.
 
-### CreditSwap — NEW, private-beta server-agent capacity exchange
-- Seller agent runs on seller server and keeps keys local while executing marketplace jobs.
-- Public claims: seller recovery 85% of retail, 5% platform fee, 10% buyer discount.
-- Still private beta/waitlist; upstream rights unresolved.
-- Classification: `WATCHLIST / RESTRICTED`.
+## Protocol-layer conclusion
+- **x402** is payment infrastructure, not an earning platform by itself.
+- **MPP** is likewise a machine-payment protocol/discovery ecosystem, not an income source by itself.
 
-### GEPU Exchange — NEW, GPU-hour spot exchange watchlist
-- First-party site claims six live GPU markets, USDC T+0 settlement, provider attestation and automatic listing of idle capacity.
-- Same page labels showcased network flow as devnet; strong independent/legal production validation was not found in this pass.
-- Classification: `UNVERIFIED / WATCHLIST`.
+Durable strategy model:
 
-## Existing candidate updates
-- **Compute Exchange / TCEX:** legal identity strengthened by current Marketplace Terms identifying The Compute Exchange Inc., a Delaware corporation. Still institutional/legal-entity and RFQ/direct-contract oriented, so `VERIFIED / RESTRICTED`.
-- **Inpherio:** remains `VERIFIED / BETA`; live-beta functionality is explicit, but Azerbaijan/Stripe connected-account eligibility remains unresolved.
-- **UsePod:** remains `VERIFIED / RESTRICTED`; 80/20 split, $50 bond and on-demand USDC withdrawal reconfirmed; exact withdrawal minimum/daily cap and geography unresolved.
-- **KeyMart:** remains `VERIFIED / RESTRICTED`; enterprise/invitation onboarding, identity/API-provenance/upstream-ToS/SLA gates reconfirmed.
-- **Exascale / Hyperlink:** remains `UNVERIFIED / WATCHLIST`; highly specific first-party production claims still lack sufficient external/legal validation.
+`owned useful endpoint + discovery/demand channel + payment protocol + low-cost hosting`
 
-## Durable economics findings
-- **Paid utilization/fill rate remains the dominant hidden variable.**
-- Existing idle-capacity economics and new-hardware CAPEX economics must be modeled separately.
-- Transparent provider fee splits do not prove demand.
-- Machine-native API/endpoint markets are a distinct implementation cluster but not a new top-level mechanism.
-- API resale must be split into three risk classes: own endpoint; explicitly authorized enterprise/reseller capacity; ordinary retail API-key resale. The last class stays restricted unless upstream contract rights are explicit.
-- Solana/x402/MPP settlement can eliminate human payout handling but does not solve legal resale rights, KYC, tax, geography or demand.
+## Economics / risk findings
+- Paid utilization/fill rate remains the dominant hidden variable.
+- Catalog size, raw transaction count and headline revenue share are not sufficient profitability evidence.
+- Recent 2026 research indicates x402 facilitator security and settlement-authenticity risks; raw settlement counts can be highly concentrated/manufacturable and must not be used as demand proof.
+- Wallet-native settlement reduces some payment-friction but does not solve legal entity, KYC, sanctions, tax, upstream rights or country eligibility.
 - Azerbaijan remains a hard pre-CAPEX/pre-subscription validation gate.
 
 ## Current phase
-Taxonomy is effectively converged, but API-capacity/endpoint supplier discovery is still materially productive. Completion is premature.
+Taxonomy is effectively converged. The x402/MPP/MCP own-endpoint cluster is **not yet project-saturated**.
 
 Completion confidence:
 - taxonomy: **very high**
 - high-priority economics: **high**
-- project-level saturation: **high, not complete**
+- project-level saturation: **high overall, incomplete in x402/MPP/MCP tail**
 - overall completion: **not yet**
 
 ## Next run priority
-**Run 042 — dedicated API-capacity / x402 / MPP / own-endpoint supplier saturation pass.**
+**Run 043 — second x402/MPP/MCP own-endpoint convergence + authenticity/economics pass.**
 
 Priority:
-1. Search `x402 API marketplace seller`, `MPP API marketplace seller`, `sell API capacity x402`, `monetize API key capacity`, `agent marketplace own endpoint seller USDC`, `machine payments API seller`, `API clearinghouse provider`, `unused API quota marketplace`, `sell endpoint per request`, `agent service marketplace x402`.
-2. Validate legal/company identity and production activity for Proxygate, JellyNet, cn2.ai and CreditSwap.
-3. Resolve seller geography/Azerbaijan eligibility where possible.
-4. Capture exact cn2.ai seller fees, minimum payout and payout timing.
-5. Capture JellyNet withdrawal limits/KYC and reconcile public marketing vs Terms economics.
-6. Determine whether any platforms explicitly certify upstream resale rights rather than merely shifting responsibility to sellers.
-7. Search own-endpoint marketplaces separately from upstream-key resale because the legal profile is materially cleaner.
-8. Deduplicate discoveries against UsePod/KeyMart/Proxygate/JellyNet/cn2/CreditSwap/Atlas-like implementations.
+1. Validate legal entities/Terms/fees for Agent402, the402, PayanAgent, RelAI, PayAPI, endpoint.farm.
+2. Determine actual seller/platform/facilitator fee structure.
+3. Search for direct independent paid-utilization evidence instead of relying on catalog/transaction counts.
+4. Resolve Azerbaijan/provider geography and KYC where possible.
+5. Separate true marketplaces from directories/indexes/protocol wrappers.
+6. Search alternative vocabulary: `paid MCP marketplace`, `agent tool marketplace seller`, `402 service registry provider`, `monetize MCP tool`, `pay per tool call API`, `AI agent service seller`, `autonomous webhook marketplace`, `MCP tool revenue share`, `agent service bidding marketplace`.
+7. Deduplicate against all Run-041/042 candidates.
 
 ### Completion logic
-If Run 042 yields **no or negligible new viable independent provider projects** inside the API-capacity/x402/MPP cluster, proceed to **Run 043 — final all-category saturation/control pass**. Only if that broad pass also converges should the project be marked COMPLETE.
+If Run 043 yields **no or negligible new viable independent provider projects** in the x402/MPP/MCP own-endpoint cluster, proceed to **Run 044 — final all-category saturation/control pass**.
+
+Only if that broad pass also converges and remaining unknowns are explicitly recorded should the project be marked **COMPLETE**.
 
 ## Completion gate
-Do **not** mark complete until repeated broad + niche + alternative-vocabulary + role-name/repository + non-GPU/provider-operator + proof/RPC/indexing + proof-market/data-operator + TEE/verifier-node + confidential-supplier/open-provider + confidential-inference-worker + contributor/native/browser-worker + x402/agent-compute + cloud-backed-provider + autonomous-webhook-service + decentralized-hosting + professional-idle-GPU/HPC-supplier + inference-exchange/GPU-mesh/wholesale-resale + provider-agent/API-capacity-resale + API-capacity/x402/MPP/own-endpoint + final all-category control passes add no new independent mechanism and almost no new viable projects, with remaining unknowns explicitly recorded rather than guessed.
+Do **not** mark complete until repeated broad + niche + alternative-vocabulary + role-name/repository + non-GPU/provider-operator + proof/RPC/indexing + proof-market/data-operator + TEE/verifier-node + confidential-supplier/open-provider + confidential-inference-worker + contributor/native/browser-worker + x402/agent-compute + cloud-backed-provider + autonomous-webhook-service + decentralized-hosting + professional-idle-GPU/HPC-supplier + inference-exchange/GPU-mesh/wholesale-resale + provider-agent/API-capacity-resale + API-capacity/x402/MPP/own-endpoint + paid-MCP/agent-tool marketplace + final all-category control passes add no new independent mechanism and almost no new viable projects, with remaining unknowns explicitly recorded rather than guessed.
