@@ -32,78 +32,76 @@ Weak, restricted, rejected, dead and points-only options must stay documented to
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when the completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs **001–037** are complete.
+Runs **001–038** are complete.
 
 Latest files:
-- `research/RUN_037_PROVIDER_TAIL_MEASURABLE_ECONOMICS.md`
-- `research/SOURCES_RUN_037.md`
-- `research/CATALOG_ADDITIONS_RUN_037.md`
+- `research/RUN_038_FINAL_PROVIDER_TAIL_CONTROL.md`
+- `research/SOURCES_RUN_038.md`
+- `research/CATALOG_ADDITIONS_RUN_038.md`
 
 `STATUS.md` is the authoritative checkpoint and next-run pointer.
 
-## Saturation state after Run 037
-Twenty deliberately different control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation is very high.
+## Saturation state after Run 038
+Twenty-one deliberately different control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation is very high.
 
-Project/provider saturation is still not complete because Run 037 found **Atlara**, a new independent inference-provider implementation distinct from Atlora. Do not mark COMPLETE.
+Project/provider saturation is still not complete because Run 038 found at least **two independent current supplier paths: Lilac and ResonTech**. Do not mark COMPLETE.
 
-## Run-037 durable findings
+## Run-038 durable findings
 
-### Atlara — new candidate
-- Distinct from Atlora.
-- Official provider pages and Linux installer establish a technical distributed-inference provider path.
-- Official site claims provider node automation and roughly 85% economics to providers.
-- Early-access orientation remains.
-- Critical ambiguity: some pages call rewards earnings/payouts, while the free-credits program explicitly pays compute contribution in credits redeemable for AI API calls. Cash/crypto withdrawal for ordinary providers is not yet verified.
-- Keep `WATCHLIST / RESTRICTED / EARLY ACCESS` until terms, withdrawal, geography/KYC and live demand are proven.
+### Lilac — new strong candidate
+- Idle professional GPU/Kubernetes capacity is automatically monetized with inference/batch workloads.
+- Official supplier economics: 70% of workload revenue to supplier, 30% to Lilac.
+- Official supplier payout documentation: monthly reporting and payout by wire transfer or ACH.
+- Revenue depends on available GPU-hours, demand routed to the cluster and model pricing.
+- Strong fit for already-owned/sunk-cost GPU capacity; do not assume buying new GPUs is profitable without utilization proof.
+- Supplier onboarding is curated and geography/entity/Azerbaijan eligibility are unresolved.
+- Classification: VERIFIED / RESTRICTED.
 
-### Evernode
-- Community dashboard observed around 6,024 active/total hosts.
-- Official reward rules: reputation >=200, >=3 instances, offered leases and reward-linked maximum lease fee are important eligibility gates.
-- EVR observed near ~$0.09 in current Xahau Explorer snapshot with thin trading volume.
-- Simple reward-only sanity check suggests rented-VPS economics may be weak unless eligible-host dilution is much lower than total hosts or tenant lease revenue is meaningful.
-- Need canonical current epoch/eligible-host count and tenant utilization.
+### ResonTech supplier network — new candidate
+- Professional GPU/HPC clusters can register, install an agent and receive automatically routed jobs/inference replicas.
+- Targets professional clusters rather than casual consumer GPU supply.
+- Commercial payout, fees, geography and onboarding proof remain insufficient.
+- Classification: WATCHLIST / RESTRICTED.
+
+### Atlara
+- Technical node path remains established through public Linux installer and network mode.
+- Strongest concrete provider reward page pays compute contribution in credits redeemable for AI APIs.
+- Cash/crypto withdrawal remains unverified; do not count those credits as cash income.
 
 ### the402
-- Strong autonomous provider-webhook market remains verified.
-- Agents may act as providers; automated services, public request bidding, provider starter template and USDC settlement are explicit.
-- Provider keeps 95% after 5% platform fee.
-- July-2026 academic measurement of the broader x402 ecosystem shows settlement count is not reliable independent-demand evidence. Apply as a methodological caution only; it does not directly accuse the402.
-
-### Open Cloud
-- Provider onboarding is curated: KYC plus legal-entity, insurance, data-center agreement and operations-runbook review.
-- Still strong for cloud-backed autonomous resale, but not a frictionless hobby-VPS route.
-- Azerbaijan/small-operator acceptance remains unresolved.
-
-### Atlora
-- Buy/sell inference claim remains, but public supplier onboarding/payout proof is still insufficient.
-- Keep WATCHLIST.
+- Still a strong low-capital server-native match: agents/providers, automated webhooks, autonomous request bidding and USDC settlement are supported.
+- Exact current effective 5% fee mechanics should be checked from live settlement/account behavior because current official pages phrase the fee differently.
+- x402 ecosystem settlement volume is not independent-demand evidence.
 
 ### Aeterna
-- Public site still claims compute contribution and autonomous x402 AI-service economy.
-- Production provider/job/payout proof remains insufficient.
-- Give one final proof-oriented pass, then downgrade/reject if still only marketing.
+- Current pages describe inference/subnets/x402, but important components remain roadmap/upcoming and no strong live provider payout/job proof was found.
+- Treat as WATCHLIST / PRE-PRODUCTION for current earning deployment.
+
+### Evernode
+- Host-reputation and lease constraints remain verified.
+- Eligible-host denominator and tenant utilization remain the key missing economics inputs.
 
 ## Durable lessons
 - Paid utilization remains the dominant hidden variable.
-- Provider share and estimated monthly earnings are not proof of revenue.
-- Credits are not cash income unless withdrawal or external liquidity is proven.
-- Thin token liquidity can destroy nominal node economics at exit.
-- x402 is a payment rail; transaction count alone does not prove independent buyers.
-- Curated server/cloud marketplaces can automate operations while retaining substantial business/KYC/legal admission friction.
+- Explicit bank/stablecoin payout rails materially strengthen a supplier candidate versus points/credits.
+- Existing idle-capacity economics and new-hardware CAPEX economics must be modeled separately.
+- Credits are not cash income without withdrawal or transferable liquidity.
+- Payment facilitators/standards are enablers, not buyer demand.
+- Curated professional compute markets may be technically autonomous but operationally inaccessible to a small hobby operator.
 - Azerbaijan remains a hard pre-CAPEX validation gate.
 
 ## Current next run
-**Run 038 — final exact-neighbor/provider-tail control before all-category saturation.**
+**Run 039 — supplier-proof + newly discovered neighbor pass.**
 
 Priority:
-1. Atlara terms/provider withdrawal/geography/KYC/public-network state/credits-vs-cash.
-2. Evernode canonical current hook epoch, eligible hosts and tenant utilization if accessible.
-3. the402 direct provider completed-job distribution and deterministic service margins.
-4. Aeterna final production-proof check.
-5. Alternate role-name searches: inference supplier, compute lender, AI worker node, API merchant, machine-service seller, webhook provider, app-host node, cloud reseller marketplace.
-6. Exact neighbors around low-end CPU/VPS earning, decentralized app hosting, machine APIs, x402 sellers and distributed inference.
+1. Lilac supplier geography/KYC/entity requirements, minimum cluster scale, accepted hardware, utilization evidence and Azerbaijan feasibility.
+2. ResonTech supplier commercial terms, payout/fees, onboarding, geography and real demand proof.
+3. Search close neighbors: Kubernetes idle-GPU operator, enterprise GPU reclaim marketplace, HPC spare-capacity supplier, Slurm capacity seller, reserved-cloud-capacity resale, inference revenue-share operator.
+4. the402 public provider/catalog/completed-job evidence if exposed without private credentials.
+5. Atlara terms/cash-withdrawal proof; if still credit-only, retain non-cash restriction.
+6. Aeterna only upgrades if production supplier/payout evidence appears.
 
 ### Completion logic
-If Run 038 yields **no new material independent provider project** (or only dead/test/specification/duplicate entries), move to **Run 039 — final all-category saturation/control pass**.
+If Run 039 yields **no new material independent provider project** (or only dead/test/specification/duplicate/enabler entries), move to **Run 040 — final all-category saturation/control pass**.
 
-Only if Run 039 also converges and remaining unknowns are explicitly recorded should `STATUS.md` be changed to **COMPLETE**.
+Only if Run 040 also converges and remaining unknowns are explicitly recorded should `STATUS.md` be changed to **COMPLETE**.
