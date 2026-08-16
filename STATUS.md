@@ -2,11 +2,11 @@
 
 Project state: **IN PROGRESS**
 
-Last completed run: **Run 024 — non-GPU provider-tail convergence pass**
+Last completed run: **Run 025 — remaining infrastructure/operator tail**
 Last updated: **2026-08-16**
 
 ## Completed research runs
-Runs **001–024** are complete.
+Runs **001–025** are complete.
 
 Major sequence:
 - 001 initial universe/structure
@@ -29,50 +29,48 @@ Major sequence:
 - 022 provider-role/release tail sweep + economics normalization
 - 023 tight provider-tail convergence pass
 - 024 non-GPU provider-tail convergence pass
+- 025 remaining infrastructure/operator tail
 
 Latest durable files:
-- `research/RUN_024_NON_GPU_PROVIDER_TAIL.md`
-- `research/SOURCES_RUN_024.md`
+- `research/RUN_025_INFRASTRUCTURE_OPERATOR_TAIL.md`
+- `research/SOURCES_RUN_025.md`
 
 ## Saturation state
-Seven deliberate control/tail passes (Runs 018–024) have produced **0 new top-level economic mechanisms**. Taxonomy saturation confidence is **very high**.
+Eight deliberate control/tail passes (Runs 018–025) have produced **0 new top-level economic mechanisms**. Taxonomy saturation confidence is **very high**.
 
-Project-level saturation is still **not complete** because Run 024 found multiple material current provider projects plus restricted/watchlist leads and materially upgraded several prior entries.
+Project-level saturation is still **not complete** because Run 025 found four genuinely new current infrastructure/operator implementations, including three strong server-native earning roles.
 
-### Material additions from Run 024
-- **NodeOps Cloud** — current generic CPU/RAM/NVMe provider path; cloud VM supply is explicitly contemplated. Requires NODE bond and dedicated high-availability machine; published rewards still need fiat/net economics.
-- **DeNet Datakeeper** — active storage-provider stack with current 2026 Linux/headless/server binaries and Proof-of-Storage rewards; license economics require normalization.
-- **Iagon Storage Node** — computer/server storage provider; 90% of storage-user subscription payments distributed to node operators based on performance plus staking rewards; IAG stake and 3-month retirement period apply.
-- **Edge Network Host** — open Host onboarding for compute/storage/bandwidth contribution; background self-updating software, stake requirement and demand-linked yield.
-- **Anyone Network Relay** — bandwidth/privacy relay with current reward system and 100 ANYONE lock for non-hardware relays; geolocation/quality multipliers affect economics.
-- **Marlin Relay Cluster Operator** — blockchain relay cluster with receiver-subscription fee distribution plus network rewards; minimum 0.5 MPond delegation.
+### Material additions from Run 025
+- **Lava RPC Node Provider** — current mainnet RPC provider path. Providers run chain RPC nodes plus Lava provider process, stake LAVA per service, serve relays and receive subscription/RPC-pool/provider rewards. Official docs state providers/restakers receive 95% of subscription rewards and 95% of public RPC-pool rewards.
+- **SubQuery Node Operator** — current external-VM/Docker path for RPC endpoints and indexing. Earns query/PAYG/Closed Agreement revenue plus network inflation/stake rewards. Current minimum self-stake is 200,000 SQT, with 14-day unlock and slashing/reallocation risk.
+- **Aztec Mainnet Prover** — current mainnet proof-generation role with no prover stake listed, but high datacenter-class CPU/RAM requirements. Proof rewards accrue per epoch and are claimable on mainnet; L1 gas and competition are major economics variables.
+- **Datagram Full Core Node** — mainnet server/cloud-compatible compute/storage/bandwidth node, but **RESTRICTED** by paid Full Core license NFT and KYC. Low-end UDP configuration is lightweight; profitability depends heavily on license price, DGRAM liquidity and emissions.
 
-### Restricted/watchlist additions
-- **EthStorage** — real mainnet storage-provider reward path, but initial mainnet earning remains whitelist-limited.
-- **DCDN Cloud** — public operator dashboard claims 70% node revenue share across VPS/CDN and publishes rates, but trust/usage/repository/withdrawal evidence is too shallow for VERIFIED.
-- **ARO Network ARO Server** — explicit Server node and reward model, but current mainnet-vs-testnet realized-income state needs confirmation.
+### Partial leads resolved / upgraded
+- **Supra validator/operator** — **RESTRICTED**: current 2026 official docs explicitly say node operation is permissioned to selected operators and not available to the public.
+- **Fleek Network** — remains WATCHLIST; operator/reward concept exists, but this pass did not establish sufficiently current 2026 live-income/onboarding evidence for VERIFIED.
+- **ClayStack** — remains WATCHLIST/validator-service implementation pending current live intake/delegation validation.
+- **Livepeer Orchestrator** — existing VERIFIED entry materially strengthened with current 2026 economics: ETH service fees + LPT rewards, top-100 stake barrier for main transcoding set, and explicit warning that running software alone creates no income.
 
-### Existing entries materially upgraded
-- **Pocket Network Provider/Supplier** — now strongly VERIFIED from current docs: permissionless supplier path, POKT stake, RelayMiner, public JSON-RPC/REST/WebSocket endpoints, usage/proof-based POKT earnings and no application/approval geography gate in protocol docs.
-- **Swarm Bee** — current official incentives docs explicitly confirm both storage and bandwidth compensation mechanisms.
-- **SSV Network Operator** — current 2026 operator docs confirm fee income from validator/Staker customers; concrete implementation inside the validator-service family.
-
-Run 024 therefore again fails convergence by project count despite zero mechanism novelty. Completion remains premature.
+Run 025 therefore again fails convergence by project count despite zero mechanism novelty. Completion remains premature.
 
 ## Durable economics findings
 - **Paid utilization, not uptime, remains the dominant hidden variable.**
 - The closest legitimate form of “bots mining simple online tasks” is usually a daemon selling a machine-readable resource: RPC/API calls, storage, bandwidth/relay, CPU/RAM capacity, proof work or validator duties.
+- **RPC/data infrastructure is a concrete paid machine market:** Lava and SubQuery provide current direct evidence of programmatic request-serving revenue.
+- **CPU/RAM proving is now a concrete server earning role:** Aztec mainnet prover rewards make high-core/high-RAM infrastructure directly monetizable without a prover stake requirement, subject to competition and L1 gas.
 - Customer-paid or usage-linked revenue is stronger evidence than generic emissions, but demand must still be measured.
 - Owned spare resources structurally outperform retail-cloud re-rental unless the earning market pays an unusual premium.
-- Cloud re-rental is viable for study only where provider docs explicitly permit it and net revenue exceeds cloud cost after utilization and token risk; NodeOps explicitly documents GCP supply, making it a useful test case.
-- Provider revenue-share percentages do not imply comparable net profit.
 - Stake/collateral/license cost has opportunity cost, liquidity risk and possible slashing/loss exposure.
-- Early/testnet/whitelist projects can publish precise economics while remaining non-deployable or non-liquid.
+- License-based nodes such as Datagram can be technically easy to host while economically dominated by license/token risk.
+- Permissioned operator programs such as Supra must not be counted as currently deployable opportunities.
 - Linux/server compatibility does not prove every VPS/datacenter host permits the workload.
 - Small empirical pilots should precede CAPEX.
 
 ## Geography/KYC status
 Crypto-native provider rails remain relatively promising for Azerbaijan, but absence of a published exclusion is **not** confirmation of eligibility. Any CAPEX candidate must pass live Azerbaijan onboarding/KYC, payout/liquidity and geofencing checks.
+
+Datagram's current KYC exclusion list reviewed in Run 025 does not list Azerbaijan, but this is still not a guarantee that payment, wallet or off-ramp steps will work.
 
 Permissionless protocol wording is useful evidence but still does not guarantee that exchanges, fiat off-ramps, cloud providers or ancillary services used by the implementation are available from Azerbaijan.
 
@@ -86,28 +84,25 @@ Completion confidence:
 - overall completion: **not yet**
 
 ## Next run priority
-**Run 025 — remaining infrastructure/operator tail.**
+**Run 026 — proof/RPC/indexing convergence pass.**
 
-Search current 2025–2026 vocabulary:
-- RPC gateway/provider / API supplier
-- validator-as-a-service operator marketplace
-- operator fee / supplier revenue
-- edge host / CDN cache operator
-- decentralized web-hosting node
-- CPU-only marketplace/provider
-- commodity-CPU prover market
-- data-availability / archival node rewards
-- provider marketplace / host reward
+Search current 2025–2026 official sources for:
+- RPC provider / gateway supplier / decentralized API node
+- indexer operator / query provider / subgraph provider
+- ZK prover / proof marketplace / prover auction / proof pool
+- CPU prover / high-RAM prover / proof broker
+- data-availability provider / archival node reward
+- worker pool / transcoding worker without stake
 
 Actions:
-1. favor current official docs and current repositories/releases;
-2. target live provider onboarding and actual fee/reward paths;
-3. distinguish permissionless, curated, permissioned, whitelist, testnet and dead states;
-4. normalize customer fees/revenue shares, stake/collateral/license cost, minimum hardware, payout rails and automation level;
-5. dedupe against all projects in Runs 001–024 before counting novelty;
-6. explicitly recheck Fleek Network, Supra operator admission and other partial leads surfaced in Run 024 without promoting them absent current earning evidence.
+1. prioritize candidates absent from Runs 001–025;
+2. explicitly test The Graph Indexer, Subsquid workers, Boundless/RISC Zero, Succinct/SP1, Gevulot, Lagrange, Cysic and other proof markets for current independent paid operator admission;
+3. distinguish mainnet/live paid work from testnet, invite-only, whitelist and future-token programs;
+4. normalize customer fees/reward source, stake/bond/license, minimum hardware, server fit, payout rail and automation level;
+5. measure whether operator revenue is usage-linked or mainly emissions;
+6. dedupe before counting novelty.
 
-If Run 025 yields **0 new mechanisms and only 0–2 weak/restricted genuinely new projects**, perform one final cross-category saturation check. If that check also yields no material novelty, prepare `COMPLETE`. If another material provider cluster appears, continue until project-level discovery converges.
+If Run 026 yields **0 new mechanisms and only 0–2 weak/restricted genuinely new projects**, perform the final cross-category saturation check. If that final check also yields no material novelty, prepare `COMPLETE`. If another material provider cluster appears, continue until project-level discovery converges.
 
 ## Completion gate
-Do **not** mark complete until repeated broad + niche + alternative-vocabulary + role-name/repository + non-GPU/provider-operator tail control passes add no new independent mechanism and almost no new viable projects, with remaining unknowns explicitly recorded rather than guessed.
+Do **not** mark complete until repeated broad + niche + alternative-vocabulary + role-name/repository + non-GPU/provider-operator + proof/RPC/indexing tail control passes add no new independent mechanism and almost no new viable projects, with remaining unknowns explicitly recorded rather than guessed.
