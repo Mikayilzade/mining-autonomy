@@ -32,86 +32,90 @@ Weak, restricted, rejected, dead and points-only options must stay documented to
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when the completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs **001–034** are complete.
+Runs **001–035** are complete.
 
 Latest files:
-- `research/RUN_034_AGENT_COMPUTE_TAIL_CONTROL.md`
-- `research/SOURCES_RUN_034.md`
-- `research/CATALOG_ADDITIONS_RUN_034.md`
+- `research/RUN_035_NORMALIZATION_EXACT_NEIGHBOR_DISCOVERY.md`
+- `research/SOURCES_RUN_035.md`
+- `research/CATALOG_ADDITIONS_RUN_035.md`
 
 `STATUS.md` is the authoritative checkpoint and next-run pointer.
 
-## Saturation state after Run 034
-Seventeen deliberately different control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation is very high.
+## Saturation state after Run 035
+Eighteen deliberately different control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation is very high.
 
-Project/provider saturation is still not complete. Run 034 again produced fresh independent implementations and, importantly, surfaced **Singularity Compute / SGL Grid** as a current mainnet provider candidate.
+Project/provider saturation is still not complete. Run 035 found multiple fresh implementations and two especially material current candidates: **Open Cloud** and **the402**. Do not mark COMPLETE.
 
-The agent-compute/x402/ERC-8004 ecosystem is therefore still producing material tail discoveries. Do not mark COMPLETE yet.
+## Run-035 normalized findings
+### Open Cloud
+- Strong new curated server-native compute provider candidate.
+- Explicitly accepts dedicated inventory or cloud-backed templates using AWS/GCP/Azure on-demand provisioning.
+- KYC/legal/operational review; stated onboarding 2–3 weeks.
+- Monthly USD settlement.
+- Need full terms, minimum business/insurance/inventory requirements, actual demand and Azerbaijan eligibility.
 
-## Run-034 normalized findings
+### the402
+- Strong new autonomous machine-job/API market.
+- AI agents may register as providers.
+- Data APIs and Automated Services can be fulfilled by server webhook with no human in loop; automated work auto-verifies and releases USDC.
+- Provider-side bidding agent flow exists; subscriptions and digital products are additional build-once paths.
+- Main unresolved question is independent paid demand and net margin after model/API/server cost.
+
+### x402.jobs
+- BUILD-ONCE workflow/orchestration candidate.
+- Compose x402 resources, set markup, publish endpoint, earn per run.
+- Public network metrics exist but must be independently validated because raw x402 settlement activity is weak evidence of external buyers.
+
+### Cocoon
+- Confidential-inference GPU-provider WATCHLIST.
+- Current site describes secure GPU nodes earning TON from inference requests.
+- Provider software, hardware matrix, cloud permission, live utilization, payout rates/history, KYC and geography still need normalization.
+
+### ALPENGLOW
+- GPU passive-inference WATCHLIST with high claim risk.
+- Site claims Linux/Mac/Windows node, pay per inference-second, x402 USDC settlement design and 70% inference-fee share to provider.
+- Must validate contracts, node software, actual jobs/payments, token liquidity, Terms and geography before upgrade.
+
 ### Singularity Compute / SGL Grid
-- Strong new candidate; official site claims mainnet/operational grid.
-- Explicit node path for Mac or server.
-- 50,000 SGL minimum stake.
-- Earn USDC + SGL per settled job.
-- TEE attestation is part of operator eligibility/security.
-- Must validate exact TEE hardware/VPS compatibility, admission, Terms/AUP, stake liquidity/value, production utilization, reward split, KYC and Azerbaijan eligibility before any CAPEX.
+- Strong current RESTRICTED provider path remains.
+- Mainnet/operational claims, Mac/server node, 50,000 SGL stake, USDC + SGL per settled job.
+- AI Machines docs explicitly offer “join the grid & earn” managed mode.
+- Managed compute docs expose Vultr/DigitalOcean provider supply.
+- Staking page says stakers receive 10% of compute revenue.
+- Exact operator fee split, paid utilization, SGL stake economics, admission and a slashing-rule inconsistency remain unresolved.
 
-### Fusio
-- WATCHLIST / Phase-1 testnet.
-- Machine-job worker market with FSO escrow/rewards and Linux/macOS/Windows node software.
-- Mainnet + first third-party jobs are future roadmap phases.
+### OpenGradient
+- Supply-side architecture is now strongly documented: Local Inference Nodes provide GPUs; LLM Proxy Nodes provide TEE-secured upstream model access; full nodes handle registration/settlement.
+- Still WATCHLIST because self-service earning admission, rates/collateral and production economics were not found; main site still says testnet.
 
-### CloudAGI
-- WATCHLIST / early access + Solana devnet.
-- Local Ollama/specialized-agent provider can advertise capacity and receive USDC-per-call x402 settlement in the design.
-- Public marketplace remains waitlist.
-
-### Tenzro
-- WATCHLIST / public testnet.
-- Multi-role inference/compute/storage/TEE provider node.
-- Per-call TNZO earning design is documented, but current public network uses faucet/testnet token economics.
-
-### MyAi
-- WATCHLIST / pre-TGE.
-- Autonomous GPU worker with explicit datacenter/Linux-cloud tier.
-- 10,000 MYAI stake claim + model/job-based emission schedule.
-- TGE/liquidity pending; published MYAI/day bands are not proof of liquid realized profit.
-
-### A2Agora / ACMP
-- ADJACENT WATCHLIST.
-- Pre-v0 open market protocol; reference SDK is a proof implementation with in-memory transport/escrow stub, not production income.
-
-### CLAWORK
-- WATCHLIST.
-- Base/ERC-8004/x402 task marketplace for agents and humans, USDC settlement.
-- Only count tasks that explicitly permit autonomous agent execution; do not disguise bots as humans.
-
-### Dispatch
-- Reconfirmed WATCHLIST on Monad testnet + Solana devnet.
-- Generic rented-VPS/datacenter permission and production cash payout remain unproven.
+### AgentX / Everagents / Confidential.ai
+- AgentX Nexus Grid: branding confirms decentralized compute concept but no current provider economics; UNVERIFIED/WATCHLIST.
+- Everagents: testnet agent economy; commission loop being built; mainnet real-value work is future. Underlying Evernode host economics are separate.
+- Confidential.ai: customer-side TEE infrastructure/pricing comparator, not a public open supplier earning marketplace.
 
 ## Durable lessons
 - Paid utilization remains the dominant hidden variable.
-- Mainnet provider settlement is stronger evidence than testnet/devnet/pre-TGE points or emissions.
-- x402 is only a payment rail. Raw settlement count does not prove independent demand; measure unique external buyers, real paid value and repeat demand.
-- The closest compliant version of “bots mining simple online tasks” is a daemon/node/agent selling a machine-readable resource, proof, API result or task outcome explicitly intended for autonomous execution.
-- Owned qualifying hardware usually beats retail-cloud re-rental unless specialty pricing/idle capacity changes the economics.
+- The closest compliant version of “bots mining simple online tasks” includes autonomous provider webhooks/APIs, not only raw resource nodes.
+- Explicit machine-provider permission is materially better than automating human-only gig sites.
+- x402 is only a payment rail; settlement counts do not prove independent customer demand.
+- Recent x402 research adds payment-proof/replay/facilitator/hot-wallet security risk to future implementation economics.
+- Cloud compatibility must be explicit. Open Cloud is notable because cloud-backed resale/provisioning is directly described rather than inferred.
 - Stake/collateral must be modeled as capital with liquidity, opportunity-cost and slashing risk.
-- Linux/server compatibility does not prove every public cloud host permits or supports the workload.
-- Azerbaijan must be validated through live onboarding/payout/geofencing and off-ramp dependencies before spending capital.
+- Azerbaijan remains a hard pre-CAPEX validation gate.
 
 ## Current next run
-**Run 035 — normalize Run-034 projects + exact-neighbor discovery.**
+**Run 036 — new-candidate normalization + demand reality pass.**
 
 Priority:
-1. Deep-validate Singularity Compute operator side: docs, Terms/AUP, exact TEE hardware matrix, permissionless admission, stake liquidity/value, reward split, utilization telemetry, KYC and geography.
-2. Search `confidential inference node earn`, `TEE inference provider marketplace`, `x402 TEE compute provider`, `OpenAI compatible provider earn USDC`, `compute provider USDC per call`.
-3. Search agent-service tails: `ERC-8004 paid agent jobs`, `agent job board USDC`, `AI agent task marketplace x402`.
-4. Exact-neighbor searches around Singularity Compute, MyAi, Fusio, CloudAGI, Tenzro, CLAWORK, Dispatch, Basis, Senda and Kvasir.
-5. Normalize discovery-only queue: httpay/AgentJobs, OpenGradient supplier/operator side, AgentX Nexus Grid, Everagents provider economics.
+1. Deep-validate Open Cloud provider terms, minimum requirements, payout unit/cycle, actual demand and Azerbaijan/legal-entity eligibility.
+2. Inspect the402 live catalog/open requests/provider activity and identify truly low-variable-cost autonomous service families without violating upstream ToS.
+3. Validate x402.jobs accounting, public resources/servers, withdrawals and unique external demand.
+4. Deep-validate Cocoon operator software, qualifying hardware, current mainnet/reward state, TON payouts and cloud eligibility.
+5. Deep-validate ALPENGLOW contracts/repository/node downloads/jobs/payouts/token state/Terms.
+6. Exact-neighbor searches: `agent provider webhook earn USDC`, `autonomous service marketplace USDC`, `cloud-backed compute provider marketplace`, `confidential GPU provider earn`, `AI inference provider paid per request`.
+7. Revisit Evernode host economics if separate host-provider normalization is missing.
 
 ### Completion logic
-If Run 035 produces no additional material current provider project (or only obvious dead/test-only/specification duplicates), proceed to one final all-category saturation/control pass across the entire taxonomy.
+If Run 036 still yields fresh material current provider projects, continue tail discovery. If it does not, do one additional exact-neighbor/provider-tail control before starting the final all-category saturation pass.
 
-Mark `STATUS.md` **COMPLETE** only if that final pass also yields no material novelty and remaining unknowns are explicitly recorded.
+Mark `STATUS.md` **COMPLETE** only after those controls plus the final all-category pass converge and remaining unknowns are explicitly recorded.
