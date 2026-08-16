@@ -32,73 +32,71 @@ Weak, restricted, rejected, dead and points-only options must stay documented to
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when the completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs **001–043** are complete.
+Runs **001–044** are complete.
 
 Latest files:
-- `research/RUN_043_PAID_MCP_AGENT_TOOL_CONVERGENCE_PASS.md`
-- `research/SOURCES_RUN_043.md`
-- `research/CATALOG_ADDITIONS_RUN_043.md`
+- `research/RUN_044_THIRD_PAID_MCP_AGENT_SERVICE_CONVERGENCE_PASS.md`
+- `research/SOURCES_RUN_044.md`
+- `research/CATALOG_ADDITIONS_RUN_044.md`
 
 `STATUS.md` is the authoritative checkpoint and next-run pointer.
 
-## Saturation state after Run 043
-Twenty-six deliberately different control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation remains very high.
+## Saturation state after Run 044
+Twenty-seven deliberately different control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation remains very high.
 
-Project/provider saturation is still not complete because paid MCP/x402/agent-service seller vocabulary continues producing independent implementations.
+Project/provider saturation is still not complete because paid MCP/x402/agent-service/data-market seller vocabulary continues producing independent implementations.
 
-## Run-043 durable findings
+## Run-044 durable findings
 
 ### Newly discovered provider/seller implementations
-- xpay Tools — remote MCP server monetization proxy/discovery with per-tool pricing.
-- xpay Publisher — RSS/sitemap to automatically refreshed paid MCP content server.
-- MCP Marketplace (mcp-marketplace.io) — paid local MCP packages and remote MCP servers; 15% commission, Stripe Connect Express payouts.
-- datapoint.market — paid API/MCP/dataset relay; provider keeps stated price, buyer pays 10% fee with $0.005/call floor.
-- AgentsMarketplace.app — X Layer agent-service marketplace using x402 stablecoin settlement.
-- ArcAgent — USDC-escrow agent task/service marketplace.
-- MCP Market (mcpmarket.com) — paid agent skills/digital products; build-once Tier D implementation.
+- Tollara — marketplace + billing/metering for APIs, AI agents, LLMs and MCP servers; seller can use Tollara gateway or own infrastructure.
+- AgenticMarket — paid MCP server marketplace; current docs state 80% standard creator share, with Founding Creator program terms up to 90%; detailed monetization docs list Wise/Razorpay payout paths.
+- MCPize — hosted MCP deployment + subscription + x402 pay-per-call monetization; current standard split 80/20; Stripe Connect and USDC/Base paths.
+- Loomal — x402 paywall for API/MCP plus hosted paid files/JSON; current seller guide states 5% settled-transaction fee, presently waived.
+- DataBazaar — programmatic agent-native dataset selling through MCP/REST, 3% fee, Stripe payouts and data bounties.
 
-### Infrastructure / example / watchlist
-- Cloudflare paidTool/x402 — payment infrastructure, not demand source.
-- agentx402.ai — live owned-service seller example, not an open marketplace.
-- x402agentic.ai — future marketplace/registry roadmap; not current earning counterparty.
-- GreenSmokeNetwork marketplace — not live yet; retain as watchlist.
+### Strategy refinement
+Add a fifth operational subtype:
+**demand-signalled production** — use bounties, requested-data boards, subscriber analytics, usage telemetry or call activity to decide which software/data/content assets to create or refresh.
 
-### Stronger validation of prior candidates
-- the402 — Tolomato Capital, LLC; 5% platform fee / 95% provider; webhook jobs + subscriptions + products.
-- PayanAgent — public page currently says $0 platform fees; request/bid/fulfill API confirmed.
-- RelAI — API monetization covered by Terms; Poland governing law; current UI shows 5% platform fee; account plans also exist.
-- PayAPI Market — free listing, providers keep 100%; optional Featured $49/month.
-- endpoint.farm — free publishing, provider keeps 100%; buyer pays 10% protocol fee, min $0.005/call; alpha/first-provider phase.
-- Agent402 Marketplace — snapshot showed large indexed supply but Calls/24h = 0; do not use catalog size as demand proof.
+This reduces demand uncertainty but is not a new top-level mechanism.
+
+### Azerbaijan payout gate
+- Stripe Connect currently lists Azerbaijan connected-account availability as **preview**.
+- Stripe stablecoin payouts documentation includes Azerbaijan for qualifying US-platform payouts to individuals/sole proprietors, but specific marketplaces may not expose that route.
+- Therefore Stripe-dependent marketplaces remain `VERIFY ONBOARDING / RESTRICTED` until the exact platform confirms Azerbaijan seller support.
 
 ## Durable architecture split
-Model the machine-paid endpoint/service cluster as four operational strategies:
+Model the machine-paid endpoint/service cluster as five operational strategies:
 1. direct self-hosted paid endpoint;
 2. marketplace/proxy monetization layer;
 3. autonomous agent-job marketplace;
-4. build-once paid agent/data/content asset.
+4. build-once paid agent/data/content asset;
+5. demand-signalled production using bounties/requests/usage evidence.
 
 These are not new top-level economic mechanisms; all monetize owned software/data/content/service.
 
 ## Economics / risk lessons
 - Paid utilization/fill rate remains the decisive hidden variable.
-- Catalog size, raw transaction count and headline provider share are not profitability evidence.
-- Stripe-based creator payouts introduce explicit country-support gates.
+- Catalog size, raw transaction count, headline provider share and platform-reported seller payouts are not profitability proof.
+- Stripe-based creator payouts require explicit platform-country onboarding verification.
 - Wallet-native settlement does not eliminate KYC, sanctions, tax, legal-entity, upstream-rights or geography constraints.
-- Azerbaijan remains unresolved and must be validated before CAPEX/subscription spend.
+- Azerbaijan remains unresolved at the specific-platform level and must be validated before CAPEX/subscription spend.
 
 ## Current next run
-**Run 044 — third paid-MCP / agent-service seller convergence pass.**
+**Run 045 — fourth provider-side paid-MCP / agent-market convergence pass.**
 
 Priority:
-1. Search: `MCP monetization platform`, `sell MCP server`, `MCP creator payout`, `paid agent skill marketplace`, `AI agent job marketplace API`, `agent service escrow`, `autonomous task marketplace agent`, `x402 provider dashboard`, `agent API monetization proxy`, `sell dataset to AI agents`.
-2. Validate Tollara and other API/AI/MCP seller marketplaces not yet captured with primary sources.
-3. Search ecosystem directories and GitHub repositories specifically for provider-side products.
-4. Capture fees, payout rails, KYC/geography, legal operator and Azerbaijan eligibility where possible.
-5. Search for direct utilization/revenue proof rather than catalog size.
-6. Deduplicate against Runs 041–043.
+1. Search: `paid MCP hosting marketplace creator revenue`, `MCP server marketplace payouts`, `sell API to agents x402`, `agent native data marketplace seller API`, `AI agent bounty marketplace provider API`, `machine customer marketplace seller`, `MCP marketplace Wise payout`, `MCP creator marketplace Stripe Connect`, `pay per tool MCP hosting`, `AI agent buys datasets API seller`.
+2. Validate AgenticMarket legal operator / Terms / country policy.
+3. Validate Loomal legal operator / Terms / seller eligibility.
+4. Validate Tollara exact fees, payout rail and legal operator.
+5. Search provider-side commercial hosted MCP vendors, agent-native data/product marketplaces, API-bounty markets and non-custodial payment proxies.
+6. Search GitHub as a discovery source, but require official primary-source validation before upgrading a candidate.
+7. Continue demand-authenticity checks and distinguish platform marketing metrics from independently observable usage.
+8. Deduplicate every hit against Runs 041–044.
 
 ### Completion logic
-If Run 044 produces **no or negligible new viable independent provider projects** in this cluster, move to **Run 045 — final all-category saturation/control pass**.
+If Run 045 produces **no or negligible new viable independent provider projects** in this cluster, move to **Run 046 — final all-category saturation/control pass**.
 
-Only if Run 045 also converges and remaining unknowns are explicitly recorded should `STATUS.md` be changed to **COMPLETE**.
+Only if Run 046 also converges and remaining unknowns are explicitly recorded should `STATUS.md` be changed to **COMPLETE**.
