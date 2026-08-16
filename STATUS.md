@@ -2,11 +2,11 @@
 
 Project state: **IN PROGRESS**
 
-Last completed run: **Run 027 — proof-market + decentralized-data operator tail sweep**
+Last completed run: **Run 028 — final data/query/prover cross-category tail + saturation test**
 Last updated: **2026-08-16**
 
 ## Completed research runs
-Runs **001–027** are complete.
+Runs **001–028** are complete.
 
 Major sequence:
 - 001 initial universe/structure
@@ -32,34 +32,36 @@ Major sequence:
 - 025 remaining infrastructure/operator tail
 - 026 proof/RPC/indexing convergence pass
 - 027 proof-market + decentralized-data operator tail sweep
+- 028 final data/query/prover cross-category tail + saturation test
 
 Latest durable files:
-- `research/RUN_027_PROOF_DATA_OPERATOR_TAIL.md`
-- `research/SOURCES_RUN_027.md`
+- `research/RUN_028_FINAL_DATA_QUERY_PROVER_TAIL.md`
+- `research/SOURCES_RUN_028.md`
 
 ## Saturation state
-Ten deliberate control/tail passes (Runs 018–027) have produced **0 new top-level economic mechanisms**. Taxonomy saturation confidence remains **very high**.
+Eleven deliberate control/tail passes (Runs 018–028) have produced **0 new top-level economic mechanisms**. Taxonomy saturation confidence remains **very high**.
 
-Project-level saturation is still **not complete** because Run 027 found one material current operator cluster: **Space and Time (SXT Chain)**. Its current official docs expose a permissionless validator/data/query economy and an open Proof-of-SQL prover race, making it materially relevant to the target despite adding no new mechanism.
+Project-level saturation is still **not complete** because Run 028 found two material current provider clusters that were absent from the durable catalogue: **Marlin Oyster** and **Lumoz**.
 
-### Material addition from Run 027
-- **Space and Time / SXT Chain Validator** — VERIFIED, server-native, automation 5. Validators earn from insertion gas, query-job fees, temporary subsidies and delegated stake; official minimums are 16 cores, 64 GiB RAM, 512 GiB SSD, 500 Mbps, static IP, Linux/Docker and SXT stake. Slashing applies.
-- **Space and Time Proof-of-SQL Prover** — VERIFIED, high priority. Official node docs state that anyone can run the Proof-of-SQL repo on a GPU and race other provers to service query requests via the ZKpay relayer. Exact profitability and current stake/collateral details still need empirical normalization.
-- **Space and Time Indexer** — WATCHLIST/RESTRICTED. Architecture is clear, but current self-service mainnet community-indexer onboarding remains less well documented than validator/prover paths.
+### Material additions from Run 028
+- **Marlin Oyster Confidential VM Provider** — VERIFIED, server-native/TEE infrastructure marketplace. Current official docs say infrastructure-provider participation is permissionless; operators run a long-lived control plane, publish rates/resources, register in the marketplace, automatically provision enclave instances, and claim accrued revenue from active jobs. User jobs are funded in USDC; provider stake/slashing applies.
+- **Marlin Oyster Serverless Executor** — VERIFIED machine-native worker role. Executors register enclave attestation, stake and compute capacity; they execute assigned requests and receive user-paid compensation, with protocol bootstrap incentives available when demand is below target latent capacity. Slashing applies.
+- **Marlin Oyster Serverless Gateway** — VERIFIED relay/gateway role. Gateways stake, relay requests/responses, fund gas on supported chains and receive compensation for successful service; slashing applies.
+- **Lumoz Verifier Node** — VERIFIED daemon/Docker role with mainnet node tooling, license delegation and reward claiming. License acquisition/capital economics remain a constraint because the public license sale is ended.
+- **Lumoz Compute Node / zkProver** — VERIFIED ZK/AI compute-reward role. Official docs describe ZK-PoW proof rewards, stake-weighted reward distribution and slashing; real profitability/utilization remains unnormalized.
 
-### Important upgrades / non-additions
-- **Succinct/SP1** — network mainnet launch is confirmed (2025-08-05); public repo includes staking, reference prover, bidding and `spn-node`. Still WATCHLIST for independent production-prover admission because an explicit current permissionless onboarding path was not proven cleanly.
-- **Gevulot ZkCloud** — remains WATCHLIST. Architecture supports permissionless CPU/GPU prover workloads with usage fees and prover rewards, but official intro still labels ZkCloud in development and Firestarter permissioned.
-- **Cysic** — current docs expand the verified contributor model to Prover/Verifier compute contributors; no new mechanism beyond compute/proof jobs.
-- **Avail / Celestia non-validator DA nodes** — useful infrastructure but no current primary-source evidence of a separate direct reward stream; do not count ordinary light/full/bridge/RPC operation as income without payment evidence.
+### Watchlist/restricted outcomes
+- **Fermah** — real universal proof-market architecture, but current public operator docs still point to testnet/devnet, machine-secret whitelisting and incentivized-testnet participation rather than clean permissionless production income.
+- **Succinct/SP1** — decentralized prover network and mainnet are current, but independent self-service production prover admission remains insufficiently explicit.
+- **Lagrange** — production prover network and paid proof work are clearly real; current public materials still look operator/program-oriented rather than frictionless self-service admission for a new independent commodity prover.
 
 ## Durable economics findings
 - **Paid utilization, not uptime, remains the dominant hidden variable.**
-- The closest legitimate form of “bots mining simple online tasks” is usually a daemon selling a machine-readable resource: proof generation, query execution, RPC/API, indexing/data service, storage, bandwidth/relay, CPU/GPU capacity or validator duties.
-- ZK proof/query markets remain one of the strongest target clusters: Boundless, Cysic and SXT now provide several concrete machine-native work models.
-- **CPU/RAM-only proving is architecturally possible but not yet proven economically attractive.** Current strongest paid proving paths remain GPU/datacenter-heavy.
+- The closest legitimate form of “bots mining simple online tasks” is usually a daemon selling a machine-readable resource: proof generation, confidential/serverless compute, query execution, RPC/API, indexing/data service, storage, bandwidth/relay, CPU/GPU capacity or validator duties.
+- TEE/confidential-compute marketplaces are now a separate important vocabulary cluster even though their underlying economic mechanism is still compute/service rental.
+- ZK proof/query markets remain one of the strongest target clusters: Boundless, Cysic, SXT, Lumoz, Lagrange and related systems show multiple machine-native work models with different admission and capital constraints.
 - Customer-paid or usage-linked revenue is stronger evidence than generic emissions, but real demand must still be measured.
-- Owned spare resources structurally outperform retail-cloud re-rental unless the earning market pays an unusual premium.
+- Owned spare resources structurally outperform retail-cloud re-rental unless the earning market pays an unusual premium; Oyster may be an exception worth measuring because it explicitly supports cloud-backed providers.
 - Stake/collateral/license cost has opportunity cost, liquidity risk and possible slashing/loss exposure.
 - Permissionless protocol wording does not prove every dependent wallet, exchange, cloud or off-ramp is available in Azerbaijan.
 - Small empirical pilots should precede CAPEX.
@@ -67,10 +69,10 @@ Project-level saturation is still **not complete** because Run 027 found one mat
 ## Geography/KYC status
 Crypto-native provider rails remain relatively promising for Azerbaijan, but absence of a published exclusion is **not** confirmation of eligibility. Any CAPEX candidate must pass live Azerbaijan onboarding, token acquisition, payout/liquidity, exchange/off-ramp and geofencing checks before deployment.
 
-The roles added/checked in Run 027 do not require human-task impersonation, CAPTCHA bypass, fake engagement or prohibited automation. Cloud-host ToS for GPU/prover workloads still needs provider-specific validation.
+The roles added in Run 028 do not require human-task impersonation, CAPTCHA bypass, fake engagement or prohibited automation. Cloud-provider terms for TEE/prover workloads and any cloud-resale constraints still require provider-specific validation.
 
 ## Current phase
-Taxonomy is effectively converged, but project/provider tail discovery produced one material cluster again, so completion is still premature.
+Taxonomy is effectively converged, but project/provider tail discovery remains productive enough that completion is premature.
 
 Completion confidence:
 - taxonomy: **very high**
@@ -79,26 +81,30 @@ Completion confidence:
 - overall completion: **not yet**
 
 ## Next run priority
-**Run 028 — final data/query/prover cross-category tail + saturation test.**
+**Run 029 — TEE/confidential-compute + verifier-node convergence pass.**
 
-Search current 2025–2026 official sources for:
-- verifiable SQL / database prover / query prover / data coprocessor node rewards
-- decentralized database operator / data warehouse validator / query worker
-- proof marketplace / prover race / proof auction / proof broker
-- current Succinct prover admission/staking/onboarding
-- Lagrange public prover admission
-- decentralized data-availability paid non-validator roles
-- alternate RPC/indexing names: gateway supplier, data worker, query executor, archive provider, coprocessor node
+Search current 2025–2026 first-party sources for:
+- enclave marketplace operator / confidential VM provider
+- TEE executor / gateway / serverless enclave worker
+- secure coprocessor provider / SGX or SEV compute marketplace
+- verifiable cloud provider / confidential-compute DePIN
+- verifier-node license rewards / proof verifier node rewards
+- ZK/AI verifier operator / compute-node ZK-PoW
+- Marlin Kalypso provider/prover roles
+- Lumoz live compute-node setup and reward realization
+- current Fermah production status
+- current Succinct/Lagrange independent prover admission
 
 Actions:
-1. prioritize candidates absent from Runs 001–027;
-2. validate independent paid operator admission now, not testnet/invite/future plans;
-3. normalize customer fees vs emissions, stake/bond/license, hardware, server fit, payout and automation;
-4. keep testing whether any cheap CPU/RAM-only proof/query role has real current paid utilization;
-5. dedupe aggressively before counting novelty;
-6. separate technically useful infrastructure from actual paid provider roles.
+1. prioritize candidates absent from Runs 001–028;
+2. dedupe new branding against existing compute/proof/relay mechanisms;
+3. verify independent paid operator admission now, not testnet/invite/future plans;
+4. normalize customer fees vs emissions, stake/bond/license, hardware, server fit, payout and automation;
+5. measure or at least bound Oyster live marketplace rates/utilization and POND stake exposure;
+6. determine whether Lumoz has a practical current low-capital pilot or is mainly license/stake-heavy;
+7. keep Azerbaijan onboarding/off-ramp as a hard pre-CAPEX gate.
 
-If Run 028 yields **0 new mechanisms and only 0–2 weak/restricted genuinely new projects**, perform the final all-category saturation check. If that final check also yields no material novelty, prepare `COMPLETE`. If another material provider cluster appears, continue until project-level discovery converges.
+If Run 029 yields **0 new mechanisms and no new material cluster beyond direct Oyster/Lumoz variants**, immediately perform a final all-category saturation/control pass. If that pass also yields no material novelty, prepare `COMPLETE`. If another material cluster appears, remain IN PROGRESS until provider-level discovery converges.
 
 ## Completion gate
-Do **not** mark complete until repeated broad + niche + alternative-vocabulary + role-name/repository + non-GPU/provider-operator + proof/RPC/indexing + proof-market/data-operator + final cross-category control passes add no new independent mechanism and almost no new viable projects, with remaining unknowns explicitly recorded rather than guessed.
+Do **not** mark complete until repeated broad + niche + alternative-vocabulary + role-name/repository + non-GPU/provider-operator + proof/RPC/indexing + proof-market/data-operator + TEE/verifier-node + final all-category control passes add no new independent mechanism and almost no new viable projects, with remaining unknowns explicitly recorded rather than guessed.
