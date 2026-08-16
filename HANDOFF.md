@@ -32,77 +32,69 @@ Weak, restricted, rejected, dead and points-only options must stay documented to
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when the completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs **001–024** are complete.
+Runs **001–025** are complete.
 
 Latest files:
-- `research/RUN_024_NON_GPU_PROVIDER_TAIL.md`
-- `research/SOURCES_RUN_024.md`
+- `research/RUN_025_INFRASTRUCTURE_OPERATOR_TAIL.md`
+- `research/SOURCES_RUN_025.md`
 
 `STATUS.md` is the authoritative checkpoint and next-run pointer.
 
-## Saturation state after Run 024
-Seven deliberately different control/tail passes have produced **0 new top-level economic mechanisms**, so taxonomy confidence is now very high.
+## Saturation state after Run 025
+Eight deliberately different control/tail passes have produced **0 new top-level economic mechanisms**, so taxonomy confidence is now very high.
 
-Project tail is still not saturated because Run 024 found several material current providers:
-- **NodeOps Cloud** — generic CPU/RAM/NVMe provider, explicit cloud/GCP supply path, NODE bond, dedicated high-availability machine.
-- **DeNet Datakeeper** — active 2026 headless/server storage-provider software with Proof-of-Storage rewards; license economics pending.
-- **Iagon Storage Node** — server-compatible storage provider, 90% of user subscription payments to node operators based on performance plus staking rewards; IAG stake and 3-month retirement period.
-- **Edge Network Host** — open Host onboarding for compute/storage/bandwidth, background/self-updating node, stake required.
-- **Anyone Relay** — privacy/bandwidth relay with current reward system and 100 ANYONE token lock for non-hardware relays.
-- **Marlin Relay Cluster Operator** — blockchain relay fees sourced from receiver subscriptions plus network rewards; >=0.5 MPond delegation.
+Project tail is still not saturated because Run 025 found four genuinely new current implementations:
+- **Lava RPC Node Provider** — server-native RPC provider; run chain RPCs + provider process, stake LAVA per service, serve relays, earn subscription/RPC-pool/provider rewards.
+- **SubQuery Node Operator** — external-VM/Docker RPC/indexing operator; query/PAYG/Closed Agreement revenue plus stake/inflation rewards; current minimum 200k SQT self-stake.
+- **Aztec Mainnet Prover** — current mainnet proof-generation role, no prover stake currently listed, but high-core/high-RAM datacenter requirements; proof rewards accrue per epoch.
+- **Datagram Full Core Node** — live mainnet cloud-compatible compute/storage/bandwidth node, but restricted by paid node-license NFT and KYC.
 
-Restricted/watchlist additions:
-- **EthStorage** — mainnet storage-provider rewards are real, but mining is currently whitelist-limited during initial mainnet phase.
-- **DCDN Cloud** — claims 70% node revenue share and publishes operator rates, but evidence is too shallow to trust without protocol/repository/usage/withdrawal validation.
-- **ARO Server** — explicit server node type, but current mainnet-vs-testnet realized-income state still needs confirmation.
+Partial leads resolved/upgraded:
+- **Supra operator** — RESTRICTED because current official docs explicitly say node operation remains permissioned and unavailable to the public.
+- **Fleek Network** — WATCHLIST pending current 2026 live-income/onboarding evidence.
+- **ClayStack** — WATCHLIST pending current live registration/delegation proof.
+- **Livepeer** — existing VERIFIED entry strengthened by current 2026 economics and active-set constraints.
 
-Existing catalog leads materially strengthened:
-- **Pocket Network Provider/Supplier** — current docs give a concrete permissionless supplier path with POKT stake, RelayMiner, public RPC/REST/WebSocket endpoints and usage/proof-based rewards.
-- **Swarm Bee** — current official docs explicitly confirm storage and bandwidth compensation.
-- **SSV Network Operator** — current operator docs confirm fees from validator/Staker customers.
-
-Run 024 therefore did **not** satisfy convergence by project count.
+Run 025 therefore did **not** satisfy project-level convergence.
 
 ## Durable lessons
 - Paid utilization is the dominant hidden variable.
 - The closest compliant implementation of “bots mining simple online tasks” is generally a daemon selling a machine-readable resource rather than automating human microtasks.
-- Strong provider candidates combine: daemon/API-native operation, usage/customer-linked revenue, open onboarding, and no need to impersonate a human/residential user.
+- Strong provider candidates combine daemon/API-native operation, usage/customer-linked revenue, open onboarding, and no need to impersonate a human/residential user.
+- RPC/data infrastructure is a concrete paid machine market; Lava and SubQuery are current examples.
+- CPU/RAM proving is also a concrete machine market; Aztec mainnet prover is a strong current example, but infrastructure cost/competition must be measured.
 - Owned spare resources generally beat retail-cloud re-rental.
-- Cloud re-rental must be modeled from actual provider-allowed workloads and utilization; NodeOps is a useful explicit-cloud-supply case.
 - Collateral/stake/license cost must be priced as capital with lock/liquidity/slashing risk.
 - Customer-paid revenue share is stronger evidence than token emissions but still requires real demand.
-- Early/testnet/whitelist networks can publish precise economics without liquid realized income.
+- License/emissions models can be technically easy to run while economically poor.
+- Permissioned operator programs must remain restricted until public admission actually opens.
 - Linux/server compatibility does not itself prove every public-cloud host permits the workload.
-- Current provider software/releases materially strengthen evidence that an earning path is live.
 - Small measured pilots should precede CAPEX.
 - Azerbaijan must be validated through live onboarding/payout/geofencing before spending capital; silence in docs is not confirmation.
 
 ## Current next run
-**Run 025 — remaining infrastructure/operator tail.**
+**Run 026 — proof/RPC/indexing convergence pass.**
 
 Search vocabulary:
-- RPC gateway/provider / API supplier
-- validator-as-a-service operator marketplace
-- operator fee / supplier revenue
-- edge host / CDN cache operator
-- decentralized web-hosting node
-- CPU-only marketplace/provider
-- commodity-CPU prover market
-- data-availability / archival node rewards
-- provider marketplace / host reward
+- RPC provider / gateway supplier / decentralized API node
+- indexer operator / query provider / subgraph provider
+- ZK prover / proof marketplace / prover auction / proof pool
+- CPU prover / high-RAM prover / proof broker
+- data-availability provider / archival node reward
+- worker pool / transcoding worker without stake
 
 Actions:
-1. favor current 2025–2026 official docs and current repositories/releases;
-2. search explicitly for live provider onboarding and actual fee/reward paths;
-3. distinguish permissionless, curated, permissioned, whitelist, testnet/waitlist and dead states;
-4. normalize fee split, stake/collateral/license cost, hardware, payout rails and automation;
-5. dedupe against all prior catalog/run entries before counting novelty;
-6. recheck Fleek Network, Supra and other partial Run 024 leads without promoting them absent strong current earning evidence.
+1. prioritize current 2025–2026 official documentation and live repositories;
+2. explicitly test The Graph Indexer, Subsquid workers, Boundless/RISC Zero, Succinct/SP1, Gevulot, Lagrange, Cysic and similar proof markets;
+3. verify whether independent paid operator admission is live now, not merely testnet/invite/future-token;
+4. normalize reward source, stake/bond/license, hardware, server fit, payout and automation;
+5. distinguish usage-linked revenue from emissions;
+6. dedupe against all prior runs before counting novelty.
 
 ### Completion logic
-If Run 025 produces:
+If Run 026 produces:
 - **0 new mechanisms**, and
 - only **0–2 weak/restricted** genuinely new projects,
 then perform one final cross-category saturation check. If that final check also yields no material novelty, mark `STATUS.md` **COMPLETE**, document final saturation evidence and stop recurring research.
 
-If Run 025 still finds material provider projects, remain IN PROGRESS and continue until the project-level tail converges.
+If Run 026 still finds a material provider/prover/indexer cluster, remain IN PROGRESS and continue until the project-level tail converges.
