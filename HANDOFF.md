@@ -32,89 +32,78 @@ Weak, restricted, rejected, dead and points-only options must stay documented to
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when the completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs **001–036** are complete.
+Runs **001–037** are complete.
 
 Latest files:
-- `research/RUN_036_NEW_CANDIDATE_NORMALIZATION_DEMAND_REALITY.md`
-- `research/SOURCES_RUN_036.md`
-- `research/CATALOG_ADDITIONS_RUN_036.md`
+- `research/RUN_037_PROVIDER_TAIL_MEASURABLE_ECONOMICS.md`
+- `research/SOURCES_RUN_037.md`
+- `research/CATALOG_ADDITIONS_RUN_037.md`
 
 `STATUS.md` is the authoritative checkpoint and next-run pointer.
 
-## Saturation state after Run 036
-Nineteen deliberately different control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation is very high.
+## Saturation state after Run 037
+Twenty deliberately different control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation is very high.
 
-Project/provider saturation is still not complete. Run 036 normalized **Evernode** as a strong independent small-server candidate and found fresh implementation leads **Atlora** and **Aeterna**. Do not mark COMPLETE.
+Project/provider saturation is still not complete because Run 037 found **Atlara**, a new independent inference-provider implementation distinct from Atlora. Do not mark COMPLETE.
 
-## Run-036 durable findings
+## Run-037 durable findings
 
-### Open Cloud
-- Strong curated server-native provider candidate.
-- Dedicated hardware, cloud-backed AWS/GCP/Azure templates and shared-hosting engines.
-- 0% provider fee on dedicated/cloud-backed nodes; provider sets markup over hyperscaler spot rates.
-- 4% shared-hosting marketplace fee.
-- Monthly USD settlement / cycle redemption.
-- Current pricing guide gives market-observed per-node ranges.
-- Still need actual utilization, small-operator admission details and Azerbaijan/legal-entity eligibility.
-
-### the402
-- Strong current autonomous provider-webhook market.
-- AI agents may be providers; automated services can fulfill and settle without humans in loop.
-- Live catalog observed with 107 services.
-- API/catalog exposes provider completed-job counts, completion rate and reputation/confidence.
-- Bidding agents can monitor requests and bid autonomously.
-- Need measurable independent demand distribution and real net margins.
+### Atlara — new candidate
+- Distinct from Atlora.
+- Official provider pages and Linux installer establish a technical distributed-inference provider path.
+- Official site claims provider node automation and roughly 85% economics to providers.
+- Early-access orientation remains.
+- Critical ambiguity: some pages call rewards earnings/payouts, while the free-credits program explicitly pays compute contribution in credits redeemable for AI API calls. Cash/crypto withdrawal for ordinary providers is not yet verified.
+- Keep `WATCHLIST / RESTRICTED / EARLY ACCESS` until terms, withdrawal, geography/KYC and live demand are proven.
 
 ### Evernode
-- Strong newly normalized server-native hosting candidate.
-- Compatible Ubuntu Linux VM/server leases smart-contract hosting slots for EVR.
-- Sashimono/Evernode software automates leasing, heartbeats and host operations.
-- Current entry requirement: 500 EVR registration plus XAH reserves/transaction costs.
-- Gross revenue includes tenant lease EVR and protocol host reward EVR.
-- Reputation/instance/price conditions affect reward eligibility.
-- Need current host count, reward epoch/quota, EVR/XAH market depth, tenant demand and cheap-VPS break-even.
+- Community dashboard observed around 6,024 active/total hosts.
+- Official reward rules: reputation >=200, >=3 instances, offered leases and reward-linked maximum lease fee are important eligibility gates.
+- EVR observed near ~$0.09 in current Xahau Explorer snapshot with thin trading volume.
+- Simple reward-only sanity check suggests rented-VPS economics may be weak unless eligible-host dilution is much lower than total hosts or tenant lease revenue is meaningful.
+- Need canonical current epoch/eligible-host count and tenant utilization.
 
-### Cocoon
-- Real technical confidential-inference worker path now established.
-- Current primary docs require Linux 6.16+, Intel TDX, NVIDIA CC GPU H100+, QEMU 10.1+.
-- Worker receives TON for processed inference.
-- Keep `RESTRICTED`: ordinary VPS not suitable and paid utilization/rates remain unknown.
+### the402
+- Strong autonomous provider-webhook market remains verified.
+- Agents may act as providers; automated services, public request bidding, provider starter template and USDC settlement are explicit.
+- Provider keeps 95% after 5% platform fee.
+- July-2026 academic measurement of the broader x402 ecosystem shows settlement count is not reliable independent-demand evidence. Apply as a methodological caution only; it does not directly accuse the402.
 
-### x402.jobs
-- Build-once workflow/orchestration markup mechanism remains current.
-- Headline metrics observed around $141k volume, 46.1k jobs, 2.2k resources, 80 public jobs; treat as first-party only.
-
-### ALPENGLOW
-- Keep WATCHLIST/high claim risk; production provider payout/utilization evidence remains insufficient.
+### Open Cloud
+- Provider onboarding is curated: KYC plus legal-entity, insurance, data-center agreement and operations-runbook review.
+- Still strong for cloud-backed autonomous resale, but not a frictionless hobby-VPS route.
+- Azerbaijan/small-operator acceptance remains unresolved.
 
 ### Atlora
-- New inference-marketplace lead; site claims buy/sell LLM inference compute but supplier onboarding/economics remain unverified and waitlist-oriented.
+- Buy/sell inference claim remains, but public supplier onboarding/payout proof is still insufficient.
+- Keep WATCHLIST.
 
 ### Aeterna
-- New autonomous-agent/x402/compute-contribution lead; currently broad marketing without enough provider-side proof. High-risk watchlist.
+- Public site still claims compute contribution and autonomous x402 AI-service economy.
+- Production provider/job/payout proof remains insufficient.
+- Give one final proof-oriented pass, then downgrade/reject if still only marketing.
 
 ## Durable lessons
 - Paid utilization remains the dominant hidden variable.
-- The closest compliant version of “bots mining simple online tasks” is autonomous provider webhooks/APIs/nodes explicitly allowed to operate as machines.
-- Deterministic low-marginal-cost services are theoretically stronger than wrappers around paid LLM/APIs unless resale spread is proven.
-- x402 is only a payment rail; settlement/catalog counts do not establish external demand.
-- Open Cloud is unusually strong because cloud-backed resale/provisioning is explicit.
-- Evernode shows that small ordinary Linux hosts can be more relevant than capital-heavy GPU networks if token/reward/demand economics work.
-- Stake/collateral must be modeled as capital with liquidity, opportunity-cost, slash/exit-loss risk.
+- Provider share and estimated monthly earnings are not proof of revenue.
+- Credits are not cash income unless withdrawal or external liquidity is proven.
+- Thin token liquidity can destroy nominal node economics at exit.
+- x402 is a payment rail; transaction count alone does not prove independent buyers.
+- Curated server/cloud marketplaces can automate operations while retaining substantial business/KYC/legal admission friction.
 - Azerbaijan remains a hard pre-CAPEX validation gate.
 
 ## Current next run
-**Run 037 — exact-neighbor/provider-tail control + measurable economics pass.**
+**Run 038 — final exact-neighbor/provider-tail control before all-category saturation.**
 
 Priority:
-1. Evernode current host count, reward epoch/quota, eligible-host reward, EVR/XAH liquidity and cheap-VPS break-even.
-2. the402 live catalog/provider completed-job distribution; identify automated/data services with genuine nonzero histories.
-3. Open Cloud provider handbook/terms and minimum realistic operator/legal/insurance requirements.
-4. Atlora provider-side docs/repository/network status.
-5. Aeterna contracts/docs/network status; reject if it does not progress beyond marketing/points.
-6. Exact-neighbor searches around decentralized application hosting, paid autonomous webhooks, x402 service providers, cloud-resale providers, cheap CPU/VPS markets and low-end inference suppliers.
+1. Atlara terms/provider withdrawal/geography/KYC/public-network state/credits-vs-cash.
+2. Evernode canonical current hook epoch, eligible hosts and tenant utilization if accessible.
+3. the402 direct provider completed-job distribution and deterministic service margins.
+4. Aeterna final production-proof check.
+5. Alternate role-name searches: inference supplier, compute lender, AI worker node, API merchant, machine-service seller, webhook provider, app-host node, cloud reseller marketplace.
+6. Exact neighbors around low-end CPU/VPS earning, decentralized app hosting, machine APIs, x402 sellers and distributed inference.
 
 ### Completion logic
-If Run 037 yields no additional material current provider project, perform one more exact-neighbor/provider-tail control. Only if that also converges should the project move to the final all-category saturation pass.
+If Run 038 yields **no new material independent provider project** (or only dead/test/specification/duplicate entries), move to **Run 039 — final all-category saturation/control pass**.
 
-Mark `STATUS.md` **COMPLETE** only after those controls plus the final all-category pass converge and remaining unknowns are explicitly recorded.
+Only if Run 039 also converges and remaining unknowns are explicitly recorded should `STATUS.md` be changed to **COMPLETE**.
