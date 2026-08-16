@@ -2,11 +2,11 @@
 
 Project state: **IN PROGRESS**
 
-Last completed run: **Run 028 — final data/query/prover cross-category tail + saturation test**
+Last completed run: **Run 029 — TEE/confidential-compute + verifier-node convergence pass**
 Last updated: **2026-08-16**
 
 ## Completed research runs
-Runs **001–028** are complete.
+Runs **001–029** are complete.
 
 Major sequence:
 - 001 initial universe/structure
@@ -33,46 +33,52 @@ Major sequence:
 - 026 proof/RPC/indexing convergence pass
 - 027 proof-market + decentralized-data operator tail sweep
 - 028 final data/query/prover cross-category tail + saturation test
+- 029 TEE/confidential-compute + verifier-node convergence
 
 Latest durable files:
-- `research/RUN_028_FINAL_DATA_QUERY_PROVER_TAIL.md`
-- `research/SOURCES_RUN_028.md`
+- `research/RUN_029_TEE_VERIFIER_CONVERGENCE.md`
+- `research/SOURCES_RUN_029.md`
+- `research/CATALOG_ADDITIONS_RUN_029.md`
 
 ## Saturation state
-Eleven deliberate control/tail passes (Runs 018–028) have produced **0 new top-level economic mechanisms**. Taxonomy saturation confidence remains **very high**.
+Twelve deliberate control/tail passes (Runs 018–029) have produced **0 new top-level economic mechanisms**. Taxonomy saturation confidence remains **very high**.
 
-Project-level saturation is still **not complete** because Run 028 found two material current provider clusters that were absent from the durable catalogue: **Marlin Oyster** and **Lumoz**.
+Project-level saturation is still **not complete** because Run 029 discovered two material current provider clusters under newer/alternate vocabulary:
+- **Targon / Manifold Labs** confidential-compute supply network;
+- **Tenzro** open multi-role provider network.
 
-### Material additions from Run 028
-- **Marlin Oyster Confidential VM Provider** — VERIFIED, server-native/TEE infrastructure marketplace. Current official docs say infrastructure-provider participation is permissionless; operators run a long-lived control plane, publish rates/resources, register in the marketplace, automatically provision enclave instances, and claim accrued revenue from active jobs. User jobs are funded in USDC; provider stake/slashing applies.
-- **Marlin Oyster Serverless Executor** — VERIFIED machine-native worker role. Executors register enclave attestation, stake and compute capacity; they execute assigned requests and receive user-paid compensation, with protocol bootstrap incentives available when demand is below target latent capacity. Slashing applies.
-- **Marlin Oyster Serverless Gateway** — VERIFIED relay/gateway role. Gateways stake, relay requests/responses, fund gas on supported chains and receive compensation for successful service; slashing applies.
-- **Lumoz Verifier Node** — VERIFIED daemon/Docker role with mainnet node tooling, license delegation and reward claiming. License acquisition/capital economics remain a constraint because the public license sale is ended.
-- **Lumoz Compute Node / zkProver** — VERIFIED ZK/AI compute-reward role. Official docs describe ZK-PoW proof rewards, stake-weighted reward distribution and slashing; real profitability/utilization remains unnormalized.
+### Material additions from Run 029
+- **Targon / Manifold Labs Confidential Compute Supplier** — VERIFIED, high-priority hardware-provider role. Current first-party materials expose a Supply Portal and describe a permissionless decentralized confidential-compute network where provider hardware is provisioned into attested CVMs, admitted into an automated scheduling pool and compensated for contributed compute. Workloads include GPU rentals, confidential VMs, serverless execution and managed inference. Hardware/CAPEX requirements can be very high.
+- **Tenzro ComputeProvider / StorageProvider / TeeProvider / Model Provider / Validator** — current first-party architecture explicitly describes an open operator network with cloud/home/server support depending on role, provider-set offerings, routed work, TNZO payments, stake-backed service roles and TEE support. However, realized production demand, live node software/payment history and token liquidity remain insufficiently normalized, so these remain WATCHLIST/architecture-verified rather than deployment-ready.
 
-### Watchlist/restricted outcomes
-- **Fermah** — real universal proof-market architecture, but current public operator docs still point to testnet/devnet, machine-secret whitelisting and incentivized-testnet participation rather than clean permissionless production income.
-- **Succinct/SP1** — decentralized prover network and mainnet are current, but independent self-service production prover admission remains insufficiently explicit.
-- **Lagrange** — production prover network and paid proof work are clearly real; current public materials still look operator/program-oriented rather than frictionless self-service admission for a new independent commodity prover.
+### Strengthened existing findings
+- **Marlin Oyster** remains one of the strongest direct customer-paid autonomous provider models: long-running control plane, provider-set rates, USDC-funded jobs, POND stake/slashing, automated provisioning and Serverless Gateway/Executor compensation.
+- **Lumoz** remains real but capital/license/stake/hardware constrained; verifier and prover rewards are substantially token-incentive based and require normalization against real utilization/value.
+- **Fermah** remains testnet/whitelist restricted for current independent production income.
+- **Succinct/SP1** and **Lagrange** remain unresolved for frictionless independent production-prover admission.
+
+### Future/watchlist TEE leads
+- SecretVM BYOH/compute-marketplace revenue sharing: future/roadmap, not current open paid-provider proof.
+- Verida confidential-compute operators: Foundation-operated first cohort; external node operators promised later.
+- Akash confidential compute: capability expansion of an already catalogued compute-provider mechanism.
+- Aleph Cloud CRN/GPU: existing compute mechanism; current generic economics should be revalidated.
+- ALPENGLOW / Ealna: discovery leads only until maturity, software, demand and payout realization are verified.
 
 ## Durable economics findings
 - **Paid utilization, not uptime, remains the dominant hidden variable.**
-- The closest legitimate form of “bots mining simple online tasks” is usually a daemon selling a machine-readable resource: proof generation, confidential/serverless compute, query execution, RPC/API, indexing/data service, storage, bandwidth/relay, CPU/GPU capacity or validator duties.
-- TEE/confidential-compute marketplaces are now a separate important vocabulary cluster even though their underlying economic mechanism is still compute/service rental.
-- ZK proof/query markets remain one of the strongest target clusters: Boundless, Cysic, SXT, Lumoz, Lagrange and related systems show multiple machine-native work models with different admission and capital constraints.
-- Customer-paid or usage-linked revenue is stronger evidence than generic emissions, but real demand must still be measured.
-- Owned spare resources structurally outperform retail-cloud re-rental unless the earning market pays an unusual premium; Oyster may be an exception worth measuring because it explicitly supports cloud-backed providers.
+- The closest legitimate form of “bots mining simple online tasks” is usually a daemon/node selling a machine-readable resource rather than automating human microtasks.
+- TEE/confidential-compute supply has become a meaningful vocabulary cluster for discovering hidden compute-provider roles.
+- Direct customer escrow/usage payments are stronger evidence than generic token emissions, but neither guarantees positive net margin.
+- Owned qualifying hardware usually has a structural advantage over retail-cloud re-rental; specialty confidential-compute marketplaces may justify separate measurement.
 - Stake/collateral/license cost has opportunity cost, liquidity risk and possible slashing/loss exposure.
-- Permissionless protocol wording does not prove every dependent wallet, exchange, cloud or off-ramp is available in Azerbaijan.
+- Permissionless protocol wording does not prove every wallet, exchange, cloud or off-ramp is available in Azerbaijan.
 - Small empirical pilots should precede CAPEX.
 
 ## Geography/KYC status
-Crypto-native provider rails remain relatively promising for Azerbaijan, but absence of a published exclusion is **not** confirmation of eligibility. Any CAPEX candidate must pass live Azerbaijan onboarding, token acquisition, payout/liquidity, exchange/off-ramp and geofencing checks before deployment.
-
-The roles added in Run 028 do not require human-task impersonation, CAPTCHA bypass, fake engagement or prohibited automation. Cloud-provider terms for TEE/prover workloads and any cloud-resale constraints still require provider-specific validation.
+Azerbaijan remains a hard pre-CAPEX validation gate. For any serious candidate, live onboarding must confirm provider eligibility, token acquisition, payout/liquidity, exchange/off-ramp and geofencing. Targon specifically appears to distinguish permissionless and KYC/contracted monetization paths by hardware/tier, so hardware eligibility must be checked before purchase.
 
 ## Current phase
-Taxonomy is effectively converged, but project/provider tail discovery remains productive enough that completion is premature.
+Taxonomy is effectively converged, but provider-tail discovery remains productive enough that completion is premature.
 
 Completion confidence:
 - taxonomy: **very high**
@@ -81,30 +87,21 @@ Completion confidence:
 - overall completion: **not yet**
 
 ## Next run priority
-**Run 029 — TEE/confidential-compute + verifier-node convergence pass.**
+**Run 030 — confidential-compute supplier / open-provider reality check.**
 
-Search current 2025–2026 first-party sources for:
-- enclave marketplace operator / confidential VM provider
-- TEE executor / gateway / serverless enclave worker
-- secure coprocessor provider / SGX or SEV compute marketplace
-- verifiable cloud provider / confidential-compute DePIN
-- verifier-node license rewards / proof verifier node rewards
-- ZK/AI verifier operator / compute-node ZK-PoW
-- Marlin Kalypso provider/prover roles
-- Lumoz live compute-node setup and reward realization
-- current Fermah production status
-- current Succinct/Lagrange independent prover admission
+Priorities:
+1. Targon supplier onboarding, accepted hardware, payout formula, live utilization and provider economics.
+2. Tenzro production-node/software/payment reality, TNZO liquidity and actual work flow.
+3. SecretVM BYOH current status.
+4. Aleph current CRN/GPU provider economics.
+5. Akash confidential-compute provider implementation.
+6. Search alternate terms: attested compute provider, secure GPU supplier, confidential inference provider, TEE marketplace operator, encrypted VM provider, supply portal, bring-your-own-hardware confidential cloud.
+7. Check whether Bittensor or other incentive networks hide materially distinct confidential-compute provider roles under subnet terminology.
+8. Dedupe all findings against existing compute/storage/validator mechanisms.
+9. Keep Azerbaijan onboarding/off-ramp and cloud-provider ToS as hard pre-deployment gates.
 
-Actions:
-1. prioritize candidates absent from Runs 001–028;
-2. dedupe new branding against existing compute/proof/relay mechanisms;
-3. verify independent paid operator admission now, not testnet/invite/future plans;
-4. normalize customer fees vs emissions, stake/bond/license, hardware, server fit, payout and automation;
-5. measure or at least bound Oyster live marketplace rates/utilization and POND stake exposure;
-6. determine whether Lumoz has a practical current low-capital pilot or is mainly license/stake-heavy;
-7. keep Azerbaijan onboarding/off-ramp as a hard pre-CAPEX gate.
-
-If Run 029 yields **0 new mechanisms and no new material cluster beyond direct Oyster/Lumoz variants**, immediately perform a final all-category saturation/control pass. If that pass also yields no material novelty, prepare `COMPLETE`. If another material cluster appears, remain IN PROGRESS until provider-level discovery converges.
+### Completion logic
+If Run 030 produces **no new material provider cluster**, immediately perform a final all-category saturation/control pass. If that final pass also produces no material novelty, prepare `COMPLETE`. If Run 030 finds another material cluster, remain IN PROGRESS until provider-level discovery converges.
 
 ## Completion gate
-Do **not** mark complete until repeated broad + niche + alternative-vocabulary + role-name/repository + non-GPU/provider-operator + proof/RPC/indexing + proof-market/data-operator + TEE/verifier-node + final all-category control passes add no new independent mechanism and almost no new viable projects, with remaining unknowns explicitly recorded rather than guessed.
+Do **not** mark complete until repeated broad + niche + alternative-vocabulary + role-name/repository + non-GPU/provider-operator + proof/RPC/indexing + proof-market/data-operator + TEE/verifier-node + confidential-supplier/open-provider + final all-category control passes add no new independent mechanism and almost no new viable projects, with remaining unknowns explicitly recorded rather than guessed.
