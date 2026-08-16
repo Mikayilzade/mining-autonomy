@@ -2,11 +2,11 @@
 
 Project state: **IN PROGRESS**
 
-Last completed run: **Run 033 — inference-worker normalization + fresh tail discovery**
+Last completed run: **Run 034 — agent-compute / machine-job tail control**
 Last updated: **2026-08-16**
 
 ## Completed research runs
-Runs **001–033** are complete.
+Runs **001–034** are complete.
 
 Major sequence:
 - 001 initial universe/structure
@@ -25,71 +25,75 @@ Major sequence:
 - 018–031 repeated saturation, alternate-vocabulary and provider-tail passes
 - 032 c0mpute economics + contributor/native-worker inference convergence
 - 033 normalization of Basis/Open Communication/Kunagi/Jatevo/Kvasir/Senda + discovery of Dispatch
+- 034 dedicated x402/agent-compute/machine-job tail control; discovered Singularity Compute plus several fresh early-stage implementations
 
 Latest durable files:
-- `research/RUN_033_INFERENCE_WORKER_NORMALIZATION.md`
-- `research/SOURCES_RUN_033.md`
-- `research/CATALOG_ADDITIONS_RUN_033.md`
+- `research/RUN_034_AGENT_COMPUTE_TAIL_CONTROL.md`
+- `research/SOURCES_RUN_034.md`
+- `research/CATALOG_ADDITIONS_RUN_034.md`
 
 ## Saturation state
-Sixteen deliberate control/tail passes (Runs 018–033) have produced **0 new top-level economic mechanisms**. Taxonomy saturation confidence is **very high**.
+Seventeen deliberate control/tail passes (Runs 018–034) have produced **0 new top-level economic mechanisms**. Taxonomy saturation confidence is **very high**.
 
-Project-level saturation is still **not complete**. Run 033 normalized the six fresh inference-worker leads from Run 032, but the same role/vocabulary search surfaced one additional material project: **Dispatch**.
+Project-level saturation is still **not complete**. Run 034 again found fresh independent implementations in the agent-compute/x402/ERC-8004 tail. Most importantly, **Singularity Compute / SGL Grid** surfaced as a current mainnet operator candidate rather than another testnet-only project.
 
-This means the provider tail is still capable of producing new independent implementations even though the economic mechanism is already known.
+Therefore the completion gate is not met.
 
-## Material Run 033 findings
-### Basis
+## Material Run 034 findings
+### Singularity Compute / SGL Grid
+- Strong new candidate; official current site claims operational mainnet grid.
+- Explicit Mac/server node-operator path.
+- 50,000 SGL minimum operator/validator stake.
+- Operators earn USDC + SGL per settled job.
+- TEE attestation required; exact ordinary-VPS compatibility is unresolved.
+- Paid utilization, stake liquidity/value, operator Terms/AUP, KYC/geography and actual admission must be validated before any deployment.
+
+### Fusio
+- WATCHLIST / Phase-1 testnet.
+- Requester→worker machine jobs with escrow, receipts and FSO worker rewards.
+- Linux/macOS/Windows node software.
+- Mainnet token and first third-party jobs are later roadmap phases.
+
+### CloudAGI
+- WATCHLIST / waitlist + Solana devnet.
+- Sellers can expose local Ollama/specialized-agent capacity and price it per call in USDC.
+- Self-hosted branch is conceptually clean; resale of third-party subscription capacity would require separate upstream-ToS validation.
+
+### Tenzro
+- WATCHLIST / live public testnet.
+- Multi-role ModelProvider / ComputeProvider / StorageProvider / TeeProvider design.
+- Provider join flow and per-call TNZO settlement are implemented/documented, but current public network uses faucet/testnet TNZO.
+
+### MyAi
+- WATCHLIST / pre-TGE.
+- Explicit Linux cloud/datacenter provider tier and autonomous polling worker.
+- Provider reward formulas and a 10,000 MYAI stake claim are published.
+- Liquidity/TGE remain pending; emission estimates are not realized profit evidence.
+
+### A2Agora / ACMP
+- ADJACENT WATCHLIST.
+- Useful open agent-compute market protocol, but pre-v0 and not a production earning marketplace.
+
+### CLAWORK
 - WATCHLIST.
-- Worker is technically runnable/self-hostable now and supports registration, heartbeat, pricing manifests and Ollama-based serving.
-- Public contributor routing/reward settlement is not mature enough for current-income classification.
-- Market example showed USDC-pegged credits and a 90% worker / 10% protocol-burn flow, but realized utilization is unproven.
+- Base/ERC-8004/x402 agent-and-human task marketplace with USDC settlement.
+- Relevant only for jobs that explicitly permit autonomous agent execution; visible public demand is still very early.
 
-### Open Communication
-- WATCHLIST / very early.
-- Browser/native contributor GPU design; whitepaper advertises 70% worker share.
-- Current public page showed 0 active nodes; mature realized payout telemetry not established.
-
-### Kunagi Systems
-- WATCHLIST.
-- Native/browser worker lifecycle and job-price × worker-share accounting are documented.
-- Official disclosures say several staking/bonding/verification/pay-per-call mechanisms are not all live yet.
-
-### Jatevo decentralized inference
-- WATCHLIST / early access.
-- CUDA worker + `$JTVO` stake + request-linked earning is documented.
-- Contributor network remains waitlist/early access; live Jatevo managed/dedicated compute does not prove open contributor earnings.
-
-### Kvasir
-- WATCHLIST / devnet.
-- Compute, gateway and hub roles can all earn KVR and can stack on one machine.
-- KVR currently runs on Solana devnet and is explicitly described as a non-tradable utility/contribution token today.
-- Mainnet/on-chain production settlement remains roadmap work; commercial BSL usage may require a license.
-
-### Senda
-- WATCHLIST / future pilot candidate.
-- Live early-access peer mesh and paid API preview.
-- Contributor credits are explicitly non-cash; eligible paid serves may create Peer USD with USDC withdrawal path.
-- Stronger cash-path evidence than most early peers, but utilization, caps/minimums and geography remain unresolved.
-
-### Dispatch — NEW material project
-- WATCHLIST / testnet-devnet beta.
-- Agents submit machine jobs over HTTP; desktop/mobile workers process LLM inference, summarization, classification and extraction jobs.
-- Worker runtime is automated over WebSocket and signs ed25519 receipts.
-- x402 payment design; BOLT/wBOLT reward design; 5% protocol fee.
-- Current network is Monad testnet + Solana devnet, so this is not production cash income yet.
-- Generic rented-VPS/datacenter eligibility is not proven and must not be assumed.
+### Dispatch follow-up
+- Still WATCHLIST on Monad testnet + Solana devnet.
+- Generic rented-VPS/datacenter permission and production cash payout remain unproven.
 
 ## Durable economics findings
-- **Paid utilization, not uptime, remains the dominant hidden variable.**
-- The closest compliant form of “bots mining simple online tasks” remains a daemon/node selling machine-readable compute, bandwidth, storage, proof, API work or other measurable resources rather than automating human-only tasks.
-- Alternate terminology remains essential: contributor GPU, native/browser worker, agent compute, x402 compute, verified receipt worker, idle-device inference, peer USD, layer-split inference.
-- Testnet/devnet/preview points or tokens are not production-income evidence.
+- **Paid utilization remains the dominant hidden variable.**
+- The closest compliant form of “bots mining simple online tasks” remains a daemon/node/agent selling machine-readable compute, bandwidth, storage, proof, API work or an explicitly agent-permitted task outcome.
+- x402 is a payment rail, not demand; transaction counts alone are not proof of independent paying customers.
+- Mainnet settlement + explicit provider admission is materially stronger evidence than points, faucet tokens, pre-TGE emissions, devnet/testnet rewards or roadmap claims.
 - Owned qualifying hardware usually has a structural advantage over retail-cloud re-rental.
+- Collateral/stake must be modeled as capital with opportunity, liquidity and slashing risk.
 - Azerbaijan remains a hard pre-CAPEX validation gate.
 
 ## Current phase
-Taxonomy is effectively converged, but provider-tail discovery is still producing occasional fresh implementations. Completion remains premature.
+Taxonomy is effectively converged, but provider-tail discovery is still producing fresh implementations. Completion remains premature.
 
 Completion confidence:
 - taxonomy: **very high**
@@ -98,24 +102,25 @@ Completion confidence:
 - overall completion: **not yet**
 
 ## Next run priority
-**Run 034 — dedicated inference/machine-job tail control pass.**
+**Run 035 — normalize Run-034 projects + exact-neighbor discovery.**
 
-Search families:
-1. `x402 compute worker`
-2. `agent compute marketplace`
-3. `idle device inference worker`
-4. `OpenAI-compatible contributor node`
-5. `phone compute worker`
-6. `verified inference receipt worker`
-7. `ERC-8004 compute worker marketplace`
-8. Solana / Base / Monad worker-job networks
-9. machine-readable microtask/API job markets where automation is explicitly allowed
-10. exact-neighbor searches around Dispatch, Basis, Senda, Kvasir, c0mpute, COCOON, io.net, Nosana, Golem, Bittensor and Akash
-
-Also validate Dispatch worker Terms/AUP, headless/server eligibility, mainnet roadmap and liquidity status.
+Priority searches/validation:
+1. Singularity Compute operator docs/Terms/AUP, exact TEE hardware eligibility, admission, stake liquidity/value, reward split, utilization, KYC and Azerbaijan geography.
+2. `confidential inference node earn`
+3. `TEE inference provider marketplace`
+4. `x402 TEE compute provider`
+5. `ERC-8004 paid agent jobs`
+6. `agent job board USDC`
+7. `AI agent task marketplace x402`
+8. `OpenAI compatible provider earn USDC`
+9. `compute provider USDC per call`
+10. exact-neighbor searches around Singularity Compute, MyAi, Fusio, CloudAGI, Tenzro, CLAWORK, Dispatch, Basis, Senda and Kvasir.
+11. Normalize discovery-only queue: httpay/AgentJobs, OpenGradient supplier side, AgentX Nexus Grid, Everagents provider economics.
 
 ### Completion logic
-If Run 034 finds no additional material current provider project (or only obvious dead/test-only duplicates), proceed to one **final all-category saturation/control pass** spanning all taxonomies and alternate vocabularies. Mark COMPLETE only if that final pass also yields no material novelty and remaining unknowns are explicitly recorded.
+If Run 035 finds no additional material current provider project (or only obvious dead/test-only/specification duplicates), proceed to one **final all-category saturation/control pass** spanning every taxonomy and alternate vocabulary.
+
+Mark COMPLETE only if that final pass also yields no material novelty and remaining unknowns are explicitly recorded rather than guessed.
 
 ## Completion gate
 Do **not** mark complete until repeated broad + niche + alternative-vocabulary + role-name/repository + non-GPU/provider-operator + proof/RPC/indexing + proof-market/data-operator + TEE/verifier-node + confidential-supplier/open-provider + confidential-inference-worker + contributor/native/browser-worker + x402/agent-compute + final all-category control passes add no new independent mechanism and almost no new viable projects, with remaining unknowns explicitly recorded rather than guessed.
