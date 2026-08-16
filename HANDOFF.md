@@ -32,95 +32,86 @@ Weak, restricted, rejected, dead and points-only options must stay documented to
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only when the completion gate is genuinely met.
 
 ## Current durable checkpoint
-Runs **001–040** are complete.
+Runs **001–041** are complete.
 
 Latest files:
-- `research/RUN_040_SECOND_SUPPLIER_TAIL_CONVERGENCE.md`
-- `research/SOURCES_RUN_040.md`
-- `research/CATALOG_ADDITIONS_RUN_040.md`
+- `research/RUN_041_THIRD_SUPPLIER_TAIL_CONVERGENCE.md`
+- `research/SOURCES_RUN_041.md`
+- `research/CATALOG_ADDITIONS_RUN_041.md`
 
 `STATUS.md` is the authoritative checkpoint and next-run pointer.
 
-## Saturation state after Run 040
-Twenty-three deliberately different control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation remains very high.
+## Saturation state after Run 041
+Twenty-four deliberately different control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation remains very high.
 
-Project/provider saturation is still not complete because Run 040 found several independent current provider implementations absent from the durable Run-039 checkpoint. Do not mark COMPLETE.
+Project/provider saturation is still not complete. Run 041 revealed a materially productive cluster of machine-native API-capacity/own-endpoint marketplaces, so do not mark COMPLETE.
 
-## Run-040 durable findings
+## Run-041 durable findings
 
-### Inpherio — strong current live-beta candidate
-- Providers keep 85% of settled usage.
-- 15% platform fee; waived for first 3 months.
-- Monthly Stripe Connect bank payout; £10 minimum; £0.50 payout fee.
-- Outbound-only connector and node rentals make daemon-style operation plausible.
-- Geography/Azerbaijan eligibility unresolved.
-- Status: `VERIFIED / BETA`.
-
-### UsePod — open inference + authorized API resale
-- Local provider-agent and upstream-key relay paths.
-- Provider gets 80% of settled inference; 20% treasury.
-- $50 USDC provider bond.
-- On-demand USDC payout on Solana.
-- API-key resale must remain conditional on upstream ToS/contracts explicitly permitting resale.
+### Proxygate — new current API/endpoint seller marketplace
+- Seller receives 95% of listing price; 5% seller platform fee.
+- Automated USDC/Solana settlement; docs describe batched/near-real-time payouts.
+- Supports authorized upstream-capacity listings and own endpoints.
+- Seller approval/moderation required.
+- Upstream resale permission is the seller's responsibility; planned Certified Reseller Program is not blanket authorization.
 - Status: `VERIFIED / RESTRICTED`.
 
-### HZ AI — live distributed GPU exchange
-- Provider installs agent, sets price/GPU-hour, receives metered jobs.
-- Fiat payout via Stripe.
-- Exact platform fee and geography unresolved.
+### JellyNet — new pooled API-capacity market
+- Suppliers contribute idle API keys/capacity.
+- Terms: 60% supplier in native-call mode or 50% supplier in default API-key-only mode, with buyer discount and platform fee layers.
+- Earnings distributed in 8-hour epochs; USDC/Solana or Stripe Connect withdrawals where available.
+- Terms explicitly warn of upstream suspension/revocation risk.
 - Status: `VERIFIED / RESTRICTED`.
 
-### SpotNode.ai — qualified inference-execution market
-- Zero-inbound supplier onboarding for GPU/endpoint owners and infrastructure operators.
-- Supply is benchmarked/scored before live demand routes to it.
-- Commercial payout terms are private/opaque.
+### cn2.ai — new API-key marketplace
+- Machine-payment proxy marketplace for seller API capacity.
+- Persona KYC status and multiple payout-rail preferences are documented.
+- Public site advertises USDC/Stripe/Lightning/wire payouts.
+- Exact seller fee/split and payout thresholds still unresolved.
 - Status: `VERIFIED / RESTRICTED`.
 
-### KeyMart — curated enterprise inference supplier market
-- Identity/API-provenance/upstream-ToS/SLA compliance required.
-- Provider service fee: 0% first 7 days; 2.8% standard; 1.6% pro; 0.5% enterprise.
-- Withdrawal/settlement supported; geography unresolved.
-- Status: `VERIFIED / RESTRICTED`.
-
-### Compute Exchange / TCEX — institutional compute seller channel
-- Legal-entity providers participate in auctions/RFQs/marketplace flows.
-- Professional/institutional GPU focus; terms cover broader compute resources.
-- Identity-verified counterparties.
-- Not fully hands-off because current RFQ path includes negotiation/direct introduction.
-- Status: `VERIFIED / RESTRICTED`.
-
-### ClusterBid
-- Early-stage sourcing service by its own current Terms; commercial engagement separate.
+### CreditSwap — new private-beta server-agent market
+- Seller agent runs on seller server and keeps key local.
+- Public claims include 85% seller recovery and 5% platform fee.
+- Private beta + upstream resale rights unresolved.
 - Status: `WATCHLIST / RESTRICTED`.
 
-### Exascale / Hyperlink
-- First-party site claims live spot/futures compute exchange and provider settlement.
-- Requires stronger company/legal/external production validation before deployment or economics modeling.
+### GEPU Exchange — new GPU-exchange watchlist
+- Claims GPU-hour order books, provider attestation, auto-listing and T+0 USDC settlement.
+- Public site also labels showcased flow/network figures as devnet.
+- Production/legal validation insufficient.
 - Status: `UNVERIFIED / WATCHLIST`.
+
+## Existing candidate updates
+- Compute Exchange / TCEX legal/company authenticity strengthened by current Marketplace Terms; still institutional/RFQ/legal-entity workflow.
+- Inpherio remains live beta; Azerbaijan/Stripe onboarding unresolved.
+- UsePod 80/20 split, $50 bond and on-demand USDC withdrawal reconfirmed; exact withdrawal caps/geography unresolved.
+- KeyMart enterprise/SLA/invitation restrictions reconfirmed.
+- Exascale / Hyperlink remains first-party-claim-heavy and unverified.
 
 ## Durable lessons
 - Paid utilization/fill rate remains the dominant hidden variable.
-- Existing idle-capacity economics and new hardware CAPEX economics must be modeled separately.
-- Fee transparency is not demand proof.
-- Inference/token markets and raw GPU rental are implementation variants of paid compute/model service, not new top-level mechanisms.
-- Authorized upstream API capacity can be resold only where resale rights are actually permitted.
-- Curated enterprise markets may become operationally autonomous only after KYB/entity/SLA onboarding.
-- Azerbaijan remains a hard pre-CAPEX validation gate.
+- Existing idle-capacity economics and new CAPEX economics must be modeled separately.
+- Machine-native API/endpoint markets are an implementation cluster, not a new top-level mechanism.
+- Split API-capacity resale into: own endpoint; explicitly authorized enterprise/reseller capacity; ordinary retail API-key resale.
+- Ordinary retail API-key resale is `RESTRICTED` by default until the upstream contract explicitly permits resale/sublicensing/capacity sharing.
+- Automated x402/MPP/USDC settlement does not solve upstream rights, KYC, geography, tax or demand.
+- Azerbaijan remains a hard pre-CAPEX/pre-subscription validation gate.
 
 ## Current next run
-**Run 041 — third supplier-tail convergence + authenticity/dedup pass.**
+**Run 042 — dedicated API-capacity / x402 / MPP / own-endpoint supplier saturation pass.**
 
 Priority:
-1. Inpherio geography/KYC/Azerbaijan eligibility and live-grid activity.
-2. UsePod provider enrollment, geography/KYC, withdrawal limits and production activity.
-3. HZ AI exact platform fee, Stripe/provider geography and marketplace activity.
-4. KeyMart legal/company identity, settlement rail/geography and live activity claims.
-5. SpotNode commercial terms or keep restricted.
-6. Exascale/Hyperlink and ClusterBid authenticity/legal/commercial validation.
-7. Search neighbors with `inference marketplace provider agent`, `sell model endpoint`, `authorized API-key resale`, `GPU execution exchange`, `idle inference provider`, `compute liquidity layer`, `capacity seller API`, `provider earnings inference`.
-8. Re-run CPU/HPC/storage/bandwidth/API analogs and deduplicate all discoveries.
+1. Search `x402 API marketplace seller`, `MPP API marketplace seller`, `sell API capacity x402`, `monetize API key capacity`, `agent marketplace own endpoint seller USDC`, `machine payments API seller`, `API clearinghouse provider`, `unused API quota marketplace`, `sell endpoint per request`, `agent service marketplace x402`.
+2. Validate legal/company identity and production activity for Proxygate, JellyNet, cn2.ai and CreditSwap.
+3. Resolve seller geography/Azerbaijan eligibility where possible.
+4. Capture exact cn2.ai fees, minimum payout and timing.
+5. Capture JellyNet withdrawal limits/KYC and reconcile marketing vs Terms economics.
+6. Search for platforms that explicitly certify upstream resale rights rather than merely shifting responsibility to sellers.
+7. Search own-endpoint seller markets separately from third-party-key resale.
+8. Deduplicate all discoveries against UsePod/KeyMart/Proxygate/JellyNet/cn2/CreditSwap and known Atlas-like implementations.
 
 ### Completion logic
-If Run 041 yields **no or negligible new viable independent provider projects**, move to **Run 042 — final all-category saturation/control pass**.
+If Run 042 produces **no or negligible new viable independent provider projects** in this newly exposed cluster, move to **Run 043 — final all-category saturation/control pass**.
 
-Only if Run 042 also converges and remaining unknowns are explicitly recorded should `STATUS.md` be changed to **COMPLETE**.
+Only if Run 043 also converges and remaining unknowns are explicitly recorded should `STATUS.md` be changed to **COMPLETE**.
