@@ -2,11 +2,11 @@
 
 Project state: **IN PROGRESS**
 
-Last completed run: **Run 030 — confidential-compute supplier / open-provider reality check**
+Last completed run: **Run 031 — COCOON provider economics + confidential-inference tail sweep**
 Last updated: **2026-08-16**
 
 ## Completed research runs
-Runs **001–030** are complete.
+Runs **001–031** are complete.
 
 Major sequence:
 - 001 initial universe/structure
@@ -35,34 +35,32 @@ Major sequence:
 - 028 final data/query/prover cross-category tail + saturation test
 - 029 TEE/confidential-compute + verifier-node convergence
 - 030 confidential-compute supplier / open-provider reality check
+- 031 COCOON provider economics + confidential-inference tail sweep
 
 Latest durable files:
-- `research/RUN_030_CONFIDENTIAL_PROVIDER_REALITY_CHECK.md`
-- `research/SOURCES_RUN_030.md`
-- `research/CATALOG_ADDITIONS_RUN_030.md`
+- `research/RUN_031_COCOON_ECONOMICS_CONFIDENTIAL_INFERENCE_TAIL.md`
+- `research/SOURCES_RUN_031.md`
+- `research/CATALOG_ADDITIONS_RUN_031.md`
 
 ## Saturation state
-Thirteen deliberate control/tail passes (Runs 018–030) have produced **0 new top-level economic mechanisms**. Taxonomy saturation confidence remains **very high**.
+Fourteen deliberate control/tail passes (Runs 018–031) have produced **0 new top-level economic mechanisms**. Taxonomy saturation confidence remains **very high**.
 
-Project-level saturation is still **not complete** because Run 030 found one material current provider network that had been missed:
-- **Telegram COCOON** — confidential GPU inference workers earning TON.
+Project-level saturation is still **not complete** because Run 031 found one material current provider project that had not been captured durably:
+- **c0mpute** — contributor GPU inference workers with public worker code, an OpenAI-compatible demand API, Solana settlement, and live aggregate telemetry including USDC paid to workers.
 
-It also surfaced a smaller public-alpha lead:
-- **DICOMPUTE Provider** — cross-platform private-inference provider program; reward realization not yet verified.
-
-### Material Run 030 findings
-- **COCOON / Telegram GPU Worker** — VERIFIED current provider role. Official COCOON materials describe a TON-settled decentralized AI inference network where GPU owners run TEE workers; the TelegramMessenger GitHub repository exposes worker tooling/releases and reproducible TEE images. Specialized confidential-compute GPU hardware implies high CAPEX. Admission, payout formula, utilization and Azerbaijan/KYC remain to be normalized.
-- **Tenzro** — implementation evidence strengthened materially (provider CLI, shared stake, compute/storage/TEE settlement), but first-party network-role/compute/storage pages explicitly mark the system **Testnet**. Keep WATCHLIST rather than production-income classification.
-- **SecretVM BYOH** — supplier-side revenue sharing remains future roadmap: Q4 2026, initially specific partners. Do not count it as present hardware-owner income.
-- **Aleph Cloud CRN/GPU** — remains a real compute-provider mechanism. Current customer billing is shifting toward Credits; PAYG is deprecated for new workloads, so legacy operator economics need fresh empirical normalization.
-- **Akash confidential compute** — now a concrete provider capability supporting TDX/SEV-SNP and optional NVIDIA confidential GPU, but Akash labels TEE experimental. It is a capability extension of the existing Akash provider mechanism, not a new category.
-- **Targon** — current Supply Portal/provider path remains live; exact fee split, supplier admission by tier, utilization and KYC boundary remain unresolved.
+### Material Run 031 findings
+- **Telegram COCOON GPU Worker** — VERIFIED current provider role, now normalized. Production requires Intel TDX-capable server plus NVIDIA H100+ confidential-computing GPU; consumer RTX GPUs are not production-supported. Workers earn TON from processed requests; current multi-GPU scaling is one worker/TDX guest per GPU. Provider docs expose a worker price coefficient, but public utilization/net TON per GPU-hour and Azerbaijan/KYC remain unresolved.
+- **DICOMPUTE Provider** — technical provider path verified: public alpha, Linux/macOS/Windows, CPU-only possible, GPU optional, background serving with auto model selection. Monetary reward unit, payout history, withdrawal and utilization remain insufficiently disclosed; keep WATCHLIST.
+- **io.net Supplier** — supplier role should be treated as VERIFIED, not merely UNVERIFIED. Current Worker onboarding/binaries and supplier earnings docs are live; customers pay in USDC and suppliers are compensated in IO. Confidential compute is an existing capability extension, not a new mechanism.
+- **0G Compute** — no distinct new economic family found. Existing provider-setup/compute family remains relevant but was not a new provider cluster this run.
+- **c0mpute Contributor GPU Worker** — VERIFIED current provider mechanism / economics pending. Public repository exposes browser/WebGPU and native/Ollama contributor workers, orchestrator billing, OpenAI-compatible API and Solana payout logic. Public data reports jobs, credits, USDC deposits and USDC paid to workers. This is a material new project-level discovery and blocks completion.
 
 ## Durable economics findings
 - **Paid utilization, not uptime, remains the dominant hidden variable.**
 - The closest legitimate form of “bots mining simple online tasks” is usually a daemon/node selling a machine-readable resource rather than automating human microtasks.
 - TEE/confidential-compute supply is now a mandatory discovery vocabulary cluster, but economically it normally collapses back into customer-paid compute/inference.
-- Direct customer settlement is stronger evidence than generic token emissions, but neither guarantees positive net margin.
+- Browser/native contributor terminology is also a mandatory discovery cluster after the c0mpute find.
+- Direct customer settlement and public payout telemetry are stronger evidence than generic token emissions, but neither guarantees positive net margin.
 - Owned qualifying hardware usually has a structural advantage over retail-cloud re-rental; specialty confidential-compute markets may justify separate measurement.
 - Stake/collateral/license cost has opportunity cost, liquidity risk and possible slashing/loss exposure.
 - Testnet payment mechanics are not production-income evidence.
@@ -71,7 +69,7 @@ It also surfaced a smaller public-alpha lead:
 - Small empirical pilots should precede CAPEX.
 
 ## Geography/KYC status
-Azerbaijan remains a hard pre-CAPEX validation gate. For any serious candidate, live onboarding must confirm provider eligibility, token acquisition, payout/liquidity, exchange/off-ramp and geofencing. Specialized hardware should not be purchased before these checks.
+Azerbaijan remains a hard pre-CAPEX validation gate. For any serious candidate, live onboarding must confirm provider eligibility, payout/liquidity, exchange/off-ramp and geofencing. Specialized hardware should not be purchased before these checks.
 
 ## Current phase
 Taxonomy is effectively converged, but provider-tail discovery remains productive enough that completion is still premature.
@@ -83,20 +81,18 @@ Completion confidence:
 - overall completion: **not yet**
 
 ## Next run priority
-**Run 031 — COCOON provider economics + confidential-inference tail sweep.**
+**Run 032 — c0mpute worker economics + final inference-provider convergence pass.**
 
 Priorities:
-1. COCOON official worker requirements, provider admission, payout formula, TON settlement and live demand/utilization signals.
-2. COCOON supported GPUs/TEE CPU/networking/uptime and whether participation is self-serve or curated.
-3. Azerbaijan/KYC/off-ramp dependencies where evidence exists.
-4. Validate DICOMPUTE reward/payment reality or keep/reject it.
-5. Sweep 0G Compute, io.net confidential inference and similar current networks specifically for independent supply-side admission.
-6. Search current GitHub releases/provider docs for `worker`, `miner`, `supplier`, `GPU owner`, `TEE provider`, `confidential inference`, `attested inference`.
-7. Dedupe every result against existing compute/inference mechanisms.
-8. Keep cloud-provider ToS and hardware CAPEX as hard pre-deployment gates.
+1. c0mpute native worker requirements, provider admission, payout formula, USDC settlement/withdrawal and current worker utilization.
+2. Determine whether native worker can run unattended on Linux server/bare metal and whether cloud GPU participation is acceptable.
+3. Azerbaijan/KYC/account/off-ramp dependencies where evidence exists.
+4. Search current provider docs/repos under `contributor GPU`, `native worker`, `browser worker`, `serve tokens earn`, `permissionless inference worker`, `OpenAI-compatible decentralized inference`, `USDC worker payout` and adjacent terminology.
+5. Dedupe every result against COCOON, io.net, DICOMPUTE, Nosana, Golem GPU, Bittensor, Akash, Targon/Tenzro and existing compute/inference mechanisms.
+6. Keep cloud-provider ToS and hardware CAPEX as hard pre-deployment gates.
 
 ### Completion logic
-If Run 031 produces **no new material provider cluster**, immediately perform a final all-category saturation/control pass. If that final pass also produces no material novelty, prepare `COMPLETE`. If Run 031 finds another material cluster, remain IN PROGRESS until provider-level discovery converges.
+If Run 032 produces **no new material provider cluster**, immediately perform a final all-category saturation/control pass. If that final pass also produces no material novelty, prepare `COMPLETE`. If Run 032 finds another material cluster, remain IN PROGRESS until provider-level discovery converges.
 
 ## Completion gate
-Do **not** mark complete until repeated broad + niche + alternative-vocabulary + role-name/repository + non-GPU/provider-operator + proof/RPC/indexing + proof-market/data-operator + TEE/verifier-node + confidential-supplier/open-provider + confidential-inference-worker + final all-category control passes add no new independent mechanism and almost no new viable projects, with remaining unknowns explicitly recorded rather than guessed.
+Do **not** mark complete until repeated broad + niche + alternative-vocabulary + role-name/repository + non-GPU/provider-operator + proof/RPC/indexing + proof-market/data-operator + TEE/verifier-node + confidential-supplier/open-provider + confidential-inference-worker + contributor/native-worker + final all-category control passes add no new independent mechanism and almost no new viable projects, with remaining unknowns explicitly recorded rather than guessed.
