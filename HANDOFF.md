@@ -17,85 +17,76 @@ Research an exhaustive inventory before implementation. Priority is legitimate a
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only at the true completion gate.
 
 ## Current durable checkpoint
-Runs **001–056** are complete.
+Runs **001–057** are complete.
 
 Latest files:
-- `research/RUN_056_FIFTEENTH_FINAL_PAID_AGENT_SELLER_TAIL.md`
-- `research/SOURCES_RUN_056.md`
-- `research/CATALOG_ADDITIONS_RUN_056.md`
+- `research/RUN_057_FINAL_ALL_CATEGORY_CONTROL.md`
+- `research/SOURCES_RUN_057.md`
+- `research/CATALOG_ADDITIONS_RUN_057.md`
 
 `STATUS.md` is authoritative.
 
-## Saturation state after Run 056
-Thirty-nine deliberate control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation remains very high.
+## Saturation state after Run 057
+Forty deliberate control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation is now very high and effectively converged.
 
-The paid-agent/x402/MCP/A2A seller tail is now considered converged at the mechanism level. Run 056 still found independent platforms, but each fits already-known strategies. Do not run another same-tail loop unless the final broad pass exposes a specific unresolved cluster.
+Run 057 completed the fresh all-category control pass. It did not expose any new mechanism, but it did surface a non-negligible residual cluster of independent projects. For that reason the project is **not yet COMPLETE**. Do not repeat another broad sweep now; validate the residual cluster, then run one compact spot-check.
 
-## Run 056 durable findings
-- **MCPize**: VERIFIED; managed MCP publishing/hosting/marketplace with subscriptions, usage pricing and x402 per-call. Standard creator share 80%; Stripe Connect payout. Current first-party site claims substantial vendor payouts, but aggregate figures need independent corroboration.
-- **a2a cloud**: VERIFIED; paid deployed-agent marketplace. Seller prices calls, authenticated non-owner calls generate seller economics, default platform fee is 20% of markup, Stripe Connect Express settles to bank.
-- **agent2agent.market**: VERIFIED and strategically important. Machine-readable open bounty/task feed, programmatic accept/submit flow, Ed25519 identity, Base wallet and approval-triggered USDC settlement. This is one of the closest matches to the original autonomous-worker objective.
-- **SkillExchange**: WATCHLIST; explicit MCP/A2A creator/payout path, but current public fee and activity metrics conflict across first-party pages. Revalidate before implementation.
-- **EndPoints**: duplicate, still closed beta.
+## Run 057 residual candidates
+Validate these in Run 058:
+1. **NodeOps Network Compute Provider** — bonded machine provider; published base/performance NODE rewards.
+2. **OpenGPU Provider** — auto-routed GPU workloads; provider earns per completed task; demand/liquidity unclear.
+3. **Lium (Bittensor SN51)** — self-hosted provider coordinator + GPU nodes; TAO rewards.
+4. **NodeAI Host** — curated datacenter GPU/VM hosting, host-defined prices, published 25% fee.
+5. **Kunagi Systems Worker** — inference worker marketplace; maturity requires checking.
+6. **Scalattice Provider** — GPU inference provider agent; payout path explicit, real demand needs checking.
+7. **SILO Storage Node** — dedicated-server-compatible storage contribution; payout economics/liquidity require validation.
+8. **Sentinel dVPN Node** — bandwidth relay node with explicit earning path.
+9. **UPGO.IO Relay Leaf** — Linux relay + token reward claim; production/liquidity unresolved.
+10. **SOMA** — data submitters, model developers and validators earn rewards; docs include an AI-agent quickstart and this is especially relevant to the original autonomous-worker goal.
 
-## Strategic model
-The machine-paid cluster still reduces to five operating strategies:
+## Mechanism result
+Every Run 057 discovery reduces to an existing family: compute/GPU/inference, storage, bandwidth/VPN relay, AI/data competition work, infrastructure operation, build-once marketplace/software/content channels, or capital-yield compositions.
+
+No new top-level mechanism emerged.
+
+## Existing strongest machine-paid strategies
+The paid-agent/x402/MCP/A2A seller tail remains converged and reduces to five operating strategies:
 1. direct self-hosted paid endpoint;
 2. marketplace/proxy monetization layer;
 3. autonomous agent-job/bounty/service marketplace;
 4. build-once paid agent/data/content/knowledge asset;
 5. demand-signalled production from posted requests, bounties or demonstrated usage.
 
-No sixth mechanism emerged.
-
-## Current strongest implementation-research candidates
-For `server bot finds simple paid work`:
+Current strongest implementation-research candidates for `server bot finds simple paid work` remain:
 1. PayanAgent;
 2. OKX.AI A2A ASP;
 3. agent2agent.market;
-4. OKX.AI A2MCP;
-5. MCPize / a2a cloud if real buyer demand can be validated.
+4. SOMA (pending Run 058 economics validation);
+5. OKX.AI A2MCP;
+6. MCPize / a2a cloud if demand is proven;
+7. auto-routed inference providers such as Scalattice/OpenGPU if net economics are real.
 
-## Evidence rule
-Do not infer demand from registrations, listings, polished marketplace examples, demo transactions, provider counts, protocol-wide settlement counts or first-party success stories. Prefer distinct paid buyers, seller receipts, repeat utilization and attributable settlement value.
-
-Request/bid/task-feed markets should rank above passive listing when they expose actual paid work because the agent can actively seek demand.
-
-Continue distinguishing seller admission modes:
-1. open listing;
-2. curated application/review;
-3. self-hosted discoverable endpoint;
-4. provider/node registration with routing market;
-5. request-feed/bidding worker;
-6. automatic task matching for online providers.
-
-Also distinguish marketplace maturity:
-- production with visible paid buyers;
-- live but demand-unproven;
-- alpha/new-provider-seeking;
-- closed beta/waitlist;
-- demo/testnet/planned.
+## Evidence rules
+- Do not infer demand from registrations, listings, provider counts, polished demos, protocol-wide settlement counters or first-party success stories.
+- Prefer distinct paid buyers, seller receipts, repeat utilization and attributable settlement value.
+- Separate customer-paid utilization from token emissions/subsidies.
+- A provider guide does not prove an earning opportunity unless compensation is explicit.
+- Linux/Docker support does not prove VPS/datacenter permission.
+- Do not treat points as income if they lack a current liquid redemption path.
 
 ## Current next run
-**Run 057 — final all-category saturation/control pass.**
+**Run 058 — residual-candidate validation + compact alternative-vocabulary spot-check.**
 
-Search afresh across every major mechanism family, not just machine-service markets:
-- compute/GPU/CPU/render/inference;
-- storage/archive/cache/CDN;
-- bandwidth/IP/relay/proxy/VPN;
-- validators/RPC/indexers/oracles/keepers/solvers/relayers;
-- ZK/proving/verifiable compute;
-- AI training/inference/data/forecast/competition work;
-- physical DePIN/sensors/mapping/wireless/energy;
-- machine tasks/APIs/MCP/A2A/service markets;
-- PoW/resource mining;
-- capital yield/staking/lending/liquidity/treasury automation;
-- build-once digital products/APIs/data/content/licensing;
-- hidden supplier/partner/host/operator/publisher/creator/developer programs.
+For each residual candidate capture current production status, admission mode, VPS/bare-metal/home eligibility, KYC/geography, payout asset, stake/bond/collateral, recurring costs, automation/ToS restrictions, utilization/demand evidence, net-profit inputs and remaining unknowns.
 
-Deduplicate against Runs 001–056. Use alternative supplier-role vocabulary and current primary sources. Do not count a new brand as a new mechanism.
+Then run a compact supplier-role spot-check using terms such as supplier, host, operator, worker, publisher, seller, partner, provider program, machine jobs, agent jobs, inference provider, storage operator and relay provider.
 
 ### Completion gate
-If Run 057 produces 0 new top-level mechanisms and only negligible new viable independent projects, explicitly record remaining unknowns, update `STATUS.md` to **COMPLETE**, document final saturation evidence in `RUN_LOG.md`, and stop recurring research.
+If Run 058:
+- finds **0 new top-level mechanisms**;
+- normalizes the residual candidates into existing families;
+- and the compact spot-check yields only duplicates/negligible new viable projects,
 
-If it reveals a genuinely new mechanism or a material cluster of viable projects, keep IN PROGRESS and define only the smallest required follow-up pass.
+then set `STATUS.md` to **COMPLETE**, document final unknowns and saturation evidence, and stop recurring research.
+
+If Run 058 exposes a genuinely new mechanism or another material cluster, keep IN PROGRESS and define only the smallest necessary follow-up pass.
