@@ -2,90 +2,108 @@
 
 Project state: **IN PROGRESS**
 
-Last completed run: **Run 056 — fifteenth and final paid-agent / MCP / x402 / A2A seller-tail confirmation**
+Last completed run: **Run 057 — final all-category saturation/control pass**
 Last updated: **2026-08-17**
 
 ## Completed research runs
-Runs **001–056** are complete.
+Runs **001–057** are complete.
 
 Latest durable files:
-- `research/RUN_056_FIFTEENTH_FINAL_PAID_AGENT_SELLER_TAIL.md`
-- `research/SOURCES_RUN_056.md`
-- `research/CATALOG_ADDITIONS_RUN_056.md`
+- `research/RUN_057_FINAL_ALL_CATEGORY_CONTROL.md`
+- `research/SOURCES_RUN_057.md`
+- `research/CATALOG_ADDITIONS_RUN_057.md`
 
 ## Saturation state
-Thirty-nine deliberate control/tail passes (Runs 018–056) have produced **0 new top-level economic mechanisms**. Taxonomy saturation confidence remains **very high**.
+Forty deliberate control/tail passes (Runs 018–057) have produced **0 new top-level economic mechanisms**. Taxonomy saturation confidence is **very high**.
 
-Run 056 still found several independent platforms, but every one fits mechanisms already represented in the catalog. The paid-agent/x402/MCP/A2A **mechanism tail is now converged enough to stop looping on that niche** and proceed to the final all-category control pass.
+Run 057 completed the planned broad all-category control pass. It found **no new top-level economic mechanism**, but it did surface a non-negligible residual cluster of independent provider platforms, mainly GPU/inference compute, storage/bandwidth, and one AI/data worker network. Because the completion gate requires both mechanism saturation and negligible residual viable-project discovery, the project remains IN PROGRESS for one narrow validation pass.
 
-## Material Run 056 findings
-- **MCPize** — VERIFIED strong paid-MCP seller channel. Developers can deploy/list MCP servers, charge subscriptions/usage/one-off/x402 per-call, keep standard 80%, and receive Stripe Connect payouts. First-party site currently claims 900+ servers, 1K+ developers and $200K+ paid to vendors; treat the aggregate as first-party evidence pending independent corroboration.
-- **a2a cloud** — VERIFIED paid deployed-agent marketplace. Seller declares per-call markup, authenticated paid calls create receipt-linked payout economics, default fee is 20% of markup, and seller settlement uses Stripe Connect Express.
-- **agent2agent.market** — VERIFIED and an especially strong match to the original mission. Agents can programmatically browse a machine-readable bounty feed, accept tasks, submit signed results, and receive approval-triggered USDC settlement on Base.
-- **SkillExchange** — WATCHLIST. Seller mechanics are explicit (MCP/A2A publishing + Stripe Connect), but current first-party fee, creator and activity figures conflict across public pages, so exact economics/demand require revalidation.
-- **EndPoints** — reconfirmed duplicate; still closed beta.
+## Material Run 057 findings
+New or newly-normalized residual candidates:
+- **NodeOps Network Compute Provider** — bonded machine provider with published base/performance NODE rewards; server/bare-metal resource supply.
+- **OpenGPU Provider** — automatic GPU-workload routing and task-based provider rewards; demand/liquidity still needs validation.
+- **Lium (Bittensor SN51)** — self-hosted provider + GPU nodes earning TAO via validator scoring.
+- **NodeAI Host** — curated datacenter GPU/VM host marketplace with host-set prices and published 25% fee.
+- **Kunagi Systems Worker** — decentralized inference worker path; marketplace maturity still uncertain.
+- **Scalattice Provider** — GPU inference provider agent with automatic job routing and payout path; demand economics need verification.
+- **SILO Storage Node** — dedicated-server-compatible storage node with reward path; production economics/liquidity need validation.
+- **Sentinel dVPN Node** — explicit bandwidth-supplier node earning P2P coins.
+- **UPGO.IO Relay Leaf** — Linux-capable bandwidth relay token-reward lead; production/liquidity not yet proven.
+- **SOMA** — agent-compatible data/model/validator reward network; especially relevant to autonomous machine-submitted work.
 
-## Durable strategic model
-The machine-paid cluster still reduces to five operating strategies:
-1. direct self-hosted paid endpoint;
-2. marketplace/proxy monetization layer;
-3. autonomous agent-job/bounty/service marketplace;
-4. build-once paid agent/data/content/knowledge asset;
-5. demand-signalled production using bounties/requests/usage evidence.
+Also reconfirmed: Theta EdgeCloud GPU rewards, Streamr Operator, Swarm storage/bandwidth incentives, Aztec prover rewards, AWS Marketplace AI-agent/MCP seller channel, Amazon affiliate API channel, Etsy seller automation and Spotify creator monetization.
 
-No sixth mechanism emerged.
+## Mechanism conclusion
+Run 057 found **0 new top-level mechanisms**. Every residual project maps cleanly to existing families:
+1. compute/GPU/inference resource marketplace;
+2. storage resource marketplace;
+3. bandwidth/VPN relay;
+4. AI/data/model competition worker;
+5. infrastructure/operator rewards;
+6. build-once software/content/affiliate seller channels;
+7. capital yield compositions.
+
+The broad taxonomy itself is therefore effectively converged.
 
 ## Current strongest candidates for later implementation research
 For the specific `server bot finds simple paid work` objective:
 1. PayanAgent request/bid worker;
 2. OKX.AI A2A ASP automatic matching + active task intake;
 3. agent2agent.market open machine-readable bounty/task feed;
-4. OKX.AI A2MCP paid services;
-5. MCPize / a2a cloud where real buyer demand can be demonstrated.
+4. SOMA agent-compatible data submission / model competition path;
+5. OKX.AI A2MCP paid services;
+6. MCPize / a2a cloud where real buyer demand can be demonstrated;
+7. automatic-routed inference suppliers such as Scalattice/OpenGPU if net economics are real.
 
 ## Economics / risk findings
-- **Paid utilization/fill rate remains the dominant hidden variable.**
-- Active task/request markets remain closer to the original objective than passive API listing because workers can seek posted demand.
-- Paid endpoint infrastructure is now abundant; buyer distribution and repeat paid demand are scarce.
-- Stripe Connect channels introduce KYC/bank/geography dependencies; wallet/stablecoin channels trade those for chain/off-ramp/wallet-security risk.
-- First-party execution, creator and payout counters are leads, not independent demand proof.
+- **Paid utilization/fill rate remains the dominant hidden variable** across compute, storage, bandwidth, agent and API markets.
+- Token emissions/subsidies must be separated from customer-paid utilization.
+- Bond/stake/collateral can make a technically simple node economically capital-heavy.
+- New/small provider networks require production, token-liquidity and real-demand verification before promotion.
+- Stripe/KYC channels and wallet/token channels impose different geography, custody and off-ramp constraints.
+- A deployment guide without explicit compensation is not enough to classify an earning opportunity.
 
 ## Current phase
-The project is now ready for **Run 057 — final all-category saturation/control pass**.
+The project now needs **Run 058 — residual-candidate validation + compact spot-check**.
 
 Completion confidence:
-- taxonomy: **very high**
+- taxonomy: **very high / effectively converged**
 - paid-agent/x402/MCP/A2A mechanism saturation: **very high / converged**
+- all-category mechanism saturation: **very high / converged**
 - high-priority economics: **high**
-- project-level saturation: **high, pending final broad control**
+- project-level saturation: **very high, pending residual candidate normalization**
 - overall completion: **not yet**
 
 ## Next run priority
-**Run 057 — final all-category saturation/control pass.**
+**Run 058 — residual-candidate validation + compact alternative-vocabulary spot-check.**
 
-Run a fresh mechanism-first and alternative-vocabulary sweep across:
-1. compute/GPU/CPU/inference/rendering;
-2. storage/archive/cache/CDN;
-3. bandwidth/IP/relay/proxy/VPN;
-4. validators/RPC/indexers/oracles/keepers/solvers/relayers;
-5. ZK/proving/verifiable compute;
-6. AI training/inference/data/forecast/competition workers;
-7. physical DePIN/sensors/mapping/wireless/energy;
-8. machine-task/API/MCP/A2A/service markets;
-9. PoW/mining/resource contribution;
-10. capital yield/staking/lending/liquidity/treasury automation;
-11. build-once digital products/APIs/data/content/licensing/marketplaces;
-12. partner/supplier/host/operator/publisher/creator/developer channels hidden behind consumer brands.
+Validate only the residual Run 057 cluster:
+1. NodeOps Network
+2. OpenGPU
+3. Lium
+4. NodeAI
+5. Kunagi
+6. Scalattice
+7. SILO
+8. Sentinel dVPN
+9. UPGO.IO
+10. SOMA
 
-Rules:
-- Deduplicate against Runs 001–056.
-- Search both mechanism terms and supplier-role vocabulary.
-- Do not count a new brand as a new mechanism.
-- Promote only current, explicit earning paths.
-- Capture a small number of genuinely new viable projects if they still surface, but completion depends mainly on whether new independent mechanisms continue to appear.
-- Explicitly list remaining unknowns rather than guessing.
+For each capture:
+- current production status;
+- supplier admission mode;
+- VPS / bare-metal / home-hardware eligibility;
+- KYC and geography restrictions, including Azerbaijan if explicitly documented;
+- payout asset and withdrawal path;
+- stake/bond/collateral;
+- recurring infrastructure cost;
+- ToS / automation restrictions;
+- real utilization/demand evidence if available;
+- net-profit model inputs and key unknowns.
+
+Then run one compact spot-check using alternate terms such as `supplier`, `host`, `operator`, `worker`, `publisher`, `seller`, `partner`, `provider program`, `earn with hardware`, `machine jobs`, `agent jobs`, `inference provider`, `storage operator`, `relay provider`.
 
 ### Completion logic
-If Run 057 produces **0 new top-level mechanisms** and only negligible new viable independent projects after broad + niche + alternative-role checks, document the remaining unknowns, set project state to **COMPLETE**, record the final saturation evidence in `RUN_LOG.md`, and stop further recurring research.
+If Run 058 finds **0 new top-level mechanisms**, normalizes the residual candidates into existing families, and the compact spot-check yields only duplicates/negligible new viable projects, set project state to **COMPLETE**, document remaining unknowns and final saturation evidence, and stop recurring research.
 
-If Run 057 unexpectedly exposes a genuinely new mechanism or a material cluster of new viable projects, keep the project IN PROGRESS and define the smallest necessary follow-up pass.
+If Run 058 unexpectedly reveals a genuinely new mechanism or another material residual cluster, keep IN PROGRESS and define only the smallest necessary follow-up.
