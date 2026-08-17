@@ -17,30 +17,30 @@ Research an exhaustive inventory before implementation. Priority is legitimate a
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only at the true completion gate.
 
 ## Current durable checkpoint
-Runs **001–059** are complete.
+Runs **001–060** are complete.
 
 Latest files:
-- `research/RUN_059_FINAL_RESIDUAL_VALIDATION_AND_CONTROL.md`
-- `research/SOURCES_RUN_059.md`
-- `research/CATALOG_ADDITIONS_RUN_059.md`
+- `research/RUN_060_FINAL_PROJECT_CLUSTER_VALIDATION.md`
+- `research/SOURCES_RUN_060.md`
+- `research/CATALOG_ADDITIONS_RUN_060.md`
 
 `STATUS.md` is authoritative.
 
-## Saturation state after Run 059
-Forty-two deliberate control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation remains effectively converged.
+## Saturation state after Run 060
+Forty-three deliberate control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation remains effectively converged.
 
-Run 059 validated all four Run 058 leads and found no new mechanism:
-- **AntSeed — VERIFIED:** open P2P seller role for inference/routing/specialized agents; Base-mainnet USDC settlement; 96% provider share; minimum 10 USDC stake; strong server-native fit.
-- **UsePod — VERIFIED:** open GPU provider or permitted upstream-key relay; 80% provider share; USDC Solana payout; 50 USDC bond; strong automation fit.
-- **Swan Inference — WATCHLIST:** provider signup and USDC reward path exist, but public network surface showed zero activity during this pass; utilization remains unresolved and collateral rules matter.
-- **DeCloudX — WATCHLIST:** multi-resource operator tiers and DCX stake/reward claims exist, but independent production/liquidity/utilization proof remains insufficient; illustrative dashboard earnings must not be treated as evidence.
+Run 060 validated the five Run 059 residual projects:
+- **AgentGigs — VERIFIED, EARLY:** end-to-end agent API after one-time Stripe Connect KYC; Free tier keeps 90%, Pro $29/mo keeps 93%, Enterprise $99/mo keeps 95%; real demand/win-rate still unresolved.
+- **Surplus Intelligence — VERIFIED:** live inference seller marketplace/orderbook with USDC Base settlement and strong aggregate production-use signals; upstream resale ToS and spread/fill-rate economics remain decisive.
+- **AgentLancer — WATCHLIST:** highly autonomous requester/provider protocol, but verified payment traction remains weak/unproven and first-payment conversion is explicitly a bottleneck.
+- **Jobs in AI / jobsindrones.com — WATCHLIST:** registration/deploy/apply-by-ID live; autonomous discovery/contracts/webhooks still roadmap; observed marketplace snapshot had 0 agent-compatible roles.
+- **Alien / Liquid Compute — WATCHLIST:** GPU provider + ACU compute settlement + AVL availability/staking are documented, but attributable production demand/liquidity remains insufficiently proven.
 
-The required compact control still surfaced five independent new project leads, so completion was deliberately withheld:
-1. **AgentLancer** — agent requester/provider/verifier job market; current page reports zero verified earnings.
-2. **AgentGigs** — API-first autonomous job lifecycle with claimed Stripe Connect payout.
-3. **Jobs in AI agent onboarding** — programmatic job applications with claimed Stripe escrow payout.
-4. **Surplus Intelligence** — inference seller/orderbook discovered from third-party OpenClaw integration; requires primary-source validation.
-5. **Alien / Liquid Compute** — GPU provider/market-maker/creator marketplace; requires economics/admission validation.
+No new mechanism appeared. The minimal control nevertheless surfaced two concrete residual projects:
+1. **RELOAD / reloadai.io** — decentralized inference seller/idle-capacity marketplace lead.
+2. **Conduit Protocol / conduitprotocol.net** — USDC compute-endpoint + paid machine-capability provider lead.
+
+These fit known families but are material enough to require one final narrow validation pass before completion.
 
 ## Current strongest machine-paid strategies
 The mechanism universe still reduces to known strategies:
@@ -56,13 +56,15 @@ Current strongest implementation-research candidates for `server bot finds simpl
 1. PayanAgent;
 2. OKX.AI A2A ASP;
 3. agent2agent.market;
-4. AntSeed;
-5. UsePod;
-6. SOMA;
-7. OKX.AI A2MCP;
-8. MCPize / a2a cloud if demand is proven;
-9. auto-routed inference providers such as Scalattice/OpenGPU/Swan if net economics are real;
-10. AgentLancer / AgentGigs pending Run 060 validation.
+4. AgentGigs;
+5. Surplus Intelligence;
+6. AntSeed;
+7. UsePod;
+8. SOMA;
+9. OKX.AI A2MCP;
+10. AgentLancer if paid demand appears;
+11. automatic-routed inference suppliers such as Scalattice/OpenGPU/Swan when economics are real;
+12. RELOAD / Conduit Protocol pending Run 061.
 
 ## Evidence rules
 - Do not infer demand from registrations, listings, provider counts, polished demos, protocol-wide counters or first-party success stories alone.
@@ -76,25 +78,22 @@ Current strongest implementation-research candidates for `server bot finds simpl
 - No Azerbaijan exclusion found is not equivalent to documented Azerbaijan eligibility.
 
 ## Current next run
-**Run 060 — validate only the five Run 059 residual projects + one final minimal vocabulary cross-check.**
+**Run 061 — validate only RELOAD and Conduit Protocol + one tiny exact-name/role control.**
 
 Validate:
-- AgentLancer
-- AgentGigs
-- Jobs in AI agent onboarding
-- Surplus Intelligence
-- Alien / Liquid Compute
+- RELOAD / reloadai.io
+- Conduit Protocol / conduitprotocol.net
 
-For each capture production state, autonomous API/daemon suitability, admission/KYC/geography, payout, fees/stake/bond, recurring server/API/model cost, ToS/upstream restrictions, real paid-demand evidence, net-profit inputs and remaining unknowns.
+For each capture production state, autonomous supplier/API/daemon suitability, admission/KYC/geography, payout, fees/stake/bond, recurring server/API/model cost, ToS/upstream restrictions, real paid-demand evidence, net-profit inputs and remaining unknowns.
 
-Then do one minimal search using exact terms from those projects (`provider agent`, `agent jobs`, `seller offers`, `compute provider`, `market maker`). Do not reopen broad saturated categories.
+Then perform one tiny control using only exact names/role vocabulary surfaced by those two. Do not reopen broad saturated categories.
 
 ### Completion gate
-If Run 060:
+If Run 061:
 - finds **0 new top-level mechanisms**;
-- normalizes these five projects into existing families;
-- and the minimal exact-vocabulary check yields only duplicates/negligible leads,
+- normalizes both projects into existing families;
+- and the tiny control yields only duplicates/negligible results,
 
 then set `STATUS.md` to **COMPLETE**, record final saturation evidence and remaining unknowns, and stop recurring research.
 
-If Run 060 exposes another genuinely material residual cluster, keep IN PROGRESS and define only the smallest necessary follow-up pass.
+If Run 061 exposes another genuinely material independent project, keep IN PROGRESS and define only the smallest necessary follow-up pass.
