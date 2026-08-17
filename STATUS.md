@@ -2,47 +2,39 @@
 
 Project state: **IN PROGRESS**
 
-Last completed run: **Run 060 — final project-cluster validation + exact-vocabulary control**
+Last completed run: **Run 061 — final residual pair validation + tiny exact-role control**
 Last updated: **2026-08-17**
 
 ## Completed research runs
-Runs **001–060** are complete.
+Runs **001–061** are complete.
 
 Latest durable files:
-- `research/RUN_060_FINAL_PROJECT_CLUSTER_VALIDATION.md`
-- `research/SOURCES_RUN_060.md`
-- `research/CATALOG_ADDITIONS_RUN_060.md`
+- `research/RUN_061_FINAL_RESIDUAL_PAIR_VALIDATION.md`
+- `research/SOURCES_RUN_061.md`
+- `research/CATALOG_ADDITIONS_RUN_061.md`
 
 ## Saturation state
-Forty-three deliberate control/tail passes (Runs 018–060) have produced **0 new top-level economic mechanisms**. Taxonomy saturation confidence is **very high / effectively converged**.
+Forty-four deliberate control/tail passes (Runs 018–061) have produced **0 new top-level economic mechanisms**. Taxonomy saturation confidence is **very high / effectively converged**.
 
-Run 060 normalized all five Run 059 residual leads into existing families:
-- AgentLancer
-- AgentGigs
-- Jobs in AI agent marketplace
-- Surplus Intelligence
-- Alien / Liquid Compute
+Run 061 validated both Run 060 residual projects:
+- **RELOAD / reloadai.io — WATCHLIST / mechanism verified:** inference/API resale + cheapest-healthy routing with USDG settlement. Current seller-page snapshot showed 0 active offers, 0 live models and $0 seller earnings/pool balance, so real current utilization is unproven.
+- **Conduit Protocol — VERIFIED MECHANISM / EARLY-EXPERIMENTAL:** paid capability endpoints, compute endpoints, workflows and relays with USDC settlement plus stake/slashing. It is an excellent technical fit but provider-attributable organic demand remains unproven and must be separated from bootstrap subsidies.
 
-No new economic family emerged. However, the required final exact-vocabulary control surfaced two concrete independent projects not yet normalized in durable project files: **RELOAD / reloadai.io** and **Conduit Protocol**. Both directly fit existing inference/API/compute-capability market families and are close to the original server-bot objective, so completion is withheld for one final narrow pass.
+No new mechanism emerged. However, the mandatory tiny exact-role control surfaced one concrete independent project not previously normalized in the repository: **API Mart / tryapimart.app**. It fits existing inference-resale + paid-capability families but is close enough to the original server-bot objective to require one final narrow validation pass.
 
-## Material Run 060 findings
-- **AgentGigs — VERIFIED, EARLY:** full agent API covers browsing, applying, delivery, messaging, proofing and payout lifecycle after one-time Stripe Connect KYC. Free agent keeps 90%; paid tiers improve commission. Actual paid utilization/win-rate remains unresolved.
-- **Surplus Intelligence — VERIFIED:** live inference seller orderbook/API model with USDC on Base, current seller APIs and strong aggregate production-usage signals. Key risks are upstream-resale ToS, price compression and fill rate.
-- **AgentLancer — WATCHLIST:** technically excellent fully autonomous provider/requester workflow, but the platform itself still separates activity from verified earnings and describes first-payment conversion as a bottleneck.
-- **Jobs in AI — WATCHLIST:** agent registration/deploy/apply-by-ID exist, but autonomous job discovery/contracts/webhooks remain roadmap on the current agent page; observed public marketplace snapshot showed 0 agent-compatible roles.
-- **Alien / Liquid Compute — WATCHLIST:** GPU-provider, ACU settlement and AVL availability/staking mechanisms are documented; attributable real paid utilization and production liquidity remain insufficiently demonstrated.
-
-New Run 060 control leads:
-1. **RELOAD / reloadai.io** — decentralized inference marketplace / idle-capacity seller lead.
-2. **Conduit Protocol** — USDC compute-endpoint + machine-callable capability-provider marketplace lead.
+## Material Run 061 findings
+- **RELOAD:** sellers must explicitly have the right to resell upstream capacity; upstream-provider Terms are decisive. Wallet/Privy authentication is documented. Numeric seller fee was not established. Current live seller surface was effectively empty in the observed snapshot.
+- **Conduit:** current first-party material describes mainnet/live provider, compute and relay roles; USDC settlement; 5% protocol cut in the whitepaper; slashable provider/relay staking; temporary bootstrap subsidy. Exact current staking asset/amount is inconsistent across first-party pages and must be revalidated before implementation.
+- **API Mart — new residual lead:** current docs state sellers receive 99% of buyer top-ups upfront in USDG with a 1% platform fee and route through the cheapest healthy offer. It also exposes x402 Agent Skills. Public activity signals conflict: homepage advertises 350+ models while the observed `/markets` snapshot showed 0 of 0 models.
 
 ## Mechanism conclusion
-Run 060 found **0 new top-level mechanisms**. Everything still maps to existing families:
-1. autonomous agent-job/bounty/service marketplaces;
-2. inference/API resale and routing markets;
-3. compute/GPU marketplaces;
-4. machine-callable paid capability endpoints;
-5. stake-backed resource/availability operators.
+Run 061 found **0 new top-level mechanisms**. Everything still maps to existing families:
+1. inference/API resale and routing markets;
+2. machine-callable paid capability endpoints;
+3. GPU/CPU compute marketplaces;
+4. relay/benchmark contribution;
+5. stake-backed operator incentives;
+6. composable paid workflows.
 
 ## Current strongest candidates for later implementation research
 For the specific `server bot finds simple paid work` objective:
@@ -55,52 +47,53 @@ For the specific `server bot finds simple paid work` objective:
 7. UsePod provider/reseller market;
 8. SOMA agent-compatible data submission / model competition path;
 9. OKX.AI A2MCP paid services;
-10. AgentLancer if verified paid demand develops;
-11. automatic-routed inference suppliers such as Scalattice/OpenGPU/Swan where net economics are real;
-12. RELOAD / Conduit Protocol pending Run 061 validation.
+10. Conduit Protocol capability/compute/relay provider roles;
+11. AgentLancer if verified paid demand develops;
+12. automatic-routed inference suppliers such as Scalattice/OpenGPU/Swan/RELOAD where net economics are real;
+13. API Mart pending Run 062 validation.
 
 ## Economics / risk findings
 - **Paid utilization/fill rate remains the dominant hidden variable** across compute, storage, bandwidth, agent and API markets.
-- Agent marketplaces add bid win-rate, revision/dispute cost and model/API cost as key variables.
+- In inference resale, upstream-provider resale permission is a hard prerequisite; marketplace permission alone is insufficient.
 - Stablecoin settlement does not prove demand or profit.
-- Provider bonds/stakes and paid membership tiers can materially change break-even economics.
-- Upstream API resale must be checked against the upstream provider's Terms; marketplace permission alone is insufficient.
-- Aggregate traffic/requests are stronger than signup counts but still do not prove an individual seller's profitability.
+- Provider bonds/stakes and bootstrap subsidies can materially distort apparent economics.
+- Separate customer-paid revenue from treasury/token/subsidy emissions.
+- Homepage/model-count claims must be cross-checked against live marketplace inventory and attributable settlement.
 - Lack of an explicit Azerbaijan exclusion is not proof of geographic eligibility.
 
 ## Current phase
-The project now needs **Run 061 — validate only RELOAD and Conduit Protocol + one tiny exact-name/role control.**
+The project now needs **Run 062 — validate only API Mart / tryapimart.app + one tiny exact-name control.**
 
 Completion confidence:
 - taxonomy: **very high / effectively converged**
 - paid-agent/x402/MCP/A2A mechanism saturation: **very high / converged**
 - all-category mechanism saturation: **very high / converged**
 - high-priority economics: **high**
-- project-level saturation: **very high, pending two final residual projects**
+- project-level saturation: **very high, pending one final residual project**
 - overall completion: **not yet**
 
 ## Next run priority
-**Run 061 — final residual pair validation.**
+**Run 062 — final API Mart validation.**
 
 Validate only:
-1. RELOAD / reloadai.io
-2. Conduit Protocol / conduitprotocol.net
+1. API Mart / tryapimart.app
 
-For each capture:
-- current production status and real activity;
-- autonomous API/daemon/provider suitability;
-- supplier admission and identity/KYC;
+Capture:
+- current production status and actual live offers/buyers/settled activity;
+- autonomous seller/API/Agent Skills suitability;
+- seller admission and identity/KYC;
 - geography and Azerbaijan if documented;
-- payout/settlement asset and withdrawal path;
-- fees/stake/bond/collateral;
+- payout/settlement mechanics and withdrawal/off-ramp path;
+- 1% platform fee and any other fees;
+- upstream-resale authorization requirement;
 - recurring server/API/model costs;
-- ToS / automation / upstream-resale restrictions;
-- attributable real paid demand where available;
-- net-profit inputs and key unknowns.
+- real paid demand vs promotional examples;
+- Agent Skills provider economics;
+- net-profit inputs and remaining unknowns.
 
-Then perform one **tiny** control using exact project/role vocabulary from those two only. Do not reopen broad categories.
+Then perform one **tiny** exact-name control using only `API Mart`, `tryapimart`, `Agent Skills`, `Robinhood Chain USDG inference marketplace` and directly adjacent vocabulary. Do not reopen broad categories.
 
 ### Completion logic
-If Run 061 finds **0 new top-level mechanisms**, normalizes both projects into existing families, and the tiny control yields only duplicates/negligible leads, set project state to **COMPLETE**, document remaining unknowns and final saturation evidence, and stop recurring research.
+If Run 062 finds **0 new top-level mechanisms**, normalizes API Mart into existing families, and the tiny exact-name control yields only duplicates/negligible leads, set project state to **COMPLETE**, document remaining unknowns and final saturation evidence, and stop recurring research.
 
-If Run 061 unexpectedly reveals another genuinely material independent project, keep IN PROGRESS and define only the smallest necessary follow-up.
+If Run 062 unexpectedly reveals another genuinely material independent project, keep IN PROGRESS and define only the smallest necessary follow-up.
