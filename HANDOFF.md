@@ -17,85 +17,84 @@ Research an exhaustive inventory before implementation. Priority is legitimate a
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only at the true completion gate.
 
 ## Current durable checkpoint
-Runs **001–058** are complete.
+Runs **001–059** are complete.
 
 Latest files:
-- `research/RUN_058_RESIDUAL_VALIDATION_AND_SPOTCHECK.md`
-- `research/SOURCES_RUN_058.md`
-- `research/CATALOG_ADDITIONS_RUN_058.md`
+- `research/RUN_059_FINAL_RESIDUAL_VALIDATION_AND_CONTROL.md`
+- `research/SOURCES_RUN_059.md`
+- `research/CATALOG_ADDITIONS_RUN_059.md`
 
 `STATUS.md` is authoritative.
 
-## Saturation state after Run 058
-Forty-one deliberate control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation is effectively converged.
+## Saturation state after Run 059
+Forty-two deliberate control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation remains effectively converged.
 
-Run 058 fully normalized the Run 057 residual cluster. It did not expose any new mechanism. However, its required compact supplier-role spot-check found four additional independent provider projects that were not already present in the durable repository search: **Swan Inference, AntSeed, UsePod and DeCloudX**. Because four fresh viable-looking projects are not negligible under the existing completion gate, the project remains **IN PROGRESS** for one final narrow pass.
+Run 059 validated all four Run 058 leads and found no new mechanism:
+- **AntSeed — VERIFIED:** open P2P seller role for inference/routing/specialized agents; Base-mainnet USDC settlement; 96% provider share; minimum 10 USDC stake; strong server-native fit.
+- **UsePod — VERIFIED:** open GPU provider or permitted upstream-key relay; 80% provider share; USDC Solana payout; 50 USDC bond; strong automation fit.
+- **Swan Inference — WATCHLIST:** provider signup and USDC reward path exist, but public network surface showed zero activity during this pass; utilization remains unresolved and collateral rules matter.
+- **DeCloudX — WATCHLIST:** multi-resource operator tiers and DCX stake/reward claims exist, but independent production/liquidity/utilization proof remains insufficient; illustrative dashboard earnings must not be treated as evidence.
 
-## Run 058 normalized residual candidates
-1. **NodeOps Network Compute Provider** — live mainnet; VM/bare-metal supported; NODE bond; strict root/network requirements; base + performance reward headline plus workload-fee share.
-2. **OpenGPU Provider** — automatic GPU routing; no provider lockup; early-network demand/liquidity still uncertain.
-3. **Lium SN51** — GPU rentals + Bittensor emission; dynamic TAO registration burn; self-hosted or managed coordinator.
-4. **NodeAI Host** — curated qualified-datacenter host model; own prices; 25% fee.
-5. **Kunagi Worker** — permissionless inference worker direction; marketplace still early; payout/bond/utilization details need more maturity.
-6. **Scalattice Provider** — Windows/Linux GPU agent; per-job earnings; $10 minimum payout; demand/fill is key unknown.
-7. **SILO Storage Node** — PC/dedicated server; paid storage + egress; low unit rates make utilization central.
-8. **Sentinel dVPN Node** — Linux bandwidth supplier; existing relay/VPN mechanism.
-9. **UPGO.IO Relay Leaf** — Linux daemon/CLI; BNC reward claims; WATCHLIST pending independent demand/liquidity evidence.
-10. **SOMA** — agent-native automated data submission explicitly documented, but checked quickstart is testnet; liquid mainnet cash-equivalent earnings not proven.
+The required compact control still surfaced five independent new project leads, so completion was deliberately withheld:
+1. **AgentLancer** — agent requester/provider/verifier job market; current page reports zero verified earnings.
+2. **AgentGigs** — API-first autonomous job lifecycle with claimed Stripe Connect payout.
+3. **Jobs in AI agent onboarding** — programmatic job applications with claimed Stripe escrow payout.
+4. **Surplus Intelligence** — inference seller/orderbook discovered from third-party OpenClaw integration; requires primary-source validation.
+5. **Alien / Liquid Compute** — GPU provider/market-maker/creator marketplace; requires economics/admission validation.
 
-## New Run 058 spot-check leads requiring Run 059
-1. **Swan Inference** — current official page advertises GPU provider earnings from inference and USDC settlement.
-2. **AntSeed** — open provider market for raw inference, routing or specialized AI agents; own prices; USDC settlement.
-3. **UsePod** — open inference marketplace; local GPU backend or upstream-key resale; earn USDC.
-4. **DeCloudX** — multi-resource operator network spanning relay, compute, GPU, storage and validator roles with DCX stake.
-
-## Existing strongest machine-paid strategies
-The paid-agent/x402/MCP/A2A seller tail remains converged and reduces to five operating strategies:
+## Current strongest machine-paid strategies
+The mechanism universe still reduces to known strategies:
 1. direct self-hosted paid endpoint;
 2. marketplace/proxy monetization layer;
 3. autonomous agent-job/bounty/service marketplace;
 4. build-once paid agent/data/content/knowledge asset;
-5. demand-signalled production from posted requests, bounties or demonstrated usage.
+5. demand-signalled production from posted requests, bounties or demonstrated usage;
+6. resource-provider daemon/node for compute, storage, bandwidth or network operations;
+7. capital/stake-backed operator role.
 
 Current strongest implementation-research candidates for `server bot finds simple paid work`:
 1. PayanAgent;
 2. OKX.AI A2A ASP;
 3. agent2agent.market;
-4. AntSeed (pending Run 059 validation);
-5. UsePod (pending Run 059 validation);
+4. AntSeed;
+5. UsePod;
 6. SOMA;
 7. OKX.AI A2MCP;
 8. MCPize / a2a cloud if demand is proven;
-9. auto-routed inference providers such as Scalattice/OpenGPU/Swan if net economics are real.
+9. auto-routed inference providers such as Scalattice/OpenGPU/Swan if net economics are real;
+10. AgentLancer / AgentGigs pending Run 060 validation.
 
 ## Evidence rules
-- Do not infer demand from registrations, listings, provider counts, polished demos, protocol-wide settlement counters or first-party success stories.
+- Do not infer demand from registrations, listings, provider counts, polished demos, protocol-wide counters or first-party success stories alone.
 - Prefer distinct paid buyers, seller receipts, repeat utilization and attributable settlement value.
 - Separate customer-paid utilization from token emissions/subsidies.
 - A provider guide does not prove an earning opportunity unless compensation is explicit.
 - Linux/Docker support does not prove VPS/datacenter permission.
-- Do not treat points as income if they lack a current liquid redemption path.
-- USDC-denominated settlement simplifies pricing but does not eliminate KYC, geography, off-ramp or platform-risk questions.
+- Do not treat points or locked emissions as income if they lack a current liquid redemption path.
+- Stablecoin settlement simplifies accounting but does not remove KYC, geography, off-ramp, platform or demand risk.
+- Upstream API resale must comply with the upstream provider's own Terms even if the marketplace technically supports relaying.
+- No Azerbaijan exclusion found is not equivalent to documented Azerbaijan eligibility.
 
 ## Current next run
-**Run 059 — final residual-cluster validation + repeated compact supplier-role control.**
+**Run 060 — validate only the five Run 059 residual projects + one final minimal vocabulary cross-check.**
 
 Validate:
-- Swan Inference
-- AntSeed
-- UsePod
-- DeCloudX
+- AgentLancer
+- AgentGigs
+- Jobs in AI agent onboarding
+- Surplus Intelligence
+- Alien / Liquid Compute
 
-For each capture current production status, admission mode, VPS/bare-metal/home eligibility, KYC/geography, payout asset, stake/bond/collateral, recurring costs, automation/ToS restrictions, utilization/demand evidence, net-profit inputs and remaining unknowns.
+For each capture production state, autonomous API/daemon suitability, admission/KYC/geography, payout, fees/stake/bond, recurring server/API/model cost, ToS/upstream restrictions, real paid-demand evidence, net-profit inputs and remaining unknowns.
 
-Then repeat one compact supplier-role search using terms such as supplier, host, operator, worker, publisher, seller, partner, provider program, machine jobs, agent jobs, inference provider, storage operator and relay provider.
+Then do one minimal search using exact terms from those projects (`provider agent`, `agent jobs`, `seller offers`, `compute provider`, `market maker`). Do not reopen broad saturated categories.
 
 ### Completion gate
-If Run 059:
+If Run 060:
 - finds **0 new top-level mechanisms**;
-- normalizes these four projects into existing families;
-- and the repeated compact spot-check yields only duplicates/negligible new viable projects,
+- normalizes these five projects into existing families;
+- and the minimal exact-vocabulary check yields only duplicates/negligible leads,
 
-then set `STATUS.md` to **COMPLETE**, document final unknowns and saturation evidence, and stop recurring research.
+then set `STATUS.md` to **COMPLETE**, record final saturation evidence and remaining unknowns, and stop recurring research.
 
-If Run 059 exposes another genuinely material cluster, keep IN PROGRESS and define only the smallest necessary follow-up pass.
+If Run 060 exposes another genuinely material residual cluster, keep IN PROGRESS and define only the smallest necessary follow-up pass.
