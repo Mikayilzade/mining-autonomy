@@ -2,33 +2,30 @@
 
 Project state: **IN PROGRESS**
 
-Last completed run: **Run 048 — seventh paid agent / MCP / machine-payment tail pass**
+Last completed run: **Run 049 — eighth paid-agent / x402 / A2A seller tail pass**
 Last updated: **2026-08-17**
 
 ## Completed research runs
-Runs **001–048** are complete.
+Runs **001–049** are complete.
 
 Latest durable files:
-- `research/RUN_048_SEVENTH_PAID_AGENT_MCP_MACHINE_PAYMENT_TAIL.md`
-- `research/SOURCES_RUN_048.md`
-- `research/CATALOG_ADDITIONS_RUN_048.md`
+- `research/RUN_049_EIGHTH_PAID_AGENT_X402_A2A_TAIL.md`
+- `research/SOURCES_RUN_049.md`
+- `research/CATALOG_ADDITIONS_RUN_049.md`
 
 ## Saturation state
-Thirty-one deliberate control/tail passes (Runs 018–048) have produced **0 new top-level economic mechanisms**. Taxonomy saturation confidence remains **very high**.
+Thirty-two deliberate control/tail passes (Runs 018–049) have produced **0 new top-level economic mechanisms**. Taxonomy saturation confidence remains **very high**.
 
-Project-level saturation is still **not complete**. Run 048 again found a non-negligible set of independent paid-agent/x402/A2A marketplace implementations, so the provider tail has not converged yet.
+Project-level saturation is still **not complete**. Run 049 again found a non-negligible set of independent seller-capable paid-agent/x402/A2A implementations, so the provider tail has not converged yet.
 
-## Material Run 048 findings
+## Material Run 049 findings
 Validated/promoted or clarified:
-- **Alysium AgentHub** — paid per-conversation agent marketplace with Stripe Connect creator payouts; exact public platform fee and Azerbaijan eligibility remain unresolved.
-- **Agent Market / aimarkethub.ai** — autonomous A2A sale of compute/data/tools/capabilities with escrow and advertised 0.5% settled-deal fee; live liquidity/off-ramp still unclear.
-- **A2A Market** — beta skill market using x402 USDC/Base plus credits; first-party activity/earnings figures require caution.
-- **Hunazo** — valid USDC escrow agent market but public surface showed 0 escrow-protected transactions despite dozens of listings: WATCHLIST.
-- **x402 Studio / Singularity Layer** — live creator listing/discovery mechanics for paid APIs, agents and digital products; seller net share and credible volume still unproven.
-- **marketplaceforaiagents.com** — live x402 buyer surface and direct-wallet seller proposition, but seller onboarding is not yet open: WATCHLIST.
-- **AgentRanking x402 Market** — intended paid capability marketplace, insufficient live seller activity: WATCHLIST.
-- **a2a cloud** — useful deployable-agent registry/proof layer, but no creator-payment path established in this pass: RESTRICTED / directory.
-- **percall.dev** — live machine-payable operator services and discovery/routing infrastructure, but no proven open third-party seller marketplace.
+- **Agent402 Marketplace** — VERIFIED seller channel: register an API once, receive per-call x402 USDC with non-custodial/direct-wallet settlement; official surface advertises 17k+ indexed services but paid utilization remains unproven.
+- **Atelier** — VERIFIED two-sided autonomous-agent marketplace. Independent agents are HTTP services; current docs describe direct orders, subscriptions, bounties and x402 machine hires. Standard completed marketplace orders pay 90% to the agent / 10% platform; x402 orders add the 10% on top so seller receives list price.
+- **The Grid** — Base/ERC-8004/x402 seller architecture is real, but public activity/liquidity evidence is weak: WATCHLIST.
+- **CONMARK** — Solana/x402 A2A seller architecture with USDC settlement is documented, but live demand evidence remains weak: WATCHLIST.
+- **AgentHire** — explicit per-task x402 USDC agent earning proposition; first-party scale claims are not independently verified and fee/KYC/geography details remain incomplete: WATCHLIST.
+- **402.coffee / Agent Café** — useful proof that tiny machine-payable trust/risk/escrow/arbitration services can be sold directly, but no open third-party seller program was established.
 
 ## Durable strategic model
 The machine-paid cluster still reduces to five operating strategies:
@@ -42,11 +39,11 @@ No sixth top-level mechanism emerged.
 
 ## Economics / risk findings
 - **Paid utilization/fill rate remains the dominant hidden variable.**
-- Listing count, endpoint count, download count and first-party top-earner counters are weak evidence; prefer independent repeat buyers, paid invocations, sold counts, funded jobs or on-chain settlement that can be attributed to independent demand.
+- Listing/service/agent counts and first-party processed-volume claims remain weak demand evidence unless tied to independent paid invocations, sold counts, funded jobs or attributable on-chain settlement.
 - Metered MCP/API/x402/webhook execution remains the closest fit to fully autonomous normal-VPS earning.
-- Early marketplaces repeatedly show a split between technically valid payment rails and weak/zero liquidity.
-- x402 adds payment-protocol implementation risk; replay protection, payment binding, facilitator review and spend controls will be mandatory later.
-- Azerbaijan remains a hard pre-CAPEX/pre-subscription validation gate for Stripe/Wise/bank/off-ramp eligibility.
+- Atelier and Agent402 are now among the clearest concrete implementations of the original target: self-hosted service + machine discovery + programmatic per-call settlement.
+- x402 payment security must be treated as a first-class implementation boundary. Later pilots require payment/resource binding, replay protection, exact asset/network/recipient/amount validation, idempotency, bounded facilitator gas sponsorship, delivery/payment state consistency, wallet spend limits and withdrawal isolation.
+- Azerbaijan remains a pre-CAPEX/pre-subscription validation gate where third-party identity, wallet, exchange or off-ramp services are involved.
 
 ## Current phase
 Taxonomy is effectively converged. Provider-level discovery in the paid agent-skill/MCP/x402/A2A machine-payment tail is **still yielding independent platforms at a non-negligible rate**.
@@ -58,18 +55,28 @@ Completion confidence:
 - overall completion: **not yet**
 
 ## Next run priority
-**Run 049 — eighth, narrower paid-agent/x402/A2A tail pass.**
+**Run 050 — ninth ultra-narrow paid-agent/x402/A2A tail pass.**
 
-Priority:
-1. Search seller-capable x402 directories and Bazaar-derived merchant hosts.
-2. Search A2A capability exchanges and paid-agent registries with explicit payout/direct-wallet settlement.
-3. Alternate vocabulary: `HTTP 402 API marketplace seller`, `x402 merchant marketplace`, `paid MCP publisher`, `agent service escrow marketplace`, `agent-to-agent USDC services`.
-4. Explicitly reject directories that only index tools without creator-payment path.
-5. Prefer demand signals stronger than catalog/listing counts.
-6. Deduplicate against Runs 041–048.
+Priority vocabulary:
+1. `x402 API store publisher`
+2. `x402 Bazaar merchant`
+3. `AI agent API seller USDC`
+4. `MCP server monetize per call`
+5. `paid tool registry x402`
+6. `agent skill store USDC`
+7. `machine payable API directory`
+8. `A2A service exchange seller`
+9. `ERC-8004 marketplace seller`
+10. `agent bounty API autonomous`
+
+Rules:
+- Deduplicate against Runs 041–049.
+- Require an explicit creator/seller/publisher payment path to promote a marketplace.
+- Prefer evidence of paid transactions over catalog size.
+- Explicitly reject pure directories, standards pages and payment SDKs with no independent seller channel.
 
 ### Completion logic
-If Run 049 yields only duplicates or **negligible** new viable independent seller channels, proceed to **Run 050 — final all-category saturation/control pass**.
+If Run 050 yields only duplicates or **negligible** new viable independent seller channels, proceed to **Run 051 — final all-category saturation/control pass**.
 
 Only if that broad pass also converges and remaining unknowns are explicitly recorded should the project be marked **COMPLETE**.
 
