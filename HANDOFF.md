@@ -17,25 +17,26 @@ Research an exhaustive inventory before implementation. Priority is legitimate a
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only at the true completion gate.
 
 ## Current durable checkpoint
-Runs **001–055** are complete.
+Runs **001–056** are complete.
 
 Latest files:
-- `research/RUN_055_FOURTEENTH_PAID_AGENT_X402_A2A_TAIL.md`
-- `research/SOURCES_RUN_055.md`
-- `research/CATALOG_ADDITIONS_RUN_055.md`
+- `research/RUN_056_FIFTEENTH_FINAL_PAID_AGENT_SELLER_TAIL.md`
+- `research/SOURCES_RUN_056.md`
+- `research/CATALOG_ADDITIONS_RUN_056.md`
 
 `STATUS.md` is authoritative.
 
-## Saturation state after Run 055
-Thirty-eight deliberate control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation remains very high, but provider-level saturation is still not complete because Run 055 again produced several independent seller-capable channels.
+## Saturation state after Run 056
+Thirty-nine deliberate control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation remains very high.
 
-Do not begin the final all-category completion pass yet. Execute one more ultra-narrow seller-tail confirmation pass first.
+The paid-agent/x402/MCP/A2A seller tail is now considered converged at the mechanism level. Run 056 still found independent platforms, but each fits already-known strategies. Do not run another same-tail loop unless the final broad pass exposes a specific unresolved cluster.
 
-## Run 055 durable findings
-- **OKX.AI Agent Service Provider (ASP)**: VERIFIED; especially important. A2A providers can stay online for automatic task matching or actively browse/take tasks, negotiate/deliver and get paid via escrow after approval. A2MCP exposes x402-paid APIs/MCP services with automatic real-time billing/settlement. This joins PayanAgent as a top implementation-research candidate for the original `autonomous bot finds simple paid work` objective.
-- **RelAI Marketplace**: VERIFIED; open/provider-facing x402 API marketplace with per-call USDC, multichain settlement, marketplace relay/discovery and direct seller-wallet payouts. External demand remains unproven and exact marketplace fee needs final normalization.
-- **x402 Bazaar (x402bazaar.org)**: VERIFIED seller channel with stated 95% provider revenue share, but current public counters showed 0 payments, 0 external providers earning and $0 volume. Low implementation priority until real buyer activity appears.
-- **x402 Studio Marketplace**: WATCHLIST; creator listing/discovery exists but seller payout/fee economics were not explicit enough in current primary docs.
+## Run 056 durable findings
+- **MCPize**: VERIFIED; managed MCP publishing/hosting/marketplace with subscriptions, usage pricing and x402 per-call. Standard creator share 80%; Stripe Connect payout. Current first-party site claims substantial vendor payouts, but aggregate figures need independent corroboration.
+- **a2a cloud**: VERIFIED; paid deployed-agent marketplace. Seller prices calls, authenticated non-owner calls generate seller economics, default platform fee is 20% of markup, Stripe Connect Express settles to bank.
+- **agent2agent.market**: VERIFIED and strategically important. Machine-readable open bounty/task feed, programmatic accept/submit flow, Ed25519 identity, Base wallet and approval-triggered USDC settlement. This is one of the closest matches to the original autonomous-worker objective.
+- **SkillExchange**: WATCHLIST; explicit MCP/A2A creator/payout path, but current public fee and activity metrics conflict across first-party pages. Revalidate before implementation.
+- **EndPoints**: duplicate, still closed beta.
 
 ## Strategic model
 The machine-paid cluster still reduces to five operating strategies:
@@ -47,14 +48,18 @@ The machine-paid cluster still reduces to five operating strategies:
 
 No sixth mechanism emerged.
 
+## Current strongest implementation-research candidates
+For `server bot finds simple paid work`:
+1. PayanAgent;
+2. OKX.AI A2A ASP;
+3. agent2agent.market;
+4. OKX.AI A2MCP;
+5. MCPize / a2a cloud if real buyer demand can be validated.
+
 ## Evidence rule
-Do not infer demand from registrations, listings, polished marketplace examples, demo transactions, provider counts, protocol-wide settlement counts or testnet activity. Prefer distinct paid buyers, seller receipts, repeat utilization and attributable settlement value.
+Do not infer demand from registrations, listings, polished marketplace examples, demo transactions, provider counts, protocol-wide settlement counts or first-party success stories. Prefer distinct paid buyers, seller receipts, repeat utilization and attributable settlement value.
 
 Request/bid/task-feed markets should rank above passive listing when they expose actual paid work because the agent can actively seek demand.
-
-Recent 2026 x402 measurement/security research continues to support these project rules:
-- settlement count is not adoption proof;
-- merchant implementations need exact payment/resource binding, replay protection, idempotency, spend/gas bounds and withdrawal-wallet isolation.
 
 Continue distinguishing seller admission modes:
 1. open listing;
@@ -72,18 +77,25 @@ Also distinguish marketplace maturity:
 - demo/testnet/planned.
 
 ## Current next run
-**Run 056 — fifteenth and final ultra-narrow paid-agent / x402 / MCP / A2A seller-tail confirmation pass.**
+**Run 057 — final all-category saturation/control pass.**
 
-Search terms:
-- `service provider agent marketplace auto match jobs payout`
-- `agent provider task hall bid deliver escrow`
-- `MCP creator marketplace paid invocation revenue share`
-- `API seller marketplace x402 provider 95% revenue`
-- `agent marketplace seller settlement wallet usage based`
-- `agent tool provider earn per call stablecoin`
-- `machine service registry provider payout endpoint`
-- `A2A provider marketplace paid task agent identity`
+Search afresh across every major mechanism family, not just machine-service markets:
+- compute/GPU/CPU/render/inference;
+- storage/archive/cache/CDN;
+- bandwidth/IP/relay/proxy/VPN;
+- validators/RPC/indexers/oracles/keepers/solvers/relayers;
+- ZK/proving/verifiable compute;
+- AI training/inference/data/forecast/competition work;
+- physical DePIN/sensors/mapping/wireless/energy;
+- machine tasks/APIs/MCP/A2A/service markets;
+- PoW/resource mining;
+- capital yield/staking/lending/liquidity/treasury automation;
+- build-once digital products/APIs/data/content/licensing;
+- hidden supplier/partner/host/operator/publisher/creator/developer programs.
 
-Deduplicate against Runs 041–055. Search provider/seller/task-hall/auto-match/earn/per-call/escrow/payout vocabulary. Promote only explicit provider/listing/payment paths. Distinguish production paid activity from test/demo/first-party traffic. Reject generic standards/directories/payment SDKs with no independent distribution channel. Capture legitimate previously absent server-native candidates even if they surface outside the exact MCP/x402 tail.
+Deduplicate against Runs 001–056. Use alternative supplier-role vocabulary and current primary sources. Do not count a new brand as a new mechanism.
 
-If Run 056 yields only duplicates or negligible viable additions, proceed to **Run 057 — final all-category saturation/control pass**. Mark COMPLETE only if that broad pass also converges and unresolved unknowns are explicitly recorded.
+### Completion gate
+If Run 057 produces 0 new top-level mechanisms and only negligible new viable independent projects, explicitly record remaining unknowns, update `STATUS.md` to **COMPLETE**, document final saturation evidence in `RUN_LOG.md`, and stop recurring research.
+
+If it reveals a genuinely new mechanism or a material cluster of viable projects, keep IN PROGRESS and define only the smallest required follow-up pass.
