@@ -17,27 +17,25 @@ Research an exhaustive inventory before implementation. Priority is legitimate a
 Unless the user asks a substantive question, report only `в процессе` while unfinished and `завершено` only at the true completion gate.
 
 ## Current durable checkpoint
-Runs **001–054** are complete.
+Runs **001–055** are complete.
 
 Latest files:
-- `research/RUN_054_THIRTEENTH_PAID_AGENT_MCP_X402_A2A_TAIL.md`
-- `research/SOURCES_RUN_054.md`
-- `research/CATALOG_ADDITIONS_RUN_054.md`
+- `research/RUN_055_FOURTEENTH_PAID_AGENT_X402_A2A_TAIL.md`
+- `research/SOURCES_RUN_055.md`
+- `research/CATALOG_ADDITIONS_RUN_055.md`
 
 `STATUS.md` is authoritative.
 
-## Saturation state after Run 054
-Thirty-seven deliberate control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation remains very high, but provider-level saturation is still incomplete because Run 054 again produced several independent seller-capable channels.
+## Saturation state after Run 055
+Thirty-eight deliberate control/tail passes have produced **0 new top-level economic mechanisms**. Taxonomy saturation remains very high, but provider-level saturation is still not complete because Run 055 again produced several independent seller-capable channels.
 
-Do not begin the final all-category completion pass yet.
+Do not begin the final all-category completion pass yet. Execute one more ultra-narrow seller-tail confirmation pass first.
 
-## Run 054 durable findings
-- **PayanAgent**: VERIFIED; API-first autonomous marketplace with provider registration, offers, request→bid→fulfill→approve work, Base USDC settlement and public receipts. Extremely close to the original `server bot does paid small jobs continuously` target.
-- **Agent402 Marketplace**: VERIFIED; open API/tool/agent seller marketplace with natural-language discovery and non-custodial multi-chain USDC. Public marketplace snapshot showed weak recent call activity despite huge indexed inventory; do not infer demand from supply counts.
-- **AiPayGen Seller Marketplace**: VERIFIED; explicit third-party seller registration, per-route pricing, Base USDC, 10% platform fee and no stated minimum withdrawal.
-- **Endpoints.market**: RESTRICTED/WATCHLIST because official docs still say closed beta/early access despite public provider-marketing claims.
-- **Agent402 Demand Intel / Tape**: not an independent earning mechanism, but potentially high-value demand-selection and attribution infrastructure. Prefer attributable paid-call evidence over registration counts.
-- **Circle Agent Marketplace**: WATCHLIST/RESTRICTED curated distribution route; paid x402/USDC endpoint model is real but marketplace inclusion is application/partner-style.
+## Run 055 durable findings
+- **OKX.AI Agent Service Provider (ASP)**: VERIFIED; especially important. A2A providers can stay online for automatic task matching or actively browse/take tasks, negotiate/deliver and get paid via escrow after approval. A2MCP exposes x402-paid APIs/MCP services with automatic real-time billing/settlement. This joins PayanAgent as a top implementation-research candidate for the original `autonomous bot finds simple paid work` objective.
+- **RelAI Marketplace**: VERIFIED; open/provider-facing x402 API marketplace with per-call USDC, multichain settlement, marketplace relay/discovery and direct seller-wallet payouts. External demand remains unproven and exact marketplace fee needs final normalization.
+- **x402 Bazaar (x402bazaar.org)**: VERIFIED seller channel with stated 95% provider revenue share, but current public counters showed 0 payments, 0 external providers earning and $0 volume. Low implementation priority until real buyer activity appears.
+- **x402 Studio Marketplace**: WATCHLIST; creator listing/discovery exists but seller payout/fee economics were not explicit enough in current primary docs.
 
 ## Strategic model
 The machine-paid cluster still reduces to five operating strategies:
@@ -52,7 +50,7 @@ No sixth mechanism emerged.
 ## Evidence rule
 Do not infer demand from registrations, listings, polished marketplace examples, demo transactions, provider counts, protocol-wide settlement counts or testnet activity. Prefer distinct paid buyers, seller receipts, repeat utilization and attributable settlement value.
 
-Agent402's public Tape is now a useful research input for checking attributable x402 activity. Treat its data as market evidence, not as a promise that a newly listed seller will receive traffic.
+Request/bid/task-feed markets should rank above passive listing when they expose actual paid work because the agent can actively seek demand.
 
 Recent 2026 x402 measurement/security research continues to support these project rules:
 - settlement count is not adoption proof;
@@ -63,7 +61,8 @@ Continue distinguishing seller admission modes:
 2. curated application/review;
 3. self-hosted discoverable endpoint;
 4. provider/node registration with routing market;
-5. request-feed/bidding worker.
+5. request-feed/bidding worker;
+6. automatic task matching for online providers.
 
 Also distinguish marketplace maturity:
 - production with visible paid buyers;
@@ -73,20 +72,18 @@ Also distinguish marketplace maturity:
 - demo/testnet/planned.
 
 ## Current next run
-**Run 055 — fourteenth ultra-narrow paid-agent / x402 / A2A / machine-service seller-tail pass.**
+**Run 056 — fifteenth and final ultra-narrow paid-agent / x402 / MCP / A2A seller-tail confirmation pass.**
 
 Search terms:
-- `agent service provider register offer bid fulfill paid API`
-- `AI agent marketplace provider request bid escrow USDC`
-- `agent skill marketplace developer revenue per execution`
-- `paid MCP tool marketplace creator withdraw earnings`
-- `agent API marketplace seller dashboard payout wallet`
-- `x402 seller marketplace provider waitlist API monetization`
-- `machine customer marketplace API provider revenue share`
-- `agent tool registry paid calls seller fee`
-- `autonomous task marketplace agent provider escrow bid`
-- `AI tool marketplace usage based creator payout`
+- `service provider agent marketplace auto match jobs payout`
+- `agent provider task hall bid deliver escrow`
+- `MCP creator marketplace paid invocation revenue share`
+- `API seller marketplace x402 provider 95% revenue`
+- `agent marketplace seller settlement wallet usage based`
+- `agent tool provider earn per call stablecoin`
+- `machine service registry provider payout endpoint`
+- `A2A provider marketplace paid task agent identity`
 
-Deduplicate against Runs 041–054. Search seller/provider verbs, not generic marketplace phrases alone. Promote only explicit provider/listing/payment paths. Distinguish production paid activity from test/demo traffic. Reject generic standards/directories/payment SDKs with no independent distribution channel. Capture legitimate previously absent server-native candidates even if they surface outside the exact MCP/x402 tail.
+Deduplicate against Runs 041–055. Search provider/seller/task-hall/auto-match/earn/per-call/escrow/payout vocabulary. Promote only explicit provider/listing/payment paths. Distinguish production paid activity from test/demo/first-party traffic. Reject generic standards/directories/payment SDKs with no independent distribution channel. Capture legitimate previously absent server-native candidates even if they surface outside the exact MCP/x402 tail.
 
-If Run 055 yields only duplicates or negligible viable additions, proceed to **Run 056 — final all-category saturation/control pass**. Mark COMPLETE only if that broad pass also converges and unresolved unknowns are explicitly recorded.
+If Run 056 yields only duplicates or negligible viable additions, proceed to **Run 057 — final all-category saturation/control pass**. Mark COMPLETE only if that broad pass also converges and unresolved unknowns are explicitly recorded.
