@@ -2,28 +2,27 @@
 
 Project state: **IN PROGRESS**
 
-Last completed run: **Run 050 — ninth paid-agent / x402 / A2A seller tail pass**
+Last completed run: **Run 051 — tenth paid-agent / x402 / A2A seller tail pass**
 Last updated: **2026-08-17**
 
 ## Completed research runs
-Runs **001–050** are complete.
+Runs **001–051** are complete.
 
 Latest durable files:
-- `research/RUN_050_NINTH_PAID_AGENT_X402_A2A_TAIL.md`
-- `research/SOURCES_RUN_050.md`
-- `research/CATALOG_ADDITIONS_RUN_050.md`
+- `research/RUN_051_TENTH_PAID_AGENT_X402_A2A_TAIL.md`
+- `research/SOURCES_RUN_051.md`
+- `research/CATALOG_ADDITIONS_RUN_051.md`
 
 ## Saturation state
-Thirty-three deliberate control/tail passes (Runs 018–050) have produced **0 new top-level economic mechanisms**. Taxonomy saturation confidence remains **very high**.
+Thirty-four deliberate control/tail passes (Runs 018–051) have produced **0 new top-level economic mechanisms**. Taxonomy saturation confidence remains **very high**.
 
-Project-level saturation is still **not complete**. Run 050 again found several independent seller-capable paid-agent/x402/A2A implementations, including one live marketplace with explicit seller receipts, so the provider tail has not yet converged.
+Project-level saturation is still **not complete**. Run 051 again found multiple independent seller-capable paid-agent/x402/A2A channels, so the provider tail has not yet converged.
 
-## Material Run 050 findings
-Validated/promoted or clarified:
-- **t2000** — VERIFIED live A2A commerce marketplace. Agents can list services; jobs/calls settle in USDC with receipts. The public surface showed real sold counts and settled seller payouts during this run. Demand still appears small and Azerbaijan/KYC details remain unresolved.
-- **Basilisk** — WATCHLIST. Seller architecture is explicit (ERC-8004/x402/MCP/REST + escrow), but current public counters showed 0 registered agents, 0 jobs, 0 active services and 0 payments processed.
-- **x402 Bazaar** — WATCHLIST. Third-party service registration and paid API invocation architecture are documented, but seller payout economics and independent paid demand were not sufficiently validated.
-- **A2A Market** — WATCHLIST. Skill documentation strongly supports x402 USDC skill selling, but current first-party production activity was not sufficiently validated in this pass.
+## Material Run 051 findings
+- **Circle Agent Marketplace / Agent Stack** — VERIFIED high-priority curated seller channel. Paid API endpoints can accept agent USDC via x402/Gateway; listing is application/approval based. Current live marketplace surface showed 40 services and 636 endpoints.
+- **Synmerco** — VERIFIED seller/job-market architecture with service listings, autonomous bidding/delivery, escrow and settlement. Buyer-depth evidence still needs independent measurement.
+- **MindAgents** — WATCHLIST. Explicit per-call USDC seller path through Base escrow, but current independent paid demand was not established.
+- **Hunazo** — WATCHLIST. Explicit agent-native seller API and Base USDC escrow; production page showed 0 escrow-protected transactions, while demo activity was test-heavy.
 
 ## Durable strategic model
 The machine-paid cluster still reduces to five operating strategies:
@@ -37,11 +36,10 @@ No sixth top-level mechanism emerged.
 
 ## Economics / risk findings
 - **Paid utilization/fill rate remains the dominant hidden variable.**
-- Raw registration, listing and transaction counts are weak demand evidence.
-- Run 050 strengthened this with current empirical research showing that ERC-8004 registration can be operationally shallow and x402 transaction counts can overstate independent commerce when internal/fictitious flows are present.
-- Ranking should prefer: distinct paid buyers -> seller receipts/sold counts -> repeat purchases -> attributable settlement value -> listing/transaction counts.
-- Metered MCP/API/x402/webhook execution remains the closest fit to fully autonomous normal-VPS earning.
-- x402 payment security remains a first-class implementation boundary: payment/resource binding, replay protection, exact asset/network/recipient/amount validation, idempotency, gas-spend bounds, delivery/payment state consistency, wallet spend limits and withdrawal isolation.
+- Seller channels should now be scored separately as open-listing, curated-listing/application, or self-hosted discoverable endpoints.
+- Distinct paid buyers and seller receipts remain stronger evidence than registrations, listings, demo/test transactions or protocol-wide transaction counts.
+- Curated registries may improve buyer quality/compliance signaling, but add admission and platform-dependence risk.
+- x402/payment security remains a first-class boundary: payment/resource binding, replay protection, exact asset/network/recipient/amount validation, idempotency, gas-spend bounds, delivery/payment consistency, wallet spend limits and withdrawal isolation.
 - Azerbaijan remains a pre-CAPEX/pre-subscription validation gate where third-party identity, wallet, exchange or off-ramp services are involved.
 
 ## Current phase
@@ -54,28 +52,28 @@ Completion confidence:
 - overall completion: **not yet**
 
 ## Next run priority
-**Run 051 — tenth ultra-narrow paid-agent/x402/A2A tail pass.**
+**Run 052 — eleventh ultra-narrow paid-agent / MCP / x402 / A2A provider-tail pass.**
 
 Priority vocabulary:
-1. `agent marketplace seller receipts x402`
-2. `x402 seller marketplace sold`
-3. `agent service escrow USDC marketplace`
-4. `MCP paid marketplace publisher revenue`
-5. `AI agent bounty marketplace API`
-6. `agent-to-agent marketplace per call USDC`
-7. `ERC-8004 jobs marketplace`
-8. `autonomous agent seller escrow`
-9. `paid agent skill marketplace`
-10. `machine API marketplace seller USDC`
+1. `agent service registry provider apply paid API`
+2. `AI agent marketplace list endpoint earn USDC`
+3. `MCP marketplace seller payout`
+4. `agent API registry publisher payout`
+5. `autonomous agent jobs escrow seller`
+6. `agent marketplace provider onboarding x402`
+7. `machine customer API marketplace provider`
+8. `agent skill store seller revenue`
+9. `AI agent services marketplace API register seller`
+10. `A2A paid tool registry provider`
 
 Rules:
-- Deduplicate against Runs 041–050.
-- Require an explicit creator/seller/publisher payment path to promote a marketplace.
-- Prefer evidence of distinct paid buyers, seller receipts or sold counts over catalog/transaction size.
-- Explicitly reject pure directories, standards pages, payment SDKs and identity registries with no independent seller channel.
+- Deduplicate against Runs 041–051.
+- Require explicit provider/listing/payment flow to promote a candidate.
+- Distinguish production transactions from test/demo traffic.
+- Reject generic protocols/directories/SDKs with no independent distribution or seller channel.
 
 ### Completion logic
-If Run 051 yields only duplicates or **negligible** new viable independent seller channels, proceed to **Run 052 — final all-category saturation/control pass**.
+If Run 052 yields only duplicates or **negligible** new viable independent seller channels, proceed to **Run 053 — final all-category saturation/control pass**.
 
 Only if that broad pass also converges and remaining unknowns are explicitly recorded should the project be marked **COMPLETE**.
 
