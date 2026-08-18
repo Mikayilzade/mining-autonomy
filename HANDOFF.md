@@ -18,32 +18,37 @@ Secondary target: passive provider/API/MCP/inference/compute/storage/relay marke
 
 ## Current checkpoint
 Discovery Runs **001–062**: COMPLETE.
-Implementation Run **I001**: COMPLETE.
+Implementation Runs **I001–I002**: COMPLETE.
 Project state: **IMPLEMENTATION IN PROGRESS**.
 
-Latest implementation file:
+Latest implementation files:
+- `implementation/RUN_I002_PAYANAGENT_READONLY_SAMPLER.md`
 - `implementation/RUN_I001_CANDIDATE_RANKING.md`
 
-## I001 shortlist
-1. PayanAgent — primary read-only sampler target.
-2. OKX.AI A2A ASP — primary live-task observability target.
-3. agent2agent.market — adapter-ready but current public app showed 0 open tasks/no activity on Base Sepolia.
-4. AgentGigs.io — technically strong but current public jobs page showed 0 jobs and payout setup requires email + Stripe Connect.
+## I002 result
+PayanAgent's public API contract for discovery, requests and receipts was reconfirmed. Raw public JSON could not be retrieved through the current execution environment, so quantitative demand was deliberately left unmeasured rather than inferred. A common opportunity schema + receipt schema v0.1 and demand metrics were defined. PayanAgent remains architecture/dry-run Rank #1, but no money test is justified from the 24k+ supply count alone.
+
+## Current shortlist
+1. PayanAgent — primary dry-run target; repeat quantitative sampling when raw public feed access is available.
+2. OKX.AI A2A ASP — immediate live-task observability target.
+3. agent2agent.market — adapter-ready but previously observed 0 open tasks/no Base Sepolia activity.
+4. AgentGigs.io — technically strong but previously observed 0 jobs; Stripe Connect geography/KYC gate.
 5. MCPize — strongest passive paid-endpoint experiment candidate.
 
 Watch/secondary: OKX.AI A2MCP, API Mart, inference suppliers, compute/storage/relay markets.
 
 ## Immediate next run
-**I002 / E1: PayanAgent read-only market + receipt sampler.**
+**I003 / E2: OKX.AI A2A ASP task-intake observability.**
 
 Goals:
-- inspect public request/discovery/receipt surfaces;
-- measure visible request count, recency, budgets/bounties, skill tags, bid competition if exposed, and settled receipts attributable to real work;
-- distinguish 24k+ supply offers from actual buyer demand;
-- define a common normalized opportunity schema usable across PayanAgent, OKX.AI, agent2agent.market and AgentGigs;
-- perform no bid, buy, registration, wallet signing, job acceptance or paid action.
+- use current official sources first;
+- determine whether open tasks/order intake can be observed without registration, Agentic Wallet, deposits or acceptance;
+- quantify task count, recency, prices/bounties and categories if public surfaces expose them;
+- map any observable fields to the I002 common opportunity schema;
+- document geography/KYC/onboarding unknowns rather than guessing;
+- no account creation, wallet creation/funding, task acceptance, bidding, arbitration deposit or other value-moving action.
 
-If public APIs cannot be reached directly, use current first-party web/docs evidence and design/test the adapter contract with captured fixtures; record the limitation rather than inventing data.
+If live raw task data is inaccessible, capture the official contract/workflow and proceed with E3 adapter/evaluator fixtures rather than stalling.
 
 ## Architecture direction
 Platform-neutral components:
