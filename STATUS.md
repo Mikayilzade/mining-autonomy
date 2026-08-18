@@ -1,80 +1,56 @@
 # Status
 
-Project state: **COMPLETE**
+Project state: **IMPLEMENTATION IN PROGRESS**
 
-Last completed run: **Run 062 — final API Mart validation + exact-name saturation control**
-Last updated: **2026-08-17**
+Discovery phase: **COMPLETE (Runs 001–062)**
+Last completed implementation run: **I001 — candidate ranking and first experiment gate**
+Last updated: **2026-08-18**
 
-## Completed research runs
-Runs **001–062** are complete.
+## Current objective
+Move from exhaustive discovery to implementation/experiment work. Priority is a legal server-native agent that can observe machine-readable paid work, estimate execution cost and expected margin, reject unsafe/non-compliant/unprofitable tasks, and eventually execute only positive-margin work after explicit authorization for any credentials/money-moving actions.
 
-Latest durable files:
+Do not reopen broad discovery unless a later implementation result exposes a genuinely missing mechanism.
+
+## Latest durable files
+- `implementation/RUN_I001_CANDIDATE_RANKING.md`
 - `research/RUN_062_FINAL_API_MART_VALIDATION.md`
 - `research/SOURCES_RUN_062.md`
 - `research/CATALOG_ADDITIONS_RUN_062.md`
 
-## Final saturation state
-Forty-five deliberate control/tail passes (Runs 018–062) produced **0 new top-level economic mechanisms**. The taxonomy is treated as **converged for this research phase**.
+## I001 ranking outcome
+First implementation tier:
+1. **PayanAgent** — primary read-only/dry-run target; direct request/bid/fulfill path, API-native, USDC/Base. Demand must be measured rather than inferred from offer count.
+2. **OKX.AI A2A ASP** — primary validation target; official active-intake/open-task path, escrowed task payment. Live task density and onboarding/geography remain unknown.
+3. **agent2agent.market** — architecture is nearly ideal, but current public app observation showed 0 open tasks/no activity on Base Sepolia; keep adapter-ready, do not prioritize a money test yet.
+4. **AgentGigs.io** — full autonomous REST lifecycle but current public jobs page showed 0 jobs; additionally gated by email + Stripe Connect KYC/geography.
+5. **MCPize** — strongest passive paid-endpoint candidate for later experiment; 80% creator share / 20% platform fee documented, but demand must be independently measured.
 
-Run 062 validated the sole remaining residual project:
-- **API Mart / tryapimart.app — WATCHLIST / VERIFIED MECHANISM, PAID DEMAND UNPROVEN**.
-- It maps to two already-known families: inference/API resale + routing, and paid machine-callable capability/agent-skill endpoints.
-- Current first-party pages state a 99% seller / 1% platform top-up split with USDG settlement on Robinhood Chain.
-- The platform is highly automatable and server-native in operation, but marketplace liquidity is not established strongly enough for a profitability claim.
-- Public activity signals remain conflicting: homepage claims 350+ models while the observed `/markets` snapshot showed 0 of 0 models.
-- Upstream-provider resale permission remains a mandatory per-provider implementation gate.
+Secondary/watchlist: OKX.AI A2MCP, API Mart, routed inference suppliers, compute/storage/relay providers.
 
-The final tiny exact-name control using only API Mart / tryapimart / Agent Skills / Robinhood-USDG inference vocabulary produced only duplicates, an unrelated name collision, and token-market context. It produced **0 new material independent earning projects**.
+## Durable implementation rules
+- Demand/fill rate is the dominant unknown; supply/listing counts are not demand.
+- Never spend money, fund a wallet, stake/deposit, rent paid infrastructure, create paid accounts, submit KYC, or take irreversible external action without explicit user authorization.
+- Continue read-only market observation, public-data measurement, architecture, dry-run code/design and capped simulation without waiting for credentials.
+- Any task executor must have a policy/compliance gate, conservative cost estimator, EV/margin gate, quality validator and immutable-ish ledger/audit trail.
+- Upstream API/model resale requires independent upstream permission.
+- No CAPTCHA bypass, spam, fake activity, ad fraud, prohibited multi-accounting, credential abuse, geofence/KYC evasion, unauthorized access/scraping, or automation of human-only work contrary to ToS.
 
-## Completion conclusion
-The research-completion condition is met:
-1. major taxonomies have been explored;
-2. candidate projects/mechanisms have been repeatedly deduplicated and classified;
-3. high-priority candidates have primary-source validation where public evidence exists;
-4. broad, niche, tail and residual searches were repeated extensively;
-5. repeated control passes produced no new independent mechanisms and eventually no new material residual projects;
-6. remaining unknowns are implementation/economics questions rather than missing taxonomy branches.
+## Current experiment queue
+### E1 — PayanAgent read-only market/receipt sampler
+Measure public request flow and settled demand; normalize task fields. No bidding/buying/wallet actions.
 
-The repository should therefore move from **discovery** to a later **implementation-ranking / experiment-design** phase if the user chooses to continue.
+### E2 — OKX.AI task-intake observability
+Determine what open-task information is publicly observable and quantify density/prices without creating an account or accepting work.
 
-## Strongest candidates for later implementation research
-For the specific `server bot finds simple paid work` objective:
-1. PayanAgent request/bid worker;
-2. OKX.AI A2A ASP automatic matching + active task intake;
-3. agent2agent.market machine-readable bounty/task feed;
-4. AgentGigs autonomous job lifecycle;
-5. Surplus Intelligence inference seller/orderbook;
-6. AntSeed provider market;
-7. UsePod provider/reseller market;
-8. SOMA agent-compatible data submission / model competition path;
-9. OKX.AI A2MCP paid services;
-10. Conduit Protocol capability/compute/relay provider roles;
-11. AgentLancer if verified paid demand develops;
-12. automatic-routed inference suppliers such as Scalattice/OpenGPU/Swan/RELOAD when net economics are real;
-13. API Mart if live third-party paid demand becomes demonstrable.
+### E3 — cross-market dry-run evaluator
+Create common opportunity schema + compliance/cost/EV gates and run observed tasks through simulation only.
 
-## Durable economic/risk conclusions
-- Paid utilization/fill rate is the dominant hidden variable across compute, storage, bandwidth, agent and API markets.
-- Marketplace permission does not override an upstream provider's resale/sublicensing/pass-through restrictions.
-- Stablecoin settlement does not prove demand or profit.
-- Separate customer-paid revenue from token emissions, treasury subsidies, points and bootstrap incentives.
-- Provider stakes/bonds/slashing and hardware depreciation must be modeled as real cost/risk.
-- Homepage/provider-count/model-count claims must be cross-checked against live marketplace inventory and attributable settlement.
-- Lack of an explicit Azerbaijan exclusion is not proof of geographic eligibility.
-- Linux/Docker support is not proof that datacenter/VPS use is permitted.
-- A technically autonomous workflow can still be non-viable because of ToS, KYC, geography, upstream-rights or demand constraints.
+### E4 — passive MCP microservice benchmark
+Design one cheap deterministic/LLM-assisted capability and calculate break-even calls/month for MCPize/A2MCP; do not publish yet.
 
-## Remaining unknowns for implementation phase
-These no longer justify additional broad discovery, but must be revalidated before deploying money/resources:
-- current paid utilization and fill rate per candidate;
-- Azerbaijan eligibility, KYC and off-ramp availability;
-- exact current fees/stakes/bonds/hardware requirements;
-- provider-specific upstream resale rights;
-- real net margin after server/API/electricity/gas/withdrawal/tax/maintenance costs;
-- minimum profitable scale and operational failure rate;
-- whether customer-paid demand is organic rather than subsidy-driven.
+## Completion gate for implementation phase
+Implementation is complete only if either:
+1. a documented autonomous stack achieves confirmed positive economics on real, permitted tests; or
+2. reasonable candidates are exhausted and control passes confirm no viable implementation.
 
-## Current phase
-**Research discovery phase COMPLETE.**
-
-Next work, only if explicitly requested later: rank the strongest candidates by expected net return / capital / automation / compliance confidence, then design small capped-cost experiments rather than reopening broad web discovery.
+Until then: **IMPLEMENTATION IN PROGRESS**.
