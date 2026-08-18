@@ -3,7 +3,7 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I003 — OKX.AI A2A task-intake observability checkpoint**
+Last completed implementation run: **I004 — cross-market dry-run evaluator v0.1**
 Last updated: **2026-08-19**
 
 ## Current objective
@@ -12,15 +12,18 @@ Move from exhaustive discovery to implementation/experiment work. Priority is a 
 Do not reopen broad discovery unless a later implementation result exposes a genuinely missing mechanism.
 
 ## Latest durable files
+- `implementation/RUN_I004_CROSS_MARKET_EVALUATOR.md`
+- `implementation/evaluator.py`
+- `implementation/fixtures_i004.json`
+- `implementation/test_evaluator.py`
 - `implementation/RUN_I003_OKX_A2A_OBSERVABILITY.md`
 - `implementation/RUN_I002_PAYANAGENT_READONLY_SAMPLER.md`
 - `implementation/RUN_I001_CANDIDATE_RANKING.md`
-- `research/RUN_062_FINAL_API_MART_VALIDATION.md`
 
-## I003 outcome
-Current OKX.AI first-party docs and the open-source Onchain OS task marketplace reconfirm a strong A2A paid-work architecture: users post budgeted tasks, matching may be direct/automatic/public, ASP agents can browse open tasks, negotiate and deliver, and settlement uses X Layer escrow with acceptance/arbitration.
+## I004 outcome
+A platform-neutral credentials-free evaluator now exists as repository code. It validates the common opportunity object, fails closed on prohibited/rights-unknown/unsupported/unknown-payout/unbounded-cost/value-moving work, applies conservative cost reserve + absolute/relative margin gates, and only emits `accept_dry_run` for a simulated positive-margin fixture. Execution remains a non-executing stub and settlement is hard-disabled and raises if called.
 
-However, no documented anonymous public task-feed endpoint was established. The intended provider flow appears to require legitimate Agentic Wallet/login + ASP identity/listing before provider-side open-task browsing. Therefore current task count, budgets, buyer count and settlement velocity remain **unmeasured**, not guessed. Azerbaijan/KYC eligibility remains unresolved.
+Nine fixtures + deterministic tests cover the required I004 failure/success classes. No live market adapter, live executor, FX oracle or paid action is connected yet.
 
 ## Current ranking
 1. **PayanAgent** — primary dry-run target; quantitative demand pending.
@@ -47,8 +50,8 @@ Secondary/watchlist: OKX.AI A2MCP, API Mart, routed inference suppliers, compute
 ### E2 — OKX.AI task-intake observability
 **Anonymous observability checkpoint complete.** Mechanism and provider automation confirmed, but no documented anonymous task feed found; live provider-side observation appears to require legitimate onboarding. Do not register/login/create identity without authorization.
 
-### E3 — cross-market dry-run evaluator — NEXT
-Implement the common opportunity schema from I002 plus compliance/cost/EV gates and captured fixtures. Include reject reason codes, payout normalization, capability routing, dry-run executor/validator stubs and append-only ledger. Settlement adapter must be hard-disabled.
+### E3 — cross-market dry-run evaluator
+**v0.1 implemented. NEXT: I005 hardening.** Add adapter interface + concrete offline payload adapters, hash-chained append-only JSONL ledger, explicit policy evidence states, configurable capability/cost profiles, offline CLI, stale/deadline/duplicate/adversarial tests and stronger settlement-disable invariants.
 
 ### E4 — passive MCP microservice benchmark
 Design one cheap deterministic/LLM-assisted capability and calculate break-even calls/month for MCPize/A2MCP; do not publish yet.
