@@ -18,10 +18,14 @@ Secondary target: passive provider/API/MCP/inference/compute/storage/relay marke
 
 ## Current checkpoint
 Discovery Runs **001–062**: COMPLETE.
-Implementation Runs **I001–I003**: COMPLETE.
+Implementation Runs **I001–I004**: COMPLETE.
 Project state: **IMPLEMENTATION IN PROGRESS**.
 
 Latest implementation files:
+- `implementation/RUN_I004_CROSS_MARKET_EVALUATOR.md`
+- `implementation/evaluator.py`
+- `implementation/fixtures_i004.json`
+- `implementation/test_evaluator.py`
 - `implementation/RUN_I003_OKX_A2A_OBSERVABILITY.md`
 - `implementation/RUN_I002_PAYANAGENT_READONLY_SAMPLER.md`
 - `implementation/RUN_I001_CANDIDATE_RANKING.md`
@@ -36,36 +40,35 @@ No documented anonymous public task-feed endpoint was established. Provider-side
 
 Important OKX gate: real work must not begin before `job_accepted`/escrow state. Arbitration can require a 5% bounty deposit and remains disabled by default for our future stack unless explicitly authorized.
 
+## I004 result — common evaluator v0.1
+Executable repository code now implements the first platform-neutral fail-closed decision engine. It includes required-field validation, prohibited-content marker gate, explicit rights confirmation, capability matching, USD/USDC-only payout normalization, bounded token/tool cost estimation, 50% default reserve, absolute + relative margin gates, reject reason codes, dry-run executor/result stubs, ledger-record hashing and a settlement adapter that is hard-disabled and raises.
+
+Nine fixtures and tests cover malformed, prohibited, rights-unknown, unsupported, unknown-payout, negative-margin, positive-margin, unbounded-cost and value-moving cases. The only positive path is `accept_dry_run`; it never executes or settles external work.
+
+Known I004 limitations: policy evidence is still simplified, adapters are not yet concrete, ledger persistence/hash chaining is not yet built, no offline CLI exists, and tests are not yet wired into CI.
+
 ## Current shortlist
 1. PayanAgent — primary dry-run target; repeat quantitative sampling when raw public feed access is available.
 2. OKX.AI A2A ASP — architecture confirmed; provider-side live observation appears onboarding-gated.
-3. agent2agent.market — adapter-ready but previously observed 0 open tasks/no Base Sepolia activity.
-4. AgentGigs.io — technically strong but previously observed 0 jobs; Stripe Connect geography/KYC gate.
+3. agent2agent.market — adapter-ready but previously observed 0 open tasks/no activity.
+4. AgentGigs.io — technically strong but previously observed 0 jobs; Stripe/KYC geography gate.
 5. MCPize — strongest passive paid-endpoint experiment candidate.
 
 Watch/secondary: OKX.AI A2MCP, API Mart, inference suppliers, compute/storage/relay markets.
 
 ## Immediate next run
-**I004 / E3: cross-market dry-run evaluator v0.1.**
+**I005 / E3 hardening.**
 
-Build a platform-neutral, credentials-free evaluator using the I002 common opportunity schema and captured fixtures representing PayanAgent / OKX.AI / agent2agent.market-style jobs.
+Build on the committed evaluator without external credentials:
+1. adapter interface + concrete offline payload adapters for PayanAgent / OKX.AI / agent2agent.market-style snapshots;
+2. append-only JSONL ledger with deterministic decision IDs and hash chaining;
+3. explicit policy evidence states: rights, platform ToS/automation permission, source-data permission;
+4. configurable capability + cost profiles;
+5. offline CLI for evaluating fixture/snapshot files;
+6. tests for duplicates, stale observations, deadlines, zero payout, adversarial text and settlement-disable invariants;
+7. add standard-library/CI test execution if feasible.
 
-Minimum components:
-1. schema validation / normalization;
-2. policy/compliance gate;
-3. capability matcher/router;
-4. conservative cost estimator with worst-case reserve;
-5. payout/currency normalization without inventing FX;
-6. expected-value + minimum-margin gate;
-7. explicit reject reason codes;
-8. dry-run executor stub only;
-9. result validator stub;
-10. append-only decision ledger/audit record;
-11. settlement adapter hard-disabled.
-
-Add tests/fixtures for at least: malformed task, prohibited task, unknown rights/ToS, unsupported capability, unknown payout, negative margin, positive simulated margin, unbounded external API cost, and a task requiring value-moving action.
-
-Do not require credentials for I004 and do not execute external paid work.
+Do not connect credentials or live execution in I005.
 
 ## Architecture direction
 Platform-neutral components:
@@ -81,15 +84,7 @@ Platform-neutral components:
 10. ledger of observed opportunity, decision, estimated/actual cost, payout and realized margin.
 
 ## Hard action boundary
-Without explicit user authorization do NOT:
-- spend money or purchase credits;
-- create/fund wallets or sign value-moving transactions;
-- stake/deposit collateral;
-- rent paid server/GPU infrastructure;
-- create paid accounts;
-- submit KYC/bank onboarding;
-- accept paid work with liability/slashing risk;
-- publish a monetized service under the user's identity.
+Without explicit user authorization do NOT spend money, create/fund wallets, sign value-moving transactions, stake/deposit collateral, rent paid infrastructure, create paid accounts, submit KYC/bank onboarding, accept paid work with liability/slashing risk, or publish a monetized service under the user's identity.
 
 Read-only observation, public-data analysis, local/CI dry runs, architecture and capped simulations may continue autonomously.
 
