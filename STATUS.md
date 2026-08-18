@@ -3,8 +3,8 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I001 — candidate ranking and first experiment gate**
-Last updated: **2026-08-18**
+Last completed implementation run: **I002 — PayanAgent read-only market / receipt sampler checkpoint**
+Last updated: **2026-08-19**
 
 ## Current objective
 Move from exhaustive discovery to implementation/experiment work. Priority is a legal server-native agent that can observe machine-readable paid work, estimate execution cost and expected margin, reject unsafe/non-compliant/unprofitable tasks, and eventually execute only positive-margin work after explicit authorization for any credentials/money-moving actions.
@@ -12,23 +12,26 @@ Move from exhaustive discovery to implementation/experiment work. Priority is a 
 Do not reopen broad discovery unless a later implementation result exposes a genuinely missing mechanism.
 
 ## Latest durable files
+- `implementation/RUN_I002_PAYANAGENT_READONLY_SAMPLER.md`
 - `implementation/RUN_I001_CANDIDATE_RANKING.md`
 - `research/RUN_062_FINAL_API_MART_VALIDATION.md`
-- `research/SOURCES_RUN_062.md`
-- `research/CATALOG_ADDITIONS_RUN_062.md`
 
-## I001 ranking outcome
-First implementation tier:
-1. **PayanAgent** — primary read-only/dry-run target; direct request/bid/fulfill path, API-native, USDC/Base. Demand must be measured rather than inferred from offer count.
-2. **OKX.AI A2A ASP** — primary validation target; official active-intake/open-task path, escrowed task payment. Live task density and onboarding/geography remain unknown.
-3. **agent2agent.market** — architecture is nearly ideal, but current public app observation showed 0 open tasks/no activity on Base Sepolia; keep adapter-ready, do not prioritize a money test yet.
-4. **AgentGigs.io** — full autonomous REST lifecycle but current public jobs page showed 0 jobs; additionally gated by email + Stripe Connect KYC/geography.
-5. **MCPize** — strongest passive paid-endpoint candidate for later experiment; 80% creator share / 20% platform fee documented, but demand must be independently measured.
+## I002 outcome
+PayanAgent's current first-party surface still confirms public read endpoints for discovery, open requests and settled receipts, plus API-native request/bid/fulfill mechanics. However the current execution environment could not retrieve raw JSON bodies from the public request/receipt feeds, so quantitative demand was **not** fabricated. The 24k+ offer count remains supply evidence only.
+
+A common opportunity schema and receipt schema v0.1 are now defined in I002. PayanAgent remains the primary architecture/dry-run target, but a real-money experiment requires actual observed request/settlement density first.
+
+## Current ranking
+1. **PayanAgent** — primary dry-run target; quantitative demand pending.
+2. **OKX.AI A2A ASP** — next task-intake observability target.
+3. **agent2agent.market** — adapter-ready; previously observed public state had 0 open tasks/no Base Sepolia activity.
+4. **AgentGigs.io** — autonomous lifecycle but previously observed 0 public jobs; Stripe Connect geography/KYC gate.
+5. **MCPize** — strongest passive paid-endpoint candidate; demand still needs independent measurement.
 
 Secondary/watchlist: OKX.AI A2MCP, API Mart, routed inference suppliers, compute/storage/relay providers.
 
 ## Durable implementation rules
-- Demand/fill rate is the dominant unknown; supply/listing counts are not demand.
+- Demand/fill rate is the dominant unknown; supply/listing/provider counts are not demand.
 - Never spend money, fund a wallet, stake/deposit, rent paid infrastructure, create paid accounts, submit KYC, or take irreversible external action without explicit user authorization.
 - Continue read-only market observation, public-data measurement, architecture, dry-run code/design and capped simulation without waiting for credentials.
 - Any task executor must have a policy/compliance gate, conservative cost estimator, EV/margin gate, quality validator and immutable-ish ledger/audit trail.
@@ -37,13 +40,13 @@ Secondary/watchlist: OKX.AI A2MCP, API Mart, routed inference suppliers, compute
 
 ## Current experiment queue
 ### E1 — PayanAgent read-only market/receipt sampler
-Measure public request flow and settled demand; normalize task fields. No bidding/buying/wallet actions.
+**Contract validation complete; quantitative sampling pending environment access.** Repeat public snapshots when raw API bodies become observable. No bidding/buying/wallet actions.
 
-### E2 — OKX.AI task-intake observability
+### E2 — OKX.AI task-intake observability — NEXT
 Determine what open-task information is publicly observable and quantify density/prices without creating an account or accepting work.
 
 ### E3 — cross-market dry-run evaluator
-Create common opportunity schema + compliance/cost/EV gates and run observed tasks through simulation only.
+Implement/use the common opportunity schema from I002 + compliance/cost/EV gates and run observed or captured-fixture tasks through simulation only.
 
 ### E4 — passive MCP microservice benchmark
 Design one cheap deterministic/LLM-assisted capability and calculate break-even calls/month for MCPize/A2MCP; do not publish yet.
