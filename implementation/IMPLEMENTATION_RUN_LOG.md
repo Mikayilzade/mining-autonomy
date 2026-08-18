@@ -1,0 +1,29 @@
+# Implementation Run Log
+
+This log complements the discovery `RUN_LOG.md` and is authoritative for implementation-stage checkpoints together with `STATUS.md`.
+
+## I001 — candidate ranking
+Status: completed. Ranked implementation candidates with PayanAgent first, then OKX.AI A2A, agent2agent.market, AgentGigs and MCPize; demand/fill rate identified as dominant unknown.
+
+## I002 — PayanAgent read-only sampler design
+Status: completed. Reconfirmed public contract and defined common opportunity/receipt schema and demand metrics. Quantitative public-feed sampling remained unavailable from the environment; no demand inferred from supply counts.
+
+## I003 — OKX.AI A2A observability
+Status: completed. Reconfirmed provider/task/escrow architecture; anonymous live task feed not established and provider observation appears legitimate-onboarding gated. No registration/login/value action performed.
+
+## I004 — cross-market evaluator v0.1
+Status: completed. Built executable fail-closed dry-run evaluator, nine fixture classes, hard-disabled settlement and non-executing executor.
+
+## I005 — evaluator hardening v0.2
+Date: 2026-08-19
+Status: completed.
+
+Implemented offline PayanAgent/OKX A2A/agent2agent.market-style adapters; explicit rights/ToS/automation/source-data evidence states; configurable capability and cost profiles; stale/deadline/duplicate gates; deterministic decision IDs; append-only hash-chained JSONL ledger and verification; offline CLI; stronger settlement-disable invariants; expanded adversarial/regression tests; CI workflow.
+
+No credentials, accounts, KYC, wallets, paid APIs, bids, task acceptance, external execution or settlement used. Live demand remains unmeasured.
+
+Files changed/added: `implementation/evaluator.py`, `implementation/test_evaluator.py`, `implementation/evaluate_cli.py`, `.github/workflows/implementation-tests.yml`, `implementation/RUN_I005_EVALUATOR_HARDENING.md`, `STATUS.md`, `HANDOFF.md`, this log.
+
+Risks/limitations: adapter mappings need live raw-payload conformance; keyword policy layer is not production-sufficient; ledger is locally tamper-evident but not externally anchored; test pricing is not current production pricing; CI pass must be observed rather than assumed.
+
+Next: I006 integration/robustness — inspect CI, realistic sanitized snapshots/CLI regression, persistent replay dedup, execution-duration/deadline + confidence reserve, result-quality contracts, adapter conformance specification; opportunistic read-only PayanAgent sampling only if public raw data becomes accessible.
