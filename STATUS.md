@@ -3,7 +3,7 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I006 — integration & robustness v0.3**
+Last completed implementation run: **I007 — passive MCP microservice benchmark**
 Last updated: **2026-08-19**
 
 ## Current objective
@@ -12,25 +12,29 @@ Move from exhaustive discovery to implementation/experiment work. Priority is a 
 Do not reopen broad discovery unless a later implementation result exposes a genuinely missing mechanism.
 
 ## Latest durable files
+- `implementation/RUN_I007_PASSIVE_MCP_BENCHMARK.md`
+- `implementation/mcp_benchmark.py`
+- `implementation/test_mcp_benchmark.py`
 - `implementation/RUN_I006_INTEGRATION_ROBUSTNESS.md`
 - `implementation/ADAPTER_CONFORMANCE.md`
 - `implementation/evaluator.py`
 - `implementation/test_evaluator.py`
 - `implementation/evaluate_cli.py`
 - `.github/workflows/implementation-tests.yml`
-- prior I001–I005 reports
 
-## I006 outcome
-Evaluator v0.3 adds persistent ledger replay/dedup, duration-aware deadline reserve, estimate-confidence gating and uncertainty cost reserve, capability-level quality contracts, stronger dry-run result validation, richer adapter estimate metadata and a formal adapter conformance contract. Synthetic adapter tests remain clearly synthetic; real sanitized fixtures await legitimately observable raw responses. CI status was not observable through the available connector path in I006, so no pass claim is made.
+## I007 outcome
+E4 passive paid-endpoint work is now concrete. Current MCPize primary material was revalidated: new monetized servers use an 80% creator share, x402 supports USDC pay-per-call with free Base Sepolia testing, documented per-tool pricing starts at $0.01, and the FAQ advertises a $0 hosting tier up to 250K requests/month. Three bounded local capabilities (`normalize_text`, `json_stats`, `csv_profile`) and an offline economics/benchmark harness were added. They deliberately avoid upstream API/model resale.
 
-Still no live market adapter, credentials, executor, paid action, wallet or settlement. Demand/fill rate remains unmeasured and dominant.
+At the $0.01 experiment price and conservative 80% share, deterministic local compute cost is negligible; if the free tier is usable, cash break-even is effectively immediate per paid call. If $9/month hosting is required, roughly 1.13k paid calls/month are needed under the current synthetic cost reserves. These are break-even calculations, not demand evidence. Demand/utilization remains dominant.
+
+No service was published and no account, KYC, wallet funding, paid infrastructure, monetization or settlement was created. Unit tests were committed but not executed in this run because no runtime checkout was available; no pass claim is made.
 
 ## Current ranking
 1. **PayanAgent** — primary task-market dry-run target; quantitative demand pending.
 2. **OKX.AI A2A ASP** — architecture confirmed; live provider-side demand observation appears onboarding-gated.
 3. **agent2agent.market** — adapter-ready; previously observed public state had 0 open tasks/no Base Sepolia activity.
 4. **AgentGigs.io** — autonomous lifecycle but previously observed 0 public jobs; Stripe Connect geography/KYC gate.
-5. **MCPize** — strongest passive paid-endpoint candidate; demand still needs independent measurement.
+5. **MCPize** — strongest passive paid-endpoint candidate; offline benchmark now implemented, real demand still unmeasured.
 
 Secondary/watchlist: OKX.AI A2MCP, API Mart, routed inference suppliers, compute/storage/relay providers.
 
@@ -54,7 +58,7 @@ Secondary/watchlist: OKX.AI A2MCP, API Mart, routed inference suppliers, compute
 **v0.3 implemented.** Persistent replay, duration/confidence reserve and quality-contract gates are present. Real adapter conformance still requires fresh permitted raw snapshots.
 
 ### E4 — passive MCP microservice benchmark
-**NEXT: I007.** Select 2–3 cheap bounded capabilities, calculate break-even calls/month for MCPize/comparable channels, and build an offline microservice benchmark harness without publishing or paid infrastructure.
+**Offline v0.1 implemented in I007. NEXT: I008 integration.** Integrate bounded capabilities into the common evaluator/orchestrator, add passive-service pricing/hosting decision logic, and make CI structurally cover both evaluator and benchmark tests. Continue public demand evidence collection without publication/account creation.
 
 ## Completion gate for implementation phase
 Implementation is complete only if either:
