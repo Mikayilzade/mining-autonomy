@@ -14,19 +14,21 @@ Do not reconstruct this project from chat memory.
 Build a legitimate autonomous server-native earning stack: observe permitted paid tasks/calls, normalize them, estimate execution cost/margin, reject non-compliant/negative-EV work, and eventually execute positive-margin work with minimal human input. Secondary target: passive provider/API/MCP/inference/compute/storage/relay markets.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I007 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I008 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I008_PASSIVE_INTEGRATION.md`
+- `implementation/passive_service.py`
+- `implementation/test_passive_service.py`
 - `implementation/RUN_I007_PASSIVE_MCP_BENCHMARK.md`
 - `implementation/mcp_benchmark.py`
-- `implementation/test_mcp_benchmark.py`
-- `implementation/RUN_I006_INTEGRATION_ROBUSTNESS.md`
-- `implementation/ADAPTER_CONFORMANCE.md`
 - `implementation/evaluator.py`
 - `.github/workflows/implementation-tests.yml`
 
-## I007 result
-Passive MCP E4 now has an offline deterministic microservice/economics harness. Current MCPize primary sources were rechecked: standard creator share is 80%, documented x402 minimum is $0.01/tool call, Base Sepolia testing is available, and current FAQ advertises a $0 hosting tier. Three bounded local tools (`normalize_text`, `json_stats`, `csv_profile`) avoid upstream API/model resale. Under conservative synthetic marginal-cost reserves, unit contribution at $0.01 is about $0.00797–$0.00799; $9/month fixed hosting would require roughly 1.13k paid calls/month. This is only break-even math: paid demand is still unproven. Tests are committed but were not executed in the connector-only environment.
+## I008 result
+The passive MCP branch now has a reusable dry-run decision layer. It refuses to treat positive per-call contribution as sufficient: unknown utilization produces `demand_unproven`; fixed-hosting break-even and tier capacity are explicit. Publication is hard-disabled. Current normalize-text assumptions yield $0.00799 contribution/call and 1,127 calls/month break-even on $9 fixed hosting. These are synthetic/model economics, not demand evidence.
+
+CI now explicitly installs pytest and runs all implementation tests, but I008 did not inspect a completed Actions run, so green CI remains to be verified.
 
 No live connector, credentials, wallet, paid API, external executor, publication or settlement exists. Demand/fill rate remains the dominant unknown.
 
@@ -35,14 +37,13 @@ No live connector, credentials, wallet, paid API, external executor, publication
 2. OKX.AI A2A ASP — provider-side live observation appears onboarding-gated.
 3. agent2agent.market — adapter-ready; prior public observation showed no open tasks/activity.
 4. AgentGigs.io — autonomous lifecycle but prior public jobs zero; Stripe/KYC geography gate.
-5. MCPize — strongest passive endpoint candidate; offline benchmark implemented, real paid utilization unknown.
+5. MCPize — strongest passive endpoint candidate; offline benchmark + decision model implemented, real paid utilization unknown.
 
-## Immediate next run: I008 / E4 integration
-1. Integrate the bounded passive capabilities with the common evaluator/orchestrator contract.
-2. Add a passive-service decision model for price, creator share, variable cost, fixed hosting and minimum margin; compare free vs paid hosting tiers.
-3. Inspect/update `.github/workflows/implementation-tests.yml` so evaluator and MCP benchmark tests are structurally runnable.
-4. Collect public comparable MCP prices/demand signals where possible, but distinguish listings/first-party claims from attributable paid utilization.
-5. Keep publication, account creation, KYC, wallet funding and monetized deployment disabled.
+## Immediate next run: I009
+1. Inspect the latest GitHub Actions result for `implementation-tests`; fix real failures if present.
+2. Build a small offline orchestrator that consumes both task decisions (`evaluator.py`) and passive-service decisions (`passive_service.py`) into one ranked observation queue while keeping execution/publication disabled.
+3. Never invent demand to rank passive services: unknown utilization must remain held/incomparable.
+4. Continue read-only attributable demand evidence collection for PayanAgent and MCPize where publicly observable.
 
 ## Hard action boundary
 Without explicit user authorization do NOT spend money, create/fund wallets, sign value-moving transactions, stake/deposit collateral, rent paid infrastructure, create paid accounts, submit KYC/bank onboarding, accept paid work with liability/slashing risk, or publish monetized services under the user's identity. Read-only observation, public-data analysis, local/CI dry runs, architecture and capped simulations may continue.
