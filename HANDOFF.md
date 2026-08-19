@@ -14,35 +14,35 @@ Do not reconstruct this project from chat memory.
 Build a legitimate autonomous server-native earning stack: observe permitted paid tasks/calls, normalize them, estimate execution cost/margin, reject non-compliant/negative-EV work, and eventually execute positive-margin work with minimal human input. Secondary target: passive provider/API/MCP/inference/compute/storage/relay markets.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I006 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I007 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I007_PASSIVE_MCP_BENCHMARK.md`
+- `implementation/mcp_benchmark.py`
+- `implementation/test_mcp_benchmark.py`
 - `implementation/RUN_I006_INTEGRATION_ROBUSTNESS.md`
 - `implementation/ADAPTER_CONFORMANCE.md`
 - `implementation/evaluator.py`
-- `implementation/test_evaluator.py`
-- `implementation/evaluate_cli.py`
 - `.github/workflows/implementation-tests.yml`
 
-## I006 result
-Evaluator v0.3 adds persisted-ledger replay dedup, deadline checks based on estimated execution duration plus reserve, estimate-confidence rejection and uncertainty cost reserve, capability-level quality contracts, stronger dry-run validation and a formal adapter conformance contract. Real sanitized fixtures are intentionally deferred until fresh permitted raw snapshots exist; synthetic tests are not misrepresented as platform evidence. CI status was not observable through the connector path used in I006.
+## I007 result
+Passive MCP E4 now has an offline deterministic microservice/economics harness. Current MCPize primary sources were rechecked: standard creator share is 80%, documented x402 minimum is $0.01/tool call, Base Sepolia testing is available, and current FAQ advertises a $0 hosting tier. Three bounded local tools (`normalize_text`, `json_stats`, `csv_profile`) avoid upstream API/model resale. Under conservative synthetic marginal-cost reserves, unit contribution at $0.01 is about $0.00797–$0.00799; $9/month fixed hosting would require roughly 1.13k paid calls/month. This is only break-even math: paid demand is still unproven. Tests are committed but were not executed in the connector-only environment.
 
-No live connector, credentials, wallet, paid API, external executor or settlement exists. Demand/fill rate remains the dominant unknown.
+No live connector, credentials, wallet, paid API, external executor, publication or settlement exists. Demand/fill rate remains the dominant unknown.
 
 ## Current shortlist
 1. PayanAgent — primary task-market target; quantitative demand pending.
 2. OKX.AI A2A ASP — provider-side live observation appears onboarding-gated.
 3. agent2agent.market — adapter-ready; prior public observation showed no open tasks/activity.
 4. AgentGigs.io — autonomous lifecycle but prior public jobs zero; Stripe/KYC geography gate.
-5. MCPize — strongest passive paid-endpoint experiment candidate.
+5. MCPize — strongest passive endpoint candidate; offline benchmark implemented, real paid utilization unknown.
 
-## Immediate next run: I007 / E4 passive MCP benchmark
-1. Select 2–3 cheap, bounded, useful capabilities suitable for paid machine calls.
-2. Prefer deterministic/local logic or clearly licensed dependencies; avoid questionable upstream API resale.
-3. Revalidate current MCPize/comparable channel fee/pricing mechanics from primary sources where time-sensitive.
-4. Model per-call cost, platform share, hosting/API cost, utilization and break-even calls/month.
-5. Build an offline microservice/benchmark harness only; do not publish, create paid infrastructure, KYC or monetize without authorization.
-6. Preserve an adapter path into the common evaluator/orchestrator.
+## Immediate next run: I008 / E4 integration
+1. Integrate the bounded passive capabilities with the common evaluator/orchestrator contract.
+2. Add a passive-service decision model for price, creator share, variable cost, fixed hosting and minimum margin; compare free vs paid hosting tiers.
+3. Inspect/update `.github/workflows/implementation-tests.yml` so evaluator and MCP benchmark tests are structurally runnable.
+4. Collect public comparable MCP prices/demand signals where possible, but distinguish listings/first-party claims from attributable paid utilization.
+5. Keep publication, account creation, KYC, wallet funding and monetized deployment disabled.
 
 ## Hard action boundary
 Without explicit user authorization do NOT spend money, create/fund wallets, sign value-moving transactions, stake/deposit collateral, rent paid infrastructure, create paid accounts, submit KYC/bank onboarding, accept paid work with liability/slashing risk, or publish monetized services under the user's identity. Read-only observation, public-data analysis, local/CI dry runs, architecture and capped simulations may continue.
