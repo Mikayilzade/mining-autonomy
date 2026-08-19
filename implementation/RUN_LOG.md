@@ -82,4 +82,16 @@ Fresh public checks reconfirmed PayanAgent's anonymous discovery/receipts interf
 
 No credentials, KYC, wallets, paid infrastructure, task acceptance, service publication or settlement occurred. Push-triggered CI remains disabled; workflow unchanged.
 
-Next: **I022 — inert sampling manifest/execution contract with rate limits, provenance, expected evidence class and capture deadlines.**
+## I022 — 2026-08-19
+Status: **completed**
+Stage: Inert sampling manifest / execution contract
+
+Added `sampling_manifest.py` and seven tests. The watchlist now expands into exact source-level GET-only contracts with expected evidence class, capture deadline, conservative self-imposed rate budget, max source age, provenance requirements and explicit environment handling. Credentials/network/action remain disabled.
+
+Added `capture_bridge_spec()` to bind future already-captured sanitized bundles to the existing `observation_capture -> evidence_archive -> archive_replay` path. Explicit production mapping is required; unknown environment stays unknown and cannot satisfy production evidence.
+
+Fresh checks reconfirmed PayanAgent anonymous discovery/receipts endpoints, agent2agent.market public machine-readable task browsing with Base Sepolia still visible in onboarding examples, and MCPize 80%/x402 mechanics. Supply/listing counts remain excluded from demand evidence.
+
+No credentials, KYC, wallets, paid infrastructure, task acceptance, service publication or settlement occurred. Push-triggered CI remains disabled; workflow unchanged.
+
+Next: **I023 — canonical manifest serialization/hash + capture-result receipt binding, with transport disabled by default and mock/injected transport only.**
