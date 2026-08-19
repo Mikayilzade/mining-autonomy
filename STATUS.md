@@ -3,7 +3,7 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I007 — passive MCP microservice benchmark**
+Last completed implementation run: **I008 — passive-service integration**
 Last updated: **2026-08-19**
 
 ## Current objective
@@ -12,29 +12,29 @@ Move from exhaustive discovery to implementation/experiment work. Priority is a 
 Do not reopen broad discovery unless a later implementation result exposes a genuinely missing mechanism.
 
 ## Latest durable files
+- `implementation/RUN_I008_PASSIVE_INTEGRATION.md`
+- `implementation/passive_service.py`
+- `implementation/test_passive_service.py`
 - `implementation/RUN_I007_PASSIVE_MCP_BENCHMARK.md`
 - `implementation/mcp_benchmark.py`
 - `implementation/test_mcp_benchmark.py`
-- `implementation/RUN_I006_INTEGRATION_ROBUSTNESS.md`
-- `implementation/ADAPTER_CONFORMANCE.md`
 - `implementation/evaluator.py`
 - `implementation/test_evaluator.py`
-- `implementation/evaluate_cli.py`
 - `.github/workflows/implementation-tests.yml`
 
-## I007 outcome
-E4 passive paid-endpoint work is now concrete. Current MCPize primary material was revalidated: new monetized servers use an 80% creator share, x402 supports USDC pay-per-call with free Base Sepolia testing, documented per-tool pricing starts at $0.01, and the FAQ advertises a $0 hosting tier up to 250K requests/month. Three bounded local capabilities (`normalize_text`, `json_stats`, `csv_profile`) and an offline economics/benchmark harness were added. They deliberately avoid upstream API/model resale.
+## I008 outcome
+E4 is integrated into a conservative passive-service decision contract. Positive per-call margin is no longer enough: unknown utilization yields `demand_unproven`; fixed-hosting break-even and capacity are explicit gates. Publication remains hard-disabled. At the current synthetic MCPize assumptions, normalize-text contributes $0.00799/call; $9/month hosting requires 1,127 calls/month. This is model math, not demand proof.
 
-At the $0.01 experiment price and conservative 80% share, deterministic local compute cost is negligible; if the free tier is usable, cash break-even is effectively immediate per paid call. If $9/month hosting is required, roughly 1.13k paid calls/month are needed under the current synthetic cost reserves. These are break-even calculations, not demand evidence. Demand/utilization remains dominant.
+CI was corrected to explicitly install pytest and run the full implementation test directory. A completed workflow execution was not inspected in I008, so no green-CI claim is made yet.
 
-No service was published and no account, KYC, wallet funding, paid infrastructure, monetization or settlement was created. Unit tests were committed but not executed in this run because no runtime checkout was available; no pass claim is made.
+No service was published and no account, KYC, wallet funding, paid infrastructure, monetization or settlement was created.
 
 ## Current ranking
 1. **PayanAgent** — primary task-market dry-run target; quantitative demand pending.
 2. **OKX.AI A2A ASP** — architecture confirmed; live provider-side demand observation appears onboarding-gated.
 3. **agent2agent.market** — adapter-ready; previously observed public state had 0 open tasks/no Base Sepolia activity.
 4. **AgentGigs.io** — autonomous lifecycle but previously observed 0 public jobs; Stripe Connect geography/KYC gate.
-5. **MCPize** — strongest passive paid-endpoint candidate; offline benchmark now implemented, real demand still unmeasured.
+5. **MCPize** — strongest passive paid-endpoint candidate; benchmark + decision model implemented, real demand still unmeasured.
 
 Secondary/watchlist: OKX.AI A2MCP, API Mart, routed inference suppliers, compute/storage/relay providers.
 
@@ -43,6 +43,7 @@ Secondary/watchlist: OKX.AI A2MCP, API Mart, routed inference suppliers, compute
 - Never spend money, fund a wallet, stake/deposit, rent paid infrastructure, create paid accounts, submit KYC, or take irreversible external action without explicit user authorization.
 - Continue read-only market observation, public-data measurement, architecture, dry-run code/design and capped simulation without waiting for credentials.
 - Any task executor must have a policy/compliance gate, conservative cost estimator, EV/margin gate, quality validator and tamper-evident ledger/audit trail.
+- Passive services additionally require attributable utilization evidence; positive unit margin alone is insufficient.
 - Upstream API/model resale requires independent upstream permission.
 - For OKX A2A, never execute real work before `job_accepted`/escrow state; arbitration can require a 5% bounty deposit and must remain disabled by default without explicit authorization.
 - No CAPTCHA bypass, spam, fake activity, ad fraud, prohibited multi-accounting, credential abuse, geofence/KYC evasion, unauthorized access/scraping, or automation of human-only work contrary to ToS.
@@ -58,7 +59,7 @@ Secondary/watchlist: OKX.AI A2MCP, API Mart, routed inference suppliers, compute
 **v0.3 implemented.** Persistent replay, duration/confidence reserve and quality-contract gates are present. Real adapter conformance still requires fresh permitted raw snapshots.
 
 ### E4 — passive MCP microservice benchmark
-**Offline v0.1 implemented in I007. NEXT: I008 integration.** Integrate bounded capabilities into the common evaluator/orchestrator, add passive-service pricing/hosting decision logic, and make CI structurally cover both evaluator and benchmark tests. Continue public demand evidence collection without publication/account creation.
+**Offline v0.2 integrated in I008.** Benchmark capabilities now feed a passive-service pricing/hosting/demand decision model; publication is hard-disabled. NEXT: I009 unified offline observation orchestrator + verify actual CI result + continue public demand evidence collection.
 
 ## Completion gate for implementation phase
 Implementation is complete only if either:
