@@ -3,7 +3,7 @@ on:
   push:
     paths: ['implementation/**', '.github/workflows/implementation-tests.yml']
   pull_request:
-    paths: ['implementation/**']
+    paths: ['implementation/**', '.github/workflows/implementation-tests.yml']
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -12,6 +12,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Run evaluator tests without third-party dependencies
+      - name: Install test runner
+        run: python -m pip install --disable-pip-version-check pytest
+      - name: Run all implementation tests
         working-directory: implementation
         run: python -m pytest -q
