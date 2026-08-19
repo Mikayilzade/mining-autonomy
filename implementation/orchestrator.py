@@ -33,10 +33,14 @@ class ObservationItem:
 
 def observe_task(platform: str, payload: dict[str, Any], *,
                  demand_evidence_class: str = "unknown",
+                 observed_at: str | None = None,
                  capabilities: CapabilityProfile | None = None,
                  cost: CostProfile | None = None) -> ObservationItem:
     evidence = classify_demand_evidence(demand_evidence_class)
-    opportunity = ADAPTERS[platform].adapt(payload)
+    adapter = ADAPTERS.get(platform)
+    if adapter is None:
+        raise ValueError("unknown_task_platform")
+    opportunity = adapter.adapt(payload, observed_at=observed_at)
     decision = evaluate(opportunity, capabilities or CapabilityProfile(), cost)
     reasons = list(decision.reject_reasons)
     state = decision.decision
@@ -76,6 +80,43 @@ def observe_passive(offer: PassiveServiceOffer, *,
         paid_utilization_proven=evidence.proves_paid_utilization,
         open_paid_demand_proven=evidence.proves_open_paid_demand,
     )
+
+
+def observe_imported_tasks(imported: Any, *,
+                           now: datetime | None = None,
+                           max_age_hours: float = 24.0,
+                           capabilities: CapabilityProfile | None = None,
+                           cost: CostProfile | None = None) -> list[ObservationItem]:
+    """Bridge a verified saved open-request snapshot into the dry-run queue.
+
+    Raw records are revalidated through the snapshot boundary and the trusted
+    snapshot source timestamp overrides record-provided observation timestamps.
+    """
+    from observation_importer import ImportedObservation
+    from snapshot import records_from_snapshot
+
+    if not isinstance(imported, ImportedObservation):
+        raise ValueError("imported_observation_required")
+    if not imported.demand_evidence.proves_open_paid_demand:
+        raise ValueError("open_paid_request_evidence_required")
+    records = records_from_snapshot(
+        imported.snapshot,
+        records_key=imported.records_key,
+        now=now,
+        max_age_hours=max_age_hours,
+    )
+    items = [
+        observe_task(
+            imported.snapshot.platform,
+            record,
+            demand_evidence_class=imported.demand_evidence.evidence_class,
+            observed_at=imported.snapshot.source_timestamp,
+            capabilities=capabilities,
+            cost=cost,
+        )
+        for record in records
+    ]
+    return rank_observations(items)
 
 
 def _rank_key(item: ObservationItem) -> tuple[int, float, float, int]:
