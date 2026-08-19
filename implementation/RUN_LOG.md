@@ -90,4 +90,18 @@ Verification: source/test syntax checked locally; push-triggered CI remains disa
 
 No network capture, credentials, KYC, wallet, paid infrastructure, task acceptance, publication or settlement occurred.
 
-Next: **I025 — receipt-aware replay provenance + deterministic sampling audit summary; live transport remains disabled.**
+## I025 — 2026-08-19
+Status: **completed**
+Stage: Receipt-aware replay provenance + deterministic sampling audit
+
+Added `sampling_audit.py` with a fail-closed sealed-manifest audit that classifies scheduled sources as uncaptured, receipt-invalid, receipt-valid non-production or receipt-valid production. Duplicate/tampered/unmatched receipts cannot close a sampling gap.
+
+Added `receipt_provenance_index()` which revalidates a full receipt-gated capture report before exposing receipt/manifest hash references. `archive_replay_report()` can now attach those verified references to matching production rows while reporting missing provenance explicitly; neither provenance nor archive evidence can authorize action.
+
+Migrated `test_archive_replay.py` to I024 receipt-gated fixtures and added sampling-audit tests for all required states, duplicates and unmatched receipts.
+
+Verification: new/modified Python files and tests syntax-checked locally. Push-triggered CI remains disabled and workflow unchanged.
+
+No live network capture, credentials, KYC, wallet, paid infrastructure, task acceptance, publication or settlement occurred.
+
+Next: **I026 — deterministic end-to-end evidence audit export joining schedule, receipt state, archive membership and replay provenance.**
