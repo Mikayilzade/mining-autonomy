@@ -11,38 +11,38 @@ Do not reconstruct this project from chat memory.
 6. Re-check time-sensitive rules/economics with current primary sources before credentials, capital, hardware or paid infrastructure are used.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I016 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I017 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
-- `implementation/RUN_I016_PORTABLE_MULTI_MARKET_BUNDLES.md`
-- `implementation/SOURCES_I016.md`
-- `implementation/observation_bundle.py`
-- `implementation/test_observation_bundle.py`
-- prior I015/I014/I013 evidence, sanitizer, snapshot, importer, orchestrator and utilization files named in STATUS
+- `implementation/RUN_I017_BUNDLE_REGISTRY_SCORECARD.md`
+- `implementation/SOURCES_I017.md`
+- `implementation/bundle_registry.py`
+- `implementation/test_bundle_registry.py`
+- I016 portable bundle files and prior evidence/sanitizer/snapshot/importer/orchestrator/utilization files named in STATUS.
 
-## I016 result
-The observation-bundle boundary is now portable rather than memory-only.
+## I017 result
+The evidence pipeline now has a deterministic multi-platform history/index layer above signed observation bundles.
 
-`serialize_observation_bundle` emits deterministic JSON. `load_observation_bundle` accepts JSON text/bytes/path/mapping but fails closed unless the exact bundle and manifest schemas match, schema version is supported, request/receipt snapshot payload hashes are valid, manifest component hashes match the persisted audit/utilization records, dry-run/action flags remain immutable, the manifest hash matches and the caller-supplied HMAC key verifies.
+`bundle_registry.py` rejects duplicate bundle manifest hashes globally, records exact request snapshot/provenance fields, distinguishes positive-open, zero-open and unproven observations, preserves paid utilization as a separate strongest evidence class, and emits a deterministic scorecard. It does not sum or extrapolate paid values across snapshots.
 
-The same signed audit contract now supports `agent2agent.market`. `sanitize_agent2agent_task` normalizes only open positive-bounty USD/USDC tasks and strips platform metadata as a source of authorization. ToS/rights/automation/source-data permission and execution estimates must come from separate trusted caller mappings. `build_agent2agent_observation_bundle` then uses the same evidence snapshot/importer/orchestrator/manifest path and contains no acceptance/submission/payment logic.
+A latest zero-open observation does not erase historical positive-open evidence; both counts remain visible. Repeated identical request snapshot hashes are visible but counted as one distinct request snapshot. Eight isolated registry tests passed locally.
 
-Fresh public observation on 2026-08-19:
-- PayanAgent remains architecturally strong but no raw attributable anonymous demand/receipt payload with trustworthy source timestamp was captured.
-- agent2agent.market still documents anonymous task browsing and machine-native USDC settlement; its current rendered app showed `Open tasks 0` / no live activity.
-- MCPize seller mechanics remain confirmed. Public x402 documentation describes per-publisher payment ledger and recent-revenue analytics in the Payments view, while public marketplace/server counts and hypothetical revenue examples do not prove buyer utilization. No account was created to inspect gated analytics.
+Fresh public checkpoint:
+- PayanAgent rendered Requests shows `0 open` plus loading; no raw attributable timestamped API payload captured.
+- agent2agent.market public app shell currently exposes dashes rather than live attributable counts; current quantitative demand remains unmeasured.
+- MCPize seller monetization remains documented; attributable utilization remains publisher/account gated.
 
-Push-triggered CI remains disabled and I016 is one atomic commit.
+Push-triggered CI remains disabled. No workflow change was made.
 
 ## Current shortlist
-1. PayanAgent — end-to-end evidence pipeline ready; measurable anonymous demand/utilization still uncaptured.
-2. OKX.AI A2A ASP — provider-side demand observation appears onboarding-gated.
-3. agent2agent.market — bundle-ready; current public open-task state remains zero.
-4. AgentGigs.io — prior public jobs zero; Stripe/KYC geography gate.
-5. MCPize — strongest passive endpoint candidate; utilization appears publisher/account gated.
+1. PayanAgent
+2. OKX.AI A2A ASP
+3. agent2agent.market
+4. AgentGigs.io
+5. MCPize
 
-## Immediate next run: I017
-Build a deterministic bundle registry/history and cross-market evidence scorecard. Deduplicate bundle hashes, preserve exact zero-demand/positive-demand evidence classes without extrapolation, and continue public anonymous demand checks. Do not create accounts merely to unlock analytics.
+## Immediate next run: I018
+Build a reproducible public read-only observation-capture + registry-delta runner with provenance/freshness/rate-limit guards and time-series scorecard export. Do not create accounts/wallets merely to unlock analytics.
 
 ## Hard action boundary
 Without explicit user authorization do NOT spend money, create/fund wallets, sign value-moving transactions, stake/deposit collateral, rent paid infrastructure, create paid accounts, submit KYC/bank onboarding, accept paid work with liability/slashing risk, publish monetized services under the user's identity, or settle transactions. Read-only observation, public-data analysis, local/CI dry runs, architecture and capped simulations may continue.
