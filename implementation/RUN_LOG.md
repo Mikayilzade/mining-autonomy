@@ -83,3 +83,17 @@ Fresh first-party PayanAgent material still confirms public `discover`/`receipts
 Push CI remains disabled. I015 was persisted as one atomic commit. No credentials, KYC, wallet, paid infrastructure, task acceptance, bid, publication or settlement occurred.
 
 Next: **I016 — bundle serialization/reload + schema corruption tests, then generalize the envelope to another task market and continue quantitative read-only demand observation.**
+
+## I016 — 2026-08-19
+Status: **completed**
+Stage: Portable multi-market signed observation bundles
+
+Added deterministic bundle serialization/reload with exact schema/version/hash/signature validation. Persisted bundles now fail closed on unknown fields, unsupported versions, child snapshot tampering, component-hash mismatch, changed action flags or invalid HMAC.
+
+Generalized the evidence bundle to `agent2agent.market`: only OPEN positive-bounty USD/USDC tasks are normalized; platform metadata cannot self-authorize ToS/rights/automation; trusted policy and estimates remain caller-controlled. The second-market bundle reuses the same evidence snapshot/importer/dry-run orchestrator/manifest contract and includes no live accept/submit/payment path.
+
+Fresh public checks kept PayanAgent utilization unmeasured, observed agent2agent.market at 0 open tasks/no live activity, and clarified that MCPize's strongest attributable x402 utilization evidence is exposed in a publisher Payments view rather than anonymous public marketplace counts. No account was created.
+
+Push CI remains disabled. I016 is persisted as one atomic commit. No credentials, KYC, wallet, paid infrastructure, task acceptance, bid, publication or settlement occurred.
+
+Next: **I017 — bundle registry/history + cross-market evidence scorecard and continued anonymous/public demand observation.**
