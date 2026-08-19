@@ -57,3 +57,15 @@ Push CI remains disabled and no manual dispatch occurred. The connector blocked 
 No credentials, account creation, KYC, wallet, paid infrastructure, task acceptance, bid, publication or settlement occurred.
 
 Next: **I014 — platform-specific sanitizers/parsers for future raw PayanAgent payloads + multi-snapshot utilization-history comparison.**
+
+## I014 — 2026-08-19
+Status: **completed**
+Stage: PayanAgent sanitization boundary + non-extrapolating utilization history
+
+Added fail-closed raw PayanAgent request/receipt sanitizers with a separate trusted-policy boundary and buyer-identity hash minimization. Added multi-snapshot paid-utilization comparison that emits deltas only for matched coverage durations and refuses extrapolation across mismatched windows.
+
+Fresh first-party observation reconfirmed public PayanAgent request/receipt mechanics. The rendered Requests surface exposed `0 open`; Receipts exposed only a loading shell, so neither was fabricated into raw API evidence. MCPize seller mechanics remain confirmed while attributable utilization remains unknown.
+
+Push CI remains disabled; no workflow dispatch or external value-moving action occurred.
+
+Next: **I015 — end-to-end offline observation-bundle pipeline and audit.**

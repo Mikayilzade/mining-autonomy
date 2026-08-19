@@ -11,40 +11,37 @@ Do not reconstruct this project from chat memory.
 6. Re-check time-sensitive rules/economics with current primary sources before credentials, capital, hardware or paid infrastructure are used.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I013 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I014 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
-- `implementation/RUN_I013_EVIDENCE_REPLAY_UTILIZATION.md`
-- `implementation/receipt_aggregation.py`
-- `implementation/orchestrator.py`
-- `implementation/test_i013_bridge.py`
-- `implementation/test_receipt_aggregation.py`
-- `implementation/RUN_I012_DEMAND_EVIDENCE_IMPORTER.md`
-- `implementation/demand_evidence.py`
-- `implementation/observation_importer.py`
-- `implementation/snapshot.py`
+- `implementation/RUN_I014_PAYAN_SANITIZATION_HISTORY.md`
+- `implementation/SOURCES_I014.md`
+- `implementation/payan_sanitizer.py`
+- `implementation/utilization_history.py`
+- `implementation/test_payan_sanitizer.py`
+- `implementation/test_utilization_history.py`
+- prior I013 evidence replay/utilization files named in STATUS
 
-## I013 result
-Imported `open_paid_request` snapshots now bridge directly into the unified dry-run orchestrator after provenance/hash/freshness/shape revalidation; the trusted snapshot source timestamp overrides record timestamps and non-open-demand evidence fails closed.
+## I014 result
+A PayanAgent-specific raw-public-payload boundary now exists. `sanitize_payan_request` whitelists/normalizes identifiers, content, payout, currency, deadline and skills, while refusing to trust platform-provided metadata for ToS/rights/automation. Trusted policy and estimate evidence must be supplied separately. Non-open requests, conflicting aliases, unsupported currencies, missing payouts and malformed timestamps fail closed.
 
-Imported `settled_receipt` / `paid_invocation` snapshots now support strict offline utilization aggregation: transaction count, total/average/median USD value, active days, first/last observation, hashed-buyer recurrence and top-buyer value concentration. Raw buyer/customer/wallet/payer identifiers are rejected; retained recurrence identifiers must already be SHA-256 hashes.
+`sanitize_payan_receipt` normalizes USD/USDC value and UTC settlement time, accepts either direct USD value or cents but never both, hashes recognized buyer identity fields before persistence and emits no raw buyer/wallet/customer/payer identifier.
 
-Fresh 2026-08-19 first-party checks reconfirmed PayanAgent public receipt/request mechanics and MCPize subscription/x402 seller mechanics. No attributable raw request/receipt/invocation dataset was captured; quantitative demand remains unknown.
+`compare_utilization_snapshots` aggregates each verified paid-utilization snapshot independently, rejects duplicate hashes and mixed platform/evidence histories, and only emits transaction/value deltas for observation windows with matching coverage duration. Mismatched windows explicitly return `None` deltas; no per-day/month extrapolation exists.
 
-Push-triggered CI remains disabled. No workflow change or manual CI dispatch occurred. The prepared single git commit was blocked by the connector after blob/tree creation, so the stage was persisted with multiple Contents API commits as an exception; those pushes do not trigger current CI.
+Fresh first-party observation on 2026-08-19 reconfirmed PayanAgent's public API design. The rendered Requests marketplace page exposed `0 open`; the rendered Receipts page exposed a live-feed shell but no attributable rows. Because these surfaces lacked raw payload/source timestamps, no evidence snapshot was fabricated. MCPize's current docs still confirm subscriptions + x402 and the standard 80% developer share; paid utilization remains unmeasured.
+
+Push-triggered CI remains disabled and no manual workflow dispatch occurred. I014 is persisted as one atomic Git commit.
 
 ## Current shortlist
-1. PayanAgent — primary task-market target; quantitative worker demand pending.
-2. OKX.AI A2A ASP — provider-side live observation appears onboarding-gated.
-3. agent2agent.market — adapter-ready; prior public observation showed no open tasks/activity.
-4. AgentGigs.io — autonomous lifecycle but prior public jobs zero; Stripe/KYC geography gate.
-5. MCPize — strongest passive endpoint candidate; paid utilization unknown.
+1. PayanAgent — parser-ready primary target; actual open-request flow and settled-receipt volume still need attributable observation.
+2. OKX.AI A2A ASP — provider-side demand observation appears onboarding-gated.
+3. agent2agent.market — adapter-ready; prior public observation showed zero open work.
+4. AgentGigs.io — prior public jobs zero; Stripe/KYC geography gate.
+5. MCPize — strongest passive endpoint candidate; utilization unknown.
 
-## Immediate next run: I014
-1. Add normalized platform-specific sanitizer/parser boundaries for future permitted raw PayanAgent request and receipt payloads.
-2. Add comparison across multiple saved utilization snapshots without extrapolating mismatched observation windows.
-3. Continue public PayanAgent receipt/request and MCPize utilization checks; save real sanitized snapshots only if raw permitted data becomes observable.
-4. Prefer one-stage/one-final-commit and do not re-enable push CI.
+## Immediate next run: I015
+Build an offline observation-bundle pipeline joining sanitizer → evidence snapshot → saved-observation import → task replay/orchestrator + receipt aggregation/history → audit export. Add end-to-end fixtures/tests. Continue permitted public read-only observation, but never invent timestamps/demand.
 
 ## Hard action boundary
 Without explicit user authorization do NOT spend money, create/fund wallets, sign value-moving transactions, stake/deposit collateral, rent paid infrastructure, create paid accounts, submit KYC/bank onboarding, accept paid work with liability/slashing risk, publish monetized services under the user's identity, or settle transactions. Read-only observation, public-data analysis, local/CI dry runs, architecture and capped simulations may continue.
