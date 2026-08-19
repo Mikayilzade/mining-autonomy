@@ -11,28 +11,24 @@ Do not reconstruct this project from chat memory.
 6. Re-check time-sensitive rules/economics with current primary sources before credentials, capital, hardware or paid infrastructure are used.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I017 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I018 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
-- `implementation/RUN_I017_BUNDLE_REGISTRY_SCORECARD.md`
-- `implementation/SOURCES_I017.md`
-- `implementation/bundle_registry.py`
-- `implementation/test_bundle_registry.py`
-- I016 portable bundle files and prior evidence/sanitizer/snapshot/importer/orchestrator/utilization files named in STATUS.
+- `implementation/RUN_I018_CAPTURE_DELTA_TIMESERIES.md`
+- `implementation/SOURCES_I018.md`
+- `implementation/observation_capture.py`
+- `implementation/test_observation_capture.py`
+- I017 registry/scorecard files and prior bundle/importer/orchestrator/utilization files named in STATUS.
 
-## I017 result
-The evidence pipeline now has a deterministic multi-platform history/index layer above signed observation bundles.
-
-`bundle_registry.py` rejects duplicate bundle manifest hashes globally, records exact request snapshot/provenance fields, distinguishes positive-open, zero-open and unproven observations, preserves paid utilization as a separate strongest evidence class, and emits a deterministic scorecard. It does not sum or extrapolate paid values across snapshots.
-
-A latest zero-open observation does not erase historical positive-open evidence; both counts remain visible. Repeated identical request snapshot hashes are visible but counted as one distinct request snapshot. Eight isolated registry tests passed locally.
+## I018 result
+The evidence pipeline now has a deterministic saved-observation capture layer above the portable bundle registry. `observation_capture.py` validates HTTPS provenance, source freshness, future clock skew, per-source capture monotonicity/rate limits, and emits exact registry deltas plus a non-extrapolating time series. Eight isolated tests passed locally.
 
 Fresh public checkpoint:
-- PayanAgent rendered Requests shows `0 open` plus loading; no raw attributable timestamped API payload captured.
-- agent2agent.market public app shell currently exposes dashes rather than live attributable counts; current quantitative demand remains unmeasured.
-- MCPize seller monetization remains documented; attributable utilization remains publisher/account gated.
+- PayanAgent anonymous discovery/public receipt mechanics remain documented, but no raw attributable production payload was captured; catalog size is not demand.
+- agent2agent.market public app currently shows zero open tasks but explicitly on `base-sepolia`; classify this as testnet evidence only, never production zero-demand evidence.
+- MCPize monetization remains documented; attributable utilization remains publisher/dashboard gated.
 
-Push-triggered CI remains disabled. No workflow change was made.
+Push-triggered CI remains disabled. No workflow change was made. I018 is one atomic commit.
 
 ## Current shortlist
 1. PayanAgent
@@ -41,8 +37,8 @@ Push-triggered CI remains disabled. No workflow change was made.
 4. AgentGigs.io
 5. MCPize
 
-## Immediate next run: I018
-Build a reproducible public read-only observation-capture + registry-delta runner with provenance/freshness/rate-limit guards and time-series scorecard export. Do not create accounts/wallets merely to unlock analytics.
+## Immediate next run: I019
+Add deterministic sanitized fixture/report import-export with schema/version/hash validation and append-only semantics. Add explicit environment classification (`production`, `testnet`, `unknown`) and production-only scorecard filtering so testnet evidence cannot contaminate production conclusions. Continue read-only public observation without creating accounts/wallets.
 
 ## Hard action boundary
 Without explicit user authorization do NOT spend money, create/fund wallets, sign value-moving transactions, stake/deposit collateral, rent paid infrastructure, create paid accounts, submit KYC/bank onboarding, accept paid work with liability/slashing risk, publish monetized services under the user's identity, or settle transactions. Read-only observation, public-data analysis, local/CI dry runs, architecture and capped simulations may continue.

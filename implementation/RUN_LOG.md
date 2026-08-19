@@ -34,7 +34,7 @@ Joined sanitizer → hash-bounded snapshot → importer → evidence-gated dry-r
 Status: **completed**
 Stage: Portable multi-market signed observation bundles
 
-Added deterministic bundle serialization/reload with schema/version/hash/HMAC validation and generalized the bundle path to `agent2agent.market`. Fresh checks left PayanAgent utilization unmeasured, found no attributable live agent2agent demand in the observed app state, and kept MCPize utilization account-gated.
+Added deterministic bundle serialization/reload with schema/version/hash/HMAC validation and generalized the bundle path to `agent2agent.market`. Fresh checks left PayanAgent utilization unmeasured, found no attributable live agent2agent production demand, and kept MCPize utilization account-gated.
 
 ## I017 — 2026-08-19
 Status: **completed**
@@ -42,8 +42,14 @@ Stage: Deterministic bundle registry/history + cross-market evidence scorecard
 
 Added `bundle_registry.py` and eight isolated tests. Registry hashes are globally deduplicated; exact zero-open observations stay separate from positive-open history; repeated request snapshot hashes are visible without being counted as distinct snapshots; paid utilization is the strongest evidence class but paid values are never summed or extrapolated across snapshots.
 
-Fresh public read-only checks retained PayanAgent's rendered `0 open` only as a rendered observation because no raw timestamped API payload was captured. agent2agent.market's public app shell exposed dashes rather than attributable live metrics, so current quantitative demand remains unmeasured. MCPize attributable utilization remains publisher/account gated.
+## I018 — 2026-08-19
+Status: **completed**
+Stage: Reproducible capture/delta runner + exact time-series scorecard
+
+Added `observation_capture.py` and eight isolated tests. Saved public bundles now pass HTTPS provenance, freshness, future-skew, capture monotonicity and per-source rate-limit guards before entering the registry. Each accepted observation emits an exact delta and a time-series point; paid values remain non-aggregated/non-extrapolated.
+
+Fresh public checks clarified that the currently rendered agent2agent zero-open state is explicitly `base-sepolia`, so it is testnet evidence only. PayanAgent raw production demand/receipt payloads remain uncaptured; MCPize attributable utilization remains publisher/dashboard gated.
 
 No credentials, KYC, wallets, paid infrastructure, task acceptance, service publication or settlement occurred. Push-triggered CI remains disabled; workflow unchanged.
 
-Next: **I018 — reproducible public observation-capture + registry-delta runner with freshness/rate-limit guards and time-series scorecard export.**
+Next: **I019 — deterministic sanitized fixture/report persistence + explicit production/testnet/unknown environment classification and production-only scorecard filtering.**
