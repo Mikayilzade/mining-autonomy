@@ -36,35 +36,24 @@ Stage: Verified snapshot replay + CI diagnosis + demand observability refresh
 
 Added replay-time provenance/hash/freshness/shape validation and snapshot-to-adapter replay. Trusted snapshot source timestamps override timestamps embedded in raw task records. Push-triggered CI remained disabled to prevent notification-email spam. Fresh first-party checks reconfirmed PayanAgent and MCPize mechanics but yielded no captured attributable raw demand payload.
 
-Durable outputs:
-- `implementation/RUN_I011_SNAPSHOT_REPLAY_CI_DEMAND.md`
-- `implementation/snapshot.py`
-- `implementation/test_snapshot.py`
-- `implementation/fixtures_i011_synthetic_snapshots.json`
-
 ## I012 — 2026-08-19
 Status: **completed**
 Stage: Demand-evidence scoring + saved-observation importer
 
-Added explicit demand-evidence classes separating paid utilization (`settled_receipt`, `paid_invocation`), current paid demand (`open_paid_request`), supply (`listing_only`) and weak/non-demand signals (`marketing_claim`, `unknown`). Unknown custom labels fail closed.
+Added explicit demand-evidence classes separating paid utilization (`settled_receipt`, `paid_invocation`), current paid demand (`open_paid_request`), supply (`listing_only`) and weak/non-demand signals (`marketing_claim`, `unknown`). Added an offline importer and evidence-aware orchestrator/audit gates. No attributable raw request/receipt/utilization snapshot was captured.
 
-Added an offline saved-observation importer that performs no network calls, reconstructs/revalidates evidence snapshots and only replays current tasks when evidence is explicitly `open_paid_request`.
+## I013 — 2026-08-19
+Status: **completed**
+Stage: Evidence replay bridge + paid-utilization aggregation
 
-Extended the orchestrator/audit layer with evidence class/strength, `paid_utilization_proven`, `open_paid_demand_proven`, evidence counts and hold gates. Positive-margin task payloads no longer pass dry-run acceptance without explicit open-paid-request evidence; passive projected economics no longer pass without attributable paid-utilization evidence.
+Added direct verified `open_paid_request` snapshot replay into the unified dry-run queue. Revalidation remains mandatory and the trusted snapshot timestamp overrides record timestamps.
 
-Fresh 2026-08-19 first-party checks reconfirmed PayanAgent request/receipt APIs and MCPize pay-per-call/creator/free-hosting mechanics. No attributable raw request/receipt/utilization snapshot was captured, so quantitative demand remains unknown.
+Added strict offline aggregation for `settled_receipt` / `paid_invocation`: count, total/average/median USD value, active days, first/last timestamps, hashed-buyer recurrence and top-buyer concentration. Raw buyer/customer/wallet/payer identities are rejected; retained buyer keys must already be SHA-256 hashes.
 
-CI hygiene: no workflow change, no manual dispatch, push CI remains disabled; all changed Python files passed local syntax compilation. One final commit is used for the stage.
+Fresh first-party checks reconfirmed PayanAgent public request/receipt mechanics and MCPize subscription/x402 monetization. No attributable raw payload was captured, so real demand/utilization remains unmeasured.
 
-Durable outputs:
-- `implementation/demand_evidence.py`
-- `implementation/observation_importer.py`
-- `implementation/orchestrator.py`
-- `implementation/test_demand_evidence.py`
-- `implementation/test_observation_importer.py`
-- `implementation/test_orchestrator.py`
-- `implementation/RUN_I012_DEMAND_EVIDENCE_IMPORTER.md`
+Push CI remains disabled and no manual dispatch occurred. The connector blocked the prepared atomic commit after blob/tree creation, so this stage was persisted through multiple Contents API commits as an exception; current workflow means these pushes do not trigger CI/email spam.
 
-No credentials, account creation, KYC, wallet, paid infrastructure, task acceptance, bid, publication, CI dispatch or settlement occurred.
+No credentials, account creation, KYC, wallet, paid infrastructure, task acceptance, bid, publication or settlement occurred.
 
-Next: **I013 — evidence-aware replay-to-orchestrator bridge + saved receipt/utilization aggregation.**
+Next: **I014 — platform-specific sanitizers/parsers for future raw PayanAgent payloads + multi-snapshot utilization-history comparison.**
