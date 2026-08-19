@@ -1,15 +1,15 @@
 """Deterministic read-only capture registry runner for saved observation bundles.
 
 This module performs no network, authentication, publication, task acceptance, wallet,
-payment, or settlement action. It only validates provenance/freshness/rate limits for
-already-captured public observation bundles, applies them to the offline bundle
-registry, and exports exact deltas/time-series evidence without revenue extrapolation.
+payment, or settlement action. It validates provenance/freshness/rate limits for
+already-captured public observation bundles. Durable-ingestion reports must additionally
+carry a verified sealed-manifest capture receipt for every bundle.
 """
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
-from typing import Any, Iterable
+from typing import Any, Iterable, Mapping
 
 from bundle_registry import (
     BundleRegistry,
@@ -18,6 +18,7 @@ from bundle_registry import (
     index_bundle,
     registry_record,
 )
+from sampling_receipt import verify_capture_receipt
 
 
 @dataclass(frozen=True)
@@ -102,20 +103,13 @@ def _next_state(state: CaptureState, key: str, captured_at: str) -> CaptureState
     return CaptureState(tuple(sorted(values.items())))
 
 
-def apply_captured_bundle(
-    registry: BundleRegistry,
-    state: CaptureState,
-    bundle: Any,
-    *,
-    policy: CapturePolicy = CapturePolicy(),
-) -> tuple[BundleRegistry, CaptureState, RegistryDelta]:
-    """Validate and add one already-captured bundle, returning exact registry delta."""
+def apply_captured_bundle(registry: BundleRegistry, state: CaptureState, bundle: Any, *, policy: CapturePolicy = CapturePolicy()) -> tuple[BundleRegistry, CaptureState, RegistryDelta]:
+    """Validate/add one bundle to the transient registry; not durable evidence alone."""
     _validate_policy(policy)
     entry = index_bundle(bundle)
     if not entry.source_url.startswith("https://"):
         raise ValueError("capture_public_source_must_use_https")
     _validate_freshness(entry.source_timestamp, entry.captured_at, policy)
-
     key = _source_key(entry.platform, entry.source_url)
     prior_capture = state.as_dict().get(key)
     if prior_capture is not None:
@@ -126,89 +120,91 @@ def apply_captured_bundle(
             raise ValueError("capture_time_regressed_for_source")
         if interval < policy.min_interval_seconds:
             raise ValueError("capture_rate_limit_guard")
-
     prior_latest = _platform_latest_state(registry, entry.platform)
-    prior_request_hashes = {
-        item.request_snapshot_sha256 for item in registry.entries if item.platform == entry.platform
-    }
+    prior_request_hashes = {item.request_snapshot_sha256 for item in registry.entries if item.platform == entry.platform}
     updated = add_bundle(registry, bundle)
     latest_state = _platform_latest_state(updated, entry.platform)
     delta = RegistryDelta(
-        platform=entry.platform,
-        source_url=entry.source_url,
-        source_timestamp=entry.source_timestamp,
-        captured_at=entry.captured_at,
-        bundle_sha256=entry.bundle_sha256,
-        request_snapshot_sha256=entry.request_snapshot_sha256,
-        demand_state=entry.demand_state,
-        open_item_count=entry.open_item_count,
-        paid_utilization_state=entry.paid_utilization_state,
-        paid_transaction_count=entry.paid_transaction_count,
-        paid_value_usd=entry.paid_value_usd,
+        platform=entry.platform, source_url=entry.source_url, source_timestamp=entry.source_timestamp,
+        captured_at=entry.captured_at, bundle_sha256=entry.bundle_sha256,
+        request_snapshot_sha256=entry.request_snapshot_sha256, demand_state=entry.demand_state,
+        open_item_count=entry.open_item_count, paid_utilization_state=entry.paid_utilization_state,
+        paid_transaction_count=entry.paid_transaction_count, paid_value_usd=entry.paid_value_usd,
         distinct_request_snapshot_added=entry.request_snapshot_sha256 not in prior_request_hashes,
-        prior_latest_demand_state=prior_latest,
-        latest_demand_state=latest_state or entry.demand_state,
+        prior_latest_demand_state=prior_latest, latest_demand_state=latest_state or entry.demand_state,
     )
     return updated, _next_state(state, key, entry.captured_at), delta
 
 
+def _verified_attestation(bundle: Any, envelope: Mapping[str, Any], receipt: Mapping[str, Any]) -> dict[str, Any]:
+    verify_capture_receipt(envelope, receipt)
+    entry = index_bundle(bundle)
+    if receipt.get("sanitized_bundle_sha256") != entry.bundle_sha256:
+        raise ValueError("capture_receipt_bundle_mismatch")
+    if receipt.get("platform") != entry.platform:
+        raise ValueError("capture_receipt_bundle_platform_mismatch")
+    if receipt.get("source_url") != entry.source_url:
+        raise ValueError("capture_receipt_bundle_source_mismatch")
+    if receipt.get("method") != "GET":
+        raise ValueError("capture_receipt_method_not_read_only")
+    if _parse_timestamp(receipt.get("capture_finished_at"), "capture_receipt_finished_at_invalid") != _parse_timestamp(entry.captured_at, "capture_captured_at_invalid"):
+        raise ValueError("capture_receipt_bundle_capture_time_mismatch")
+    receipt_source_ts = receipt.get("source_timestamp")
+    if receipt_source_ts is not None and _parse_timestamp(receipt_source_ts, "capture_receipt_source_timestamp_invalid") != _parse_timestamp(entry.source_timestamp, "capture_source_timestamp_invalid"):
+        raise ValueError("capture_receipt_bundle_source_time_mismatch")
+    if receipt.get("captured_environment") not in {"production", "testnet", "unknown"}:
+        raise ValueError("capture_receipt_environment_invalid")
+    return {"bundle_sha256": entry.bundle_sha256, "manifest_envelope": dict(envelope), "receipt": dict(receipt)}
+
+
 def time_series_scorecard(registry: BundleRegistry) -> dict[str, Any]:
-    """Export exact observation points; never aggregate/extrapolate paid values."""
     grouped: dict[str, list[dict[str, Any]]] = {}
     for entry in registry.entries:
         grouped.setdefault(entry.platform, []).append({
-            "source_timestamp": entry.source_timestamp,
-            "captured_at": entry.captured_at,
-            "source_url": entry.source_url,
-            "bundle_sha256": entry.bundle_sha256,
-            "request_snapshot_sha256": entry.request_snapshot_sha256,
-            "demand_state": entry.demand_state,
-            "open_item_count": entry.open_item_count,
-            "paid_utilization_state": entry.paid_utilization_state,
-            "paid_transaction_count": entry.paid_transaction_count,
-            "paid_value_usd": entry.paid_value_usd,
+            "source_timestamp": entry.source_timestamp, "captured_at": entry.captured_at,
+            "source_url": entry.source_url, "bundle_sha256": entry.bundle_sha256,
+            "request_snapshot_sha256": entry.request_snapshot_sha256, "demand_state": entry.demand_state,
+            "open_item_count": entry.open_item_count, "paid_utilization_state": entry.paid_utilization_state,
+            "paid_transaction_count": entry.paid_transaction_count, "paid_value_usd": entry.paid_value_usd,
             "evidence_strength": entry.evidence_strength,
         })
-    platforms = [
-        {"platform": platform, "points": grouped[platform]}
-        for platform in sorted(grouped)
-    ]
-    return {
-        "schema_version": 1,
-        "platforms": platforms,
-        "paid_value_aggregation": "none_across_observations",
-        "paid_value_extrapolation": False,
-        "dry_run_only": True,
-        "action_enabled": False,
-    }
+    return {"schema_version": 1, "platforms": [{"platform": p, "points": grouped[p]} for p in sorted(grouped)],
+            "paid_value_aggregation": "none_across_observations", "paid_value_extrapolation": False,
+            "dry_run_only": True, "action_enabled": False}
 
 
-def run_capture_batch(
-    bundles: Iterable[Any],
-    *,
-    registry: BundleRegistry | None = None,
-    state: CaptureState | None = None,
-    policy: CapturePolicy = CapturePolicy(),
-) -> dict[str, Any]:
-    """Apply a deterministic ordered batch of saved public bundles and export audit state."""
+def run_capture_batch(bundles: Iterable[Any], *, registry: BundleRegistry | None = None, state: CaptureState | None = None, policy: CapturePolicy = CapturePolicy()) -> dict[str, Any]:
+    """Transient/local-only batch; explicitly not archive-ingestion eligible."""
     current_registry = registry or BundleRegistry()
     current_state = state or CaptureState()
     indexed = [(index_bundle(bundle), bundle) for bundle in bundles]
     indexed.sort(key=lambda pair: (pair[0].captured_at, pair[0].platform, pair[0].bundle_sha256))
     deltas: list[RegistryDelta] = []
     for _, bundle in indexed:
-        current_registry, current_state, delta = apply_captured_bundle(
-            current_registry, current_state, bundle, policy=policy
-        )
+        current_registry, current_state, delta = apply_captured_bundle(current_registry, current_state, bundle, policy=policy)
         deltas.append(delta)
-    return {
-        "schema_version": 1,
-        "capture_policy": asdict(policy),
-        "capture_state": dict(current_state.last_capture_by_source),
-        "deltas": [asdict(delta) for delta in deltas],
-        "registry": registry_record(current_registry),
-        "cross_market_scorecard": cross_market_scorecard(current_registry),
-        "time_series_scorecard": time_series_scorecard(current_registry),
-        "dry_run_only": True,
-        "action_enabled": False,
-    }
+    return {"schema_version": 1, "capture_policy": asdict(policy), "capture_state": dict(current_state.last_capture_by_source),
+            "deltas": [asdict(delta) for delta in deltas], "registry": registry_record(current_registry),
+            "cross_market_scorecard": cross_market_scorecard(current_registry), "time_series_scorecard": time_series_scorecard(current_registry),
+            "capture_attestations": [], "receipt_required_for_durable_ingestion": False,
+            "dry_run_only": True, "action_enabled": False}
+
+
+def run_verified_capture_batch(captures: Iterable[Mapping[str, Any]], *, registry: BundleRegistry | None = None, state: CaptureState | None = None, policy: CapturePolicy = CapturePolicy()) -> dict[str, Any]:
+    """Create archive-eligible report only from receipt-bound sanitized bundles; no network."""
+    verified: list[tuple[Any, dict[str, Any]]] = []
+    for capture in captures:
+        if not isinstance(capture, Mapping):
+            raise ValueError("verified_capture_must_be_object")
+        bundle = capture.get("bundle")
+        envelope = capture.get("manifest_envelope")
+        receipt = capture.get("receipt")
+        if not isinstance(envelope, Mapping) or not isinstance(receipt, Mapping):
+            raise ValueError("verified_capture_attestation_required")
+        verified.append((bundle, _verified_attestation(bundle, envelope, receipt)))
+    report = run_capture_batch([bundle for bundle, _ in verified], registry=registry, state=state, policy=policy)
+    attestations = [item for _, item in verified]
+    attestations.sort(key=lambda item: item["bundle_sha256"])
+    report["capture_attestations"] = attestations
+    report["receipt_required_for_durable_ingestion"] = True
+    return report

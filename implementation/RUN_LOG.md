@@ -4,19 +4,19 @@
 Status: **completed**
 Stage: Candidate ranking + experiment gate
 
-Converted the completed discovery map into an implementation shortlist. PayanAgent and OKX.AI A2A were selected as first read-only targets; MCPize became the leading passive paid-endpoint candidate.
+Converted completed discovery into implementation shortlist. PayanAgent and OKX.AI A2A selected as first read-only targets; MCPize leading passive paid-endpoint candidate.
 
 ## I002–I010 — 2026-08-19
 Status: **completed**
 Stage: Read-only candidate validation → evaluator/adapters → passive benchmark → unified orchestrator → evidence snapshots/audit
 
-Detailed durable run documents are preserved individually. The stack gained policy/cost/EV gates, hard-disabled settlement, adapter conformance, passive service economics, a unified dry-run queue, provenance/freshness snapshots and audit export.
+Detailed run documents are preserved individually. Stack gained policy/cost/EV gates, hard-disabled settlement, adapter conformance, passive-service economics, unified dry-run queue, provenance/freshness snapshots and audit export.
 
 ## I011–I013 — 2026-08-19
 Status: **completed**
 Stage: Verified replay → demand-evidence scoring → paid-utilization aggregation
 
-Added snapshot replay validation, explicit demand evidence classes, evidence-aware importer/orchestrator, and strict settled-receipt aggregation with buyer identity minimization. No attributable raw demand/utilization payload was captured.
+Added snapshot replay validation, explicit demand evidence classes, evidence-aware importer/orchestrator and strict settled-receipt aggregation with buyer identity minimization. No attributable raw demand/utilization payload captured.
 
 ## I014 — 2026-08-19
 Status: **completed**
@@ -34,76 +34,60 @@ Joined sanitizer → hash-bounded snapshot → importer → evidence-gated dry-r
 Status: **completed**
 Stage: Portable multi-market signed observation bundles
 
-Added deterministic bundle serialization/reload with schema/version/hash/HMAC validation and generalized the bundle path to `agent2agent.market`. Fresh checks left PayanAgent utilization unmeasured, found no attributable live agent2agent production demand, and kept MCPize utilization account-gated.
+Added deterministic bundle serialization/reload with schema/version/hash/HMAC validation and generalized bundle path to `agent2agent.market`. Fresh checks left PayanAgent utilization unmeasured, found no attributable live agent2agent production demand, and kept MCPize utilization account-gated.
 
 ## I017 — 2026-08-19
 Status: **completed**
 Stage: Deterministic bundle registry/history + cross-market evidence scorecard
 
-Added `bundle_registry.py` and eight isolated tests. Registry hashes are globally deduplicated; exact zero-open observations stay separate from positive-open history; repeated request snapshot hashes are visible without being counted as distinct snapshots; paid utilization is the strongest evidence class but paid values are never summed or extrapolated across snapshots.
+Added globally deduplicated registry with exact zero-open vs positive-open history and non-summed/non-extrapolated paid evidence.
 
 ## I018 — 2026-08-19
 Status: **completed**
 Stage: Reproducible capture/delta runner + exact time-series scorecard
 
-Added `observation_capture.py` and eight isolated tests. Saved public bundles now pass HTTPS provenance, freshness, future-skew, capture monotonicity and per-source rate-limit guards before entering the registry. Each accepted observation emits an exact delta and a time-series point; paid values remain non-aggregated/non-extrapolated.
-
-Fresh public checks clarified that the currently rendered agent2agent zero-open state is explicitly `base-sepolia`, so it is testnet evidence only. PayanAgent raw production demand/receipt payloads remain uncaptured; MCPize attributable utilization remains publisher/dashboard gated.
-
-No credentials, KYC, wallets, paid infrastructure, task acceptance, service publication or settlement occurred. Push-triggered CI remains disabled; workflow unchanged.
+Added read-only capture validation with HTTPS provenance, freshness/future-skew and per-source rate guards. Paid values remain non-aggregated/non-extrapolated.
 
 ## I019 — 2026-08-19
 Status: **completed**
 Stage: Sanitized append-only evidence archive + environment isolation
 
-Added `evidence_archive.py` and eight isolated tests. Capture reports now export/import as canonical sanitized archives with report hashing, per-entry SHA-256 chaining, top-level archive hashing, duplicate rejection and append-only prefix enforcement. Every observation is explicit `production`, `testnet` or `unknown`; only production may enter the production scorecard, while testnet/unknown exclusions remain visible. Raw payloads/buyer identities are not persisted and paid values remain non-extrapolated.
-
-Fresh checks reconfirmed PayanAgent public discovery/receipt mechanics without an attributable raw production demand payload; agent2agent public zero-open state remains explicitly `base-sepolia` and is quarantined as testnet; MCPize still documents 80% standard share/x402 but attributable utilization remains dashboard-gated.
-
-No credentials, KYC, wallets, paid infrastructure, task acceptance, service publication or settlement occurred. Push-triggered CI remains disabled; workflow unchanged.
+Added canonical sanitized archives with report hashing, per-entry SHA-256 chaining, top-level archive hashing, duplicate rejection, append-only prefix enforcement and explicit production/testnet/unknown separation.
 
 ## I020 — 2026-08-19
 Status: **completed**
 Stage: Production-only archive replay + explicit freshness bridge
 
-Added `archive_replay.py` and seven deterministic tests. Only explicit production entries can replay into the unified offline orchestrator; testnet/unknown entries are excluded. Latest per-platform production evidence is classified `fresh`, `stale` or `future_invalid`. Archive-derived orchestrator items are HOLD-only and can never enable action because sanitized evidence lacks executable payloads, trusted policy context and bounded cost estimates. Paid values remain non-aggregated/non-extrapolated.
-
-Fresh checks reconfirmed PayanAgent anonymous discovery/public receipt mechanics without an attributable raw production demand payload. MCPize still documents an 80% standard developer share and Base x402 pay-per-call, while 900+ servers / 450+ publishers remain supply-side counts rather than utilization evidence. Existing agent2agent `base-sepolia` observations remain testnet-only.
-
-No credentials, KYC, wallets, paid infrastructure, task acceptance, service publication or settlement occurred. Push-triggered CI remains disabled; workflow unchanged.
+Only explicit production entries replay into the unified offline orchestrator; testnet/unknown are excluded. Replay is HOLD-only and cannot enable action.
 
 ## I021 — 2026-08-19
 Status: **completed**
 Stage: Deterministic production-evidence watchlist planner
 
-Added `sampling_planner.py` and seven deterministic tests. The planner ranks read-only production observation work by candidate priority, missing production evidence, per-platform freshness, positive-open-demand gap and paid-utilization gap. Testnet/unknown observations cannot close production gaps. Output is plan-only with no network calls and no action enablement.
-
-Fresh public checks reconfirmed PayanAgent's anonymous discovery/receipts interface and MCPize's 80%/x402 monetization mechanics, while attributable raw production demand/utilization remains uncaptured. Supply-side counts remain excluded from demand evidence.
-
-No credentials, KYC, wallets, paid infrastructure, task acceptance, service publication or settlement occurred. Push-triggered CI remains disabled; workflow unchanged.
+Added plan-only ranking for missing/freshness/positive-open/paid-utilization evidence gaps. Testnet/unknown cannot close production gaps.
 
 ## I022 — 2026-08-19
 Status: **completed**
 Stage: Inert sampling manifest / execution contract
 
-Added `sampling_manifest.py` and seven tests. The watchlist now expands into exact source-level GET-only contracts with expected evidence class, capture deadline, conservative self-imposed rate budget, max source age, provenance requirements and explicit environment handling. Credentials/network/action remain disabled.
-
-Added `capture_bridge_spec()` to bind future already-captured sanitized bundles to the existing `observation_capture -> evidence_archive -> archive_replay` path. Explicit production mapping is required; unknown environment stays unknown and cannot satisfy production evidence.
-
-Fresh checks reconfirmed PayanAgent anonymous discovery/receipts endpoints, agent2agent.market public machine-readable task browsing with Base Sepolia still visible in onboarding examples, and MCPize 80%/x402 mechanics. Supply/listing counts remain excluded from demand evidence.
-
-No credentials, KYC, wallets, paid infrastructure, task acceptance, service publication or settlement occurred. Push-triggered CI remains disabled; workflow unchanged.
+Expanded watchlist into exact GET-only source contracts with expected evidence class, deadline, conservative rate budget, provenance requirements and explicit environment handling. Credentials/network/action disabled.
 
 ## I023 — 2026-08-19
 Status: **completed**
 Stage: Sealed sampling manifests + capture-result receipts
 
-Added `sampling_receipt.py` and eight deterministic tests. Sampling manifests now have canonical JSON, SHA-256 sealing, optional HMAC-SHA256 authentication and per-item hashes bound to the manifest hash + item index.
+Added canonical manifest sealing, SHA-256, optional HMAC authentication, per-item hashes and sanitized capture receipts bound to exact manifest item. Network remains dependency-injected and disabled by default; credentials/actions fail closed.
 
-Added a sanitized capture-result receipt binding exact manifest item, source/method/platform, expected evidence classes, timestamps, declared/captured environment, sanitized bundle SHA-256 and transport boundary. Receipt verification detects tampering and explicitly grants no execution authority.
+## I024 — 2026-08-19
+Status: **completed**
+Stage: Receipt-gated durable evidence ingestion
 
-Transport remains dependency-injected only; there is no built-in HTTP client. Missing transport fails closed, network-capable transport is disabled unless explicitly enabled by a future caller, and any result reporting credentials or action execution is rejected. Unknown→production requires separate environment-evidence hashing.
+Closed the integrity gap between capture receipts and durable archive history. Added `run_verified_capture_batch()` that only emits archive-eligible reports after verifying receipt→sealed-manifest and receipt→bundle consistency. Ordinary `run_capture_batch()` is now explicitly transient-only.
 
-Local isolated verification: **8 passed**. No network capture, credentials, KYC, wallets, paid infrastructure, task acceptance, service publication or settlement occurred. Push-triggered CI remains disabled; workflow unchanged.
+`evidence_archive.append_capture_report()` now independently re-verifies every attestation, requires complete bundle coverage, rejects missing/duplicate/unmatched/tampered receipts, and treats receipt environment as authoritative. Caller environment mappings cannot promote or relabel evidence. Serialized archives persist the receipt-required policy.
 
-Next: **I024 — require verified capture receipts at the observation/archive ingestion boundary and add mismatch/tamper/environment replay fixtures; live transport remains disabled.**
+Verification: source/test syntax checked locally; push-triggered CI remains disabled and workflow unchanged.
+
+No network capture, credentials, KYC, wallet, paid infrastructure, task acceptance, publication or settlement occurred.
+
+Next: **I025 — receipt-aware replay provenance + deterministic sampling audit summary; live transport remains disabled.**

@@ -1,9 +1,8 @@
-"""Deterministic sanitized evidence archive with explicit environment isolation.
+"""Deterministic sanitized evidence archive with receipt-gated ingestion.
 
-Consumes already-produced read-only capture reports. No network/auth/payment actions.
-Only normalized observation metadata is persisted; raw platform payloads and buyer
-identities are excluded. Only explicit ``production`` observations may enter the
-production scorecard; ``testnet`` and ``unknown`` fail closed from production claims.
+Consumes already-produced read-only capture reports. Durable ingestion requires a
+verified sealed-manifest capture receipt for every sanitized bundle. No network,
+authentication, payment or execution action occurs here.
 """
 from __future__ import annotations
 
@@ -12,6 +11,8 @@ from datetime import datetime
 import hashlib
 import json
 from typing import Any, Mapping
+
+from sampling_receipt import verify_capture_receipt
 
 SCHEMA_VERSION = 1
 ENVIRONMENTS = frozenset({"production", "testnet", "unknown"})
@@ -136,7 +137,46 @@ def _validated_delta(delta: Any) -> dict[str, Any]:
     }
 
 
-def validate_capture_report(report: Any) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+def _verify_attestations(value: Mapping[str, Any], deltas: list[dict[str, Any]]) -> dict[str, str]:
+    if value.get("receipt_required_for_durable_ingestion") is not True:
+        raise ValueError("capture_report_verified_receipts_required")
+    raw_attestations = value.get("capture_attestations")
+    if not isinstance(raw_attestations, list):
+        raise ValueError("capture_report_attestations_required")
+    expected_hashes = {delta["bundle_sha256"] for delta in deltas}
+    environments: dict[str, str] = {}
+    seen: set[str] = set()
+    delta_by_hash = {delta["bundle_sha256"]: delta for delta in deltas}
+    for raw in raw_attestations:
+        attestation = _require_mapping(raw, "capture_attestation_must_be_object")
+        bundle_sha = _require_sha(attestation.get("bundle_sha256"), "capture_attestation_bundle_sha256_invalid")
+        if bundle_sha in seen:
+            raise ValueError("capture_attestation_duplicate_bundle_hash")
+        seen.add(bundle_sha)
+        if bundle_sha not in delta_by_hash:
+            raise ValueError("capture_attestation_unmatched_bundle")
+        envelope = _require_mapping(attestation.get("manifest_envelope"), "capture_attestation_manifest_required")
+        receipt = _require_mapping(attestation.get("receipt"), "capture_attestation_receipt_required")
+        verify_capture_receipt(envelope, receipt)
+        delta = delta_by_hash[bundle_sha]
+        if receipt.get("sanitized_bundle_sha256") != bundle_sha:
+            raise ValueError("capture_attestation_receipt_bundle_mismatch")
+        if receipt.get("platform") != delta["platform"]:
+            raise ValueError("capture_attestation_platform_mismatch")
+        if receipt.get("source_url") != delta["source_url"]:
+            raise ValueError("capture_attestation_source_mismatch")
+        if _require_timestamp(receipt.get("capture_finished_at"), "capture_attestation_finished_at_invalid") != delta["captured_at"]:
+            raise ValueError("capture_attestation_capture_time_mismatch")
+        receipt_source_ts = receipt.get("source_timestamp")
+        if receipt_source_ts is not None and _require_timestamp(receipt_source_ts, "capture_attestation_source_timestamp_invalid") != delta["source_timestamp"]:
+            raise ValueError("capture_attestation_source_time_mismatch")
+        environments[bundle_sha] = _require_environment(receipt.get("captured_environment"))
+    if seen != expected_hashes:
+        raise ValueError("capture_report_attestation_coverage_mismatch")
+    return environments
+
+
+def validate_capture_report(report: Any) -> tuple[dict[str, Any], list[dict[str, Any]], dict[str, str]]:
     value = dict(_require_mapping(report, "capture_report_must_be_object"))
     if value.get("schema_version") != SCHEMA_VERSION:
         raise ValueError("capture_report_schema_version_unsupported")
@@ -156,12 +196,14 @@ def validate_capture_report(report: Any) -> tuple[dict[str, Any], list[dict[str,
     for delta in normalized:
         if delta["bundle_sha256"] not in registry_hashes:
             raise ValueError("capture_delta_bundle_missing_from_registry")
-    return value, normalized
+    environments = _verify_attestations(value, normalized)
+    return value, normalized, environments
 
 
 def append_capture_report(archive: EvidenceArchive, report: Any, *, environment_by_bundle_sha256: Mapping[str, str] | None = None, default_environment: str = "unknown") -> EvidenceArchive:
-    default_env = _require_environment(default_environment)
-    raw_report, deltas = validate_capture_report(report)
+    """Append only receipt-verified capture evidence. Receipt environment is authoritative."""
+    _require_environment(default_environment)
+    raw_report, deltas, verified_environments = validate_capture_report(report)
     report_sha = _sha256(raw_report)
     mapping = dict(environment_by_bundle_sha256 or {})
     existing_hashes = {entry.bundle_sha256 for entry in archive.entries}
@@ -171,14 +213,13 @@ def append_capture_report(archive: EvidenceArchive, report: Any, *, environment_
         bundle_sha = delta["bundle_sha256"]
         if bundle_sha in existing_hashes:
             raise ValueError("archive_duplicate_bundle_hash")
-        environment = _require_environment(mapping.get(bundle_sha, default_env))
-        core = {
-            "sequence": len(entries) + 1,
-            "environment": environment,
-            **delta,
-            "source_report_sha256": report_sha,
-            "previous_entry_sha256": previous,
-        }
+        environment = verified_environments[bundle_sha]
+        if bundle_sha in mapping:
+            requested = _require_environment(mapping[bundle_sha])
+            if requested != environment:
+                raise ValueError("archive_environment_override_mismatch")
+        core = {"sequence": len(entries) + 1, "environment": environment, **delta,
+                "source_report_sha256": report_sha, "previous_entry_sha256": previous}
         entry_sha = _sha256(core)
         entry = ArchiveEntry(**core, entry_sha256=entry_sha)
         entries.append(entry)
@@ -189,17 +230,11 @@ def append_capture_report(archive: EvidenceArchive, report: Any, *, environment_
 
 def archive_record(archive: EvidenceArchive) -> dict[str, Any]:
     entries = [asdict(entry) for entry in archive.entries]
-    core = {
-        "schema_version": SCHEMA_VERSION,
-        "entry_count": len(entries),
-        "entries": entries,
-        "environment_policy": "explicit_only",
-        "production_scorecard_filter": "environment_equals_production",
-        "append_only": True,
-        "raw_payloads_persisted": False,
-        "dry_run_only": True,
-        "action_enabled": False,
-    }
+    core = {"schema_version": SCHEMA_VERSION, "entry_count": len(entries), "entries": entries,
+            "environment_policy": "receipt_verified_explicit_only",
+            "production_scorecard_filter": "environment_equals_production", "append_only": True,
+            "raw_payloads_persisted": False, "verified_capture_receipt_required": True,
+            "dry_run_only": True, "action_enabled": False}
     return {**core, "archive_sha256": _sha256(core)}
 
 
@@ -220,17 +255,18 @@ def parse_archive(document: str | Mapping[str, Any]) -> EvidenceArchive:
         raise ValueError("archive_schema_version_unsupported")
     if value.get("dry_run_only") is not True or value.get("action_enabled") is not False:
         raise ValueError("archive_must_be_dry_run_action_disabled")
-    if value.get("environment_policy") != "explicit_only" or value.get("production_scorecard_filter") != "environment_equals_production":
+    if value.get("environment_policy") != "receipt_verified_explicit_only" or value.get("production_scorecard_filter") != "environment_equals_production":
         raise ValueError("archive_environment_policy_invalid")
     if value.get("append_only") is not True or value.get("raw_payloads_persisted") is not False:
         raise ValueError("archive_integrity_policy_invalid")
+    if value.get("verified_capture_receipt_required") is not True:
+        raise ValueError("archive_receipt_policy_invalid")
     supplied_archive_sha = _require_sha(value.pop("archive_sha256", None), "archive_sha256_invalid")
     if _sha256(value) != supplied_archive_sha:
         raise ValueError("archive_sha256_mismatch")
     raw_entries = value.get("entries")
     if not isinstance(raw_entries, list) or value.get("entry_count") != len(raw_entries):
         raise ValueError("archive_entry_count_mismatch")
-
     entries: list[ArchiveEntry] = []
     prior_hash: str | None = None
     seen: set[str] = set()
@@ -297,31 +333,17 @@ def production_scorecard(archive: EvidenceArchive) -> dict[str, Any]:
         else:
             status = "demand_unproven"
         latest_paid = max(paid, key=lambda item: (item.source_timestamp, item.entry_sha256)) if paid else None
-        platforms.append({
-            "platform": platform,
-            "production_observation_count": len(entries),
+        platforms.append({"platform": platform, "production_observation_count": len(entries),
             "distinct_request_snapshot_count": len({item.request_snapshot_sha256 for item in entries}),
-            "latest_source_timestamp": latest.source_timestamp,
-            "latest_demand_state": latest.demand_state,
-            "latest_open_item_count": latest.open_item_count,
-            "positive_open_observation_count": len(positive),
-            "zero_open_observation_count": len(zero),
-            "paid_utilization_observation_count": len(paid),
-            "evidence_status": status,
-            "latest_paid_transaction_count": latest_paid.paid_transaction_count if latest_paid else None,
+            "latest_source_timestamp": latest.source_timestamp, "latest_demand_state": latest.demand_state,
+            "latest_open_item_count": latest.open_item_count, "positive_open_observation_count": len(positive),
+            "zero_open_observation_count": len(zero), "paid_utilization_observation_count": len(paid),
+            "evidence_status": status, "latest_paid_transaction_count": latest_paid.paid_transaction_count if latest_paid else None,
             "latest_paid_value_usd": latest_paid.paid_value_usd if latest_paid else None,
-            "paid_value_aggregation": "none_across_snapshots",
-        })
-    return {
-        "schema_version": SCHEMA_VERSION,
-        "environment": "production",
-        "platform_count": len(platforms),
+            "paid_value_aggregation": "none_across_snapshots"})
+    return {"schema_version": SCHEMA_VERSION, "environment": "production", "platform_count": len(platforms),
         "production_observation_count": len(production),
         "excluded_testnet_observation_count": sum(entry.environment == "testnet" for entry in archive.entries),
         "excluded_unknown_observation_count": sum(entry.environment == "unknown" for entry in archive.entries),
-        "platforms": platforms,
-        "cross_snapshot_paid_value_sum_usd": None,
-        "cross_snapshot_extrapolation": False,
-        "dry_run_only": True,
-        "action_enabled": False,
-    }
+        "platforms": platforms, "cross_snapshot_paid_value_sum_usd": None, "cross_snapshot_extrapolation": False,
+        "dry_run_only": True, "action_enabled": False}

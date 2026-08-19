@@ -11,23 +11,26 @@ Do not reconstruct this project from chat memory.
 6. Re-check time-sensitive rules/economics with current primary sources before credentials, capital, hardware or paid infrastructure are used.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I023 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I024 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
-- `implementation/RUN_I023_MANIFEST_RECEIPTS.md`
-- `implementation/SOURCES_I023.md`
-- `implementation/sampling_receipt.py`
-- `implementation/test_sampling_receipt.py`
-- I022 sampling manifest and prior planner/capture/archive/replay files named in STATUS.
+- `implementation/RUN_I024_RECEIPT_GATED_INGESTION.md`
+- `implementation/SOURCES_I024.md`
+- `implementation/observation_capture.py`
+- `implementation/evidence_archive.py`
+- `implementation/test_evidence_archive.py`
+- I023 receipt/sealing files and prior planner/archive/replay files named in STATUS.
 
-## I023 result
-The inert sampling manifest now has deterministic canonical JSON serialization, SHA-256 sealing, optional HMAC-SHA256 authentication and per-item hashes bound to the manifest hash + item index.
+## I024 result
+The durable evidence boundary is now receipt-gated. `run_verified_capture_batch()` requires `{bundle, manifest_envelope, receipt}` and verifies the receipt against the exact sealed manifest item plus normalized bundle hash/platform/source/timestamps before producing an archive-eligible report.
 
-A new capture-result receipt binds a sanitized bundle SHA-256, source URL/method/platform, expected evidence classes, capture timestamps, environment and transport boundary to the exact sealed manifest item. Receipt hashes are independently verified and never grant execution authority.
+Plain `run_capture_batch()` remains available for transient offline inspection but explicitly declares itself ineligible for durable archive ingestion.
 
-There is no built-in HTTP client. `capture_with_injected_transport()` requires an explicit injected transport; network-capable transport is disabled unless a future caller explicitly enables it. Credentials or action-performing results fail closed. Unknown→production environment promotion requires separate environment-evidence hashing.
+`evidence_archive.append_capture_report()` independently re-verifies every manifest+receipt pair, requires one attestation per delta, rejects missing/duplicate/unmatched/tampered attestations, and uses receipt `captured_environment` as authoritative. Caller environment mappings may confirm but cannot promote/relabel evidence.
 
-Local isolated I023 tests: **8 passed**. Push-triggered CI remains disabled and workflow unchanged. I023 is intended as one atomic commit.
+Serialized archives now persist `verified_capture_receipt_required: true` and `environment_policy: receipt_verified_explicit_only`.
+
+No live transport/network capture, credentials, KYC, wallets, paid infrastructure, service publication, task acceptance or settlement occurred. Push-triggered CI remains disabled and workflow unchanged.
 
 ## Current shortlist
 1. PayanAgent
@@ -36,8 +39,8 @@ Local isolated I023 tests: **8 passed**. Push-triggered CI remains disabled and 
 4. MCPize
 5. AgentGigs.io
 
-## Immediate next run: I024
-Require verified capture receipts at the durable ingestion boundary (`observation_capture` / `evidence_archive`). A sanitized bundle must not enter evidence history unless its receipt verifies against the correct sealed manifest item. Add mismatch/tamper/environment fixtures; keep live transport disabled.
+## Immediate next run: I025
+Add receipt-derived provenance references to archive replay/audit output and a deterministic sampling audit summary distinguishing scheduled-but-uncaptured, receipt-invalid, receipt-valid non-production and receipt-valid production evidence. Keep live transport disabled.
 
 ## Hard action boundary
 Without explicit user authorization do NOT spend money, create/fund wallets, sign value-moving transactions, stake/deposit collateral, rent paid infrastructure, create paid accounts, submit KYC/bank onboarding, accept paid work with liability/slashing risk, publish monetized services under the user's identity, or settle transactions. Read-only observation, public-data analysis, local/CI dry runs, architecture and capped simulations may continue.
