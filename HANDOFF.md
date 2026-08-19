@@ -11,37 +11,39 @@ Do not reconstruct this project from chat memory.
 6. Re-check time-sensitive rules/economics with current primary sources before credentials, capital, hardware or paid infrastructure are used.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I014 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I015 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
-- `implementation/RUN_I014_PAYAN_SANITIZATION_HISTORY.md`
-- `implementation/SOURCES_I014.md`
-- `implementation/payan_sanitizer.py`
-- `implementation/utilization_history.py`
-- `implementation/test_payan_sanitizer.py`
-- `implementation/test_utilization_history.py`
-- prior I013 evidence replay/utilization files named in STATUS
+- `implementation/RUN_I015_OBSERVATION_BUNDLE.md`
+- `implementation/SOURCES_I015.md`
+- `implementation/observation_bundle.py`
+- `implementation/test_observation_bundle.py`
+- prior I014/I013 evidence, sanitizer, snapshot, importer, orchestrator and utilization files named in STATUS
 
-## I014 result
-A PayanAgent-specific raw-public-payload boundary now exists. `sanitize_payan_request` whitelists/normalizes identifiers, content, payout, currency, deadline and skills, while refusing to trust platform-provided metadata for ToS/rights/automation. Trusted policy and estimate evidence must be supplied separately. Non-open requests, conflicting aliases, unsupported currencies, missing payouts and malformed timestamps fail closed.
+## I015 result
+The PayanAgent evidence path is now end-to-end offline.
 
-`sanitize_payan_receipt` normalizes USD/USDC value and UTC settlement time, accepts either direct USD value or cents but never both, hashes recognized buyer identity fields before persistence and emits no raw buyer/wallet/customer/payer identifier.
+`build_payan_request_envelope` sanitizes permitted request records, sources trusted policy/estimate evidence only from caller-controlled mappings, and creates a canonical SHA-256-bounded `official_api` snapshot. Empty request feeds default to `unknown` evidence rather than falsely proving open paid demand.
 
-`compare_utilization_snapshots` aggregates each verified paid-utilization snapshot independently, rejects duplicate hashes and mixed platform/evidence histories, and only emits transaction/value deltas for observation windows with matching coverage duration. Mismatched windows explicitly return `None` deltas; no per-day/month extrapolation exists.
+`build_payan_receipt_envelope` sanitizes receipts through the existing buyer-identity minimization boundary and requires explicit source provenance. A paid-utilization evidence claim cannot be made from an empty receipt set.
 
-Fresh first-party observation on 2026-08-19 reconfirmed PayanAgent's public API design. The rendered Requests marketplace page exposed `0 open`; the rendered Receipts page exposed a live-feed shell but no attributable rows. Because these surfaces lacked raw payload/source timestamps, no evidence snapshot was fabricated. MCPize's current docs still confirm subscriptions + x402 and the standard 80% developer share; paid utilization remains unmeasured.
+`build_payan_observation_bundle` imports/revalidates snapshots, replays only genuine `open_paid_request` evidence into the dry-run orchestrator, aggregates settled receipts, optionally compares prior equal-duration utilization windows, then emits one manifest binding all component hashes.
 
-Push-triggered CI remains disabled and no manual workflow dispatch occurred. I014 is persisted as one atomic Git commit.
+The manifest digest is HMAC-SHA256 signed using a caller-supplied offline key that is never persisted. This signature is only a tamper/authenticity seal for our local evidence bundle; it is not a PayanAgent receipt signature, wallet signature, transaction authorization or permission to act.
+
+Fresh PayanAgent first-party material on 2026-08-19 still documents public `discover`/`receipts`, API-key-gated request operations, x402/USDC and public signed receipts. No trustworthy raw attributable API payload + source timestamp was captured, so no real demand/utilization figures were created.
+
+Push-triggered CI remains disabled and I015 is one atomic commit.
 
 ## Current shortlist
-1. PayanAgent — parser-ready primary target; actual open-request flow and settled-receipt volume still need attributable observation.
+1. PayanAgent — end-to-end evidence pipeline ready; measurable public task/receipt utilization still uncaptured.
 2. OKX.AI A2A ASP — provider-side demand observation appears onboarding-gated.
 3. agent2agent.market — adapter-ready; prior public observation showed zero open work.
 4. AgentGigs.io — prior public jobs zero; Stripe/KYC geography gate.
 5. MCPize — strongest passive endpoint candidate; utilization unknown.
 
-## Immediate next run: I015
-Build an offline observation-bundle pipeline joining sanitizer → evidence snapshot → saved-observation import → task replay/orchestrator + receipt aggregation/history → audit export. Add end-to-end fixtures/tests. Continue permitted public read-only observation, but never invent timestamps/demand.
+## Immediate next run: I016
+Add serialization/reload + schema version corruption tests for bundles; generalize the envelope to another task market; continue permitted public PayanAgent observation and deepen MCPize utilization observability if Payan remains quantitatively opaque.
 
 ## Hard action boundary
 Without explicit user authorization do NOT spend money, create/fund wallets, sign value-moving transactions, stake/deposit collateral, rent paid infrastructure, create paid accounts, submit KYC/bank onboarding, accept paid work with liability/slashing risk, publish monetized services under the user's identity, or settle transactions. Read-only observation, public-data analysis, local/CI dry runs, architecture and capped simulations may continue.

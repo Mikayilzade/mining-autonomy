@@ -69,3 +69,17 @@ Fresh first-party observation reconfirmed public PayanAgent request/receipt mech
 Push CI remains disabled; no workflow dispatch or external value-moving action occurred.
 
 Next: **I015 — end-to-end offline observation-bundle pipeline and audit.**
+
+## I015 — 2026-08-19
+Status: **completed**
+Stage: End-to-end offline PayanAgent observation bundle
+
+Joined sanitizer → hash-bounded snapshot → saved-observation import → evidence-gated dry-run replay → receipt aggregation/history → audit manifest. Added an offline HMAC-SHA256 integrity seal over the manifest; the signing key is caller-supplied and never persisted or used for wallet/payment actions.
+
+Empty request feeds are retained without false open-demand classification. Receipt utilization requires non-empty sanitized records plus explicit source provenance. Added end-to-end tests for positive replay, policy separation, tamper detection, zero-open handling and receipt provenance.
+
+Fresh first-party PayanAgent material still confirms public `discover`/`receipts`, request lifecycle, x402/USDC and signed receipts. No trustworthy raw attributable API payload with source timestamp was captured, so no real demand/utilization figure was inferred.
+
+Push CI remains disabled. I015 was persisted as one atomic commit. No credentials, KYC, wallet, paid infrastructure, task acceptance, bid, publication or settlement occurred.
+
+Next: **I016 — bundle serialization/reload + schema corruption tests, then generalize the envelope to another task market and continue quantitative read-only demand observation.**

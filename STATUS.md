@@ -3,53 +3,55 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I014 — PayanAgent sanitization boundary + non-extrapolating utilization history**
+Last completed implementation run: **I015 — offline observation bundle + signed audit manifest**
 Last updated: **2026-08-19**
 
 ## Current objective
 Build a legal server-native agent that can observe machine-readable paid work, estimate execution cost and expected margin, reject unsafe/non-compliant/unprofitable tasks, and eventually execute only positive-margin work after explicit authorization for credentials/money-moving actions.
 
 ## Latest durable files
+- `implementation/RUN_I015_OBSERVATION_BUNDLE.md`
+- `implementation/SOURCES_I015.md`
+- `implementation/observation_bundle.py`
+- `implementation/test_observation_bundle.py`
 - `implementation/RUN_I014_PAYAN_SANITIZATION_HISTORY.md`
-- `implementation/SOURCES_I014.md`
 - `implementation/payan_sanitizer.py`
 - `implementation/utilization_history.py`
-- `implementation/test_payan_sanitizer.py`
-- `implementation/test_utilization_history.py`
-- `implementation/RUN_I013_EVIDENCE_REPLAY_UTILIZATION.md`
 - `implementation/receipt_aggregation.py`
 - `implementation/observation_importer.py`
 - `implementation/snapshot.py`
 
-## I014 outcome
-Added a fail-closed PayanAgent-specific sanitizer boundary for future permitted raw public request and receipt payloads. Request records normalize only bounded whitelisted fields and cannot self-authorize ToS/rights/automation: policy evidence must be supplied through a separate trusted mapping. Receipt records normalize value/time and hash-minimize buyer identity before persistence; raw buyer/wallet/customer/payer identifiers are not emitted.
+## I015 outcome
+Added an end-to-end offline PayanAgent observation-bundle pipeline. Permitted raw records can now pass through fail-closed sanitization, canonical hash-bounded evidence snapshots, saved-observation import/revalidation, evidence-gated dry-run task replay, receipt aggregation and non-extrapolating utilization history.
 
-Added multi-snapshot utilization-history comparison. Every saved paid-utilization snapshot is independently revalidated/aggregated; duplicate snapshot hashes, mixed platforms and mixed evidence classes fail closed. Raw transaction/value deltas are emitted only for equal-duration observation windows. Mismatched coverage windows explicitly return no delta and are never daily/monthly/annualized.
+The bundle emits one deterministic manifest binding request/receipt snapshot hashes plus task-audit/utilization/history hashes. A caller-supplied offline HMAC-SHA256 key signs the manifest digest; the key is not persisted and the signature grants no wallet/payment/action authority. Tampering is detectable through `verify_observation_bundle`.
 
-Fresh first-party checks on 2026-08-19 reconfirmed PayanAgent's public request/receipt endpoints and machine-native lifecycle. The rendered Requests page currently exposed `0 open`, while the Receipts page exposed only a loading shell rather than attributable receipt rows. These rendered pages were not promoted to raw API snapshots because they lack a suitable raw payload/source timestamp. MCPize monetization mechanics remain confirmed, but attributable paid utilization is still not publicly captured.
+Empty request snapshots no longer risk becoming false positive `open_paid_request` evidence: they default to `unknown` and produce an empty audit. Receipt evidence requires explicit provenance and non-empty records before a paid-utilization claim is allowed.
 
-Push-triggered CI remains disabled to prevent notification-email spam. No manual CI dispatch occurred. This stage is persisted as one atomic Git commit.
+Fresh first-party PayanAgent checks on 2026-08-19 again confirmed public `discover`/`receipts`, API-key-gated request workflow, x402/USDC and signed receipts. No trustworthy raw attributable API payload plus source timestamp was captured, so no real demand/utilization snapshot or estimate was fabricated.
 
-No service was published and no account, KYC, API key, wallet funding, paid infrastructure, monetization, task acceptance, bid or settlement was created.
+Push-triggered CI remains disabled. I015 is persisted as one atomic commit. No account, KYC, API key, wallet, paid infrastructure, service publication, task acceptance, bid or settlement was created.
 
 ## Current ranking
-1. **PayanAgent** — primary task-market target; parser-ready, but current rendered public Requests state showed 0 open and quantitative settled utilization remains uncaptured.
-2. **OKX.AI A2A ASP** — architecture confirmed; live provider-side demand observation appears onboarding-gated.
-3. **agent2agent.market** — adapter-ready; previously observed public state had 0 open tasks/no Base Sepolia activity.
-4. **AgentGigs.io** — autonomous lifecycle but previously observed 0 public jobs; Stripe Connect geography/KYC gate.
-5. **MCPize** — strongest passive paid-endpoint candidate; monetization mechanics confirmed, real paid utilization still unmeasured.
+1. **PayanAgent** — primary task-market target; evidence pipeline is end-to-end ready, but current quantitative open-request/settled-utilization data remains uncaptured.
+2. **OKX.AI A2A ASP** — architecture confirmed; provider-side live demand observation appears onboarding-gated.
+3. **agent2agent.market** — adapter-ready; prior public state showed zero open tasks/no Base Sepolia activity.
+4. **AgentGigs.io** — autonomous lifecycle but prior public jobs zero; Stripe Connect geography/KYC gate.
+5. **MCPize** — strongest passive paid-endpoint candidate; seller mechanics confirmed, attributable utilization still unmeasured.
 
 ## Durable implementation rules
 - Demand/fill rate is the dominant unknown; supply/listing/provider counts are not demand.
 - Open paid demand and historical paid utilization are different evidence classes.
-- Platform payloads cannot self-authorize compliance; trusted policy evidence must be separate from raw market data.
-- Raw buyer identities must not persist; PayanAgent receipt sanitizer hash-minimizes them before aggregation.
-- Never extrapolate mismatched observation windows to compare utilization.
+- Platform payloads cannot self-authorize compliance; trusted policy evidence stays separate.
+- Raw buyer identities must not persist.
+- Never extrapolate mismatched observation windows.
+- Empty feeds must not be promoted to positive-demand evidence.
+- Bundle HMAC is an offline integrity seal only; it never authorizes value-moving action.
 - Never spend money, fund a wallet, stake/deposit, rent paid infrastructure, create paid accounts, submit KYC, or take irreversible external action without explicit user authorization.
 - No CAPTCHA bypass, spam, fake activity, ad fraud, prohibited multi-accounting, credential abuse, geofence/KYC evasion, unauthorized access/scraping, or automation of human-only work contrary to ToS.
 
-## Immediate next run — I015
-Add an offline observation-bundle pipeline that takes sanitized PayanAgent request/receipt records, creates signed/hash-bounded evidence snapshots, replays task demand into the orchestrator, aggregates utilization history, and emits one audit report. Add fixture-driven end-to-end tests. Continue public read-only demand checks; do not fabricate source timestamps or infer utilization from rendered loading shells/provider counts.
+## Immediate next run — I016
+Add bundle serialization/reload verification with schema/version corruption tests; generalize the bundle envelope to another task market; continue permitted public PayanAgent demand observation and, if still unmeasurable, deepen MCPize utilization observability without publishing anything.
 
 ## Completion gate
 Implementation is complete only if either a documented autonomous stack achieves confirmed positive economics on real permitted tests, or reasonable candidates are exhausted and control passes confirm no viable implementation. Until then: **IMPLEMENTATION IN PROGRESS**.
