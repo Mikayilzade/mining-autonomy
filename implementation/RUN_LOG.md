@@ -33,7 +33,7 @@ Durable output:
 Status: **completed**
 Stage: Cross-market dry-run evaluator v0.1
 
-Implemented credentials-free evaluator code with schema validation, fail-closed policy/rights checks, capability matching, conservative bounded cost reserve, payout normalization, EV/margin gate, explicit rejection codes, dry-run executor/result stubs, ledger-record helper and a settlement adapter that is hard-disabled. Added nine fixtures and deterministic tests covering malformed/prohibited/rights-unknown/unsupported/unknown-payout/negative-margin/positive-margin/unbounded-cost/value-moving cases.
+Implemented credentials-free evaluator code with schema validation, fail-closed policy/rights checks, capability matching, conservative bounded cost reserve, payout normalization, EV/margin gate, explicit rejection codes, dry-run executor/result stubs, ledger-record helper and a settlement adapter that is hard-disabled.
 
 Durable outputs:
 - `implementation/evaluator.py`
@@ -41,6 +41,28 @@ Durable outputs:
 - `implementation/test_evaluator.py`
 - `implementation/RUN_I004_CROSS_MARKET_EVALUATOR.md`
 
-No credentials, money, KYC, wallets, paid APIs/infrastructure or external jobs were used.
+## I005–I010 — 2026-08-19
+Status: **completed**
+Stage: Evaluator hardening → adapter robustness → passive MCP benchmark/integration → unified orchestrator → evidence snapshots/audit
 
-Next: **I005 / E3 hardening — adapters, hash-chained JSONL ledger, explicit policy evidence states, profiles, offline CLI and expanded invariants/tests.**
+Detailed durable run documents are preserved individually as `implementation/RUN_I005_...` through `implementation/RUN_I010_EVIDENCE_INGESTION.md`. Across these runs the stack gained hash-chained decision records, adapter conformance, policy/quality/cost gates, passive service economics, a unified dry-run observation queue, provenance/freshness-bounded evidence snapshots and queue audit export. No live execution or settlement was enabled.
+
+## I011 — 2026-08-19
+Status: **completed**
+Stage: Verified snapshot replay + CI diagnosis + demand observability refresh
+
+Added replay-time provenance/hash/freshness/shape validation and snapshot-to-adapter replay helpers. Trusted snapshot source timestamps now override timestamps embedded in raw task records. Added explicitly synthetic replay fixtures and expanded snapshot tests.
+
+Historical CI failure was diagnosed conservatively: exact old job logs remain unavailable, but commit `f50e42324d4dd2cfb2f43e3932fe602d1a59268c` shows pytest installation was added after earlier runs invoked pytest without an explicit install step. Push-triggered CI remains disabled to prevent notification email spam; green CI is not claimed.
+
+Fresh first-party checks reconfirmed PayanAgent public discover/offers/receipts interfaces and MCPize seller/free-hosting mechanics, but no attributable raw demand payload was captured. Demand remains unmeasured rather than inferred from catalog/listing counts.
+
+Durable outputs:
+- `implementation/snapshot.py`
+- `implementation/test_snapshot.py`
+- `implementation/fixtures_i011_synthetic_snapshots.json`
+- `implementation/RUN_I011_SNAPSHOT_REPLAY_CI_DEMAND.md`
+
+No credentials, account creation, KYC, wallet, paid infrastructure, CI dispatch, task acceptance, publication or settlement occurred.
+
+Next: **I012 — saved-observation importer + explicit demand-evidence strength propagated into audit/ranking.**

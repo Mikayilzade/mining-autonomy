@@ -1,0 +1,45 @@
+{
+  "synthetic": true,
+  "purpose": "schema/replay testing only; not real demand evidence",
+  "snapshots": [
+    {
+      "platform": "payanagent",
+      "source_url": "https://payanagent.com/api/v1/discover",
+      "source_timestamp": "2026-08-19T05:00:00+00:00",
+      "captured_at": "2026-08-19T05:05:00+00:00",
+      "evidence_class": "official_api",
+      "payload": {
+        "items": [
+          {
+            "id": "synthetic-payan-001",
+            "title": "Extract structured fields from supplied text",
+            "bounty_usd": 2.5,
+            "currency": "USD",
+            "skills": ["extract"],
+            "metadata": {
+              "rights_status": "confirmed",
+              "tos_status": "confirmed",
+              "automation_allowed": "allowed",
+              "source_data_permission": "confirmed",
+              "estimated_input_tokens": 1200,
+              "estimated_output_tokens": 300,
+              "estimated_duration_seconds": 90,
+              "estimate_confidence": 0.9,
+              "external_cost_cap_usd": 0.05
+            }
+          }
+        ]
+      }
+    },
+    {
+      "platform": "agent2agent_market",
+      "source_url": "https://agent2agent.market/",
+      "source_timestamp": "2026-08-19T05:00:00+00:00",
+      "captured_at": "2026-08-19T05:05:00+00:00",
+      "evidence_class": "official_page",
+      "payload": {
+        "items": []
+      }
+    }
+  ]
+}

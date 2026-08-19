@@ -14,39 +14,45 @@ Do not reconstruct this project from chat memory.
 Build a legitimate autonomous server-native earning stack: observe permitted paid tasks/calls, normalize them, estimate execution cost/margin, reject non-compliant/negative-EV work, and eventually execute positive-margin work with minimal human input. Secondary target: passive provider/API/MCP/inference/compute/storage/relay markets.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I009 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I011 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
-- `implementation/RUN_I009_UNIFIED_ORCHESTRATOR.md`
+- `implementation/RUN_I011_SNAPSHOT_REPLAY_CI_DEMAND.md`
+- `implementation/fixtures_i011_synthetic_snapshots.json`
+- `implementation/snapshot.py`
+- `implementation/test_snapshot.py`
+- `implementation/RUN_I010_EVIDENCE_INGESTION.md`
 - `implementation/orchestrator.py`
-- `implementation/test_orchestrator.py`
-- `implementation/RUN_I008_PASSIVE_INTEGRATION.md`
-- `implementation/passive_service.py`
 - `implementation/evaluator.py`
 - `.github/workflows/implementation-tests.yml`
 
-## I009 result
-The task-market evaluator and passive-service model now feed a single offline observation queue. Accepted task opportunities rank by observed per-task margin. Passive offers rank by projected monthly value only when demand evidence exists; unknown utilization remains held with no invented EV. Prohibited high-bounty work remains rejected. Every queue item is dry-run-only and `action_enabled=False`.
+## I011 result
+Evidence snapshots now have a fail-closed replay boundary before task adapters. Replay revalidates evidence class, HTTPS source, payload hash, source/capture timestamps, freshness and records-list shape. The trusted snapshot source timestamp overrides timestamps embedded in raw records. Unknown platforms/tampered/stale/malformed snapshots are rejected.
 
-The Actions workflow configuration is structurally correct and discovers all implementation tests, but I009 could not inspect a completed workflow run through the available connector, so green CI is not claimed.
+Synthetic fixture snapshots were added and explicitly marked non-real; never count them as demand evidence.
 
-No live connector, credentials, wallet, paid API, external executor, publication or settlement exists. Demand/fill rate remains the dominant unknown.
+Historical CI diagnosis is strong but not log-proven: commit `f50e42324d4dd2cfb2f43e3932fe602d1a59268c` shows pytest was previously invoked without an explicit installation step and then added. Push-triggered CI remains disabled to prevent email spam. Do not claim green CI until a safely observed manual/PR run succeeds.
+
+Fresh 2026-08-19 first-party checks reconfirmed PayanAgent public discover/offers/receipts interfaces and MCPize monetization/free-hosting mechanics. They did not provide attributable worker-side utilization, so quantitative demand remains unknown.
+
+No live connector, credentials, wallet, paid API, external executor, publication, CI dispatch or settlement exists.
 
 ## Current shortlist
-1. PayanAgent — primary task-market target; quantitative demand pending.
+1. PayanAgent — primary task-market target; public receipt/discovery surfaces exist, quantitative worker demand pending.
 2. OKX.AI A2A ASP — provider-side live observation appears onboarding-gated.
 3. agent2agent.market — adapter-ready; prior public observation showed no open tasks/activity.
 4. AgentGigs.io — autonomous lifecycle but prior public jobs zero; Stripe/KYC geography gate.
-5. MCPize — strongest passive endpoint candidate; offline benchmark + decision model implemented, real paid utilization unknown.
+5. MCPize — strongest passive endpoint candidate; current free hosting tier improves capped-cost feasibility, paid utilization unknown.
 
-## Immediate next run: I010
-1. Add a fixture/snapshot ingestion layer carrying source timestamp, source URL, evidence class and freshness checks so observations can be replayed reproducibly.
-2. Add queue-level audit export explaining accepted/held/rejected observations.
-3. Continue read-only attributable demand evidence collection for PayanAgent and MCPize where public.
-4. If a permitted raw public payload is obtainable, save a sanitized fixture and test adapter conformance; otherwise document the observability gate.
+## Immediate next run: I012
+1. Add a saved-observation importer contract that performs no network calls itself.
+2. Add evidence-strength classification such as `settled_receipt`, `open_paid_request`, `listing_only`, `marketing_claim`.
+3. Propagate evidence strength into unified audit output so listing/supply cannot rank as utilization.
+4. Continue public PayanAgent receipt/request and MCPize demand checks; save a real sanitized snapshot only if raw permitted payload becomes observable.
+5. Keep push CI disabled and preserve one-stage/one-final-commit hygiene.
 
 ## Hard action boundary
-Without explicit user authorization do NOT spend money, create/fund wallets, sign value-moving transactions, stake/deposit collateral, rent paid infrastructure, create paid accounts, submit KYC/bank onboarding, accept paid work with liability/slashing risk, or publish monetized services under the user's identity. Read-only observation, public-data analysis, local/CI dry runs, architecture and capped simulations may continue.
+Without explicit user authorization do NOT spend money, create/fund wallets, sign value-moving transactions, stake/deposit collateral, rent paid infrastructure, create paid accounts, submit KYC/bank onboarding, accept paid work with liability/slashing risk, publish monetized services under the user's identity, or settle transactions. Read-only observation, public-data analysis, local/CI dry runs, architecture and capped simulations may continue.
 
 ## Compliance boundaries
 Never use CAPTCHA bypass, fake activity, ad fraud, spam, prohibited multi-accounting, credential abuse, unauthorized access/scraping, KYC/geofence evasion, stolen resources, or botting human-only work contrary to ToS.
