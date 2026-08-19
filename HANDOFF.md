@@ -11,26 +11,26 @@ Do not reconstruct this project from chat memory.
 6. Re-check time-sensitive rules/economics with current primary sources before credentials, capital, hardware or paid infrastructure are used.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I019 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I020 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
-- `implementation/RUN_I019_ENVIRONMENT_ARCHIVE.md`
-- `implementation/SOURCES_I019.md`
-- `implementation/evidence_archive.py`
-- `implementation/test_evidence_archive.py`
-- I018 capture/registry and prior bundle/importer/orchestrator/utilization files named in STATUS.
+- `implementation/RUN_I020_ARCHIVE_REPLAY_FRESHNESS.md`
+- `implementation/SOURCES_I020.md`
+- `implementation/archive_replay.py`
+- `implementation/test_archive_replay.py`
+- I019 archive and prior capture/registry/importer/orchestrator files named in STATUS.
 
-## I019 result
-The evidence pipeline now has a deterministic sanitized append-only archive. Capture reports are hash-bound, entries form a SHA-256 chain, duplicate bundle hashes are rejected, canonical JSON import/export is verified, and existing history cannot be rewritten/truncated under append-only comparison.
+## I020 result
+Sanitized archive evidence can now be replayed into the offline orchestrator without contaminating production conclusions. Testnet/unknown entries are excluded before replay. Latest production evidence gets explicit `fresh`, `stale`, or `future_invalid` age state.
 
-Environment classification is explicit: `production`, `testnet`, `unknown`. Only `production` observations enter the production scorecard. Testnet and unknown observations are counted as excluded and cannot influence production demand/economics conclusions. Raw platform payloads and buyer identities are not persisted.
+Archive-derived `ObservationItem` records are intentionally HOLD-only and can never enable action because sanitized evidence lacks raw executable payloads, trusted policy context and bounded execution-cost estimates. Paid utilization can be reported as evidence, but archive replay does not sum values across snapshots or infer profitability.
 
 Fresh public checkpoint:
-- PayanAgent public discovery/receipt mechanics remain documented; raw attributable production demand/utilization remains uncaptured.
-- agent2agent.market public zero-open surface is explicitly `base-sepolia`; retain as testnet only.
-- MCPize monetization remains documented; attributable utilization remains publisher/dashboard gated.
+- PayanAgent public discovery/receipt and request/bid/fulfill mechanics remain documented; attributable raw production demand/utilization is still uncaptured.
+- MCPize still documents standard 80% creator share and Base x402 pay-per-call; current 900+ server / 450+ publisher counts are supply only, not paid utilization.
+- agent2agent.market `base-sepolia` evidence remains testnet-only and quarantined.
 
-Eight isolated I019 tests passed locally. Push-triggered CI remains disabled. No workflow change was made. I019 is prepared as one atomic commit.
+Push-triggered CI remains disabled. Workflow unchanged. I020 is prepared as one atomic commit.
 
 ## Current shortlist
 1. PayanAgent
@@ -39,8 +39,8 @@ Eight isolated I019 tests passed locally. Push-triggered CI remains disabled. No
 4. AgentGigs.io
 5. MCPize
 
-## Immediate next run: I020
-Add environment-aware replay/reporting into the unified orchestrator and explicit freshness/age state for production evidence. Continue read-only production demand observation; keep testnet quarantined and do not create accounts/wallets.
+## Immediate next run: I021
+Build a deterministic read-only sampling/watchlist planner driven by evidence freshness, missing evidence class and candidate priority. The planner should emit what to re-check and why, but must not perform network calls or enable actions. Continue public production observation where anonymously accessible.
 
 ## Hard action boundary
 Without explicit user authorization do NOT spend money, create/fund wallets, sign value-moving transactions, stake/deposit collateral, rent paid infrastructure, create paid accounts, submit KYC/bank onboarding, accept paid work with liability/slashing risk, publish monetized services under the user's identity, or settle transactions. Read-only observation, public-data analysis, local/CI dry runs, architecture and capped simulations may continue.

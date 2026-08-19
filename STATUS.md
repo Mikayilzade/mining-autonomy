@@ -3,30 +3,30 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I019 — sanitized append-only evidence archive + environment isolation**
+Last completed implementation run: **I020 — production-only archive replay + freshness bridge**
 Last updated: **2026-08-19**
 
 ## Current objective
 Build a legal server-native agent that can observe machine-readable paid work, estimate execution cost and expected margin, reject unsafe/non-compliant/unprofitable tasks, and eventually execute only positive-margin work after explicit authorization for credentials/money-moving actions.
 
 ## Latest durable files
+- `implementation/RUN_I020_ARCHIVE_REPLAY_FRESHNESS.md`
+- `implementation/SOURCES_I020.md`
+- `implementation/archive_replay.py`
+- `implementation/test_archive_replay.py`
 - `implementation/RUN_I019_ENVIRONMENT_ARCHIVE.md`
-- `implementation/SOURCES_I019.md`
 - `implementation/evidence_archive.py`
 - `implementation/test_evidence_archive.py`
-- `implementation/RUN_I018_CAPTURE_DELTA_TIMESERIES.md`
-- `implementation/observation_capture.py`
-- `implementation/test_observation_capture.py`
 
-## I019 outcome
-Added a deterministic sanitized archive above the I018 capture-report layer. Archive import/export validates schema/version, registry membership, report hash, entry hashes and a chained previous-entry hash. Duplicate bundle hashes are rejected and append-only prefix semantics are explicit. Raw payloads/buyer identities are not persisted.
+## I020 outcome
+Added an environment-aware archive replay/report bridge. Only explicit production observations can enter replay; testnet and unknown evidence are excluded before orchestration. Latest production evidence is classified `fresh`, `stale`, or `future_invalid` from source timestamp and bounded clock-skew rules.
 
-Every observation is now classified `production`, `testnet` or `unknown`; default is fail-closed `unknown`. The production scorecard includes only explicit `production` observations and separately reports excluded testnet/unknown counts. Eight isolated tests passed locally. Push-triggered CI remains disabled and no workflow change was made.
+Archive-derived orchestrator items are deliberately HOLD-only and `action_enabled=False`: sanitized archive metadata does not contain raw executable task/service payloads, trusted policy evidence or bounded execution-cost estimates, so archived evidence cannot authorize work. Paid values remain non-aggregated across snapshots.
 
 Fresh public checks on 2026-08-19:
-- PayanAgent still documents anonymous discovery/public receipts, but no raw attributable timestamped production demand/receipt payload was captured; 24,000+ catalog supply is not demand.
-- agent2agent.market still renders zero open tasks on a surface explicitly labeled `base-sepolia`; the new archive structurally quarantines this as testnet and excludes it from production conclusions.
-- MCPize still documents 80% standard developer share, x402 Base payments and Base Sepolia testing; attributable utilization remains publisher/dashboard gated.
+- PayanAgent still documents anonymous discovery/public receipts and machine-native request/bid/fulfill mechanics, but no raw attributable timestamped production demand/receipt payload was captured; 24,000+ catalog supply is not demand.
+- MCPize still documents an 80% standard developer share, x402 Base payments and Base Sepolia testing. 900+ servers / 450+ publishers are supply-side counts; attributable utilization remains unproven publicly for this project.
+- Existing agent2agent.market `base-sepolia` observations remain quarantined as testnet and cannot affect production conclusions.
 
 No account, KYC, API key, wallet, paid infrastructure, service publication, task acceptance, bid or settlement was created.
 
@@ -39,19 +39,18 @@ No account, KYC, API key, wallet, paid infrastructure, service publication, task
 
 ## Durable implementation rules
 - Demand/fill rate is the dominant unknown; supply/listing/provider counts are not demand.
-- Production and testnet observations must never be mixed.
-- `unknown` environment fails closed from production scoring.
+- Production and testnet observations must never be mixed; `unknown` fails closed.
+- Evidence freshness is explicit; stale/future-invalid evidence cannot silently stand in for current production state.
 - Portable evidence history is append-only and tamper-evident; rewritten/truncated history is invalid.
 - Raw buyer identities and raw platform payloads must not persist in the sanitized archive.
+- Archive evidence can prioritize observation but cannot authorize execution.
 - Open paid demand, exact zero-open observations and historical paid utilization are different evidence classes.
-- Duplicate bundle hashes cannot be counted as repeat evidence.
 - Never sum/extrapolate paid values across observation snapshots without a proven non-overlapping comparable window model.
 - Platform payloads cannot self-authorize compliance; trusted policy evidence stays separate.
-- Bundle/archive integrity never authorizes value-moving action.
 - Never spend money, fund a wallet, stake/deposit, rent paid infrastructure, create paid accounts, submit KYC, or take irreversible external action without explicit user authorization.
 
-## Immediate next run — I020
-Add an environment-aware replay/report bridge so the unified orchestrator can consume sanitized archive evidence without admitting testnet/unknown observations into production economics. Add explicit freshness/age state to production evidence reporting. Continue public production-demand observation without creating accounts or wallets.
+## Immediate next run — I021
+Add a deterministic production-evidence sampling/watchlist planner driven by freshness, evidence gaps and platform priority. It must remain read-only and generate plans rather than network traffic. Continue public production-demand observation without accounts or wallets.
 
 ## Completion gate
 Implementation is complete only if either a documented autonomous stack achieves confirmed positive economics on real permitted tests, or reasonable candidates are exhausted and control passes confirm no viable implementation. Until then: **IMPLEMENTATION IN PROGRESS**.

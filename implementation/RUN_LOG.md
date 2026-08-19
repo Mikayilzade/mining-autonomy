@@ -62,4 +62,14 @@ Fresh checks reconfirmed PayanAgent public discovery/receipt mechanics without a
 
 No credentials, KYC, wallets, paid infrastructure, task acceptance, service publication or settlement occurred. Push-triggered CI remains disabled; workflow unchanged.
 
-Next: **I020 — environment-aware orchestrator replay/report bridge + explicit freshness/age state for production evidence.**
+## I020 — 2026-08-19
+Status: **completed**
+Stage: Production-only archive replay + explicit freshness bridge
+
+Added `archive_replay.py` and seven deterministic tests. Only explicit production entries can replay into the unified offline orchestrator; testnet/unknown entries are excluded. Latest per-platform production evidence is classified `fresh`, `stale` or `future_invalid`. Archive-derived orchestrator items are HOLD-only and can never enable action because sanitized evidence lacks executable payloads, trusted policy context and bounded cost estimates. Paid values remain non-aggregated/non-extrapolated.
+
+Fresh checks reconfirmed PayanAgent anonymous discovery/public receipt mechanics without an attributable raw production demand payload. MCPize still documents an 80% standard developer share and Base x402 pay-per-call, while 900+ servers / 450+ publishers remain supply-side counts rather than utilization evidence. Existing agent2agent `base-sepolia` observations remain testnet-only.
+
+No credentials, KYC, wallets, paid infrastructure, task acceptance, service publication or settlement occurred. Push-triggered CI remains disabled; workflow unchanged.
+
+Next: **I021 — deterministic production-evidence sampling/watchlist planner driven by freshness, evidence gaps and platform priority.**
