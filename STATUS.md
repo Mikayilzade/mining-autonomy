@@ -3,27 +3,33 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I026 — deterministic end-to-end evidence audit export**
+Last completed implementation run: **I027 — deterministic production-gap prioritizer**
 Last updated: **2026-08-20**
 
 ## Current objective
 Build a legal server-native agent that can observe machine-readable paid work, estimate execution cost and expected margin, reject unsafe/non-compliant/unprofitable tasks, and eventually execute only positive-margin work after explicit authorization for credentials/money-moving actions.
 
 ## Latest durable files
+- `implementation/RUN_I027_PRODUCTION_GAP_PRIORITIZER.md`
+- `implementation/gap_prioritizer.py`
+- `implementation/test_gap_prioritizer.py`
 - `implementation/RUN_I026_EVIDENCE_AUDIT_EXPORT.md`
 - `implementation/evidence_audit_export.py`
 - `implementation/test_evidence_audit_export.py`
-- `implementation/RUN_I025_RECEIPT_AUDIT_PROVENANCE.md`
-- `implementation/sampling_audit.py`
-- `implementation/archive_replay.py`
-- I024 receipt-gated ingestion files and prior planner/manifest/receipt/archive files.
+- I025 receipt/replay audit files and prior receipt-gated archive/planner/manifest files.
 
-## I026 outcome
-The evidence stack now exposes one deterministic end-to-end audit joining sealed schedule, receipt state, durable archive membership and HOLD-only replay provenance.
+## I027 outcome
+The I026 end-to-end evidence audit now feeds a deterministic no-network priority layer.
 
-Every scheduled source receives explicit production-gap reasons when evidence is incomplete. Missing captures remain unknown rather than becoming zero-demand observations; valid testnet/unknown evidence cannot close a production gap; stale/future-invalid replay evidence and missing replay receipt provenance remain unresolved.
+The prioritizer:
+- validates the sealed manifest and exact source/item identity before planning;
+- ranks unresolved evidence by platform priority, evidence value, freshness urgency and conservative self-imposed rate budget;
+- separates fresh read-only observation needs from offline archive/provenance repair;
+- caps the number of selected observation requests and defers the rest deterministically;
+- keeps missing evidence explicitly `unknown_not_negative_demand`;
+- never enables credentials, network execution, task acceptance, publication or value movement.
 
-The export also rolls source gaps up per platform without allowing integrity evidence to authorize execution or imply profitability.
+This makes the next future permitted capture reproducible instead of ad hoc while preserving the no-action boundary.
 
 No live transport/network capture, account, KYC, API key, wallet, paid infrastructure, service publication, task acceptance, bid or settlement occurred. Push-triggered CI remains disabled and workflow unchanged.
 
@@ -43,14 +49,16 @@ No live transport/network capture, account, KYC, API key, wallet, paid infrastru
 - Valid non-production receipts do not close production sampling gaps.
 - Missing capture is not evidence of zero demand.
 - Integrity/freshness completeness is not proof of demand, profitability or execution authorization.
+- Offline integrity/provenance repair should not consume a read-only observation request budget.
+- Production-gap priority is a planning heuristic only; it is not permission to perform network or external actions.
 - Sampling manifests remain GET-only, no-credentials, no-action contracts.
 - Raw buyer identities and raw platform payloads must not persist in the sanitized archive.
 - Never sum/extrapolate paid values across snapshots without a proven non-overlapping comparable-window model.
 - Platform payloads cannot self-authorize compliance; trusted policy evidence stays separate.
 - Never spend money, fund a wallet, stake/deposit, rent paid infrastructure, create paid accounts, submit KYC, or take irreversible external action without explicit user authorization.
 
-## Immediate next run — I027
-Add a deterministic production-gap prioritizer over the I026 audit export. Rank next permitted read-only observations by unresolved evidence value, staleness, platform priority and conservative rate budget. Keep it plan-only/no-network and never infer negative demand from missing evidence.
+## Immediate next run — I028
+Add a deterministic capture-readiness packet over the I027 selected observation queue. It should emit exact per-source GET intent, evidence class, environment requirement, provenance checklist, rate-limit budget and explicit authorization state, but still perform no network call. Include a fail-closed gate that distinguishes `ready_for_future_explicit_read_only_capture` from `blocked_by_observability_or_environment_requirement`.
 
 ## Completion gate
 Implementation is complete only if either a documented autonomous stack achieves confirmed positive economics on real permitted tests, or reasonable candidates are exhausted and control passes confirm no viable implementation. Until then: **IMPLEMENTATION IN PROGRESS**.

@@ -11,24 +11,26 @@ Do not reconstruct this project from chat memory.
 6. Re-check time-sensitive rules/economics with current primary sources before credentials, capital, hardware or paid infrastructure are used.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I026 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I027 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I027_PRODUCTION_GAP_PRIORITIZER.md`
+- `implementation/gap_prioritizer.py`
+- `implementation/test_gap_prioritizer.py`
 - `implementation/RUN_I026_EVIDENCE_AUDIT_EXPORT.md`
-- `implementation/evidence_audit_export.py`
-- `implementation/test_evidence_audit_export.py`
-- I025 receipt/replay audit files and prior receipt-gated archive/planner/manifest files named in STATUS.
+- I025–I026 receipt/replay/audit files and prior receipt-gated archive/planner/manifest files named in STATUS.
 
-## I026 result
-`evidence_audit_export()` now joins the complete inert evidence path for every scheduled source:
-1. sealed manifest identity;
-2. receipt state and authoritative environment;
-3. durable archive membership;
-4. current production replay membership/freshness;
-5. reverified replay receipt provenance;
-6. explicit unresolved production-gap reasons.
+## I027 result
+`prioritize_production_gaps()` now consumes the I026 audit plus the exact sealed sampling manifest and produces a deterministic next-work plan.
 
-The export reports exact source-level gaps and rolls them up per platform. Missing capture remains unknown and never becomes zero demand. Valid non-production receipts cannot close production evidence. Stale/future-invalid replay evidence and missing replay receipt provenance remain unresolved. Integrity/freshness completeness never authorizes execution or proves profitability.
+Important behavior:
+1. manifest hash, source URL, item index and manifest-item hash must all match;
+2. only scheduled GET/no-credential/no-action items are eligible;
+3. unresolved production gaps are scored by platform priority + evidence value + freshness urgency + conservative source rate budget;
+4. gaps needing a new observation are separated from archive/provenance gaps repairable offline;
+5. the selected observation queue is globally capped and lower-ranked observations are explicitly deferred;
+6. missing evidence remains `unknown_not_negative_demand`;
+7. all output remains plan-only with network/action/credentials disabled.
 
 No live transport/network capture, credentials, KYC, wallets, paid infrastructure, service publication, task acceptance or settlement occurred. Push-triggered CI remains disabled and workflow unchanged.
 
@@ -39,8 +41,8 @@ No live transport/network capture, credentials, KYC, wallets, paid infrastructur
 4. MCPize
 5. AgentGigs.io
 
-## Immediate next run: I027
-Build a deterministic production-gap prioritizer consuming the I026 audit export. Rank the next permitted read-only observations by evidence value, staleness, platform priority and rate budget. Keep it plan-only, credential-free and no-network. Missing evidence must never be interpreted as negative demand.
+## Immediate next run: I028
+Build a deterministic capture-readiness packet from I027-selected observations. Preserve exact GET source, evidence class, environment/provenance requirements and rate budget, and classify whether a future explicitly-authorized read-only capture is technically ready or blocked by an observability/environment gate. Still do not perform the network request.
 
 ## Hard action boundary
 Without explicit user authorization do NOT spend money, create/fund wallets, sign value-moving transactions, stake/deposit collateral, rent paid infrastructure, create paid accounts, submit KYC/bank onboarding, accept paid work with liability/slashing risk, publish monetized services under the user's identity, or settle transactions. Read-only observation, public-data analysis, local/CI dry runs, architecture and capped simulations may continue.

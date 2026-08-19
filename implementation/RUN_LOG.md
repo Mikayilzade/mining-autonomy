@@ -116,4 +116,18 @@ Verification: new Python module and tests syntax-checked before commit. Push-tri
 
 No live network capture, credentials, KYC, wallet, paid infrastructure, task acceptance, publication or settlement occurred.
 
-Next: **I027 — deterministic production-gap prioritizer over the I026 audit export, plan-only/no-network.**
+## I027 — 2026-08-20
+Status: **completed**
+Stage: Deterministic production-gap prioritizer
+
+Added `gap_prioritizer.py` over the I026 evidence audit plus exact sealed manifest. It validates source/manifest identity, scores unresolved evidence by platform priority, evidence value, freshness urgency and conservative source rate budget, then separates new read-only observations from offline archive/provenance repairs.
+
+The selected observation queue is globally capped, lower-ranked observations are explicitly deferred, and missing evidence remains `unknown_not_negative_demand` rather than being converted into zero/negative demand. All outputs are plan-only with credentials/network/action disabled.
+
+Added `test_gap_prioritizer.py` covering primary-platform ordering, stale evidence, offline-repair separation, non-production recapture, global observation cap, manifest/source mismatch fail-closed behavior and zero-budget planning.
+
+Verification: new module/tests compiled and eight deterministic unit tests passed in an isolated local harness using compatible manifest sealing/hash semantics. Full repository CI was not run. Push-triggered CI remains disabled and workflow unchanged.
+
+No live network capture, credentials, KYC, wallet, paid infrastructure, task acceptance, publication or settlement occurred.
+
+Next: **I028 — deterministic capture-readiness packet over I027-selected observations, still no-network.**
