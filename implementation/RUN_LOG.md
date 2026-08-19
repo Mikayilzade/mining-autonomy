@@ -72,4 +72,14 @@ Fresh checks reconfirmed PayanAgent anonymous discovery/public receipt mechanics
 
 No credentials, KYC, wallets, paid infrastructure, task acceptance, service publication or settlement occurred. Push-triggered CI remains disabled; workflow unchanged.
 
-Next: **I021 — deterministic production-evidence sampling/watchlist planner driven by freshness, evidence gaps and platform priority.**
+## I021 — 2026-08-19
+Status: **completed**
+Stage: Deterministic production-evidence watchlist planner
+
+Added `sampling_planner.py` and seven deterministic tests. The planner ranks read-only production observation work by candidate priority, missing production evidence, per-platform freshness, positive-open-demand gap and paid-utilization gap. Testnet/unknown observations cannot close production gaps. Output is plan-only with no network calls and no action enablement.
+
+Fresh public checks reconfirmed PayanAgent's anonymous discovery/receipts interface and MCPize's 80%/x402 monetization mechanics, while attributable raw production demand/utilization remains uncaptured. Supply-side counts remain excluded from demand evidence.
+
+No credentials, KYC, wallets, paid infrastructure, task acceptance, service publication or settlement occurred. Push-triggered CI remains disabled; workflow unchanged.
+
+Next: **I022 — inert sampling manifest/execution contract with rate limits, provenance, expected evidence class and capture deadlines.**

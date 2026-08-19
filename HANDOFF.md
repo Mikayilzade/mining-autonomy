@@ -11,36 +11,36 @@ Do not reconstruct this project from chat memory.
 6. Re-check time-sensitive rules/economics with current primary sources before credentials, capital, hardware or paid infrastructure are used.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I020 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I021 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
-- `implementation/RUN_I020_ARCHIVE_REPLAY_FRESHNESS.md`
-- `implementation/SOURCES_I020.md`
-- `implementation/archive_replay.py`
-- `implementation/test_archive_replay.py`
-- I019 archive and prior capture/registry/importer/orchestrator files named in STATUS.
+- `implementation/RUN_I021_SAMPLING_WATCHLIST_PLANNER.md`
+- `implementation/SOURCES_I021.md`
+- `implementation/sampling_planner.py`
+- `implementation/test_sampling_planner.py`
+- I020 replay/freshness bridge and I019 archive files named in STATUS.
 
-## I020 result
-Sanitized archive evidence can now be replayed into the offline orchestrator without contaminating production conclusions. Testnet/unknown entries are excluded before replay. Latest production evidence gets explicit `fresh`, `stale`, or `future_invalid` age state.
+## I021 result
+The offline stack now has a deterministic production-evidence watchlist planner. It ranks observation work by platform priority, explicit production-evidence presence, freshness, positive-open-demand gap and paid-utilization gap.
 
-Archive-derived `ObservationItem` records are intentionally HOLD-only and can never enable action because sanitized evidence lacks raw executable payloads, trusted policy context and bounded execution-cost estimates. Paid utilization can be reported as evidence, but archive replay does not sum values across snapshots or infer profitability.
+Testnet/unknown observations never satisfy a production gap. The planner is plan-only: `network_calls_performed=False`, `action_enabled=False`, and it contains no HTTP client, credentials, task acceptance, service publication or settlement path.
 
 Fresh public checkpoint:
 - PayanAgent public discovery/receipt and request/bid/fulfill mechanics remain documented; attributable raw production demand/utilization is still uncaptured.
-- MCPize still documents standard 80% creator share and Base x402 pay-per-call; current 900+ server / 450+ publisher counts are supply only, not paid utilization.
-- agent2agent.market `base-sepolia` evidence remains testnet-only and quarantined.
+- MCPize still documents standard 80% creator share and Base x402 pay-per-call; 900+ server / 450+ publisher counts remain supply-only.
+- agent2agent.market testnet evidence remains quarantined.
 
-Push-triggered CI remains disabled. Workflow unchanged. I020 is prepared as one atomic commit.
+Push-triggered CI remains disabled. Workflow unchanged. I021 is one atomic commit.
 
 ## Current shortlist
 1. PayanAgent
 2. OKX.AI A2A ASP
 3. agent2agent.market
-4. AgentGigs.io
-5. MCPize
+4. MCPize
+5. AgentGigs.io
 
-## Immediate next run: I021
-Build a deterministic read-only sampling/watchlist planner driven by evidence freshness, missing evidence class and candidate priority. The planner should emit what to re-check and why, but must not perform network calls or enable actions. Continue public production observation where anonymously accessible.
+## Immediate next run: I022
+Build an inert deterministic sampling manifest/execution contract from the watchlist. Include source URL, expected evidence class, freshness/capture deadline, rate-limit budget and provenance requirements. The manifest may describe public read-only checks but must not execute them. Future successful permitted captures should flow through `observation_capture` → evidence archive → production-only replay.
 
 ## Hard action boundary
 Without explicit user authorization do NOT spend money, create/fund wallets, sign value-moving transactions, stake/deposit collateral, rent paid infrastructure, create paid accounts, submit KYC/bank onboarding, accept paid work with liability/slashing risk, publish monetized services under the user's identity, or settle transactions. Read-only observation, public-data analysis, local/CI dry runs, architecture and capped simulations may continue.
