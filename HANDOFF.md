@@ -14,36 +14,35 @@ Do not reconstruct this project from chat memory.
 Build a legitimate autonomous server-native earning stack: observe permitted paid tasks/calls, normalize them, estimate execution cost/margin, reject non-compliant/negative-EV work, and eventually execute positive-margin work with minimal human input. Secondary target: passive provider/API/MCP/inference/compute/storage/relay markets.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I005 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I006 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
-- `implementation/RUN_I005_EVALUATOR_HARDENING.md`
+- `implementation/RUN_I006_INTEGRATION_ROBUSTNESS.md`
+- `implementation/ADAPTER_CONFORMANCE.md`
 - `implementation/evaluator.py`
-- `implementation/evaluate_cli.py`
 - `implementation/test_evaluator.py`
+- `implementation/evaluate_cli.py`
 - `.github/workflows/implementation-tests.yml`
-- prior I001–I004 reports named in STATUS.
 
-## I005 result
-Evaluator v0.2 is now an offline cross-market skeleton. It adds PayanAgent/OKX A2A/agent2agent.market-style adapters, explicit policy evidence states (`rights_status`, `tos_status`, `automation_allowed`, `source_data_permission`), configurable capability/cost profiles, stale/deadline/duplicate gates, deterministic decision IDs, append-only hash-chained JSONL ledger + verification, offline CLI, stronger hard-disabled settlement invariants, expanded tests and CI workflow.
+## I006 result
+Evaluator v0.3 adds persisted-ledger replay dedup, deadline checks based on estimated execution duration plus reserve, estimate-confidence rejection and uncertainty cost reserve, capability-level quality contracts, stronger dry-run validation and a formal adapter conformance contract. Real sanitized fixtures are intentionally deferred until fresh permitted raw snapshots exist; synthetic tests are not misrepresented as platform evidence. CI status was not observable through the connector path used in I006.
 
-Adapters are captured-style mappings, not claims that current private/live payload schemas are identical. Conformance must be checked against fresh raw snapshots before live use. No live connector, credentials, wallet, paid API, external executor or settlement exists. Demand/fill rate remains the dominant unknown.
+No live connector, credentials, wallet, paid API, external executor or settlement exists. Demand/fill rate remains the dominant unknown.
 
 ## Current shortlist
-1. PayanAgent — primary dry-run target; quantitative demand pending.
-2. OKX.AI A2A ASP — architecture confirmed; provider-side live observation appears onboarding-gated.
+1. PayanAgent — primary task-market target; quantitative demand pending.
+2. OKX.AI A2A ASP — provider-side live observation appears onboarding-gated.
 3. agent2agent.market — adapter-ready; prior public observation showed no open tasks/activity.
 4. AgentGigs.io — autonomous lifecycle but prior public jobs zero; Stripe/KYC geography gate.
 5. MCPize — strongest passive paid-endpoint experiment candidate.
 
-## Immediate next run: I006 / E3 integration & robustness
-1. Inspect CI/test result and repair failures.
-2. Add realistic sanitized snapshots for all three adapters and CLI regression coverage.
-3. Add persistent ledger replay/dedup across runs.
-4. Add deadline-aware estimated execution duration and confidence/risk reserve.
-5. Add result-quality contract/validator stubs per capability.
-6. Define adapter conformance contract for future read-only live connectors.
-7. If public raw PayanAgent data becomes observable without credentials, sample read-only; otherwise continue without blocking.
+## Immediate next run: I007 / E4 passive MCP benchmark
+1. Select 2–3 cheap, bounded, useful capabilities suitable for paid machine calls.
+2. Prefer deterministic/local logic or clearly licensed dependencies; avoid questionable upstream API resale.
+3. Revalidate current MCPize/comparable channel fee/pricing mechanics from primary sources where time-sensitive.
+4. Model per-call cost, platform share, hosting/API cost, utilization and break-even calls/month.
+5. Build an offline microservice/benchmark harness only; do not publish, create paid infrastructure, KYC or monetize without authorization.
+6. Preserve an adapter path into the common evaluator/orchestrator.
 
 ## Hard action boundary
 Without explicit user authorization do NOT spend money, create/fund wallets, sign value-moving transactions, stake/deposit collateral, rent paid infrastructure, create paid accounts, submit KYC/bank onboarding, accept paid work with liability/slashing risk, or publish monetized services under the user's identity. Read-only observation, public-data analysis, local/CI dry runs, architecture and capped simulations may continue.
