@@ -14,21 +14,21 @@ Do not reconstruct this project from chat memory.
 Build a legitimate autonomous server-native earning stack: observe permitted paid tasks/calls, normalize them, estimate execution cost/margin, reject non-compliant/negative-EV work, and eventually execute positive-margin work with minimal human input. Secondary target: passive provider/API/MCP/inference/compute/storage/relay markets.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I008 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I009 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I009_UNIFIED_ORCHESTRATOR.md`
+- `implementation/orchestrator.py`
+- `implementation/test_orchestrator.py`
 - `implementation/RUN_I008_PASSIVE_INTEGRATION.md`
 - `implementation/passive_service.py`
-- `implementation/test_passive_service.py`
-- `implementation/RUN_I007_PASSIVE_MCP_BENCHMARK.md`
-- `implementation/mcp_benchmark.py`
 - `implementation/evaluator.py`
 - `.github/workflows/implementation-tests.yml`
 
-## I008 result
-The passive MCP branch now has a reusable dry-run decision layer. It refuses to treat positive per-call contribution as sufficient: unknown utilization produces `demand_unproven`; fixed-hosting break-even and tier capacity are explicit. Publication is hard-disabled. Current normalize-text assumptions yield $0.00799 contribution/call and 1,127 calls/month break-even on $9 fixed hosting. These are synthetic/model economics, not demand evidence.
+## I009 result
+The task-market evaluator and passive-service model now feed a single offline observation queue. Accepted task opportunities rank by observed per-task margin. Passive offers rank by projected monthly value only when demand evidence exists; unknown utilization remains held with no invented EV. Prohibited high-bounty work remains rejected. Every queue item is dry-run-only and `action_enabled=False`.
 
-CI now explicitly installs pytest and runs all implementation tests, but I008 did not inspect a completed Actions run, so green CI remains to be verified.
+The Actions workflow configuration is structurally correct and discovers all implementation tests, but I009 could not inspect a completed workflow run through the available connector, so green CI is not claimed.
 
 No live connector, credentials, wallet, paid API, external executor, publication or settlement exists. Demand/fill rate remains the dominant unknown.
 
@@ -39,11 +39,11 @@ No live connector, credentials, wallet, paid API, external executor, publication
 4. AgentGigs.io — autonomous lifecycle but prior public jobs zero; Stripe/KYC geography gate.
 5. MCPize — strongest passive endpoint candidate; offline benchmark + decision model implemented, real paid utilization unknown.
 
-## Immediate next run: I009
-1. Inspect the latest GitHub Actions result for `implementation-tests`; fix real failures if present.
-2. Build a small offline orchestrator that consumes both task decisions (`evaluator.py`) and passive-service decisions (`passive_service.py`) into one ranked observation queue while keeping execution/publication disabled.
-3. Never invent demand to rank passive services: unknown utilization must remain held/incomparable.
-4. Continue read-only attributable demand evidence collection for PayanAgent and MCPize where publicly observable.
+## Immediate next run: I010
+1. Add a fixture/snapshot ingestion layer carrying source timestamp, source URL, evidence class and freshness checks so observations can be replayed reproducibly.
+2. Add queue-level audit export explaining accepted/held/rejected observations.
+3. Continue read-only attributable demand evidence collection for PayanAgent and MCPize where public.
+4. If a permitted raw public payload is obtainable, save a sanitized fixture and test adapter conformance; otherwise document the observability gate.
 
 ## Hard action boundary
 Without explicit user authorization do NOT spend money, create/fund wallets, sign value-moving transactions, stake/deposit collateral, rent paid infrastructure, create paid accounts, submit KYC/bank onboarding, accept paid work with liability/slashing risk, or publish monetized services under the user's identity. Read-only observation, public-data analysis, local/CI dry runs, architecture and capped simulations may continue.
