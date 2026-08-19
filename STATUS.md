@@ -3,7 +3,7 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I008 — passive-service integration**
+Last completed implementation run: **I009 — unified offline observation orchestrator**
 Last updated: **2026-08-19**
 
 ## Current objective
@@ -12,22 +12,22 @@ Move from exhaustive discovery to implementation/experiment work. Priority is a 
 Do not reopen broad discovery unless a later implementation result exposes a genuinely missing mechanism.
 
 ## Latest durable files
+- `implementation/RUN_I009_UNIFIED_ORCHESTRATOR.md`
+- `implementation/orchestrator.py`
+- `implementation/test_orchestrator.py`
 - `implementation/RUN_I008_PASSIVE_INTEGRATION.md`
 - `implementation/passive_service.py`
 - `implementation/test_passive_service.py`
-- `implementation/RUN_I007_PASSIVE_MCP_BENCHMARK.md`
-- `implementation/mcp_benchmark.py`
-- `implementation/test_mcp_benchmark.py`
 - `implementation/evaluator.py`
 - `implementation/test_evaluator.py`
 - `.github/workflows/implementation-tests.yml`
 
-## I008 outcome
-E4 is integrated into a conservative passive-service decision contract. Positive per-call margin is no longer enough: unknown utilization yields `demand_unproven`; fixed-hosting break-even and capacity are explicit gates. Publication remains hard-disabled. At the current synthetic MCPize assumptions, normalize-text contributes $0.00799/call; $9/month hosting requires 1,127 calls/month. This is model math, not demand proof.
+## I009 outcome
+Task-market and passive-service dry-run decisions now feed one conservative observation queue. One-off task margins and monthly passive economics remain semantically separate. Passive offers with unknown utilization are held with no invented monthly EV. Prohibited/high-bounty work cannot outrank compliant work. Every observation remains dry-run-only with action/publication disabled.
 
-CI was corrected to explicitly install pytest and run the full implementation test directory. A completed workflow execution was not inspected in I008, so no green-CI claim is made yet.
+The Actions workflow configuration was inspected and is structurally correct (Python 3.12, pytest install, full implementation test discovery), but the connector available in I009 did not expose a permitted workflow-run listing endpoint. No green-CI claim is made.
 
-No service was published and no account, KYC, wallet funding, paid infrastructure, monetization or settlement was created.
+No service was published and no account, KYC, wallet funding, paid infrastructure, monetization, task acceptance or settlement was created.
 
 ## Current ranking
 1. **PayanAgent** — primary task-market dry-run target; quantitative demand pending.
@@ -55,11 +55,14 @@ Secondary/watchlist: OKX.AI A2MCP, API Mart, routed inference suppliers, compute
 ### E2 — OKX.AI task-intake observability
 **Anonymous observability checkpoint complete.** Mechanism and provider automation confirmed, but no documented anonymous task feed found; live provider-side observation appears to require legitimate onboarding. Do not register/login/create identity without authorization.
 
-### E3 — cross-market dry-run evaluator
-**v0.3 implemented.** Persistent replay, duration/confidence reserve and quality-contract gates are present. Real adapter conformance still requires fresh permitted raw snapshots.
+### E3 — cross-market dry-run evaluator/orchestrator
+**v0.4 implemented.** Persistent evaluator + unified observation queue are present. Unknown passive demand remains incomparable. Real adapter conformance still requires fresh permitted raw snapshots.
 
 ### E4 — passive MCP microservice benchmark
-**Offline v0.2 integrated in I008.** Benchmark capabilities now feed a passive-service pricing/hosting/demand decision model; publication is hard-disabled. NEXT: I009 unified offline observation orchestrator + verify actual CI result + continue public demand evidence collection.
+**Offline v0.2 integrated.** Benchmark capabilities feed pricing/hosting/demand decisions; publication remains hard-disabled. Synthetic normalize-text contribution is $0.00799/call; $9 fixed hosting needs 1,127 calls/month. This is model math, not demand proof.
+
+## Immediate next run — I010
+Add reproducible snapshot/evidence ingestion and queue-level audit export, then continue public read-only demand checks for PayanAgent/MCPize. Save sanitized raw fixtures only when legitimately public and permitted.
 
 ## Completion gate for implementation phase
 Implementation is complete only if either:
