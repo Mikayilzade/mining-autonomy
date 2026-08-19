@@ -3,7 +3,7 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I005 — evaluator hardening v0.2**
+Last completed implementation run: **I006 — integration & robustness v0.3**
 Last updated: **2026-08-19**
 
 ## Current objective
@@ -12,23 +12,21 @@ Move from exhaustive discovery to implementation/experiment work. Priority is a 
 Do not reopen broad discovery unless a later implementation result exposes a genuinely missing mechanism.
 
 ## Latest durable files
-- `implementation/RUN_I005_EVALUATOR_HARDENING.md`
+- `implementation/RUN_I006_INTEGRATION_ROBUSTNESS.md`
+- `implementation/ADAPTER_CONFORMANCE.md`
 - `implementation/evaluator.py`
-- `implementation/evaluate_cli.py`
 - `implementation/test_evaluator.py`
+- `implementation/evaluate_cli.py`
 - `.github/workflows/implementation-tests.yml`
-- `implementation/RUN_I004_CROSS_MARKET_EVALUATOR.md`
-- `implementation/RUN_I003_OKX_A2A_OBSERVABILITY.md`
-- `implementation/RUN_I002_PAYANAGENT_READONLY_SAMPLER.md`
-- `implementation/RUN_I001_CANDIDATE_RANKING.md`
+- prior I001–I005 reports
 
-## I005 outcome
-Evaluator v0.2 now has offline adapters for PayanAgent/OKX A2A/agent2agent.market-style payloads, explicit fail-closed policy evidence states, configurable capability/cost profiles, stale/deadline/duplicate gates, deterministic decision IDs, a hash-chained append-only JSONL ledger with verification, offline CLI, stronger settlement-disable invariants, expanded adversarial/regression tests and a CI workflow.
+## I006 outcome
+Evaluator v0.3 adds persistent ledger replay/dedup, duration-aware deadline reserve, estimate-confidence gating and uncertainty cost reserve, capability-level quality contracts, stronger dry-run result validation, richer adapter estimate metadata and a formal adapter conformance contract. Synthetic adapter tests remain clearly synthetic; real sanitized fixtures await legitimately observable raw responses. CI status was not observable through the available connector path in I006, so no pass claim is made.
 
-Still no live market adapter, credentials, executor, paid action, wallet or settlement. Adapter mappings require conformance against fresh raw snapshots before live use. Demand/fill rate remains unmeasured and dominant.
+Still no live market adapter, credentials, executor, paid action, wallet or settlement. Demand/fill rate remains unmeasured and dominant.
 
 ## Current ranking
-1. **PayanAgent** — primary dry-run target; quantitative demand pending.
+1. **PayanAgent** — primary task-market dry-run target; quantitative demand pending.
 2. **OKX.AI A2A ASP** — architecture confirmed; live provider-side demand observation appears onboarding-gated.
 3. **agent2agent.market** — adapter-ready; previously observed public state had 0 open tasks/no Base Sepolia activity.
 4. **AgentGigs.io** — autonomous lifecycle but previously observed 0 public jobs; Stripe Connect geography/KYC gate.
@@ -53,10 +51,10 @@ Secondary/watchlist: OKX.AI A2MCP, API Mart, routed inference suppliers, compute
 **Anonymous observability checkpoint complete.** Mechanism and provider automation confirmed, but no documented anonymous task feed found; live provider-side observation appears to require legitimate onboarding. Do not register/login/create identity without authorization.
 
 ### E3 — cross-market dry-run evaluator
-**v0.2 implemented. NEXT: I006 integration/robustness.** Inspect CI, add realistic sanitized adapter fixtures/CLI regression, persistent ledger replay dedup, execution-duration/deadline and confidence reserves, result-quality contracts, and an adapter conformance specification.
+**v0.3 implemented.** Persistent replay, duration/confidence reserve and quality-contract gates are present. Real adapter conformance still requires fresh permitted raw snapshots.
 
 ### E4 — passive MCP microservice benchmark
-Design one cheap deterministic/LLM-assisted capability and calculate break-even calls/month for MCPize/A2MCP; do not publish yet.
+**NEXT: I007.** Select 2–3 cheap bounded capabilities, calculate break-even calls/month for MCPize/comparable channels, and build an offline microservice benchmark harness without publishing or paid infrastructure.
 
 ## Completion gate for implementation phase
 Implementation is complete only if either:
