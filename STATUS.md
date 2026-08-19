@@ -3,29 +3,27 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I009 — unified offline observation orchestrator**
+Last completed implementation run: **I010 — reproducible evidence ingestion + audit export**
 Last updated: **2026-08-19**
 
 ## Current objective
 Move from exhaustive discovery to implementation/experiment work. Priority is a legal server-native agent that can observe machine-readable paid work, estimate execution cost and expected margin, reject unsafe/non-compliant/unprofitable tasks, and eventually execute only positive-margin work after explicit authorization for any credentials/money-moving actions.
 
-Do not reopen broad discovery unless a later implementation result exposes a genuinely missing mechanism.
-
 ## Latest durable files
-- `implementation/RUN_I009_UNIFIED_ORCHESTRATOR.md`
+- `implementation/RUN_I010_EVIDENCE_INGESTION.md`
+- `implementation/snapshot.py`
+- `implementation/test_snapshot.py`
 - `implementation/orchestrator.py`
 - `implementation/test_orchestrator.py`
-- `implementation/RUN_I008_PASSIVE_INTEGRATION.md`
-- `implementation/passive_service.py`
-- `implementation/test_passive_service.py`
+- `implementation/RUN_I009_UNIFIED_ORCHESTRATOR.md`
 - `implementation/evaluator.py`
-- `implementation/test_evaluator.py`
+- `implementation/passive_service.py`
 - `.github/workflows/implementation-tests.yml`
 
-## I009 outcome
-Task-market and passive-service dry-run decisions now feed one conservative observation queue. One-off task margins and monthly passive economics remain semantically separate. Passive offers with unknown utilization are held with no invented monthly EV. Prohibited/high-bounty work cannot outrank compliant work. Every observation remains dry-run-only with action/publication disabled.
+## I010 outcome
+Added fail-closed, hash-verifiable, freshness-bounded evidence snapshots and queue-level audit export. Public observations can now carry provenance and be replayed without inventing demand. Audit output explains accepted/held/rejected counts and reasons while preserving `dry_run_only=True` and `action_enabled=False`.
 
-The Actions workflow configuration was inspected and is structurally correct (Python 3.12, pytest install, full implementation test discovery), but the connector available in I009 did not expose a permitted workflow-run listing endpoint. No green-CI claim is made.
+Repeated failed push-triggered CI runs were generating notification-email noise, so automatic push triggering was removed; the workflow remains available for pull requests and manual dispatch. Historical pytest failure is not yet claimed fixed.
 
 No service was published and no account, KYC, wallet funding, paid infrastructure, monetization, task acceptance or settlement was created.
 
@@ -45,28 +43,23 @@ Secondary/watchlist: OKX.AI A2MCP, API Mart, routed inference suppliers, compute
 - Any task executor must have a policy/compliance gate, conservative cost estimator, EV/margin gate, quality validator and tamper-evident ledger/audit trail.
 - Passive services additionally require attributable utilization evidence; positive unit margin alone is insufficient.
 - Upstream API/model resale requires independent upstream permission.
-- For OKX A2A, never execute real work before `job_accepted`/escrow state; arbitration can require a 5% bounty deposit and must remain disabled by default without explicit authorization.
 - No CAPTCHA bypass, spam, fake activity, ad fraud, prohibited multi-accounting, credential abuse, geofence/KYC evasion, unauthorized access/scraping, or automation of human-only work contrary to ToS.
 
 ## Current experiment queue
 ### E1 — PayanAgent read-only market/receipt sampler
-**Contract validation complete; quantitative sampling pending environment access.** Repeat public snapshots when raw API bodies become observable. No bidding/buying/wallet actions.
+Contract validation complete; quantitative sampling pending environment access. Repeat public snapshots when raw API bodies become observable. No bidding/buying/wallet actions.
 
 ### E2 — OKX.AI task-intake observability
-**Anonymous observability checkpoint complete.** Mechanism and provider automation confirmed, but no documented anonymous task feed found; live provider-side observation appears to require legitimate onboarding. Do not register/login/create identity without authorization.
+Anonymous observability checkpoint complete. Provider-side observation appears to require legitimate onboarding; do not register/login without authorization.
 
 ### E3 — cross-market dry-run evaluator/orchestrator
-**v0.4 implemented.** Persistent evaluator + unified observation queue are present. Unknown passive demand remains incomparable. Real adapter conformance still requires fresh permitted raw snapshots.
+**v0.5 implemented.** Persistent evaluator, unified queue, evidence snapshots and audit export are present. Unknown passive demand remains incomparable. Real adapter conformance still requires fresh permitted raw snapshots.
 
 ### E4 — passive MCP microservice benchmark
-**Offline v0.2 integrated.** Benchmark capabilities feed pricing/hosting/demand decisions; publication remains hard-disabled. Synthetic normalize-text contribution is $0.00799/call; $9 fixed hosting needs 1,127 calls/month. This is model math, not demand proof.
+Offline v0.2 integrated. Synthetic normalize-text contribution is $0.00799/call; $9 fixed hosting needs 1,127 calls/month. This is model math, not demand proof.
 
-## Immediate next run — I010
-Add reproducible snapshot/evidence ingestion and queue-level audit export, then continue public read-only demand checks for PayanAgent/MCPize. Save sanitized raw fixtures only when legitimately public and permitted.
+## Immediate next run — I011
+Diagnose historical pytest CI failure without restoring push spam; add verified snapshot-to-adapter replay helpers and continue public read-only PayanAgent/MCPize demand checks.
 
-## Completion gate for implementation phase
-Implementation is complete only if either:
-1. a documented autonomous stack achieves confirmed positive economics on real, permitted tests; or
-2. reasonable candidates are exhausted and control passes confirm no viable implementation.
-
-Until then: **IMPLEMENTATION IN PROGRESS**.
+## Completion gate
+Implementation is complete only if either a documented autonomous stack achieves confirmed positive economics on real permitted tests, or reasonable candidates are exhausted and control passes confirm no viable implementation. Until then: **IMPLEMENTATION IN PROGRESS**.
