@@ -94,4 +94,16 @@ Fresh checks reconfirmed PayanAgent anonymous discovery/receipts endpoints, agen
 
 No credentials, KYC, wallets, paid infrastructure, task acceptance, service publication or settlement occurred. Push-triggered CI remains disabled; workflow unchanged.
 
-Next: **I023 — canonical manifest serialization/hash + capture-result receipt binding, with transport disabled by default and mock/injected transport only.**
+## I023 — 2026-08-19
+Status: **completed**
+Stage: Sealed sampling manifests + capture-result receipts
+
+Added `sampling_receipt.py` and eight deterministic tests. Sampling manifests now have canonical JSON, SHA-256 sealing, optional HMAC-SHA256 authentication and per-item hashes bound to the manifest hash + item index.
+
+Added a sanitized capture-result receipt binding exact manifest item, source/method/platform, expected evidence classes, timestamps, declared/captured environment, sanitized bundle SHA-256 and transport boundary. Receipt verification detects tampering and explicitly grants no execution authority.
+
+Transport remains dependency-injected only; there is no built-in HTTP client. Missing transport fails closed, network-capable transport is disabled unless explicitly enabled by a future caller, and any result reporting credentials or action execution is rejected. Unknown→production requires separate environment-evidence hashing.
+
+Local isolated verification: **8 passed**. No network capture, credentials, KYC, wallets, paid infrastructure, task acceptance, service publication or settlement occurred. Push-triggered CI remains disabled; workflow unchanged.
+
+Next: **I024 — require verified capture receipts at the observation/archive ingestion boundary and add mismatch/tamper/environment replay fixtures; live transport remains disabled.**

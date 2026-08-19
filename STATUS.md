@@ -3,36 +3,36 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I022 — inert sampling manifest / execution contract**
+Last completed implementation run: **I023 — sealed sampling manifests + capture receipts**
 Last updated: **2026-08-19**
 
 ## Current objective
 Build a legal server-native agent that can observe machine-readable paid work, estimate execution cost and expected margin, reject unsafe/non-compliant/unprofitable tasks, and eventually execute only positive-margin work after explicit authorization for credentials/money-moving actions.
 
 ## Latest durable files
+- `implementation/RUN_I023_MANIFEST_RECEIPTS.md`
+- `implementation/SOURCES_I023.md`
+- `implementation/sampling_receipt.py`
+- `implementation/test_sampling_receipt.py`
 - `implementation/RUN_I022_SAMPLING_MANIFEST.md`
-- `implementation/SOURCES_I022.md`
 - `implementation/sampling_manifest.py`
-- `implementation/test_sampling_manifest.py`
-- `implementation/RUN_I021_SAMPLING_WATCHLIST_PLANNER.md`
 - `implementation/sampling_planner.py`
 - `implementation/observation_capture.py`
 - `implementation/evidence_archive.py`
 - `implementation/archive_replay.py`
 
-## I022 outcome
-Added a deterministic inert source-level sampling manifest derived from the production watchlist. It describes only allowed public read-only checks and performs no network traffic.
+## I023 outcome
+Added deterministic canonical serialization, SHA-256 manifest sealing, optional HMAC-SHA256 authentication and exact per-item hashes for the inert sampling manifest.
 
-Each source contract carries exact HTTPS URL, GET-only method, expected evidence class, deterministic capture deadline, conservative project-side rate budget, maximum source age, provenance requirements and explicit environment handling. Credentials and actions remain hard-disabled.
+Added a capture-result receipt contract that binds a sanitized bundle hash, timestamps, environment and source identity to the exact sealed manifest item. Receipt verification detects tampering and explicitly grants no execution authority.
 
-A new capture bridge prepares offline `CapturePolicy` and explicit archive environment mapping for already-captured sanitized bundles before they flow through `observation_capture -> evidence_archive -> archive_replay`. Unknown environment remains unknown and cannot silently become production.
+Network remains disabled by default. There is no built-in HTTP client. Only dependency-injected transport is possible; network-capable injected transport is rejected unless explicitly enabled by a future caller. Credentials/action results fail closed.
 
-Fresh public checks on 2026-08-19:
-- PayanAgent still documents anonymous `GET /api/v1/discover` and `GET /api/v1/receipts`; supply counts are not demand.
-- agent2agent.market still documents a public machine-readable task-feed model, while Base Sepolia remains visible in onboarding examples; the manifest therefore refuses to assume production.
-- MCPize still documents 80% creator share and x402/USDC pay-per-call; 900+ servers / 450+ publishers remain supply-side only.
+Unknown environment cannot be promoted to production without a separate environment-evidence hash. Integrity evidence still cannot authorize execution or prove demand/profitability.
 
-No account, KYC, API key, wallet, paid infrastructure, service publication, task acceptance, bid or settlement was created.
+Local isolated tests: **8 passed**.
+
+No account, KYC, API key, wallet, paid infrastructure, service publication, task acceptance, bid, network capture or settlement was created.
 
 ## Current ranking
 1. **PayanAgent** — primary task-market target; strongest public observability architecture, but attributable production demand/receipt snapshots remain uncaptured.
@@ -47,6 +47,8 @@ No account, KYC, API key, wallet, paid infrastructure, service publication, task
 - Evidence freshness is explicit; stale/future-invalid evidence cannot silently stand in for current production state.
 - Sampling priority and source contracts are deterministic and evidence-gap driven.
 - Sampling manifests are GET-only, no-credentials, no-action contracts; rate budgets are conservative project self-limits, not claims about platform quotas.
+- Manifest and receipt hashes prove integrity/provenance only; they do not prove demand, profitability, permissions or execution authority.
+- Capture receipts must bind the exact sealed manifest item to the sanitized bundle before future durable ingestion.
 - Portable evidence history is append-only and tamper-evident; rewritten/truncated history is invalid.
 - Raw buyer identities and raw platform payloads must not persist in the sanitized archive.
 - Archive evidence can prioritize observation but cannot authorize execution.
@@ -55,8 +57,8 @@ No account, KYC, API key, wallet, paid infrastructure, service publication, task
 - Platform payloads cannot self-authorize compliance; trusted policy evidence stays separate.
 - Never spend money, fund a wallet, stake/deposit, rent paid infrastructure, create paid accounts, submit KYC, or take irreversible external action without explicit user authorization.
 
-## Immediate next run — I023
-Add canonical serialization/hash signing for sampling manifests plus a capture-result receipt contract that binds a sanitized bundle to the manifest item that produced it. Keep transport/network disabled by default; prepare a mock/injected transport path for future permitted anonymous GET captures without credentials or action endpoints.
+## Immediate next run — I024
+Require verified capture receipts at the `observation_capture` / `evidence_archive` ingestion boundary so a sanitized bundle cannot enter durable evidence history unless it is bound to the correct sealed manifest item. Add mismatch/tamper/environment replay fixtures; keep live transport disabled.
 
 ## Completion gate
 Implementation is complete only if either a documented autonomous stack achieves confirmed positive economics on real permitted tests, or reasonable candidates are exhausted and control passes confirm no viable implementation. Until then: **IMPLEMENTATION IN PROGRESS**.
