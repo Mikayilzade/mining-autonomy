@@ -114,6 +114,12 @@ Production demand/utilization-capable sources can be classified `ready_for_futur
 
 Eight deterministic tests passed in an isolated local harness. GitHub Actions workflow was not changed; push-triggered CI remains disabled.
 
-No live HTTP capture, credentials, KYC, wallet, paid infrastructure, task acceptance, publication or settlement occurred.
+## I029 — 2026-08-20
+Status: **completed**
+Stage: Deterministic capture-session planner
 
-Next: **I029 — deterministic no-network capture-session planner over I028 ready items, with host/rate/time budgets and separate remediation queue.**
+Added `capture_session_planner.py` over I028. Ready production GET items are admitted under global request/time budgets and per-host minimum-interval/rolling-window rate contracts, then emitted as an exact chronological UTC session. Budget-exhausted ready items are deferred, blocked sources remain in a remediation queue, and missing evidence is never converted into negative-demand evidence.
+
+Nine deterministic tests passed in an isolated local harness. No HTTP request, credential, account, KYC, wallet, paid infrastructure, task acceptance, publication or settlement occurred. GitHub Actions workflow was unchanged and push-triggered CI remains disabled.
+
+Next: **I030 — deterministic read-only transport preflight/envelope over I029, still no real HTTP.**
