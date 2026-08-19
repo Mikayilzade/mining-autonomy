@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 
 from evaluator import CapabilityProfile
-from orchestrator import build_observation_queue, observe_passive
+from orchestrator import audit_export, build_observation_queue, observe_passive
 from passive_service import HostingTier, PassiveServiceOffer
 
 NOW=datetime.now(timezone.utc).isoformat()
@@ -52,3 +52,11 @@ def test_rejected_task_stays_below_viable_task():
     assert q[0].external_id=="t1"
     assert q[-1].state=="reject"
     assert "prohibited_task" in q[-1].reasons
+
+
+def test_audit_export_explains_queue_without_enabling_action():
+    q=build_observation_queue([task()], [passive()], capabilities=CapabilityProfile({"extract"}))
+    audit=audit_export(q,generated_at="2026-08-19T04:00:00+00:00")
+    assert audit["counts"]=={"accepted":1,"held":1,"rejected":0}
+    assert audit["reason_counts"]["demand_unproven"]==1
+    assert audit["dry_run_only"] is True and audit["action_enabled"] is False
