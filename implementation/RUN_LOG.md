@@ -82,52 +82,38 @@ Added canonical manifest sealing, SHA-256, optional HMAC authentication, per-ite
 Status: **completed**
 Stage: Receipt-gated durable evidence ingestion
 
-Closed the integrity gap between capture receipts and durable archive history. Added `run_verified_capture_batch()` that only emits archive-eligible reports after verifying receipt→sealed-manifest and receipt→bundle consistency. Ordinary `run_capture_batch()` is now explicitly transient-only.
-
-`evidence_archive.append_capture_report()` now independently re-verifies every attestation, requires complete bundle coverage, rejects missing/duplicate/unmatched/tampered receipts, and treats receipt environment as authoritative. Caller environment mappings cannot promote or relabel evidence. Serialized archives persist the receipt-required policy.
-
-Verification: source/test syntax checked locally; push-triggered CI remains disabled and workflow unchanged.
-
-No network capture, credentials, KYC, wallet, paid infrastructure, task acceptance, publication or settlement occurred.
+Closed the integrity gap between capture receipts and durable archive history. Only receipt→sealed-manifest→bundle verified reports are archive-eligible. Receipt environment is authoritative and caller mappings cannot promote evidence.
 
 ## I025 — 2026-08-19
 Status: **completed**
 Stage: Receipt-aware replay provenance + deterministic sampling audit
 
-Added `sampling_audit.py` with a fail-closed sealed-manifest audit that classifies scheduled sources as uncaptured, receipt-invalid, receipt-valid non-production or receipt-valid production. Duplicate/tampered/unmatched receipts cannot close a sampling gap.
-
-Added `receipt_provenance_index()` which revalidates a full receipt-gated capture report before exposing receipt/manifest hash references. `archive_replay_report()` can now attach those verified references to matching production rows while reporting missing provenance explicitly; neither provenance nor archive evidence can authorize action.
-
-Migrated `test_archive_replay.py` to I024 receipt-gated fixtures and added sampling-audit tests for all required states, duplicates and unmatched receipts.
-
-Verification: new/modified Python files and tests syntax-checked locally. Push-triggered CI remains disabled and workflow unchanged.
-
-No live network capture, credentials, KYC, wallet, paid infrastructure, task acceptance, publication or settlement occurred.
+Added sealed-manifest audit states and receipt provenance indexing. Duplicate/tampered/unmatched receipts cannot close a sampling gap; replay can attach only revalidated receipt/manifest references.
 
 ## I026 — 2026-08-20
 Status: **completed**
 Stage: Deterministic end-to-end evidence audit export
 
-Added `evidence_audit_export.py` to join sealed schedule, receipt audit state, durable archive membership and HOLD-only replay provenance into one source/platform audit. Missing, invalid, non-production, stale, non-latest and provenance-missing states remain explicit unresolved production gaps; missing capture is never interpreted as zero demand.
-
-Added deterministic platform/source roll-ups and tests for complete production chains, uncaptured sources, testnet isolation, missing replay provenance, stale replay and no-action invariants.
-
-Verification: new Python module and tests syntax-checked before commit. Push-triggered CI remains disabled and workflow unchanged.
-
-No live network capture, credentials, KYC, wallet, paid infrastructure, task acceptance, publication or settlement occurred.
+Joined sealed schedule, receipt audit state, durable archive membership and HOLD-only replay provenance into source/platform audit. Missing/invalid/non-production/stale/provenance-missing states remain explicit production gaps.
 
 ## I027 — 2026-08-20
 Status: **completed**
 Stage: Deterministic production-gap prioritizer
 
-Added `gap_prioritizer.py` over the I026 evidence audit plus exact sealed manifest. It validates source/manifest identity, scores unresolved evidence by platform priority, evidence value, freshness urgency and conservative source rate budget, then separates new read-only observations from offline archive/provenance repairs.
+Added `gap_prioritizer.py` over I026 audit + exact sealed manifest. Unresolved production evidence is ranked by platform priority, evidence value, freshness urgency and conservative rate budget; offline repairs are separated and missing evidence remains `unknown_not_negative_demand`.
 
-The selected observation queue is globally capped, lower-ranked observations are explicitly deferred, and missing evidence remains `unknown_not_negative_demand` rather than being converted into zero/negative demand. All outputs are plan-only with credentials/network/action disabled.
+Eight deterministic unit tests passed in an isolated local harness. No network capture or external action occurred.
 
-Added `test_gap_prioritizer.py` covering primary-platform ordering, stale evidence, offline-repair separation, non-production recapture, global observation cap, manifest/source mismatch fail-closed behavior and zero-budget planning.
+## I028 — 2026-08-20
+Status: **completed**
+Stage: Deterministic capture-readiness packet
 
-Verification: new module/tests compiled and eight deterministic unit tests passed in an isolated local harness using compatible manifest sealing/hash semantics. Full repository CI was not run. Push-triggered CI remains disabled and workflow unchanged.
+Added `capture_readiness.py` over the I027 selected observation queue. Exact sealed-manifest/source identity, GET/no-credential/no-action boundaries, evidence classes, environment requirements, provenance checklist and conservative rate limits are revalidated and preserved.
 
-No live network capture, credentials, KYC, wallet, paid infrastructure, task acceptance, publication or settlement occurred.
+Production demand/utilization-capable sources can be classified `ready_for_future_explicit_read_only_capture`; unknown-environment and observability/mechanics-only sources remain `blocked_by_observability_or_environment_requirement`. Readiness explicitly does not grant authorization: network/action/credentials remain disabled and separate explicit read-only authorization is still required.
 
-Next: **I028 — deterministic capture-readiness packet over I027-selected observations, still no-network.**
+Eight deterministic tests passed in an isolated local harness. GitHub Actions workflow was not changed; push-triggered CI remains disabled.
+
+No live HTTP capture, credentials, KYC, wallet, paid infrastructure, task acceptance, publication or settlement occurred.
+
+Next: **I029 — deterministic no-network capture-session planner over I028 ready items, with host/rate/time budgets and separate remediation queue.**
