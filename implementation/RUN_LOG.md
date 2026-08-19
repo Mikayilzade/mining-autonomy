@@ -52,4 +52,14 @@ Fresh public checks clarified that the currently rendered agent2agent zero-open 
 
 No credentials, KYC, wallets, paid infrastructure, task acceptance, service publication or settlement occurred. Push-triggered CI remains disabled; workflow unchanged.
 
-Next: **I019 — deterministic sanitized fixture/report persistence + explicit production/testnet/unknown environment classification and production-only scorecard filtering.**
+## I019 — 2026-08-19
+Status: **completed**
+Stage: Sanitized append-only evidence archive + environment isolation
+
+Added `evidence_archive.py` and eight isolated tests. Capture reports now export/import as canonical sanitized archives with report hashing, per-entry SHA-256 chaining, top-level archive hashing, duplicate rejection and append-only prefix enforcement. Every observation is explicit `production`, `testnet` or `unknown`; only production may enter the production scorecard, while testnet/unknown exclusions remain visible. Raw payloads/buyer identities are not persisted and paid values remain non-extrapolated.
+
+Fresh checks reconfirmed PayanAgent public discovery/receipt mechanics without an attributable raw production demand payload; agent2agent public zero-open state remains explicitly `base-sepolia` and is quarantined as testnet; MCPize still documents 80% standard share/x402 but attributable utilization remains dashboard-gated.
+
+No credentials, KYC, wallets, paid infrastructure, task acceptance, service publication or settlement occurred. Push-triggered CI remains disabled; workflow unchanged.
+
+Next: **I020 — environment-aware orchestrator replay/report bridge + explicit freshness/age state for production evidence.**
