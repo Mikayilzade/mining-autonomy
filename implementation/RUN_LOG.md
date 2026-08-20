@@ -94,4 +94,12 @@ Added `execution_wrapper.py` over I042. Exact execution requests are hash-bound 
 
 Eight deterministic I043 tests passed in an isolated local harness. No DNS/HTTP, credentials, account/KYC, wallet, payment, task acceptance, publication or settlement occurred. GitHub Actions was not dispatched and push-triggered CI remains disabled.
 
-Next: **I044 — inert real-transport integration proposal contract; no executable network path.**
+## I044 — 2026-08-20
+Status: **completed**
+Stage: Inert real-transport integration proposal
+
+Added `real_transport_proposal.py` over the I042/I043 exact one-GET boundary. The contract independently validates lease/request hashes and scope, binds the exact future request, and enumerates seven mandatory gates before any real-network integration may even be considered: fresh explicit real-user authorization, separate transport implementation review, DNS/destination policy, redirect policy, response resource limits, current source/ToS compliance evidence and durable receipt binding.
+
+The proposal is deliberately non-authorizing and non-executable: no token/nonce/callback/network client exists and all transport/network/value-moving flags remain false. Eight deterministic tests passed locally, including monkeypatched socket/getaddrinfo checks proving proposal construction does not call network primitives. No DNS/HTTP or other external action occurred.
+
+Next: **I045 — deterministic offline human-review packet over I044 with explicit evidence-readiness states; no real authorization or transport.**
