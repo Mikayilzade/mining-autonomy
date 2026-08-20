@@ -9,36 +9,35 @@ Do not reconstruct this project from chat memory.
 4. Discovery Runs 001–062 are COMPLETE. Continue Implementation / Experiment Phase.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I041 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I042 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I042_AUTHORIZATION_LEASE.md`
+- `implementation/authorization_lease.py`
+- `implementation/test_authorization_lease.py`
 - `implementation/RUN_I041_AUTHORIZATION_CONSENT.md`
-- `implementation/authorization_consent.py`
-- `implementation/test_authorization_consent.py`
-- `implementation/RUN_I040_EXACT_AUTHORIZATION_REQUEST.md`
-- I039 and prior authorization/readiness/capture files named in STATUS.
+- I040 and prior authorization/readiness/capture files named in STATUS.
 
-## I041 result
-`verify_explicit_authorization_consent()` verifies only an explicit decision object bound to the exact I040 packet/request/scope and still inside the I040 TTL.
+## I042 result
+`issue_single_use_authorization_lease()` and `consume_single_use_authorization_lease()` add a replay-safe offline one-request budget over exact I041 authorization.
 
 Important behavior:
-1. I040 wrapper, inner request and scope hashes are independently revalidated;
-2. only the exact-ready I040 state is eligible;
-3. scope must remain exactly one production GET;
-4. credentials and action remain forbidden;
-5. the decision must be explicit `authorize` or `deny`;
-6. decision binds wrapper hash, request hash and scope hash;
-7. human scope acknowledgement is mandatory;
-8. decision time must be inside the I040 request window and not future-dated;
-9. widened max_requests/method/credentials/action scope fails closed;
-10. authorize can emit a short-lived hash-bound execution authorization, but transport remains disabled;
-11. deny emits no execution authorization;
-12. synthetic fixtures are explicitly labeled and are never treated as real user consent;
-13. eight deterministic tests passed locally;
-14. no DNS/HTTP or external action occurred.
+1. I041 consent-verification and embedded execution-authorization hashes are independently revalidated;
+2. only a valid `authorize` result is leaseable;
+3. lease scope remains exactly one production GET;
+4. credentials/action/transport remain forbidden;
+5. the lease inherits the original authorization expiry and cannot be issued outside that window;
+6. a synthetic attempt is hash-bound to both lease and execution authorization;
+7. widened request count/method/environment/credentials/action is rejected;
+8. prior consumption receipts are hash-validated;
+9. any prior valid consumed receipt for the same lease causes replay/double-consumption rejection;
+10. successful offline consumption emits zero remaining requests;
+11. no DNS/HTTP occurs and consumption is not evidence a network request happened;
+12. synthetic-fixture status is preserved;
+13. eight deterministic tests passed locally.
 
-## Immediate next run: I042
-Create a deterministic offline single-use authorization lease/consumption gate over I041. Bind one future execution attempt to the exact execution-authorization hash, enforce expiry and max_requests=1, reject replay/double-consumption, and keep transport disabled/dependency-injected. Use synthetic fixtures only; do not perform real DNS/HTTP.
+## Immediate next run: I043
+Create a deterministic dependency-injected execution wrapper over I042. It must consume a fresh lease before invoking transport, use a synthetic stub by default, and expose a hard `allow_real_transport=False` default. Tests must prove no real transport path is available by default. Do not perform real DNS/HTTP.
 
 ## Hard boundary
 Do not spend money, create/fund wallets, submit KYC, accept paid work, publish monetized services, or settle transactions without explicit user authorization. Do not bypass CAPTCHA, geofencing, platform rules or other access controls. Real network capture still requires separate explicit read-only authorization.

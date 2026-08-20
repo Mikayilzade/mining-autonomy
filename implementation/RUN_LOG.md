@@ -78,4 +78,12 @@ Added `authorization_consent.py` over I040. It independently revalidates I040 wr
 
 Eight deterministic tests passed in an isolated local harness. No DNS/HTTP, credentials, account/KYC, wallet, payment, task acceptance, publication or settlement occurred. GitHub Actions was not dispatched and push-triggered CI remains disabled.
 
-Next: **I042 — deterministic offline single-use authorization lease/consumption gate; synthetic fixtures only, replay-safe, no real transport.**
+## I042 — 2026-08-20
+Status: **completed**
+Stage: Deterministic offline single-use authorization lease
+
+Added `authorization_lease.py` over I041. Exact consent/execution hashes and one-production-GET scope are revalidated; leases inherit the original expiry and one-request budget. Offline consumption validates a hash-bound attempt and prior receipts, exhausts the budget, and rejects expiry, scope widening, cross-lease binding and replay/double-consumption. Transport remains disabled.
+
+Eight deterministic tests passed in an isolated local harness. No DNS/HTTP, credentials, account/KYC, wallet, payment, task acceptance, publication or settlement occurred. GitHub Actions was not dispatched and push-triggered CI remains disabled.
+
+Next: **I043 — dependency-injected execution wrapper consuming an I042 lease before a synthetic transport stub; hard `allow_real_transport=False` default, no real network.**
