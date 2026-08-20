@@ -3,22 +3,20 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I051 — attested resource routing**
+Last completed implementation run: **I052 — end-to-end attested execution bridge**
 Last updated: **2026-08-21**
 
 ## Latest durable files
+- `implementation/RUN_I052_ATTESTED_EXECUTION_BRIDGE.md`
+- `implementation/attested_execution_bridge.py`
+- `implementation/test_attested_execution_bridge.py`
 - `implementation/RUN_I051_ATTESTED_RESOURCE_ROUTING.md`
-- `implementation/resource_routing_attestation.py`
-- `implementation/test_resource_routing_attestation.py`
-- `implementation/RUN_I050_RESOURCE_PROFILE_EVIDENCE.md`
-- I049 and earlier resource-routing / authorization / readiness / capture files.
+- I050 and earlier resource-routing / authorization / readiness / capture files.
 
-## I051 outcome
-Synthetic/default Resource Router backends are now planning references only. An unattested backend cannot be selected even if its illustrative marginal cost is lower than every real option.
+## I052 outcome
+The end-to-end task path now enforces the full precedence chain: observation/policy/capability/quality/open-paid-demand acceptance first, then TaskEconomics, then I050 evidence-backed resource calibration and I051 attested routing.
 
-Only complete current I050 attestations can enter the calibrated route set. User-declared resources remain explicitly `calibrated_declared_route`; measured/provider/system-backed resources remain `calibrated_reproducible_route`; missing/planning-only evidence yields `resource_evidence_missing`.
-
-The calibrated path still obeys capability, quota, policy, success-probability and conservative-margin gates. Execution/network/value movement remain disabled. Seven deterministic tests were added; syntax compilation passed; GitHub Actions was not dispatched.
+An upstream hold/reject never reaches resource routing. An upstream accept with missing resource evidence becomes hold. Only a current calibrated declared/reproducible backend can produce `route_dry_run`, and the combined record carries its exact evidence bundle hash and calibration class. Reference-only profiles cannot route. Execution/network/value movement remain disabled. Five deterministic tests were added; GitHub Actions was not dispatched.
 
 ## Current ranking
 1. PayanAgent
@@ -39,11 +37,12 @@ The calibrated path still obeys capability, quota, policy, success-probability a
 - Upstream policy/demand evidence is authoritative; resource routing may narrow eligibility but never widen it.
 - Synthetic/default resource profiles are planning references, not current evidence.
 - I050 calibration requires fresh hash-bound evidence for all critical resource parameters; declarations remain distinct from reproducible measurements.
-- **I051: reference-only resources are never selectable. Only complete current I050 attestations may enter calibrated routing.**
-- Route state must expose `resource_evidence_missing`, `calibrated_declared_route`, or `calibrated_reproducible_route`; all remain dry-run only.
+- I051 reference-only resources are never selectable. Only complete current I050 attestations may enter calibrated routing.
+- **I052: upstream acceptance is required before attested routing; missing resource evidence narrows accept to hold; selected routes carry calibration class and evidence bundle hash.**
+- All routing remains dry-run only with execution/network/value movement disabled.
 
-## Immediate next run — I052
-Build the end-to-end `observe -> policy/demand gate -> TaskEconomics -> attested resource route` bridge. Require I049 upstream acceptance before any calibrated routing, carry resource evidence/calibration provenance into the combined record, and keep execution/network/value movement disabled.
+## Immediate next run — I053
+Build a deterministic resource-calibration acquisition plan for the first actually usable no-new-spend backend, prioritizing local deterministic Python/owned-PC execution. Define exact measured vs user-declared inputs and an offline probe contract for availability/interface, cost/energy, latency, reliability/quality, capacity and rate limits. Do not infer hardware, electricity price, quotas or subscription programmatic access. Keep execution/network/value movement disabled.
 
 ## Completion gate
 Implementation is complete only when the documented stack either demonstrates positive economics on real permitted tests or reasonable candidates are exhausted by control passes. Until then: **IMPLEMENTATION IN PROGRESS**.
