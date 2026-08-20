@@ -9,41 +9,43 @@ Do not reconstruct this project from chat memory.
 4. Discovery Runs 001–062 are COMPLETE. Continue Implementation / Experiment Phase.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I049 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I050 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I050_RESOURCE_PROFILE_EVIDENCE.md`
+- `implementation/resource_profile_evidence.py`
+- `implementation/test_resource_profile_evidence.py`
 - `implementation/RUN_I049_OBSERVATION_RESOURCE_ROUTING.md`
-- `implementation/execution_routing_integration.py`
-- `implementation/test_execution_routing_integration.py`
-- `implementation/RUN_I048_RESOURCE_EXECUTION_ROUTER.md`
-- I047 and prior authorization/readiness/capture files named in STATUS.
+- I048 and prior resource-routing / authorization / readiness / capture files named in STATUS.
 
-## I049 result
-`execution_routing_integration.py` now bridges the existing orchestrator task path to the I048 Resource / Execution Router.
+## I050 result
+`resource_profile_evidence.py` adds a deterministic evidence/calibration boundary over the I048 Resource / Execution Router.
 
 Important behavior:
-1. `observe_task()` always runs first;
-2. upstream policy/capability/quality/evaluator and demand-evidence state is authoritative;
-3. upstream `hold` or `reject` returns immediately with no `TaskEconomics`, no router call and no selected backend;
-4. only `accept_dry_run` tasks are converted to `TaskEconomics`;
-5. optional fee/acceptance/dispute/non-payment inputs live under explicit `routing_economics`, preventing ordinary task metadata from silently changing router economics;
-6. resource routing can only narrow eligibility — an upstream accept may become a router hold, but a hold/reject can never become routable;
-7. subscription-backed ChatGPT/Codex-style assistance remains support-only/non-programmatic unless a real supported interface exists;
-8. combined routed records keep execution/network/value movement disabled;
-9. seven deterministic bridge tests passed in an isolated interface-compatible harness;
-10. no real external action occurred.
+1. synthetic router defaults remain planning references, never proof of real availability/economics;
+2. fourteen critical fields require fresh evidence: availability, programmatic/interface constraints, credential/account/spend blockers, fixed/sunk cost, quota, electricity, latency, reliability/quality, parallelism and rate limits;
+3. evidence binds backend, exact reference-backend hash, parameter/value, provenance, source reference, observation time, max age and deterministic evidence hash;
+4. reproducible measured/provider/system evidence additionally requires a source-content digest;
+5. user declarations are allowed as an explicitly separate `calibrated_declared` state and are never mislabeled as measured;
+6. missing, stale, future-dated, conflicting, invalid, tampered or wrong-profile evidence fails closed to `planning_only`;
+7. complete reproducible evidence can become `calibrated_reproducible`;
+8. calibrated fields can be materialized only after a complete attestation, and the materialized record still has execution/network/value movement disabled;
+9. ten deterministic tests passed locally;
+10. no real market/network/value-moving action occurred.
 
 Target flow is now:
-`cheap source watcher -> local filter/dedupe -> normalized task -> policy/rights/quality/demand gate -> TaskEconomics -> Resource Router -> selected backend dry-run -> later explicit live gates`.
+`cheap source watcher -> local filter/dedupe -> normalized task -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-backed Resource Router -> selected backend dry-run -> later explicit live gates`.
 
-## Immediate next run: I050
-Build a deterministic resource-profile evidence/calibration layer. Separate synthetic reference profiles from measured or explicitly declared resources actually available to the user/system. Bind availability, fixed/sunk cost, quotas/capacity, electricity, latency, reliability/quality, parallelism/rate limits and interface constraints to provenance/freshness. Unknown or stale resource parameters must remain planning-only.
+## Immediate next run: I051
+Integrate I050 attestations into I049 routing. Synthetic/default backend families must be reported as reference/planning routes, not as real calibrated resources. Only complete current I050 attestations may enter the calibrated route set. Add deterministic reporting that separates `reference_route`, `calibrated_declared_route`, `calibrated_reproducible_route` and `resource_evidence_missing`. Preserve upstream policy/demand precedence and keep execution/network/value movement disabled.
 
 ## Hard boundary
-Do not spend money, create/fund wallets, submit KYC, accept paid work, publish monetized services, or settle transactions without explicit user authorization. Do not bypass CAPTCHA, geofencing, platform rules or access controls. Real network capture still requires separate explicit read-only authorization.
+Do not spend money, create/fund wallets, submit KYC, accept paid work, publish monetized services, or settle transactions without explicit user authorization. Do not bypass CAPTCHA, geofencing, platform rules or access controls. Real market/network capture still requires separate explicit read-only authorization.
 
 ## Resource-accounting boundary
-Do not assume paid ChatGPT/Codex subscription includes separate API usage or free programmatic execution. Treat already-paid subscriptions as fixed/sunk resources with quota/capacity and interface constraints. For live routing, only a genuinely available programmatic backend with current evidence may be selected. Future APIs/VPS/paid services remain planning-only until credentials/spend/ToS/geography gates are cleared.
+Do not assume paid ChatGPT/Codex subscription includes separate API usage or free programmatic execution. Treat already-paid subscriptions as fixed/sunk resources with quota/capacity and interface constraints. For future live routing, only a genuinely available programmatic backend with current evidence may be selected. Future APIs/VPS/paid services remain planning-only until credentials/spend/ToS/geography gates are cleared.
+
+I050 adds an additional rule: illustrative defaults are never live evidence. Current resource parameters must be measured, provider-attested/system-probed, or explicitly user-declared with clear provenance and freshness. Unknown/stale/conflicting values stay planning-only.
 
 ## Routing precedence
 Policy/demand evidence precedes resource economics. No backend — regardless of cost, speed or quality — can make unsafe, unsupported, policy-insufficient or unproven-demand work eligible.

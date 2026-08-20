@@ -68,4 +68,14 @@ Optional fee/acceptance/dispute/non-payment values are isolated under `routing_e
 
 Verification: **7 deterministic bridge tests passed** in an isolated interface-compatible harness. No real external action or GitHub Actions dispatch occurred.
 
-Next: **I050 — build resource-profile evidence/calibration so synthetic reference backend values cannot be mistaken for real current resource availability/economics. Unknown/stale resource parameters must remain planning-only.**
+## I050 — 2026-08-21
+Status: **completed**
+Stage: Resource-profile evidence and calibration
+
+Added `resource_profile_evidence.py` plus deterministic tests. Synthetic resource-router defaults can no longer serve as evidence of actual current resource availability/economics. Fourteen critical availability/interface/cost/quota/energy/performance/capacity parameters require fresh, hash-bound provenance before calibration.
+
+Complete user declarations remain explicitly `calibrated_declared`; reproducible measured/provider/system evidence can become `calibrated_reproducible`. Missing, stale, future-dated, conflicting, invalid, wrong-profile or tampered evidence fails closed to `planning_only`. Reproducible claims require a source-content digest and bind to the exact reference-backend hash.
+
+Verification: **10 deterministic tests passed** locally. No real market/network/value-moving action or GitHub Actions dispatch occurred.
+
+Next: **I051 — integrate I050 attestations into I049 routing so synthetic/default backends remain reference/planning routes and only complete current evidence can enter calibrated routing.**
