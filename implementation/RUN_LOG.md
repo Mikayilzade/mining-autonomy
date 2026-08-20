@@ -122,4 +122,12 @@ Added `capture_session_planner.py` over I028. Ready production GET items are adm
 
 Nine deterministic tests passed in an isolated local harness. No HTTP request, credential, account, KYC, wallet, paid infrastructure, task acceptance, publication or settlement occurred. GitHub Actions workflow was unchanged and push-triggered CI remains disabled.
 
-Next: **I030 — deterministic read-only transport preflight/envelope over I029, still no real HTTP.**
+## I030 — 2026-08-20
+Status: **completed**
+Stage: Deterministic read-only transport preflight
+
+Added `transport_preflight.py` over the exact I029 session plan plus I028 readiness packet. Every scheduled GET is rebound to manifest/source/evidence/provenance/rate data and hashed into an inert request envelope. Tampering, POST, credentials/actions, non-production input, duplicate items and local/private endpoints fail closed. A separate exact-plan-hash read-only authorization validator returns only an inert validation receipt; it cannot enable transport or execute network calls.
+
+Ten deterministic tests passed in an isolated local harness. No live HTTP request or external action occurred. GitHub Actions workflow was unchanged and push-triggered CI remains disabled.
+
+Next: **I031 — fake/in-memory authorization-to-execution gate + response receipts and adapter-boundary safety limits; still no real HTTP.**
