@@ -3,23 +3,23 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I030 — deterministic read-only transport preflight**
+Last completed implementation run: **I031 — synthetic authorization-to-execution gate**
 Last updated: **2026-08-20**
 
 ## Latest durable files
+- `implementation/RUN_I031_SYNTHETIC_EXECUTION_GATE.md`
+- `implementation/execution_gate.py`
+- `implementation/test_execution_gate.py`
 - `implementation/RUN_I030_TRANSPORT_PREFLIGHT.md`
 - `implementation/transport_preflight.py`
 - `implementation/test_transport_preflight.py`
-- `implementation/RUN_I029_CAPTURE_SESSION_PLANNER.md`
-- `implementation/capture_session_planner.py`
-- `implementation/test_capture_session_planner.py`
 
-## I030 outcome
-The I029 session plan now feeds a deterministic no-network transport preflight that rebinds every scheduled GET step to the exact I028 readiness row and original manifest item hash, evidence/provenance fields and conservative rate contract. Session/readiness/envelope/request hashes make tampering explicit. Local/private endpoints, non-GET methods, credentials, actions, environment mismatches, duplicate items and schedule/source/host drift fail closed.
+## I031 outcome
+The I030 preflight now feeds a deterministic authorization-to-execution boundary that can invoke only dependency-injected fake/in-memory resolver and transport implementations. Exact authorization is validated before either dependency is touched; absent, expired or plan-mismatched authorization fails before resolution/transport.
 
-A future `ReadOnlyGetTransport` dependency is defined but never instantiated or called. Explicit read-only authorization is modeled as a separate hash-bound envelope; validation produces only an inert receipt and still cannot enable transport.
+Each request envelope is re-hashed before execution. DNS results must be explicit globally routable IPs; private/local/non-global results fail before GET. Redirect responses/Location headers are rejected, response size is capped using declared and actual length, and content type is allowlisted. Response receipts bind the exact request hash, source URL, status, resolved global addresses, media type, byte count and body SHA-256.
 
-Ten deterministic tests passed in an isolated local harness. No live HTTP request or external account/value action occurred. Push-triggered CI remains disabled and workflow unchanged.
+Seven deterministic gate-focused tests passed in an isolated local harness. Repository-wide pytest was not invoked to avoid re-enabling push CI/email noise. No real DNS lookup, HTTP request or external account/value action occurred. GitHub Actions workflow remains unchanged and push-triggered CI remains disabled.
 
 ## Current ranking
 1. PayanAgent
@@ -32,13 +32,15 @@ Ten deterministic tests passed in an isolated local harness. No live HTTP reques
 - Demand/fill rate remains the dominant unknown.
 - Missing capture is not evidence of zero demand.
 - Production/test environments remain isolated.
-- Session scheduling and transport preflight are not authorization.
-- Read-only authorization must bind to the exact session-plan hash and remain GET-only/no-credentials/no-action.
-- Public-network transport must reject private/local/non-global endpoints and later re-check DNS at execution time.
+- Session planning, preflight and synthetic execution are not permission for real network capture.
+- Authorization must be exact-plan-bound, unexpired, GET-only/no-credentials/no-action.
+- DNS must be resolved at execution and every result must be globally routable before transport.
+- Redirects remain forbidden in the first real read-only capture path.
+- Response bytes/content type must be bounded before evidence ingestion.
 - No irreversible or paid external action without explicit user authorization.
 
-## Immediate next run — I031
-Build a deterministic authorization-to-execution gate around `ReadOnlyGetTransport` using only a fake/in-memory transport. Emit response receipts bound to exact request hashes and enforce redirect, DNS-resolution result, response-size and content-type limits at the adapter boundary. Prove absent/expired/mismatched authorization cannot invoke transport. Still perform no real HTTP request.
+## Immediate next run — I032
+Build a deterministic response-to-sanitized-capture bridge over I031 receipts and existing I023/I024 receipt-gated ingestion contracts. Use fake response bodies only. Require exact request/response receipt hashes, content-type-aware parsing, bounded JSON/text normalization, provenance timestamps and evidence-class binding. Prove malformed/oversized/unexpected payloads cannot enter the durable evidence path. Still perform no real network request.
 
 ## Completion gate
 Implementation is complete only when the documented stack either demonstrates positive economics on real permitted tests or reasonable candidates are exhausted by control passes. Until then: **IMPLEMENTATION IN PROGRESS**.

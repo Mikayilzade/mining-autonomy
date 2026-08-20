@@ -9,34 +9,38 @@ Do not reconstruct this project from chat memory.
 4. Discovery Runs 001–062 are COMPLETE. Continue Implementation / Experiment Phase.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I030 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I031 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
-- `implementation/RUN_I030_TRANSPORT_PREFLIGHT.md`
-- `implementation/transport_preflight.py`
-- `implementation/test_transport_preflight.py`
-- I029 session-planner and I028 readiness files named in STATUS.
+- `implementation/RUN_I031_SYNTHETIC_EXECUTION_GATE.md`
+- `implementation/execution_gate.py`
+- `implementation/test_execution_gate.py`
+- I030 preflight and prior capture pipeline files named in STATUS.
 
-## I030 result
-`build_transport_preflight()` converts the I029 deterministic session plan plus the exact I028 readiness packet into integrity-bound, transport-inert request envelopes.
+## I031 result
+`execute_synthetic_read_only()` adds an authorization-to-execution gate around the I030 `ReadOnlyGetTransport` contract, but only with dependency-injected synthetic resolver/transport implementations.
 
 Important behavior:
-1. every step is rebound through `manifest_item_sha256` to its exact readiness source/evidence/provenance/rate contract;
-2. plan, readiness packet, envelope set and each request binding are SHA-256 bound;
-3. source/host/schedule/manifest tampering, duplicate planned items, POST, credentials, actions and non-production rows fail closed;
-4. localhost/private/non-global literal IP endpoints are rejected before transport;
-5. future DNS execution policy must resolve then reject non-global addresses to reduce SSRF/DNS-rebinding risk;
-6. `ReadOnlyGetTransport` is only a protocol contract and is not instantiated or called;
-7. explicit read-only authorization is a separate exact-plan-hash envelope; its validator returns an inert validation receipt only;
-8. transport/network/action flags remain false.
+1. explicit exact-plan authorization is validated before resolver or transport invocation;
+2. current time is injected deterministically and expired authorization fails before any dependency call;
+3. each preflight request envelope is independently re-hashed before execution;
+4. DNS resolution is a separate dependency and every returned address must be globally routable before GET;
+5. 3xx responses or any `Location` header are rejected; no redirect following exists;
+6. declared and actual response lengths are capped;
+7. only allowlisted media types are accepted;
+8. response receipts bind request hash, source URL, status, DNS result, media type, byte count and body SHA-256;
+9. credentials/actions remain false and the execution receipt explicitly states synthetic transport only / no real network calls.
 
-Verification: ten deterministic tests passed in an isolated local harness. GitHub Actions workflow was unchanged and push-triggered CI remains disabled.
+Verification: seven deterministic gate-focused tests passed in an isolated local harness. Full repository pytest was not invoked in this run; push-triggered CI remains disabled and workflow unchanged.
 
-## Immediate next run: I031
-Build a deterministic authorization-to-execution gate around `ReadOnlyGetTransport` using only a fake/in-memory transport. Bind response receipts to request hashes and enforce redirect, DNS-resolution result, response-size and content-type limits at the adapter boundary. Prove absent/expired/mismatched authorization cannot invoke transport. Still perform no real HTTP request.
+## Immediate next run: I032
+Build the deterministic response-to-sanitized-capture bridge from I031 response receipts into the existing sealed receipt/evidence ingestion path. Use synthetic payloads only. Bind exact receipt hashes, content type, evidence classes and provenance timestamps; malformed/unexpected/oversized data must fail closed. Still no real HTTP/DNS.
 
 ## Hard boundary
 Do not spend money, create/fund wallets, submit KYC, accept paid work, publish monetized services, or settle transactions without explicit user authorization. Do not bypass CAPTCHA, geofencing, platform rules, or other access controls. Real network capture still requires separate explicit read-only authorization.
+
+## Git/CI
+Prefer one coherent commit per implementation run. Do not re-enable push-triggered CI or make documentation-only changes trigger Actions. Current workflow remains manual/PR-oriented to avoid notification spam.
 
 ## Completion
 Implementation remains incomplete until a permitted real test demonstrates positive economics or reasonable candidates are exhausted and confirmed by control passes.

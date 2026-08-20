@@ -130,4 +130,12 @@ Added `transport_preflight.py` over the exact I029 session plan plus I028 readin
 
 Ten deterministic tests passed in an isolated local harness. No live HTTP request or external action occurred. GitHub Actions workflow was unchanged and push-triggered CI remains disabled.
 
-Next: **I031 — fake/in-memory authorization-to-execution gate + response receipts and adapter-boundary safety limits; still no real HTTP.**
+## I031 — 2026-08-20
+Status: **completed**
+Stage: Synthetic authorization-to-execution gate
+
+Added `execution_gate.py` around the I030 transport contract with dependency-injected fake resolver/transport only. Exact authorization is validated before dependencies are touched; expiry is checked against injected current time; request binding hashes are revalidated. DNS must resolve exclusively to globally routable addresses before GET. Redirects, unexpected content types and oversized responses fail closed. Response receipts bind request hash, source, status, DNS result, media type, byte count and body hash.
+
+Seven deterministic gate-focused tests passed in an isolated local harness. No real DNS/HTTP or external action occurred. Full repository pytest was not invoked; GitHub Actions workflow remained unchanged and push-triggered CI remains disabled.
+
+Next: **I032 — deterministic response-to-sanitized-capture bridge into existing receipt-gated evidence ingestion, still using synthetic payloads only.**
