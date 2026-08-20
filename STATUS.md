@@ -3,26 +3,22 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I048 — Resource / Execution Router foundation**
-Last updated: **2026-08-20**
+Last completed implementation run: **I049 — observation-to-resource routing integration**
+Last updated: **2026-08-21**
 
 ## Latest durable files
+- `implementation/RUN_I049_OBSERVATION_RESOURCE_ROUTING.md`
+- `implementation/execution_routing_integration.py`
+- `implementation/test_execution_routing_integration.py`
 - `implementation/RUN_I048_RESOURCE_EXECUTION_ROUTER.md`
-- `implementation/resource_router.py`
-- `implementation/test_resource_router.py`
-- `implementation/RUN_I047_SOURCE_COMPLIANCE_REVIEW_BRIDGE.md`
-- I046 and earlier authorization/readiness/capture files.
+- I047 and earlier authorization/readiness/capture files.
 
-## I048 outcome
-The stack now has an explicit offline Resource / Execution Router foundation before any real monetization test. It distinguishes fixed/sunk cost from per-task marginal cost, models backend quota/capacity, latency, reliability/quality, parallelism/rate limits, electricity, API/model cost, retry/failure cost, maintenance time, opportunity cost and payment/acceptance risk.
+## I049 outcome
+The Resource / Execution Router is now downstream of the existing task observation/orchestrator gate. A task must first pass normalized policy/capability/quality/evaluator checks **and** carry evidence that proves open paid demand before `TaskEconomics` is constructed and resource routing is invoked.
 
-Synthetic backend families cover deterministic local Python, local CPU/GPU/model capacity, subscription-backed ChatGPT/Codex-style assistance as a fixed/limited non-API support resource, cheap and stronger external APIs, free-tier CI/cloud, owned-PC execution and future paid VPS/server.
+Cheap execution cannot rescue prohibited, unsupported, policy-insufficient or demand-unproven work. Conversely, an upstream `accept_dry_run` can still be held by the router when explicit acceptance/dispute/non-payment/fee economics make the conservative route unattractive.
 
-The router does not treat subscriptions as free unlimited APIs: subscription support remains non-programmatic/support-only unless an actual programmatic interface exists. Already-paid/sunk fixed cost is not charged in full to each task; non-sunk fixed recurring cost is only amortized when an explicit allocation basis exists.
-
-Currently unavailable, credentialed, paid-account or new-spend backends remain planning-only and cannot outrank an available backend. Routing selects the lowest marginal-cost sufficiently reliable permitted available backend while every execution/action flag remains disabled.
-
-A future watcher policy may use polling/webhook/WebSocket more frequently than chat-level automation only within source ToS/API/rate limits, with local deterministic filtering/deduplication before AI. I048 keeps network access disabled. Ten deterministic tests passed in an isolated local harness; GitHub Actions was not dispatched.
+Combined `RoutedTaskObservation` records contain upstream economics/evidence plus router quotes/selected backend while `dry_run_only=true`, `execution_enabled=false`, `network_enabled=false` and `value_movement_enabled=false`. Seven deterministic bridge tests passed in an isolated interface-compatible harness; GitHub Actions was not dispatched.
 
 ## Current ranking
 1. PayanAgent
@@ -50,9 +46,12 @@ A future watcher policy may use polling/webhook/WebSocket more frequently than c
 - Resource routing must separate sunk/fixed cost from marginal cost and must never assume ChatGPT/Codex subscription exposes a free autonomous API.
 - Unavailable/credentialed/new-spend backends may be modeled for planning but may not become selected live execution paths without their blockers being explicitly cleared.
 - Fast watcher architecture must obey source ToS/rate limits and perform local cheap filtering before AI; do not use frequent LLM polling by default.
+- **Upstream observation/policy/demand state is authoritative. Resource routing may narrow eligibility but may never widen or rescue an upstream hold/reject.**
+- `routing_economics` risk/fee inputs are explicit economic inputs; ordinary task metadata cannot silently alter router economics.
+- Synthetic/default resource profiles are planning references, not evidence of actual user resource availability or current vendor pricing.
 
-## Immediate next run — I049
-Integrate the Resource / Execution Router into the existing observation/orchestrator path. Convert accepted normalized task observations into router-compatible `TaskEconomics`, preserve upstream policy/demand holds, and emit a combined inert dry-run record with opportunity economics plus selected backend. Add deterministic tests proving that unsafe/unsupported/no-demand work cannot become routable merely because a backend is cheap. Keep all execution/network/value movement disabled.
+## Immediate next run — I050
+Build a deterministic resource-profile evidence/calibration layer. Separate synthetic reference backends from measured/declared real available resources; bind availability, fixed/sunk cost, quota, electricity, latency, reliability/quality and interface constraints to explicit evidence/provenance. Unknown or stale resource parameters must remain planning-only. Keep execution/network/value movement disabled.
 
 ## Completion gate
 Implementation is complete only when the documented stack either demonstrates positive economics on real permitted tests or reasonable candidates are exhausted by control passes. Until then: **IMPLEMENTATION IN PROGRESS**.

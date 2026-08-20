@@ -58,4 +58,14 @@ Added an inert watcher policy for future polling/webhook/WebSocket workers: sour
 
 Verification: **10 deterministic tests passed** in an isolated local harness. No DNS/HTTP, credentials, paid API/server, task acceptance, publication, settlement or value movement occurred. GitHub Actions was not dispatched; push-triggered CI remains disabled.
 
-Next: **I049 — integrate Resource / Execution Router into the existing observation/orchestrator path while preserving upstream policy and demand-evidence holds. Emit combined inert task+backend dry-run records and prove that cheap execution cannot make unsafe/unsupported/unproven-demand work routable.**
+## I049 — 2026-08-21
+Status: **completed**
+Stage: Observation/orchestrator → Resource Router integration
+
+Added `execution_routing_integration.py` and deterministic tests. Upstream `observe_task()` policy/capability/quality/evaluator and open-paid-demand evidence gates are now authoritative; held/rejected work never reaches `TaskEconomics` or resource routing. Accepted dry-run tasks are converted to router economics and can still be held by payment-risk/resource constraints.
+
+Optional fee/acceptance/dispute/non-payment values are isolated under `routing_economics`. Combined records preserve upstream economics/evidence plus router quotes and selected backend while execution/network/value movement remain disabled.
+
+Verification: **7 deterministic bridge tests passed** in an isolated interface-compatible harness. No real external action or GitHub Actions dispatch occurred.
+
+Next: **I050 — build resource-profile evidence/calibration so synthetic reference backend values cannot be mistaken for real current resource availability/economics. Unknown/stale resource parameters must remain planning-only.**
