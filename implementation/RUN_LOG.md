@@ -180,4 +180,14 @@ The delta exposes coverage-complete transitions, captured/missing/rejected/gap d
 
 Eight deterministic I035 tests passed in an isolated local harness, including cross-plan/cross-envelope rejection and rehashed counter-tamper rejection. No network capture or external action occurred. GitHub Actions workflow was unchanged and push-triggered CI remains disabled.
 
-Next: **I036 — deterministic longitudinal same-plan attestation history/series verifier, still offline/no-network.**
+## I036 — 2026-08-20
+Status: **completed**
+Stage: Deterministic longitudinal attestation history verifier
+
+Added `attestation_history.py` to validate a strictly chronological multi-observation series of I034 attestations for one exact I029/I030 plan. Every observation is replay-validated, duplicate attestation identities and cross-plan/envelope/request identity drift fail closed, and every adjacent I035 delta is recomputed.
+
+Optional supplied deltas must exactly match replay. The series emits a deterministic coverage timeline, request-state transition frequencies, first-to-last coverage evolution and canonical `history_sha256`. Missing/rejected capture remains unknown evidence; coverage trends are not interpreted as demand trends.
+
+Added eight deterministic tests for chronology, duplicate identities, plan/envelope mismatch, transition summaries, delta replay and minimum series size. The test module is committed but no Actions dispatch or green-CI claim was made in this run. No network capture or external action occurred. Push-triggered CI remains disabled.
+
+Next: **I037 — deterministic longitudinal evidence-quality/regression gate, still offline/no-network.**
