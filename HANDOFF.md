@@ -9,35 +9,39 @@ Do not reconstruct this project from chat memory.
 4. Discovery Runs 001–062 are COMPLETE. Continue Implementation / Experiment Phase.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I031 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I032 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
-- `implementation/RUN_I031_SYNTHETIC_EXECUTION_GATE.md`
-- `implementation/execution_gate.py`
-- `implementation/test_execution_gate.py`
-- I030 preflight and prior capture pipeline files named in STATUS.
+- `implementation/RUN_I032_RESPONSE_CAPTURE_BRIDGE.md`
+- `implementation/response_capture_bridge.py`
+- `implementation/test_response_capture_bridge.py`
+- `implementation/SOURCES_I032.md`
+- I031 execution gate and prior receipt-gated capture/archive files named in STATUS.
 
-## I031 result
-`execute_synthetic_read_only()` adds an authorization-to-execution gate around the I030 `ReadOnlyGetTransport` contract, but only with dependency-injected synthetic resolver/transport implementations.
+## I032 result
+The synthetic execution boundary now connects to the sanitized durable-evidence pipeline without adding any real transport.
 
 Important behavior:
-1. explicit exact-plan authorization is validated before resolver or transport invocation;
-2. current time is injected deterministically and expired authorization fails before any dependency call;
-3. each preflight request envelope is independently re-hashed before execution;
-4. DNS resolution is a separate dependency and every returned address must be globally routable before GET;
-5. 3xx responses or any `Location` header are rejected; no redirect following exists;
-6. declared and actual response lengths are capped;
-7. only allowlisted media types are accepted;
-8. response receipts bind request hash, source URL, status, DNS result, media type, byte count and body SHA-256;
-9. credentials/actions remain false and the execution receipt explicitly states synthetic transport only / no real network calls.
+1. top-level I031 execution receipt is independently hash-verified;
+2. exactly one response receipt must match the requested response hash;
+3. response receipt hash is independently reconstructed from request/source/status/DNS/media/size/body metadata;
+4. the matching I030 request envelope is revalidated and bound to the exact sealed sampling-manifest item;
+5. source identity and expected evidence classes must agree across manifest → request → response;
+6. response body bytes must match both declared byte count and SHA-256 before parsing;
+7. only 2xx application/json or text/plain enter parsing;
+8. JSON parsing has bounded nodes/depth; text normalization rejects NUL/control characters and oversized text;
+9. an injected platform-specific builder alone may turn parsed content into a sanitized observation bundle;
+10. bundle platform/source/source-time/capture-time/evidence-class are independently rechecked;
+11. the existing I023 receipt is extended with hash-bound I031 execution provenance and reverified;
+12. output is directly shaped for I024 `run_verified_capture_batch()` / `append_capture_report()`.
 
-Verification: seven deterministic gate-focused tests passed in an isolated local harness. Full repository pytest was not invoked in this run; push-triggered CI remains disabled and workflow unchanged.
+No raw response body is written to the durable archive. No live HTTP/DNS, account, KYC, API key, wallet, payment, bid, task acceptance, service publication or settlement path was added.
 
-## Immediate next run: I032
-Build the deterministic response-to-sanitized-capture bridge from I031 response receipts into the existing sealed receipt/evidence ingestion path. Use synthetic payloads only. Bind exact receipt hashes, content type, evidence classes and provenance timestamps; malformed/unexpected/oversized data must fail closed. Still no real HTTP/DNS.
+## Immediate next run: I033
+Add a deterministic multi-response synthetic capture-session bridge over I032. Require exact planned-session coverage, detect duplicate/missing response receipts, isolate per-request parsing/sanitization failures, emit stable audit states, and pass only successful verified captures to durable ingestion. Missing/failed captures remain production evidence gaps. Still no real network.
 
 ## Hard boundary
-Do not spend money, create/fund wallets, submit KYC, accept paid work, publish monetized services, or settle transactions without explicit user authorization. Do not bypass CAPTCHA, geofencing, platform rules, or other access controls. Real network capture still requires separate explicit read-only authorization.
+Do not spend money, create/fund wallets, submit KYC, accept paid work, publish monetized services, or settle transactions without explicit user authorization. Do not bypass CAPTCHA, geofencing, platform rules or other access controls. Real network capture still requires separate explicit read-only authorization.
 
 ## Git/CI
 Prefer one coherent commit per implementation run. Do not re-enable push-triggered CI or make documentation-only changes trigger Actions. Current workflow remains manual/PR-oriented to avoid notification spam.

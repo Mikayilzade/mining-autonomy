@@ -10,7 +10,7 @@ Converted completed discovery into implementation shortlist. PayanAgent and OKX.
 Status: **completed**
 Stage: Read-only candidate validation → evaluator/adapters → passive benchmark → unified orchestrator → evidence snapshots/audit
 
-Detailed run documents are preserved individually. Stack gained policy/cost/EV gates, hard-disabled settlement, adapter conformance, passive-service economics, unified dry-run queue, provenance/freshness snapshots and audit export.
+Detailed durable run documents are preserved individually. Stack gained policy/cost/EV gates, hard-disabled settlement, adapter conformance, passive-service economics, unified dry-run queue, provenance/freshness snapshots and audit export.
 
 ## I011–I013 — 2026-08-19
 Status: **completed**
@@ -138,4 +138,14 @@ Added `execution_gate.py` around the I030 transport contract with dependency-inj
 
 Seven deterministic gate-focused tests passed in an isolated local harness. No real DNS/HTTP or external action occurred. Full repository pytest was not invoked; GitHub Actions workflow remained unchanged and push-triggered CI remains disabled.
 
-Next: **I032 — deterministic response-to-sanitized-capture bridge into existing receipt-gated evidence ingestion, still using synthetic payloads only.**
+## I032 — 2026-08-20
+Status: **completed**
+Stage: Synthetic response-to-sanitized-capture bridge
+
+Added `response_capture_bridge.py` between I031 response receipts and the existing I023/I024 receipt-gated evidence path. Execution/response/request/manifest hashes are revalidated before parsing. Response bytes must match receipt length + SHA-256; only bounded UTF-8 JSON/text normalization is accepted. An injected platform-specific builder returns an already-sanitized observation bundle whose source/timestamps/evidence class are independently rebound before a capture receipt is emitted.
+
+The final capture receipt includes exact I031 execution provenance and is reverified by the existing capture-receipt contract. A deterministic integration test exercises synthetic PayanAgent response → sanitized observation bundle → verified capture report → durable evidence archive; negative tests cover body tamper, response metadata tamper, evidence-class mismatch, malformed JSON and parse-size limits.
+
+No real DNS/HTTP, credentials, KYC, wallet, payment, task acceptance, publication or settlement occurred. Push-triggered CI remains disabled and no Actions dispatch was performed.
+
+Next: **I033 — multi-response/session-level synthetic capture coverage with exact plan coverage, duplicate/missing detection, per-request failure isolation and successful-only durable ingestion.**

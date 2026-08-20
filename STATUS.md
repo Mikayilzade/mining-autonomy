@@ -3,23 +3,30 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I031 — synthetic authorization-to-execution gate**
+Last completed implementation run: **I032 — synthetic response-to-sanitized-capture bridge**
 Last updated: **2026-08-20**
 
 ## Latest durable files
+- `implementation/RUN_I032_RESPONSE_CAPTURE_BRIDGE.md`
+- `implementation/response_capture_bridge.py`
+- `implementation/test_response_capture_bridge.py`
+- `implementation/SOURCES_I032.md`
 - `implementation/RUN_I031_SYNTHETIC_EXECUTION_GATE.md`
 - `implementation/execution_gate.py`
 - `implementation/test_execution_gate.py`
-- `implementation/RUN_I030_TRANSPORT_PREFLIGHT.md`
-- `implementation/transport_preflight.py`
-- `implementation/test_transport_preflight.py`
 
-## I031 outcome
-The I030 preflight now feeds a deterministic authorization-to-execution boundary that can invoke only dependency-injected fake/in-memory resolver and transport implementations. Exact authorization is validated before either dependency is touched; absent, expired or plan-mismatched authorization fails before resolution/transport.
+## I032 outcome
+The I031 synthetic response receipts now feed an I024-compatible verified capture without weakening the existing receipt-gated durable evidence boundary.
 
-Each request envelope is re-hashed before execution. DNS results must be explicit globally routable IPs; private/local/non-global results fail before GET. Redirect responses/Location headers are rejected, response size is capped using declared and actual length, and content type is allowlisted. Response receipts bind the exact request hash, source URL, status, resolved global addresses, media type, byte count and body SHA-256.
+`bridge_response_to_verified_capture()` independently verifies the top-level I031 execution receipt hash, exact response-receipt hash, exact request-binding hash, sealed manifest/item identity, source identity and expected evidence classes before parsing any response bytes.
 
-Seven deterministic gate-focused tests passed in an isolated local harness. Repository-wide pytest was not invoked to avoid re-enabling push CI/email noise. No real DNS lookup, HTTP request or external account/value action occurred. GitHub Actions workflow remains unchanged and push-triggered CI remains disabled.
+Synthetic response bytes are re-hashed and length-checked before content-type-aware parsing. JSON is strict UTF-8 with bounded node/depth complexity; text/plain is UTF-8 normalized with NUL/control-character and character-count guards. Non-2xx responses, malformed JSON, unexpected media types, evidence-class mismatch, source/timestamp mismatch and oversized/unexpected payloads fail closed.
+
+A platform-specific injected payload builder produces an already-sanitized observation bundle. The bridge then creates the existing I023 capture receipt and adds hash-bound I031 execution provenance (`execution_receipt_sha256`, request hash, response receipt hash, body hash, media type and status). The resulting `{bundle, manifest_envelope, receipt}` is compatible with `run_verified_capture_batch()` and `append_capture_report()`.
+
+The new bridge contains no resolver, HTTP client, credentials, action endpoint or settlement path. It accepts only already-produced synthetic response bytes.
+
+A deterministic test module covers full synthetic response → PayanAgent sanitized observation bundle → verified capture report → durable evidence archive, plus body-hash tamper, response-receipt tamper, evidence-class mismatch, malformed JSON and parse-size rejection. Repository-wide CI was not enabled or dispatched; push-triggered CI remains disabled.
 
 ## Current ranking
 1. PayanAgent
@@ -33,14 +40,14 @@ Seven deterministic gate-focused tests passed in an isolated local harness. Repo
 - Missing capture is not evidence of zero demand.
 - Production/test environments remain isolated.
 - Session planning, preflight and synthetic execution are not permission for real network capture.
-- Authorization must be exact-plan-bound, unexpired, GET-only/no-credentials/no-action.
-- DNS must be resolved at execution and every result must be globally routable before transport.
-- Redirects remain forbidden in the first real read-only capture path.
-- Response bytes/content type must be bounded before evidence ingestion.
+- Authorization must remain exact-plan-bound, unexpired, GET-only/no-credentials/no-action.
+- Every response entering evidence must be bound to its exact request, response receipt, body hash, sealed manifest item and expected evidence class.
+- Raw response bytes are transient bridge inputs only; durable evidence remains sanitized.
+- DNS/redirect/size/content-type gates remain upstream of evidence parsing.
 - No irreversible or paid external action without explicit user authorization.
 
-## Immediate next run — I032
-Build a deterministic response-to-sanitized-capture bridge over I031 receipts and existing I023/I024 receipt-gated ingestion contracts. Use fake response bodies only. Require exact request/response receipt hashes, content-type-aware parsing, bounded JSON/text normalization, provenance timestamps and evidence-class binding. Prove malformed/oversized/unexpected payloads cannot enter the durable evidence path. Still perform no real network request.
+## Immediate next run — I033
+Build a deterministic multi-response synthetic capture batch over I032 that preserves per-request failure isolation and produces a complete capture-session audit: successful sanitized captures, rejected responses with stable error codes, missing scheduled responses, duplicate response receipt detection and exact coverage against the I029/I030 planned session. Feed only successful receipt-verified captures into durable evidence; failed/missing items must remain explicit production gaps. Still perform no real network request.
 
 ## Completion gate
 Implementation is complete only when the documented stack either demonstrates positive economics on real permitted tests or reasonable candidates are exhausted by control passes. Until then: **IMPLEMENTATION IN PROGRESS**.
