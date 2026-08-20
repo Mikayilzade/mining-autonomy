@@ -3,26 +3,25 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I038 — deterministic authorization-readiness decision packet**
+Last completed implementation run: **I039 — deterministic minimal-plan reducer**
 Last updated: **2026-08-20**
 
 ## Latest durable files
+- `implementation/RUN_I039_MINIMAL_PLAN_REDUCER.md`
+- `implementation/minimal_plan_reducer.py`
+- `implementation/test_minimal_plan_reducer.py`
 - `implementation/RUN_I038_AUTHORIZATION_READINESS.md`
 - `implementation/authorization_readiness.py`
-- `implementation/test_authorization_readiness.py`
-- `implementation/RUN_I037_EVIDENCE_QUALITY_GATE.md`
-- `implementation/evidence_quality_gate.py`
-- `implementation/test_evidence_quality_gate.py`
-- I036 and earlier receipt-gated capture/readiness/session/preflight files.
+- I037 and earlier capture/readiness/session/preflight files.
 
-## I038 outcome
-The stack now combines I037 capture-integrity quality output with exact I036 history and I028–I030 readiness/session/preflight contracts.
+## I039 outcome
+The stack can now consume I038's exact selected request and, when the source I029/I030 plan contains multiple requests, reduce it deterministically to one exact production GET.
 
-It independently revalidates upstream hashes and requires the I036 history to bind to the exact I029 session-plan hash and I030 transport-envelope-set hash. It can select at most one exact production GET as the smallest future integrity observation, or emit a no-capture/blocked state.
+The reducer revalidates I038 plus the original I028/I029/I030 bindings, verifies the selected request-binding hash, preserves source/evidence/provenance/rate/timeout semantics, and reconstructs a one-request inert session/preflight pair. Unselected requests are deferred rather than silently dropped from provenance.
 
-If the current I030 plan contains multiple requests, I038 refuses to broaden a future authorization to all of them and instead requires a one-request replan. If the current plan already contains exactly one GET, it may emit an inert exact-plan authorization draft, but authorization remains false and no nonce/network path is enabled.
+No-capture, already-minimal and blocked I038 outcomes remain no-op/blocked rather than fabricating a new plan. Authorization remains false and no network path is enabled.
 
-Eight deterministic I038 tests passed in an isolated local harness. GitHub Actions was not dispatched and push-triggered CI remains disabled.
+Eight deterministic I039 tests passed in an isolated local harness. GitHub Actions was not dispatched and push-triggered CI remains disabled.
 
 ## Current ranking
 1. PayanAgent
@@ -37,14 +36,14 @@ Eight deterministic I038 tests passed in an isolated local harness. GitHub Actio
 - Production/test environments remain isolated.
 - Capture-integrity labels are not demand/profitability labels.
 - Authorization readiness is not authorization.
+- I039 reduction must never widen I038's single-request scope.
 - Any future authorization must remain exact-plan-bound, short-lived, GET-only, no-credentials and no-action.
-- I038 may select at most one minimal request; it must never widen authorization to unrelated requests.
 - Every durable response must remain bound to exact request/receipt/body/manifest evidence.
 - DNS/redirect/size/content-type gates remain upstream of evidence parsing.
 - No irreversible or paid external action without explicit user authorization.
 
-## Immediate next run — I039
-Build a deterministic minimal-plan reducer for I038. When I038 selects one request from a multi-request preflight, reconstruct an exact one-request I029/I030-compatible session/preflight pair without changing source/evidence/provenance/rate semantics. Preserve all safety/hash boundaries and perform no real network request. If I038 says no capture is needed, emit a no-op result.
+## Immediate next run — I040
+Build a deterministic exact-authorization request packet over the I039 reduced one-request plan. Bind the exact reduced session/preflight hashes and a short TTL plus human-readable scope, but keep authorization false, no usable nonce, no credentials and no network request. Preserve no-op/blocked/already-minimal states rather than inventing permission.
 
 ## Completion gate
 Implementation is complete only when the documented stack either demonstrates positive economics on real permitted tests or reasonable candidates are exhausted by control passes. Until then: **IMPLEMENTATION IN PROGRESS**.

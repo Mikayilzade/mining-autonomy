@@ -9,34 +9,34 @@ Do not reconstruct this project from chat memory.
 4. Discovery Runs 001–062 are COMPLETE. Continue Implementation / Experiment Phase.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I038 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I039 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I039_MINIMAL_PLAN_REDUCER.md`
+- `implementation/minimal_plan_reducer.py`
+- `implementation/test_minimal_plan_reducer.py`
 - `implementation/RUN_I038_AUTHORIZATION_READINESS.md`
-- `implementation/authorization_readiness.py`
-- `implementation/test_authorization_readiness.py`
-- `implementation/RUN_I037_EVIDENCE_QUALITY_GATE.md`
-- I036 and prior capture/readiness/session/preflight files named in STATUS.
+- I037 and prior capture/readiness/session/preflight files named in STATUS.
 
-## I038 result
-`build_authorization_readiness_packet()` joins the exact I037 quality output, I036 history and I028–I030 contracts without performing network activity.
+## I039 result
+`build_minimal_plan_reduction()` converts an I038 multi-request replan decision into one exact inert I029/I030-compatible plan/preflight pair.
 
 Important behavior:
-1. I037 and I036 hashes are independently revalidated;
-2. I036 must bind to the exact I029 session-plan hash and I030 transport-envelope-set hash;
-3. I028 readiness, I029 plan and I030 envelope-set hashes are independently recomputed;
-4. I030 request bindings are revalidated before selection;
-5. capture-integrity recommendations remain explicitly separate from economic demand;
-6. at most one production GET is selected as the minimal future observation;
-7. if no repeat is warranted, result is no-capture-needed;
-8. if repeat is warranted but no exact ready request exists, result is blocked;
-9. if multiple requests exist, I038 requires a one-request replan rather than widening authorization;
-10. a single-request existing plan may produce only an inert authorization draft with authorization still false;
+1. I038 decision hash and original I028/I029/I030 hashes are independently revalidated;
+2. every original request-binding hash is checked before selection;
+3. the I038 target must match exactly one original envelope and one session step;
+4. source URL, host, GET method, manifest item, environment, evidence, provenance, rate and timeout are preserved;
+5. the selected step is renumbered to sequence 1 only for the new one-request plan;
+6. old/new request-binding hashes remain explicit because sequence is part of the binding;
+7. unselected originally planned requests become deferred with `minimal_authorization_scope_reduction` provenance;
+8. the reduced I030 preflight binds the original I028 readiness packet and new I039 session-plan hash;
+9. no-capture, already-minimal and blocked I038 states do not create a new actionable plan;
+10. authorization remains false, credentials/network/action remain disabled;
 11. eight deterministic tests passed in an isolated local harness;
-12. no DNS/HTTP, credentials or action path was used.
+12. no DNS/HTTP or external action occurred.
 
-## Immediate next run: I039
-Create a deterministic minimal-plan reducer. For an I038 multi-request replan decision, reconstruct an exact one-request I029/I030-compatible session/preflight pair bound to the chosen request while preserving source, evidence, provenance, rate, manifest and safety semantics. If I038 says no capture is needed, emit a no-op reducer result. Still no real network request.
+## Immediate next run: I040
+Create a deterministic exact-authorization request packet over the I039 reduced one-request plan. Bind the reduced session/preflight hashes, exact GET scope, TTL and human-readable summary while still keeping authorization false, no usable nonce/credential and no network activity. Preserve no-op/blocked/already-minimal states.
 
 ## Hard boundary
 Do not spend money, create/fund wallets, submit KYC, accept paid work, publish monetized services, or settle transactions without explicit user authorization. Do not bypass CAPTCHA, geofencing, platform rules or other access controls. Real network capture still requires separate explicit read-only authorization.

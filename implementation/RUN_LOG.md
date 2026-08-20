@@ -54,4 +54,12 @@ A multi-request preflight cannot be silently authorized as a whole: I038 require
 
 Eight deterministic tests passed in an isolated local harness. No DNS/HTTP, credentials, account/KYC, wallet, payment, task acceptance, publication or settlement occurred. GitHub Actions was not dispatched and push-triggered CI remains disabled.
 
-Next: **I039 — deterministic minimal-plan reducer that reconstructs a one-request I029/I030-compatible session/preflight pair for the I038-selected request, or emits no-op when no capture is needed; still no real HTTP.**
+## I039 — 2026-08-20
+Status: **completed**
+Stage: Deterministic minimal-plan reducer
+
+Added `minimal_plan_reducer.py` over I038 and exact I028–I030 contracts. Multi-request authorization readiness is now narrowed to one exact production GET while preserving source/evidence/provenance/rate/timeout semantics and recording unselected requests as deferred. No-capture/already-minimal/blocked states remain inert.
+
+Eight deterministic tests passed in an isolated local harness. No DNS/HTTP, credentials, account/KYC, wallet, payment, task acceptance, publication or settlement occurred. GitHub Actions was not dispatched and push-triggered CI remains disabled.
+
+Next: **I040 — deterministic exact-authorization request packet over the I039 reduced one-request plan, still authorization=false/no nonce/no network.**
