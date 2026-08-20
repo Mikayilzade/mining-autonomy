@@ -9,35 +9,33 @@ Do not reconstruct this project from chat memory.
 4. Discovery Runs 001–062 are COMPLETE. Continue Implementation / Experiment Phase.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I042 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I043 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I043_EXECUTION_WRAPPER.md`
+- `implementation/execution_wrapper.py`
+- `implementation/test_execution_wrapper.py`
 - `implementation/RUN_I042_AUTHORIZATION_LEASE.md`
-- `implementation/authorization_lease.py`
-- `implementation/test_authorization_lease.py`
-- `implementation/RUN_I041_AUTHORIZATION_CONSENT.md`
-- I040 and prior authorization/readiness/capture files named in STATUS.
+- I041 and prior authorization/readiness/capture files named in STATUS.
 
-## I042 result
-`issue_single_use_authorization_lease()` and `consume_single_use_authorization_lease()` add a replay-safe offline one-request budget over exact I041 authorization.
+## I043 result
+`execute_with_single_use_lease()` adds a synthetic-only dependency-injected execution boundary over I042.
 
 Important behavior:
-1. I041 consent-verification and embedded execution-authorization hashes are independently revalidated;
-2. only a valid `authorize` result is leaseable;
-3. lease scope remains exactly one production GET;
-4. credentials/action/transport remain forbidden;
-5. the lease inherits the original authorization expiry and cannot be issued outside that window;
-6. a synthetic attempt is hash-bound to both lease and execution authorization;
-7. widened request count/method/environment/credentials/action is rejected;
-8. prior consumption receipts are hash-validated;
-9. any prior valid consumed receipt for the same lease causes replay/double-consumption rejection;
-10. successful offline consumption emits zero remaining requests;
-11. no DNS/HTTP occurs and consumption is not evidence a network request happened;
-12. synthetic-fixture status is preserved;
-13. eight deterministic tests passed locally.
+1. the execution request is hash-bound to the exact lease and execution authorization;
+2. scope remains exactly one production GET with no credentials/action;
+3. `allow_real_transport=False` is mandatory in I043 and `True` fails closed;
+4. network-capable/non-synthetic dependencies are rejected;
+5. the wrapper consumes the I042 lease before invoking the transport callback;
+6. expiry or prior-consumption replay therefore prevents callback invocation;
+7. accepted transport is explicitly `synthetic_stub` and `network_capable=False`;
+8. response must state `network_calls_performed=false`;
+9. result binds request, lease, authorization, consumption and response hashes;
+10. eight deterministic tests passed locally;
+11. no DNS/HTTP or external action occurred.
 
-## Immediate next run: I043
-Create a deterministic dependency-injected execution wrapper over I042. It must consume a fresh lease before invoking transport, use a synthetic stub by default, and expose a hard `allow_real_transport=False` default. Tests must prove no real transport path is available by default. Do not perform real DNS/HTTP.
+## Immediate next run: I044
+Build an inert deterministic real-transport integration proposal contract. It should state what exact fresh evidence, packet-bound explicit user authorization and safety gates would be required before a later integration could replace the synthetic dependency for one GET. The proposal itself must have no executable transport and tests must prove it cannot invoke network activity.
 
 ## Hard boundary
 Do not spend money, create/fund wallets, submit KYC, accept paid work, publish monetized services, or settle transactions without explicit user authorization. Do not bypass CAPTCHA, geofencing, platform rules or other access controls. Real network capture still requires separate explicit read-only authorization.

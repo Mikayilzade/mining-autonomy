@@ -86,4 +86,12 @@ Added `authorization_lease.py` over I041. Exact consent/execution hashes and one
 
 Eight deterministic tests passed in an isolated local harness. No DNS/HTTP, credentials, account/KYC, wallet, payment, task acceptance, publication or settlement occurred. GitHub Actions was not dispatched and push-triggered CI remains disabled.
 
-Next: **I043 — dependency-injected execution wrapper consuming an I042 lease before a synthetic transport stub; hard `allow_real_transport=False` default, no real network.**
+## I043 — 2026-08-20
+Status: **completed**
+Stage: Dependency-injected synthetic execution wrapper
+
+Added `execution_wrapper.py` over I042. Exact execution requests are hash-bound to the one-use lease and execution authorization; the lease is consumed before any transport callback. Only a synthetic, explicitly network-incapable dependency is accepted, and `allow_real_transport=True` fails closed. Expiry/replay/scope tamper blocks before callback execution.
+
+Eight deterministic I043 tests passed in an isolated local harness. No DNS/HTTP, credentials, account/KYC, wallet, payment, task acceptance, publication or settlement occurred. GitHub Actions was not dispatched and push-triggered CI remains disabled.
+
+Next: **I044 — inert real-transport integration proposal contract; no executable network path.**
