@@ -3,25 +3,25 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I040 — deterministic exact-authorization request packet**
+Last completed implementation run: **I041 — deterministic offline authorization-consent verifier**
 Last updated: **2026-08-20**
 
 ## Latest durable files
+- `implementation/RUN_I041_AUTHORIZATION_CONSENT.md`
+- `implementation/authorization_consent.py`
+- `implementation/test_authorization_consent.py`
 - `implementation/RUN_I040_EXACT_AUTHORIZATION_REQUEST.md`
 - `implementation/exact_authorization_request.py`
-- `implementation/test_exact_authorization_request.py`
-- `implementation/RUN_I039_MINIMAL_PLAN_REDUCER.md`
-- `implementation/minimal_plan_reducer.py`
-- I038 and earlier authorization/readiness/capture files.
+- I039 and earlier authorization/readiness/capture files.
 
-## I040 outcome
-The stack can now turn I039's exact one-request reduced plan into a deterministic, human-reviewable authorization-request packet without granting authorization.
+## I041 outcome
+The stack can now verify a future explicit human decision against I040 without inferring permission from chat history or enabling network transport.
 
-The packet revalidates I039, independently binds the reduced session-plan hash and full reduced-preflight hash, requires exactly one production GET, verifies the request-binding hash, carries exact evidence/provenance/rate/timeout scope, and uses a short 60–900 second TTL.
+The verifier independently revalidates I040 wrapper/request/scope hashes, requires the exact one-production-GET scope, checks decision time against the I040 TTL, requires human scope acknowledgement, rejects scope widening, and binds any valid synthetic authorize result to the exact decision/request/scope hashes.
 
-The packet contains a readable exact-scope summary but no usable nonce/token. Authorization, credentials, transport, network calls and action remain disabled. I039 no-capture, blocked and already-minimal states remain non-actionable rather than being converted into permission.
+A valid synthetic authorize fixture can produce a short-lived hash-bound execution-authorization object, but `transport_enabled=false`, `network_calls_performed=false`, credentials remain forbidden, and no real user consent is inferred. Explicit deny yields no execution authorization.
 
-Eight deterministic I040 tests passed in an isolated local harness. GitHub Actions was not dispatched and push-triggered CI remains disabled.
+Eight deterministic I041 tests passed in an isolated local harness. GitHub Actions was not dispatched and push-triggered CI remains disabled.
 
 ## Current ranking
 1. PayanAgent
@@ -35,15 +35,15 @@ Eight deterministic I040 tests passed in an isolated local harness. GitHub Actio
 - Missing capture is not evidence of zero demand.
 - Production/test environments remain isolated.
 - Capture-integrity labels are not demand/profitability labels.
-- Authorization readiness/request packets are not authorization.
-- I039/I040 must never widen the exact single-request scope.
-- Any future authorization must be exact-packet-bound, short-lived, GET-only, no-credentials and no-action.
+- Authorization request packets and synthetic consent fixtures are not real user authorization.
+- I039–I041 must never widen the exact single-request scope.
+- Any future real authorization must be exact-packet-bound, short-lived, GET-only, no-credentials and no-action.
 - Every durable response must remain bound to exact request/receipt/body/manifest evidence.
 - DNS/redirect/size/content-type gates remain upstream of evidence parsing.
 - No irreversible or paid external action without explicit user authorization.
 
-## Immediate next run — I041
-Build a deterministic offline authorization-consent verifier over I040. It may accept only a future explicit human decision object that binds the exact I040 packet/scope and is still inside TTL. Use synthetic consent fixtures only; do not infer real consent from chat history and do not enable transport/network activity.
+## Immediate next run — I042
+Build a deterministic offline single-use authorization lease/consumption gate over I041. Bind one future execution attempt to the exact execution-authorization hash, enforce one request and expiry, reject replay/double-consumption, and keep transport disabled/dependency-injected with synthetic fixtures only.
 
 ## Completion gate
 Implementation is complete only when the documented stack either demonstrates positive economics on real permitted tests or reasonable candidates are exhausted by control passes. Until then: **IMPLEMENTATION IN PROGRESS**.

@@ -9,35 +9,36 @@ Do not reconstruct this project from chat memory.
 4. Discovery Runs 001–062 are COMPLETE. Continue Implementation / Experiment Phase.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I040 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I041 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I041_AUTHORIZATION_CONSENT.md`
+- `implementation/authorization_consent.py`
+- `implementation/test_authorization_consent.py`
 - `implementation/RUN_I040_EXACT_AUTHORIZATION_REQUEST.md`
-- `implementation/exact_authorization_request.py`
-- `implementation/test_exact_authorization_request.py`
-- `implementation/RUN_I039_MINIMAL_PLAN_REDUCER.md`
-- I038 and prior authorization/readiness/capture files named in STATUS.
+- I039 and prior authorization/readiness/capture files named in STATUS.
 
-## I040 result
-`build_exact_authorization_request()` converts only I039's exact reduced one-request plan into a human-reviewable inert authorization-request packet.
+## I041 result
+`verify_explicit_authorization_consent()` verifies only an explicit decision object bound to the exact I040 packet/request/scope and still inside the I040 TTL.
 
 Important behavior:
-1. I039 reduction hash and inert flags are independently revalidated;
-2. only `reduced_to_exact_single_get_plan` constructs a concrete request packet;
-3. reduced session plan and reduced full preflight are independently hashed and bound;
-4. exactly one production GET is required;
-5. the request-binding hash is independently recomputed;
-6. session-plan step and transport envelope must match exactly;
-7. scope preserves source, host, manifest item, evidence classes, provenance, rate and timeout semantics;
-8. TTL is constrained to 60–900 seconds;
-9. human-readable scope explicitly states one GET, no credentials, no action and expiry;
-10. authorization nonce/token remain null and authorization remains false;
-11. no-capture, blocked and already-minimal I039 states stay non-actionable;
-12. eight deterministic tests passed locally;
-13. no DNS/HTTP or external action occurred.
+1. I040 wrapper, inner request and scope hashes are independently revalidated;
+2. only the exact-ready I040 state is eligible;
+3. scope must remain exactly one production GET;
+4. credentials and action remain forbidden;
+5. the decision must be explicit `authorize` or `deny`;
+6. decision binds wrapper hash, request hash and scope hash;
+7. human scope acknowledgement is mandatory;
+8. decision time must be inside the I040 request window and not future-dated;
+9. widened max_requests/method/credentials/action scope fails closed;
+10. authorize can emit a short-lived hash-bound execution authorization, but transport remains disabled;
+11. deny emits no execution authorization;
+12. synthetic fixtures are explicitly labeled and are never treated as real user consent;
+13. eight deterministic tests passed locally;
+14. no DNS/HTTP or external action occurred.
 
-## Immediate next run: I041
-Create a deterministic offline authorization-consent verifier over I040. It must require a future explicit decision object bound to the exact I040 request/scope and TTL. Use synthetic consent fixtures only. Do not treat previous chat messages as consent and do not enable real transport.
+## Immediate next run: I042
+Create a deterministic offline single-use authorization lease/consumption gate over I041. Bind one future execution attempt to the exact execution-authorization hash, enforce expiry and max_requests=1, reject replay/double-consumption, and keep transport disabled/dependency-injected. Use synthetic fixtures only; do not perform real DNS/HTTP.
 
 ## Hard boundary
 Do not spend money, create/fund wallets, submit KYC, accept paid work, publish monetized services, or settle transactions without explicit user authorization. Do not bypass CAPTCHA, geofencing, platform rules or other access controls. Real network capture still requires separate explicit read-only authorization.

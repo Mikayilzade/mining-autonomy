@@ -70,4 +70,12 @@ Added `exact_authorization_request.py` over I039. It revalidates the I039 reduct
 
 Eight deterministic tests passed in an isolated local harness. No DNS/HTTP, credentials, account/KYC, wallet, payment, task acceptance, publication or settlement occurred. GitHub Actions was not dispatched and push-triggered CI remains disabled.
 
-Next: **I041 — deterministic offline authorization-consent verifier using synthetic explicit-decision fixtures only; no inference of real consent and no network transport.**
+## I041 — 2026-08-20
+Status: **completed**
+Stage: Deterministic offline authorization-consent verifier
+
+Added `authorization_consent.py` over I040. It independently revalidates I040 wrapper/request/scope hashes, requires an explicit human decision object bound to the exact request and TTL, rejects stale/future/widened/unacknowledged decisions, and distinguishes authorize from deny. Valid synthetic authorize fixtures emit a short-lived hash-bound execution-authorization object while transport remains disabled and no real consent is inferred.
+
+Eight deterministic tests passed in an isolated local harness. No DNS/HTTP, credentials, account/KYC, wallet, payment, task acceptance, publication or settlement occurred. GitHub Actions was not dispatched and push-triggered CI remains disabled.
+
+Next: **I042 — deterministic offline single-use authorization lease/consumption gate; synthetic fixtures only, replay-safe, no real transport.**
