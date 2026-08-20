@@ -38,4 +38,10 @@ Stage: End-to-end attested execution bridge
 
 Added `attested_execution_bridge.py` and five deterministic tests. Upstream observation/policy/demand acceptance is required before TaskEconomics and attested routing. Missing resource evidence narrows accept to hold; calibrated routing preserves evidence bundle hash and calibration class. Execution/network/value movement remain disabled. GitHub Actions was not dispatched.
 
-Next: **I053 — build an offline resource-calibration acquisition/probe plan for the first no-new-spend deterministic Python/owned-PC backend.**
+## I053 — 2026-08-21
+Status: **completed**
+Stage: Local no-new-spend resource calibration acquisition
+
+Added `resource_calibration_acquisition.py` and 10 deterministic tests. The acquisition plan covers all I050 critical fields for deterministic Python/owned-PC references while forbidding inference of hardware, electricity tariff/cost, quota, subscription API access or accounting/interface facts. An inert transcript reducer can measure demonstrated local availability/programmatic access, p95 latency, reliability, conditional quality and bounded concurrency without network, credentials, spend or value movement.
+
+Next: **I054 — convert I053 probe/declaration inputs into exact I050 ResourceEvidence records without fabricating missing fields.**

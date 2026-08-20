@@ -9,33 +9,25 @@ Do not reconstruct this project from chat memory.
 4. Discovery Runs 001–062 are COMPLETE. Continue Implementation / Experiment Phase.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I051 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I053 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
-- `implementation/RUN_I051_ATTESTED_RESOURCE_ROUTING.md`
-- `implementation/resource_routing_attestation.py`
-- `implementation/test_resource_routing_attestation.py`
-- `implementation/RUN_I050_RESOURCE_PROFILE_EVIDENCE.md`
-- I049 and prior resource-routing / authorization / readiness / capture files.
+- `implementation/RUN_I053_RESOURCE_CALIBRATION_ACQUISITION.md`
+- `implementation/resource_calibration_acquisition.py`
+- `implementation/test_resource_calibration_acquisition.py`
+- `implementation/RUN_I052_ATTESTED_EXECUTION_BRIDGE.md`
+- I051 and earlier resource-routing / authorization / readiness / capture files.
 
-## I051 result
-The Resource / Execution Router now has an explicit evidence-backed selection boundary:
-1. synthetic/default backends remain visible only as reference/planning quotes;
-2. no reference-only backend can be selected even if its illustrative cost is cheapest;
-3. only complete current I050 attestations may enter the calibrated route set;
-4. user-declared evidence remains `calibrated_declared_route`;
-5. measured/provider/system-backed evidence remains `calibrated_reproducible_route`;
-6. missing/planning-only evidence yields `resource_evidence_missing`;
-7. calibrated backends still pass the existing capability/quota/policy/success/margin gates;
-8. execution/network/value movement remain disabled;
-9. seven deterministic tests were added and syntax compilation passed;
-10. GitHub Actions was not dispatched.
+## I053 result
+A concrete acquisition plan now exists for the first no-new-spend resource families (`deterministic_python` / `owned_pc`). It covers all I050 critical fields while separating what can be measured offline from what must be explicitly declared or supported by provider/system evidence.
+
+The inert probe contract allows fixed-fixture local benchmarking only: no network, credentials, paid service or value movement. From a transcript it may derive demonstrated availability/programmatic access, p95 latency, reliability, conditional quality and bounded concurrency. It cannot infer hardware, electricity tariff/cost, quota, fixed/sunk accounting, credential/paid-account/new-spend requirements or subscription API access.
 
 Target flow:
-`cheap source watcher -> local filter/dedupe -> normalized task -> policy/rights/quality/demand gate -> TaskEconomics -> I050 resource attestation -> I051 attested Resource Router -> selected backend dry-run -> later explicit live gates`.
+`cheap source watcher -> local filter/dedupe -> normalized task -> policy/rights/quality/demand gate -> TaskEconomics -> resource acquisition/evidence -> I050 attestation -> I051 attested Resource Router -> selected backend dry-run -> later explicit live gates`.
 
-## Immediate next run: I052
-Build the end-to-end bridge over I049 + I051: upstream observation/policy/demand acceptance must happen before attested resource routing; combined records must preserve upstream economics/evidence plus resource calibration state/evidence bundle hash. Reference-only resources must never make a task routable. Keep execution/network/value movement disabled.
+## Immediate next run: I054
+Convert I053 probe summaries plus explicit declaration/energy inputs into I050 `ResourceEvidence` records. Preserve source-kind distinctions and exact reference/transcript/source digests. Missing fields must stay missing; do not fabricate completeness. Synthetic fixtures only.
 
 ## Hard boundary
 Do not spend money, create/fund wallets, submit KYC, accept paid work, publish monetized services, settle transactions, use real credentials or bypass CAPTCHA/geofencing/rate limits/platform rules without explicit user authorization. Real market/network capture still requires separate explicit read-only authorization.
