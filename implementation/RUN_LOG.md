@@ -170,4 +170,14 @@ Canonical coverage gets its own hash and the complete replay receives `attestati
 
 No real network request, credential, KYC, wallet, payment, task acceptance, publication or settlement occurred. GitHub Actions workflow was unchanged and push-triggered CI remains disabled.
 
-Next: **I035 — deterministic same-plan capture-attestation comparison/delta verifier, still offline/no-network.**
+## I035 — 2026-08-20
+Status: **completed**
+Stage: Deterministic capture-attestation comparison/delta verifier
+
+Added `capture_attestation_delta.py` to compare two I034 attestations only after independent internal replay validation. Comparisons require the same session-plan hash, transport-envelope-set hash and ordered request-binding identities. Coverage counts, production gaps and receipt membership are recomputed before diffing.
+
+The delta exposes coverage-complete transitions, captured/missing/rejected/gap deltas, per-request state/error/receipt changes and verified receipt additions/removals. Missing capture remains `unknown_not_negative_demand`, and the complete comparison is hash-addressed with `delta_sha256`.
+
+Eight deterministic I035 tests passed in an isolated local harness, including cross-plan/cross-envelope rejection and rehashed counter-tamper rejection. No network capture or external action occurred. GitHub Actions workflow was unchanged and push-triggered CI remains disabled.
+
+Next: **I036 — deterministic longitudinal same-plan attestation history/series verifier, still offline/no-network.**
