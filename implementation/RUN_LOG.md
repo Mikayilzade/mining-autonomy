@@ -160,4 +160,14 @@ Added eight deterministic session tests covering complete coverage, missing resp
 
 No real DNS/HTTP, credentials, KYC, wallet, payment, task acceptance, publication or settlement occurred.
 
-Next: **I034 — hash-bound capture-session replay/coverage attestation tied to exact session-plan and transport-envelope-set identities, with tamper tests and still no real network.**
+## I034 — 2026-08-20
+Status: **completed**
+Stage: Hash-bound capture-session replay/coverage attestation
+
+Added `session_attestation.py` to bind I033 session audit output to the exact I029 session-plan SHA-256 and I030 transport-envelope-set SHA-256. The module independently recomputes plan/envelope hashes, rebinds each request/audit row, recomputes coverage and production gaps, and requires exact membership equality across captured audit receipts, verified captures and the verified capture report.
+
+Canonical coverage gets its own hash and the complete replay receives `attestation_sha256`. Tampered plan, envelope set, audit rows, capture-report membership and gap counters fail closed. Seven deterministic I034 tests passed in an isolated local harness.
+
+No real network request, credential, KYC, wallet, payment, task acceptance, publication or settlement occurred. GitHub Actions workflow was unchanged and push-triggered CI remains disabled.
+
+Next: **I035 — deterministic same-plan capture-attestation comparison/delta verifier, still offline/no-network.**
