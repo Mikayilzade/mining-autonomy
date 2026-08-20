@@ -9,33 +9,33 @@ Do not reconstruct this project from chat memory.
 4. Discovery Runs 001–062 are COMPLETE. Continue Implementation / Experiment Phase.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I044 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I045 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I045_TRANSPORT_HUMAN_REVIEW.md`
+- `implementation/transport_review_packet.py`
+- `implementation/test_transport_review_packet.py`
 - `implementation/RUN_I044_REAL_TRANSPORT_PROPOSAL.md`
-- `implementation/real_transport_proposal.py`
-- `implementation/test_real_transport_proposal.py`
-- `implementation/RUN_I043_EXECUTION_WRAPPER.md`
-- I042 and prior authorization/readiness/capture files named in STATUS.
+- I043 and prior authorization/readiness/capture files named in STATUS.
 
-## I044 result
-`build_real_transport_integration_proposal()` adds an inert proposal boundary over the exact I042/I043 one-GET scope.
+## I045 result
+`build_real_transport_human_review_packet()` adds a deterministic offline human-audit boundary over I044.
 
 Important behavior:
-1. the I042 single-use lease hash/scope is independently revalidated;
-2. the I043 execution request hash and lease/authorization bindings are independently revalidated;
-3. scope remains exactly one production GET with no credentials/action;
-4. proposal creation must occur inside the lease validity window;
-5. exact request/lease/authorization/target scope is hash-bound;
-6. seven mandatory future gates are recorded: fresh explicit real-user authorization, separate transport implementation review, DNS/destination policy, redirect policy, response resource limits, current source/ToS compliance evidence, and durable receipt binding;
-7. synthetic or inferred consent is explicitly unacceptable;
-8. the proposal carries no token, nonce, callback or network-capable object;
-9. authorization/transport/network/value-movement flags remain false;
-10. eight deterministic tests passed locally, including monkeypatched socket/getaddrinfo checks proving proposal construction does not call network primitives;
-11. no DNS/HTTP or external action occurred.
+1. I044 proposal and exact-scope hashes are independently revalidated;
+2. scope remains exactly one production GET with no credentials/action;
+3. the complete seven-gate I044 set must remain intact;
+4. review must occur before proposal expiry;
+5. current source-compliance evidence is hash-bound and must use an HTTPS first-party source;
+6. evidence must be fresh, UTC-dated, and explicitly confirm anonymous read-only access with no credentials or human-only requirement;
+7. inadequate evidence yields `blocked_by_missing_evidence`;
+8. adequate evidence yields only `ready_for_human_decision`, never authorization;
+9. all future transport/DNS/redirect/resource-limit/receipt gates remain unresolved;
+10. eight deterministic tests passed locally, including network-monkeypatch proof that no DNS/HTTP primitive is used;
+11. no external action occurred.
 
-## Immediate next run: I045
-Build a deterministic offline review/approval packet over I044. Present the exact proposal and unresolved gates as a human-auditable checklist; distinguish `ready_for_human_decision` from `blocked_by_missing_evidence`; require current source-compliance evidence metadata; do not create or infer real authorization and do not enable transport.
+## Immediate next run: I046
+Build a deterministic offline source-compliance evidence attestation/replay layer. Bind source URL, retrieval/check timestamps, content digest and policy conclusion; distinguish manually supplied metadata from reproducible captured evidence. Keep all fixtures synthetic and transport disabled.
 
 ## Hard boundary
 Do not spend money, create/fund wallets, submit KYC, accept paid work, publish monetized services, or settle transactions without explicit user authorization. Do not bypass CAPTCHA, geofencing, platform rules or other access controls. Real network capture still requires separate explicit read-only authorization.
