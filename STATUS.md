@@ -3,25 +3,25 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I039 — deterministic minimal-plan reducer**
+Last completed implementation run: **I040 — deterministic exact-authorization request packet**
 Last updated: **2026-08-20**
 
 ## Latest durable files
+- `implementation/RUN_I040_EXACT_AUTHORIZATION_REQUEST.md`
+- `implementation/exact_authorization_request.py`
+- `implementation/test_exact_authorization_request.py`
 - `implementation/RUN_I039_MINIMAL_PLAN_REDUCER.md`
 - `implementation/minimal_plan_reducer.py`
-- `implementation/test_minimal_plan_reducer.py`
-- `implementation/RUN_I038_AUTHORIZATION_READINESS.md`
-- `implementation/authorization_readiness.py`
-- I037 and earlier capture/readiness/session/preflight files.
+- I038 and earlier authorization/readiness/capture files.
 
-## I039 outcome
-The stack can now consume I038's exact selected request and, when the source I029/I030 plan contains multiple requests, reduce it deterministically to one exact production GET.
+## I040 outcome
+The stack can now turn I039's exact one-request reduced plan into a deterministic, human-reviewable authorization-request packet without granting authorization.
 
-The reducer revalidates I038 plus the original I028/I029/I030 bindings, verifies the selected request-binding hash, preserves source/evidence/provenance/rate/timeout semantics, and reconstructs a one-request inert session/preflight pair. Unselected requests are deferred rather than silently dropped from provenance.
+The packet revalidates I039, independently binds the reduced session-plan hash and full reduced-preflight hash, requires exactly one production GET, verifies the request-binding hash, carries exact evidence/provenance/rate/timeout scope, and uses a short 60–900 second TTL.
 
-No-capture, already-minimal and blocked I038 outcomes remain no-op/blocked rather than fabricating a new plan. Authorization remains false and no network path is enabled.
+The packet contains a readable exact-scope summary but no usable nonce/token. Authorization, credentials, transport, network calls and action remain disabled. I039 no-capture, blocked and already-minimal states remain non-actionable rather than being converted into permission.
 
-Eight deterministic I039 tests passed in an isolated local harness. GitHub Actions was not dispatched and push-triggered CI remains disabled.
+Eight deterministic I040 tests passed in an isolated local harness. GitHub Actions was not dispatched and push-triggered CI remains disabled.
 
 ## Current ranking
 1. PayanAgent
@@ -35,15 +35,15 @@ Eight deterministic I039 tests passed in an isolated local harness. GitHub Actio
 - Missing capture is not evidence of zero demand.
 - Production/test environments remain isolated.
 - Capture-integrity labels are not demand/profitability labels.
-- Authorization readiness is not authorization.
-- I039 reduction must never widen I038's single-request scope.
-- Any future authorization must remain exact-plan-bound, short-lived, GET-only, no-credentials and no-action.
+- Authorization readiness/request packets are not authorization.
+- I039/I040 must never widen the exact single-request scope.
+- Any future authorization must be exact-packet-bound, short-lived, GET-only, no-credentials and no-action.
 - Every durable response must remain bound to exact request/receipt/body/manifest evidence.
 - DNS/redirect/size/content-type gates remain upstream of evidence parsing.
 - No irreversible or paid external action without explicit user authorization.
 
-## Immediate next run — I040
-Build a deterministic exact-authorization request packet over the I039 reduced one-request plan. Bind the exact reduced session/preflight hashes and a short TTL plus human-readable scope, but keep authorization false, no usable nonce, no credentials and no network request. Preserve no-op/blocked/already-minimal states rather than inventing permission.
+## Immediate next run — I041
+Build a deterministic offline authorization-consent verifier over I040. It may accept only a future explicit human decision object that binds the exact I040 packet/scope and is still inside TTL. Use synthetic consent fixtures only; do not infer real consent from chat history and do not enable transport/network activity.
 
 ## Completion gate
 Implementation is complete only when the documented stack either demonstrates positive economics on real permitted tests or reasonable candidates are exhausted by control passes. Until then: **IMPLEMENTATION IN PROGRESS**.

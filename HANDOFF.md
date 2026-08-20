@@ -9,34 +9,35 @@ Do not reconstruct this project from chat memory.
 4. Discovery Runs 001–062 are COMPLETE. Continue Implementation / Experiment Phase.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I039 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I040 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I040_EXACT_AUTHORIZATION_REQUEST.md`
+- `implementation/exact_authorization_request.py`
+- `implementation/test_exact_authorization_request.py`
 - `implementation/RUN_I039_MINIMAL_PLAN_REDUCER.md`
-- `implementation/minimal_plan_reducer.py`
-- `implementation/test_minimal_plan_reducer.py`
-- `implementation/RUN_I038_AUTHORIZATION_READINESS.md`
-- I037 and prior capture/readiness/session/preflight files named in STATUS.
+- I038 and prior authorization/readiness/capture files named in STATUS.
 
-## I039 result
-`build_minimal_plan_reduction()` converts an I038 multi-request replan decision into one exact inert I029/I030-compatible plan/preflight pair.
+## I040 result
+`build_exact_authorization_request()` converts only I039's exact reduced one-request plan into a human-reviewable inert authorization-request packet.
 
 Important behavior:
-1. I038 decision hash and original I028/I029/I030 hashes are independently revalidated;
-2. every original request-binding hash is checked before selection;
-3. the I038 target must match exactly one original envelope and one session step;
-4. source URL, host, GET method, manifest item, environment, evidence, provenance, rate and timeout are preserved;
-5. the selected step is renumbered to sequence 1 only for the new one-request plan;
-6. old/new request-binding hashes remain explicit because sequence is part of the binding;
-7. unselected originally planned requests become deferred with `minimal_authorization_scope_reduction` provenance;
-8. the reduced I030 preflight binds the original I028 readiness packet and new I039 session-plan hash;
-9. no-capture, already-minimal and blocked I038 states do not create a new actionable plan;
-10. authorization remains false, credentials/network/action remain disabled;
-11. eight deterministic tests passed in an isolated local harness;
-12. no DNS/HTTP or external action occurred.
+1. I039 reduction hash and inert flags are independently revalidated;
+2. only `reduced_to_exact_single_get_plan` constructs a concrete request packet;
+3. reduced session plan and reduced full preflight are independently hashed and bound;
+4. exactly one production GET is required;
+5. the request-binding hash is independently recomputed;
+6. session-plan step and transport envelope must match exactly;
+7. scope preserves source, host, manifest item, evidence classes, provenance, rate and timeout semantics;
+8. TTL is constrained to 60–900 seconds;
+9. human-readable scope explicitly states one GET, no credentials, no action and expiry;
+10. authorization nonce/token remain null and authorization remains false;
+11. no-capture, blocked and already-minimal I039 states stay non-actionable;
+12. eight deterministic tests passed locally;
+13. no DNS/HTTP or external action occurred.
 
-## Immediate next run: I040
-Create a deterministic exact-authorization request packet over the I039 reduced one-request plan. Bind the reduced session/preflight hashes, exact GET scope, TTL and human-readable summary while still keeping authorization false, no usable nonce/credential and no network activity. Preserve no-op/blocked/already-minimal states.
+## Immediate next run: I041
+Create a deterministic offline authorization-consent verifier over I040. It must require a future explicit decision object bound to the exact I040 request/scope and TTL. Use synthetic consent fixtures only. Do not treat previous chat messages as consent and do not enable real transport.
 
 ## Hard boundary
 Do not spend money, create/fund wallets, submit KYC, accept paid work, publish monetized services, or settle transactions without explicit user authorization. Do not bypass CAPTCHA, geofencing, platform rules or other access controls. Real network capture still requires separate explicit read-only authorization.

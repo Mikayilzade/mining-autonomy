@@ -62,4 +62,12 @@ Added `minimal_plan_reducer.py` over I038 and exact I028–I030 contracts. Multi
 
 Eight deterministic tests passed in an isolated local harness. No DNS/HTTP, credentials, account/KYC, wallet, payment, task acceptance, publication or settlement occurred. GitHub Actions was not dispatched and push-triggered CI remains disabled.
 
-Next: **I040 — deterministic exact-authorization request packet over the I039 reduced one-request plan, still authorization=false/no nonce/no network.**
+## I040 — 2026-08-20
+Status: **completed**
+Stage: Deterministic exact-authorization request packet
+
+Added `exact_authorization_request.py` over I039. It revalidates the I039 reduction and embedded one-request plan/preflight, requires one production GET, independently verifies request binding, binds exact scope/session/preflight hashes, adds a short TTL and human-readable summary, and emits no usable nonce/token. No-capture/blocked/already-minimal outcomes remain non-actionable.
+
+Eight deterministic tests passed in an isolated local harness. No DNS/HTTP, credentials, account/KYC, wallet, payment, task acceptance, publication or settlement occurred. GitHub Actions was not dispatched and push-triggered CI remains disabled.
+
+Next: **I041 — deterministic offline authorization-consent verifier using synthetic explicit-decision fixtures only; no inference of real consent and no network transport.**
