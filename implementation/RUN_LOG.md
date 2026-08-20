@@ -148,4 +148,16 @@ The final capture receipt includes exact I031 execution provenance and is reveri
 
 No real DNS/HTTP, credentials, KYC, wallet, payment, task acceptance, publication or settlement occurred. Push-triggered CI remains disabled and no Actions dispatch was performed.
 
-Next: **I033 — multi-response/session-level synthetic capture coverage with exact plan coverage, duplicate/missing detection, per-request failure isolation and successful-only durable ingestion.**
+## I033 — 2026-08-20
+Status: **completed**
+Stage: Synthetic multi-response capture-session audit
+
+Added `session_capture_batch.py` over I032 to reconcile the exact planned request set against already-produced synthetic responses. Every planned request now receives an explicit captured/missing/rejected state. Duplicate supplied receipts, duplicate execution receipts, responses outside the plan and multiple responses for one planned binding fail closed. I032 bridge errors are isolated per request and preserve stable error codes.
+
+Only successful receipt-verified captures feed `run_verified_capture_batch()`. Exact session counts, coverage completeness and production-gap counts are emitted; missing/rejected items remain unknown evidence and never imply zero demand.
+
+Added eight deterministic session tests covering complete coverage, missing responses, duplicate receipt paths, out-of-plan responses, isolated bridge failure, ambiguous multi-response binding and planned-count drift. Push-triggered CI remained disabled and Actions was not dispatched. The automation runtime could not clone GitHub through the local container due unavailable outbound DNS, so no local full-suite pytest claim is made.
+
+No real DNS/HTTP, credentials, KYC, wallet, payment, task acceptance, publication or settlement occurred.
+
+Next: **I034 — hash-bound capture-session replay/coverage attestation tied to exact session-plan and transport-envelope-set identities, with tamper tests and still no real network.**

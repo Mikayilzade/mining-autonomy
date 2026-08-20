@@ -9,36 +9,33 @@ Do not reconstruct this project from chat memory.
 4. Discovery Runs 001–062 are COMPLETE. Continue Implementation / Experiment Phase.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I032 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I033 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
-- `implementation/RUN_I032_RESPONSE_CAPTURE_BRIDGE.md`
-- `implementation/response_capture_bridge.py`
-- `implementation/test_response_capture_bridge.py`
-- `implementation/SOURCES_I032.md`
-- I031 execution gate and prior receipt-gated capture/archive files named in STATUS.
+- `implementation/RUN_I033_SYNTHETIC_CAPTURE_SESSION.md`
+- `implementation/session_capture_batch.py`
+- `implementation/test_session_capture_batch.py`
+- I032 response bridge and prior receipt-gated capture/archive files named in STATUS.
 
-## I032 result
-The synthetic execution boundary now connects to the sanitized durable-evidence pipeline without adding any real transport.
+## I033 result
+The synthetic capture path now has exact session-level accounting over the planned I029/I030 request set.
 
 Important behavior:
-1. top-level I031 execution receipt is independently hash-verified;
-2. exactly one response receipt must match the requested response hash;
-3. response receipt hash is independently reconstructed from request/source/status/DNS/media/size/body metadata;
-4. the matching I030 request envelope is revalidated and bound to the exact sealed sampling-manifest item;
-5. source identity and expected evidence classes must agree across manifest → request → response;
-6. response body bytes must match both declared byte count and SHA-256 before parsing;
-7. only 2xx application/json or text/plain enter parsing;
-8. JSON parsing has bounded nodes/depth; text normalization rejects NUL/control characters and oversized text;
-9. an injected platform-specific builder alone may turn parsed content into a sanitized observation bundle;
-10. bundle platform/source/source-time/capture-time/evidence-class are independently rechecked;
-11. the existing I023 receipt is extended with hash-bound I031 execution provenance and reverified;
-12. output is directly shaped for I024 `run_verified_capture_batch()` / `append_capture_report()`.
+1. declared planned-request count must match exact preflight envelopes;
+2. planned request-binding hashes must be unique;
+3. supplied duplicate response-receipt hashes are rejected before parsing;
+4. duplicate receipt hashes inside the I031 execution receipt are explicit failures;
+5. responses absent from the execution receipt or outside the planned session are rejected;
+6. multiple distinct responses for one planned request are rejected as ambiguous;
+7. every planned request receives one audit state: `captured`, `missing`, or `rejected`;
+8. I032 verification/parsing/sanitization errors are isolated per request and retain stable error codes;
+9. only successful I032 receipt-verified captures feed `run_verified_capture_batch()`;
+10. missing/rejected items remain explicit production evidence gaps and never imply zero demand;
+11. session summary includes exact counts, coverage completeness and production-gap count;
+12. still no real DNS/HTTP or external action exists in this path.
 
-No raw response body is written to the durable archive. No live HTTP/DNS, account, KYC, API key, wallet, payment, bid, task acceptance, service publication or settlement path was added.
-
-## Immediate next run: I033
-Add a deterministic multi-response synthetic capture-session bridge over I032. Require exact planned-session coverage, detect duplicate/missing response receipts, isolate per-request parsing/sanitization failures, emit stable audit states, and pass only successful verified captures to durable ingestion. Missing/failed captures remain production evidence gaps. Still no real network.
+## Immediate next run: I034
+Create a deterministic capture-session replay/coverage attestation over I033. Bind the session audit to exact I029 session-plan hash and I030 transport-envelope-set hash, canonicalize/hash the attestation, and fail closed on plan drift, audit mutation, verified-capture/report mismatch or manipulated coverage/gap counts. Keep it suitable for later comparison with an explicitly authorized real read-only capture, but perform no network request now.
 
 ## Hard boundary
 Do not spend money, create/fund wallets, submit KYC, accept paid work, publish monetized services, or settle transactions without explicit user authorization. Do not bypass CAPTCHA, geofencing, platform rules or other access controls. Real network capture still requires separate explicit read-only authorization.
