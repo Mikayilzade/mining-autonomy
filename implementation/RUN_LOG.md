@@ -110,4 +110,12 @@ Added `transport_review_packet.py` over I044. It independently revalidates the i
 
 Even a ready packet grants no authorization and exposes no transport capability. Eight deterministic tests passed locally, including network-monkeypatch proof that review construction performs no DNS/HTTP. No external action occurred; GitHub Actions was not dispatched.
 
-Next: **I046 — deterministic offline source-compliance evidence attestation/replay with exact URL/time/content-digest/policy bindings; synthetic fixtures only, transport disabled.**
+## I046 — 2026-08-20
+Status: **completed**
+Stage: Deterministic offline source-compliance attestation/replay
+
+Added `source_compliance_attestation.py` to distinguish manual I045 compliance metadata from reproducible source-content-backed evidence. Attestations bind exact source URL, checked/retrieved/attested timestamps, nested evidence hash, exact source-content SHA-256 and policy conclusion. Replay independently revalidates all bindings and freshness and exposes an I045 evidence object only when exact captured bytes reproduce the stored digest and policy remains eligible.
+
+Manual metadata, missing captured bytes, digest mismatch, stale/non-permitted policy, chronology errors and tampering remain blocked. Eight deterministic tests passed in an isolated local harness. GitHub Actions was not dispatched; push-triggered CI remains disabled. No DNS/HTTP or other external action occurred.
+
+Next: **I047 — deterministic offline bridge from I046 reproducible replay into I045 human-review state; manual-only metadata must be unable to reach `ready_for_human_decision`.**
