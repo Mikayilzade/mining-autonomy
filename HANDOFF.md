@@ -9,39 +9,47 @@ Do not reconstruct this project from chat memory.
 4. Discovery Runs 001–062 are COMPLETE. Continue Implementation / Experiment Phase.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I047 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I048 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I048_RESOURCE_EXECUTION_ROUTER.md`
+- `implementation/resource_router.py`
+- `implementation/test_resource_router.py`
 - `implementation/RUN_I047_SOURCE_COMPLIANCE_REVIEW_BRIDGE.md`
-- `implementation/source_compliance_review_bridge.py`
-- `implementation/test_source_compliance_review_bridge.py`
-- `implementation/RUN_I046_SOURCE_COMPLIANCE_ATTESTATION.md`
-- I045 and prior authorization/readiness/capture files named in STATUS.
+- I046 and prior authorization/readiness/capture files named in STATUS.
 
-## I047 result
-`source_compliance_review_bridge.py` adds the provenance barrier between I046 replay and I045 human-review readiness.
+## I048 result
+`resource_router.py` adds the mandatory offline Resource / Execution Router foundation before any real monetization test.
 
 Important behavior:
-1. I045 packet hash, exact scope hash and one-production-GET/no-credential/no-action scope are revalidated;
-2. I046 replay hash/inert state is independently revalidated;
-3. `ready_for_human_decision` is preserved only for `reproducible_evidence_verified` + `reproducible_captured_content`;
-4. replayed I045 evidence must exactly equal the evidence already bound into the I045 packet;
-5. manual-only metadata cannot become human-decision-ready through the bridge;
-6. proposal/scope hashes are preserved without widening request count or capabilities;
-7. expiry, chronology, hash tampering or evidence mismatch fail closed;
-8. eight deterministic tests passed locally;
-9. transport/network/authorization/value movement remain false and no external action occurred.
+1. backend economics now separate per-task marginal cost from fixed/sunk monthly cost;
+2. synthetic backend families cover deterministic Python/local execution, local CPU/GPU/model capacity, subscription-backed ChatGPT/Codex-style assistance, cheap/strong external APIs, free-tier CI/cloud, owned PC and future paid VPS/server;
+3. subscription tooling is explicitly modeled as fixed/limited non-API support unless an actual autonomous programmatic interface exists — it is not treated as free unlimited API capacity;
+4. already-paid/sunk fixed cost is visible but not charged in full to each task; non-sunk recurring cost is amortized only when an explicit task-volume allocation basis exists;
+5. backend quotes include quota/capacity, latency, reliability × quality probability, parallelism/rate limits, electricity, API/model cost, retry/failure cost, maintenance time, opportunity cost and platform/payment risk;
+6. task expected revenue is reduced by acceptance, dispute and non-payment probabilities plus platform/transaction/gas/withdrawal/conversion costs;
+7. unavailable, credentialed, paid-account and new-spend resources remain `planning_only`; they cannot beat a currently available eligible backend in the dry-run route;
+8. the route selects the lowest marginal-cost sufficiently reliable permitted currently available autonomous backend;
+9. every action/execution flag remains false;
+10. ten deterministic tests passed in an isolated local harness.
 
-## Immediate next run: I048
-Begin the mandatory **Resource / Execution Router** foundation before any real monetization test. Model available execution backends and distinguish fixed/sunk cost from per-task marginal cost. Minimum backend families: deterministic Python/local; local CPU/GPU/model capacity; subscription-backed ChatGPT/Codex as a fixed/limited non-API resource (never assume free programmatic access); cheap external LLM/API; stronger external LLM/API; free-tier CI/cloud; owned PC; future paid VPS/server. Include quota/capacity, latency, reliability/quality probability, parallelism/rate limits, electricity, retry/failure cost, maintenance time, platform/transaction fees, acceptance/non-payment probability and opportunity cost. Keep all execution synthetic/inert.
+## Watcher direction
+I048 also adds an inert watcher policy for future `poll` / `webhook` / `websocket` workers. A future standalone Python watcher may operate faster than chat-level automation when the source platform explicitly permits that cadence. Local parsing/filtering/deduplication must happen before AI; LLM-on-every-poll is rejected by default; rate-limit/product-limit bypass is rejected. Network remains disabled in I048.
 
-Future router direction: cheap polling/webhook/WebSocket watchers may operate more frequently than chat automations when platform ToS/API limits allow; local deterministic filtering/deduplication should occur before invoking AI. Do not attempt to bypass product/platform rate limits.
+Target future flow:
+`cheap source watcher -> local deterministic filter/dedupe -> promising opportunity -> upstream policy/demand gates -> Resource Router -> selected backend -> execution only after all later live gates are explicitly cleared`.
+
+## Immediate next run: I049
+Integrate the Resource / Execution Router into the existing observation/orchestrator path. Convert accepted normalized task observations into router-compatible `TaskEconomics`, preserve upstream policy/demand state, and emit one combined inert dry-run record with opportunity economics plus selected backend. Add deterministic tests proving that unsafe/unsupported/no-demand work cannot become routable because a backend is cheap. Keep execution/network/value movement disabled.
 
 ## Hard boundary
 Do not spend money, create/fund wallets, submit KYC, accept paid work, publish monetized services, or settle transactions without explicit user authorization. Do not bypass CAPTCHA, geofencing, platform rules or other access controls. Real network capture still requires separate explicit read-only authorization.
 
+## Resource-accounting boundary
+Do not assume paid ChatGPT/Codex subscription includes separate API usage or free programmatic execution. Treat already-paid subscriptions as fixed/sunk resources with quota/capacity limits and explicit interface constraints. For live routing, only a genuinely available programmatic backend can be selected. Future APIs/VPS/paid services remain planning-only until their credentials/spend/ToS/geography gates are cleared.
+
 ## Git/CI
-Prefer one coherent commit per implementation run. Do not re-enable push-triggered CI or make documentation-only changes trigger Actions. Current workflow remains manual/PR-oriented to avoid notification spam.
+Prefer one coherent commit per implementation run where tooling permits. Do not re-enable push-triggered CI or make documentation-only changes trigger Actions. Current workflow remains manual/PR-oriented to avoid notification spam.
 
 ## Completion
 Implementation remains incomplete until a permitted real test demonstrates positive economics or reasonable candidates are exhausted and confirmed by control passes.
