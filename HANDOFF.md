@@ -9,33 +9,31 @@ Do not reconstruct this project from chat memory.
 4. Discovery Runs 001–062 are COMPLETE. Continue Implementation / Experiment Phase.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I045 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I046 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I046_SOURCE_COMPLIANCE_ATTESTATION.md`
+- `implementation/source_compliance_attestation.py`
+- `implementation/test_source_compliance_attestation.py`
 - `implementation/RUN_I045_TRANSPORT_HUMAN_REVIEW.md`
-- `implementation/transport_review_packet.py`
-- `implementation/test_transport_review_packet.py`
-- `implementation/RUN_I044_REAL_TRANSPORT_PROPOSAL.md`
-- I043 and prior authorization/readiness/capture files named in STATUS.
+- I044 and prior authorization/readiness/capture files named in STATUS.
 
-## I045 result
-`build_real_transport_human_review_packet()` adds a deterministic offline human-audit boundary over I044.
+## I046 result
+`source_compliance_attestation.py` adds deterministic offline provenance over I045-compatible source-compliance evidence.
 
 Important behavior:
-1. I044 proposal and exact-scope hashes are independently revalidated;
-2. scope remains exactly one production GET with no credentials/action;
-3. the complete seven-gate I044 set must remain intact;
-4. review must occur before proposal expiry;
-5. current source-compliance evidence is hash-bound and must use an HTTPS first-party source;
-6. evidence must be fresh, UTC-dated, and explicitly confirm anonymous read-only access with no credentials or human-only requirement;
-7. inadequate evidence yields `blocked_by_missing_evidence`;
-8. adequate evidence yields only `ready_for_human_decision`, never authorization;
-9. all future transport/DNS/redirect/resource-limit/receipt gates remain unresolved;
-10. eight deterministic tests passed locally, including network-monkeypatch proof that no DNS/HTTP primitive is used;
-11. no external action occurred.
+1. nested I045 evidence hash and first-party HTTPS evidence class are independently revalidated;
+2. attestation binds exact source URL, platform, checked/retrieved/attested UTC timestamps, policy conclusion and source-content SHA-256;
+3. `manual_metadata_only` is explicitly separated from `reproducible_captured_content`;
+4. captured source content is never embedded in the attestation;
+5. replay requires exact caller-supplied captured bytes to reproduce the stored digest;
+6. stale/non-permitted policy, missing bytes, digest mismatch, chronology errors and tampering fail closed;
+7. only `reproducible_evidence_verified` replay exposes an I045 evidence object;
+8. eight deterministic tests passed locally;
+9. transport/network/authorization remain false and no external action occurred.
 
-## Immediate next run: I046
-Build a deterministic offline source-compliance evidence attestation/replay layer. Bind source URL, retrieval/check timestamps, content digest and policy conclusion; distinguish manually supplied metadata from reproducible captured evidence. Keep all fixtures synthetic and transport disabled.
+## Immediate next run: I047
+Build a deterministic offline bridge from I046 replay into I045 human-review state. Require `reproducible_evidence_verified` before `ready_for_human_decision`; preserve exact I044 proposal/scope bindings and prove manual-only metadata cannot reach the ready state. Synthetic fixtures only; no DNS/HTTP.
 
 ## Hard boundary
 Do not spend money, create/fund wallets, submit KYC, accept paid work, publish monetized services, or settle transactions without explicit user authorization. Do not bypass CAPTCHA, geofencing, platform rules or other access controls. Real network capture still requires separate explicit read-only authorization.
