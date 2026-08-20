@@ -118,4 +118,12 @@ Added `source_compliance_attestation.py` to distinguish manual I045 compliance m
 
 Manual metadata, missing captured bytes, digest mismatch, stale/non-permitted policy, chronology errors and tampering remain blocked. Eight deterministic tests passed in an isolated local harness. GitHub Actions was not dispatched; push-triggered CI remains disabled. No DNS/HTTP or other external action occurred.
 
-Next: **I047 — deterministic offline bridge from I046 reproducible replay into I045 human-review state; manual-only metadata must be unable to reach `ready_for_human_decision`.**
+## I047 — 2026-08-20
+Status: **completed**
+Stage: Deterministic reproducible-compliance review bridge
+
+Added `source_compliance_review_bridge.py` to combine I046 replay with the I045 human-review packet. It independently revalidates both hash-bound inputs, preserves the exact I044 proposal/scope bindings and requires `reproducible_evidence_verified` plus `reproducible_captured_content` before preserving `ready_for_human_decision`. The replayed I045 evidence must exactly equal the evidence already bound into I045; manual-only metadata, mismatch, non-ready state, expiry, chronology errors and tampering fail closed.
+
+Eight deterministic tests passed in an isolated local harness. No DNS/HTTP, credentials, account/KYC, wallet, payment, task acceptance, publication or settlement occurred. GitHub Actions was not dispatched and push-triggered CI remains disabled.
+
+Next: **I048 — begin the mandatory Resource / Execution Router foundation, modeling backend capability, sunk vs marginal cost, reliability/quality, quota/capacity, latency, parallelism, electricity, retry/failure, maintenance and transaction/acceptance risks before any real monetization test.**
