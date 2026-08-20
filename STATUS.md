@@ -3,28 +3,28 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I036 — deterministic longitudinal attestation history verifier**
+Last completed implementation run: **I037 — deterministic longitudinal evidence-quality/regression gate**
 Last updated: **2026-08-20**
 
 ## Latest durable files
+- `implementation/RUN_I037_EVIDENCE_QUALITY_GATE.md`
+- `implementation/evidence_quality_gate.py`
+- `implementation/test_evidence_quality_gate.py`
 - `implementation/RUN_I036_ATTESTATION_HISTORY.md`
 - `implementation/attestation_history.py`
 - `implementation/test_attestation_history.py`
-- `implementation/RUN_I035_CAPTURE_ATTESTATION_DELTA.md`
-- `implementation/capture_attestation_delta.py`
-- `implementation/test_capture_attestation_delta.py`
-- I034/I033 and prior receipt-gated capture/archive files.
+- I035/I034 and prior receipt-gated capture/archive files.
 
-## I036 outcome
-The stack can now verify a chronological series of repeated I034 attestations for one exact I029/I030 capture plan.
+## I037 outcome
+The stack now has an offline fail-closed quality gate over I036 longitudinal capture-attestation history.
 
-Every observation is independently replay-validated; observation timestamps must be canonical UTC and strictly increasing; duplicate attestation identities are rejected; plan, envelope-set, ordered request-binding and per-request identity drift fail closed.
+The gate verifies `history_sha256`, chronology, coverage-timeline membership and recomputed coverage evolution before interpreting anything. It requires configurable minimum observation count and elapsed span before assigning a trend.
 
-Every adjacent pair is recomputed through I035. Optional supplied I035 deltas must exactly equal the replayed result. The history records coverage evolution, state-transition frequencies, delta identities and a canonical `history_sha256`.
+Capture/infrastructure integrity is classified as `insufficient_history`, `stable`, `improving` or `regressing`. These labels apply only to evidence availability/integrity, never market demand or profitability.
 
-Coverage improvement/regression is treated strictly as evidence-availability change. Missing or rejected capture remains `unknown_not_negative_demand`; no longitudinal demand inference is made.
+The latest unresolved missing/rejected/production-gap state remains explicit. A future read-only capture can be recommended only as an inert integrity-evidence action and always carries `authorization_required = true`; no network/action/credentials path exists.
 
-No real resolver/DNS/HTTP, credentials, KYC, wallet, payment, bid, task acceptance, publication or settlement path was added. Push-triggered CI remains disabled and no Actions dispatch occurred.
+Eight deterministic I037 tests passed in an isolated local harness. GitHub Actions was not dispatched and push-triggered CI remains disabled.
 
 ## Current ranking
 1. PayanAgent
@@ -37,21 +37,21 @@ No real resolver/DNS/HTTP, credentials, KYC, wallet, payment, bid, task acceptan
 - Demand/fill rate remains the dominant unknown.
 - Missing capture is not evidence of zero demand.
 - Production/test environments remain isolated.
-- Session planning, preflight, synthetic execution, synthetic session capture, replay attestation, attestation delta comparison and longitudinal history are not permission for real network capture.
+- Session planning, preflight, synthetic execution, synthetic session capture, replay attestation, attestation delta comparison, longitudinal history and evidence-quality gating are not permission for real network capture.
 - Authorization must remain exact-plan-bound, unexpired, GET-only/no-credentials/no-action.
 - Every response entering evidence must be bound to its exact request, response receipt, body hash, sealed manifest item and expected evidence class.
 - Session-level coverage must be exact: missing, duplicate, extra and rejected responses stay visible.
 - Capture-session attestations must be bound to the exact session-plan hash and transport-envelope-set hash.
-- Attestation comparisons and histories must independently validate records before diffing/aggregation and may combine only identical plan/envelope/request identities.
-- Observation chronology must be explicit, canonical UTC and strictly monotonic; duplicate attestation identities are invalid.
-- Mutable summary counters cannot override recomputed audit-row state or receipt/report membership.
+- Attestation comparisons/histories/quality gates must validate upstream hash-addressed records and recompute mutable counters before aggregation.
+- Observation chronology must be explicit, canonical UTC and strictly monotonic.
+- Capture-integrity trend labels cannot be translated into demand or profitability claims.
 - Failed/missing session items never become demand evidence; only successful receipt-verified captures enter durable ingestion.
 - Raw response bytes are transient bridge inputs only; durable evidence remains sanitized.
 - DNS/redirect/size/content-type gates remain upstream of evidence parsing.
 - No irreversible or paid external action without explicit user authorization.
 
-## Immediate next run — I037
-Build a deterministic longitudinal evidence-quality/regression gate over I036 history. Classify capture integrity as stable/improving/regressing from coverage and transition patterns only; require minimum observation span/sample count before any trend label, separate infrastructure/capture regressions from economic evidence, and emit a fail-closed recommendation for whether a future explicitly authorized read-only capture is worth repeating. Still perform no real network request.
+## Immediate next run — I038
+Build a deterministic authorization-readiness decision packet combining I037 quality-gate output with the exact earlier I028–I030 capture/readiness contracts. Identify the smallest exact future read-only capture that would add integrity evidence value, or emit a no-capture-needed state. Preserve exact plan binding, expiry, GET-only/no-credentials/no-action boundaries. Perform no real network request.
 
 ## Completion gate
 Implementation is complete only when the documented stack either demonstrates positive economics on real permitted tests or reasonable candidates are exhausted by control passes. Until then: **IMPLEMENTATION IN PROGRESS**.

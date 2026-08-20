@@ -18,176 +18,34 @@ Stage: Verified replay → demand-evidence scoring → paid-utilization aggregat
 
 Added snapshot replay validation, explicit demand evidence classes, evidence-aware importer/orchestrator and strict settled-receipt aggregation with buyer identity minimization. No attributable raw demand/utilization payload captured.
 
-## I014 — 2026-08-19
+## I014–I020 — 2026-08-19
 Status: **completed**
-Stage: PayanAgent sanitization boundary + utilization history
+Stage: Sanitization boundary → portable bundles → registry/history → archive → production-only replay
 
-Added fail-closed raw request/receipt sanitizers, trusted-policy separation, buyer hash minimization and non-extrapolating multi-snapshot utilization comparison.
+Added fail-closed raw sanitizers, signed portable observation bundles, deterministic registry/history, append-only sanitized archive and explicit production/testnet/unknown isolation. Missing capture remains unknown rather than negative demand evidence.
 
-## I015 — 2026-08-19
+## I021–I030 — 2026-08-19 to 2026-08-20
 Status: **completed**
-Stage: End-to-end offline PayanAgent observation bundle
+Stage: Production watchlist → sealed manifests → receipt-gated ingestion/audit → readiness → session planning → transport preflight
 
-Joined sanitizer → hash-bounded snapshot → importer → evidence-gated dry-run replay → receipt aggregation/history → signed audit manifest.
+Built deterministic production-gap planning and sealed GET-only sampling contracts, receipt-aware durable ingestion/provenance, end-to-end audit export, capture readiness, chronological session planning and inert transport envelopes. Exact plan hashes, provenance, rate budgets, environment and no-credential/no-action boundaries fail closed.
 
-## I016 — 2026-08-19
+## I031–I036 — 2026-08-20
 Status: **completed**
-Stage: Portable multi-market signed observation bundles
+Stage: Synthetic execution gate → response bridge → batch audit → attestation → delta → longitudinal history
 
-Added deterministic bundle serialization/reload with schema/version/hash/HMAC validation and generalized bundle path to `agent2agent.market`. Fresh checks left PayanAgent utilization unmeasured, found no attributable live agent2agent production demand, and kept MCPize utilization account-gated.
+Added dependency-injected synthetic resolver/transport gating, response-to-sanitized-capture bridge, exact multi-response session reconciliation, hash-bound session attestation, independently replayed attestation deltas and a same-plan longitudinal history with strict UTC chronology and coverage evolution. No real DNS/HTTP or external action occurred.
 
-## I017 — 2026-08-19
+## I037 — 2026-08-20
 Status: **completed**
-Stage: Deterministic bundle registry/history + cross-market evidence scorecard
+Stage: Deterministic longitudinal evidence-quality/regression gate
 
-Added globally deduplicated registry with exact zero-open vs positive-open history and non-summed/non-extrapolated paid evidence.
+Added `evidence_quality_gate.py` over I036 history. It revalidates `history_sha256`, canonical chronology, timeline membership and recomputed coverage evolution before evaluation. Minimum sample count and elapsed span are required before trend classification.
 
-## I018 — 2026-08-19
-Status: **completed**
-Stage: Reproducible capture/delta runner + exact time-series scorecard
+Capture/infrastructure integrity is labeled `insufficient_history`, `stable`, `improving` or `regressing`. Regression/improvement scoring uses missing/rejected/production-gap evolution and captured-state transitions only. Economic demand remains explicitly unevaluated; capture-quality changes cannot be translated into demand or profitability claims.
 
-Added read-only capture validation with HTTPS provenance, freshness/future-skew and per-source rate guards. Paid values remain non-aggregated/non-extrapolated.
+The gate emits an inert, fail-closed recommendation about whether a future read-only observation might add integrity value. Every repeat recommendation remains `authorization_required`, `dry_run_only`, `action_enabled = false`; no network or credential path exists.
 
-## I019 — 2026-08-19
-Status: **completed**
-Stage: Sanitized append-only evidence archive + environment isolation
+Eight deterministic I037 tests passed in an isolated local harness. GitHub Actions was not dispatched; push-triggered CI remains disabled.
 
-Added canonical sanitized archives with report hashing, per-entry SHA-256 chaining, top-level archive hashing, duplicate rejection, append-only prefix enforcement and explicit production/testnet/unknown separation.
-
-## I020 — 2026-08-19
-Status: **completed**
-Stage: Production-only archive replay + explicit freshness bridge
-
-Only explicit production entries replay into the unified offline orchestrator; testnet/unknown are excluded. Replay is HOLD-only and cannot enable action.
-
-## I021 — 2026-08-19
-Status: **completed**
-Stage: Deterministic production-evidence watchlist planner
-
-Added plan-only ranking for missing/freshness/positive-open/paid-utilization evidence gaps. Testnet/unknown cannot close production gaps.
-
-## I022 — 2026-08-19
-Status: **completed**
-Stage: Inert sampling manifest / execution contract
-
-Expanded watchlist into exact GET-only source contracts with expected evidence class, deadline, conservative rate budget, provenance requirements and explicit environment handling. Credentials/network/action disabled.
-
-## I023 — 2026-08-19
-Status: **completed**
-Stage: Sealed sampling manifests + capture-result receipts
-
-Added canonical manifest sealing, SHA-256, optional HMAC authentication, per-item hashes and sanitized capture receipts bound to exact manifest item. Network remains dependency-injected and disabled by default; credentials/actions fail closed.
-
-## I024 — 2026-08-19
-Status: **completed**
-Stage: Receipt-gated durable evidence ingestion
-
-Closed the integrity gap between capture receipts and durable archive history. Only receipt→sealed-manifest→bundle verified reports are archive-eligible. Receipt environment is authoritative and caller mappings cannot promote evidence.
-
-## I025 — 2026-08-19
-Status: **completed**
-Stage: Receipt-aware replay provenance + deterministic sampling audit
-
-Added sealed-manifest audit states and receipt provenance indexing. Duplicate/tampered/unmatched receipts cannot close a sampling gap; replay can attach only revalidated receipt/manifest references.
-
-## I026 — 2026-08-20
-Status: **completed**
-Stage: Deterministic end-to-end evidence audit export
-
-Joined sealed schedule, receipt audit state, durable archive membership and HOLD-only replay provenance into source/platform audit. Missing/invalid/non-production/stale/provenance-missing states remain explicit production gaps.
-
-## I027 — 2026-08-20
-Status: **completed**
-Stage: Deterministic production-gap prioritizer
-
-Added `gap_prioritizer.py` over I026 audit + exact sealed manifest. Unresolved production evidence is ranked by platform priority, evidence value, freshness urgency and conservative rate budget; offline repairs are separated and missing evidence remains `unknown_not_negative_demand`.
-
-Eight deterministic unit tests passed in an isolated local harness. No network capture or external action occurred.
-
-## I028 — 2026-08-20
-Status: **completed**
-Stage: Deterministic capture-readiness packet
-
-Added `capture_readiness.py` over the I027 selected observation queue. Exact sealed-manifest/source identity, GET/no-credential/no-action boundaries, evidence classes, environment requirements, provenance checklist and conservative rate limits are revalidated and preserved.
-
-Production demand/utilization-capable sources can be classified `ready_for_future_explicit_read_only_capture`; unknown-environment and observability/mechanics-only sources remain `blocked_by_observability_or_environment_requirement`. Readiness explicitly does not grant authorization: network/action/credentials remain disabled and separate explicit read-only authorization is still required.
-
-Eight deterministic tests passed in an isolated local harness. GitHub Actions workflow was not changed; push-triggered CI remains disabled.
-
-## I029 — 2026-08-20
-Status: **completed**
-Stage: Deterministic capture-session planner
-
-Added `capture_session_planner.py` over I028. Ready production GET items are admitted under global request/time budgets and per-host minimum-interval/rolling-window rate contracts, then emitted as an exact chronological UTC session. Budget-exhausted ready items are deferred, blocked sources remain in a remediation queue, and missing evidence is never converted into negative-demand evidence.
-
-Nine deterministic tests passed in an isolated local harness. No HTTP request, credential, account, KYC, wallet, paid infrastructure, task acceptance, publication or settlement occurred. GitHub Actions workflow was unchanged and push-triggered CI remains disabled.
-
-## I030 — 2026-08-20
-Status: **completed**
-Stage: Deterministic read-only transport preflight
-
-Added `transport_preflight.py` over the exact I029 session plan plus I028 readiness packet. Every scheduled GET is rebound to manifest/source/evidence/provenance/rate data and hashed into an inert request envelope. Tampering, POST, credentials/actions, non-production input, duplicate items and local/private endpoints fail closed. A separate exact-plan-hash read-only authorization validator returns only an inert validation receipt; it cannot enable transport or execute network calls.
-
-Ten deterministic tests passed in an isolated local harness. No live HTTP request or external action occurred. GitHub Actions workflow was unchanged and push-triggered CI remains disabled.
-
-## I031 — 2026-08-20
-Status: **completed**
-Stage: Synthetic authorization-to-execution gate
-
-Added `execution_gate.py` around the I030 transport contract with dependency-injected fake resolver/transport only. Exact authorization is validated before dependencies are touched; expiry is checked against injected current time; request binding hashes are revalidated. DNS must resolve exclusively to globally routable addresses before GET. Redirects, unexpected content types and oversized responses fail closed. Response receipts bind request hash, source, status, DNS result, media type, byte count and body hash.
-
-Seven deterministic gate-focused tests passed in an isolated local harness. No real DNS/HTTP or external action occurred. Full repository pytest was not invoked; GitHub Actions workflow remained unchanged and push-triggered CI remains disabled.
-
-## I032 — 2026-08-20
-Status: **completed**
-Stage: Synthetic response-to-sanitized-capture bridge
-
-Added `response_capture_bridge.py` between I031 response receipts and the existing I023/I024 receipt-gated evidence path. Execution/response/request/manifest hashes are revalidated before parsing. Response bytes must match receipt length + SHA-256; only bounded UTF-8 JSON/text normalization is accepted. An injected platform-specific builder returns an already-sanitized observation bundle whose source/timestamps/evidence class are independently rebound before a capture receipt is emitted.
-
-The final capture receipt includes exact I031 execution provenance and is reverified by the existing capture-receipt contract. A deterministic integration test exercises synthetic PayanAgent response → sanitized observation bundle → verified capture report → durable evidence archive; negative tests cover body tamper, response metadata tamper, evidence-class mismatch, malformed JSON and parse-size limits.
-
-No real DNS/HTTP, credentials, KYC, wallet, payment, task acceptance, publication or settlement occurred. Push-triggered CI remains disabled and no Actions dispatch was performed.
-
-## I033 — 2026-08-20
-Status: **completed**
-Stage: Synthetic multi-response capture-session audit
-
-Added `session_capture_batch.py` over I032 to reconcile the exact planned request set against already-produced synthetic responses. Every planned request now receives an explicit captured/missing/rejected state. Duplicate supplied receipts, duplicate execution receipts, responses outside the plan and multiple responses for one planned binding fail closed. I032 bridge errors are isolated per request and preserve stable error codes.
-
-Only successful receipt-verified captures feed `run_verified_capture_batch()`. Exact session counts, coverage completeness and production-gap counts are emitted; missing/rejected items remain unknown evidence and never imply zero demand.
-
-Added eight deterministic session tests covering complete coverage, missing responses, duplicate receipt paths, out-of-plan responses, isolated bridge failure, ambiguous multi-response binding and planned-count drift. Push-triggered CI remained disabled and Actions was not dispatched. The automation runtime could not clone GitHub through the local container due unavailable outbound DNS, so no local full-suite pytest claim is made.
-
-No real DNS/HTTP, credentials, KYC, wallet, payment, task acceptance, publication or settlement occurred.
-
-## I034 — 2026-08-20
-Status: **completed**
-Stage: Hash-bound capture-session replay/coverage attestation
-
-Added `session_attestation.py` to bind I033 session audit output to the exact I029 session-plan SHA-256 and I030 transport-envelope-set SHA-256. The module independently recomputes plan/envelope hashes, rebinds each request/audit row, recomputes coverage and production gaps, and requires exact membership equality across captured audit receipts, verified captures and the verified capture report.
-
-Canonical coverage gets its own hash and the complete replay receives `attestation_sha256`. Tampered plan, envelope set, audit rows, capture-report membership and gap counters fail closed. Seven deterministic I034 tests passed in an isolated local harness.
-
-No real network request, credential, KYC, wallet, payment, task acceptance, publication or settlement occurred. GitHub Actions workflow was unchanged and push-triggered CI remains disabled.
-
-## I035 — 2026-08-20
-Status: **completed**
-Stage: Deterministic capture-attestation comparison/delta verifier
-
-Added `capture_attestation_delta.py` to compare two I034 attestations only after independent internal replay validation. Comparisons require the same session-plan hash, transport-envelope-set hash and ordered request-binding identities. Coverage counts, production gaps and receipt membership are recomputed before diffing.
-
-The delta exposes coverage-complete transitions, captured/missing/rejected/gap deltas, per-request state/error/receipt changes and verified receipt additions/removals. Missing capture remains `unknown_not_negative_demand`, and the complete comparison is hash-addressed with `delta_sha256`.
-
-Eight deterministic I035 tests passed in an isolated local harness, including cross-plan/cross-envelope rejection and rehashed counter-tamper rejection. No network capture or external action occurred. GitHub Actions workflow was unchanged and push-triggered CI remains disabled.
-
-## I036 — 2026-08-20
-Status: **completed**
-Stage: Deterministic longitudinal attestation history verifier
-
-Added `attestation_history.py` to validate a strictly chronological multi-observation series of I034 attestations for one exact I029/I030 plan. Every observation is replay-validated, duplicate attestation identities and cross-plan/envelope/request identity drift fail closed, and every adjacent I035 delta is recomputed.
-
-Optional supplied deltas must exactly match replay. The series emits a deterministic coverage timeline, request-state transition frequencies, first-to-last coverage evolution and canonical `history_sha256`. Missing/rejected capture remains unknown evidence; coverage trends are not interpreted as demand trends.
-
-Added eight deterministic tests for chronology, duplicate identities, plan/envelope mismatch, transition summaries, delta replay and minimum series size. The test module is committed but no Actions dispatch or green-CI claim was made in this run. No network capture or external action occurred. Push-triggered CI remains disabled.
-
-Next: **I037 — deterministic longitudinal evidence-quality/regression gate, still offline/no-network.**
+Next: **I038 — combine I037 quality output with exact I028–I030 contracts into a minimal authorization-readiness packet for a future explicitly authorized read-only capture, still with no network request.**
