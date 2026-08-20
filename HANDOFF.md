@@ -9,33 +9,34 @@ Do not reconstruct this project from chat memory.
 4. Discovery Runs 001–062 are COMPLETE. Continue Implementation / Experiment Phase.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I037 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I038 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I038_AUTHORIZATION_READINESS.md`
+- `implementation/authorization_readiness.py`
+- `implementation/test_authorization_readiness.py`
 - `implementation/RUN_I037_EVIDENCE_QUALITY_GATE.md`
-- `implementation/evidence_quality_gate.py`
-- `implementation/test_evidence_quality_gate.py`
-- `implementation/RUN_I036_ATTESTATION_HISTORY.md`
-- I036/I035/I034 and prior receipt-gated capture/archive files named in STATUS.
+- I036 and prior capture/readiness/session/preflight files named in STATUS.
 
-## I037 result
-The stack now has a deterministic offline quality/regression gate over I036 same-plan longitudinal capture histories.
+## I038 result
+`build_authorization_readiness_packet()` joins the exact I037 quality output, I036 history and I028–I030 contracts without performing network activity.
 
 Important behavior:
-1. I036 `history_sha256` is revalidated before evaluation;
-2. history mode/schema, coverage timeline, canonical UTC chronology and observation counts fail closed on mismatch;
-3. first-to-last coverage evolution is recomputed from the timeline, so rehashed mutable counters cannot override evidence;
-4. minimum observation count and elapsed span are both required before assigning a trend;
-5. capture integrity is labeled `insufficient_history`, `stable`, `improving` or `regressing`;
-6. missing/rejected/production-gap deltas and captured-state transitions contribute only to capture-integrity scoring;
-7. economic demand is explicitly `not_evaluated_capture_integrity_is_not_demand`;
-8. latest unresolved capture gaps remain visible;
-9. a recommendation to repeat a future read-only capture is advisory only and always requires separate explicit authorization;
-10. no DNS/HTTP, credentials or action path exists in I037;
-11. eight deterministic I037 tests passed in an isolated local harness.
+1. I037 and I036 hashes are independently revalidated;
+2. I036 must bind to the exact I029 session-plan hash and I030 transport-envelope-set hash;
+3. I028 readiness, I029 plan and I030 envelope-set hashes are independently recomputed;
+4. I030 request bindings are revalidated before selection;
+5. capture-integrity recommendations remain explicitly separate from economic demand;
+6. at most one production GET is selected as the minimal future observation;
+7. if no repeat is warranted, result is no-capture-needed;
+8. if repeat is warranted but no exact ready request exists, result is blocked;
+9. if multiple requests exist, I038 requires a one-request replan rather than widening authorization;
+10. a single-request existing plan may produce only an inert authorization draft with authorization still false;
+11. eight deterministic tests passed in an isolated local harness;
+12. no DNS/HTTP, credentials or action path was used.
 
-## Immediate next run: I038
-Create a deterministic authorization-readiness decision packet that combines I037 quality-gate output with the exact I028–I030 capture/readiness contracts. Select the smallest exact future read-only observation that could add integrity evidence value, or emit no-capture-needed. Preserve exact plan hash, expiry, GET-only, no-credentials and no-action semantics. Perform no network request.
+## Immediate next run: I039
+Create a deterministic minimal-plan reducer. For an I038 multi-request replan decision, reconstruct an exact one-request I029/I030-compatible session/preflight pair bound to the chosen request while preserving source, evidence, provenance, rate, manifest and safety semantics. If I038 says no capture is needed, emit a no-op reducer result. Still no real network request.
 
 ## Hard boundary
 Do not spend money, create/fund wallets, submit KYC, accept paid work, publish monetized services, or settle transactions without explicit user authorization. Do not bypass CAPTCHA, geofencing, platform rules or other access controls. Real network capture still requires separate explicit read-only authorization.

@@ -40,12 +40,18 @@ Added dependency-injected synthetic resolver/transport gating, response-to-sanit
 Status: **completed**
 Stage: Deterministic longitudinal evidence-quality/regression gate
 
-Added `evidence_quality_gate.py` over I036 history. It revalidates `history_sha256`, canonical chronology, timeline membership and recomputed coverage evolution before evaluation. Minimum sample count and elapsed span are required before trend classification.
+Added `evidence_quality_gate.py` over I036 history. It revalidates `history_sha256`, canonical chronology, timeline membership and recomputed coverage evolution before evaluation. Minimum sample count and elapsed span are required before trend classification. Capture-integrity labels cannot be interpreted as demand/profitability.
 
-Capture/infrastructure integrity is labeled `insufficient_history`, `stable`, `improving` or `regressing`. Regression/improvement scoring uses missing/rejected/production-gap evolution and captured-state transitions only. Economic demand remains explicitly unevaluated; capture-quality changes cannot be translated into demand or profitability claims.
+Eight deterministic tests passed in an isolated local harness. GitHub Actions was not dispatched; push-triggered CI remains disabled.
 
-The gate emits an inert, fail-closed recommendation about whether a future read-only observation might add integrity value. Every repeat recommendation remains `authorization_required`, `dry_run_only`, `action_enabled = false`; no network or credential path exists.
+## I038 — 2026-08-20
+Status: **completed**
+Stage: Deterministic authorization-readiness decision packet
 
-Eight deterministic I037 tests passed in an isolated local harness. GitHub Actions was not dispatched; push-triggered CI remains disabled.
+Added `authorization_readiness.py` combining I037 quality output with exact I036 history and I028–I030 readiness/session/preflight contracts. All upstream hashes and exact plan/envelope bindings are revalidated. The packet selects at most one exact production GET as the smallest future integrity observation, or emits no-capture/blocked states.
 
-Next: **I038 — combine I037 quality output with exact I028–I030 contracts into a minimal authorization-readiness packet for a future explicitly authorized read-only capture, still with no network request.**
+A multi-request preflight cannot be silently authorized as a whole: I038 requires a deterministic one-request replan first. A preflight already containing exactly one request may produce an inert authorization draft, but authorization remains false, no nonce is issued and no network/action path is enabled.
+
+Eight deterministic tests passed in an isolated local harness. No DNS/HTTP, credentials, account/KYC, wallet, payment, task acceptance, publication or settlement occurred. GitHub Actions was not dispatched and push-triggered CI remains disabled.
+
+Next: **I039 — deterministic minimal-plan reducer that reconstructs a one-request I029/I030-compatible session/preflight pair for the I038-selected request, or emits no-op when no capture is needed; still no real HTTP.**
