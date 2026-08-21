@@ -48,4 +48,12 @@ Added `human_decision_verifier.py` and eight deterministic tests. The verifier i
 
 Verification: **8 passed** locally; GitHub Actions not dispatched.
 
-Next: **I071 — build a deterministic single-use observation authorization lease over a verified I070 authorize record; keep real network transport disabled.**
+## I071 — 2026-08-21
+Status: **completed**
+Stage: single-use observation authorization lease
+
+Added `observation_authorization_lease.py` and eight deterministic tests. The lease independently revalidates I070 and I069, preserves one anonymous production GET only, caps expiry to the original request window, and allows max-consumptions=1. Synthetic consumption rejects credentials/actions/network callbacks, validates prior receipt hashes and fails closed on replay/double-consumption.
+
+Verification: **8 passed** locally plus syntax compilation. No real network action or GitHub Actions dispatch occurred.
+
+Next: **I072 — build a deterministic dependency-injected lease-bound transport handoff over I071 while keeping real network transport disabled.**
