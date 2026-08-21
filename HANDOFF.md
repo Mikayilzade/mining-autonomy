@@ -6,24 +6,24 @@ Do not reconstruct this project from chat memory. Read repository state first.
 Read `START_HERE.md`, `STATUS.md`, `METHODOLOGY.md`, `HANDOFF.md`, `RUN_LOG.md`, `CATALOG.md`, `implementation/RUN_LOG.md`, and latest files named in `STATUS.md`.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I072 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I073 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I073_PRE_REAL_TRANSPORT_REVIEW.md`
+- `implementation/pre_real_transport_review.py`
+- `implementation/test_pre_real_transport_review.py`
 - `implementation/RUN_I072_LEASE_BOUND_TRANSPORT_HANDOFF.md`
-- `implementation/lease_bound_transport_handoff.py`
-- `implementation/test_lease_bound_transport_handoff.py`
-- `implementation/RUN_I071_OBSERVATION_AUTHORIZATION_LEASE.md`
 
-## I072 result
-The single-use authorization chain now reaches a dependency-injected but explicitly network-incapable adapter boundary. I072 revalidates lease/consumption hashes, exact verification/request/scope bindings and freshness, then emits one immutable anonymous production GET envelope with `network_calls_allowed=0`.
+## I073 result
+The exact authorization/lease chain now reaches one deterministic pre-real-transport human-review packet. I073 revalidates the I072 handoff hash, I071 lease hash, exact verification/request/scope bindings, immutable anonymous production GET envelope, zero-network adapter result, inert safety flags, lease freshness, and current market/resource readiness.
 
-The built-in recorder only hashes the envelope. Any adapter marked network-capable is rejected before callback; any returned record claiming network activity is rejected. This is not evidence of real demand or a real network observation.
+A clean result means only `ready_for_explicit_real_transport_decision`. It does not reuse I070/I071 synthetic/offline authorization as permission for real networking. The future human decision must be fresh and explicitly bound to the exact `pre_real_transport_review_sha256`. Widened requests, stale readiness, uncalibrated resources, backend mismatch or any network-activity claim fail closed.
 
 ## Target flow
-`cheap watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-calibrated Resource Router -> measured feedback/current resource materialization -> market-side readiness -> exact human-decision request -> explicit decision verifier -> single-use lease -> network-incapable handoff -> pre-real-transport review -> later separately authorized real read-only observation`.
+`cheap watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-calibrated Resource Router -> measured feedback/current resource materialization -> market-side readiness -> exact human-decision request -> explicit decision verifier -> single-use lease -> network-incapable handoff -> pre-real-transport review -> separately authorized exact real read-only observation`.
 
-## Immediate next run: I073
-Build a deterministic pre-real-transport review packet over I072. It must revalidate the exact handoff/envelope chain and current readiness, enumerate all remaining DNS/redirect/content-type/size/source-policy/real-authorization gates, and perform no DNS/HTTP.
+## Immediate next run: I074
+Build the explicit real-transport authorization decision verifier over I073. Bind a fresh human decision to the exact review-packet hash and exact one-production-GET/no-credentials/no-action scope, reject replay/widening/staleness, emit only a short-lived single-use authorization record, and keep DNS/HTTP disabled.
 
 ## Hard boundary
 No spend, KYC, wallets, paid work acceptance, publication, settlement, real credentials, CAPTCHA/geofence/rate-limit bypass or value movement without separate explicit authorization. One read-only observation can never imply broader permission.

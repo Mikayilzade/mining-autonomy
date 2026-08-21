@@ -40,4 +40,14 @@ Added `lease_bound_transport_handoff.py` plus eight deterministic tests. The han
 
 GitHub Actions was not dispatched. No DNS/HTTP, credentials, paid task action, settlement or value movement occurred.
 
-Next: **I073 — build a deterministic pre-real-transport review packet over I072, preserving zero DNS/HTTP while enumerating every remaining real-network prerequisite.**
+## I073 — 2026-08-21
+Status: **completed**
+Stage: deterministic pre-real-transport human-review packet
+
+Added `pre_real_transport_review.py` plus ten deterministic tests. The review layer independently revalidates I072/I071 hashes and exact scope, immutable GET-envelope and zero-network adapter-result integrity, inert safety flags, lease expiry, and current market/resource readiness/freshness/calibration/backend binding.
+
+A clean packet reaches only `ready_for_explicit_real_transport_decision`. It never grants or infers real authorization; any future real-network decision must be fresh, scope-equal and bound to the exact `pre_real_transport_review_sha256`. DNS/HTTP remains absent.
+
+Verification: **10 tests passed locally**. GitHub Actions was not dispatched. No external action occurred.
+
+Next: **I074 — build the explicit real-transport authorization decision verifier over I073, still without DNS/HTTP.**
