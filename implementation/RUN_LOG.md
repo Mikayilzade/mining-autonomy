@@ -42,6 +42,14 @@ Verified I061 feedback replaces only explicitly measured parameters in an existi
 Status: **completed**
 Stage: feedback-refreshed attested observation bridge
 
-Added `feedback_attested_observation.py`, explicit I062 regression tests and I063 bridge tests. Feedback can affect combined I052 routing only after the original route is exactly replayed and the target prior attestation is independently reproduced from raw evidence. The market observation, payout/economics, demand evidence and upstream eligibility remain unchanged. Before/after routing plus receipt/evidence/bundle hashes are provenance-bound; all execution/network/credentials/submission/value movement remain disabled.
+Feedback can affect combined I052 routing only after exact original-route replay and target prior-attestation reproduction from raw evidence. Market observation/economics/demand remain unchanged. Before/after routing plus receipt/evidence/bundle hashes are provenance-bound; execution stays disabled.
 
-Next: **I064 — append-only feedback history/audit chain with replay/order/staleness protection over I063 updates.**
+## I064 — 2026-08-21
+Status: **completed**
+Stage: append-only resource-feedback history/audit chain
+
+Added `resource_feedback_history.py` and deterministic tests. Successful I063 updates require exact feedback receipt/evidence replay at history admission. The append-only chain binds prior-entry hash, task identity, before/after routing hashes, evidence-bundle hashes, replaced parameters, parameter timestamps and I063 provenance.
+
+Replayed receipts/evidence, routing discontinuity/out-of-order updates, stale/future/tampered evidence, same-parameter timestamp regression, sequence/hash tampering and non-inert updates fail closed. Seven deterministic tests passed in an isolated interface-compatible harness; GitHub Actions was not dispatched.
+
+Next: **I065 — verified-history current-state summarizer/control gate with latest calibrated facts and routing/anomaly transitions, still inert and provenance-bound.**

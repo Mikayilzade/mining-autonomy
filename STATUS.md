@@ -3,23 +3,22 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I063 — feedback-refreshed attested observation bridge**
+Last completed implementation run: **I064 — append-only resource-feedback history/audit chain**
 Last updated: **2026-08-21**
 
 ## Latest durable files
+- `implementation/RUN_I064_RESOURCE_FEEDBACK_HISTORY.md`
+- `implementation/resource_feedback_history.py`
+- `implementation/test_resource_feedback_history.py`
 - `implementation/RUN_I063_FEEDBACK_ATTESTED_OBSERVATION.md`
-- `implementation/feedback_attested_observation.py`
-- `implementation/test_feedback_attested_observation.py`
-- `implementation/test_benchmark_feedback_integration.py`
-- `implementation/RUN_I062_BENCHMARK_FEEDBACK_INTEGRATION.md`
-- I061 and earlier resource-routing / authorization / readiness / capture files.
+- I062 and earlier resource-routing / authorization / readiness / capture files.
 
-## I063 outcome
-Verified resource feedback now propagates into the combined I052 observation + attested-routing record without rewriting market facts. Before any feedback can affect ranking, the supplied reference backends/attestations must exactly replay the original I052 route and the target backend's raw evidence must exactly reproduce its prior attestation.
+## I064 outcome
+Successful I063 resource-feedback updates can now enter an append-only audit/history chain only when their exact CalibrationFeedback receipt/evidence records are supplied again and still validate at append time.
 
-Only parameters emitted by verified I061/I062 feedback may be replaced. The unchanged task is then rerouted across the same backend set. The update records before/after selected backend and quote delta, old/new evidence-bundle hashes, feedback receipt/evidence hashes, replaced parameters and a final provenance-binding hash while preserving the entire original observation/economics/demand state.
+Each history entry binds sequence, previous-entry hash, immutable task identity, original-observation hash, before/after routing hashes, before/after target evidence-bundle hashes, exact receipt/evidence hashes, parameter-level evidence timestamps, replaced parameters, selected-backend transition and the I063 provenance-binding hash. Entry hashes are canonical and independently replay-verifiable.
 
-Added deterministic coverage for I062 stale/backend/duplicate/runtime-only/energy/cost-hold cases and seven I063 bridge/provenance/inertness cases. New files pass syntax compilation; GitHub Actions was not dispatched.
+The append gate rejects invalid prior history, non-inert or incomplete updates, feedback/update mismatches, stale/future/tampered evidence, replayed receipt/evidence hashes, out-of-order routing state and stale same-backend/same-parameter regressions. Seven deterministic tests passed in an isolated interface-compatible harness; new files compile. GitHub Actions was not dispatched.
 
 ## Current ranking
 1. PayanAgent
@@ -44,12 +43,15 @@ Added deterministic coverage for I062 stale/backend/duplicate/runtime-only/energ
 - I061 replay independently revalidates exact identities; feedback is limited to measured fixed-fixture latency and explicit energy only.
 - I062 feedback may replace only parameters explicitly emitted by verified I061 feedback; unrelated resource evidence survives unchanged and I050 re-attestation is mandatory.
 - Benchmark feedback never upgrades reliability, quality, availability, quota, market demand or authorization.
-- **I063 requires exact replay of the original I052 routing plus exact reproduction of the target prior attestation before feedback may influence resource ranking.**
-- **I063 preserves the original observation, payout/economics and demand evidence; measured resource facts can change only the refreshed resource attestation/routing.**
+- I063 requires exact replay of the original I052 routing plus exact reproduction of the target prior attestation before feedback may influence resource ranking.
+- I063 preserves the original observation, payout/economics and demand evidence; measured resource facts can change only the refreshed resource attestation/routing.
+- **I064 history is append-only and hash-chained. A new feedback update must start from the previous recorded after-routing hash; receipts/evidence cannot be replayed.**
+- **For the same backend/parameter, newer history may not regress to evidence with an equal/older observed timestamp.**
+- **History admission rechecks evidence hash and freshness; archived provenance never turns stale/tampered input into a valid current calibration.**
 - All routing/execution remains dry-run only with network/credentials/submission/value movement disabled.
 
-## Immediate next run — I064
-Build an append-only resource-feedback history/audit chain over I063 updates. Bind each update to the previous calibrated observation state, receipt/evidence hashes and before/after routing hashes; reject out-of-order/replayed receipts and parameter regressions caused by stale evidence. Add deterministic history/delta tests. Keep execution/network/value movement disabled.
+## Immediate next run — I065
+Build a deterministic resource-feedback history summarizer/control gate over I064. Derive backend/parameter latest-known calibrated facts and routing transitions only from a verified chain; surface churn/regression/anomaly indicators without averaging or inventing reliability/quality. Produce a compact current-state snapshot that can feed later experiment planning while remaining provenance-bound and inert.
 
 ## Completion gate
 Implementation is complete only when the documented stack either demonstrates positive economics on real permitted tests or reasonable candidates are exhausted by control passes. Until then: **IMPLEMENTATION IN PROGRESS**.
