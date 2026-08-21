@@ -48,8 +48,12 @@ Added an inert local benchmark acquisition plan for deterministic Python/owned-P
 Status: **completed**
 Stage: I053 probe/declaration -> I050 ResourceEvidence adapter
 
-Added `resource_evidence_adapter.py` and 10 deterministic tests. Probe-derived facts retain `system_probe` provenance, exact transcript digest, backend/benchmark binding and collector-supplied measurement time. Explicit accounting/interface facts remain `user_declared`; energy-derived cost is `measured_local` only with explicit energy + tariff + source digest. Missing fields are never backfilled from synthetic references; duplicate sources fail closed.
+Probe-derived facts retain `system_probe` provenance, exact transcript digest, backend/benchmark binding and collector-supplied measurement time. Explicit accounting/interface facts remain `user_declared`; energy-derived cost is `measured_local` only with explicit energy + tariff + source digest. Missing fields are never backfilled from synthetic references.
 
-Tests were added but not executed in this connector-only runtime; GitHub Actions was intentionally not dispatched.
+## I055 — 2026-08-21
+Status: **completed**
+Stage: End-to-end calibration routing packet
 
-Next: **I055 — compose I053 acquisition -> I054 evidence -> I050 attestation -> I051/I052 attested dry-run routing into one deterministic calibration packet, proving missing/stale evidence narrows to hold and complete fixtures preserve calibration class/evidence hashes.**
+Added `calibration_routing_packet.py` and six deterministic integration tests. The packet composes I053 acquisition -> I054 evidence -> I050 attestation -> I052 attested routing, preserving exact calibration class/evidence bundle hash into the routed result. Missing/stale resource evidence narrows upstream accept to hold; complete calibration cannot rescue upstream policy/demand reject. Probe observation time remains explicit. Both new files passed syntax compilation; tests were not executed in this connector-only runtime and GitHub Actions was intentionally not dispatched.
+
+Next: **I056 — build an opt-in no-network `python_local` benchmark fixture/runner specification with portable transcript JSON and replay verification through I053–I055.**
