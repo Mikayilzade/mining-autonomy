@@ -30,8 +30,14 @@ Built fixed-fixture execution receipts, exact replay, narrow measured feedback, 
 Status: **completed**
 Stage: market-side readiness checkpoint
 
-Added `market_side_readiness.py` plus deterministic tests. The checkpoint joins I047 reproducible compliance/human-review readiness with I067 current-resource route readiness while preserving the exact one-production-GET/no-credentials/no-action scope. It identifies real demand/fill as the dominant unknown and lists all still-unresolved real-world gates. It is explicitly non-authorizing and cannot enable network, task acceptance, submission, credentials, execution or value movement.
+Joined reproducible compliance/human-review readiness with current-resource route readiness while preserving exact one-production-GET/no-credentials/no-action scope. Real demand/fill is the dominant unknown.
 
-Verification: five deterministic contract tests added; GitHub Actions deliberately not dispatched.
+## I069 — 2026-08-21
+Status: **completed**
+Stage: exact short-lived human-decision request
 
-Next: **I069 — build the exact short-lived human-decision request over I068, still non-executing and non-authorizing by itself.**
+Added `human_decision_request.py` and seven deterministic tests. The request independently verifies I068 integrity, binds the exact readiness/scope/resource context, inherits upstream review expiry, offers only authorize-one-read-only-observation or deny, and explicitly excludes all credential/task/payment/value-moving scope. It remains non-authorizing and network-incapable.
+
+Verification: **7 passed** locally; GitHub Actions not dispatched.
+
+Next: **I070 — build the exact decision-record verifier over I069, still offline/non-executing.**
