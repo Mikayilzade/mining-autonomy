@@ -16,7 +16,7 @@ Added backend economics across deterministic Python/local work, local models, su
 
 ## I049 — 2026-08-21
 Status: **completed**
-Stage: Observation/orchestrator → Resource Router integration
+Stage: Observation/orchestrator -> Resource Router integration
 
 Upstream policy/capability/quality/demand evidence is authoritative; resource economics can only narrow eligibility.
 
@@ -36,12 +36,20 @@ Reference/default backends are non-selectable planning objects. Only complete cu
 Status: **completed**
 Stage: End-to-end attested execution bridge
 
-Added `attested_execution_bridge.py` and five deterministic tests. Upstream observation/policy/demand acceptance is required before TaskEconomics and attested routing. Missing resource evidence narrows accept to hold; calibrated routing preserves evidence bundle hash and calibration class. Execution/network/value movement remain disabled. GitHub Actions was not dispatched.
+Upstream observation/policy/demand acceptance is required before TaskEconomics and attested routing. Missing resource evidence narrows accept to hold; calibrated routing preserves evidence bundle hash and calibration class. Execution/network/value movement remain disabled.
 
 ## I053 — 2026-08-21
 Status: **completed**
 Stage: Local no-new-spend resource calibration acquisition
 
-Added `resource_calibration_acquisition.py` and 10 deterministic tests. The acquisition plan covers all I050 critical fields for deterministic Python/owned-PC references while forbidding inference of hardware, electricity tariff/cost, quota, subscription API access or accounting/interface facts. An inert transcript reducer can measure demonstrated local availability/programmatic access, p95 latency, reliability, conditional quality and bounded concurrency without network, credentials, spend or value movement.
+Added an inert local benchmark acquisition plan for deterministic Python/owned-PC resource families. It measures only demonstrated runtime facts and leaves accounting/interface/energy/quota facts explicit.
 
-Next: **I054 — convert I053 probe/declaration inputs into exact I050 ResourceEvidence records without fabricating missing fields.**
+## I054 — 2026-08-21
+Status: **completed**
+Stage: I053 probe/declaration -> I050 ResourceEvidence adapter
+
+Added `resource_evidence_adapter.py` and 10 deterministic tests. Probe-derived facts retain `system_probe` provenance, exact transcript digest, backend/benchmark binding and collector-supplied measurement time. Explicit accounting/interface facts remain `user_declared`; energy-derived cost is `measured_local` only with explicit energy + tariff + source digest. Missing fields are never backfilled from synthetic references; duplicate sources fail closed.
+
+Tests were added but not executed in this connector-only runtime; GitHub Actions was intentionally not dispatched.
+
+Next: **I055 — compose I053 acquisition -> I054 evidence -> I050 attestation -> I051/I052 attested dry-run routing into one deterministic calibration packet, proving missing/stale evidence narrows to hold and complete fixtures preserve calibration class/evidence hashes.**

@@ -9,25 +9,27 @@ Do not reconstruct this project from chat memory.
 4. Discovery Runs 001–062 are COMPLETE. Continue Implementation / Experiment Phase.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I053 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I054 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I054_RESOURCE_EVIDENCE_ADAPTER.md`
+- `implementation/resource_evidence_adapter.py`
+- `implementation/test_resource_evidence_adapter.py`
 - `implementation/RUN_I053_RESOURCE_CALIBRATION_ACQUISITION.md`
-- `implementation/resource_calibration_acquisition.py`
-- `implementation/test_resource_calibration_acquisition.py`
-- `implementation/RUN_I052_ATTESTED_EXECUTION_BRIDGE.md`
-- I051 and earlier resource-routing / authorization / readiness / capture files.
+- I052 and prior resource-routing / authorization / readiness / capture files named in STATUS.
 
-## I053 result
-A concrete acquisition plan now exists for the first no-new-spend resource families (`deterministic_python` / `owned_pc`). It covers all I050 critical fields while separating what can be measured offline from what must be explicitly declared or supported by provider/system evidence.
+## I054 result
+A deterministic adapter now converts I053 local calibration inputs into I050 `ResourceEvidence` records without fabricating missing resource fields.
 
-The inert probe contract allows fixed-fixture local benchmarking only: no network, credentials, paid service or value movement. From a transcript it may derive demonstrated availability/programmatic access, p95 latency, reliability, conditional quality and bounded concurrency. It cannot infer hardware, electricity tariff/cost, quota, fixed/sunk accounting, credential/paid-account/new-spend requirements or subscription API access.
+Probe-derived facts retain `system_probe` provenance, exact transcript digest, backend/benchmark binding and collector-supplied measurement time. Explicit accounting/interface facts stay `user_declared`. Measured electricity cost is emitted as `measured_local` only when explicit energy-per-task + tariff + source digest are supplied.
+
+Missing fields remain listed as missing and keep the resource profile incomplete. Duplicate parameter inputs fail closed. Synthetic reference values are never copied into evidence. Probe summaries must remain inert and internally consistent with their top-level measurements.
 
 Target flow:
-`cheap source watcher -> local filter/dedupe -> normalized task -> policy/rights/quality/demand gate -> TaskEconomics -> resource acquisition/evidence -> I050 attestation -> I051 attested Resource Router -> selected backend dry-run -> later explicit live gates`.
+`cheap source watcher -> local filter/dedupe -> normalized task -> policy/rights/quality/demand gate -> TaskEconomics -> I053 resource acquisition -> I054 evidence adapter -> I050 attestation -> I051/I052 attested Resource Router -> selected backend dry-run -> later explicit live gates`.
 
-## Immediate next run: I054
-Convert I053 probe summaries plus explicit declaration/energy inputs into I050 `ResourceEvidence` records. Preserve source-kind distinctions and exact reference/transcript/source digests. Missing fields must stay missing; do not fabricate completeness. Synthetic fixtures only.
+## Immediate next run: I055
+Compose the full calibration path from I053 summary/declarations through I054 evidence and I050 attestation into I051/I052 attested dry-run routing. Missing/stale evidence must narrow to hold; complete synthetic fixtures must preserve calibration class/evidence bundle hash end to end.
 
 ## Hard boundary
 Do not spend money, create/fund wallets, submit KYC, accept paid work, publish monetized services, settle transactions, use real credentials or bypass CAPTCHA/geofencing/rate limits/platform rules without explicit user authorization. Real market/network capture still requires separate explicit read-only authorization.

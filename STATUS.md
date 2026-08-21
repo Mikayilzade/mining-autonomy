@@ -3,20 +3,22 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I053 — local no-new-spend resource calibration acquisition plan**
+Last completed implementation run: **I054 — I053 probe/declaration to I050 ResourceEvidence adapter**
 Last updated: **2026-08-21**
 
 ## Latest durable files
+- `implementation/RUN_I054_RESOURCE_EVIDENCE_ADAPTER.md`
+- `implementation/resource_evidence_adapter.py`
+- `implementation/test_resource_evidence_adapter.py`
 - `implementation/RUN_I053_RESOURCE_CALIBRATION_ACQUISITION.md`
-- `implementation/resource_calibration_acquisition.py`
-- `implementation/test_resource_calibration_acquisition.py`
-- `implementation/RUN_I052_ATTESTED_EXECUTION_BRIDGE.md`
-- I051 and earlier resource-routing / authorization / readiness / capture files.
+- I052 and earlier resource-routing / authorization / readiness / capture files.
 
-## I053 outcome
-The stack now has an exact acquisition plan for the first practical no-new-spend resource families: local deterministic Python and owned-PC execution. It covers every I050 critical calibration parameter without inferring hardware, electricity price, quota, subscription programmatic access, credentials or paid capacity.
+## I054 outcome
+The stack now has a deterministic adapter from I053 local calibration inputs into exact I050 `ResourceEvidence` records.
 
-A deterministic offline probe contract can summarize demonstrated availability/programmatic access, p95 latency, reliability, conditional quality and bounded concurrency from a fixed benchmark transcript. The contract is network-disabled, credential-free, spend-free and value-movement-free. Accounting/interface facts that cannot be observed safely remain explicit declaration/provider inputs. Ten deterministic tests were added; GitHub Actions was not dispatched.
+Offline probe facts preserve `system_probe` provenance and are bound to the transcript digest/reference-backend hash. Explicit accounting/interface facts remain `user_declared`; measured electricity cost requires explicit energy-per-task + tariff inputs and a source digest. Missing fields are never backfilled from synthetic reference profiles.
+
+Probe summaries must match backend/benchmark, remain inert, include collector-supplied measurement time and be internally consistent with their latency/reliability/quality/parallelism/rate-limit summary fields. Duplicate parameter inputs fail closed. Ten deterministic tests were added; they were not executed in this connector-only runtime and GitHub Actions was not dispatched.
 
 ## Current ranking
 1. PayanAgent
@@ -39,12 +41,14 @@ A deterministic offline probe contract can summarize demonstrated availability/p
 - I050 calibration requires fresh hash-bound evidence for all critical resource parameters; declarations remain distinct from reproducible measurements.
 - I051 reference-only resources are never selectable. Only complete current I050 attestations may enter calibrated routing.
 - I052 upstream acceptance is required before attested routing; missing resource evidence narrows accept to hold; selected routes carry calibration class and evidence bundle hash.
-- **I053 local calibration acquisition must not infer hardware, electricity tariff/cost, quota, subscription API access or interface/accounting facts from a successful local probe.**
-- I053 probe transcripts are offline/inert and measure only demonstrated runtime facts; unobservable fields remain explicit declarations/provider evidence.
+- I053 local calibration acquisition must not infer hardware, electricity tariff/cost, quota, subscription API access or interface/accounting facts from a successful local probe.
+- **I054 must emit only explicitly supplied/measured resource facts; it may not copy synthetic reference values into evidence.**
+- **I054 system-probe evidence must retain exact transcript digest, backend/benchmark binding and collector-supplied observation time; current/commit time must never be substituted.**
+- `user_declared`, `system_probe` and `measured_local` provenance classes must remain distinct through I050 attestation and later routing.
 - All routing remains dry-run only with execution/network/value movement disabled.
 
-## Immediate next run — I054
-Build a deterministic adapter from I053 probe summaries plus explicit declarations/energy evidence into I050 `ResourceEvidence` records. Preserve `system_probe` / `measured_local` / `user_declared` distinctions, bind every record to the exact reference-backend hash and transcript/source digest, and refuse to fabricate missing fields. Use synthetic fixtures only; keep execution/network/value movement disabled.
+## Immediate next run — I055
+Build a deterministic end-to-end calibration packet composing I053 acquisition summary -> I054 evidence -> I050 attestation -> I051/I052 attested dry-run routing. Prove that missing/stale resource evidence narrows routing to hold and that complete synthetic fixtures preserve calibration class and evidence bundle hashes end to end. Keep execution/network/value movement disabled.
 
 ## Completion gate
 Implementation is complete only when the documented stack either demonstrates positive economics on real permitted tests or reasonable candidates are exhausted by control passes. Until then: **IMPLEMENTATION IN PROGRESS**.
