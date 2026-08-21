@@ -26,34 +26,18 @@ Stage: inert benchmark -> verified feedback -> current-resource materialization 
 
 Built fixed-fixture execution receipts, exact replay, narrow measured feedback, append-only history, current-state provenance, exact fresh evidence materialization and I067 replay into unchanged I052 routing. Only complete reproducible resources are selectable; market demand and authorization remain independent gates.
 
-## I068 — 2026-08-21
+## I068–I071 — 2026-08-21
 Status: **completed**
-Stage: market-side readiness checkpoint
+Stage: market readiness -> exact human decision -> verified authorization -> single-use lease
 
-Joined reproducible compliance/human-review readiness with current-resource route readiness while preserving exact one-production-GET/no-credentials/no-action scope. Real demand/fill is the dominant unknown.
+Built the exact one-production-GET/no-credentials/no-action readiness and authorization chain. Requests, decisions and lease consumption are separately hash-bound; synthetic consumption is single-use and cannot imply broader task/payment/value-moving permission.
 
-## I069 — 2026-08-21
+## I072 — 2026-08-21
 Status: **completed**
-Stage: exact short-lived human-decision request
+Stage: lease-bound network-incapable transport handoff
 
-Added `human_decision_request.py` and seven deterministic tests. The request independently verifies I068 integrity, binds the exact readiness/scope/resource context, inherits upstream review expiry, offers only authorize-one-read-only-observation or deny, and explicitly excludes all credential/task/payment/value-moving scope. It remains non-authorizing and network-incapable.
+Added `lease_bound_transport_handoff.py` plus eight deterministic tests. The handoff independently validates the consumed I071 receipt, lease and exact request/verification/scope bindings, freshness and inert flags. It emits one immutable GET envelope only to an adapter explicitly declaring `network_capable=False`. The built-in recorder stores only an envelope digest; network-capable adapters are rejected before callback and adapter results claiming network activity fail closed.
 
-Verification: **7 passed** locally; GitHub Actions not dispatched.
+GitHub Actions was not dispatched. No DNS/HTTP, credentials, paid task action, settlement or value movement occurred.
 
-## I070 — 2026-08-21
-Status: **completed**
-Stage: explicit human decision-record verification
-
-Added `human_decision_verifier.py` and eight deterministic tests. The verifier independently revalidates I069, requires exact hash/scope/time bindings plus explicit human acknowledgement, accepts only authorize-one-read-only-observation or deny, rejects chat-history inference and scope widening, and remains fully transport/network/value-movement disabled.
-
-Verification: **8 passed** locally; GitHub Actions not dispatched.
-
-## I071 — 2026-08-21
-Status: **completed**
-Stage: single-use observation authorization lease
-
-Added `observation_authorization_lease.py` and eight deterministic tests. The lease independently revalidates I070 and I069, preserves one anonymous production GET only, caps expiry to the original request window, and allows max-consumptions=1. Synthetic consumption rejects credentials/actions/network callbacks, validates prior receipt hashes and fails closed on replay/double-consumption.
-
-Verification: **8 passed** locally plus syntax compilation. No real network action or GitHub Actions dispatch occurred.
-
-Next: **I072 — build a deterministic dependency-injected lease-bound transport handoff over I071 while keeping real network transport disabled.**
+Next: **I073 — build a deterministic pre-real-transport review packet over I072, preserving zero DNS/HTTP while enumerating every remaining real-network prerequisite.**
