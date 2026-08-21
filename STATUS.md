@@ -3,22 +3,22 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I064 — append-only resource-feedback history/audit chain**
+Last completed implementation run: **I065 — verified resource-feedback history current-state snapshot**
 Last updated: **2026-08-21**
 
 ## Latest durable files
+- `implementation/RUN_I065_RESOURCE_FEEDBACK_SUMMARY.md`
+- `implementation/resource_feedback_summary.py`
+- `implementation/test_resource_feedback_summary.py`
 - `implementation/RUN_I064_RESOURCE_FEEDBACK_HISTORY.md`
-- `implementation/resource_feedback_history.py`
-- `implementation/test_resource_feedback_history.py`
-- `implementation/RUN_I063_FEEDBACK_ATTESTED_OBSERVATION.md`
-- I062 and earlier resource-routing / authorization / readiness / capture files.
+- I063 and earlier resource-routing / authorization / readiness / capture files.
 
-## I064 outcome
-Successful I063 resource-feedback updates can now enter an append-only audit/history chain only when their exact CalibrationFeedback receipt/evidence records are supplied again and still validate at append time.
+## I065 outcome
+The append-only I064 history now has a deterministic verified-history summarizer/control gate. Only a fully verified chain can produce derived current state; invalid/tampered/regressed histories expose no backend state.
 
-Each history entry binds sequence, previous-entry hash, immutable task identity, original-observation hash, before/after routing hashes, before/after target evidence-bundle hashes, exact receipt/evidence hashes, parameter-level evidence timestamps, replaced parameters, selected-backend transition and the I063 provenance-binding hash. Entry hashes are canonical and independently replay-verifiable.
+The snapshot binds the history tip, task identity, latest routing hash, current selected backend, all selected-backend transitions and latest `(backend, parameter)` evidence timestamps/provenance references. It surfaces deterministic backend oscillation and frequent-parameter-update churn indicators without averaging measurements or inventing reliability, quality, availability, quota, demand, payment or authorization facts.
 
-The append gate rejects invalid prior history, non-inert or incomplete updates, feedback/update mismatches, stale/future/tampered evidence, replayed receipt/evidence hashes, out-of-order routing state and stale same-backend/same-parameter regressions. Seven deterministic tests passed in an isolated interface-compatible harness; new files compile. GitHub Actions was not dispatched.
+I065 also makes an important limitation explicit: I064 stores evidence hashes/timestamps, not the underlying quantitative calibrated values. Therefore the snapshot is provenance/control state, not a numeric resource profile. Multi-parameter I064 entries preserve the whole evidence-hash set because I064 does not explicitly map each parameter to one evidence hash. Nine deterministic tests passed in an isolated interface-compatible harness; GitHub Actions was not dispatched.
 
 ## Current ranking
 1. PayanAgent
@@ -45,13 +45,17 @@ The append gate rejects invalid prior history, non-inert or incomplete updates, 
 - Benchmark feedback never upgrades reliability, quality, availability, quota, market demand or authorization.
 - I063 requires exact replay of the original I052 routing plus exact reproduction of the target prior attestation before feedback may influence resource ranking.
 - I063 preserves the original observation, payout/economics and demand evidence; measured resource facts can change only the refreshed resource attestation/routing.
-- **I064 history is append-only and hash-chained. A new feedback update must start from the previous recorded after-routing hash; receipts/evidence cannot be replayed.**
-- **For the same backend/parameter, newer history may not regress to evidence with an equal/older observed timestamp.**
-- **History admission rechecks evidence hash and freshness; archived provenance never turns stale/tampered input into a valid current calibration.**
+- I064 history is append-only and hash-chained. A new feedback update must start from the previous recorded after-routing hash; receipts/evidence cannot be replayed.
+- For the same backend/parameter, newer history may not regress to evidence with an equal/older observed timestamp.
+- History admission rechecks evidence hash and freshness; archived provenance never turns stale/tampered input into a valid current calibration.
+- **I065 derived current state is available only from a fully verified I064 chain; any verification failure withholds backend/parameter/routing state.**
+- **I065 history summaries are provenance references, not quantitative resource measurements. Numeric repricing requires exact evidence-bundle materialization.**
+- **For multi-parameter I064 entries, I065 must preserve entry-level evidence-hash sets unless a lower layer proves exact parameter-to-evidence mapping; tuple order must never be guessed.**
+- Churn/oscillation indicators are diagnostics only; they do not change demand, policy, reliability, quality, permission or authorization state.
 - All routing/execution remains dry-run only with network/credentials/submission/value movement disabled.
 
-## Immediate next run — I065
-Build a deterministic resource-feedback history summarizer/control gate over I064. Derive backend/parameter latest-known calibrated facts and routing transitions only from a verified chain; surface churn/regression/anomaly indicators without averaging or inventing reliability/quality. Produce a compact current-state snapshot that can feed later experiment planning while remaining provenance-bound and inert.
+## Immediate next run — I066
+Build a deterministic evidence-materialization resolver over I065. Revalidate exact bound resource evidence bundles/hashes/freshness and materialize quantitative latest resource values only when every latest evidence reference resolves exactly. Multi-parameter set-only bindings stay conservative unless the underlying bundle proves the parameter/evidence map. Keep all live execution gates disabled.
 
 ## Completion gate
 Implementation is complete only when the documented stack either demonstrates positive economics on real permitted tests or reasonable candidates are exhausted by control passes. Until then: **IMPLEMENTATION IN PROGRESS**.

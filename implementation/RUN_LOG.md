@@ -52,4 +52,12 @@ Added `resource_feedback_history.py` and deterministic tests. Successful I063 up
 
 Replayed receipts/evidence, routing discontinuity/out-of-order updates, stale/future/tampered evidence, same-parameter timestamp regression, sequence/hash tampering and non-inert updates fail closed. Seven deterministic tests passed in an isolated interface-compatible harness; GitHub Actions was not dispatched.
 
-Next: **I065 — verified-history current-state summarizer/control gate with latest calibrated facts and routing/anomaly transitions, still inert and provenance-bound.**
+## I065 — 2026-08-21
+Status: **completed**
+Stage: verified resource-feedback history current-state snapshot
+
+Added `resource_feedback_summary.py` and deterministic tests. Only a fully verified I064 chain can emit a compact provenance-bound snapshot of history tip, task identity, latest routing hash, selected-backend transitions and latest backend/parameter evidence references.
+
+The summarizer detects backend-selection oscillation and repeated parameter-update churn without averaging or inventing reliability/quality/demand/authorization facts. It explicitly preserves I064's limitation that numeric calibrated values are not archived in history; quantitative repricing requires replay/materialization of exact bound evidence bundles. Multi-parameter history entries retain the complete evidence-hash set instead of guessing parameter/hash tuple order. Nine deterministic tests passed in an isolated interface-compatible harness; GitHub Actions was not dispatched.
+
+Next: **I066 — exact evidence-bundle materialization for I065 latest refs, still inert and fail-closed.**
