@@ -3,22 +3,22 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I056 — opt-in local python calibration fixture/runner**
+Last completed implementation run: **I057 — deterministic local calibration session bundle**
 Last updated: **2026-08-21**
 
 ## Latest durable files
+- `implementation/RUN_I057_LOCAL_CALIBRATION_SESSION.md`
+- `implementation/local_calibration_session.py`
+- `implementation/test_local_calibration_session.py`
 - `implementation/RUN_I056_PYTHON_LOCAL_CALIBRATION_FIXTURE.md`
-- `implementation/python_local_calibration_fixture.py`
-- `implementation/test_python_local_calibration_fixture.py`
-- `implementation/RUN_I055_CALIBRATION_ROUTING_PACKET.md`
-- I054 and earlier resource-routing / authorization / readiness / capture files.
+- I055 and earlier resource-routing / authorization / readiness / capture files.
 
-## I056 outcome
-The first concrete resource-calibration backend fixture now exists for `python_local`. It is a fixed deterministic JSON transform, disabled unless explicitly opted in, and performs no network, credential, spend or value-moving action.
+## I057 outcome
+The `python_local` calibration path now has a portable collector-bound offline session format around I056.
 
-An opted-in local runner records only facts the I053 probe is allowed to demonstrate and emits a portable JSON transcript bound to the exact backend/reference hash, benchmark id, expected output digest, observations and I053 transcript digest. Replay fails closed on tampering or binding mismatches and can feed the verified probe summary through I055.
+A session binds the exact I056 transcript text, backend/reference hash, benchmark/output digest, collector-supplied UTC timestamp and transcript filename into an immutable identity. It exposes explicit declaration slots only for non-probe critical facts and a separate optional measured-energy slot; it never backfills from synthetic/default resource profiles.
 
-The fixture deliberately does not infer electricity/accounting/quota/account/interface facts. Replaying a successful transcript without separate evidence for those fields remains `planning_only` / hold. Eight deterministic tests were added; GitHub Actions was not dispatched and push-triggered CI remains disabled.
+Offline replay verifies transcript/session bindings, rebuilds I054 evidence and reports `planning_only` until all I050 critical facts are explicitly evidenced. An opt-in CLI can create the fixed local probe session, and a network-free replay command prints the evidence/missing-field report. Syntax compilation passed for the new module/tests; full pytest was not run because the isolated container could not fetch repository dependencies, so no green-CI claim is made. GitHub Actions was not dispatched.
 
 ## Current ranking
 1. PayanAgent
@@ -43,15 +43,16 @@ The fixture deliberately does not infer electricity/accounting/quota/account/int
 - I052 upstream acceptance is required before attested routing; missing resource evidence narrows accept to hold; selected routes carry calibration class and evidence bundle hash.
 - I053 local calibration acquisition must not infer hardware, electricity tariff/cost, quota, subscription API access or interface/accounting facts from a successful local probe.
 - I054 emits only explicitly supplied/measured resource facts; it may not copy synthetic reference values into evidence.
-- I054 system-probe evidence retains exact transcript digest, backend/benchmark binding and collector-supplied observation time.
 - I055 requires one exact provenance chain from acquisition through routed result; calibration class/evidence bundle hash may not change silently between I050 and I052.
-- Missing/stale calibration evidence may only narrow an upstream accept to hold; complete resource evidence may never rescue an upstream hold/reject.
-- **I056 local runner is opt-in and fixed-fixture only. A successful local benchmark proves only exact observed runtime facts, never accounting/electricity/quota/subscription/API/market facts.**
-- **I056 portable transcripts must preserve exact backend/reference/benchmark/output/I053-digest bindings; tampering fails closed before evidence/routing.**
+- I056 local runner is opt-in and fixed-fixture only; successful local benchmark results prove runtime facts only.
+- I056 portable transcripts preserve exact backend/reference/benchmark/output/I053-digest bindings; tampering fails closed.
+- **I057 session bundles bind exact transcript text, collector UTC time and immutable session identity before evidence replay.**
+- **I057 declaration slots are limited to non-probe facts; partial declarations or partial energy measurements fail closed rather than being guessed.**
+- **I057 offline replay remains planning-only until every I050 critical parameter has explicit evidence; session packaging never upgrades missing facts.**
 - All routing remains dry-run only with execution/network/value movement disabled.
 
-## Immediate next run — I057
-Build a deterministic local calibration session bundle around I056: explicit collector timestamp, transcript file digest, separate declaration template for non-probe critical fields, optional energy-measurement slot, and a one-command offline replay/report contract. Keep collection opt-in; do not infer missing resource facts and do not perform market/network calls.
+## Immediate next run — I058
+Integrate I057 session replay with the I050/I051 attestation boundary as an explicit import path. Convert only complete, current session evidence into an attestation candidate; keep incomplete sessions planning-only and preserve exact source-kind/session/transcript provenance. No market/network calls and no execution/value movement.
 
 ## Completion gate
 Implementation is complete only when the documented stack either demonstrates positive economics on real permitted tests or reasonable candidates are exhausted by control passes. Until then: **IMPLEMENTATION IN PROGRESS**.
