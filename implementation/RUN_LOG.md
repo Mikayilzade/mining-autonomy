@@ -30,6 +30,12 @@ Bound exact local transcript/session/evidence identities into attested `python_l
 Status: **completed**
 Stage: inert local execution plan / receipt boundary
 
-Added `local_execution_receipt.py`. A provenance-verified I059 `python_local` dry-run route can now produce a fixed-fixture local execution plan and receipt bound to task/provenance/fixture/expected-output identities. Receipt records measured runtime and explicitly supplied energy/incremental cost only; output mismatch or cost drift holds. Network, credentials, submission and value movement remain disabled. No green-CI claim; Actions not dispatched.
+Added `local_execution_receipt.py`. A provenance-verified I059 `python_local` dry-run route can produce a fixed-fixture local execution plan and receipt bound to task/provenance/fixture/expected-output identities. Receipt records measured runtime and explicitly supplied energy/incremental cost only; output mismatch or cost drift holds. Network, credentials, submission and value movement remain disabled.
 
-Next: **I061 — deterministic receipt replay/verification and safe feedback of verified local runtime/cost facts into calibration, without treating benchmark evidence as demand or authorization.**
+## I061 — 2026-08-21
+Status: **completed**
+Stage: deterministic receipt replay / calibration feedback
+
+Added `receipt_replay_calibration.py` and tests. Replay independently revalidates the I060 plan hash, task/backend/provenance/fixture/output identities, router quote, inert flags and explicit runtime/cost facts. Verified fixed-fixture runtime can feed I050 `latency_seconds`; explicitly measured energy can feed `electricity_per_task_usd`; unknown energy remains unknown. No reliability/quality/availability/quota/demand/acceptance/payment/authorization inference is permitted. **10 deterministic tests passed** in an isolated interface-compatible harness. GitHub Actions was not dispatched.
+
+Next: **I062 — merge verified I061 measured feedback into the attested python_local resource evidence set and show dry-run routing quote/selection deltas without overwriting unrelated parameters or enabling execution.**

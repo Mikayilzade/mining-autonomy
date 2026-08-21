@@ -3,22 +3,22 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I060 — inert local execution plan / receipt boundary**
+Last completed implementation run: **I061 — deterministic receipt replay / calibration feedback**
 Last updated: **2026-08-21**
 
 ## Latest durable files
+- `implementation/RUN_I061_RECEIPT_REPLAY_CALIBRATION.md`
+- `implementation/receipt_replay_calibration.py`
+- `implementation/test_receipt_replay_calibration.py`
 - `implementation/RUN_I060_LOCAL_EXECUTION_RECEIPT.md`
-- `implementation/local_execution_receipt.py`
-- `implementation/RUN_I059_SESSION_ROUTED_PROVENANCE.md`
-- `implementation/session_routed_provenance.py`
-- I058 and earlier resource-routing / authorization / readiness / capture files.
+- I059 and earlier resource-routing / authorization / readiness / capture files.
 
-## I060 outcome
-A provenance-verified I059-selected `python_local` dry-run route can now be converted into an inert fixed-fixture local execution plan. The plan binds exact task identity, I059 provenance hash, fixture hash, expected-output hash and selected router marginal-cost quote.
+## I061 outcome
+I060 local benchmark receipts can now be deterministically replayed without re-executing the fixture. Replay independently binds the exact plan hash, task/backend/provenance/fixture/output identities, router quote, inert flags, runtime and explicit cost facts.
 
-The receipt records measured local wall-clock runtime plus only explicitly supplied energy/other incremental costs. Unknown energy stays unknown. Fixture identity drift fails before execution; expected-output mismatch or observed incremental cost above the selected quote tolerance produces `hold`.
+Tampering, non-inert flags, invalid runtime/cost facts, quote drift or any source receipt that was not already verified fails closed to `hold`.
 
-This is local evidence generation only. Network, credentials, market submission, paid spend and value movement remain disabled. No green-CI claim was made because a repository runtime was unavailable in this automation environment; GitHub Actions was not dispatched.
+Verified benchmark feedback can emit narrowly scoped I050-compatible `measured_local` evidence for fixed-fixture wall-clock `latency_seconds` and, only when explicitly measured, `electricity_per_task_usd`. Unknown energy remains unknown. Reliability, quality, market demand, task acceptance/payment and execution authorization are never inferred from one benchmark. Ten deterministic tests passed in an isolated interface-compatible harness; GitHub Actions was not dispatched.
 
 ## Current ranking
 1. PayanAgent
@@ -40,13 +40,16 @@ This is local evidence generation only. Network, credentials, market submission,
 - I052 upstream acceptance is required before attested routing.
 - I053–I058 local acquisition/session/import never infer missing hardware, electricity, quota, subscription/API or market facts.
 - I059 selected `python_local` routes preserve exact session/probe/evidence identity through I052; provenance verification is not execution authorization.
-- **I060 execution plans are fixed-fixture, local and inert. Fixture/provenance/output identity drift fails closed.**
-- **I060 observed energy/cost is accepted only when explicitly supplied/measured; unknown cost remains unknown and is never guessed.**
-- **An I060 receipt is benchmark evidence only: it cannot prove market demand, task acceptance, payment, or permission to submit work.**
+- I060 execution plans are fixed-fixture, local and inert. Fixture/provenance/output identity drift fails closed.
+- I060 observed energy/cost is accepted only when explicitly supplied/measured; unknown cost remains unknown and is never guessed.
+- An I060 receipt is benchmark evidence only: it cannot prove market demand, task acceptance, payment, or permission to submit work.
+- **I061 replay independently revalidates plan/provenance/fixture/output/router-quote/inertness identities before any benchmark fact can be reused.**
+- **I061 calibration feedback is narrow: runtime may calibrate fixed-fixture `latency_seconds`; electricity is emitted only when explicitly measured; no reliability/quality/availability/quota/demand/authorization fact is inferred.**
+- **All I061 measured feedback remains hash-bound to the exact receipt and exact reference backend.**
 - All routing/execution remains dry-run only with network/credentials/submission/value movement disabled.
 
-## Immediate next run — I061
-Add deterministic I060 receipt replay/verification, binding plan/provenance/fixture/output identities and inertness. Add a safe calibration-feedback adapter that can reuse verified local runtime/cost facts as measured resource evidence while preserving unknown energy and source provenance. It must never convert benchmark evidence into market-demand evidence or execution authorization.
+## Immediate next run — I062
+Integrate verified I061 feedback into the attested `python_local` resource path. Merge measured runtime/energy facts with existing I050 evidence without overwriting unrelated parameters; require freshness/reference binding, surface conflicts explicitly, and demonstrate the resulting dry-run router quote/selection delta. Keep execution/network/value movement disabled.
 
 ## Completion gate
 Implementation is complete only when the documented stack either demonstrates positive economics on real permitted tests or reasonable candidates are exhausted by control passes. Until then: **IMPLEMENTATION IN PROGRESS**.
