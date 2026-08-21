@@ -54,6 +54,14 @@ Probe-derived facts retain `system_probe` provenance, exact transcript digest, b
 Status: **completed**
 Stage: End-to-end calibration routing packet
 
-Added `calibration_routing_packet.py` and six deterministic integration tests. The packet composes I053 acquisition -> I054 evidence -> I050 attestation -> I052 attested routing, preserving exact calibration class/evidence bundle hash into the routed result. Missing/stale resource evidence narrows upstream accept to hold; complete calibration cannot rescue upstream policy/demand reject. Probe observation time remains explicit. Both new files passed syntax compilation; tests were not executed in this connector-only runtime and GitHub Actions was intentionally not dispatched.
+Added `calibration_routing_packet.py` and six deterministic integration tests. The packet composes I053 acquisition -> I054 evidence -> I050 attestation -> I052 attested routing, preserving exact calibration class/evidence bundle hash into the routed result. Missing/stale resource evidence narrows upstream accept to hold; complete calibration cannot rescue upstream policy/demand reject. Probe observation time remains explicit. GitHub Actions was intentionally not dispatched.
 
-Next: **I056 — build an opt-in no-network `python_local` benchmark fixture/runner specification with portable transcript JSON and replay verification through I053–I055.**
+## I056 — 2026-08-21
+Status: **completed**
+Stage: Opt-in `python_local` calibration fixture/runner
+
+Added `python_local_calibration_fixture.py` with a fixed deterministic no-network JSON benchmark, portable transcript format, exact I053 digest replay and an I055 replay bridge. The runner is disabled by default and requires explicit caller opt-in. It records only probe-demonstrable runtime facts and never infers electricity/accounting/quota/subscription/API/market facts.
+
+Added eight deterministic tests for fixture stability, opt-in gating, inert transcript generation, JSON replay, tamper/reference binding rejection, I055 hold on missing non-probe evidence and prevention of declaration overrides of probe-derived fields. GitHub Actions was not dispatched; push-triggered CI remains disabled.
+
+Next: **I057 — build a deterministic local calibration session bundle around I056 with explicit collector time, transcript-file digest, non-probe declaration template, optional energy slot and one-command offline replay/report.**

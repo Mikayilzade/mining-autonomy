@@ -3,22 +3,22 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I055 — end-to-end calibration routing packet**
+Last completed implementation run: **I056 — opt-in local python calibration fixture/runner**
 Last updated: **2026-08-21**
 
 ## Latest durable files
+- `implementation/RUN_I056_PYTHON_LOCAL_CALIBRATION_FIXTURE.md`
+- `implementation/python_local_calibration_fixture.py`
+- `implementation/test_python_local_calibration_fixture.py`
 - `implementation/RUN_I055_CALIBRATION_ROUTING_PACKET.md`
-- `implementation/calibration_routing_packet.py`
-- `implementation/test_calibration_routing_packet.py`
-- `implementation/RUN_I054_RESOURCE_EVIDENCE_ADAPTER.md`
-- I053 and earlier resource-routing / authorization / readiness / capture files.
+- I054 and earlier resource-routing / authorization / readiness / capture files.
 
-## I055 outcome
-The full local resource-calibration path is now composed deterministically: I053 acquisition plan/summary -> I054 evidence -> I050 attestation -> I051/I052 attested dry-run routing.
+## I056 outcome
+The first concrete resource-calibration backend fixture now exists for `python_local`. It is a fixed deterministic JSON transform, disabled unless explicitly opted in, and performs no network, credential, spend or value-moving action.
 
-Complete evidence preserves the exact I050 calibration class and evidence bundle hash through the routed task. Missing or stale resource evidence narrows an otherwise upstream-accepted task to hold. A complete calibrated backend cannot rescue a policy/demand reject. Collector-supplied probe observation time remains mandatory and is never replaced by current/commit time.
+An opted-in local runner records only facts the I053 probe is allowed to demonstrate and emits a portable JSON transcript bound to the exact backend/reference hash, benchmark id, expected output digest, observations and I053 transcript digest. Replay fails closed on tampering or binding mismatches and can feed the verified probe summary through I055.
 
-Six deterministic integration tests were added and both new Python files passed syntax compilation. The tests were not executed in this connector-only runtime; GitHub Actions was intentionally not dispatched.
+The fixture deliberately does not infer electricity/accounting/quota/account/interface facts. Replaying a successful transcript without separate evidence for those fields remains `planning_only` / hold. Eight deterministic tests were added; GitHub Actions was not dispatched and push-triggered CI remains disabled.
 
 ## Current ranking
 1. PayanAgent
@@ -44,12 +44,14 @@ Six deterministic integration tests were added and both new Python files passed 
 - I053 local calibration acquisition must not infer hardware, electricity tariff/cost, quota, subscription API access or interface/accounting facts from a successful local probe.
 - I054 emits only explicitly supplied/measured resource facts; it may not copy synthetic reference values into evidence.
 - I054 system-probe evidence retains exact transcript digest, backend/benchmark binding and collector-supplied observation time.
-- **I055 requires one exact provenance chain from acquisition through routed result; calibration class/evidence bundle hash may not change silently between I050 and I052.**
-- **Missing/stale calibration evidence may only narrow an upstream accept to hold; complete resource evidence may never rescue an upstream hold/reject.**
+- I055 requires one exact provenance chain from acquisition through routed result; calibration class/evidence bundle hash may not change silently between I050 and I052.
+- Missing/stale calibration evidence may only narrow an upstream accept to hold; complete resource evidence may never rescue an upstream hold/reject.
+- **I056 local runner is opt-in and fixed-fixture only. A successful local benchmark proves only exact observed runtime facts, never accounting/electricity/quota/subscription/API/market facts.**
+- **I056 portable transcripts must preserve exact backend/reference/benchmark/output/I053-digest bindings; tampering fails closed before evidence/routing.**
 - All routing remains dry-run only with execution/network/value movement disabled.
 
-## Immediate next run — I056
-Build a deterministic local calibration fixture/runner specification for `python_local`: fixed no-network benchmark, portable JSON transcript and replay verifier through I053–I055. Keep the runner opt-in/inert by default and do not infer accounting/electricity facts or perform real market/network calls.
+## Immediate next run — I057
+Build a deterministic local calibration session bundle around I056: explicit collector timestamp, transcript file digest, separate declaration template for non-probe critical fields, optional energy-measurement slot, and a one-command offline replay/report contract. Keep collection opt-in; do not infer missing resource facts and do not perform market/network calls.
 
 ## Completion gate
 Implementation is complete only when the documented stack either demonstrates positive economics on real permitted tests or reasonable candidates are exhausted by control passes. Until then: **IMPLEMENTATION IN PROGRESS**.
