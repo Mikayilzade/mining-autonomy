@@ -20,54 +20,40 @@ Stage: local no-spend calibration -> evidence/provenance -> selected-route seal
 
 Built inert acquisition contracts, resource evidence conversion, session/import provenance and selected `python_local` route sealing. Missing hardware/electricity/quota/subscription/API/market facts are never inferred.
 
-## I060 — 2026-08-21
+## I060–I063 — 2026-08-21
 Status: **completed**
-Stage: inert local execution plan / receipt boundary
+Stage: inert benchmark -> verified feedback -> unchanged-task rerouting
 
-Fixed-fixture `python_local` plans/receipts record runtime and only explicitly supplied energy/incremental cost. Output mismatch or cost drift holds; network/credentials/submission/value movement remain disabled.
-
-## I061 — 2026-08-21
-Status: **completed**
-Stage: receipt replay / calibration feedback
-
-Replay independently validates I060 identities and inert flags. Verified runtime can feed `latency_seconds`; explicit energy can feed `electricity_per_task_usd`. No reliability/quality/availability/quota/demand/authorization inference.
-
-## I062 — 2026-08-21
-Status: **completed**
-Stage: benchmark feedback integration
-
-Verified I061 feedback replaces only explicitly measured parameters in an existing evidence set, preserves unrelated evidence, re-runs I050 attestation and shows before/after resource quote effects. Stale/incomplete/mismatched feedback stays planning-only or holds.
-
-## I063 — 2026-08-21
-Status: **completed**
-Stage: feedback-refreshed attested observation bridge
-
-Feedback can affect combined I052 routing only after exact original-route replay and target prior-attestation reproduction from raw evidence. Market observation/economics/demand remain unchanged. Before/after routing plus receipt/evidence/bundle hashes are provenance-bound; execution stays disabled.
+Built fixed-fixture local execution plans/receipts, exact replay, narrow measured feedback, evidence refresh and exact original I052 routing reproduction before feedback can influence resource ranking. Market observation/economics/demand remain unchanged and execution stays disabled.
 
 ## I064 — 2026-08-21
 Status: **completed**
 Stage: append-only resource-feedback history/audit chain
 
-Added `resource_feedback_history.py` and deterministic tests. Successful I063 updates require exact feedback receipt/evidence replay at history admission. The append-only chain binds prior-entry hash, task identity, before/after routing hashes, evidence-bundle hashes, replaced parameters, parameter timestamps and I063 provenance.
-
-Replayed receipts/evidence, routing discontinuity/out-of-order updates, stale/future/tampered evidence, same-parameter timestamp regression, sequence/hash tampering and non-inert updates fail closed. Seven deterministic tests passed in an isolated interface-compatible harness; GitHub Actions was not dispatched.
+Successful I063 updates are admitted only after exact receipt/evidence replay. The hash chain binds previous entry, task identity, before/after routing hashes, evidence bundles, replaced parameters, timestamps and provenance. Replay/discontinuity/staleness/tampering/timestamp regression fail closed.
 
 ## I065 — 2026-08-21
 Status: **completed**
-Stage: verified resource-feedback history current-state snapshot
+Stage: verified resource-feedback current-state snapshot
 
-Added `resource_feedback_summary.py` and deterministic tests. Only a fully verified I064 chain can emit a compact provenance-bound snapshot of history tip, task identity, latest routing hash, selected-backend transitions and latest backend/parameter evidence references.
-
-The summarizer detects backend-selection oscillation and repeated parameter-update churn without averaging or inventing reliability/quality/demand/authorization facts. It explicitly preserves I064's limitation that numeric calibrated values are not archived in history; quantitative repricing requires replay/materialization of exact bound evidence bundles. Multi-parameter history entries retain the complete evidence-hash set instead of guessing parameter/hash tuple order. Nine deterministic tests passed in an isolated interface-compatible harness; GitHub Actions was not dispatched.
+Only a fully verified I064 chain emits provenance-bound current state: history tip, task identity, latest routing hash, selected-backend transitions and latest backend/parameter evidence references. Numeric values are intentionally not inferred from history.
 
 ## I066 — 2026-08-21
 Status: **completed**
 Stage: exact evidence-bundle materialization
 
-Added `resource_feedback_materialization.py` and deterministic tests. I065 provenance-only latest evidence refs can now yield quantitative current resource profiles only when every exact bound I050 bundle is supplied, fresh, hash-valid, reference-bound and re-attests completely.
-
-Single-parameter refs require their exact evidence hash. Multi-parameter set-only refs resolve only from explicit ResourceEvidence parameter/timestamp contents; tuple order is never guessed. The newest backend bundle is the quantitative anchor and must carry forward all older evidence hashes that I065 still marks current. Any unresolved/stale/tampered/missing/carry-forward failure emits no partial numeric profile. Declared and reproducible materialization states remain separate; all execution/network/credential/submission/value movement gates remain disabled.
+I065 provenance refs yield quantitative current resource profiles only when exact bound I050 bundles are supplied, fresh, hash-valid, reference-bound and re-attest completely. Set bindings resolve from ResourceEvidence contents, not tuple position; newest bundles must carry older still-current evidence. Unresolved paths expose no partial numeric profile.
 
 Verification: new module/test syntax compilation passed. Full repository pytest was unavailable because the run container had no DNS access to GitHub and no mounted checkout; GitHub Actions was deliberately not dispatched.
 
-Next: **I067 — bind I066 materialized current resources back into unchanged-task attested rerouting/repricing, still inert.**
+## I067 — 2026-08-21
+Status: **completed**
+Stage: materialized current-resource attested rerouting
+
+Added `materialized_attested_routing.py` and deterministic tests. Upstream policy/capability/quality/demand acceptance runs first. Only then is I066 re-materialized from the exact I065 snapshot, current reference backend set and explicit I050 evidence bundles.
+
+Only complete reproducible materialization is converted into the existing I051 attestation contract and passed through unchanged I052 routing. Declared/stale/missing/tampered/incomplete/reference-mismatched state is unroutable. Replay output binds the I065 history tip + I066 materialization hash and reports selected-backend change plus marginal-cost/success/latency/planning-state drift as diagnostics.
+
+Verification: both new files passed Python syntax compilation. Full repository pytest remained unavailable due no mounted checkout/DNS; GitHub Actions was not dispatched.
+
+Next: **I068 — build a non-executing market-side readiness packet joining current resource-route readiness with the exact read-only authorization/compliance chain, without network access.**

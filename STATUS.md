@@ -3,24 +3,24 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I066 — exact evidence-bundle materialization**
+Last completed implementation run: **I067 — materialized current-resource attested rerouting**
 Last updated: **2026-08-21**
 
 ## Latest durable files
+- `implementation/RUN_I067_MATERIALIZED_ATTESTED_ROUTING.md`
+- `implementation/materialized_attested_routing.py`
+- `implementation/test_materialized_attested_routing.py`
 - `implementation/RUN_I066_RESOURCE_EVIDENCE_MATERIALIZATION.md`
-- `implementation/resource_feedback_materialization.py`
-- `implementation/test_resource_feedback_materialization.py`
-- `implementation/RUN_I065_RESOURCE_FEEDBACK_SUMMARY.md`
-- I064 and earlier resource-routing / authorization / readiness / capture files.
+- I065 and earlier resource-routing / authorization / readiness / capture files.
 
-## I066 outcome
-The I065 provenance-only verified-history snapshot can now be materialized into quantitative current resource profiles only when every latest evidence reference resolves exactly against the supplied, fresh I050 evidence bundles.
+## I067 outcome
+I066 exact current resource materialization is now replayed back into the existing I052 attested task-routing path without weakening upstream authority.
 
-Each referenced bundle is re-attested at materialization time and must reproduce its exact recorded bundle hash. Single-parameter bindings require their one exact evidence hash. Multi-parameter `entry_set_only` bindings are resolved only when the underlying ResourceEvidence records prove the `(backend, parameter, observed_at)` map; tuple order is never guessed.
+The task policy/capability/quality/demand gate runs first. Only after an `accept_dry_run` may I067 re-run I066 from the exact I065 snapshot, current reference backend set and explicitly supplied I050 evidence bundles. The I066 materialization hash is independently checked before resource values can reach routing.
 
-The backend's newest update bundle becomes the quantitative anchor and must still contain every evidence hash that I065 identifies as current for older parameters. Missing/stale/tampered/reference-mismatched bundles, missing hashes, ambiguous mappings, invalid snapshots or broken carry-forward fail closed and expose no partial numeric profile. Declared evidence remains distinct from reproducible measured/provider/system evidence.
+Only complete `materialized_reproducible` / `calibrated_reproducible` profiles enter the selectable route set. Declared, stale, missing, tampered, incomplete or reference-mismatched resource state fails closed. The output binds the reroute to the I065 history tip + I066 materialization hash and records backend-selection change plus drift in marginal cost, effective success probability, latency and planning state.
 
-New module/test syntax compiled successfully. Full repository pytest was unavailable because the run container had no DNS access to GitHub and no mounted checkout; GitHub Actions was not dispatched.
+New module/test syntax compiled successfully. Full repository pytest remained unavailable because the execution container has no DNS access to GitHub and no mounted checkout; GitHub Actions was not dispatched.
 
 ## Current ranking
 1. PayanAgent
@@ -45,22 +45,18 @@ New module/test syntax compiled successfully. Full repository pytest was unavail
 - I061 replay independently revalidates exact identities; feedback is limited to measured fixed-fixture latency and explicit energy only.
 - I062 feedback may replace only parameters explicitly emitted by verified I061 feedback; unrelated resource evidence survives unchanged and I050 re-attestation is mandatory.
 - Benchmark feedback never upgrades reliability, quality, availability, quota, market demand or authorization.
-- I063 requires exact replay of the original I052 routing plus exact reproduction of the target prior attestation before feedback may influence resource ranking.
-- I063 preserves the original observation, payout/economics and demand evidence; measured resource facts can change only the refreshed resource attestation/routing.
-- I064 history is append-only and hash-chained. A new feedback update must start from the previous recorded after-routing hash; receipts/evidence cannot be replayed.
-- For the same backend/parameter, newer history may not regress to evidence with an equal/older observed timestamp.
-- History admission rechecks evidence hash and freshness; archived provenance never turns stale/tampered input into a valid current calibration.
-- I065 derived current state is available only from a fully verified I064 chain; any verification failure withholds backend/parameter/routing state.
-- I065 history summaries are provenance references, not quantitative resource measurements.
-- **I066 exposes quantitative resource values only when every latest I065 evidence reference resolves exactly against fresh, re-attested I050 bundles; otherwise no partial numeric profile is emitted.**
-- **I066 multi-parameter set bindings are resolved from ResourceEvidence contents, never tuple position.**
-- **The newest backend evidence bundle is the quantitative anchor and must carry forward every older evidence hash still identified by I065 as current.**
-- User-declared materialization remains distinct from reproducible measured/provider/system materialization.
-- Churn/oscillation indicators are diagnostics only; they do not change demand, policy, reliability, quality, permission or authorization state.
+- I063 requires exact replay of original I052 routing plus exact reproduction of target prior attestation before feedback may influence resource ranking.
+- I064 history is append-only/hash-chained; replay, routing discontinuity and timestamp regression fail closed.
+- I065 derived current state is available only from a fully verified I064 chain and remains provenance-only.
+- I066 exposes quantitative resource values only when every latest I065 evidence reference resolves exactly against fresh, re-attested I050 bundles; no partial profile is emitted.
+- I066 multi-parameter bindings resolve from ResourceEvidence contents, never tuple order; newest bundle must carry forward older still-current evidence.
+- **I067 may route only complete reproducible I066 profiles; user-declared or unresolved materialization is never selectable.**
+- **I067 always evaluates upstream task policy/demand first; resource materialization cannot rescue a held/rejected task.**
+- **I067 replay output is bound to the I065 history tip and I066 materialization hash and exposes drift/churn as diagnostics only.**
 - All routing/execution remains dry-run only with network/credentials/submission/value movement disabled.
 
-## Immediate next run — I067
-Integrate I066 materialized current resource profiles back into attested routing/economics. Reprice the unchanged task using only materialized current backends, bind route output to the I065 history tip and I066 materialization hash, and report deterministic route drift/churn without enabling execution/network/credentials/submission/value movement.
+## Immediate next run — I068
+Build a deterministic market-side readiness checkpoint that combines the completed exact read-only authorization/compliance chain with I067 current-resource routing readiness. Produce a human-reviewable, non-executing packet identifying the exact single read-only market observation needed to close the dominant demand unknown, the current resource route that would evaluate it, and every unresolved evidence/authorization gate. Do not perform network access or request credentials; keep all action flags disabled.
 
 ## Completion gate
 Implementation is complete only when the documented stack either demonstrates positive economics on real permitted tests or reasonable candidates are exhausted by control passes. Until then: **IMPLEMENTATION IN PROGRESS**.
