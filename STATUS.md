@@ -3,24 +3,22 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I058 — I057 session to I050 attestation import boundary**
+Last completed implementation run: **I059 — session-attested routed provenance**
 Last updated: **2026-08-21**
 
 ## Latest durable files
+- `implementation/RUN_I059_SESSION_ROUTED_PROVENANCE.md`
+- `implementation/session_routed_provenance.py`
+- `implementation/test_session_routed_provenance.py`
 - `implementation/RUN_I058_SESSION_ATTESTATION_IMPORT.md`
-- `implementation/session_attestation_import.py`
-- `implementation/test_session_attestation_import.py`
-- `implementation/RUN_I057_LOCAL_CALIBRATION_SESSION.md`
-- I056 and earlier resource-routing / authorization / readiness / capture files.
+- I057 and earlier resource-routing / authorization / readiness / capture files.
 
-## I058 outcome
-The portable I057 `python_local` calibration session now has an explicit import path into the I050 resource-profile attestation boundary.
+## I059 outcome
+The I058 `python_local` session import is now explicitly integrated with the I052 attested routing path. Any selected route must match the exact imported backend, calibration state and I050 evidence bundle hash.
 
-The importer replays I057 integrity/inertness first, independently rebuilds I054 evidence from the exact transcript/session declarations/energy slot, cross-checks emitted/missing parameters and source kinds, and preserves immutable session digest, transcript file digest, probe transcript digest and evidence hashes.
+The routed record preserves the immutable I057 session digest, probe transcript digest, transcript-file digest and I058 evidence hashes and seals them together with the selected route/task identity in a deterministic provenance-binding hash. Replay verification rejects session, selected backend, calibration, evidence-bundle or inertness drift.
 
-Incomplete session evidence returns `planning_only_incomplete_session` and never becomes an attestation candidate. Complete evidence must still pass I050 freshness/reference/hash/value checks at caller-supplied UTC `now`; only `calibrated_declared` or `calibrated_reproducible` results become attestation candidates. Execution/network/value movement remain disabled.
-
-New module/test syntax compilation passed. Full pytest was not run because the isolated container could not fetch the repository/dependency set; no green-CI claim. GitHub Actions was not dispatched.
+Upstream policy/capability/quality/demand state remains authoritative: a complete calibrated local resource cannot rescue a held/rejected task, and an incomplete/stale/rejected I058 session cannot become a selected resource. New module/test syntax compilation passed; full pytest was not available in the isolated environment, so there is no green-CI claim. GitHub Actions was not dispatched.
 
 ## Current ranking
 1. PayanAgent
@@ -50,13 +48,14 @@ New module/test syntax compilation passed. Full pytest was not run because the i
 - I056 portable transcripts preserve exact backend/reference/benchmark/output/I053-digest bindings; tampering fails closed.
 - I057 session bundles bind exact transcript text, collector UTC time and immutable session identity before evidence replay.
 - I057 declaration slots are limited to non-probe facts; partial declarations or partial energy measurements fail closed rather than being guessed.
-- **I058 incomplete sessions never cross into I050 attestation. Complete sessions must still pass current I050 evidence checks.**
-- **I058 preserves exact session digest, transcript file digest, probe transcript digest, evidence hashes and source-kind provenance across the import boundary.**
-- **I058 attestation candidate is evidence/routing input only; it is not execution authorization.**
+- I058 incomplete sessions never cross into I050 attestation; complete sessions must still pass current I050 evidence checks.
+- I058 preserves exact session digest, transcript file digest, probe transcript digest, evidence hashes and source-kind provenance across the import boundary.
+- **I059 selected `python_local` routes must preserve exact I058 session/probe/evidence identity through I052. Backend/calibration/evidence/session drift fails closed.**
+- **I059 provenance verification is evidence/routing integrity only; it is not execution authorization.**
 - All routing remains dry-run only with execution/network/value movement disabled.
 
-## Immediate next run — I059
-Integrate I058 import results into the I052/I055 attested routing/provenance path for `python_local`. Require selected routed records to carry exact I058 session digest, transcript digest and I050 evidence bundle hash; reject provenance drift. Preserve upstream policy/demand precedence and keep execution/network/value movement disabled.
+## Immediate next run — I060
+Build an inert local execution-plan/receipt boundary over an I059-selected `python_local` route. Use a fixed deterministic fixture only; bind task/provenance/expected-output identities; measure local runtime and explicit energy/cost inputs where available; compare observed execution facts against the selected router quote; reject cost/quality/provenance drift. Keep market submission, network, credentials, paid spend and value movement disabled.
 
 ## Completion gate
 Implementation is complete only when the documented stack either demonstrates positive economics on real permitted tests or reasonable candidates are exhausted by control passes. Until then: **IMPLEMENTATION IN PROGRESS**.

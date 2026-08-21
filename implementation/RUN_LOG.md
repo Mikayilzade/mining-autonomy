@@ -30,8 +30,14 @@ Added collector-bound session packaging over the portable python_local transcrip
 Status: **completed**
 Stage: I057 session -> I050 resource-attestation import boundary
 
-Added `session_attestation_import.py` and focused tests. The importer replays I057 integrity first, independently rebuilds I054 evidence, cross-checks emitted/missing/source-kind state, and preserves session/transcript/evidence provenance. Incomplete sessions never produce attestation candidates. Complete sessions still must pass I050 current evidence validation; only declared/reproducible calibrated states become dry-run attestation candidates.
+Added `session_attestation_import.py`. The importer replays I057 integrity first, independently rebuilds I054 evidence, preserves session/transcript/evidence provenance and refuses incomplete/stale/tampered inputs as attestation candidates.
 
-Verification: new module/test syntax compilation passed. Full pytest was not run because the isolated container could not fetch the repository/dependency set; no green-CI claim. GitHub Actions was not dispatched.
+## I059 — 2026-08-21
+Status: **completed**
+Stage: I058 session attestation -> I052 selected-route provenance seal
 
-Next: **I059 — integrate I058 session provenance into the I052/I055 selected routed record and reject any session/transcript/evidence-bundle drift while preserving upstream policy/demand precedence.**
+Added `session_routed_provenance.py` and focused tests. A selected `python_local` dry-run route must match the exact I058 backend, calibration state and I050 evidence bundle and is sealed to the I057 session digest, I056 probe transcript digest, transcript-file digest, evidence hashes and routed task identity. Serialized replay rejects backend/calibration/evidence/session/inertness drift. Upstream policy/demand state remains authoritative and incomplete session evidence cannot become selectable.
+
+Verification: new module/test syntax compilation passed. Full pytest was unavailable in the isolated environment; no green-CI claim. GitHub Actions was not dispatched.
+
+Next: **I060 — build an inert fixed-fixture local execution-plan/receipt boundary over an I059-selected `python_local` route, compare observed runtime/cost/quality facts against the selected router quote, and fail closed on provenance/economic drift without market submission/network/value movement.**
