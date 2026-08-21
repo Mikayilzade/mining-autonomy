@@ -6,24 +6,24 @@ Do not reconstruct this project from chat memory. Read repository state first.
 Read `START_HERE.md`, `STATUS.md`, `METHODOLOGY.md`, `HANDOFF.md`, `RUN_LOG.md`, `CATALOG.md`, `implementation/RUN_LOG.md`, and latest files named in `STATUS.md`.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I074 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I075 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I075_REAL_TRANSPORT_AUTHORIZATION_CONSUMPTION.md`
+- `implementation/real_transport_authorization_consumption.py`
+- `implementation/test_real_transport_authorization_consumption.py`
 - `implementation/RUN_I074_REAL_TRANSPORT_AUTHORIZATION.md`
-- `implementation/real_transport_authorization.py`
-- `implementation/test_real_transport_authorization.py`
-- `implementation/RUN_I073_PRE_REAL_TRANSPORT_REVIEW.md`
 
-## I074 result
-The exact pre-real-transport chain now includes a deterministic explicit decision verifier over I073. It independently revalidates the I073 packet hash/state/scope/inert flags and accepts only a fresh, human-acknowledged decision bound to the exact `pre_real_transport_review_sha256` plus exact scope hash.
+## I075 result
+The exact pre-real-transport chain now includes deterministic single-use consumption of the I074 authorization. I075 revalidates I074 verification/authorization hashes and exact review/decision/scope bindings, enforces issue/expiry time and `max_consumptions=1`, and rejects replay/double-consumption.
 
-Authorize decisions must reproduce the exact one-production-GET/no-credentials/no-action scope. Stale, replayed, future-dated, pre-review, tampered or widened decisions fail closed. A clean explicit deny creates no authorization. A clean explicit authorize can create only a 30–300 second hash-bound single-use authorization record with `max_consumptions=1`; it does not enable DNS/HTTP or any value-moving capability.
+A successful consumption creates only a hash-bound `single_use_real_transport_authorized_attempt_envelope`. It contains mandatory DNS resolution/private-address/pinning/rebinding gates, zero automatic redirects, a 1 MiB JSON-only response policy, and fresh first-party anonymous-read-only source-policy requirements. It still has no transport adapter and cannot perform DNS/HTTP.
 
 ## Target flow
-`cheap watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-calibrated Resource Router -> measured feedback/current resource materialization -> market-side readiness -> exact human-decision request -> explicit observation decision verifier -> synthetic/offline lease rehearsal -> network-incapable handoff -> pre-real-transport review -> explicit real-transport decision verifier -> single-use real-transport authorization consumption/preflight -> separately authorized exact real read-only observation`.
+`cheap watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-calibrated Resource Router -> measured feedback/current resource materialization -> market-side readiness -> exact human-decision request -> explicit observation decision verifier -> synthetic/offline lease rehearsal -> network-incapable handoff -> pre-real-transport review -> explicit real-transport decision verifier -> single-use authorization consumption/preflight -> adapter contract validation -> separately authorized exact real read-only observation`.
 
-## Immediate next run: I075
-Build a deterministic single-use consumption/preflight gate over the I074 authorization record. Revalidate the verification record, authorization record, decision/review/scope bindings and expiry; reject replay/double-consumption; emit only an immutable authorized-attempt envelope carrying mandatory DNS/redirect/response-size/content-type/source-policy gates. Keep network transport absent.
+## Immediate next run: I076
+Build a deterministic network-capable adapter contract validator over I075. Require a future adapter declaration to prove it can enforce the exact one-request/no-credentials/no-action scope plus every DNS/redirect/response/source-policy gate. Do not make the adapter executable and do not perform DNS/HTTP.
 
 ## Hard boundary
 No spend, KYC, wallets, paid work acceptance, publication, settlement, real credentials, CAPTCHA/geofence/rate-limit bypass or value movement without separate explicit authorization. One read-only observation can never imply broader permission.

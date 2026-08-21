@@ -60,4 +60,14 @@ A verified deny emits no authorization. A verified authorize emits only a hash-b
 
 Verification: **11 tests passed locally** plus syntax compilation. GitHub Actions was not dispatched. No DNS/HTTP or other external action occurred.
 
-Next: **I075 — build the single-use I074 authorization consumption/preflight gate, still without DNS/HTTP.**
+## I075 — 2026-08-22
+Status: **completed**
+Stage: single-use real-transport authorization consumption/preflight
+
+Added `real_transport_authorization_consumption.py` plus twelve deterministic tests. The gate independently revalidates I074 verification/authorization hashes, exact review/decision/scope bindings, single-use semantics and the issue/expiry window, then rejects replay/double-consumption.
+
+A clean consumption emits only a hash-bound inert authorized-attempt envelope containing mandatory DNS resolution/private-address/pinning/rebinding gates, zero automatic redirects, 1 MiB JSON-only response handling and fresh first-party anonymous-read-only source-policy requirements. No network-capable adapter exists and DNS/HTTP remains absent.
+
+Verification: **12 tests passed locally**. GitHub Actions was not dispatched. No external action occurred.
+
+Next: **I076 — validate a future network-capable adapter contract against every I075 gate while keeping its execution path disabled and performing no DNS/HTTP.**
