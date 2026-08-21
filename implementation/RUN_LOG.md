@@ -24,8 +24,14 @@ Built inert acquisition contracts, explicit resource evidence conversion, end-to
 Status: **completed**
 Stage: deterministic local calibration session bundle
 
-Added `local_calibration_session.py` and focused tests. The session binds exact I056 transcript text, backend/reference/benchmark/output identity, collector UTC timestamp and transcript digest. It provides explicit non-probe declaration slots, a separate optional energy-measurement slot, and an offline replay/report contract that remains planning-only until all I050 critical resource facts are explicitly evidenced.
+Added collector-bound session packaging over the portable python_local transcript. Exact transcript text, collector UTC time, session identity, declarations and optional measured energy remain explicit; incomplete sessions remain planning-only.
 
-Verification: new module/test syntax compilation passed. Full pytest was not run because the isolated container could not fetch the repository dependency set; no green-CI claim. GitHub Actions was not dispatched.
+## I058 — 2026-08-21
+Status: **completed**
+Stage: I057 session -> I050 resource-attestation import boundary
 
-Next: **I058 — integrate complete I057 session evidence into the I050/I051 attestation boundary while preserving exact session/transcript/source-kind provenance and keeping incomplete sessions planning-only.**
+Added `session_attestation_import.py` and focused tests. The importer replays I057 integrity first, independently rebuilds I054 evidence, cross-checks emitted/missing/source-kind state, and preserves session/transcript/evidence provenance. Incomplete sessions never produce attestation candidates. Complete sessions still must pass I050 current evidence validation; only declared/reproducible calibrated states become dry-run attestation candidates.
+
+Verification: new module/test syntax compilation passed. Full pytest was not run because the isolated container could not fetch the repository/dependency set; no green-CI claim. GitHub Actions was not dispatched.
+
+Next: **I059 — integrate I058 session provenance into the I052/I055 selected routed record and reject any session/transcript/evidence-bundle drift while preserving upstream policy/demand precedence.**

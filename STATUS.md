@@ -3,22 +3,24 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I057 — deterministic local calibration session bundle**
+Last completed implementation run: **I058 — I057 session to I050 attestation import boundary**
 Last updated: **2026-08-21**
 
 ## Latest durable files
+- `implementation/RUN_I058_SESSION_ATTESTATION_IMPORT.md`
+- `implementation/session_attestation_import.py`
+- `implementation/test_session_attestation_import.py`
 - `implementation/RUN_I057_LOCAL_CALIBRATION_SESSION.md`
-- `implementation/local_calibration_session.py`
-- `implementation/test_local_calibration_session.py`
-- `implementation/RUN_I056_PYTHON_LOCAL_CALIBRATION_FIXTURE.md`
-- I055 and earlier resource-routing / authorization / readiness / capture files.
+- I056 and earlier resource-routing / authorization / readiness / capture files.
 
-## I057 outcome
-The `python_local` calibration path now has a portable collector-bound offline session format around I056.
+## I058 outcome
+The portable I057 `python_local` calibration session now has an explicit import path into the I050 resource-profile attestation boundary.
 
-A session binds the exact I056 transcript text, backend/reference hash, benchmark/output digest, collector-supplied UTC timestamp and transcript filename into an immutable identity. It exposes explicit declaration slots only for non-probe critical facts and a separate optional measured-energy slot; it never backfills from synthetic/default resource profiles.
+The importer replays I057 integrity/inertness first, independently rebuilds I054 evidence from the exact transcript/session declarations/energy slot, cross-checks emitted/missing parameters and source kinds, and preserves immutable session digest, transcript file digest, probe transcript digest and evidence hashes.
 
-Offline replay verifies transcript/session bindings, rebuilds I054 evidence and reports `planning_only` until all I050 critical facts are explicitly evidenced. An opt-in CLI can create the fixed local probe session, and a network-free replay command prints the evidence/missing-field report. Syntax compilation passed for the new module/tests; full pytest was not run because the isolated container could not fetch repository dependencies, so no green-CI claim is made. GitHub Actions was not dispatched.
+Incomplete session evidence returns `planning_only_incomplete_session` and never becomes an attestation candidate. Complete evidence must still pass I050 freshness/reference/hash/value checks at caller-supplied UTC `now`; only `calibrated_declared` or `calibrated_reproducible` results become attestation candidates. Execution/network/value movement remain disabled.
+
+New module/test syntax compilation passed. Full pytest was not run because the isolated container could not fetch the repository/dependency set; no green-CI claim. GitHub Actions was not dispatched.
 
 ## Current ranking
 1. PayanAgent
@@ -46,13 +48,15 @@ Offline replay verifies transcript/session bindings, rebuilds I054 evidence and 
 - I055 requires one exact provenance chain from acquisition through routed result; calibration class/evidence bundle hash may not change silently between I050 and I052.
 - I056 local runner is opt-in and fixed-fixture only; successful local benchmark results prove runtime facts only.
 - I056 portable transcripts preserve exact backend/reference/benchmark/output/I053-digest bindings; tampering fails closed.
-- **I057 session bundles bind exact transcript text, collector UTC time and immutable session identity before evidence replay.**
-- **I057 declaration slots are limited to non-probe facts; partial declarations or partial energy measurements fail closed rather than being guessed.**
-- **I057 offline replay remains planning-only until every I050 critical parameter has explicit evidence; session packaging never upgrades missing facts.**
+- I057 session bundles bind exact transcript text, collector UTC time and immutable session identity before evidence replay.
+- I057 declaration slots are limited to non-probe facts; partial declarations or partial energy measurements fail closed rather than being guessed.
+- **I058 incomplete sessions never cross into I050 attestation. Complete sessions must still pass current I050 evidence checks.**
+- **I058 preserves exact session digest, transcript file digest, probe transcript digest, evidence hashes and source-kind provenance across the import boundary.**
+- **I058 attestation candidate is evidence/routing input only; it is not execution authorization.**
 - All routing remains dry-run only with execution/network/value movement disabled.
 
-## Immediate next run — I058
-Integrate I057 session replay with the I050/I051 attestation boundary as an explicit import path. Convert only complete, current session evidence into an attestation candidate; keep incomplete sessions planning-only and preserve exact source-kind/session/transcript provenance. No market/network calls and no execution/value movement.
+## Immediate next run — I059
+Integrate I058 import results into the I052/I055 attested routing/provenance path for `python_local`. Require selected routed records to carry exact I058 session digest, transcript digest and I050 evidence bundle hash; reject provenance drift. Preserve upstream policy/demand precedence and keep execution/network/value movement disabled.
 
 ## Completion gate
 Implementation is complete only when the documented stack either demonstrates positive economics on real permitted tests or reasonable candidates are exhausted by control passes. Until then: **IMPLEMENTATION IN PROGRESS**.
