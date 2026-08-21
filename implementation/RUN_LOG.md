@@ -40,4 +40,12 @@ Added `human_decision_request.py` and seven deterministic tests. The request ind
 
 Verification: **7 passed** locally; GitHub Actions not dispatched.
 
-Next: **I070 — build the exact decision-record verifier over I069, still offline/non-executing.**
+## I070 — 2026-08-21
+Status: **completed**
+Stage: explicit human decision-record verification
+
+Added `human_decision_verifier.py` and eight deterministic tests. The verifier independently revalidates I069, requires exact hash/scope/time bindings plus explicit human acknowledgement, accepts only authorize-one-read-only-observation or deny, rejects chat-history inference and scope widening, and remains fully transport/network/value-movement disabled.
+
+Verification: **8 passed** locally; GitHub Actions not dispatched.
+
+Next: **I071 — build a deterministic single-use observation authorization lease over a verified I070 authorize record; keep real network transport disabled.**
