@@ -20,24 +20,16 @@ Stage: local no-spend calibration acquisition -> evidence adapter -> provenance 
 
 Built inert acquisition contracts, explicit resource evidence conversion, end-to-end calibration provenance and a fixed opt-in local JSON benchmark with portable replay. Probe success never infers accounting, electricity, quota, subscription/API or market facts.
 
-## I057 — 2026-08-21
+## I057–I059 — 2026-08-21
 Status: **completed**
-Stage: deterministic local calibration session bundle
+Stage: session bundle -> attestation import -> selected-route provenance seal
 
-Added collector-bound session packaging over the portable python_local transcript. Exact transcript text, collector UTC time, session identity, declarations and optional measured energy remain explicit; incomplete sessions remain planning-only.
+Bound exact local transcript/session/evidence identities into attested `python_local` routing. Upstream policy/demand remains authoritative; incomplete or drifting resource evidence cannot become selectable.
 
-## I058 — 2026-08-21
+## I060 — 2026-08-21
 Status: **completed**
-Stage: I057 session -> I050 resource-attestation import boundary
+Stage: inert local execution plan / receipt boundary
 
-Added `session_attestation_import.py`. The importer replays I057 integrity first, independently rebuilds I054 evidence, preserves session/transcript/evidence provenance and refuses incomplete/stale/tampered inputs as attestation candidates.
+Added `local_execution_receipt.py`. A provenance-verified I059 `python_local` dry-run route can now produce a fixed-fixture local execution plan and receipt bound to task/provenance/fixture/expected-output identities. Receipt records measured runtime and explicitly supplied energy/incremental cost only; output mismatch or cost drift holds. Network, credentials, submission and value movement remain disabled. No green-CI claim; Actions not dispatched.
 
-## I059 — 2026-08-21
-Status: **completed**
-Stage: I058 session attestation -> I052 selected-route provenance seal
-
-Added `session_routed_provenance.py` and focused tests. A selected `python_local` dry-run route must match the exact I058 backend, calibration state and I050 evidence bundle and is sealed to the I057 session digest, I056 probe transcript digest, transcript-file digest, evidence hashes and routed task identity. Serialized replay rejects backend/calibration/evidence/session/inertness drift. Upstream policy/demand state remains authoritative and incomplete session evidence cannot become selectable.
-
-Verification: new module/test syntax compilation passed. Full pytest was unavailable in the isolated environment; no green-CI claim. GitHub Actions was not dispatched.
-
-Next: **I060 — build an inert fixed-fixture local execution-plan/receipt boundary over an I059-selected `python_local` route, compare observed runtime/cost/quality facts against the selected router quote, and fail closed on provenance/economic drift without market submission/network/value movement.**
+Next: **I061 — deterministic receipt replay/verification and safe feedback of verified local runtime/cost facts into calibration, without treating benchmark evidence as demand or authorization.**
