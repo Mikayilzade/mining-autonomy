@@ -50,4 +50,14 @@ A clean packet reaches only `ready_for_explicit_real_transport_decision`. It nev
 
 Verification: **10 tests passed locally**. GitHub Actions was not dispatched. No external action occurred.
 
-Next: **I074 — build the explicit real-transport authorization decision verifier over I073, still without DNS/HTTP.**
+## I074 — 2026-08-22
+Status: **completed**
+Stage: explicit real-transport authorization verifier
+
+Added `real_transport_authorization.py` plus eleven deterministic tests. The verifier independently revalidates I073 and accepts only a fresh, acknowledged, hash-bound explicit decision matching the exact one-production-GET/no-credentials/no-action scope. Review/decision tampering, widening, replay, stale/future/pre-review timestamps and invalid TTLs fail closed.
+
+A verified deny emits no authorization. A verified authorize emits only a hash-bound 30–300 second single-use authorization record with `max_consumptions=1`; transport/network/credentials/task acceptance/submission/execution/value movement remain disabled and chat history is never interpreted as authorization.
+
+Verification: **11 tests passed locally** plus syntax compilation. GitHub Actions was not dispatched. No DNS/HTTP or other external action occurred.
+
+Next: **I075 — build the single-use I074 authorization consumption/preflight gate, still without DNS/HTTP.**
