@@ -70,4 +70,14 @@ A clean consumption emits only a hash-bound inert authorized-attempt envelope co
 
 Verification: **12 tests passed locally**. GitHub Actions was not dispatched. No external action occurred.
 
-Next: **I076 — validate a future network-capable adapter contract against every I075 gate while keeping its execution path disabled and performing no DNS/HTTP.**
+## I076 — 2026-08-22
+Status: **completed**
+Stage: network-capable adapter contract validation
+
+Added `network_adapter_contract.py` plus twelve deterministic tests. The validator revalidates the exact I075 consumption/envelope hashes, single-use one-production-GET scope, all mandatory DNS/redirect/response/source-policy gates and exact authorization bindings.
+
+A future adapter declaration must be hash-bound and exactly enforce those gates. It may declare network capability as a contract property, but this checkpoint rejects any present/reachable execution entrypoint, attached transport callable, embedded credentials or enabled network/execution/task/submission/value-moving surface. A valid declaration emits only review-only readiness with `ready_for_real_network_execution=false`.
+
+Verification: **12 tests passed locally** plus syntax compilation. GitHub Actions was not dispatched. No DNS/HTTP or external action occurred.
+
+Next: **I077 — bind a concrete future HTTPS/JSON adapter implementation manifest/source digest to I076 readiness, audit that no transport entrypoint is enabled/reachable, and define but do not activate the future single-GET interface.**
