@@ -60,4 +60,14 @@ Added `resource_feedback_summary.py` and deterministic tests. Only a fully verif
 
 The summarizer detects backend-selection oscillation and repeated parameter-update churn without averaging or inventing reliability/quality/demand/authorization facts. It explicitly preserves I064's limitation that numeric calibrated values are not archived in history; quantitative repricing requires replay/materialization of exact bound evidence bundles. Multi-parameter history entries retain the complete evidence-hash set instead of guessing parameter/hash tuple order. Nine deterministic tests passed in an isolated interface-compatible harness; GitHub Actions was not dispatched.
 
-Next: **I066 — exact evidence-bundle materialization for I065 latest refs, still inert and fail-closed.**
+## I066 — 2026-08-21
+Status: **completed**
+Stage: exact evidence-bundle materialization
+
+Added `resource_feedback_materialization.py` and deterministic tests. I065 provenance-only latest evidence refs can now yield quantitative current resource profiles only when every exact bound I050 bundle is supplied, fresh, hash-valid, reference-bound and re-attests completely.
+
+Single-parameter refs require their exact evidence hash. Multi-parameter set-only refs resolve only from explicit ResourceEvidence parameter/timestamp contents; tuple order is never guessed. The newest backend bundle is the quantitative anchor and must carry forward all older evidence hashes that I065 still marks current. Any unresolved/stale/tampered/missing/carry-forward failure emits no partial numeric profile. Declared and reproducible materialization states remain separate; all execution/network/credential/submission/value movement gates remain disabled.
+
+Verification: new module/test syntax compilation passed. Full repository pytest was unavailable because the run container had no DNS access to GitHub and no mounted checkout; GitHub Actions was deliberately not dispatched.
+
+Next: **I067 — bind I066 materialized current resources back into unchanged-task attested rerouting/repricing, still inert.**

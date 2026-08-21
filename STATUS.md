@@ -3,22 +3,24 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I065 — verified resource-feedback history current-state snapshot**
+Last completed implementation run: **I066 — exact evidence-bundle materialization**
 Last updated: **2026-08-21**
 
 ## Latest durable files
+- `implementation/RUN_I066_RESOURCE_EVIDENCE_MATERIALIZATION.md`
+- `implementation/resource_feedback_materialization.py`
+- `implementation/test_resource_feedback_materialization.py`
 - `implementation/RUN_I065_RESOURCE_FEEDBACK_SUMMARY.md`
-- `implementation/resource_feedback_summary.py`
-- `implementation/test_resource_feedback_summary.py`
-- `implementation/RUN_I064_RESOURCE_FEEDBACK_HISTORY.md`
-- I063 and earlier resource-routing / authorization / readiness / capture files.
+- I064 and earlier resource-routing / authorization / readiness / capture files.
 
-## I065 outcome
-The append-only I064 history now has a deterministic verified-history summarizer/control gate. Only a fully verified chain can produce derived current state; invalid/tampered/regressed histories expose no backend state.
+## I066 outcome
+The I065 provenance-only verified-history snapshot can now be materialized into quantitative current resource profiles only when every latest evidence reference resolves exactly against the supplied, fresh I050 evidence bundles.
 
-The snapshot binds the history tip, task identity, latest routing hash, current selected backend, all selected-backend transitions and latest `(backend, parameter)` evidence timestamps/provenance references. It surfaces deterministic backend oscillation and frequent-parameter-update churn indicators without averaging measurements or inventing reliability, quality, availability, quota, demand, payment or authorization facts.
+Each referenced bundle is re-attested at materialization time and must reproduce its exact recorded bundle hash. Single-parameter bindings require their one exact evidence hash. Multi-parameter `entry_set_only` bindings are resolved only when the underlying ResourceEvidence records prove the `(backend, parameter, observed_at)` map; tuple order is never guessed.
 
-I065 also makes an important limitation explicit: I064 stores evidence hashes/timestamps, not the underlying quantitative calibrated values. Therefore the snapshot is provenance/control state, not a numeric resource profile. Multi-parameter I064 entries preserve the whole evidence-hash set because I064 does not explicitly map each parameter to one evidence hash. Nine deterministic tests passed in an isolated interface-compatible harness; GitHub Actions was not dispatched.
+The backend's newest update bundle becomes the quantitative anchor and must still contain every evidence hash that I065 identifies as current for older parameters. Missing/stale/tampered/reference-mismatched bundles, missing hashes, ambiguous mappings, invalid snapshots or broken carry-forward fail closed and expose no partial numeric profile. Declared evidence remains distinct from reproducible measured/provider/system evidence.
+
+New module/test syntax compiled successfully. Full repository pytest was unavailable because the run container had no DNS access to GitHub and no mounted checkout; GitHub Actions was not dispatched.
 
 ## Current ranking
 1. PayanAgent
@@ -48,14 +50,17 @@ I065 also makes an important limitation explicit: I064 stores evidence hashes/ti
 - I064 history is append-only and hash-chained. A new feedback update must start from the previous recorded after-routing hash; receipts/evidence cannot be replayed.
 - For the same backend/parameter, newer history may not regress to evidence with an equal/older observed timestamp.
 - History admission rechecks evidence hash and freshness; archived provenance never turns stale/tampered input into a valid current calibration.
-- **I065 derived current state is available only from a fully verified I064 chain; any verification failure withholds backend/parameter/routing state.**
-- **I065 history summaries are provenance references, not quantitative resource measurements. Numeric repricing requires exact evidence-bundle materialization.**
-- **For multi-parameter I064 entries, I065 must preserve entry-level evidence-hash sets unless a lower layer proves exact parameter-to-evidence mapping; tuple order must never be guessed.**
+- I065 derived current state is available only from a fully verified I064 chain; any verification failure withholds backend/parameter/routing state.
+- I065 history summaries are provenance references, not quantitative resource measurements.
+- **I066 exposes quantitative resource values only when every latest I065 evidence reference resolves exactly against fresh, re-attested I050 bundles; otherwise no partial numeric profile is emitted.**
+- **I066 multi-parameter set bindings are resolved from ResourceEvidence contents, never tuple position.**
+- **The newest backend evidence bundle is the quantitative anchor and must carry forward every older evidence hash still identified by I065 as current.**
+- User-declared materialization remains distinct from reproducible measured/provider/system materialization.
 - Churn/oscillation indicators are diagnostics only; they do not change demand, policy, reliability, quality, permission or authorization state.
 - All routing/execution remains dry-run only with network/credentials/submission/value movement disabled.
 
-## Immediate next run — I066
-Build a deterministic evidence-materialization resolver over I065. Revalidate exact bound resource evidence bundles/hashes/freshness and materialize quantitative latest resource values only when every latest evidence reference resolves exactly. Multi-parameter set-only bindings stay conservative unless the underlying bundle proves the parameter/evidence map. Keep all live execution gates disabled.
+## Immediate next run — I067
+Integrate I066 materialized current resource profiles back into attested routing/economics. Reprice the unchanged task using only materialized current backends, bind route output to the I065 history tip and I066 materialization hash, and report deterministic route drift/churn without enabling execution/network/credentials/submission/value movement.
 
 ## Completion gate
 Implementation is complete only when the documented stack either demonstrates positive economics on real permitted tests or reasonable candidates are exhausted by control passes. Until then: **IMPLEMENTATION IN PROGRESS**.
