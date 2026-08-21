@@ -9,38 +9,35 @@ Do not reconstruct this project from chat memory.
 4. Discovery Runs 001–062 are COMPLETE. Continue Implementation / Experiment Phase.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I061 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I063 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
-- `implementation/RUN_I061_RECEIPT_REPLAY_CALIBRATION.md`
-- `implementation/receipt_replay_calibration.py`
-- `implementation/test_receipt_replay_calibration.py`
-- `implementation/RUN_I060_LOCAL_EXECUTION_RECEIPT.md`
-- I059 and prior resource-routing / authorization / readiness / capture files named in STATUS.
+- `implementation/RUN_I063_FEEDBACK_ATTESTED_OBSERVATION.md`
+- `implementation/feedback_attested_observation.py`
+- `implementation/test_feedback_attested_observation.py`
+- `implementation/test_benchmark_feedback_integration.py`
+- I062 and prior resource-routing / authorization / readiness / capture files named in STATUS.
 
-## I061 result
-`receipt_replay_calibration.py` closes the feedback gap between the I060 fixed-fixture benchmark receipt and I050 resource calibration.
+## I063 result
+The feedback path is now connected back into the I052 combined observation/attested-routing object without allowing measured resource data to mutate market evidence.
 
 Important behavior:
-1. no fixture is re-executed during replay;
-2. exact I060 plan hash, task/backend/provenance/fixture/output identities and router quote are revalidated;
-3. all dry-run/network/credentials/submission/value-movement flags must remain inert;
-4. invalid runtime, inconsistent explicit costs, quote drift or a non-verified source receipt fails closed;
-5. verified runtime can become `measured_local` `latency_seconds` evidence for the exact fixed fixture;
-6. explicitly measured energy can become `electricity_per_task_usd`; unknown energy emits no electricity evidence;
-7. feedback evidence is bound to the exact I060 receipt hash and exact reference-backend hash;
-8. one benchmark never infers reliability, quality probability, availability, quota, parallelism/rate limits, market demand, acceptance/payment or authorization;
-9. ten deterministic tests passed in an isolated interface-compatible harness;
+1. original I052 task/observation/economics/demand evidence is retained intact;
+2. exact task identity is required;
+3. supplied reference backends + old attestations must reproduce the original I052 route before feedback is accepted;
+4. raw pre-feedback evidence for the target backend must independently reproduce its prior attestation;
+5. I062 remains the only parameter-replacement path, so only verified measured parameters can change;
+6. the updated target attestation is substituted into the same backend set and the unchanged task is rerouted;
+7. before/after route, evidence-bundle hashes, feedback receipt/evidence hashes and replaced parameters are bound into a provenance hash;
+8. stale/unverified/backend-mismatched/provenance-mismatched feedback fails closed;
+9. added explicit I062 regression tests plus seven I063 bridge tests; new files pass syntax compilation;
 10. no network, credentials, paid spend, market submission or value movement occurred.
 
 Target flow:
-`cheap source watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> calibrated resource evidence -> attested Resource Router -> provenance-sealed python_local dry-run route -> I060 fixed-fixture benchmark receipt -> I061 replay -> narrowly measured calibration feedback -> later dry-run quote recalibration -> separately authorized real observation/execution gates`.
+`cheap watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-calibrated Resource Router -> provenance-sealed local benchmark -> verified receipt -> narrow measured feedback -> exact I052 replay/provenance gate -> re-attestation -> unchanged-task reroute -> later separately authorized real gates`.
 
-## Immediate next run: I062
-Integrate verified I061 feedback into the attested `python_local` path. Merge runtime/energy evidence with existing I050 evidence without replacing unrelated parameters, require current exact reference binding, surface conflicts, and show dry-run router quote/selection deltas. Do not enable execution/network/value movement.
-
-## Verification caveat
-I061 logic was exercised with **10 passing deterministic tests** in an isolated interface-compatible harness. GitHub Actions remains manual/PR-oriented and was not dispatched.
+## Immediate next run: I064
+Build append-only feedback history/audit over I063. Chain every update to previous calibrated state, receipt/evidence hashes and before/after routing hashes. Reject replayed/out-of-order receipts and stale parameter regression. Keep execution/network/value movement disabled.
 
 ## Hard boundary
 Do not spend money, create/fund wallets, submit KYC, accept paid work, publish monetized services, settle transactions, use real credentials or bypass CAPTCHA/geofencing/rate limits/platform rules without explicit user authorization. Real market/network capture still requires separate explicit read-only authorization.
@@ -49,7 +46,7 @@ Do not spend money, create/fund wallets, submit KYC, accept paid work, publish m
 Do not assume ChatGPT/Codex subscription includes separate API usage or free programmatic execution. Treat already-paid subscriptions as fixed/sunk limited resources with interface constraints. Only genuinely available programmatic backends with current evidence may be considered for future live routing.
 
 ## Routing precedence
-Policy/demand evidence precedes resource economics. Resource evidence precedes backend selection. I055–I061 preserve exact provenance through the selected route and local benchmark feedback; benchmark economics cannot manufacture demand or permission.
+Policy/demand evidence precedes resource economics. Resource evidence precedes backend selection. Benchmark feedback may only narrow/reprice a resource path; it cannot manufacture demand, permission, reliability or quality.
 
 ## Git/CI
 Prefer one coherent commit per implementation run. Do not re-enable push-triggered CI or documentation-only Actions. Current workflow remains manual/PR-oriented to avoid notification spam.
