@@ -94,3 +94,7 @@ def build_final_real_observation_review_packet(i084:Mapping[str,Any],i085:Mappin
         packet={**pc,"final_real_observation_review_packet_sha256":_h(pc)}
     c={"schema_version":1,"mode":MODE,"builder_state":"final_real_observation_review_packet_ready_no_network" if packet else "final_real_observation_review_packet_rejected","i084_consumption_preflight_sha256":h84 if isinstance(h84,str) else None,"i085_safety_preflight_sha256":h85 if isinstance(h85,str) else None,"i085_safety_envelope_sha256":seh if isinstance(seh,str) else None,"final_real_observation_review_packet":packet,"blockers":b,"final_real_observation_authorized":False,"network_capable_adapter_reachable":False,"adapter_invoked":False,"transport_enabled":False,"network_enabled":False,"network_calls_performed":False,"credentials_used":False,"task_acceptance_enabled":False,"submission_enabled":False,"execution_enabled":False,"value_movement_enabled":False,"builder_record_is_execution_token":False}
     return {**c,"final_real_observation_review_packet_builder_sha256":_h(c)}
+
+
+from native_exact_https_hardening import wrap_i086
+build_final_real_observation_review_packet = wrap_i086(build_final_real_observation_review_packet)
