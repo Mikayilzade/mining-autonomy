@@ -58,4 +58,12 @@ Revalidated current official PayanAgent documentation and bound one exact anonym
 
 The packet remains fail-closed: explicit user authorization and fresh policy/ToS, DNS/pinning and TLS/transport evidence are deliberately absent. `packet_is_execution_token=false`; all network/action/value-moving flags are false. No DNS/HTTP, credentials, bidding, task acceptance, spend or value movement occurred. No CI workflow was dispatched.
 
-Next: **I097 — offline packet verifier / exact authorization-binding checkpoint; remain network-inert and do not manufacture authorization.**
+## I097 — 2026-08-22
+Status: **completed scoped network-inert safety checkpoint**
+Stage: offline packet verifier / exact authorization binding
+
+Added `i097_offline_packet_verifier.py` and a durable blocked verification result. The verifier deterministically recomputes the canonical I096 scope and packet hashes, hard-binds exact host/path/query/method/request count/environment, rejects drift or safety widening, and requires future authorization to name the exact packet and scope hashes. Fresh execution evidence must be hash-bound, include policy/DNS/TLS evidence plus a pinned public-address set, remain temporally valid and require anti-rebinding revalidation.
+
+Current result is deliberately `BLOCKED`: packet integrity passes, but fresh explicit user authorization and fresh policy/DNS/pinning/TLS evidence are absent. The verifier contains no network transport and cannot become an execution token. No CI workflow was dispatched.
+
+Next: **I098 — fresh execution-evidence artifact contract; remain network-inert and do not manufacture authorization.**
