@@ -72,4 +72,12 @@ Added `activation_envelope_invocation_gate.py` plus ten deterministic offline te
 
 Local verification: **10 passed**. GitHub Actions was not dispatched; no DNS/HTTP, credentials or value-moving action occurred.
 
-Next: **I082 — build an exact human-reviewable real-read-only invocation request packet over successful I081 evidence; keep the network-capable path unreachable and require a fresh separate explicit human decision before any future real observation.**
+## I082 — 2026-08-22
+Status: **completed**
+Stage: exact real-read-only invocation request packet
+
+Added `exact_real_read_only_invocation_request.py` plus ten deterministic offline tests. The builder revalidates the successful I081 gate/receipt and original I080 preflight/envelope, binds the exact adapter/source/scope lineage and produces only a short-lived human-reviewable request for one anonymous production GET. The packet explicitly retains DNS/private-address/pinning/rebinding, zero-redirect, bounded JSON-only and fresh first-party source-policy prerequisites. No prior authorization is reused or inferred, no network-capable callback becomes reachable and the request is not an execution token.
+
+Local verification: **10 passed** plus syntax compilation. GitHub Actions was not dispatched; no DNS/HTTP, credentials or value-moving action occurred.
+
+Next: **I083 — verify a fresh explicit human authorize/deny decision bound to the exact I082 request hash/TTL/scope and, on authorize only, emit a short-lived single-use authorization record while keeping real transport unreachable.**

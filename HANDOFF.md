@@ -6,23 +6,23 @@ Do not reconstruct this project from chat memory. Read repository state first.
 Read `START_HERE.md`, `STATUS.md`, `METHODOLOGY.md`, `HANDOFF.md`, `RUN_LOG.md`, `CATALOG.md`, `implementation/RUN_LOG.md`, and latest files named in `STATUS.md`.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I081 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I082 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I082_EXACT_REAL_READ_ONLY_INVOCATION_REQUEST.md`
+- `implementation/exact_real_read_only_invocation_request.py`
+- `implementation/test_exact_real_read_only_invocation_request.py`
 - `implementation/RUN_I081_ACTIVATION_ENVELOPE_INVOCATION_GATE.md`
 - `implementation/activation_envelope_invocation_gate.py`
-- `implementation/test_activation_envelope_invocation_gate.py`
-- `implementation/RUN_I080_REAL_NETWORK_ACTIVATION_CONSUMPTION.md`
-- `implementation/real_network_activation_consumption.py`
 
-## I081 result
-The I080 one-attempt envelope now has a deterministic adapter invocation boundary. Only a dependency-injected adapter explicitly marked network-incapable may be called. The gate revalidates I080 preflight/envelope/receipt hashes, exact adapter/source/scope lineage and single-use replay state before callback invocation, then revalidates the synthetic result after invocation. Any scope widening, adapter substitution, replay or claimed network/credential/action/value movement fails closed. A clean result emits only a synthetic single-use invocation receipt; the real network adapter remains unreachable.
+## I082 result
+The successful I081 synthetic adapter-invocation receipt can now produce only a fresh human-reviewable request for the exact future real read-only invocation. The builder revalidates the I081 gate/receipt, I080 preflight/envelope, adapter ID, exact one-production-GET/no-credentials/no-action scope, implementation source digest and full adapter/source/activation lineage. The packet exposes remaining network safety prerequisites but does not attach or expose any network-capable callback, does not grant authorization and does not infer consent from history.
 
 ## Target flow
-`cheap watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-calibrated Resource Router -> measured feedback/current resource materialization -> market-side readiness -> exact human-decision request -> authorization lineage -> network-incapable handoff/review -> adapter contract/source binding -> activation request -> explicit activation decision -> single-use activation consumption -> synthetic invocation-bound replay -> fresh exact real-read-only invocation request -> separately authorized exact real read-only observation`.
+`cheap watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-calibrated Resource Router -> measured feedback/current resource materialization -> market readiness -> exact human-decision/authorization lineage -> network-incapable handoff/review -> adapter/source binding -> activation request/decision/consumption -> synthetic invocation-bound replay -> exact real-read-only invocation request -> fresh explicit decision -> separately authorized one-shot real observation`.
 
-## Immediate next run: I082
-Build a deterministic human-reviewable request packet for the exact future real read-only invocation, bound to successful I081 evidence plus the exact adapter/source/scope lineage. Do not make a network-capable callback reachable and do not infer permission from chat/repository history. Real DNS/HTTP remains disabled pending a fresh separate explicit human decision.
+## Immediate next run: I083
+Build the exact I082 decision verifier. Require a fresh explicit authorize/deny object bound to the exact I082 request hash, TTL and exact scope. A valid authorize may create only a short-lived single-use authorization record; deny creates none. Keep DNS/HTTP and the network-capable adapter unreachable.
 
 ## Hard boundary
 No spend, KYC, wallets, paid work acceptance, publication, settlement, real credentials, CAPTCHA/geofence/rate-limit bypass or value movement without separate explicit authorization. One read-only observation can never imply broader permission.
