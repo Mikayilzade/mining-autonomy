@@ -14,66 +14,22 @@ Stage: Resource Router foundation -> attested end-to-end routing
 
 Added fixed/marginal resource economics, resource-profile evidence/calibration, attested routing and upstream observation integration. Reference/default backends are planning-only; policy/demand gates remain authoritative.
 
-## I053–I059 — 2026-08-21
+## I053–I067 — 2026-08-21
 Status: **completed**
-Stage: local no-spend calibration -> evidence/provenance -> selected-route seal
+Stage: local no-spend calibration -> measured feedback/current resource materialization -> unchanged-task rerouting
 
-Built inert acquisition contracts, resource evidence conversion, session/import provenance and selected `python_local` route sealing. Missing hardware/electricity/quota/subscription/API/market facts are never inferred.
+Built inert acquisition contracts, current resource evidence, benchmark receipts, exact replay, measured feedback and unchanged-task rerouting. Only complete reproducible resources are selectable.
 
-## I060–I067 — 2026-08-21
+## I068–I091 — 2026-08-21 to 2026-08-22
 Status: **completed**
-Stage: inert benchmark -> verified feedback -> current-resource materialization -> unchanged-task rerouting
+Stage: market readiness -> exact authorization lineage -> concrete pinned HTTPS/JSON transport boundary
 
-Built fixed-fixture execution receipts, exact replay, narrow measured feedback, append-only history, current-state provenance, exact fresh evidence materialization and I067 replay into unchanged I052 routing. Only complete reproducible resources are selectable; market demand and authorization remain independent gates.
+Built the narrow one-production-GET/no-credentials/no-action chain through review, authorization consumption, I089 gate, I090 single-use executor and I091 concrete pinned-address/TLS/HTTP/JSON boundary. No live DNS/HTTP occurred. I091 exposed a fail-closed gap: exact path/query was not hash-bound upstream.
 
-## I068–I071 — 2026-08-21
-Status: **completed**
-Stage: market readiness -> exact human decision -> verified authorization -> single-use lease
+## I092 — 2026-08-22
+Status: **completed safe checkpoint**
+Stage: canonical exact HTTPS path/query binding contract
 
-Built the exact one-production-GET/no-credentials/no-action readiness and authorization chain. Requests, decisions and lease consumption are separately hash-bound; synthetic consumption is single-use and cannot imply broader task/payment/value-moving permission.
+Added `exact_https_target_binding.py` and nine offline tests. Origin-form path/query is now canonically defined, inserted into the exact scope hash, and validated unchanged across I086/I087/I088/I089/I090-shaped artifacts plus adapter manifest. Absolute/authority/userinfo/fragment/out-of-band drift fails closed. This is a contract checkpoint only: existing builders have not yet been rewritten, so no live request is permitted.
 
-## I072–I076 — 2026-08-21 to 2026-08-22
-Status: **completed**
-Stage: network-incapable handoff -> review -> explicit authorization -> single-use preflight -> adapter contract
-
-Built the lease-bound inert handoff, pre-real-transport human review, explicit real-transport authorization verifier, single-use consumption/preflight and future network-adapter contract validation. Exact scope remains one anonymous production GET with mandatory DNS/private-address/pinning/rebinding, zero-redirect, 1 MiB JSON-only and fresh first-party source-policy gates. No network-capable entrypoint was made reachable.
-
-## I077–I086 — 2026-08-22
-Status: **completed**
-Stage: concrete adapter/source binding -> activation lineage -> synthetic replay -> exact real-read-only request/decision/consumption -> injected transport safety -> final review packet
-
-The chain is hash-bound, single-use and fail-closed. I086 jointly revalidates I084/I085 into an immutable short-lived human-review packet with exact target, public pinned addresses, evidence digests and strict one-request HTTPS/TLS GET/zero-redirect/JSON-only <=1 MiB limits. No network-capable entrypoint is reachable.
-
-## I087 — 2026-08-22
-Status: **completed**
-Stage: final one-shot real-observation decision verifier
-
-Added `final_real_observation_decision.py`. It accepts only a fresh exact I086 packet-hash-bound authorize/deny decision, revalidates packet TTL/inert state/transport limits and exact adapter/target/scope/source/hostname/pinned-address/evidence bindings, and rejects replay/widening. Deny emits no authorization. Authorize emits only a short-lived single-use unconsumed authorization capped by packet expiry, with execution-time safety-evidence and DNS pinning/anti-rebinding revalidation still mandatory. Network transport remains unreachable; no DNS/HTTP or value movement occurred.
-
-## I088 — 2026-08-22
-Status: **completed**
-Stage: final authorization consumption + fresh safety/DNS revalidation
-
-Added `final_real_observation_authorization_consumption.py` and deterministic regression coverage. The consumer revalidates the exact I086 packet and I087 authorization, requires fresh injected I085-style first-party policy, DNS and HTTPS/JSON transport evidence, rejects replay/drift and emits only one zero-network one-attempt envelope plus a hash-bound consumption receipt. Exact target/scope/source/hostname/pins/transport limits cannot widen. No DNS/HTTP or value movement occurred.
-
-## I089 — 2026-08-22
-Status: **completed**
-Stage: final network-capable adapter invocation gate
-
-Added `final_network_adapter_invocation_gate.py` plus nine deterministic tests. The gate independently revalidates the exact I088 top-level result, one-attempt execution envelope, consumption receipt, packet/authorization/evidence lineage, production GET scope, implementation digest, public pinned IP set and strict HTTPS/TLS/zero-redirect/JSON-only <=1 MiB limits. A clean result exposes only a short-lived dependency-injected request specification and performs no transport call. No DNS/HTTP or value-moving action occurred.
-
-## I090 — 2026-08-22
-Status: **completed**
-Stage: single-use dependency-injected transport executor
-
-Added `final_single_use_transport_executor.py` plus eight deterministic synthetic tests. The executor independently revalidates I089 before invoking the injected callable, blocks stale/tampered/replayed gates before transport, consumes the one-shot on callable exception or rejected result, and accepts only exactly-one-request pinned-peer/TLS-hostname/no-re-resolution/zero-redirect/valid-JSON/bounded-size outcomes. Success emits a hash-bound invocation receipt and response attestation. The module itself contains no DNS/HTTP implementation. Syntax compilation and 8 tests passed; no live network, credentials or value movement occurred.
-
-## I091 — 2026-08-22
-Status: **completed**
-Stage: concrete attested pinned HTTPS/JSON transport boundary
-
-Added `concrete_pinned_https_json_transport.py` plus nine deterministic offline socket/TLS/HTTP tests. The adapter dials only an injected pre-pinned public address, verifies raw/TLS peer identity, requires hostname-verifying `CERT_REQUIRED` TLS with exact SNI, sends one GET, follows no redirects, enforces 32 KiB header and bounded compressed/decompressed body limits while reading, supports bounded chunked/gzip JSON, and derives response metadata from adapter state. No live connector/resolver is bundled and no network occurred.
-
-Fail-closed finding: the existing I089 request spec does not carry an exact HTTP path/query. I091 therefore requires a bound `path` and refuses out-of-band endpoint injection.
-
-Next: **I092 — propagate canonical exact HTTPS path/query binding through the reviewed authorization lineage, adapter manifest, I089 request spec and I090 validation; add offline tamper/replay tests. No live observation until a separate fresh explicit authorization/safety chain permits exactly one fully bound read-only request.**
+Next: **I093 — integrate the I092 binding into the actual fresh I086→I090 builders and tests before any new human authorization or real observation.**
