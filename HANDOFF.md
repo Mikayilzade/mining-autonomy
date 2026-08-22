@@ -6,24 +6,26 @@ Do not reconstruct this project from chat memory. Read repository state first.
 Read `START_HERE.md`, `STATUS.md`, `METHODOLOGY.md`, `HANDOFF.md`, `RUN_LOG.md`, `CATALOG.md`, `implementation/RUN_LOG.md`, and latest files named in `STATUS.md`.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I077 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I078 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I078_REAL_NETWORK_ACTIVATION_REQUEST.md`
+- `implementation/real_network_activation_request.py`
+- `implementation/test_real_network_activation_request.py`
 - `implementation/RUN_I077_ADAPTER_IMPLEMENTATION_BINDING.md`
-- `implementation/adapter_implementation_binding.py`
-- `implementation/future_https_json_adapter.py`
-- `implementation/test_adapter_implementation_binding.py`
 
-## I077 result
-The future HTTPS/JSON adapter now has a concrete source identity while remaining network-incapable in practice. `future_https_json_adapter.py` exposes only a fail-closed `execute_single_authorized_get(...)` stub and contains no networking imports.
+## I078 result
+The exact I077 implementation/source audit is now wrapped in a short-lived human-review activation-request packet without any network activation.
 
-`adapter_implementation_binding.py` binds that exact source digest and manifest to the I076 readiness artifact, adapter contract, authorized-attempt envelope and exact scope. It independently rejects I076/readiness/manifest/source tamper, scope/interface widening, reachable activation claims, network/process transport imports and removal of the fail-closed guard. Ten tests passed locally; no DNS/HTTP occurred.
+`real_network_activation_request.py` independently revalidates I077/I076 hashes and review-only states, exact one-production-GET/no-credentials/no-action scope, adapter/source identity and the upstream I075/I074/I073 authorization lineage. A clean packet lasts only 60–900 seconds (default 300), is hash-bound to the exact source/audit/lineage, and explicitly remains non-authorizing/non-executable.
+
+Ten deterministic tests passed locally; no DNS/HTTP occurred and GitHub Actions was not dispatched.
 
 ## Target flow
-`cheap watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-calibrated Resource Router -> measured feedback/current resource materialization -> market-side readiness -> exact human-decision request -> explicit observation decision verifier -> synthetic/offline lease rehearsal -> network-incapable handoff -> pre-real-transport review -> explicit real-transport decision verifier -> single-use authorization consumption/preflight -> adapter contract validation -> concrete source binding/audit -> short-lived activation request -> separately authorized exact real read-only observation`.
+`cheap watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-calibrated Resource Router -> measured feedback/current resource materialization -> market-side readiness -> exact human-decision request -> explicit observation decision verifier -> synthetic/offline lease rehearsal -> network-incapable handoff -> pre-real-transport review -> explicit real-transport decision verifier -> single-use authorization consumption/preflight -> adapter contract validation -> concrete source binding/audit -> short-lived activation request -> explicit activation decision verifier -> separately authorized exact real read-only observation`.
 
-## Immediate next run: I078
-Build an inert real-network activation-request packet over I077. It must be hash-bound to the exact implementation audit/source digest and existing authorization lineage, describe only the one production GET/no-credentials/no-action interface, be short-lived and human-reviewable, and still leave the adapter unreachable. Perform no DNS/HTTP.
+## Immediate next run: I079
+Build the explicit activation-decision verifier over I078. It must require a fresh exact human decision bound to the exact I078 request hash, source/audit/lineage and scope. Deny produces no authorization. Authorize may produce only a short-lived single-use activation authorization record while leaving the adapter uninvoked and network disabled.
 
 ## Hard boundary
 No spend, KYC, wallets, paid work acceptance, publication, settlement, real credentials, CAPTCHA/geofence/rate-limit bypass or value movement without separate explicit authorization. One read-only observation can never imply broader permission.

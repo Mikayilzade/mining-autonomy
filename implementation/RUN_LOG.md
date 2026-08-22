@@ -32,52 +32,28 @@ Stage: market readiness -> exact human decision -> verified authorization -> sin
 
 Built the exact one-production-GET/no-credentials/no-action readiness and authorization chain. Requests, decisions and lease consumption are separately hash-bound; synthetic consumption is single-use and cannot imply broader task/payment/value-moving permission.
 
-## I072 — 2026-08-21
+## I072–I076 — 2026-08-21 to 2026-08-22
 Status: **completed**
-Stage: lease-bound network-incapable transport handoff
+Stage: network-incapable handoff -> review -> explicit authorization -> single-use preflight -> adapter contract
 
-Added `lease_bound_transport_handoff.py` plus eight deterministic tests. The handoff independently validates the consumed I071 receipt, lease and exact request/verification/scope bindings, freshness and inert flags. It emits one immutable GET envelope only to an adapter explicitly declaring `network_capable=False`. The built-in recorder stores only an envelope digest; network-capable adapters are rejected before callback and adapter results claiming network activity fail closed.
+Built the lease-bound inert handoff, pre-real-transport human review, explicit real-transport authorization verifier, single-use consumption/preflight and future network-adapter contract validation. Exact scope remains one anonymous production GET with mandatory DNS/private-address/pinning/rebinding, zero-redirect, 1 MiB JSON-only and fresh first-party source-policy gates. No network-capable entrypoint was made reachable.
 
-GitHub Actions was not dispatched. No DNS/HTTP, credentials, paid task action, settlement or value movement occurred.
-
-## I073 — 2026-08-21
+## I077 — 2026-08-22
 Status: **completed**
-Stage: deterministic pre-real-transport human-review packet
+Stage: concrete adapter implementation binding/audit
 
-Added `pre_real_transport_review.py` plus ten deterministic tests. The review layer independently revalidates I072/I071 hashes and exact scope, immutable GET-envelope and zero-network adapter-result integrity, inert safety flags, lease expiry, and current market/resource readiness/freshness/calibration/backend binding.
+Added `future_https_json_adapter.py` and `adapter_implementation_binding.py`. The future HTTPS/JSON source is hash-bound to I076 readiness, imports no network libraries, exposes only a fail-closed `execute_single_authorized_get(...)` stub and is audited against scope/interface widening, tamper and reachable transport claims.
 
-A clean packet reaches only `ready_for_explicit_real_transport_decision`. It never grants or infers real authorization; any future real-network decision must be fresh, scope-equal and bound to the exact `pre_real_transport_review_sha256`. DNS/HTTP remains absent.
+Verification: **10 tests passed locally**. GitHub Actions was not dispatched. No DNS/HTTP or external action occurred.
 
-Verification: **10 tests passed locally**. GitHub Actions was not dispatched. No external action occurred.
-
-## I074 — 2026-08-22
+## I078 — 2026-08-22
 Status: **completed**
-Stage: explicit real-transport authorization verifier
+Stage: short-lived real-network activation request
 
-Added `real_transport_authorization.py` plus eleven deterministic tests. The verifier independently revalidates I073 and accepts only a fresh, acknowledged, hash-bound explicit decision matching the exact one-production-GET/no-credentials/no-action scope. Review/decision tampering, widening, replay, stale/future/pre-review timestamps and invalid TTLs fail closed.
+Added `real_network_activation_request.py` and ten deterministic tests. The builder revalidates I077/I076 review-only state, exact one-GET scope, concrete adapter/source identity and I075/I074/I073 lineage, then emits only a 60–900 second human-review request bound to exact hashes.
 
-A verified deny emits no authorization. A verified authorize emits only a hash-bound 30–300 second single-use authorization record with `max_consumptions=1`; transport/network/credentials/task acceptance/submission/execution/value movement remain disabled and chat history is never interpreted as authorization.
+The request explicitly keeps `activation_authorized=false`, adapter invocation/network/execution/value movement disabled, and is not an execution token.
 
-Verification: **11 tests passed locally** plus syntax compilation. GitHub Actions was not dispatched. No DNS/HTTP or other external action occurred.
+Verification: **10 tests passed locally**. GitHub Actions was not dispatched. No DNS/HTTP or external action occurred.
 
-## I075 — 2026-08-22
-Status: **completed**
-Stage: single-use real-transport authorization consumption/preflight
-
-Added `real_transport_authorization_consumption.py` plus twelve deterministic tests. The gate independently revalidates I074 verification/authorization hashes, exact review/decision/scope bindings, single-use semantics and the issue/expiry window, then rejects replay/double-consumption.
-
-A clean consumption emits only a hash-bound inert authorized-attempt envelope containing mandatory DNS resolution/private-address/pinning/rebinding gates, zero automatic redirects, 1 MiB JSON-only response handling and fresh first-party anonymous-read-only source-policy requirements. No network-capable adapter exists and DNS/HTTP remains absent.
-
-Verification: **12 tests passed locally**. GitHub Actions was not dispatched. No external action occurred.
-
-## I076 — 2026-08-22
-Status: **completed**
-Stage: network-capable adapter contract validation
-
-Added `network_adapter_contract.py` plus twelve deterministic tests. The validator revalidates the exact I075 consumption/envelope hashes, single-use one-production-GET scope, all mandatory DNS/redirect/response/source-policy gates and exact authorization bindings.
-
-A future adapter declaration must be hash-bound and exactly enforce those gates. It may declare network capability as a contract property, but this checkpoint rejects any present/reachable execution entrypoint, attached transport callable, embedded credentials or enabled network/execution/task/submission/value-moving surface. A valid declaration emits only review-only readiness with `ready_for_real_network_execution=false`.
-
-Verification: **12 tests passed locally** plus syntax compilation. GitHub Actions was not dispatched. No DNS/HTTP or external action occurred.
-
-Next: **I077 — bind a concrete future HTTPS/JSON adapter implementation manifest/source digest to I076 readiness, audit that no transport entrypoint is enabled/reachable, and define but do not activate the future single-GET interface.**
+Next: **I079 — build the explicit activation-decision verifier bound to the exact I078 request; keep adapter invocation and DNS/HTTP disabled.**
