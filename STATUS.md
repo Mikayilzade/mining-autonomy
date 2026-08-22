@@ -3,24 +3,23 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I094 — native exact HTTPS builder regression hardening checkpoint**
+Last completed implementation run: **I095 — baseline-control / regression-debt isolation checkpoint**
 Last updated: **2026-08-22**
 
 ## Latest durable files
+- `implementation/RUN_I095_BASELINE_CONTROL_ISOLATION.md`
+- `implementation/I095_FOCUSED_REGRESSION_SET.txt`
 - `implementation/RUN_I094_NATIVE_EXACT_HTTPS_HARDENING.md`
 - `implementation/native_exact_https_hardening.py`
 - `implementation/final_real_observation_review_packet.py`
 - `implementation/final_real_observation_decision.py`
 - `implementation/final_network_adapter_invocation_gate.py`
 - `implementation/final_single_use_transport_executor.py`
-- `implementation/RUN_I093_FRESH_EXACT_HTTPS_BUILDER_INTEGRATION.md`
 
-## I094 outcome
-The I093 exact-path invariants are now enforced directly at the native I086/I087/I089/I090 public builder/executor boundaries. Native I086 refuses missing/non-canonical/stale-hash `https_path_query`; I087 requires packet and fresh decision path bindings; I089 requires adapter-manifest path equality and writes the bound path into its request spec; I090 rejects missing/non-canonical path before the injected transport callable can run.
+## I095 outcome
+The I094 merge commit is now bound to exact parent/main control ref `c5d0426ed8bd2a7ec029e12ed8e1d42b0e7a5379`. The existing final PR full-suite run remains **634 passed / 48 failed**. None of the 48 failing nodes belongs to the three I094-modified test files; failure signatures remain older fixture-time, routing/calibration-state, probe-count, error-order and serialization debt. A stable focused I086–I094 regression set is recorded.
 
-Native/downstream fixtures were migrated to carry the bound origin-form path/query and new regressions prove missing/altered paths fail closed without relying on the I093 integration adapter.
-
-A full `implementation` pytest run was executed through the existing pull-request-only workflow. I094-specific exact-path tests passed after one targeted fix. The repository-wide suite remains red at **634 passed / 48 failed** because of unrelated pre-existing baseline/fixture debt (primarily stale absolute-time fixtures and older routing/calibration expectations). This run did not broaden scope to repair that unrelated debt.
+No new Actions job was triggered in I095 because repeated failing PR runs were producing GitHub email spam. Therefore exact parent-ref dynamic reproduction is still evidence debt; I095 records strong direct-regression isolation, not a claim that every failure was dynamically replayed on the parent ref.
 
 This remains an offline/synthetic safety checkpoint. No live endpoint was observed and no credential, spend, task acceptance, submission or value movement occurred.
 
@@ -38,19 +37,20 @@ This remains an offline/synthetic safety checkpoint. No live endpoint was observ
 - Synthetic/default resources remain planning references; only current reproducible materialized resources are selectable.
 - Exact scope remains one production GET, no credentials, no action.
 - ChatGPT/Codex subscription is fixed/sunk limited support, not a free autonomous API.
-- I086–I094 remain narrow short-lived authorization/invocation lineage, not general execution permission.
+- I086–I095 remain narrow short-lived authorization/invocation/control lineage, not general execution permission.
 - I090 consumes a valid I089 attempt even on transport error/result rejection and blocks replay before any second callable invocation.
 - I091 bundles no live connector or DNS resolver and requires a bound path.
 - I092 defines the canonical exact path/query contract.
 - I093 binds that contract into fresh review/authorization/execution/request artifacts before transport.
 - I094 enforces the same contract at the native I086/I087/I089/I090 boundaries.
+- I095 isolates full-suite regression debt without creating more CI notification noise.
 - Existing pre-I092 authorizations cannot be upgraded or reused.
 - No real DNS/HTTP request has yet been performed by this implementation chain.
 
-## Immediate next run — I095
-Establish a **baseline-control / regression-debt isolation checkpoint** before any production observation: prove which of the current 48 full-suite failures are already present on `main` (or repair only a directly caused I094 regression if any control difference appears), record a stable scoped test set for the I086–I094 authorization/transport lineage, and keep all work offline/synthetic. Do not perform a real observation and do not manufacture a user authorization.
+## Immediate next run — I096
+Prepare a **fresh one-shot review packet only**, still network-inert: bind the exact anonymous read-only target/scope/path to current candidate evidence, require fresh policy/DNS/pinning evidence placeholders, and preserve the explicit user-authorization gap. Do not perform a real observation and do not manufacture a user authorization.
 
-Only after that control checkpoint is documented may a future run prepare a **fresh** one-shot review/authorization packet for one anonymous read-only production observation. The actual network observation still requires separate explicit user authorization plus fresh policy/DNS evidence at that time.
+The actual network observation still requires separate explicit user authorization plus fresh policy/DNS evidence at that time.
 
 ## Completion gate
 Implementation completes only with confirmed positive economics on real permitted tests or exhaustion of reasonable candidates by control passes.

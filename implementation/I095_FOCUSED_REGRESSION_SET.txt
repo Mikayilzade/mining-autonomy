@@ -1,0 +1,9 @@
+# Stable focused safety-lineage regression set (I086-I094)
+# Run from implementation/ with pytest; offline/synthetic only.
+test_final_real_observation_review_packet.py
+test_final_real_observation_decision.py
+test_final_network_adapter_invocation_gate.py
+test_final_single_use_transport_executor.py
+test_exact_https_target_binding.py
+test_fresh_exact_https_builder_integration.py
+test_concrete_pinned_https_transport.py

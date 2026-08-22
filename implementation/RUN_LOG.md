@@ -44,6 +44,12 @@ Stage: native exact HTTPS builder/executor regression hardening
 
 Added `native_exact_https_hardening.py` and activated it at the native I086/I087/I089/I090 boundaries. Migrated native/downstream fixtures so exact origin-form `https_path_query` is mandatory and path drift fails closed before transport. The full pull-request suite was run offline/synthetic; I094-targeted regressions passed, while the repository baseline remains red at 634 passed / 48 unrelated failures.
 
+## I095 — 2026-08-22
+Status: **completed scoped offline control checkpoint**
+Stage: baseline-control / regression-debt isolation
+
+Bound the I094 merge to its exact parent/main control ref, classified the final 48 failures from the existing full-suite log, confirmed that none is in an I094-modified test file, and recorded a stable focused I086–I094 safety-lineage regression set. No extra Actions run was triggered because repeated failing PR CI was already producing email spam. Exact parent runtime reproduction therefore remains evidence debt; the 48 failures are isolated as baseline/independent debt with strong static + existing-run evidence, not silently waived.
+
 No live DNS/HTTP, credentials, spend, paid-task action or value movement occurred.
 
-Next: **I095 — isolate the 48 full-suite baseline failures against `main` and record a stable focused I086–I094 regression set; remain offline/synthetic before any fresh one-shot authorization.**
+Next: **I096 — prepare a fresh exact one-shot review packet while remaining network-inert; preserve the explicit authorization gap and fresh policy/DNS evidence requirements.**
