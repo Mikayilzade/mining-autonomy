@@ -68,4 +68,12 @@ Stage: single-use dependency-injected transport executor
 
 Added `final_single_use_transport_executor.py` plus eight deterministic synthetic tests. The executor independently revalidates I089 before invoking the injected callable, blocks stale/tampered/replayed gates before transport, consumes the one-shot on callable exception or rejected result, and accepts only exactly-one-request pinned-peer/TLS-hostname/no-re-resolution/zero-redirect/valid-JSON/bounded-size outcomes. Success emits a hash-bound invocation receipt and response attestation. The module itself contains no DNS/HTTP implementation. Syntax compilation and 8 tests passed; no live network, credentials or value movement occurred.
 
-Next: **I091 — build a concrete pinned-address HTTPS/JSON transport boundary with adapter-derived peer/TLS/redirect/byte-limit evidence, but test only with offline/injected socket/TLS/HTTP doubles. No live observation until a separate fresh exact authorization/safety chain permits it.**
+## I091 — 2026-08-22
+Status: **completed**
+Stage: concrete attested pinned HTTPS/JSON transport boundary
+
+Added `concrete_pinned_https_json_transport.py` plus nine deterministic offline socket/TLS/HTTP tests. The adapter dials only an injected pre-pinned public address, verifies raw/TLS peer identity, requires hostname-verifying `CERT_REQUIRED` TLS with exact SNI, sends one GET, follows no redirects, enforces 32 KiB header and bounded compressed/decompressed body limits while reading, supports bounded chunked/gzip JSON, and derives response metadata from adapter state. No live connector/resolver is bundled and no network occurred.
+
+Fail-closed finding: the existing I089 request spec does not carry an exact HTTP path/query. I091 therefore requires a bound `path` and refuses out-of-band endpoint injection.
+
+Next: **I092 — propagate canonical exact HTTPS path/query binding through the reviewed authorization lineage, adapter manifest, I089 request spec and I090 validation; add offline tamper/replay tests. No live observation until a separate fresh explicit authorization/safety chain permits exactly one fully bound read-only request.**
