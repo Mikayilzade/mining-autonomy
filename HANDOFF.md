@@ -6,25 +6,25 @@ Do not reconstruct this project from chat memory. Read repository state first.
 Read `START_HERE.md`, `STATUS.md`, `METHODOLOGY.md`, `HANDOFF.md`, `RUN_LOG.md`, `CATALOG.md`, `implementation/RUN_LOG.md`, and latest files named in `STATUS.md`.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I088 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I089 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I089_FINAL_NETWORK_ADAPTER_INVOCATION_GATE.md`
+- `implementation/final_network_adapter_invocation_gate.py`
+- `implementation/test_final_network_adapter_invocation_gate.py`
 - `implementation/RUN_I088_FINAL_AUTHORIZATION_CONSUMPTION_PREFLIGHT.md`
 - `implementation/final_real_observation_authorization_consumption.py`
-- `implementation/test_final_real_observation_authorization_consumption.py`
-- `implementation/RUN_I087_FINAL_REAL_OBSERVATION_DECISION.md`
-- `implementation/RUN_I086_FINAL_REAL_OBSERVATION_REVIEW_PACKET.md`
 
-## I088 result
-The exact I087 authorization now has a separate fail-closed consumer. It revalidates the exact I086 packet and I087 authorization, requires fresh injected I085-style first-party policy, DNS and transport evidence, enforces the unchanged target/scope/source/hostname/pinned-address set and strict one-request HTTPS/TLS GET/zero-redirect/JSON-only <=1 MiB limits, then emits only a zero-network one-attempt envelope plus a single-use receipt.
+## I089 result
+The exact I088 one-attempt envelope + receipt now has a final network-capable adapter invocation gate. It independently revalidates exact hashes/state/replay, target, hostname, public pinned addresses, scope, implementation source and transport limits, then requires a hash-bound network-capable adapter manifest with identical bindings and mandatory address pinning/TLS-SNI/no re-resolution/decompression-limit behavior.
 
-Replay, stale authorization/evidence, private or changed DNS pins, hostname substitution and transport widening fail closed. No network-capable adapter became reachable and no DNS/HTTP occurred.
+A clean result emits only a short-lived dependency-injected request specification. No network boundary is called by I089. Envelopes older than 60 seconds fail, and any prior invocation attempt receipt consumes the one-shot even when the prior attempt ended in transport error.
 
 ## Target flow
-`cheap watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-calibrated Resource Router -> measured feedback/current resource materialization -> market readiness -> exact human-decision/authorization lineage -> network-incapable handoff/review -> adapter/source binding -> activation request/decision/consumption -> synthetic invocation-bound replay -> exact real-read-only invocation request -> fresh explicit I083 decision -> single-use I084 preflight -> injected-evidence I085 transport safety -> immutable I086 final human review packet -> explicit I087 final decision -> I088 fresh-evidence authorization consumption -> final one-shot adapter invocation gate`.
+`cheap watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-calibrated Resource Router -> measured feedback/current resource materialization -> market readiness -> exact human-decision/authorization lineage -> network-incapable handoff/review -> adapter/source binding -> activation request/decision/consumption -> synthetic invocation-bound replay -> exact real-read-only invocation request -> explicit final review/decision -> I088 fresh-evidence authorization consumption -> I089 final network-capable invocation gate -> I090 single-use transport executor -> permitted one-shot real observation -> measured demand/economics feedback`.
 
-## Immediate next run: I089
-Build the final network-capable adapter invocation gate over the exact I088 envelope + receipt. Keep it single-attempt and fail-closed; revalidate exact target, hostname, pins, scope, source and transport limits. Expose only a dependency-injected transport boundary. Do not perform a live request unless the exact current authorization and safety chain is supplied and every gate still passes.
+## Immediate next run: I090
+Build the single-use dependency-injected transport executor over the exact I089 gate. It must consume the attempt even on transport error, validate pinned peer IP/TLS/zero redirects/one request/JSON-only/size bounds and return a hash-bound invocation receipt + response attestation. Test only with a synthetic transport fixture. A real request still requires a separate explicit decision with an exact current chain.
 
 ## Hard boundary
 No spend, KYC, wallets, paid work acceptance, publication, settlement, real credentials, CAPTCHA/geofence/rate-limit bypass or value movement without separate explicit authorization. One read-only observation can never imply broader permission.

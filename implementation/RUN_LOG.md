@@ -56,4 +56,12 @@ Stage: final authorization consumption + fresh safety/DNS revalidation
 
 Added `final_real_observation_authorization_consumption.py` and deterministic regression coverage. The consumer revalidates the exact I086 packet and I087 authorization, requires fresh injected I085-style first-party policy, DNS and HTTPS/JSON transport evidence, rejects replay/drift and emits only one zero-network one-attempt envelope plus a hash-bound consumption receipt. Exact target/scope/source/hostname/pins/transport limits cannot widen. No DNS/HTTP or value movement occurred.
 
-Next: **I089 — build the final network-capable adapter invocation gate over exact I088 envelope + receipt; keep one-attempt semantics, exact bindings and fail-closed dependency-injected transport. Do not perform live DNS/HTTP without the complete current authorization/safety chain.**
+## I089 — 2026-08-22
+Status: **completed**
+Stage: final network-capable adapter invocation gate
+
+Added `final_network_adapter_invocation_gate.py` plus nine deterministic tests. The gate independently revalidates the exact I088 top-level result, one-attempt execution envelope, consumption receipt, packet/authorization/evidence lineage, production GET scope, implementation digest, public pinned IP set and strict HTTPS/TLS/zero-redirect/JSON-only <=1 MiB limits. It then requires a hash-bound network-capable adapter manifest with identical target/host/pins/scope/source/transport bindings and explicit address-pinning/TLS-SNI/no-re-resolution/decompression-limit requirements.
+
+A clean result exposes only a short-lived dependency-injected request specification and performs no transport call. I088 envelopes older than 60 seconds are rejected; any valid prior invocation attempt receipt consumes the one-shot even after a failed attempt. Local verification: **9 passed** plus syntax compilation. GitHub Actions was not dispatched; no DNS/HTTP, credentials or value-moving action occurred.
+
+Next: **I090 — build the single-use dependency-injected transport executor over exact I089. Consume the one-shot even on error, validate pinned peer IP/TLS/zero redirects/one request/JSON-only/response size and emit a hash-bound invocation receipt + response attestation. Exercise only with a synthetic transport fixture; no live request without a separate explicit decision and exact current chain.**

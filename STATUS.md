@@ -3,20 +3,20 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I088 — final authorization consumption preflight**
+Last completed implementation run: **I089 — final network-capable adapter invocation gate**
 Last updated: **2026-08-22**
 
 ## Latest durable files
+- `implementation/RUN_I089_FINAL_NETWORK_ADAPTER_INVOCATION_GATE.md`
+- `implementation/final_network_adapter_invocation_gate.py`
+- `implementation/test_final_network_adapter_invocation_gate.py`
 - `implementation/RUN_I088_FINAL_AUTHORIZATION_CONSUMPTION_PREFLIGHT.md`
 - `implementation/final_real_observation_authorization_consumption.py`
-- `implementation/test_final_real_observation_authorization_consumption.py`
-- `implementation/RUN_I087_FINAL_REAL_OBSERVATION_DECISION.md`
-- `implementation/RUN_I086_FINAL_REAL_OBSERVATION_REVIEW_PACKET.md`
 
-## I088 outcome
-The exact I087 single-use final authorization now has a separate zero-network consumer bound to the exact I086 packet. Consumption independently revalidates packet/authorization hashes, freshness, single-use state, exact target/scope/source/hostname/pin/transport bindings and requires fresh injected I085-style first-party policy, DNS and HTTPS/JSON transport evidence at consumption time.
+## I089 outcome
+The exact I088 one-attempt envelope + receipt can now be promoted into a short-lived final network-adapter invocation gate only after independent hash/state/replay and exact target/host/public-pin/scope/source/transport validation. A hash-bound network-capable adapter manifest must match the reviewed adapter, implementation digest, hostname, pinned addresses and strict one-request HTTPS/TLS GET + zero-redirect + JSON-only <=1 MiB limits.
 
-A clean result emits only one immutable one-attempt execution envelope plus one consumption receipt. Both remain network-inert; the network-capable adapter is still unreachable. Fresh policy/DNS/transport evidence may update historical evidence digests, but target, scope, source, hostname, pinned-address set and strict one-request transport limits may not drift. Replay, stale authorization/evidence, private/pin-changing DNS, host drift and transport widening fail closed.
+A clean gate exposes only a dependency-injected request specification; it does not call any transport boundary. The I088 envelope must be no more than 60 seconds old, and any prior invocation attempt receipt consumes the one-shot even if that prior attempt failed. Nine deterministic local tests passed; GitHub Actions was not dispatched and no DNS/HTTP occurred.
 
 ## Current ranking
 1. PayanAgent
@@ -31,16 +31,14 @@ A clean result emits only one immutable one-attempt execution envelope plus one 
 - Resource routing never widens upstream policy/demand eligibility.
 - Synthetic/default resources remain planning references; only current reproducible materialized resources are selectable.
 - Exact scope remains one production GET, no credentials, no action.
-- I069–I087 remain exact request/decision/lease/preflight/adapter/source/safety lineage; none is general execution permission.
-- I085 success is evidence readiness only, not live DNS/policy proof and not an execution token.
-- I086 emits only a short-lived human-review packet.
-- I087 authorization is single-use, short-lived and non-executable until separately consumed.
-- **I088 consumes I087 only after fresh safety/DNS/transport revalidation and emits one zero-network one-attempt envelope + receipt.**
-- **I088 does not make a network-capable adapter reachable and does not authorize task acceptance, submission, credentials, payment or value movement.**
-- All real execution/network/credentials/submission/value movement remain disabled.
+- I086 is only a short-lived final human-review packet; I087 is a single-use final decision; I088 consumes it only after fresh safety/DNS/transport revalidation.
+- **I089 adds the final network-capable adapter gate but performs no live transport.**
+- **I089 binds adapter id, target, exact scope, implementation source, hostname, public pins and transport ceilings, and blocks replay or promotion of an I088 envelope older than 60 seconds.**
+- **The emitted dependency-injected request specification is not an execution token and cannot authorize task acceptance, submission, credentials, payment, wallet, settlement or value movement.**
+- No real DNS/HTTP request has yet been performed by this implementation chain.
 
-## Immediate next run — I089
-Build the final network-capable adapter invocation gate over the exact I088 envelope + receipt. Revalidate hash/state/replay, exact target/host/pinned-address/scope/source/transport ceilings and keep a dependency-injected transport boundary. The gate may define how one authorized read-only request would be invoked, but do not perform a live DNS/HTTP request unless the exact current authorization/safety chain is supplied and all existing gates still pass.
+## Immediate next run — I090
+Build the single-use dependency-injected transport executor over the exact I089 gate. Consume the attempt even on transport failure; validate TLS verification, peer IP against the pinned set, zero redirects, exactly one request, JSON-only content and bounded compressed/decompressed response size; emit a hash-bound invocation receipt and response attestation. Exercise only with a synthetic transport fixture. Do not make a live request until a separate explicit decision instantiates an exact current authorization/safety chain for one real read-only observation.
 
 ## Completion gate
 Implementation completes only with confirmed positive economics on real permitted tests or exhaustion of reasonable candidates by control passes.
