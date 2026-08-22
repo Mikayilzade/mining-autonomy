@@ -80,4 +80,12 @@ Added `exact_real_read_only_invocation_request.py` plus ten deterministic offlin
 
 Local verification: **10 passed** plus syntax compilation. GitHub Actions was not dispatched; no DNS/HTTP, credentials or value-moving action occurred.
 
-Next: **I083 — verify a fresh explicit human authorize/deny decision bound to the exact I082 request hash/TTL/scope and, on authorize only, emit a short-lived single-use authorization record while keeping real transport unreachable.**
+## I083 — 2026-08-22
+Status: **completed**
+Stage: exact real-read-only invocation decision verifier
+
+Added `exact_real_read_only_invocation_decision.py` plus fourteen deterministic offline tests. The verifier requires a fresh exact hash-bound authorize/deny decision over I082, rechecks request TTL/scope/hash and complete adapter/source lineage, rejects widening/tamper and can reject prior decision hashes as replay. Deny emits no authorization; authorize emits only a 30–300 second request-expiry-capped single-use unconsumed authorization for at most one future network request. The network-capable adapter remains unreachable and transport/network/value movement remain disabled.
+
+Local verification: **14 passed**. GitHub Actions was not dispatched; no DNS/HTTP, credentials or value-moving action occurred.
+
+Next: **I084 — consume/revalidate the I083 authorization exactly once into an immutable zero-network one-attempt preflight envelope plus hash-bound consumption receipt; reject replay/stale/tampered state and keep real transport unreachable.**

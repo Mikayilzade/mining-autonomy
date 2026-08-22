@@ -3,20 +3,20 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I082 — exact real-read-only invocation request packet**
+Last completed implementation run: **I083 — exact real-read-only invocation decision verifier**
 Last updated: **2026-08-22**
 
 ## Latest durable files
+- `implementation/RUN_I083_EXACT_REAL_READ_ONLY_INVOCATION_DECISION.md`
+- `implementation/exact_real_read_only_invocation_decision.py`
+- `implementation/test_exact_real_read_only_invocation_decision.py`
 - `implementation/RUN_I082_EXACT_REAL_READ_ONLY_INVOCATION_REQUEST.md`
 - `implementation/exact_real_read_only_invocation_request.py`
-- `implementation/test_exact_real_read_only_invocation_request.py`
-- `implementation/RUN_I081_ACTIVATION_ENVELOPE_INVOCATION_GATE.md`
-- `implementation/activation_envelope_invocation_gate.py`
 
-## I082 outcome
-A successful I081 synthetic invocation proof can now be converted into an exact short-lived human-reviewable request for one future anonymous production GET. The builder independently revalidates I081 and I080 hashes/states, exact adapter/source/scope lineage, single-request ceilings, implementation-source digest and all no-network/no-credentials/no-action flags.
+## I083 outcome
+The exact I082 request now has a deterministic fresh explicit `authorize`/`deny` verifier. It independently revalidates the I082 request hash/state/TTL, exact one-production-GET/no-credentials/no-action scope and hash, adapter/gate/receipt/preflight/envelope bindings, source/readiness lineage and inert safety flags.
 
-A clean packet reaches only `ready_for_fresh_explicit_human_real_read_only_invocation_decision`. It binds the exact I081 gate/receipt, I080 preflight/envelope, adapter ID, exact scope and implementation/contract/readiness/activation lineage. It also makes the remaining DNS/private-address/pinning/rebinding, zero-redirect, bounded JSON-only response and fresh first-party policy gates explicit. No authorization is inferred or granted. Ten deterministic tests passed locally; GitHub Actions was not dispatched.
+A valid deny emits no authorization. A valid authorize may emit only a 30–300 second, request-expiry-capped, single-use unconsumed authorization for at most one future network request. Decision replay can be rejected using prior decision hashes. The authorization still leaves the network-capable adapter unreachable and all transport/network/value-moving actions disabled. Fourteen deterministic offline tests passed locally; GitHub Actions was not dispatched.
 
 ## Current ranking
 1. PayanAgent
@@ -31,18 +31,17 @@ A clean packet reaches only `ready_for_fresh_explicit_human_real_read_only_invoc
 - Resource routing never widens upstream policy/demand eligibility.
 - Synthetic/default resources remain planning references; only current reproducible materialized resources are selectable.
 - Exact scope remains one production GET, no credentials, no action.
-- I069–I081 remain exact request/decision/lease/preflight/adapter/source/activation/invocation lineage; none is general execution permission.
-- I080 emits only one zero-network one-attempt envelope after single-use authorization consumption.
-- I081 may invoke only a dependency-injected explicitly network-incapable adapter and its receipt is synthetic proof only.
-- **I082 is a human-review request only. It cannot authorize, invoke or expose a network-capable adapter and cannot reuse/infer earlier consent.**
-- **Any future decision must be fresh, explicit, TTL-valid and bound to the exact I082 request hash and exact one-GET scope.**
+- I069–I082 remain exact request/decision/lease/preflight/adapter/source/activation/invocation lineage; none is general execution permission.
+- I082 is a human-review request only and cannot infer or reuse prior consent.
+- **I083 accepts only a fresh exact hash-bound `authorize`/`deny` decision. Deny emits none; authorize emits only a short-lived single-use unconsumed authorization.**
+- **I083 authorization is not an execution result, payment permission, task-acceptance permission or general network permission.**
 - Network-capable adapters remain unreachable from the executable stack.
 - DNS/private-address/pinning/rebinding, zero-redirect, bounded JSON-only response and fresh first-party anonymous-read-only source-policy gates remain mandatory before any future real response parsing.
-- None of I069–I082 authorizes task acceptance, submission, credentials, payment, wallet, settlement or value movement.
+- None of I069–I083 authorizes task acceptance, submission, credentials, payment, wallet, settlement or value movement.
 - All real execution/network/credentials/submission/value movement remain disabled.
 
-## Immediate next run — I083
-Build a deterministic explicit human decision verifier over the exact I082 request. Accept only fresh authorize/deny decisions bound to `exact_real_read_only_invocation_request_sha256`, within TTL and scope-equal to one anonymous production GET. Authorize may emit only a short-lived single-use authorization record; deny emits none. Keep network-capable transport unreachable and perform no DNS/HTTP.
+## Immediate next run — I084
+Build deterministic single-use consumption/preflight over the I083 authorization. Revalidate the exact I082 request plus I083 decision/authorization hashes, expiry, unchanged one-GET scope and source lineage; reject replay/stale/tampered authorization; emit at most one immutable zero-network one-attempt envelope plus a hash-bound consumption receipt. Keep DNS/HTTP and network-capable transport unreachable.
 
 ## Completion gate
 Implementation completes only with confirmed positive economics on real permitted tests or exhaustion of reasonable candidates by control passes.
