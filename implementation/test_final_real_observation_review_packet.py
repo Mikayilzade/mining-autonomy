@@ -6,7 +6,7 @@ from final_real_observation_review_packet import build_final_real_observation_re
 def h(v):return sha256(json.dumps(v,sort_keys=True,separators=(",",":"),ensure_ascii=False).encode()).hexdigest()
 def seal(c,k):return {**c,k:h(c)}
 def fx():
-    s={"method":"GET","request_count":1,"required_environment":"production","target_fingerprint":"target:abc","credentials_allowed":False,"action_enabled":False};sh=h(s)
+    s={"method":"GET","request_count":1,"required_environment":"production","target_fingerprint":"target:abc","credentials_allowed":False,"action_enabled":False,"https_path_query":"/v1/tasks?state=open"};sh=h(s)
     env=seal({"mode":"single_attempt_exact_real_read_only_invocation_envelope","envelope_state":"one_attempt_bound_no_network","adapter_id":"payanagent-public-feed-v1","exact_scope":s,"exact_scope_sha256":sh,"source_lineage":{"implementation_source_sha256":"2"*64},"max_adapter_invocations":1,"max_network_requests":1,"credentials_allowed":False,"task_acceptance_enabled":False,"submission_enabled":False,"value_movement_enabled":False,"network_capable_adapter_reachable":False,"transport_enabled":False,"network_enabled":False,"network_calls_performed":False,"adapter_invoked":False,"envelope_is_execution_result":False},"exact_real_read_only_invocation_envelope_sha256")
     rec=seal({"mode":"single_use_exact_real_read_only_invocation_consumption_receipt","consumption_state":"consumed_once_no_network","authorization_consumed":True,"exact_real_read_only_invocation_envelope_sha256":env["exact_real_read_only_invocation_envelope_sha256"],"adapter_id":env["adapter_id"],"exact_scope_sha256":sh},"exact_real_read_only_invocation_consumption_receipt_sha256")
     inert={"network_capable_adapter_reachable":False,"adapter_invoked":False,"transport_enabled":False,"network_enabled":False,"network_calls_performed":False,"credentials_used":False,"task_acceptance_enabled":False,"submission_enabled":False,"execution_enabled":False,"value_movement_enabled":False}
@@ -20,7 +20,12 @@ def reseal85(i):
 def test_valid():
     a,b=fx();r=build(a,b,requested_at="2026-08-22T06:02:00Z",ttl_seconds=180);p=r["final_real_observation_review_packet"]
     assert r["builder_state"].endswith("ready_no_network") and not r["blockers"]
+    assert p["path_query"]=="/v1/tasks?state=open" and p["exact_scope"]["https_path_query"]==p["path_query"]
     assert p["pinned_addresses"]==["1.1.1.1","8.8.8.8"] and p["explicit_final_human_decision_required"] and not p["final_real_observation_authorized"] and not p["network_capable_adapter_reachable"]
+def test_missing_exact_path_fails_closed_native():
+    a,b=fx();a["real_read_only_invocation_envelope"]["exact_scope"].pop("https_path_query")
+    r=build(a,b,requested_at="2026-08-22T06:02:00Z")
+    assert r["final_real_observation_review_packet"] is None and "native_https_path_query_missing" in r["blockers"]
 def test_tamper_hash():
     a,b=fx();b["preflight_state"]="x";r=build(a,b,requested_at="2026-08-22T06:02:00Z");assert "i085_hash_invalid" in r["blockers"] and r["final_real_observation_review_packet"] is None
 def test_cross_binding():

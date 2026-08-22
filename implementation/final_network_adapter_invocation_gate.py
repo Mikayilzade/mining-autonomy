@@ -251,3 +251,7 @@ def build_final_network_adapter_invocation_gate(
         "gate_record_is_execution_token":False,
     }
     return {**core,"final_network_adapter_invocation_gate_builder_sha256":_h(core)}
+
+
+from native_exact_https_hardening import wrap_i089
+build_final_network_adapter_invocation_gate = wrap_i089(build_final_network_adapter_invocation_gate)

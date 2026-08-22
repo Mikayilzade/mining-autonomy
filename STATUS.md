@@ -3,22 +3,26 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I093 — fresh exact HTTPS builder-lineage integration checkpoint**
+Last completed implementation run: **I094 — native exact HTTPS builder regression hardening checkpoint**
 Last updated: **2026-08-22**
 
 ## Latest durable files
+- `implementation/RUN_I094_NATIVE_EXACT_HTTPS_HARDENING.md`
+- `implementation/native_exact_https_hardening.py`
+- `implementation/final_real_observation_review_packet.py`
+- `implementation/final_real_observation_decision.py`
+- `implementation/final_network_adapter_invocation_gate.py`
+- `implementation/final_single_use_transport_executor.py`
 - `implementation/RUN_I093_FRESH_EXACT_HTTPS_BUILDER_INTEGRATION.md`
-- `implementation/fresh_exact_https_builder_integration.py`
-- `implementation/test_fresh_exact_https_builder_integration.py`
-- `implementation/RUN_I092_EXACT_HTTPS_TARGET_BINDING.md`
-- `implementation/exact_https_target_binding.py`
 
-## I093 outcome
-The I092 canonical path/query contract is now connected to the real I086→I090 artifact schemas through a fail-closed fresh-lineage integration layer. It reseals the I086 review packet **before any human decision**, propagates the same bound exact scope/path through I087 authorization and I088 envelope/receipt artifacts, binds the adapter manifest, inserts the exact path into the I089 request specification, and exposes a final pre-I090 drift check.
+## I094 outcome
+The I093 exact-path invariants are now enforced directly at the native I086/I087/I089/I090 public builder/executor boundaries. Native I086 refuses missing/non-canonical/stale-hash `https_path_query`; I087 requires packet and fresh decision path bindings; I089 requires adapter-manifest path equality and writes the bound path into its request spec; I090 rejects missing/non-canonical path before the injected transport callable can run.
 
-The integration refuses hostname/target/adapter/scope drift and never performs DNS/TLS/HTTP. Existing pre-I092 authorization artifacts remain inert and cannot be upgraded or replayed into this fresh lineage.
+Native/downstream fixtures were migrated to carry the bound origin-form path/query and new regressions prove missing/altered paths fail closed without relying on the I093 integration adapter.
 
-This is still an offline safety checkpoint. No live endpoint was observed and no credential, spend, task acceptance, submission or value movement occurred.
+A full `implementation` pytest run was executed through the existing pull-request-only workflow. I094-specific exact-path tests passed after one targeted fix. The repository-wide suite remains red at **634 passed / 48 failed** because of unrelated pre-existing baseline/fixture debt (primarily stale absolute-time fixtures and older routing/calibration expectations). This run did not broaden scope to repair that unrelated debt.
+
+This remains an offline/synthetic safety checkpoint. No live endpoint was observed and no credential, spend, task acceptance, submission or value movement occurred.
 
 ## Current ranking
 1. PayanAgent
@@ -34,18 +38,19 @@ This is still an offline safety checkpoint. No live endpoint was observed and no
 - Synthetic/default resources remain planning references; only current reproducible materialized resources are selectable.
 - Exact scope remains one production GET, no credentials, no action.
 - ChatGPT/Codex subscription is fixed/sunk limited support, not a free autonomous API.
-- I086–I093 remain narrow short-lived authorization/invocation lineage, not general execution permission.
+- I086–I094 remain narrow short-lived authorization/invocation lineage, not general execution permission.
 - I090 consumes a valid I089 attempt even on transport error/result rejection and blocks replay before any second callable invocation.
 - I091 bundles no live connector or DNS resolver and requires a bound path.
 - I092 defines the canonical exact path/query contract.
 - I093 binds that contract into fresh review/authorization/execution/request artifacts before transport.
+- I094 enforces the same contract at the native I086/I087/I089/I090 boundaries.
 - Existing pre-I092 authorizations cannot be upgraded or reused.
 - No real DNS/HTTP request has yet been performed by this implementation chain.
 
-## Immediate next run — I094
-Move the I093 binding invariants directly into the native I086/I087/I089/I090 builder validation paths and update the native I086/I089/I090 fixtures plus downstream regression fixtures so an unbound `https_path_query` fails without relying on the integration adapter. Run the full implementation test suite offline/synthetic. Do not perform a real observation.
+## Immediate next run — I095
+Establish a **baseline-control / regression-debt isolation checkpoint** before any production observation: prove which of the current 48 full-suite failures are already present on `main` (or repair only a directly caused I094 regression if any control difference appears), record a stable scoped test set for the I086–I094 authorization/transport lineage, and keep all work offline/synthetic. Do not perform a real observation and do not manufacture a user authorization.
 
-After native regression is green, the next safety step is a separately fresh explicit authorization decision for **one** anonymous read-only production observation; that action still requires separate user authorization and fresh policy/DNS evidence.
+Only after that control checkpoint is documented may a future run prepare a **fresh** one-shot review/authorization packet for one anonymous read-only production observation. The actual network observation still requires separate explicit user authorization plus fresh policy/DNS evidence at that time.
 
 ## Completion gate
 Implementation completes only with confirmed positive economics on real permitted tests or exhaustion of reasonable candidates by control passes.

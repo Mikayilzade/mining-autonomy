@@ -6,7 +6,7 @@ def h(v): return sha256(json.dumps(v,sort_keys=True,separators=(",",":"),ensure_
 def rh(o,k): o[k]=h({a:b for a,b in o.items() if a!=k})
 
 def fixture():
-    scope={"method":"GET","request_count":1,"required_environment":"production","target_fingerprint":"target-1","credentials_allowed":False,"action_enabled":False}; sh=h(scope)
+    scope={"method":"GET","request_count":1,"required_environment":"production","target_fingerprint":"target-1","credentials_allowed":False,"action_enabled":False,"https_path_query":"/v1/tasks?state=open"}; sh=h(scope)
     limits={"scheme":"https","tls_required":True,"method":"GET","max_network_requests":1,"allow_redirects":False,"max_redirects":0,"allowed_content_types":["application/json"],"max_response_bytes":1048576,"credentials_allowed":False,"action_enabled":False}
     packet="1"*64; auth="2"*64; pol="3"*64; dns="4"*64; tx="5"*64; src="6"*64
     ec={"schema_version":1,"mode":"single_attempt_final_real_observation_execution_envelope","envelope_state":"one_attempt_final_real_observation_ready_no_network","created_at":"2026-08-22T07:50:00Z","final_real_observation_review_packet_sha256":packet,"final_real_observation_authorization_sha256":auth,"adapter_id":"payan_readonly","target_fingerprint":"target-1","exact_scope_sha256":sh,"exact_scope":scope,"implementation_source_sha256":src,"hostname":"example.com","pinned_addresses":["93.184.216.34"],"policy_evidence_sha256":pol,"dns_evidence_sha256":dns,"transport_contract_sha256":tx,"transport_limits":limits,"max_adapter_invocations":1,"max_network_requests":1,"credentials_allowed":False,"task_acceptance_enabled":False,"submission_enabled":False,"value_movement_enabled":False,"network_capable_adapter_reachable":False,"adapter_invoked":False,"transport_enabled":False,"network_enabled":False,"network_calls_performed":False,"envelope_is_execution_result":False}
@@ -15,7 +15,7 @@ def fixture():
     r={**rc,"final_real_observation_consumption_receipt_sha256":h(rc)}
     ic={"schema_version":1,"mode":"deterministic_final_real_observation_authorization_consumption_preflight","consumption_state":"authorization_consumed_once_envelope_ready_no_network","final_real_observation_review_packet_sha256":packet,"final_real_observation_authorization_sha256":auth,"fresh_policy_evidence_sha256":pol,"fresh_dns_evidence_sha256":dns,"fresh_transport_contract_sha256":tx,"real_observation_execution_envelope":e,"consumption_receipt":r,"blockers":[],"network_capable_adapter_reachable":False,"adapter_invoked":False,"transport_enabled":False,"network_enabled":False,"network_calls_performed":False,"credentials_used":False,"task_acceptance_enabled":False,"submission_enabled":False,"execution_enabled":False,"value_movement_enabled":False,"consumption_record_is_execution_token":False}
     i={**ic,"final_real_observation_authorization_consumption_preflight_sha256":h(ic)}
-    mc={"schema_version":1,"mode":"bound_network_capable_https_json_adapter_manifest","adapter_id":"payan_readonly","target_fingerprint":"target-1","exact_scope_sha256":sh,"implementation_source_sha256":src,"hostname":"example.com","pinned_addresses":["93.184.216.34"],"scheme":"https","tls_required":True,"method":"GET","max_network_requests_per_invocation":1,"allow_redirects":False,"max_redirects":0,"allowed_content_types":["application/json"],"max_response_bytes":1048576,"credentials_allowed":False,"action_enabled":False,"network_capable":True,"dependency_injected_boundary":True,"uses_address_pinning":True,"uses_tls_server_name":True,"rejects_dns_reresolution_after_connect":True,"rejects_response_over_limit_after_decompression":True}
+    mc={"schema_version":1,"mode":"bound_network_capable_https_json_adapter_manifest","adapter_id":"payan_readonly","target_fingerprint":"target-1","exact_scope_sha256":sh,"implementation_source_sha256":src,"hostname":"example.com","path_query":"/v1/tasks?state=open","pinned_addresses":["93.184.216.34"],"scheme":"https","tls_required":True,"method":"GET","max_network_requests_per_invocation":1,"allow_redirects":False,"max_redirects":0,"allowed_content_types":["application/json"],"max_response_bytes":1048576,"credentials_allowed":False,"action_enabled":False,"network_capable":True,"dependency_injected_boundary":True,"uses_address_pinning":True,"uses_tls_server_name":True,"rejects_dns_reresolution_after_connect":True,"rejects_response_over_limit_after_decompression":True}
     m={**mc,"network_adapter_manifest_sha256":h(mc)}
     return i,m
 
@@ -24,6 +24,7 @@ def run(fx,at="2026-08-22T07:50:30Z",prior=()): return build(fx[0],fx[1],gated_a
 def test_clean_ready_no_call():
     o=run(fixture()); g=o["invocation_gate"]
     assert o["gate_state"]=="final_network_adapter_invocation_gate_ready_no_call" and g["request_spec"]["method"]=="GET"
+    assert g["request_spec"]["path"]=="/v1/tasks?state=open"
     assert g["request_spec"]["pinned_addresses"]==["93.184.216.34"] and o["network_calls_performed"] is False
 
 def test_i088_tamper():
@@ -57,3 +58,8 @@ def test_prior_attempt_consumes_one_shot():
 def test_private_pin_rejected():
     fx=list(fixture()); e=fx[0]["real_observation_execution_envelope"]; e["pinned_addresses"]=["127.0.0.1"]; rh(e,"final_real_observation_execution_envelope_sha256"); r=fx[0]["consumption_receipt"]; r["final_real_observation_execution_envelope_sha256"]=e["final_real_observation_execution_envelope_sha256"]; rh(r,"final_real_observation_consumption_receipt_sha256"); rh(fx[0],"final_real_observation_authorization_consumption_preflight_sha256"); m=fx[1]; m["pinned_addresses"]=["127.0.0.1"]; rh(m,"network_adapter_manifest_sha256")
     assert "i088_pinned_addresses_invalid" in run(tuple(fx))["blockers"]
+
+def test_manifest_path_drift_rejected_native():
+    fx=list(fixture()); fx[1]["path_query"]="/v1/tasks?state=closed"; rh(fx[1],"network_adapter_manifest_sha256")
+    out=run(tuple(fx))
+    assert out["invocation_gate"] is None and "native_adapter_manifest_path_query_binding_invalid" in out["blockers"]
