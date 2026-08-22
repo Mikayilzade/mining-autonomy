@@ -88,4 +88,12 @@ Added `exact_real_read_only_invocation_decision.py` plus fourteen deterministic 
 
 Local verification: **14 passed**. GitHub Actions was not dispatched; no DNS/HTTP, credentials or value-moving action occurred.
 
-Next: **I084 — consume/revalidate the I083 authorization exactly once into an immutable zero-network one-attempt preflight envelope plus hash-bound consumption receipt; reject replay/stale/tampered state and keep real transport unreachable.**
+## I084 — 2026-08-22
+Status: **completed**
+Stage: exact real-read-only invocation authorization consumption/preflight
+
+Added `exact_real_read_only_invocation_consumption.py` plus fifteen deterministic offline tests. The preflight independently revalidates the I082 request, I083 authorize decision and I083 authorization hashes/states/times, exact one-production-GET/no-credentials/no-action scope, source lineage and inert flags. A clean authorization emits only one immutable zero-network one-attempt envelope plus a hash-bound consumption receipt. Valid prior receipts reject replay; malformed/tampered receipts fail closed.
+
+Local verification: **15 passed**. GitHub Actions was not dispatched; no DNS/HTTP, credentials or value-moving action occurred.
+
+Next: **I085 — build an injected-evidence real-transport safety preflight over I084: exact target/source binding, fresh first-party anonymous-read-only policy evidence, public-only DNS resolution with pinning/anti-rebinding, HTTPS/TLS-only, zero redirects, bounded JSON-only response contract and one-request ceiling; still no DNS/HTTP.**
