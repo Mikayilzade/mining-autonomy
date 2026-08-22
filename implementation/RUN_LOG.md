@@ -64,4 +64,12 @@ Added `real_network_activation_consumption.py` plus ten deterministic offline te
 
 Local verification: **10 passed**. GitHub Actions was not dispatched; no DNS/HTTP or value-moving action occurred.
 
-Next: **I081 — bind the I080 envelope/receipt to a dependency-injected network-incapable synthetic adapter invocation gate; prove scope cannot widen between consumption and invocation while real DNS/HTTP remains unreachable.**
+## I081 — 2026-08-22
+Status: **completed**
+Stage: activation-envelope synthetic adapter invocation gate
+
+Added `activation_envelope_invocation_gate.py` plus ten deterministic offline tests. The gate revalidates the I080 preflight/envelope/receipt hashes, exact adapter/source/scope lineage and one-attempt uniqueness before invoking only a dependency-injected adapter explicitly marked network-incapable. Network-capable adapters, adapter substitution, replay and widened state fail before callback invocation. The returned synthetic result is then revalidated for exact unchanged scope and zero network/credentials/action/value movement before a hash-bound single-use invocation receipt is emitted.
+
+Local verification: **10 passed**. GitHub Actions was not dispatched; no DNS/HTTP, credentials or value-moving action occurred.
+
+Next: **I082 — build an exact human-reviewable real-read-only invocation request packet over successful I081 evidence; keep the network-capable path unreachable and require a fresh separate explicit human decision before any future real observation.**
