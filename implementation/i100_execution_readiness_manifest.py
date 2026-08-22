@@ -36,21 +36,24 @@ def _bool(value: Any) -> bool:
 
 
 def _resource_route_checks(resource_route: Mapping[str, Any] | None) -> dict[str, bool]:
-    """Fail closed unless a later current materialized route explicitly satisfies all gates.
+    """Fail closed unless a later current materialized non-synthetic route satisfies all gates.
 
     I100 does not create or infer a live route. The dry-run/local deterministic verifier
     itself is permitted, but that is not the same as proving a production observation
-    backend is currently materialized and eligible.
+    backend is currently materialized and eligible. Synthetic fixtures are independently
+    quarantined here so they cannot become eligible merely because route booleans are green.
     """
     if resource_route is None:
         return {
             "router_chain_declared_present": True,
             "current_materialized_route_supplied": False,
+            "resource_route_not_synthetic": False,
             "route_policy_eligible": False,
             "route_capacity_available": False,
             "route_conservative_margin_positive": False,
             "resource_route_eligible": False,
         }
+    synthetic = resource_route.get("synthetic_fixture") is True
     policy = _bool(resource_route.get("policy_eligible"))
     capacity = _bool(resource_route.get("capacity_available"))
     margin = _bool(resource_route.get("conservative_margin_positive"))
@@ -58,10 +61,11 @@ def _resource_route_checks(resource_route: Mapping[str, Any] | None) -> dict[str
     return {
         "router_chain_declared_present": True,
         "current_materialized_route_supplied": materialized,
+        "resource_route_not_synthetic": not synthetic,
         "route_policy_eligible": policy,
         "route_capacity_available": capacity,
         "route_conservative_margin_positive": margin,
-        "resource_route_eligible": materialized and policy and capacity and margin,
+        "resource_route_eligible": materialized and not synthetic and policy and capacity and margin,
     }
 
 
@@ -89,7 +93,6 @@ def build_manifest(
         and scope.get("action_enabled") is False
     )
 
-    # Presence of the code-level sequencing contract is a local implementation fact.
     sequencing_contract_present = tuple(i099.ORDER) == (
         "policy_tos", "dns_resolution", "tls_transport", "anti_rebinding"
     )
@@ -148,6 +151,7 @@ def build_manifest(
         "value_movement_prohibited",
         "task_acceptance_prohibited",
         "submission_prohibited",
+        "resource_route_not_synthetic",
         "resource_route_eligible",
     )
     all_prerequisites_satisfied = all(readiness_inputs[name] for name in required_for_later_network_invocation)
@@ -173,6 +177,7 @@ def build_manifest(
         "notes": [
             "I100 can report readiness only; it cannot perform DNS/TLS/HTTP or create authorization.",
             "Synthetic I099 evidence never satisfies the fresh-real-evidence gate.",
+            "Synthetic resource routes are independently quarantined and never satisfy resource_route_eligible.",
             "Resource routing never widens upstream policy or authorization eligibility.",
             "Even all-green inputs require the existing later single-use invocation/executor lineage; this manifest is never an execution token.",
         ],
@@ -204,6 +209,22 @@ def _self_test() -> None:
     assert synthetic["readiness_inputs"]["fresh_real_execution_evidence_not_synthetic"] is False
     assert synthetic["readiness_inputs"]["fresh_real_execution_evidence_valid"] is False
     assert synthetic["result"] == "BLOCKED"
+
+    synthetic_green_route = {
+        "synthetic_fixture": True,
+        "current_materialized_resource": True,
+        "policy_eligible": True,
+        "capacity_available": True,
+        "conservative_margin_positive": True,
+    }
+    synthetic_route_manifest = build_manifest(packet=packet, resource_route=synthetic_green_route, now=now)
+    assert synthetic_route_manifest["readiness_inputs"]["current_materialized_route_supplied"] is True
+    assert synthetic_route_manifest["readiness_inputs"]["resource_route_not_synthetic"] is False
+    assert synthetic_route_manifest["readiness_inputs"]["route_policy_eligible"] is True
+    assert synthetic_route_manifest["readiness_inputs"]["route_capacity_available"] is True
+    assert synthetic_route_manifest["readiness_inputs"]["route_conservative_margin_positive"] is True
+    assert synthetic_route_manifest["readiness_inputs"]["resource_route_eligible"] is False
+    assert synthetic_route_manifest["result"] == "BLOCKED"
 
     drifted = json.loads(json.dumps(packet))
     drifted["path_query"] = "/api/v1/requests?status=open&limit=2"
