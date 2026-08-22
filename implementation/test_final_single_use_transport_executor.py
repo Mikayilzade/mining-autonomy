@@ -14,7 +14,7 @@ def rh(o, key):
 def i089_fixture():
     request = {
         "adapter_id": "payan_readonly", "target_fingerprint": "target-1", "exact_scope_sha256": "1" * 64,
-        "implementation_source_sha256": "2" * 64, "hostname": "example.com", "pinned_addresses": ["93.184.216.34"],
+        "implementation_source_sha256": "2" * 64, "hostname": "example.com", "path": "/v1/tasks?state=open", "pinned_addresses": ["93.184.216.34"],
         "scheme": "https", "tls_required": True, "method": "GET", "max_network_requests": 1,
         "allow_redirects": False, "max_redirects": 0, "allowed_content_types": ["application/json"],
         "max_response_bytes": 1024, "credentials_allowed": False, "action_enabled": False,
@@ -142,3 +142,21 @@ def test_tampered_i089_hash_blocks_before_transport():
     out = execute(gate, lambda req: calls.append(req) or ok_transport(req), invoked_at="2026-08-22T08:00:30Z")
     assert "i089_network_calls_performed_must_be_false" in out["blockers"]
     assert calls == []
+
+
+def test_missing_or_noncanonical_path_blocks_before_transport():
+    for bad in (None, "https://example.com/v1/tasks", "//example.com/v1/tasks", "/v1/tasks#frag"):
+        gate = i089_fixture()
+        req = gate["invocation_gate"]["request_spec"]
+        if bad is None:
+            req.pop("path")
+        else:
+            req["path"] = bad
+        rh(gate["invocation_gate"], "final_network_adapter_invocation_gate_sha256")
+        rh(gate, "final_network_adapter_invocation_gate_builder_sha256")
+        calls = []
+        out = execute(gate, lambda req: calls.append(req) or ok_transport(req), invoked_at="2026-08-22T08:00:30Z")
+        assert out["execution_state"] == "rejected_before_transport"
+        assert out["attempt_consumed"] is False
+        assert calls == []
+        assert any(x.startswith("native_https_path_query_") for x in out["blockers"])
