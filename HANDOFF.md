@@ -6,9 +6,11 @@ Do not reconstruct this project from chat memory. Read repository state first.
 Read `START_HERE.md`, `STATUS.md`, `METHODOLOGY.md`, `HANDOFF.md`, `RUN_LOG.md`, `CATALOG.md`, `implementation/RUN_LOG.md`, and latest files named in `STATUS.md`.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I098 COMPLETE as scoped checkpoints**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I099 COMPLETE as scoped checkpoints**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I099_SYNTHETIC_EVIDENCE_SEQUENCING.md`
+- `implementation/i099_synthetic_evidence_sequencer.py`
 - `implementation/RUN_I098_FRESH_EXECUTION_EVIDENCE_CONTRACT.md`
 - `implementation/I098_FRESH_EXECUTION_EVIDENCE_CONTRACT.json`
 - `implementation/i098_fresh_execution_evidence_contract.py`
@@ -17,29 +19,25 @@ Latest files:
 - `implementation/i097_offline_packet_verifier.py`
 - `implementation/RUN_I096_FRESH_ONE_SHOT_REVIEW_PACKET.md`
 - `implementation/I096_FRESH_ONE_SHOT_REVIEW_PACKET.json`
-- `implementation/RUN_I095_BASELINE_CONTROL_ISOLATION.md`
-- `implementation/RUN_I094_NATIVE_EXACT_HTTPS_HARDENING.md`
-- `implementation/final_real_observation_review_packet.py`
-- `implementation/final_real_observation_decision.py`
-- `implementation/final_network_adapter_invocation_gate.py`
-- `implementation/final_single_use_transport_executor.py`
 
-## I098 result
-The exact I096 production observation now has a deterministic fresh-evidence artifact contract. `i098_fresh_execution_evidence_contract.py` is stdlib-only and network-incapable. It requires four hash-bound components — current official policy/ToS evidence, fresh DNS/public-IP pins, fresh TLS/transport evidence connected to one of those pins, and an immediate anti-rebinding revalidation reproducing the same public-address set.
+## I099 result
+A new stdlib-only network-inert sequencer now proves the intended synthetic acquisition order by reusing I098 validators rather than duplicating them: policy/ToS first, then DNS/public-IP pins, then TLS bound to one accepted pin, then immediate anti-rebinding, then final I098 bundle construction, then an I097 compatibility projection.
 
-All evidence remains bound to packet SHA-256 `0519c67da402e5c9fe04f0768cb203eedf7666bbe0879f1435856d4c99f86f56`, scope SHA-256 `df0d8cd3f7f2b833d5fdd7d2f992c2bb52c722422bd1d23046c6ea3617788a9e`, and the exact one-shot `GET` target. Freshness is fail-closed: policy 6h, DNS/TLS 5m, anti-rebinding 60s, with final expiry equal to the earliest component expiry. Private/loopback/reserved pins are rejected; exact path drift is rejected.
+The state machine fails closed on reordered or invalid evidence and refuses finalization when a component is missing. Embedded negative cases cover omission, reordering, stale policy, TLS outside the pin set, exact path/query drift and anti-rebinding set drift.
 
-Embedded offline self-tests passed using synthetic evidence. Current production state is still deliberately `BLOCKED`: no fresh real evidence and no explicit user authorization exist. The I098 artifact itself has `network_capable=false`, `execution_token=false` and can never authorize transport.
+The I097 compatibility projection intentionally keeps `authorization=None`. Therefore even complete synthetic evidence cannot authorize transport: exact packet/evidence compatibility may pass while authorization remains false and the combined I097 result remains `BLOCKED`.
 
-No DNS/HTTP, credentials, bidding, task acceptance, spend or value movement occurred. No CI workflow was dispatched.
+No DNS/HTTP/socket call, credentials, bidding, task acceptance, spend or value movement occurred. No authorization was manufactured. No CI workflow was dispatched. Runtime execution of the I099 self-test remains notification-safe verification debt because no isolated local repo runner was available in this run.
 
 ## Target flow
-`cheap watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-calibrated Resource Router -> measured feedback/current resource materialization -> market readiness -> exact human-decision/authorization lineage -> network-incapable handoff/review -> adapter/source binding -> activation request/decision/consumption -> synthetic invocation-bound replay -> exact real-read-only request -> explicit final review/decision -> fresh-evidence authorization consumption -> I089 final invocation gate -> I090 single-use executor -> I091 concrete pinned HTTPS/JSON boundary -> I092 exact path/query contract -> I093 fresh-lineage integration -> I094 native-builder regression hardening -> I095 baseline-control isolation -> I096 fresh exact blocked review packet -> I097 offline packet verifier/authorization binding -> I098 fresh evidence artifact contract -> I099 synthetic sequencing/compatibility harness -> separately authorized one-shot real observation -> measured demand/economics feedback`.
+`cheap watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-calibrated Resource Router -> measured feedback/current resource materialization -> market readiness -> exact human-decision/authorization lineage -> network-incapable handoff/review -> adapter/source binding -> activation request/decision/consumption -> synthetic invocation-bound replay -> exact real-read-only request -> explicit final review/decision -> fresh-evidence authorization consumption -> I089 final invocation gate -> I090 single-use executor -> I091 concrete pinned HTTPS/JSON boundary -> I092 exact path/query contract -> I093 fresh-lineage integration -> I094 native-builder regression hardening -> I095 baseline-control isolation -> I096 fresh exact blocked review packet -> I097 offline packet verifier/authorization binding -> I098 fresh evidence artifact contract -> I099 synthetic evidence sequencing/I097 projection -> I100 execution-readiness manifest -> separately authorized one-shot real observation -> measured demand/economics feedback`.
 
-## Immediate next run: I099
-Build a **network-inert synthetic evidence acquisition/sequencing harness**. It should prove the exact order `policy -> DNS/pins -> TLS-to-pin -> anti-rebinding -> final bundle -> I097 compatibility projection` using synthetic fixtures only and fail closed on omitted/stale/reordered/drifted evidence. Do not resolve DNS, fetch policy pages, open sockets, perform HTTP or manufacture user authorization.
+## Immediate next run: I100
+Build a **network-inert execution-readiness manifest / dry-run verifier**. It should consume the existing I096/I097/I098/I099 contracts and expose every remaining prerequisite as explicit booleans, including exact packet/scope integrity, sequencing-contract availability, fresh-real-evidence absence/presence, exact explicit authorization absence/presence, resource-route eligibility, request-count boundary, credentials/value-movement prohibition and final readiness.
 
-After I099, the production request still cannot be sent until a new explicit user authorization is bound to the exact I096 packet and fresh real evidence exists at execution time.
+It must not resolve DNS, fetch policy pages, open sockets, perform HTTP, create/guess user authorization, or widen any prior permission. If a notification-safe local execution facility becomes available, use it to run the I099 embedded self-test; do not create repeated PR CI failures solely for evidence.
+
+The production request still cannot be sent until a new explicit user authorization is bound to the exact I096 packet/scope and fresh real execution evidence exists at execution time.
 
 ## Hard boundary
 No spend, KYC, wallets, paid work acceptance, publication, settlement, real credentials, CAPTCHA/geofence/rate-limit bypass or value movement without separate explicit authorization. One read-only observation can never imply broader permission.
