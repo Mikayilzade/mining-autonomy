@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "mode": "i097_offline_packet_verification_result",
+  "source_packet": "implementation/I096_FRESH_ONE_SHOT_REVIEW_PACKET.json",
+  "expected_packet_sha256": "0519c67da402e5c9fe04f0768cb203eedf7666bbe0879f1435856d4c99f86f56",
+  "expected_scope_sha256": "df0d8cd3f7f2b833d5fdd7d2f992c2bb52c722422bd1d23046c6ea3617788a9e",
+  "packet_integrity_pass": true,
+  "exact_host_path_scope_binding_pass": true,
+  "authorization_pass": false,
+  "execution_evidence_pass": false,
+  "network_capable": false,
+  "ready_for_network_invocation": false,
+  "result": "BLOCKED",
+  "blocking_reasons": [
+    "fresh explicit user authorization bound to exact I096 packet hash is absent",
+    "fresh policy/ToS evidence is absent",
+    "fresh DNS resolution evidence is absent",
+    "fresh pinned public address set is absent",
+    "fresh TLS/transport evidence is absent"
+  ],
+  "safety": {
+    "dns_performed": false,
+    "http_performed": false,
+    "credentials_used": false,
+    "task_accepted": false,
+    "submission_performed": false,
+    "value_moved": false,
+    "authorization_manufactured": false
+  },
+  "notes": [
+    "I096 exact scope and packet hashes were recomputed with canonical sorted compact JSON and match the recorded hashes.",
+    "The verifier requires any future authorization artifact to name both the exact I096 packet hash and scope hash, authorize only one anonymous read-only GET, forbid credentials/value movement, and be unexpired.",
+    "Fresh execution evidence must be bound to the same packet/scope, include policy/DNS/TLS hashes and a non-empty pinned public-address set, be temporally valid, and require anti-rebinding revalidation.",
+    "The verifier itself contains no network transport and can never produce an execution token."
+  ]
+}
