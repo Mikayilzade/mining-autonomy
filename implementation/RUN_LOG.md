@@ -92,4 +92,16 @@ Current result remains `BLOCKED`: exact packet/scope and safety boundaries pass,
 
 No DNS/HTTP/socket call, credentials, authorization creation, spend or value movement occurred. No Actions workflow was dispatched; I099/I100 self-test runtime execution remains notification-safe local-run verification debt.
 
-Next: **I101 — network-inert fresh-real-evidence acquisition plan + current route-materialization input contract for the exact I096 target.**
+## I101 — 2026-08-22
+Status: **completed scoped network-inert checkpoint**
+Stage: fresh-real-evidence acquisition plan + current Resource Router route-materialization contract
+
+Added `i101_fresh_real_evidence_route_contract.py`, a canonical machine-readable contract and detailed run record. The fresh-evidence side now requires official policy provenance, fresh public DNS pins, TLS-to-pin proof and immediate anti-rebinding evidence, all hash/timestamp bound to the exact I096 packet/scope and explicitly non-synthetic for production use.
+
+The route side models the required execution backends and requires a genuinely current/materialized, policy-eligible and capacity-available resource with quota/parallelism/rate, latency, reliability and quality evidence. Fixed/sunk cost is separated from true marginal observation cost. Marginal economics include compute, electricity, external API/model, retry/failure, human maintenance, platform fees, gas/withdrawal/conversion and opportunity cost, plus acceptance and dispute/non-payment probabilities. Positive conservative margin is recomputed rather than asserted.
+
+ChatGPT/Codex subscription support is explicitly fixed/sunk and limited, never assumed to expose a free autonomous API. Future VPS/server capacity remains unavailable without separate authorization. The watcher architecture permits API/ToS-compliant polling/webhook/WebSocket/cron faster than the chat cadence while using local filtering/deduplication before AI.
+
+I101 performs no acquisition or transport itself and creates no authorization. The chain remains blocked on fresh real evidence, a current eligible route, and exact explicit user authorization. No CI workflow was dispatched.
+
+Next: **I102 — network-inert I101 -> I100 compatibility adapter + synthetic route/evidence fixtures and negative cost/capacity/subscription regressions.**
