@@ -72,3 +72,7 @@ def verify_final_real_observation_decision(packet:Mapping[str,Any],decision:Mapp
             auth={**ac,"final_real_observation_authorization_sha256":_h(ac)};state="final_real_observation_authorization_issued_not_consumed"
     c={"schema_version":1,"mode":MODE,"verification_state":state if not b else "decision_rejected","final_real_observation_review_packet_sha256":ph if isinstance(ph,str) else None,"final_real_observation_decision_sha256":dh if isinstance(dh,str) else None,"final_real_observation_authorization":auth if not b else None,"blockers":b,"network_capable_adapter_reachable":False,"adapter_invoked":False,"transport_enabled":False,"network_enabled":False,"network_calls_performed":False,"credentials_used":False,"task_acceptance_enabled":False,"submission_enabled":False,"execution_enabled":False,"value_movement_enabled":False,"verification_record_is_execution_token":False}
     return {**c,"final_real_observation_decision_verification_sha256":_h(c)}
+
+
+from native_exact_https_hardening import wrap_i087
+verify_final_real_observation_decision = wrap_i087(verify_final_real_observation_decision)
