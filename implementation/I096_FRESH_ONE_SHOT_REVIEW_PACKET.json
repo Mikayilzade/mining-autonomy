@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "mode": "i096_fresh_network_inert_one_shot_review_packet",
+  "candidate": "PayanAgent",
+  "adapter_id": "payanagent_readonly_requests_v1",
+  "target_fingerprint": "payanagent_public_open_requests_v1",
+  "scheme": "https",
+  "hostname": "payanagent.com",
+  "path_query": "/api/v1/requests?status=open&limit=1",
+  "request_target": "https://payanagent.com/api/v1/requests?status=open&limit=1",
+  "exact_scope": {
+    "method": "GET",
+    "request_count": 1,
+    "required_environment": "production",
+    "credentials_allowed": false,
+    "action_enabled": false,
+    "target_fingerprint": "payanagent_public_open_requests_v1",
+    "https_path_query": "/api/v1/requests?status=open&limit=1"
+  },
+  "exact_scope_sha256": "df0d8cd3f7f2b833d5fdd7d2f992c2bb52c722422bd1d23046c6ea3617788a9e",
+  "candidate_evidence": {
+    "evidence_date": "2026-08-22",
+    "official_docs": [
+      "https://payanagent.com/docs/api",
+      "https://payanagent.com/docs"
+    ],
+    "claims": [
+      "GET /api/v1/requests?status=open&q=…&limit=N is documented as public.",
+      "Production base URL is https://payanagent.com.",
+      "Public endpoints are documented as rate-limited to 30 requests/minute/IP."
+    ]
+  },
+  "execution_prerequisites": {
+    "fresh_explicit_user_authorization_bound_to_this_packet_hash": null,
+    "fresh_policy_tos_evidence_sha256": null,
+    "fresh_dns_resolution_evidence_sha256": null,
+    "fresh_pinned_public_addresses": [],
+    "fresh_tls_transport_evidence_sha256": null,
+    "revalidate_anti_rebinding_at_execution": true
+  },
+  "safety": {
+    "network_enabled": false,
+    "network_calls_performed": false,
+    "credentials_allowed": false,
+    "task_acceptance_enabled": false,
+    "submission_enabled": false,
+    "execution_enabled": false,
+    "value_movement_enabled": false,
+    "packet_is_execution_token": false
+  },
+  "review_state": "BLOCKED_PENDING_EXPLICIT_AUTHORIZATION_AND_FRESH_POLICY_DNS_PINNING_EVIDENCE",
+  "notes": [
+    "This packet is a review artifact only and cannot authorize transport.",
+    "No pre-I092/I093/I094 authorization artifact may be reused or upgraded.",
+    "One permitted anonymous read-only observation would not authorize bidding, fulfillment, registration, payment, wallet use, credentials, or any value-moving action."
+  ],
+  "i096_review_packet_sha256": "0519c67da402e5c9fe04f0768cb203eedf7666bbe0879f1435856d4c99f86f56"
+}
