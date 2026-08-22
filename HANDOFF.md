@@ -6,25 +6,25 @@ Do not reconstruct this project from chat memory. Read repository state first.
 Read `START_HERE.md`, `STATUS.md`, `METHODOLOGY.md`, `HANDOFF.md`, `RUN_LOG.md`, `CATALOG.md`, `implementation/RUN_LOG.md`, and latest files named in `STATUS.md`.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I086 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I087 COMPLETE**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I087_FINAL_REAL_OBSERVATION_DECISION.md`
+- `implementation/final_real_observation_decision.py`
 - `implementation/RUN_I086_FINAL_REAL_OBSERVATION_REVIEW_PACKET.md`
 - `implementation/final_real_observation_review_packet.py`
-- `implementation/test_final_real_observation_review_packet.py`
 - `implementation/RUN_I085_REAL_TRANSPORT_SAFETY_PREFLIGHT.md`
-- `implementation/real_transport_safety_preflight.py`
 
-## I086 result
-The I084 one-attempt authorization-consumption envelope and I085 injected-evidence safety preflight are now jointly revalidated into one final immutable short-lived human-review packet. It exposes the exact target fingerprint, adapter, hostname, public pinned addresses, policy/DNS/transport evidence digests, implementation digest and strict HTTPS/TLS GET-only, one-request, zero-redirect, JSON-only, <=1 MiB response contract.
+## I087 result
+The exact I086 final review packet now has an explicit final decision verifier. Only a fresh exact packet-hash-bound `authorize`/`deny` decision inside the packet TTL is accepted. Deny emits no authorization. Authorize emits at most a short-lived single-use unconsumed authorization capped by packet expiry and bound to the exact adapter/target/scope/source/hostname/pinned-address/evidence/transport contract.
 
-The packet is not authorization and cannot execute anything. It explicitly requires a new fresh final human decision bound to the exact packet hash and requires safety-evidence freshness plus DNS pinning/anti-rebinding to be revalidated at any future execution point. No network-capable adapter is reachable and no DNS/HTTP occurred.
+The authorization remains inert: network-capable transport is unreachable, and execution-time safety-evidence freshness plus DNS pinning/anti-rebinding revalidation remain mandatory. It is not task/payment permission and no DNS/HTTP occurred.
 
 ## Target flow
-`cheap watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-calibrated Resource Router -> measured feedback/current resource materialization -> market readiness -> exact human-decision/authorization lineage -> network-incapable handoff/review -> adapter/source binding -> activation request/decision/consumption -> synthetic invocation-bound replay -> exact real-read-only invocation request -> fresh explicit I083 decision -> single-use I084 preflight -> injected-evidence I085 transport safety -> immutable I086 final human review packet -> fresh explicit final decision -> separately consumed one-shot real observation`.
+`cheap watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-calibrated Resource Router -> measured feedback/current resource materialization -> market readiness -> exact human-decision/authorization lineage -> network-incapable handoff/review -> adapter/source binding -> activation request/decision/consumption -> synthetic invocation-bound replay -> exact real-read-only invocation request -> fresh explicit I083 decision -> single-use I084 preflight -> injected-evidence I085 transport safety -> immutable I086 final human review packet -> explicit I087 final decision -> separately consumed one-shot real observation`.
 
-## Immediate next run: I087
-Build the explicit final one-shot real-observation decision verifier over I086. Require a fresh exact hash-bound `authorize`/`deny` decision within the packet TTL. Deny emits no authorization. Authorize may emit only a short-lived single-use authorization for the exact one anonymous production GET and must retain execution-time I085 safety/DNS revalidation as mandatory. Do not make network transport reachable yet and perform no DNS/HTTP.
+## Immediate next run: I088
+Build a separately consumed final authorization preflight over I087 + exact I086 packet. Revalidate authorization freshness/single-use state and exact bindings, require fresh injected I085-style safety/DNS evidence at consumption time, reject replay, and emit only a zero-network one-attempt execution envelope plus receipt. Do not perform DNS/HTTP.
 
 ## Hard boundary
 No spend, KYC, wallets, paid work acceptance, publication, settlement, real credentials, CAPTCHA/geofence/rate-limit bypass or value movement without separate explicit authorization. One read-only observation can never imply broader permission.
