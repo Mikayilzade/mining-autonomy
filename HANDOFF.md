@@ -6,9 +6,11 @@ Do not reconstruct this project from chat memory. Read repository state first.
 Read `START_HERE.md`, `STATUS.md`, `METHODOLOGY.md`, `HANDOFF.md`, `RUN_LOG.md`, `CATALOG.md`, `implementation/RUN_LOG.md`, and latest files named in `STATUS.md`.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I102 COMPLETE as scoped checkpoints**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I103 COMPLETE as scoped checkpoints**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I103_SYNTHETIC_RESOURCE_ROUTE_QUARANTINE.md`
+- `implementation/i100_execution_readiness_manifest.py`
 - `implementation/RUN_I102_I101_I100_COMPATIBILITY_ADAPTER.md`
 - `implementation/I102_SYNTHETIC_COMPATIBILITY_FIXTURES.json`
 - `implementation/i102_i101_i100_compatibility_adapter.py`
@@ -17,7 +19,6 @@ Latest files:
 - `implementation/i101_fresh_real_evidence_route_contract.py`
 - `implementation/RUN_I100_EXECUTION_READINESS_MANIFEST.md`
 - `implementation/I100_EXECUTION_READINESS_RESULT.json`
-- `implementation/i100_execution_readiness_manifest.py`
 - `implementation/RUN_I099_SYNTHETIC_EVIDENCE_SEQUENCING.md`
 - `implementation/i099_synthetic_evidence_sequencer.py`
 - `implementation/RUN_I098_FRESH_EXECUTION_EVIDENCE_CONTRACT.md`
@@ -29,26 +30,22 @@ Latest files:
 - `implementation/RUN_I096_FRESH_ONE_SHOT_REVIEW_PACKET.md`
 - `implementation/I096_FRESH_ONE_SHOT_REVIEW_PACKET.json`
 
-## I102 result
-I102 adds the exact network-inert compatibility bridge requested by the prior status.
+## I103 result
+The preferred notification-safe isolated runtime path was attempted first, but the available local environment could not resolve GitHub. Repeated failing PR CI was intentionally not used merely to produce evidence.
 
-The adapter creates deterministic synthetic evidence shaped for both I098 and I101, preserving the exact I096 packet/scope, path/query and one-GET safety boundary. `synthetic_fixture=true` is retained on the actual identity projection into I100, so it cannot be mistaken for fresh real evidence.
+The fallback specified by the previous `STATUS.md` was therefore completed: I100 now independently rejects any Resource / Execution Router route with `synthetic_fixture=true`. Even when `current_materialized_resource`, `policy_eligible`, `capacity_available` and `conservative_margin_positive` are all true, `resource_route_not_synthetic=false`, `resource_route_eligible=false`, and the readiness result remains `BLOCKED`.
 
-It also creates a fully-costed synthetic `pure_python_local` route with current-shape capacity/quota/rate/parallelism/latency, reliability, quality, fixed/sunk cost and all required marginal observation cost categories. The route keeps observation economics separate from future paid-task execution economics.
+A dedicated all-green-but-synthetic regression was added to I100 `_self_test`. Runtime execution of the self-test remains verification debt; I103 does not claim runtime PASS.
 
-Negative regressions cover private/loopback pins, stale route capacity, ChatGPT/Codex subscription treated as free/programmatic API, missing energy/retry/opportunity costs, non-positive conservative margin and observation/paid-task cost conflation.
-
-The new module contains a deterministic `--self-test`, but execution remains local verification debt because no isolated repository runtime is available in the current connector context. Repeated failing PR CI was intentionally not triggered to avoid GitHub email spam.
-
-The current chain remains `BLOCKED`: no fresh real policy/DNS/TLS/rebinding evidence exists, no real current Resource Router route is materialized, and no exact explicit authorization exists. No DNS/HTTP/socket/TLS call, credentials, bidding, task acceptance, spend or value movement occurred. No CI workflow was dispatched.
+The current chain remains `BLOCKED`: no fresh real policy/DNS/TLS/rebinding evidence exists, no current eligible non-synthetic Resource Router route is materialized, no exact explicit authorization exists, and the I099-I102/I100 runtime regression receipt remains absent. No production DNS/HTTP/socket/TLS call, credentials, bidding, task acceptance, spend or value movement occurred. No CI workflow was dispatched.
 
 ## Target flow
-`cheap watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-calibrated Resource Router -> measured feedback/current resource materialization -> market readiness -> exact human-decision/authorization lineage -> network-incapable handoff/review -> adapter/source binding -> activation request/decision/consumption -> synthetic invocation-bound replay -> exact real-read-only request -> explicit final review/decision -> fresh-evidence authorization consumption -> I089 final invocation gate -> I090 single-use executor -> I091 concrete pinned HTTPS/JSON boundary -> I092 exact path/query contract -> I093 fresh-lineage integration -> I094 native-builder regression hardening -> I095 baseline-control isolation -> I096 fresh exact blocked review packet -> I097 offline packet verifier/authorization binding -> I098 fresh evidence artifact contract -> I099 synthetic evidence sequencing/I097 projection -> I100 execution-readiness manifest -> I101 fresh-real-evidence/route-materialization contract -> I102 compatibility adapter/synthetic fixtures -> I103 notification-safe local verification/quarantine hardening -> separately authorized one-shot real observation -> measured demand/economics feedback`.
+`cheap watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-calibrated Resource Router -> measured feedback/current resource materialization -> market readiness -> exact human-decision/authorization lineage -> network-incapable handoff/review -> adapter/source binding -> activation request/decision/consumption -> synthetic invocation-bound replay -> exact real-read-only request -> explicit final review/decision -> fresh-evidence authorization consumption -> I089 final invocation gate -> I090 single-use executor -> I091 concrete pinned HTTPS/JSON boundary -> I092 exact path/query contract -> I093 fresh-lineage integration -> I094 native-builder regression hardening -> I095 baseline-control isolation -> I096 fresh exact blocked review packet -> I097 offline packet verifier/authorization binding -> I098 fresh evidence artifact contract -> I099 synthetic evidence sequencing/I097 projection -> I100 execution-readiness manifest -> I101 fresh-real-evidence/route-materialization contract -> I102 compatibility adapter/synthetic fixtures -> I103 synthetic-route quarantine hardening -> I104 local verification receipt/preauthorization blocker separation -> separately authorized one-shot real observation -> measured demand/economics feedback`.
 
-## Immediate next run: I103
-Prefer a **notification-safe local verification harness** for I099-I102. It should run embedded self-tests without GitHub Actions and emit one machine-readable receipt with module hashes/versions and PASS/FAIL results.
+## Immediate next run: I104
+Prefer a **notification-safe local verification receipt harness** when an isolated repository runtime is actually available. It should run I099, I100, I101 and I102 embedded self-tests, hash exact module versions, and emit one machine-readable PASS/FAIL receipt without GitHub Actions, network transport, production evidence acquisition or authorization creation.
 
-If no isolated local runtime is available, harden I100 so any `resource_route` with `synthetic_fixture=true` is itself ineligible even when materialized/policy/capacity/margin booleans are true. Add a dedicated regression for that fail-closed condition.
+If runtime execution remains unavailable, add a machine-readable preauthorization blocker report keeping these categories distinct and non-substitutable: fresh-real execution evidence; current materialized non-synthetic route; exact explicit authorization; runtime-regression verification debt.
 
 Do not perform the production GET and do not repeatedly push failing PR CI solely for evidence.
 
@@ -56,7 +53,7 @@ Do not perform the production GET and do not repeatedly push failing PR CI solel
 No spend, KYC, wallets, paid work acceptance, publication, settlement, real credentials, CAPTCHA/geofence/rate-limit bypass or value movement without separate explicit authorization. One read-only observation can never imply broader permission.
 
 ## Resource boundary
-ChatGPT/Codex subscription is fixed/sunk limited support, not a free autonomous API. I048–I067 implement the core Resource / Execution Router; I101 defines production route materialization; I102 proves the network-inert compatibility shape. Only genuinely available programmatic backends with current reproducible evidence may be live candidates. Resource routing never widens market/policy eligibility.
+ChatGPT/Codex subscription is fixed/sunk limited support, not a free autonomous API. I048–I067 implement the core Resource / Execution Router; I101 defines production route materialization; I102 proves the network-inert compatibility shape; I103 independently quarantines synthetic route provenance at I100. Only genuinely available programmatic backends with current reproducible non-synthetic evidence may be live candidates. Resource routing never widens market/policy eligibility.
 
 Future watchers may poll faster than hourly using Python/webhook/WebSocket/cron only when API/ToS permits. They should use cheap polling -> local filter/dedupe -> AI only for promising work and must not attempt to bypass ChatGPT scheduling limits or platform controls.
 
