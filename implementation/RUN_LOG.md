@@ -74,4 +74,12 @@ Added `i098_fresh_execution_evidence_contract.py` plus a canonical JSON contract
 
 The embedded offline self-test passed for a valid synthetic bundle and rejected path drift plus a loopback/private pin case. I098 remains `network_capable=false`, `execution_token=false`, and cannot authorize the production request. No DNS/HTTP, credentials, spend or value movement occurred. No CI workflow was dispatched.
 
-Next: **I099 — network-inert synthetic evidence acquisition/sequencing harness and I097 compatibility projection; no DNS/HTTP and no manufactured authorization.**
+## I099 — 2026-08-22
+Status: **completed scoped network-inert checkpoint**
+Stage: synthetic evidence acquisition/sequencing + I097 compatibility projection
+
+Added `i099_synthetic_evidence_sequencer.py`. It enforces the exact synthetic order `policy -> DNS/pins -> TLS-to-pin -> anti-rebinding -> final I098 bundle`, reuses I098 validators, projects a complete synthetic bundle into I097 execution-evidence format, and deliberately leaves authorization absent so the full I097 result remains blocked.
+
+Embedded negative cases cover omitted, reordered, stale and drifted evidence including TLS outside the DNS pin set, exact path/query drift, and anti-rebinding set drift. No DNS/HTTP/socket call, credentials, authorization creation, spend or value movement occurred. No CI workflow was dispatched; runtime execution evidence for the new self-test remains a separate notification-safe verification debt.
+
+Next: **I100 — network-inert execution-readiness manifest/dry-run verifier that exposes all remaining blockers machine-readably without widening network permission.**
