@@ -48,6 +48,12 @@ The chain is hash-bound, single-use and fail-closed. I086 jointly revalidates I0
 Status: **completed**
 Stage: final one-shot real-observation decision verifier
 
-Added `final_real_observation_decision.py`. It accepts only a fresh exact I086 packet-hash-bound authorize/deny decision, revalidates packet TTL/inert state/transport limits and exact adapter/target/scope/source/hostname/pinned-address/evidence bindings, and rejects replay/widening. Deny emits no authorization. Authorize emits only a short-lived single-use unconsumed authorization capped by packet expiry, with execution-time safety-evidence and DNS pinning/anti-rebinding revalidation still mandatory. Network transport remains unreachable; no DNS/HTTP or value movement occurred. GitHub Actions was not dispatched.
+Added `final_real_observation_decision.py`. It accepts only a fresh exact I086 packet-hash-bound authorize/deny decision, revalidates packet TTL/inert state/transport limits and exact adapter/target/scope/source/hostname/pinned-address/evidence bindings, and rejects replay/widening. Deny emits no authorization. Authorize emits only a short-lived single-use unconsumed authorization capped by packet expiry, with execution-time safety-evidence and DNS pinning/anti-rebinding revalidation still mandatory. Network transport remains unreachable; no DNS/HTTP or value movement occurred.
 
-Next: **I088 — separately consume the I087 final authorization with exact I086 binding and fresh injected safety/DNS evidence, producing only a zero-network one-attempt envelope + receipt; no DNS/HTTP yet.**
+## I088 — 2026-08-22
+Status: **completed**
+Stage: final authorization consumption + fresh safety/DNS revalidation
+
+Added `final_real_observation_authorization_consumption.py` and deterministic regression coverage. The consumer revalidates the exact I086 packet and I087 authorization, requires fresh injected I085-style first-party policy, DNS and HTTPS/JSON transport evidence, rejects replay/drift and emits only one zero-network one-attempt envelope plus a hash-bound consumption receipt. Exact target/scope/source/hostname/pins/transport limits cannot widen. No DNS/HTTP or value movement occurred.
+
+Next: **I089 — build the final network-capable adapter invocation gate over exact I088 envelope + receipt; keep one-attempt semantics, exact bindings and fail-closed dependency-injected transport. Do not perform live DNS/HTTP without the complete current authorization/safety chain.**

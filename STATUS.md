@@ -3,20 +3,20 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I087 — final one-shot real-observation decision verifier**
+Last completed implementation run: **I088 — final authorization consumption preflight**
 Last updated: **2026-08-22**
 
 ## Latest durable files
+- `implementation/RUN_I088_FINAL_AUTHORIZATION_CONSUMPTION_PREFLIGHT.md`
+- `implementation/final_real_observation_authorization_consumption.py`
+- `implementation/test_final_real_observation_authorization_consumption.py`
 - `implementation/RUN_I087_FINAL_REAL_OBSERVATION_DECISION.md`
-- `implementation/final_real_observation_decision.py`
 - `implementation/RUN_I086_FINAL_REAL_OBSERVATION_REVIEW_PACKET.md`
-- `implementation/final_real_observation_review_packet.py`
-- `implementation/RUN_I085_REAL_TRANSPORT_SAFETY_PREFLIGHT.md`
 
-## I087 outcome
-The exact I086 immutable human-review packet now has an explicit final decision verifier. It accepts only a fresh exact hash-bound `authorize`/`deny` decision within packet TTL and rechecks the packet's inert flags, strict one-request HTTPS/TLS GET/zero-redirect/JSON-only/1 MiB contract, exact adapter/target/scope/source/hostname/pinned-address/evidence bindings and mandatory execution-time safety/DNS revalidation prerequisites.
+## I088 outcome
+The exact I087 single-use final authorization now has a separate zero-network consumer bound to the exact I086 packet. Consumption independently revalidates packet/authorization hashes, freshness, single-use state, exact target/scope/source/hostname/pin/transport bindings and requires fresh injected I085-style first-party policy, DNS and HTTPS/JSON transport evidence at consumption time.
 
-Deny emits no authorization. Authorize can emit only a short-lived single-use unconsumed authorization capped by I086 expiry; it remains non-executable, keeps network transport unreachable, is not payment/task permission and preserves mandatory fresh safety-evidence plus DNS-pinning/anti-rebinding revalidation immediately before any future call. No DNS/HTTP occurred and GitHub Actions was not dispatched.
+A clean result emits only one immutable one-attempt execution envelope plus one consumption receipt. Both remain network-inert; the network-capable adapter is still unreachable. Fresh policy/DNS/transport evidence may update historical evidence digests, but target, scope, source, hostname, pinned-address set and strict one-request transport limits may not drift. Replay, stale authorization/evidence, private/pin-changing DNS, host drift and transport widening fail closed.
 
 ## Current ranking
 1. PayanAgent
@@ -31,17 +31,16 @@ Deny emits no authorization. Authorize can emit only a short-lived single-use un
 - Resource routing never widens upstream policy/demand eligibility.
 - Synthetic/default resources remain planning references; only current reproducible materialized resources are selectable.
 - Exact scope remains one production GET, no credentials, no action.
-- I069–I086 remain exact request/decision/lease/preflight/adapter/source/safety lineage; none is general execution permission.
+- I069–I087 remain exact request/decision/lease/preflight/adapter/source/safety lineage; none is general execution permission.
 - I085 success is evidence readiness only, not live DNS/policy proof and not an execution token.
 - I086 emits only a short-lived human-review packet.
-- **I087 is the explicit final packet-bound human decision verifier; its authorization is single-use, short-lived and still non-executable.**
-- **I087 authorization requires fresh safety-evidence/DNS-pinning/anti-rebinding revalidation at consumption/execution time.**
-- Network-capable adapters remain unreachable from the executable stack.
-- None of I069–I087 authorizes task acceptance, submission, credentials, payment, wallet, settlement or value movement.
+- I087 authorization is single-use, short-lived and non-executable until separately consumed.
+- **I088 consumes I087 only after fresh safety/DNS/transport revalidation and emits one zero-network one-attempt envelope + receipt.**
+- **I088 does not make a network-capable adapter reachable and does not authorize task acceptance, submission, credentials, payment or value movement.**
 - All real execution/network/credentials/submission/value movement remain disabled.
 
-## Immediate next run — I088
-Build a separately consumed final authorization preflight over I087 + exact I086 packet. Revalidate authorization freshness/single-use state and exact bindings, require fresh injected I085-style safety/DNS evidence at consumption time, reject replay, and emit only a zero-network one-attempt execution envelope plus receipt. Keep network-capable transport unreachable and perform no DNS/HTTP.
+## Immediate next run — I089
+Build the final network-capable adapter invocation gate over the exact I088 envelope + receipt. Revalidate hash/state/replay, exact target/host/pinned-address/scope/source/transport ceilings and keep a dependency-injected transport boundary. The gate may define how one authorized read-only request would be invoked, but do not perform a live DNS/HTTP request unless the exact current authorization/safety chain is supplied and all existing gates still pass.
 
 ## Completion gate
 Implementation completes only with confirmed positive economics on real permitted tests or exhaustion of reasonable candidates by control passes.
