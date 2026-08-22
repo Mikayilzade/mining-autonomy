@@ -96,4 +96,12 @@ Added `exact_real_read_only_invocation_consumption.py` plus fifteen deterministi
 
 Local verification: **15 passed**. GitHub Actions was not dispatched; no DNS/HTTP, credentials or value-moving action occurred.
 
-Next: **I085 — build an injected-evidence real-transport safety preflight over I084: exact target/source binding, fresh first-party anonymous-read-only policy evidence, public-only DNS resolution with pinning/anti-rebinding, HTTPS/TLS-only, zero redirects, bounded JSON-only response contract and one-request ceiling; still no DNS/HTTP.**
+## I085 — 2026-08-22
+Status: **completed**
+Stage: injected-evidence real-transport safety preflight
+
+Added `real_transport_safety_preflight.py` plus seven deterministic offline regression tests. The preflight independently revalidates the I084 one-attempt envelope and consumption receipt, exact one-production-GET/no-credentials/no-action scope and source lineage, then requires fresh hash-bound first-party anonymous-read-only policy evidence, public-only DNS evidence with literal IP validation, exact address pinning, alias/rebinding checks, and a strict HTTPS/TLS GET-only zero-redirect JSON-only contract capped at one request and 1 MiB. A clean result emits only an inert hash-bound safety envelope; no network-capable adapter becomes reachable.
+
+Local verification: **7 passed** plus syntax compilation. GitHub Actions was not dispatched; no DNS/HTTP, credentials or value-moving action occurred.
+
+Next: **I086 — build a final immutable human-reviewable one-shot real-observation packet bound to the exact I085 safety envelope, surfacing target/hostname/pinned-address/policy/DNS/transport constraints and requiring a fresh explicit final decision before any network-capable adapter can become reachable; still no DNS/HTTP.**
