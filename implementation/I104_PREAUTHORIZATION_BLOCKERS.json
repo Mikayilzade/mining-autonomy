@@ -1,0 +1,38 @@
+{
+  "schema": "mining-autonomy/preauthorization-blockers/v1",
+  "run": "I104",
+  "date": "2026-08-23",
+  "overall_state": "BLOCKED",
+  "production_observation_allowed": false,
+  "non_substitutable_blockers": {
+    "fresh_real_execution_evidence": {
+      "satisfied": false,
+      "required": ["current policy/rights evidence", "fresh DNS public-IP evidence", "TLS-to-pin validation", "anti-rebinding validation"],
+      "synthetic_evidence_counts": false
+    },
+    "current_materialized_non_synthetic_resource_route": {
+      "satisfied": false,
+      "required": ["current materialization", "synthetic_fixture=false", "policy eligible", "capacity available", "reliability/quality sufficient", "full marginal cost accounting", "positive conservative margin"],
+      "synthetic_route_counts": false
+    },
+    "exact_explicit_user_authorization": {
+      "satisfied": false,
+      "required_scope": "one production read-only GET to payanagent.com /api/v1/requests?status=open&limit=1; no credentials; no action; no value movement",
+      "prior_or_broader_authorization_counts": false
+    },
+    "runtime_regression_verification": {
+      "satisfied": false,
+      "required": ["notification-safe execution of I099 embedded self-test", "I100 embedded self-test", "I101 embedded self-test", "I102 embedded self-test", "exact module hashes in one receipt"],
+      "source_review_only_counts": false
+    }
+  },
+  "substitution_rule": "All four blockers are independent AND-gates. No blocker, synthetic fixture, source-level review, prior authorization, or downstream green boolean may satisfy another category.",
+  "external_effects": {
+    "production_dns_http_socket_tls": false,
+    "credentials": false,
+    "task_acceptance_or_submission": false,
+    "spend_or_value_movement": false,
+    "github_actions_dispatched": false
+  },
+  "next_action": "When an isolated notification-safe repository runtime is available, execute I099-I102/I100 self-tests and emit the exact-hash local verification receipt. Otherwise continue only network-inert hardening; do not perform the production GET."
+}
