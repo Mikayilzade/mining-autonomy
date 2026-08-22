@@ -50,6 +50,12 @@ Stage: baseline-control / regression-debt isolation
 
 Bound the I094 merge to its exact parent/main control ref, classified the final 48 failures from the existing full-suite log, confirmed that none is in an I094-modified test file, and recorded a stable focused I086–I094 safety-lineage regression set. No extra Actions run was triggered because repeated failing PR CI was already producing email spam. Exact parent runtime reproduction therefore remains evidence debt; the 48 failures are isolated as baseline/independent debt with strong static + existing-run evidence, not silently waived.
 
-No live DNS/HTTP, credentials, spend, paid-task action or value movement occurred.
+## I096 — 2026-08-22
+Status: **completed scoped network-inert review checkpoint**
+Stage: fresh exact one-shot PayanAgent review packet
 
-Next: **I096 — prepare a fresh exact one-shot review packet while remaining network-inert; preserve the explicit authorization gap and fresh policy/DNS evidence requirements.**
+Revalidated current official PayanAgent documentation and bound one exact anonymous production demand observation to `GET https://payanagent.com/api/v1/requests?status=open&limit=1`. Recorded exact scope hash `df0d8cd3f7f2b833d5fdd7d2f992c2bb52c722422bd1d23046c6ea3617788a9e` and packet hash `0519c67da402e5c9fe04f0768cb203eedf7666bbe0879f1435856d4c99f86f56`.
+
+The packet remains fail-closed: explicit user authorization and fresh policy/ToS, DNS/pinning and TLS/transport evidence are deliberately absent. `packet_is_execution_token=false`; all network/action/value-moving flags are false. No DNS/HTTP, credentials, bidding, task acceptance, spend or value movement occurred. No CI workflow was dispatched.
+
+Next: **I097 — offline packet verifier / exact authorization-binding checkpoint; remain network-inert and do not manufacture authorization.**
