@@ -269,3 +269,7 @@ def execute_single_use_dependency_injected_transport(
         "value_movement_enabled": False, "executor_is_payment_or_task_permission": False,
     }
     return {**core, "single_use_transport_executor_sha256": _h(core)}
+
+
+from native_exact_https_hardening import wrap_i090
+execute_single_use_dependency_injected_transport = wrap_i090(execute_single_use_dependency_injected_transport)
