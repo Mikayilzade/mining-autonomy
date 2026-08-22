@@ -20,8 +20,6 @@ def _reseal(obj: Mapping[str, Any], key: str) -> dict[str, Any]:
 def _bound_path(scope: Any, scope_hash: Any) -> tuple[str | None, str | None]:
     if not isinstance(scope, Mapping):
         return None, "exact_scope_missing"
-    if scope_hash != _h(dict(scope)):
-        return None, "exact_scope_hash_invalid"
     raw = scope.get("https_path_query")
     if not isinstance(raw, str):
         return None, "https_path_query_missing"
@@ -31,6 +29,8 @@ def _bound_path(scope: Any, scope_hash: Any) -> tuple[str | None, str | None]:
         return None, "https_path_query_not_canonical"
     if path != raw:
         return None, "https_path_query_not_canonical"
+    if scope_hash != _h(dict(scope)):
+        return None, "exact_scope_hash_invalid"
     return path, None
 
 
