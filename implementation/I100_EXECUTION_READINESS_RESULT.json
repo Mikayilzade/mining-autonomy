@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "mode": "i100_network_inert_execution_readiness_manifest",
+  "candidate": "PayanAgent",
+  "bound_packet_sha256": "0519c67da402e5c9fe04f0768cb203eedf7666bbe0879f1435856d4c99f86f56",
+  "bound_scope_sha256": "df0d8cd3f7f2b833d5fdd7d2f992c2bb52c722422bd1d23046c6ea3617788a9e",
+  "exact_request_target": "https://payanagent.com/api/v1/requests?status=open&limit=1",
+  "network_capable": false,
+  "execution_token": false,
+  "authorization_creator": false,
+  "transport_implemented_here": false,
+  "readiness_inputs": {
+    "exact_packet_integrity": true,
+    "exact_scope_integrity": true,
+    "synthetic_sequencing_contract_present": true,
+    "fresh_real_execution_evidence_present": false,
+    "fresh_real_execution_evidence_not_synthetic": false,
+    "fresh_real_execution_evidence_valid": false,
+    "explicit_exact_authorization_present": false,
+    "request_count_boundary_exactly_one": true,
+    "credentials_prohibited": true,
+    "value_movement_prohibited": true,
+    "task_acceptance_prohibited": true,
+    "submission_prohibited": true,
+    "router_chain_declared_present": true,
+    "current_materialized_route_supplied": false,
+    "route_policy_eligible": false,
+    "route_capacity_available": false,
+    "route_conservative_margin_positive": false,
+    "resource_route_eligible": false
+  },
+  "required_for_later_network_invocation": [
+    "exact_packet_integrity",
+    "exact_scope_integrity",
+    "synthetic_sequencing_contract_present",
+    "fresh_real_execution_evidence_not_synthetic",
+    "fresh_real_execution_evidence_valid",
+    "explicit_exact_authorization_present",
+    "request_count_boundary_exactly_one",
+    "credentials_prohibited",
+    "value_movement_prohibited",
+    "task_acceptance_prohibited",
+    "submission_prohibited",
+    "resource_route_eligible"
+  ],
+  "remaining_blockers": [
+    "fresh_real_execution_evidence_not_synthetic",
+    "fresh_real_execution_evidence_valid",
+    "explicit_exact_authorization_present",
+    "resource_route_eligible"
+  ],
+  "all_prerequisites_satisfied": false,
+  "ready_for_network_invocation": false,
+  "result": "BLOCKED",
+  "notes": [
+    "Generated as a durable expected dry-run result from the I100 contract state; no live network evidence or authorization was supplied.",
+    "Synthetic I099 evidence is explicitly insufficient for the fresh-real-evidence gate.",
+    "Resource routing remains fail-closed until a current materialized route artifact is supplied and passes policy/capacity/conservative-margin checks.",
+    "No DNS, socket, TLS, HTTP, credential, task-acceptance, submission, payment or value-moving action occurred."
+  ]
+}
