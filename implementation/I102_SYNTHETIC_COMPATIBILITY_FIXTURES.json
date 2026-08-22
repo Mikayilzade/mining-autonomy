@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "artifact_type": "i102_synthetic_compatibility_fixture_matrix",
+  "synthetic_fixture": true,
+  "network_capable": false,
+  "execution_token": false,
+  "authorization_creator": false,
+  "bound_packet_sha256": "0519c67da402e5c9fe04f0768cb203eedf7666bbe0879f1435856d4c99f86f56",
+  "bound_scope_sha256": "df0d8cd3f7f2b833d5fdd7d2f992c2bb52c722422bd1d23046c6ea3617788a9e",
+  "exact_request": {
+    "method": "GET",
+    "hostname": "payanagent.com",
+    "path_query": "/api/v1/requests?status=open&limit=1",
+    "request_count": 1,
+    "credentials_allowed": false,
+    "action_enabled": false
+  },
+  "fixture_generation": "implementation/i102_i101_i100_compatibility_adapter.py builds deterministic in-memory evidence and route fixtures at a supplied timestamp; no external acquisition occurs",
+  "positive_fixture": {
+    "evidence": "dual-shape synthetic artifact satisfying I098 field contract and I101 external-input shape except for the deliberately retained synthetic_fixture=true production blocker",
+    "route_backend": "pure_python_local",
+    "route": "fully costed current-shape synthetic route with fixed/sunk cost separated from marginal observation cost, explicit capacity/reliability/quality, positive conservative margin, and paid-task economics kept separate",
+    "i100_projection": "identity projection; synthetic provenance is not stripped",
+    "expected_i100_result": "BLOCKED",
+    "expected_reasons": [
+      "fresh real execution evidence is synthetic",
+      "exact explicit authorization is absent"
+    ]
+  },
+  "negative_cases": [
+    {
+      "id": "private_or_loopback_pin",
+      "mutation": "replace public DNS/TLS/rebinding pin with 127.0.0.1",
+      "expected": "REJECT"
+    },
+    {
+      "id": "stale_route_capacity",
+      "mutation": "expire route observed_at/valid_until before validation time",
+      "expected": "REJECT"
+    },
+    {
+      "id": "subscription_as_free_programmatic_api",
+      "mutation": "select chatgpt_codex_subscription_assisted with programmatic_api_assumed=true",
+      "expected": "REJECT"
+    },
+    {
+      "id": "missing_energy_cost",
+      "mutation": "delete energy_usd from marginal observation costs",
+      "expected": "REJECT"
+    },
+    {
+      "id": "missing_retry_failure_cost",
+      "mutation": "delete retry_failure_usd from marginal observation costs",
+      "expected": "REJECT"
+    },
+    {
+      "id": "missing_opportunity_cost",
+      "mutation": "delete opportunity_cost_usd from marginal observation costs",
+      "expected": "REJECT"
+    },
+    {
+      "id": "nonpositive_conservative_margin",
+      "mutation": "set conservative expected value equal to marginal observation cost and conservative_margin_positive=false",
+      "expected": "REJECT"
+    },
+    {
+      "id": "observation_paid_task_cost_conflation",
+      "mutation": "set paid_task_execution_cost_reused_for_observation=true",
+      "expected": "REJECT"
+    }
+  ],
+  "safety": {
+    "dns_http_socket_tls_performed": false,
+    "credentials_used": false,
+    "authorization_created": false,
+    "task_accepted": false,
+    "submission_performed": false,
+    "money_spent": false,
+    "value_moved": false,
+    "ci_dispatched": false
+  },
+  "verification": {
+    "runtime_self_test_command": "python3 implementation/i102_i101_i100_compatibility_adapter.py --self-test",
+    "runtime_execution_in_this_run": false,
+    "reason": "No isolated repository runtime is available in the current connector context; repeated PR CI is intentionally avoided to prevent notification spam."
+  }
+}
