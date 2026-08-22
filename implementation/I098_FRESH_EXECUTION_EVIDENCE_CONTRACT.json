@@ -1,0 +1,36 @@
+{
+  "artifact_type": "i098_fresh_execution_evidence_contract",
+  "bound_packet_sha256": "0519c67da402e5c9fe04f0768cb203eedf7666bbe0879f1435856d4c99f86f56",
+  "bound_scope_sha256": "df0d8cd3f7f2b833d5fdd7d2f992c2bb52c722422bd1d23046c6ea3617788a9e",
+  "consumption_rules": [
+    "all components bind exact I096 packet and scope hashes",
+    "all component hashes are recomputed canonically before use",
+    "effective expiry is earliest component valid_until",
+    "DNS pins contain public addresses only",
+    "TLS connected IP must be inside fresh DNS pin set",
+    "anti-rebinding revalidation must reproduce the same pin set immediately before the one GET",
+    "credentials and value movement remain forbidden",
+    "bundle never authorizes execution by itself"
+  ],
+  "exact_request": {
+    "hostname": "payanagent.com",
+    "method": "GET",
+    "path_query": "/api/v1/requests?status=open&limit=1",
+    "request_count": 1
+  },
+  "execution_token": false,
+  "freshness_windows_seconds": {
+    "anti_rebinding": 60,
+    "dns_resolution": 300,
+    "policy_tos": 21600,
+    "tls_transport": 300
+  },
+  "network_capable": false,
+  "required_components": [
+    "policy_tos",
+    "dns_resolution",
+    "tls_transport",
+    "anti_rebinding"
+  ],
+  "schema_version": 1
+}
