@@ -6,9 +6,12 @@ Do not reconstruct this project from chat memory. Read repository state first.
 Read `START_HERE.md`, `STATUS.md`, `METHODOLOGY.md`, `HANDOFF.md`, `RUN_LOG.md`, `CATALOG.md`, `implementation/RUN_LOG.md`, and latest files named in `STATUS.md`.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I100 COMPLETE as scoped checkpoints**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I101 COMPLETE as scoped checkpoints**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I101_FRESH_REAL_EVIDENCE_ROUTE_CONTRACT.md`
+- `implementation/I101_FRESH_REAL_EVIDENCE_ROUTE_CONTRACT.json`
+- `implementation/i101_fresh_real_evidence_route_contract.py`
 - `implementation/RUN_I100_EXECUTION_READINESS_MANIFEST.md`
 - `implementation/I100_EXECUTION_READINESS_RESULT.json`
 - `implementation/i100_execution_readiness_manifest.py`
@@ -23,39 +26,43 @@ Latest files:
 - `implementation/RUN_I096_FRESH_ONE_SHOT_REVIEW_PACKET.md`
 - `implementation/I096_FRESH_ONE_SHOT_REVIEW_PACKET.json`
 
-## I100 result
-The implementation now has a network-inert machine-readable readiness manifest over the I096/I097/I098/I099 chain. Exact packet/scope integrity passes; the I099 sequencing contract is present; the one-request/no-credentials/no-value/action boundaries remain intact.
+## I101 result
+I101 now defines the network-inert external-input boundary between the current blocked review chain and any later real one-shot observation.
 
-I100 also makes Resource / Execution Router readiness explicit rather than implicit. The I048–I067 router chain is acknowledged as implemented, but a production route is not assumed merely because planning/default backends exist. A current route artifact must prove current materialization, policy eligibility, capacity availability and positive conservative margin.
+Fresh real evidence must contain current official policy provenance, public-only DNS pins, TLS-to-pin proof and immediate anti-rebinding evidence, with exact I096 packet/scope binding and explicit timestamps/hashes. Synthetic fixtures are rejected for production readiness.
 
-The current result remains deliberately `BLOCKED`: fresh real non-synthetic execution evidence is absent, exact explicit user authorization is absent, and no current materialized route artifact has been supplied. Synthetic I099 evidence cannot satisfy the real-evidence gate.
+The current Resource / Execution Router route artifact must be genuinely materialized and prove policy eligibility, capacity/quota/rate/parallelism, latency, reliability, quality and positive conservative margin. Fixed/sunk cost is kept distinct from true marginal observation cost. Required marginal categories include compute, energy, external API/model, retry/failure, human maintenance, platform fees, gas/withdrawal/conversion and opportunity cost, with acceptance and dispute/non-payment probability explicit.
 
-I100 itself remains permanently `network_capable=false`, `execution_token=false`, `authorization_creator=false`, `transport_implemented_here=false`, `ready_for_network_invocation=false`; even all-green inputs must continue through the existing downstream single-use invocation/executor lineage.
+Backend coverage is explicit: pure Python/local deterministic, local CPU/GPU/model, ChatGPT/Codex subscription-assisted fixed/sunk support without assumed programmatic API access, cheap external API, stronger external API, free/conditional CI/cloud, owned PC, and future VPS/server only after separate authorization.
 
-No DNS/HTTP/socket call, credentials, bidding, task acceptance, spend or value movement occurred. No CI workflow was dispatched. I099/I100 embedded self-test runtime execution remains notification-safe local-run verification debt.
+A tiny read-only observation's economics cannot be reused as evidence that a paid task is profitable to execute. Resource routing never widens policy or authorization eligibility.
+
+The current chain remains `BLOCKED`: I101 did not acquire real policy/DNS/TLS evidence, did not materialize a live route, and did not create explicit authorization. No DNS/HTTP/socket call, credentials, bidding, task acceptance, spend or value movement occurred. No CI workflow was dispatched.
 
 ## Target flow
-`cheap watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-calibrated Resource Router -> measured feedback/current resource materialization -> market readiness -> exact human-decision/authorization lineage -> network-incapable handoff/review -> adapter/source binding -> activation request/decision/consumption -> synthetic invocation-bound replay -> exact real-read-only request -> explicit final review/decision -> fresh-evidence authorization consumption -> I089 final invocation gate -> I090 single-use executor -> I091 concrete pinned HTTPS/JSON boundary -> I092 exact path/query contract -> I093 fresh-lineage integration -> I094 native-builder regression hardening -> I095 baseline-control isolation -> I096 fresh exact blocked review packet -> I097 offline packet verifier/authorization binding -> I098 fresh evidence artifact contract -> I099 synthetic evidence sequencing/I097 projection -> I100 execution-readiness manifest -> I101 fresh-real-evidence/route-materialization contract -> separately authorized one-shot real observation -> measured demand/economics feedback`.
+`cheap watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-calibrated Resource Router -> measured feedback/current resource materialization -> market readiness -> exact human-decision/authorization lineage -> network-incapable handoff/review -> adapter/source binding -> activation request/decision/consumption -> synthetic invocation-bound replay -> exact real-read-only request -> explicit final review/decision -> fresh-evidence authorization consumption -> I089 final invocation gate -> I090 single-use executor -> I091 concrete pinned HTTPS/JSON boundary -> I092 exact path/query contract -> I093 fresh-lineage integration -> I094 native-builder regression hardening -> I095 baseline-control isolation -> I096 fresh exact blocked review packet -> I097 offline packet verifier/authorization binding -> I098 fresh evidence artifact contract -> I099 synthetic evidence sequencing/I097 projection -> I100 execution-readiness manifest -> I101 fresh-real-evidence/route-materialization contract -> I102 compatibility adapter/synthetic fixtures -> separately authorized one-shot real observation -> measured demand/economics feedback`.
 
-## Immediate next run: I101
-Build a **network-inert fresh-real-evidence acquisition plan + route-materialization input contract** for the exact I096 target.
+## Immediate next run: I102
+Build a **network-inert I101 -> I100 compatibility adapter + synthetic route/evidence fixtures**.
 
-It should define, without acquiring the evidence itself:
-- required provenance for current official policy/ToS evidence;
-- fresh DNS/public-IP pins, TLS-to-pin and anti-rebinding artifacts compatible with I098;
-- a current Resource Router route artifact proving actual availability/materialization, policy eligibility, capacity, latency/reliability, marginal execution cost, fixed/sunk-cost treatment, retry/failure cost and positive conservative margin;
-- strict separation between the tiny observation-route cost and any future paid-task execution cost;
-- exact packet/scope binding and expiry/freshness rules for all supplied artifacts.
+It should:
+- create complete synthetic fixtures shaped exactly like later external fresh-real evidence and current route artifacts;
+- keep `synthetic_fixture=true` so the real-evidence gate can never be satisfied;
+- prove exact projection into I100's `fresh_real_evidence` and `resource_route` inputs without weakening I098/I097;
+- add failures for private/loopback pins, stale route capacity, subscription-as-free/programmatic-API assumptions, missing energy/retry/opportunity costs, conservative margin <= 0 and observation/paid-task cost conflation;
+- remain incapable of DNS/HTTP/socket transport or authorization creation.
 
-Do not resolve DNS, fetch policy pages, open sockets, perform HTTP, create/guess authorization, use credentials or widen permission. If a notification-safe isolated local runner becomes available, execute I099 and I100 embedded self-tests; do not create repeated PR CI failures solely for evidence.
+If a notification-safe isolated local runner becomes available, execute I099-I101 self-tests; do not create repeated PR CI failures solely for evidence.
 
-The production request still cannot be sent until a new explicit user authorization is bound to the exact I096 packet/scope and fresh real execution evidence exists at execution time.
+The production request still cannot be sent until a new explicit user authorization is bound to the exact I096 packet/scope, fresh real execution evidence exists at execution time, and one current materialized Resource Router route passes the I101 economics/capacity gates.
 
 ## Hard boundary
 No spend, KYC, wallets, paid work acceptance, publication, settlement, real credentials, CAPTCHA/geofence/rate-limit bypass or value movement without separate explicit authorization. One read-only observation can never imply broader permission.
 
 ## Resource boundary
-ChatGPT/Codex subscription is fixed/sunk limited support, not a free autonomous API. I048–I067 already provide the Resource / Execution Router and measured resource materialization/rerouting chain. Only genuinely available programmatic backends with current reproducible evidence may be future live candidates. Resource routing never widens market/policy eligibility.
+ChatGPT/Codex subscription is fixed/sunk limited support, not a free autonomous API. I048–I067 implement the core Resource / Execution Router; I101 now defines the production route-materialization contract. Only genuinely available programmatic backends with current reproducible evidence may be live candidates. Resource routing never widens market/policy eligibility.
+
+Future watchers may poll faster than hourly using Python/webhook/WebSocket/cron only when API/ToS permits. They should use cheap polling -> local filter/dedupe -> AI only for promising work and must not attempt to bypass ChatGPT scheduling limits or platform controls.
 
 ## Git/CI
 Prefer one coherent commit per run where tooling permits. Keep push-triggered CI disabled; current implementation workflow is manual/pull-request only. Root documentation changes do not trigger it; `implementation/**` changes trigger only pull-request suite activity, not direct-main pushes. Avoid repeated failing PR pushes solely for baseline evidence because they can generate GitHub email spam.
