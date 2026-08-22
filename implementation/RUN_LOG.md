@@ -30,6 +30,12 @@ Built the narrow one-production-GET/no-credentials/no-action chain through revie
 Status: **completed safe checkpoint**
 Stage: canonical exact HTTPS path/query binding contract
 
-Added `exact_https_target_binding.py` and nine offline tests. Origin-form path/query is now canonically defined, inserted into the exact scope hash, and validated unchanged across I086/I087/I088/I089/I090-shaped artifacts plus adapter manifest. Absolute/authority/userinfo/fragment/out-of-band drift fails closed. This is a contract checkpoint only: existing builders have not yet been rewritten, so no live request is permitted.
+Added `exact_https_target_binding.py` and nine offline tests. Origin-form path/query is canonically defined, inserted into the exact scope hash, and validated unchanged across I086/I087/I088/I089/I090-shaped artifacts plus adapter manifest. Existing pre-I092 authorizations remain inert.
 
-Next: **I093 — integrate the I092 binding into the actual fresh I086→I090 builders and tests before any new human authorization or real observation.**
+## I093 — 2026-08-22
+Status: **completed safe checkpoint**
+Stage: fresh exact HTTPS builder-lineage integration
+
+Added `fresh_exact_https_builder_integration.py` and deterministic integration regressions. The adapter reseals a fresh I086 review packet with the I092-bound exact scope before human decision, carries the same binding through I087/I088 artifacts and adapter manifest, inserts `path` into the I089 request spec, and blocks pre-I090 drift. No DNS/HTTP, credentials, spend or value movement occurred.
+
+Next: **I094 — inline these invariants into native I086/I087/I089/I090 builders and migrate native/downstream fixtures; run the full suite offline before any separately authorized real observation.**
