@@ -38,4 +38,12 @@ Stage: fresh exact HTTPS builder-lineage integration
 
 Added `fresh_exact_https_builder_integration.py` and deterministic integration regressions. The adapter reseals a fresh I086 review packet with the I092-bound exact scope before human decision, carries the same binding through I087/I088 artifacts and adapter manifest, inserts `path` into the I089 request spec, and blocks pre-I090 drift. No DNS/HTTP, credentials, spend or value movement occurred.
 
-Next: **I094 — inline these invariants into native I086/I087/I089/I090 builders and migrate native/downstream fixtures; run the full suite offline before any separately authorized real observation.**
+## I094 — 2026-08-22
+Status: **completed scoped safe checkpoint**
+Stage: native exact HTTPS builder/executor regression hardening
+
+Added `native_exact_https_hardening.py` and activated it at the native I086/I087/I089/I090 boundaries. Migrated native/downstream fixtures so exact origin-form `https_path_query` is mandatory and path drift fails closed before transport. The full pull-request suite was run offline/synthetic; I094-targeted regressions passed, while the repository baseline remains red at 634 passed / 48 unrelated failures.
+
+No live DNS/HTTP, credentials, spend, paid-task action or value movement occurred.
+
+Next: **I095 — isolate the 48 full-suite baseline failures against `main` and record a stable focused I086–I094 regression set; remain offline/synthetic before any fresh one-shot authorization.**
