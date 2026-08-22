@@ -104,4 +104,12 @@ Added `real_transport_safety_preflight.py` plus seven deterministic offline regr
 
 Local verification: **7 passed** plus syntax compilation. GitHub Actions was not dispatched; no DNS/HTTP, credentials or value-moving action occurred.
 
-Next: **I086 — build a final immutable human-reviewable one-shot real-observation packet bound to the exact I085 safety envelope, surfacing target/hostname/pinned-address/policy/DNS/transport constraints and requiring a fresh explicit final decision before any network-capable adapter can become reachable; still no DNS/HTTP.**
+## I086 — 2026-08-22
+Status: **completed**
+Stage: final one-shot real-observation human-review packet
+
+Added `final_real_observation_review_packet.py` plus seven deterministic offline regression tests. The builder jointly revalidates the exact I084 and I085 artifacts and produces only a short-lived immutable human-review packet exposing the target fingerprint, adapter, hostname, public pinned addresses, policy/DNS/transport evidence digests, implementation digest and strict HTTPS/TLS GET-only, one-request, zero-redirect, JSON-only, <=1 MiB response limits. The packet explicitly requires a fresh final human decision bound to its exact hash and requires execution-time revalidation of safety-evidence freshness plus DNS pinning/anti-rebinding.
+
+Local verification: **7 passed** plus syntax compilation. GitHub Actions was not dispatched; no DNS/HTTP, credentials or value-moving action occurred.
+
+Next: **I087 — build the explicit final one-shot real-observation decision verifier over I086. Accept only a fresh exact hash-bound authorize/deny human decision; authorize may emit only a short-lived single-use one-GET authorization while preserving mandatory execution-time I085 safety/DNS revalidation. Keep network transport unreachable and perform no DNS/HTTP.**
