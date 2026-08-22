@@ -42,18 +42,20 @@ Built the lease-bound inert handoff, pre-real-transport human review, explicit r
 Status: **completed**
 Stage: concrete adapter implementation binding/audit
 
-Added `future_https_json_adapter.py` and `adapter_implementation_binding.py`. The future HTTPS/JSON source is hash-bound to I076 readiness, imports no network libraries, exposes only a fail-closed `execute_single_authorized_get(...)` stub and is audited against scope/interface widening, tamper and reachable transport claims.
-
-Verification: **10 tests passed locally**. GitHub Actions was not dispatched. No DNS/HTTP or external action occurred.
+Added future HTTPS/JSON source binding and audit. Concrete source digest is bound to readiness while the execution stub remains unreachable and fail-closed.
 
 ## I078 — 2026-08-22
 Status: **completed**
 Stage: short-lived real-network activation request
 
-Added `real_network_activation_request.py` and ten deterministic tests. The builder revalidates I077/I076 review-only state, exact one-GET scope, concrete adapter/source identity and I075/I074/I073 lineage, then emits only a 60–900 second human-review request bound to exact hashes.
+Added a source/audit/lineage-bound 60–900 second human-review request. It is non-authorizing and non-executable.
 
-The request explicitly keeps `activation_authorized=false`, adapter invocation/network/execution/value movement disabled, and is not an execution token.
+## I079 — 2026-08-22
+Status: **completed**
+Stage: explicit real-network activation decision verifier
 
-Verification: **10 tests passed locally**. GitHub Actions was not dispatched. No DNS/HTTP or external action occurred.
+Added `real_network_activation_decision.py` plus ten deterministic offline tests. The verifier requires an exact fresh hash-bound human authorize/deny decision over I078. Deny emits no authorization; authorize may emit only a 30–300 second single-use unconsumed authorization capped by I078 expiry. Adapter invocation, DNS/HTTP, credentials, task acceptance/submission and value movement remain disabled.
 
-Next: **I079 — build the explicit activation-decision verifier bound to the exact I078 request; keep adapter invocation and DNS/HTTP disabled.**
+GitHub Actions was not dispatched; no external action occurred.
+
+Next: **I080 — consume the exact I079 authorization once into an immutable one-attempt activation envelope, with replay/expiry/scope fail-closed and DNS/HTTP still disabled.**
