@@ -56,6 +56,12 @@ Stage: explicit real-network activation decision verifier
 
 Added `real_network_activation_decision.py` plus ten deterministic offline tests. The verifier requires an exact fresh hash-bound human authorize/deny decision over I078. Deny emits no authorization; authorize may emit only a 30–300 second single-use unconsumed authorization capped by I078 expiry. Adapter invocation, DNS/HTTP, credentials, task acceptance/submission and value movement remain disabled.
 
-GitHub Actions was not dispatched; no external action occurred.
+## I080 — 2026-08-22
+Status: **completed**
+Stage: single-use activation-authorization consumption/preflight
 
-Next: **I080 — consume the exact I079 authorization once into an immutable one-attempt activation envelope, with replay/expiry/scope fail-closed and DNS/HTTP still disabled.**
+Added `real_network_activation_consumption.py` plus ten deterministic offline tests. The preflight revalidates the exact I078 request, I079 authorization hash/state/expiry, unchanged one-production-GET/no-credentials/no-action scope, adapter/source/readiness bindings and authorization lineage. A clean authorization produces only one immutable zero-network attempt envelope plus a hash-bound consumption receipt. Prior valid receipts reject replay; stale, pre-consumed, widened or tampered inputs fail closed.
+
+Local verification: **10 passed**. GitHub Actions was not dispatched; no DNS/HTTP or value-moving action occurred.
+
+Next: **I081 — bind the I080 envelope/receipt to a dependency-injected network-incapable synthetic adapter invocation gate; prove scope cannot widen between consumption and invocation while real DNS/HTTP remains unreachable.**
