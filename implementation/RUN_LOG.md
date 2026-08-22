@@ -96,4 +96,14 @@ Negative cases cover private/loopback pins, stale route capacity, ChatGPT/Codex 
 
 No DNS/HTTP/socket/TLS request, credentials, authorization, task acceptance, paid infrastructure, spend or value movement occurred. No Actions workflow was dispatched. Runtime self-test execution remains notification-safe local verification debt because no isolated repository runtime is exposed in the current connector context.
 
-Next: **I103 — notification-safe local I099-I102 self-test harness with machine-readable receipt; if no isolated runtime is available, harden I100 so synthetic resource routes are independently ineligible.**
+## I103 — 2026-08-23
+Status: **completed scoped network-inert safety checkpoint; runtime self-test still pending isolated runner**
+Stage: synthetic Resource Router route quarantine hardening
+
+The preferred isolated local verification attempt could not proceed because the local runtime could not resolve GitHub; CI was deliberately not used solely to manufacture evidence.
+
+I100 was hardened so a `resource_route` carrying `synthetic_fixture=true` is independently ineligible even if materialization, policy, capacity and positive conservative-margin flags are all true. A separate `resource_route_not_synthetic` readiness gate is now mandatory, and a dedicated all-green-but-synthetic regression was added to I100 `_self_test`.
+
+No production DNS/HTTP/TLS request, credentials, authorization, task acceptance, paid infrastructure, spend or value movement occurred. No Actions workflow was dispatched.
+
+Next: **I104 — notification-safe local verification receipt harness when an isolated runner is available; otherwise add a machine-readable preauthorization blocker report separating fresh-real evidence, non-synthetic route, explicit authorization and runtime-regression debt.**
