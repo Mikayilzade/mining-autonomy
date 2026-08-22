@@ -6,9 +6,12 @@ Do not reconstruct this project from chat memory. Read repository state first.
 Read `START_HERE.md`, `STATUS.md`, `METHODOLOGY.md`, `HANDOFF.md`, `RUN_LOG.md`, `CATALOG.md`, `implementation/RUN_LOG.md`, and latest files named in `STATUS.md`.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I099 COMPLETE as scoped checkpoints**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I100 COMPLETE as scoped checkpoints**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I100_EXECUTION_READINESS_MANIFEST.md`
+- `implementation/I100_EXECUTION_READINESS_RESULT.json`
+- `implementation/i100_execution_readiness_manifest.py`
 - `implementation/RUN_I099_SYNTHETIC_EVIDENCE_SEQUENCING.md`
 - `implementation/i099_synthetic_evidence_sequencer.py`
 - `implementation/RUN_I098_FRESH_EXECUTION_EVIDENCE_CONTRACT.md`
@@ -20,22 +23,31 @@ Latest files:
 - `implementation/RUN_I096_FRESH_ONE_SHOT_REVIEW_PACKET.md`
 - `implementation/I096_FRESH_ONE_SHOT_REVIEW_PACKET.json`
 
-## I099 result
-A new stdlib-only network-inert sequencer now proves the intended synthetic acquisition order by reusing I098 validators rather than duplicating them: policy/ToS first, then DNS/public-IP pins, then TLS bound to one accepted pin, then immediate anti-rebinding, then final I098 bundle construction, then an I097 compatibility projection.
+## I100 result
+The implementation now has a network-inert machine-readable readiness manifest over the I096/I097/I098/I099 chain. Exact packet/scope integrity passes; the I099 sequencing contract is present; the one-request/no-credentials/no-value/action boundaries remain intact.
 
-The state machine fails closed on reordered or invalid evidence and refuses finalization when a component is missing. Embedded negative cases cover omission, reordering, stale policy, TLS outside the pin set, exact path/query drift and anti-rebinding set drift.
+I100 also makes Resource / Execution Router readiness explicit rather than implicit. The I048–I067 router chain is acknowledged as implemented, but a production route is not assumed merely because planning/default backends exist. A current route artifact must prove current materialization, policy eligibility, capacity availability and positive conservative margin.
 
-The I097 compatibility projection intentionally keeps `authorization=None`. Therefore even complete synthetic evidence cannot authorize transport: exact packet/evidence compatibility may pass while authorization remains false and the combined I097 result remains `BLOCKED`.
+The current result remains deliberately `BLOCKED`: fresh real non-synthetic execution evidence is absent, exact explicit user authorization is absent, and no current materialized route artifact has been supplied. Synthetic I099 evidence cannot satisfy the real-evidence gate.
 
-No DNS/HTTP/socket call, credentials, bidding, task acceptance, spend or value movement occurred. No authorization was manufactured. No CI workflow was dispatched. Runtime execution of the I099 self-test remains notification-safe verification debt because no isolated local repo runner was available in this run.
+I100 itself remains permanently `network_capable=false`, `execution_token=false`, `authorization_creator=false`, `transport_implemented_here=false`, `ready_for_network_invocation=false`; even all-green inputs must continue through the existing downstream single-use invocation/executor lineage.
+
+No DNS/HTTP/socket call, credentials, bidding, task acceptance, spend or value movement occurred. No CI workflow was dispatched. I099/I100 embedded self-test runtime execution remains notification-safe local-run verification debt.
 
 ## Target flow
-`cheap watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-calibrated Resource Router -> measured feedback/current resource materialization -> market readiness -> exact human-decision/authorization lineage -> network-incapable handoff/review -> adapter/source binding -> activation request/decision/consumption -> synthetic invocation-bound replay -> exact real-read-only request -> explicit final review/decision -> fresh-evidence authorization consumption -> I089 final invocation gate -> I090 single-use executor -> I091 concrete pinned HTTPS/JSON boundary -> I092 exact path/query contract -> I093 fresh-lineage integration -> I094 native-builder regression hardening -> I095 baseline-control isolation -> I096 fresh exact blocked review packet -> I097 offline packet verifier/authorization binding -> I098 fresh evidence artifact contract -> I099 synthetic evidence sequencing/I097 projection -> I100 execution-readiness manifest -> separately authorized one-shot real observation -> measured demand/economics feedback`.
+`cheap watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-calibrated Resource Router -> measured feedback/current resource materialization -> market readiness -> exact human-decision/authorization lineage -> network-incapable handoff/review -> adapter/source binding -> activation request/decision/consumption -> synthetic invocation-bound replay -> exact real-read-only request -> explicit final review/decision -> fresh-evidence authorization consumption -> I089 final invocation gate -> I090 single-use executor -> I091 concrete pinned HTTPS/JSON boundary -> I092 exact path/query contract -> I093 fresh-lineage integration -> I094 native-builder regression hardening -> I095 baseline-control isolation -> I096 fresh exact blocked review packet -> I097 offline packet verifier/authorization binding -> I098 fresh evidence artifact contract -> I099 synthetic evidence sequencing/I097 projection -> I100 execution-readiness manifest -> I101 fresh-real-evidence/route-materialization contract -> separately authorized one-shot real observation -> measured demand/economics feedback`.
 
-## Immediate next run: I100
-Build a **network-inert execution-readiness manifest / dry-run verifier**. It should consume the existing I096/I097/I098/I099 contracts and expose every remaining prerequisite as explicit booleans, including exact packet/scope integrity, sequencing-contract availability, fresh-real-evidence absence/presence, exact explicit authorization absence/presence, resource-route eligibility, request-count boundary, credentials/value-movement prohibition and final readiness.
+## Immediate next run: I101
+Build a **network-inert fresh-real-evidence acquisition plan + route-materialization input contract** for the exact I096 target.
 
-It must not resolve DNS, fetch policy pages, open sockets, perform HTTP, create/guess user authorization, or widen any prior permission. If a notification-safe local execution facility becomes available, use it to run the I099 embedded self-test; do not create repeated PR CI failures solely for evidence.
+It should define, without acquiring the evidence itself:
+- required provenance for current official policy/ToS evidence;
+- fresh DNS/public-IP pins, TLS-to-pin and anti-rebinding artifacts compatible with I098;
+- a current Resource Router route artifact proving actual availability/materialization, policy eligibility, capacity, latency/reliability, marginal execution cost, fixed/sunk-cost treatment, retry/failure cost and positive conservative margin;
+- strict separation between the tiny observation-route cost and any future paid-task execution cost;
+- exact packet/scope binding and expiry/freshness rules for all supplied artifacts.
+
+Do not resolve DNS, fetch policy pages, open sockets, perform HTTP, create/guess authorization, use credentials or widen permission. If a notification-safe isolated local runner becomes available, execute I099 and I100 embedded self-tests; do not create repeated PR CI failures solely for evidence.
 
 The production request still cannot be sent until a new explicit user authorization is bound to the exact I096 packet/scope and fresh real execution evidence exists at execution time.
 
