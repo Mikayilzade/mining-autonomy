@@ -66,4 +66,12 @@ Added `i097_offline_packet_verifier.py` and a durable blocked verification resul
 
 Current result is deliberately `BLOCKED`: packet integrity passes, but fresh explicit user authorization and fresh policy/DNS/pinning/TLS evidence are absent. The verifier contains no network transport and cannot become an execution token. No CI workflow was dispatched.
 
-Next: **I098 — fresh execution-evidence artifact contract; remain network-inert and do not manufacture authorization.**
+## I098 — 2026-08-22
+Status: **completed scoped network-inert safety checkpoint**
+Stage: fresh execution-evidence artifact contract
+
+Added `i098_fresh_execution_evidence_contract.py` plus a canonical JSON contract. The contract binds policy/ToS, DNS/public-IP pinning, TLS/transport and immediate anti-rebinding artifacts to the exact I096 packet/scope and request target; defines fail-closed freshness windows; requires canonical component hashes; rejects private/loopback pins and TLS connections outside the fresh pin set; and makes the final bundle expire at the earliest component expiry.
+
+The embedded offline self-test passed for a valid synthetic bundle and rejected path drift plus a loopback/private pin case. I098 remains `network_capable=false`, `execution_token=false`, and cannot authorize the production request. No DNS/HTTP, credentials, spend or value movement occurred. No CI workflow was dispatched.
+
+Next: **I099 — network-inert synthetic evidence acquisition/sequencing harness and I097 compatibility projection; no DNS/HTTP and no manufactured authorization.**
