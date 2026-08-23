@@ -6,49 +6,23 @@ Do not reconstruct this project from chat memory. Read repository state first.
 Read `START_HERE.md`, `STATUS.md`, `METHODOLOGY.md`, `HANDOFF.md`, `RUN_LOG.md`, `CATALOG.md`, `implementation/RUN_LOG.md`, and latest files named in `STATUS.md`.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I129 COMPLETE as scoped checkpoints**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I132 COMPLETE as scoped checkpoints**. Project: **IMPLEMENTATION IN PROGRESS**.
 
-Latest files:
-- `implementation/RUN_I129_ENERGY_MEASUREMENT_RECEIPT.md`
-- `implementation/i129_energy_measurement_receipt.py`
-- `implementation/test_i129_energy_measurement_receipt.py`
-- `implementation/RUN_I128_PYTHON_LOCAL_RESOURCE_COMPLETION.md`
-- `implementation/i128_python_local_resource_completion.py`
-- `implementation/RUN_I127_EXACT_LOCAL_EVIDENCE_PACKET.md`
-- `implementation/i126_python_local_config_invariant.py`
-- `implementation/i123_execution_backend_portfolio.py`
-- `.github/workflows/implementation-tests.yml`
-- `implementation/i113_local_runtime_chain_runner.py`
+Latest broad stage: `implementation/RUN_I130_I132_BROAD_RESOURCE_ECONOMICS.md`.
 
-## I129 result
-The strict python_local resource path now has an explicit acquisition contract for its last genuine marginal-cost fact. I129 converts independently observed joule-counter before/after readings around a known workload plus an explicit sourced electricity tariff into a canonical hash-bound receipt and then into the existing I054/I128 `EnergyMeasurement`.
+## Current resource/economics chain
+`fixed local probe + I126 config invariants + I128 quota/rate semantics + I129 verified energy receipt -> I054/I050 -> I066 -> I123 portfolio route -> I130 conservative sensitivity -> I131 watcher/acquisition overhead -> I132 pre-observation readiness`.
 
-It rejects counter reset/wrap, missing source identity/digests, invalid task count, negative values, stale/future/tampered receipts and scope drift. It never guesses energy or tariff and does not imply that a hardware counter covers whole-machine energy unless the source establishes that.
-
-Current chain:
-`fixed local probe + I126 config invariants + I128 quota/rate semantics + I129 verified energy receipt -> I054/I050 -> I066 -> I123`.
-
-A fresh checkout attempt from the available execution container again failed because GitHub DNS resolution is unavailable, so no exact-current runtime/resource PASS exists yet.
+I130 prevents reliance on a single optimistic point estimate. I131 models a future high-frequency watcher without requiring frequent LLM calls: permitted cheap polling, local dedupe/filtering, then AI only for promising survivors. ChatGPT/Codex subscription remains fixed/sunk limited support and is not assumed to provide autonomous API access.
 
 ## Immediate next broad run
-At the first exact-current executable checkout, run I113 and the fixed I128 benchmark once. If trustworthy no-spend local energy telemetry exists, capture before/after readings around the workload and combine them with an explicit real tariff source via I129. Feed the verified measurement through I128/I050/I066, rerun I123, and emit one current resource-readiness/economics packet.
-
-If telemetry or tariff provenance is absent, leave electricity unknown. Free/conditional CI quota/capacity remains separate. Do not restore automatic CI or perform the production GET.
+When exact-current execution becomes available, run the complete no-spend local chain in one stage: I113, I128/I129, I050/I066/I123, then I130 and I131. Emit one current conservative resource-readiness packet. If positive, prepare but do not execute the one-shot market observation authorization boundary. If local execution cannot be made reproducibly economic, move to the next already-ranked backend family rather than broad discovery.
 
 ## Hard boundary
-No spend, KYC, wallets, paid work acceptance, publication, settlement, real credentials, CAPTCHA/geofence/rate-limit bypass or value movement without separate explicit authorization.
-
-## Resource boundary
-- ChatGPT/Codex subscription is fixed/sunk limited support, not a free autonomous API.
-- I126 invariants are python_local-only and exclude host/runtime/electricity evidence.
-- I128 quota/rate `None` is a local-interface semantic, not unlimited host capacity.
-- I129 requires independently sourced meter readings and explicit tariff provenance.
-- Free/conditional CI needs current quota/capacity/policy evidence and is not unlimited.
-- Observation economics and paid-task fulfillment economics are independent.
-- Resource routing never widens market/policy/authorization eligibility.
+No spend, KYC, wallets, paid work acceptance, publication, settlement, real credentials, CAPTCHA/geofence/rate-limit bypass or value movement without separate explicit authorization. No production GET yet.
 
 ## Git/CI
-Prefer one coherent commit per broad stage where tooling permits. Keep automatic runtime triggers disabled; runtime workflow remains manual-only. Expected fail-closed outcomes belong in artifacts rather than notification-generating failures.
+Keep automatic runtime triggers disabled. Prefer broad coherent stages; expected fail-closed states should be artifacts, not notification-generating CI failures.
 
 ## Completion
 Implementation remains incomplete until a permitted real test demonstrates positive economics or reasonable candidates are exhausted and confirmed by control passes.
