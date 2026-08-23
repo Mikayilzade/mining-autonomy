@@ -68,4 +68,28 @@ Added a six-gate readiness packet: exact-current runtime, measured non-synthetic
 
 Files: `RUN_I133_I135_CONSERVATIVE_ROUTING_READINESS.md`, `i133_conservative_route_gate.py`, `i134_backend_evidence_acquisition_planner.py`, `i135_pre_observation_readiness_packet.py`, `test_i133_i135_broad_readiness.py`, `STATUS.md`, `HANDOFF.md`.
 
-Next: when executable current checkout exists, run I113 + I128/I129 -> I050/I066/I123 -> I133 -> I135 as one broad stage. If local economics fail, use I134 to move to the next existing no-new-spend evidence branch. Do not restore automatic CI or perform the production GET.
+## I136 — 2026-08-23
+Status: **completed source checkpoint**
+Stage: portfolio-wide evidence + conservative economics conjunction
+
+Added `i136_conservative_portfolio_evaluator.py`. The portfolio evaluator applies I123 production evidence blockers and I133 conservative economics to every existing backend. A backend can be selected only if both evidence and conservative economics pass. Deterministic candidates remain preferred before AI families.
+
+## I137 — 2026-08-23
+Status: **completed source checkpoint**
+Stage: deterministic existing-resource fallback ladder
+
+Added `i137_resource_fallback_ladder.py`. When no current route exists, the ladder consumes I134 and selects the next already-defined no-new-spend evidence branch without reopening discovery. Attempted/exhausted branches are distinguished from deferred/authorization-blocked resources.
+
+## I138 — 2026-08-23
+Status: **completed broad source checkpoint — empirical gates pending**
+Stage: integrated experiment-readiness orchestrator
+
+Added `i138_experiment_readiness_orchestrator.py`, broad tests and `RUN_I136_I138_BROAD_EXPERIMENT_READINESS.md`. The orchestrator emits one fail-closed next action: measure next resource branch, obtain exact runtime receipt, obtain fresh market/policy evidence, request exact one-shot observation authorization, or report readiness for one read-only observation. Even final readiness keeps observation/execution/network/spend/task-acceptance/value-movement disabled.
+
+A fresh clone/test attempt from the available execution container failed before checkout with `Could not resolve host: github.com`; no exact-current pytest/runtime PASS is claimed. Automatic CI was not enabled or dispatched.
+
+Files: `i136_conservative_portfolio_evaluator.py`, `i137_resource_fallback_ladder.py`, `i138_experiment_readiness_orchestrator.py`, `test_i136_i138_broad_experiment_readiness.py`, `RUN_I136_I138_BROAD_EXPERIMENT_READINESS.md`, `STATUS.md`, `HANDOFF.md`, `implementation/RUN_LOG.md`.
+
+Risks: real local energy/tariff evidence absent; exact runtime receipt absent; free-tier CI remains unmaterialized; fresh real market demand/policy evidence absent; exact observation authorization absent.
+
+Next: keep the stage broad. At the first executable current checkout run I113 + I128/I129 -> I050/I066/I123 -> I133/I136 -> I138 in one cycle. If local materialization/economics fails, advance via I137/I134 to the next existing no-new-spend branch in the same cycle where practical. Do not restore automatic CI or perform the production GET.
