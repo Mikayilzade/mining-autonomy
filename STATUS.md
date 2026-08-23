@@ -3,10 +3,12 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I112 — deterministic offline verifier for future I111 generated manifest**
+Last completed implementation run: **I113 — local I106-I112 runtime chain runner authored**
 Last updated: **2026-08-23**
 
 ## Latest durable files
+- `implementation/RUN_I113_LOCAL_RUNTIME_CHAIN_RUNNER.md`
+- `implementation/i113_local_runtime_chain_runner.py`
 - `implementation/RUN_I112_I111_MANIFEST_OFFLINE_VERIFIER.md`
 - `implementation/i112_i111_manifest_offline_verifier.py`
 - `implementation/RUN_I111_PREOBSERVATION_ARTIFACT_MANIFEST.md`
@@ -36,14 +38,14 @@ Last updated: **2026-08-23**
 - `implementation/RUN_I100_EXECUTION_READINESS_MANIFEST.md`
 - `implementation/I100_EXECUTION_READINESS_RESULT.json`
 
-## I112 outcome
-I112 added a deterministic network-inert verifier for a future generated `I111_PREOBSERVATION_ARTIFACT_MANIFEST.json`. It imports the current I111 generator, recomputes the expected manifest from the exact current repository-local artifact closure, requires exact JSON equality, binds current I111 source and generated-manifest SHA-256 values, and fails closed on schema/run drift or any capability/permission widening.
+## I113 outcome
+I113 added `i113_local_runtime_chain_runner.py`, a notification-safe repository-local orchestration runner for the already-defined I106 -> I107 -> I108 -> I109 -> I110 -> I111 -> I112 chain. It stops on first failure, captures expected output presence/hashes, checks the I106-I112 source bytes remain stable while running, clears proxy environment variables for child processes, and emits a compact I113 receipt.
 
-I112 intentionally refuses to accept any satisfied blocker through this offline layer and explicitly emits `runtime_regression_verification=false`. It cannot create fresh-real evidence, a Resource / Execution Router route, authorization, runtime PASS, network capability, credentials, task execution, paid infrastructure, spend or value movement.
+I113 is operationalization, not another safety/policy gate. It cannot create fresh-real evidence, a Resource / Execution Router route, authorization, network capability, credentials, task execution, paid infrastructure, spend or value movement, and it never dispatches GitHub Actions.
 
-This environment still exposes repository source through GitHub but not a repository-mounted executable checkout, so I106 -> I107 -> I108 -> I109 -> I110 -> I111 -> I112 was not executed and no runtime/result artifact was fabricated. No production DNS/HTTP/socket/TLS request, credentials, authorization, task acceptance/submission, paid infrastructure, payment or value movement occurred. No Actions workflow was dispatched.
+A repository-local clone was attempted in the available shell/container, but that environment could not resolve `github.com`; the GitHub connector itself is not an executable mounted checkout. Therefore I113 was not run and no runtime/result artifact was fabricated. No production DNS/HTTP/socket/TLS request occurred. No Actions workflow was dispatched.
 
-Current durable state remains blocked: fresh-real evidence false; current eligible non-synthetic Resource Router route false; exact authorization false; current exact-source runtime-regression receipt chain absent. I112 closes the specific source-only fallback gap named by I111; do not continue adding safety layers unless a concrete new gap appears.
+Current durable state remains blocked: fresh-real evidence false; current eligible non-synthetic Resource Router route false; exact authorization false; current exact-source runtime-regression receipt chain absent.
 
 ## Current ranking
 1. PayanAgent
@@ -72,6 +74,7 @@ Current durable state remains blocked: fresh-real evidence false; current eligib
 - I110 binds any future I109 result to a current deterministic recomputation and exact I105-I109 source chain; runtime-result replay cannot widen non-runtime blockers.
 - I111 binds the exact current I100/I104/I105-I110 pre-observation artifact chain into a compact manifest and explicitly records network incapability; it cannot mint any blocker or permission.
 - I112 verifies a future generated I111 manifest only against exact current deterministic recomputation and refuses to mint/accept blockers or capabilities through the offline layer.
+- I113 is the one-command local runner for I106-I112; it adds no capability and cannot substitute for the three non-runtime blockers.
 - Observation-route economics and future paid-task execution economics are separate.
 - Fast watchers may poll more often than hourly only where API/ToS permits and should avoid constant LLM use; no product/rate-limit bypass.
 - Watcher architecture remains cheap polling/webhook/WebSocket/cron -> local deterministic filter/dedupe -> policy/economics gate -> AI only for promising work.
@@ -80,9 +83,11 @@ Current durable state remains blocked: fresh-real evidence false; current eligib
 ## Immediate next run
 Do **not** add another source-only safety layer unless a concrete new gap is identified.
 
-At the first repository-local Python checkout, execute I106 -> I107 -> I108 -> I109 -> I110 -> I111 in order, then run I112 against the generated I111 manifest. Accept runtime regression verification only if the exact current-source/result chain agrees and no non-runtime blocker is widened.
+At the first repository-local Python checkout, execute `python3 implementation/i113_local_runtime_chain_runner.py`. Accept runtime regression verification only if I113 returns `PASS_BLOCKED` and the exact current-source/result chain agrees without widening any non-runtime blocker.
 
-Do not perform the production GET and do not trigger repeated failing PR CI solely to create evidence. The actual production observation still requires later separate explicit user authorization plus fresh real policy/DNS/pinning/TLS/rebinding evidence acquired at execution time and a current materialized eligible non-synthetic route with positive conservative expected margin.
+If repository-local runtime remains unavailable and no concrete new source defect appears, preserve the checkpoint rather than manufacture more gates. Do not perform the production GET and do not trigger repeated failing PR CI solely to create evidence.
+
+The actual production observation still requires later separate explicit user authorization plus fresh real policy/DNS/pinning/TLS/rebinding evidence acquired at execution time and a current materialized eligible non-synthetic route with positive conservative expected margin.
 
 ## Completion gate
 Implementation completes only with confirmed positive economics on real permitted tests or exhaustion of reasonable candidates by control passes.
