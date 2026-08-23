@@ -165,3 +165,17 @@ Files: `.github/workflows/implementation-tests.yml`, `implementation/RUN_I121_NO
 Risks: checkout/setup/infrastructure failures before outcome generation can still fail the workflow; a green job must never be interpreted as runtime PASS without the artifact chain. Runtime verification remains absent until one manual current-main run actually executes.
 
 Next: when authenticated manual dispatch is available, run `implementation-runtime-chain` exactly once from current `main`; accept runtime evidence only if provenance has `source_binding_pass=true`, I113 v2 has `PASS_BLOCKED`, and I121 has `evidence_acceptable=true`. If dispatch remains unavailable, preserve the checkpoint and do not restore automatic CI.
+
+## I122 — 2026-08-23
+Status: **completed scoped operational checkpoint — runtime execution still unavailable**
+Stage: GitHub connector capability audit / stale rerun rejection
+
+Rechecked the available Actions controls. Manual `workflow_dispatch` is still not exposed. The connector now exposes rerun controls for existing workflow jobs/runs, so the known failed historical PR #1 run `32574545296` / job `97034830749` was inspected before any action. It belongs to stale head `0575cc0...` and the old PR-triggered `implementation-tests` pipeline (`checkout@v4`, `setup-python@v5`, install test runner, run all implementation tests), not the current I115-I121 manual I113/I118/I121 runtime path.
+
+No rerun was performed. Using those rerun controls would execute stale source/workflow semantics, violate current-main binding, and risk renewed GitHub failure-email spam; rerun capability is not a valid substitute for current-main workflow dispatch.
+
+Files: `implementation/RUN_I122_RUNTIME_CONNECTOR_CAPABILITY_AUDIT.md`, `STATUS.md`, `HANDOFF.md`, `implementation/RUN_LOG.md`.
+
+Risks: runtime verification remains absent until an exact current-main executable checkout or authenticated manual dispatch becomes available; stale reruns must not be treated as evidence.
+
+Next: execute exactly one current-main `implementation-runtime-chain` when valid dispatch/runtime capability appears. Require `source_binding_pass=true`, I113 v2 `PASS_BLOCKED`, and I121 `evidence_acceptable=true`; otherwise preserve the checkpoint without restoring automatic CI or performing the production GET.

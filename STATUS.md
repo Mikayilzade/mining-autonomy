@@ -3,10 +3,11 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I121 — notification-safe manual runtime outcome semantics**
+Last completed implementation run: **I122 — runtime connector capability audit / stale rerun rejection**
 Last updated: **2026-08-23**
 
 ## Latest durable files
+- `implementation/RUN_I122_RUNTIME_CONNECTOR_CAPABILITY_AUDIT.md`
 - `implementation/RUN_I121_NOTIFICATION_SAFE_MANUAL_RUNTIME_OUTCOME.md`
 - `.github/workflows/implementation-tests.yml`
 - `implementation/RUN_I120_RUNTIME_BACKEND_AVAILABILITY_RECHECK.md`
@@ -47,12 +48,10 @@ Last updated: **2026-08-23**
 - `implementation/RUN_I100_EXECUTION_READINESS_MANIFEST.md`
 - `implementation/I100_EXECUTION_READINESS_RESULT.json`
 
-## I121 outcome
-I121 hardened the existing manual GitHub-hosted I113 runtime backend specifically against notification noise. The workflow remains manual-only, but expected evidence-level refusal/fail-closed states no longer need to mark the whole GitHub job failed. Source provenance is written first; I113 runs only if exact current-main binding passes; its step is non-fatal to workflow status; and an always-run `I121_RUNTIME_WORKFLOW_OUTCOME.json` declares runtime evidence acceptable only when source binding passes and I113 returns `PASS_BLOCKED`.
+## I122 outcome
+I122 rechecked the actual GitHub connector execution surface instead of adding another source-only gate. Manual `workflow_dispatch` is still not exposed. The connector now exposes rerun controls for existing jobs/runs, but the only relevant known failed CI is historical PR #1 run `32574545296` / job `97034830749` on stale head `0575cc0...` using the old PR test workflow, not the current I115-I121 manual current-main runtime backend.
 
-Workflow green/red status is explicitly non-authoritative. Only the artifact chain may satisfy runtime verification. Infrastructure failures before artifact creation can still fail the workflow.
-
-No workflow was dispatched in I121. No production observation, credentials, spend, paid infrastructure, task action, or value movement occurred.
+Rerunning that historical job was explicitly rejected: it would execute stale source/workflow semantics, fail current-main binding, and risk recreating notification spam. No workflow was dispatched or rerun.
 
 Current durable state remains blocked: fresh-real evidence false; current eligible non-synthetic Resource Router route false; exact authorization false; current exact-source runtime-regression receipt chain absent.
 
@@ -82,6 +81,7 @@ Current durable state remains blocked: fresh-real evidence false; current eligib
 - I117 pins the manual runtime backend's GitHub Actions dependencies to immutable reviewed commits and disables persisted checkout credentials.
 - I118 records hosted-runner/Python provenance; I119 enforces exact current-main source binding before I113.
 - I121 separates GitHub job status from runtime evidence status: expected `FAIL_CLOSED` or source-binding refusal can remain notification-quiet while artifacts stay authoritative and fail-closed.
+- I122 confirms rerun controls for stale historical CI are not a substitute for current-main manual dispatch and must not be used to manufacture runtime evidence.
 - GitHub Actions free/conditional capacity is a limited resource, not assumed unlimited or zero-opportunity-cost.
 - Observation-route economics and future paid-task execution economics are separate.
 - Fast watchers may poll more often than hourly only where API/ToS permits and should avoid constant LLM use; no product/rate-limit bypass.
@@ -93,7 +93,7 @@ Do **not** add another source-only safety layer unless a concrete new gap is ide
 
 At the first environment with authenticated manual GitHub Actions dispatch capability, execute exactly one `implementation-runtime-chain` run from current `main`. Accept runtime-regression evidence only when `I118_RUNTIME_ENVIRONMENT_PROVENANCE.json` has `source_binding_pass=true`, I113 v2 returns `PASS_BLOCKED`, and `I121_RUNTIME_WORKFLOW_OUTCOME.json` reports `evidence_acceptable=true`.
 
-If manual dispatch and executable checkout are both unavailable, preserve this checkpoint rather than manufacturing additional gates or restoring automatic CI. Do not perform the production GET solely because runtime verification later passes.
+If manual dispatch and executable checkout are both unavailable, preserve this checkpoint rather than manufacturing additional gates, rerunning stale PR CI, or restoring automatic CI. Do not perform the production GET solely because runtime verification later passes.
 
 The actual production observation still requires later separate explicit user authorization plus fresh real policy/DNS/pinning/TLS/rebinding evidence acquired at execution time and a current materialized eligible non-synthetic route with positive conservative expected margin.
 
