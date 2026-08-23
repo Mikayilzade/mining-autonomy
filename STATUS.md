@@ -3,10 +3,13 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I156 — exact I113 local runtime PASS_BLOCKED**
+Last completed implementation run: **I157 — free-tier CI policy gate**
 Last updated: **2026-08-24**
 
 ## Latest durable files
+- `implementation/RUN_I157_FREE_TIER_CI_POLICY_GATE.md`
+- `implementation/i157_free_tier_ci_policy_gate.py`
+- `implementation/test_i157_free_tier_ci_policy_gate.py`
 - `implementation/RUN_I156_EXACT_I113_LOCAL_RUNTIME.md`
 - `implementation/RUN_I155_CONNECTOR_BLOB_INGEST.md`
 - `implementation/i155_connector_blob_ingest.py`
@@ -31,28 +34,30 @@ Last updated: **2026-08-24**
 - `implementation/i123_execution_backend_portfolio.py`
 - `implementation/i113_local_runtime_chain_runner.py`
 
-## I156 outcome
-The I154-bound runtime closure has now been fully materialized and executed locally without relaxing exact-source requirements.
+## I157 outcome
+The existing `free_tier_ci` Resource / Execution Router branch was revalidated against current first-party GitHub policy without dispatching CI.
 
-All **19/19** source/artifact files matched the Git blob SHA values bound to repository commit `3699c39aa3e61f217afd37cb44b7cfa0c33a1082`, tree `efb9a4d06e18a5d2ec9421aaaa1c7d379c6e8db9` before execution.
+Repository `Mikayilzade/mining-autonomy` is currently public. GitHub's current billing documentation states that standard GitHub-hosted runners are free for public repositories, but GitHub Actions remains subject to service limits and Additional Product Terms. Those terms prohibit cryptomining, disproportionate server burden/commercial resale patterns, and — for GitHub-hosted runners — activity unrelated to production, testing, deployment or publication of the software project associated with the repository.
 
-I113 then executed the exact local chain `I106 -> I107 -> I108 -> I109 -> I110 -> I111 -> I112`. Result: **PASS_BLOCKED**. All seven subprocesses returned `0`, all expected fresh outputs were created, source hashes remained stable across execution, and I113 reported no errors. The generated I113 result SHA-256 was `bee739b8be6d6363e7aadea5a4be5afa4e238f28760a7111c394da0dadc038b4`.
+Therefore GitHub-hosted Actions is classified **SUPPORT_TESTING_ONLY** for this project. The public-repository `$0` incremental runner-price fact is not promoted into generic external paid-task permission or infinite capacity. It is not an eligible production earning backend for arbitrary marketplace work.
 
-This materially closes the previously absent runtime-regression evidence for the exact I154-bound snapshot. It does not widen any other gate and does not authorize production observation.
+Added `i157_free_tier_ci_policy_gate.py` and focused tests. Local verification before write: **3 tests passed**. The gate fails closed if policy evidence is widened to generic external paid-task permission or if this public-repository checkpoint is substituted with a private repository state.
 
-The same cycle rechecked I128/I129. Genuine energy measurement remains unavailable in this execution environment: no usable RAPL `/sys/class/powercap/.../energy_uj` or hwmon energy/power counter is exposed, and I129 correctly refuses to invent energy or tariff. Therefore `python_local` remains blocked for strict resource/economic promotion on genuine measured energy plus explicit applicable tariff provenance.
+No workflow was dispatched; no credentials, production market request, task action, paid infrastructure, spend or value movement occurred.
 
-No production observation, CI dispatch, credentials, task action, spend, payment, wallet action or value movement occurred.
+## Previous runtime outcome
+I156 materially demonstrated the exact I154-bound I113 local runtime chain: **PASS_BLOCKED**, 7/7 subprocesses clean, source hashes stable, errors empty. Runtime-regression evidence is no longer the active blocker for that snapshot.
 
 ## Current control chain
-`I113 exact runtime PASS_BLOCKED -> I128/I129 resource measurement -> I050/I066/I123 -> I130/I131/I133 economics -> I136 portfolio -> I137 fallback -> I138 readiness -> I142/I145/I148 source evidence -> I143 selection -> I140 bounded observation -> I141 economic-test packet`.
+`I113 exact runtime PASS_BLOCKED -> Resource/Execution Router evidence ladder (python_local -> free_tier_ci -> local_model -> owned_pc -> separately authorized paid/API/VPS branches) -> I050/I066/I123 -> I130/I131/I133 economics -> I136 portfolio -> I137 fallback -> I138 readiness -> I142/I145/I148 source evidence -> I143 selection -> I140 bounded observation -> I141 economic-test packet`.
 
 ## Current blockers
 1. exact-source local runtime regression verification: **materially demonstrated by I156**;
-2. genuine measured energy + explicit applicable tariff provenance for `python_local`: **absent in current execution environment**;
-3. current measured non-synthetic route surviving conservative economics + watcher overhead: **false**;
-4. PayanAgent explicit geography/provider-access evidence: **absent; public-doc search converged**;
-5. exact authorization for any later bounded read-only production observation: **false**.
+2. `python_local`: genuine measured energy + explicit applicable tariff provenance **absent in current execution environment**;
+3. `free_tier_ci` / GitHub-hosted Actions: **support/testing-only; not policy-eligible for generic external paid-task execution**;
+4. current measured non-synthetic production route surviving conservative economics + watcher overhead: **false**;
+5. PayanAgent explicit geography/provider-access evidence: **absent; public-doc search converged**;
+6. exact authorization for any later bounded read-only production observation: **false**.
 
 ## Durable rules
 - Do not reopen broad discovery unless implementation proves a genuinely missing mechanism.
@@ -63,13 +68,14 @@ No production observation, CI dispatch, credentials, task action, spend, payment
 - Real demand/fill must be measured, never inferred from listings/provider counts.
 - Deterministic/local polling/filtering precedes selective AI; sub-hour watchers only within API/ToS limits.
 - ChatGPT/Codex subscription is fixed/sunk limited support, not autonomous API access.
+- GitHub Actions public-runner pricing does not imply permission for arbitrary paid external compute or unlimited capacity; keep GitHub-hosted CI support/testing-only under current terms.
 - Automatic push/PR runtime CI remains disabled.
 - No spend, credentials, registration, wallet, task acceptance, fulfillment, purchase or value movement before separate authorization.
 
 ## Immediate next broad run
-Treat the current `python_local` no-spend energy-measurement route as exhausted for this execution environment unless a genuine local energy counter and applicable tariff provenance become available. Advance through I134/I137 to the existing `free_tier_ci` **evidence** branch: verify current provider free-tier policy, quota/rate semantics and source-bound runtime feasibility without dispatching CI, using credentials, or creating spend.
+Advance I134/I137 to the existing `local_model` no-new-spend evidence branch. Detect only genuinely available local CPU/GPU/model interfaces and measure/verify what the current execution environment can actually support: interface presence, model identity, deterministic/programmatic access, quality acceptance benchmark, capacity/parallelism/latency/reliability, and energy/opportunity-cost evidence. Do not assume a GPU or local model exists and do not download large models or create new spend.
 
-If `free_tier_ci` cannot be materially evidenced without authorization/new spend, continue I137 immediately to the next existing no-new-spend backend branch. Do not reopen discovery.
+If `local_model` cannot be materially evidenced without downloads, credentials, unavailable hardware, or invented energy values, mark that no-spend branch exhausted and continue I137 to `owned_pc`. Do not reopen discovery.
 
 If new explicit PayanAgent policy/contact evidence or separately authorized local-access evidence appears, encode it and rerun I142/I145/I148 before I140/I141.
 
