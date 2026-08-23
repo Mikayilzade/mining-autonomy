@@ -55,6 +55,26 @@ Durable file: `RUN_I145_I147_PAYANAGENT_SOURCE_NARROWING.md`.
 
 No production PayanAgent task-list/receipt GET, registration, API key, wallet, payment, bid, task acceptance, fulfillment, CI dispatch, paid infrastructure or value movement occurred.
 
-Risks/blockers: PayanAgent explicit geography/access rule remains absent; exact-current I113 runtime remains absent; genuine local energy + explicit tariff evidence remains absent; current measured conservative backend route remains false; exact bounded observation authorization remains absent.
+## I148 — 2026-08-24
+Status: **completed authoritative source checkpoint**
+Stage: PayanAgent geography/access final public-policy pass
 
-Next: make one authoritative-first-party attempt to resolve PayanAgent geography/access. If no explicit rule exists, preserve the source blocker and mark it `policy_contact_or_user-local-access-required` rather than guessing. Independently, run the full resource/runtime cycle when exact-current execution becomes available. Only then instantiate I140/I141 and request/use exact bounded observation authorization.
+Reviewed current PayanAgent first-party Terms and linked official repository. Terms (last updated 2026-04-18) require users not to perform activity illegal in their jurisdiction or targeting PayanAgent's jurisdiction, but do not publish a supported-country list, global-access promise or Azerbaijan-specific eligibility rule. I142 therefore remains HOLD on exactly `missing_required_fact:geography_access_rule`; documentation silence is not permission.
+
+## I149 — 2026-08-24
+Status: **completed design checkpoint**
+Stage: separately-authorized local-access evidence contract
+
+Added a design-only local-access contract for future exact bounded read-only evidence. It permits only current docs/Terms and exact manifest-listed public calls after separate authorization, and records status/rate/geography signals. It forbids registration, API keys, wallet/payment use, task actions and any CAPTCHA/geofence/rate-limit bypass. HTTP reachability alone is explicitly not provider-country eligibility evidence.
+
+## I150 — 2026-08-24
+Status: **completed broad source convergence checkpoint — source blocker preserved**
+Stage: stop repeated PayanAgent geography re-search
+
+Added `i148_payanagent_geography_resolution.py`, focused tests and `RUN_I148_I150_PAYANAGENT_GEOGRAPHY_CLOSURE.md`. The active source branch is now `WAIT_FOR_POLICY_CONTACT_OR_SEPARATELY_AUTHORIZED_LOCAL_ACCESS`. Repeated public-doc geography searches should stop unless PayanAgent publishes new first-party material. Discovery remains closed.
+
+No production task-list/receipt GET, credentials, registration, wallet, payment, bid, task acceptance, fulfillment, CI dispatch, paid infrastructure or value movement occurred.
+
+Risks/blockers: exact-current I113 runtime absent; genuine `python_local` energy + explicit tariff evidence absent; measured conservative Resource Router route absent; explicit PayanAgent geography/provider-access evidence absent; exact bounded observation authorization absent.
+
+Next: prioritize the Resource / Execution Router branch. At first exact-current executable checkout, run I113 + I128/I129 -> I050/I066/I123 -> I133/I136 -> I138 as one broad stage. If local fails, advance through I137/I134 to the next existing no-new-spend backend branch. Only if new PayanAgent policy/contact evidence or separately authorized local-access evidence appears should the source gate be reassessed.
