@@ -6,8 +6,10 @@ This orchestration layer is intentionally network-inert: it invokes only reposit
 Python modules, never GitHub Actions, DNS, sockets, TLS, HTTP, credentials, task actions,
 paid infrastructure, spend, payment or value movement.
 
-The runner stops on the first non-zero exit code and records a compact receipt. It does
-not convert any non-runtime blocker to true and cannot authorize the production GET.
+The runner stops on the first failure and records a compact receipt. It deletes each
+expected step output immediately before that step so stale artifacts cannot be mistaken
+for fresh evidence. Launch errors and timeouts are captured as FAIL_CLOSED receipts
+instead of escaping before I113 can write its result.
 """
 from __future__ import annotations
 
@@ -32,10 +34,19 @@ STEPS = (
 )
 
 BANNED_ENV_PREFIXES = ("HTTP_PROXY", "HTTPS_PROXY", "ALL_PROXY")
+STEP_TIMEOUT_SECONDS = 180
 
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def tail(value: str | bytes | None, limit: int = 2000) -> str:
+    if value is None:
+        return ""
+    if isinstance(value, bytes):
+        value = value.decode("utf-8", errors="replace")
+    return value[-limit:]
 
 
 def run_chain() -> dict[str, Any]:
@@ -61,36 +72,86 @@ def run_chain() -> dict[str, Any]:
 
     if not errors:
         for run_id, filename, output_name in STEPS:
-            command = [sys.executable, str(ROOT / filename)]
-            proc = subprocess.run(
-                command,
-                cwd=str(ROOT),
-                env=env,
-                stdin=subprocess.DEVNULL,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                text=True,
-                timeout=180,
-                check=False,
-            )
             output_path = ROOT / output_name
+            try:
+                output_path.unlink(missing_ok=True)
+            except OSError as exc:
+                errors.append(f"{run_id} could not clear stale output {output_name}: {exc}")
+                executions.append(
+                    {
+                        "run": run_id,
+                        "module": filename,
+                        "output": output_name,
+                        "returncode": None,
+                        "pass": False,
+                        "timed_out": False,
+                        "launch_error": None,
+                        "output_present": output_path.is_file(),
+                        "output_sha256": sha256(output_path) if output_path.is_file() else None,
+                        "stdout_tail": "",
+                        "stderr_tail": "",
+                    }
+                )
+                break
+
+            command = [sys.executable, str(ROOT / filename)]
+            try:
+                proc = subprocess.run(
+                    command,
+                    cwd=str(ROOT),
+                    env=env,
+                    stdin=subprocess.DEVNULL,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    text=True,
+                    timeout=STEP_TIMEOUT_SECONDS,
+                    check=False,
+                )
+                returncode: int | None = proc.returncode
+                stdout_tail = tail(proc.stdout)
+                stderr_tail = tail(proc.stderr)
+                timed_out = False
+                launch_error: str | None = None
+            except subprocess.TimeoutExpired as exc:
+                returncode = None
+                stdout_tail = tail(exc.stdout)
+                stderr_tail = tail(exc.stderr)
+                timed_out = True
+                launch_error = None
+            except OSError as exc:
+                returncode = None
+                stdout_tail = ""
+                stderr_tail = ""
+                timed_out = False
+                launch_error = f"{type(exc).__name__}: {exc}"
+
+            output_present = output_path.is_file()
             item = {
                 "run": run_id,
                 "module": filename,
                 "output": output_name,
-                "returncode": proc.returncode,
-                "pass": proc.returncode == 0,
-                "output_present": output_path.is_file(),
-                "output_sha256": sha256(output_path) if output_path.is_file() else None,
-                "stdout_tail": proc.stdout[-2000:],
-                "stderr_tail": proc.stderr[-2000:],
+                "returncode": returncode,
+                "pass": returncode == 0 and output_present and not timed_out and launch_error is None,
+                "timed_out": timed_out,
+                "launch_error": launch_error,
+                "output_present": output_present,
+                "output_sha256": sha256(output_path) if output_present else None,
+                "stdout_tail": stdout_tail,
+                "stderr_tail": stderr_tail,
             }
             executions.append(item)
-            if proc.returncode != 0:
-                errors.append(f"{run_id} returned {proc.returncode}")
+
+            if timed_out:
+                errors.append(f"{run_id} timed out after {STEP_TIMEOUT_SECONDS}s")
                 break
-            if not output_path.is_file():
-                errors.append(f"{run_id} did not create expected output {output_name}")
+            if launch_error is not None:
+                errors.append(f"{run_id} launch failed: {launch_error}")
+                break
+            if returncode != 0:
+                errors.append(f"{run_id} returned {returncode}")
+                break
+            if not output_present:
+                errors.append(f"{run_id} did not create fresh expected output {output_name}")
                 break
 
     post_source_hashes = {
@@ -104,7 +165,7 @@ def run_chain() -> dict[str, Any]:
 
     completed = [item["run"] for item in executions if item["pass"]]
     return {
-        "schema": "mining-autonomy/i113-local-runtime-chain-runner/v1",
+        "schema": "mining-autonomy/i113-local-runtime-chain-runner/v2",
         "run": "I113",
         "result": "PASS_BLOCKED" if not errors and completed == [x[0] for x in STEPS] else "FAIL_CLOSED",
         "network_capable": False,
@@ -116,6 +177,8 @@ def run_chain() -> dict[str, Any]:
         "github_actions_dispatched": False,
         "paid_infrastructure_created": False,
         "spend_or_value_movement": False,
+        "step_timeout_seconds": STEP_TIMEOUT_SECONDS,
+        "fresh_output_required_per_step": True,
         "chain_order": [x[0] for x in STEPS],
         "completed_steps": completed,
         "source_sha256_before": pre_source_hashes,

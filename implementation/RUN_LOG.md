@@ -81,3 +81,19 @@ Files: `.github/workflows/implementation-tests.yml`, `implementation/RUN_I115_NO
 Risks: a manual failure may still generate one GitHub notification; Actions quota/availability is limited; PASS_BLOCKED can satisfy only runtime verification.
 
 Next: when manual dispatch is available, run `implementation-runtime-chain` once on current `main`, inspect I106-I113 receipts, and keep fresh-real evidence, non-synthetic positive-margin route and exact authorization as separate blockers.
+
+## I116 — 2026-08-23
+Status: **completed scoped operational defect fix — execution pending**
+Stage: stale-output isolation + timeout/launch fail-closed hardening
+
+Inspected the chosen I113 path and found a concrete correctness defect: old expected JSON outputs were not deleted before each step, so a stale artifact could be mistaken for fresh output if a later step returned 0 without writing a new file. Also, `TimeoutExpired`/process-launch failures could escape before I113 wrote its receipt.
+
+Updated I113 to schema v2. Each step now clears its own expected output before execution; PASS requires return code 0 plus a freshly present output; timeout and launch errors are captured into deterministic `FAIL_CLOSED` execution records. Existing source-hash stability and no-network/no-authorization/no-value-moving boundaries remain unchanged.
+
+No runtime execution or workflow dispatch occurred; no result was fabricated.
+
+Files: `implementation/i113_local_runtime_chain_runner.py`, `implementation/RUN_I116_RUNTIME_RUNNER_STALE_ARTIFACT_TIMEOUT_HARDENING.md`, `STATUS.md`, `implementation/RUN_LOG.md`.
+
+Risks: runtime verification is still absent until the manual backend executes current main; this fix changes only evidence integrity of that future run.
+
+Next: manually dispatch `implementation-runtime-chain` once when dispatch capability is available and accept runtime evidence only from a fresh I113 v2 `PASS_BLOCKED` result.

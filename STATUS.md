@@ -3,15 +3,16 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I115 — notification-safe manual runtime backend authored**
+Last completed implementation run: **I116 — runtime runner stale-artifact / timeout hardening**
 Last updated: **2026-08-23**
 
 ## Latest durable files
+- `implementation/RUN_I116_RUNTIME_RUNNER_STALE_ARTIFACT_TIMEOUT_HARDENING.md`
+- `implementation/i113_local_runtime_chain_runner.py`
 - `implementation/RUN_I115_NOTIFICATION_SAFE_MANUAL_RUNTIME_BACKEND.md`
 - `.github/workflows/implementation-tests.yml`
 - `implementation/RUN_I114_RUNTIME_AVAILABILITY_RECHECK.md`
 - `implementation/RUN_I113_LOCAL_RUNTIME_CHAIN_RUNNER.md`
-- `implementation/i113_local_runtime_chain_runner.py`
 - `implementation/RUN_I112_I111_MANIFEST_OFFLINE_VERIFIER.md`
 - `implementation/i112_i111_manifest_offline_verifier.py`
 - `implementation/RUN_I111_PREOBSERVATION_ARTIFACT_MANIFEST.md`
@@ -41,10 +42,12 @@ Last updated: **2026-08-23**
 - `implementation/RUN_I100_EXECUTION_READINESS_MANIFEST.md`
 - `implementation/I100_EXECUTION_READINESS_RESULT.json`
 
-## I115 outcome
-I115 converted the existing implementation workflow from `workflow_dispatch + pull_request` to **manual-only `workflow_dispatch`** and made it run the exact stdlib-based I113 chain instead of installing/running pytest. This removes the repo's automatic PR CI path that previously generated repeated failure emails, while creating a concrete limited/free-tier execution backend capable of obtaining an exact GitHub checkout when manually invoked.
+## I116 outcome
+I116 inspected the already-selected I113 runtime path and found two concrete operational defects rather than adding another safety layer. First, I113 did not clear old expected JSON outputs before each step, so a stale artifact could be mistaken for freshly-created output if a later step returned 0 without writing a new file. Second, timeout/process-launch exceptions could escape before the I113 receipt was written.
 
-The workflow was **not dispatched in this run** because the available connector has no workflow-dispatch action. No result was fabricated. Current durable state remains blocked: fresh-real evidence false; current eligible non-synthetic Resource Router route false; exact authorization false; current exact-source runtime-regression receipt chain absent.
+I113 is now v2: each expected step output is deleted immediately before invocation; PASS requires return code 0 plus a fresh output; timeout and launch failures are serialized as deterministic `FAIL_CLOSED`; source-hash and capability boundaries are preserved.
+
+No runtime execution or workflow dispatch occurred in this run. Current durable state remains blocked: fresh-real evidence false; current eligible non-synthetic Resource Router route false; exact authorization false; current exact-source runtime-regression receipt chain absent.
 
 ## Current ranking
 1. PayanAgent
@@ -66,7 +69,7 @@ The workflow was **not dispatched in this run** because the available connector 
 - I103 independently rejects synthetic Resource Router routes even when all other route booleans are green.
 - I104 makes fresh-real evidence, non-synthetic route, exact authorization and runtime verification four independent AND-gates.
 - I105-I112 preserve exact source/result lineage for the runtime blocker without widening non-runtime blockers.
-- I113 is the one-command local runner for I106-I112.
+- I113 v2 is the one-command local runner for I106-I112 and now requires fresh per-step outputs while capturing timeout/launch failures fail-closed.
 - I114 confirms the current execution container still cannot obtain a repository-local checkout.
 - I115 provides a manual-only GitHub-hosted execution backend for I113 and removes automatic PR workflow runs to reduce notification spam.
 - GitHub Actions free/conditional capacity is a limited resource, not assumed unlimited or zero-opportunity-cost.
@@ -78,7 +81,7 @@ The workflow was **not dispatched in this run** because the available connector 
 ## Immediate next run
 Do **not** add another source-only safety layer unless a concrete new gap is identified.
 
-When manual GitHub Actions dispatch is available, run `implementation-runtime-chain` once on current `main`. Accept runtime regression verification only if I113 returns `PASS_BLOCKED` and the exact current-source/result chain agrees without widening any non-runtime blocker.
+When manual GitHub Actions dispatch is available, run `implementation-runtime-chain` once on current `main`. Accept runtime regression verification only if I113 v2 returns `PASS_BLOCKED` and the exact current-source/result chain agrees without widening any non-runtime blocker.
 
 Do not perform the production GET solely because runtime verification passes. The actual production observation still requires later separate explicit user authorization plus fresh real policy/DNS/pinning/TLS/rebinding evidence acquired at execution time and a current materialized eligible non-synthetic route with positive conservative expected margin.
 
