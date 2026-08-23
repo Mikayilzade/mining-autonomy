@@ -6,30 +6,33 @@ Do not reconstruct this project from chat memory. Read repository state first.
 Read `START_HERE.md`, `STATUS.md`, `METHODOLOGY.md`, `HANDOFF.md`, `RUN_LOG.md`, `CATALOG.md`, `implementation/RUN_LOG.md`, and latest files named in `STATUS.md`.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I135 COMPLETE as scoped checkpoints**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I138 COMPLETE as scoped checkpoints**. Project: **IMPLEMENTATION IN PROGRESS**.
 
-Latest broad stage: `implementation/RUN_I133_I135_CONSERVATIVE_ROUTING_READINESS.md`.
+Latest broad stage: `implementation/RUN_I136_I138_BROAD_EXPERIMENT_READINESS.md`.
 
-## Current resource/economics chain
-`fixed local probe + I126 config invariants + I128 quota/rate semantics + I129 verified energy receipt -> I054/I050 -> I066 -> I123 base route -> I130 stress -> I131 watcher overhead -> I133 conservative route gate -> I135 pre-observation readiness`.
+## Current control chain
+`I113 exact runtime -> I128/I129 local resource measurement -> I050/I066/I123 backend evidence/base economics -> I130 stress + I131 watcher overhead -> I133 conservative route -> I136 conservative portfolio -> I137 existing-resource fallback -> I138 experiment readiness`.
 
-I134 is the fallback planner when a backend cannot be materially evidenced or fails conservative economics. It prefers no-new-spend autonomous/programmatic evidence acquisition and keeps subscription support, CI quota, external API credentials/spend and VPS rental as distinct constrained resource classes.
+I136 requires evidence and conservative economics together across the whole backend portfolio. I137 keeps fallback inside already-defined resources instead of reopening discovery. I138 emits exactly one next-action state and keeps observation/execution/network/spend/task-acceptance/value-movement disabled even when all readiness gates are true.
 
 ## Immediate next broad run
-When exact-current execution becomes available, run the complete local chain in one stage: I113, I128/I129, I050/I066/I123, I133 and I135. Do not split this into micro checkpoints. If the current local route passes conservative economics, prepare/request exact one-shot read-only observation authorization only after fresh market/policy evidence is current. If it fails, use I134 to advance to the next already-defined evidence branch instead of reopening discovery.
+Do not split the next executable stage into micro-checkpoints. At the first exact-current executable checkout, run I113 + I128/I129 -> I050/I066/I123 -> I133/I136 -> I138 in one broad cycle. If trustworthy no-spend local energy telemetry and an explicit real tariff exist, materialize `python_local`; otherwise preserve the gap.
+
+If local materialization/economics fails, use I137/I134 in the same broad cycle where practical to move to the next existing no-new-spend evidence branch. Under the current acquisition model that is free/conditional CI after `python_local` has been attempted. CI quota/capacity/policy must be evidenced separately and may not be inferred from a green workflow.
+
+Fresh market/policy evidence and exact one-shot observation authorization remain independent later gates. No production GET yet.
 
 ## Hard boundary
-No spend, KYC, wallets, paid work acceptance, publication, settlement, real credentials, CAPTCHA/geofence/rate-limit bypass or value movement without separate explicit authorization. No production GET yet.
+No spend, KYC, wallets, paid work acceptance, publication, settlement, real credentials, CAPTCHA/geofence/rate-limit/product-limit bypass or value movement without separate explicit authorization.
 
 ## Resource boundary
 - ChatGPT/Codex subscription is fixed/sunk limited support, not a free autonomous API.
-- Watchers may be designed for permitted sub-hour polling, but local deterministic filtering/dedupe precedes selective AI and product limits are not bypassed.
-- Fixed/sunk cost, marginal task cost, watcher overhead and opportunity cost remain distinct.
-- Free/conditional CI needs current quota/capacity/policy evidence and is not unlimited.
-- Paid APIs and future VPS require separate authorization before credentialed/paid execution.
+- Watchers may use permitted sub-hour polling via ordinary code/webhook/WebSocket/cron, but local deterministic filter/dedupe precedes selective AI and platform limits must be obeyed.
+- Fixed/sunk cost, true marginal cost, energy, quota/opportunity cost, AI/API fees, retry cost, human maintenance, watcher overhead and platform/payment risk remain explicit.
+- Free/conditional CI is not assumed unlimited/free; paid APIs and future VPS preserve credentials/spend/infrastructure gates.
 
 ## Git/CI
-Keep automatic runtime triggers disabled. Prefer broad coherent stages; expected fail-closed states should be artifacts, not notification-generating CI failures.
+Keep automatic runtime triggers disabled. Prefer broad coherent stages. Expected fail-closed outcomes belong in artifacts rather than notification-generating failures.
 
 ## Completion
 Implementation remains incomplete until a permitted real test demonstrates positive economics or reasonable candidates are exhausted and confirmed by control passes.
