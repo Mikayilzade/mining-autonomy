@@ -3,10 +3,12 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I105 — preauthorization consistency validation**
+Last completed implementation run: **I106 — notification-safe local runtime receipt harness**
 Last updated: **2026-08-23**
 
 ## Latest durable files
+- `implementation/RUN_I106_NOTIFICATION_SAFE_LOCAL_RUNTIME_RECEIPT_HARNESS.md`
+- `implementation/i106_local_runtime_receipt.py`
 - `implementation/RUN_I105_PREAUTHORIZATION_CONSISTENCY_VALIDATION.md`
 - `implementation/i105_preauthorization_consistency_validator.py`
 - `implementation/RUN_I104_PREAUTHORIZATION_BLOCKER_REPORT.md`
@@ -22,12 +24,12 @@ Last updated: **2026-08-23**
 - `implementation/RUN_I100_EXECUTION_READINESS_MANIFEST.md`
 - `implementation/I100_EXECUTION_READINESS_RESULT.json`
 
-## I105 outcome
-I105 completed the network-inert fallback from the prior status without triggering GitHub Actions or manufacturing runtime evidence.
+## I106 outcome
+I106 implemented the exact notification-safe runtime receipt harness requested by the prior status without performing a production request or dispatching GitHub Actions.
 
-A deterministic fail-closed validator now cross-checks `I104_PREAUTHORIZATION_BLOCKERS.json` against the durable I100 readiness fields. Fresh-real evidence, current materialized eligible non-synthetic Resource / Execution Router route, and exact explicit authorization are derived from I100 rather than trusted independently. Runtime verification remains a separate non-substitutable gate and cannot be inferred from I100/source review.
+`i106_local_runtime_receipt.py` targets the embedded I099/I100/I101/I102 self-tests, computes their repository-local Python dependency closure, fails closed on network-capable imports, hashes exact dependency bytes before and after execution, captures bounded subprocess results, and emits one machine-readable PASS/FAIL receipt only when all checks succeed.
 
-The validator also recomputes the four-gate AND condition and rejects disagreement in `production_observation_allowed`, plus any I100 artifact that unexpectedly claims network capability, an execution token or `ready_for_network_invocation=true`.
+The repository was accessible for source reads/writes through the GitHub connector, but this run did not have a repository-mounted executable runtime. A direct container clone could not resolve `github.com`; therefore no runtime PASS receipt was fabricated or inferred. Runtime verification remains independently unsatisfied until the harness is executed against the exact repository bytes.
 
 Current durable state remains blocked: fresh-real evidence false; current eligible non-synthetic route false; exact authorization false; runtime-regression receipt absent. No production DNS/HTTP/socket/TLS request, credentials, authorization, task acceptance/submission, paid infrastructure, payment or value movement occurred. No Actions workflow was dispatched.
 
@@ -51,13 +53,14 @@ Current durable state remains blocked: fresh-real evidence false; current eligib
 - I103 independently rejects synthetic Resource Router routes even when all other route booleans are green.
 - I104 makes fresh-real evidence, non-synthetic route, exact authorization and runtime verification four independent AND-gates.
 - I105 deterministically cross-checks I104 against I100 and keeps runtime verification independent rather than inferring it from source-level state.
+- I106 provides the notification-safe local exact-hash self-test receipt harness; merely authoring the harness does not satisfy runtime verification.
 - Observation-route economics and future paid-task execution economics are separate.
 - Fast watchers may poll more often than hourly only where API/ToS permits and should avoid constant LLM use; no product/rate-limit bypass.
 - Watcher architecture remains cheap polling/webhook/WebSocket/cron -> local deterministic filter/dedupe -> policy/economics gate -> AI only for promising work.
 - No real DNS/HTTP request has yet been performed by this implementation chain.
 
-## Immediate next run — I106
-Prefer a **notification-safe isolated local verification receipt harness** as soon as a repository runtime is available. Execute embedded I099, I100, I101 and I102 self-tests, hash exact executed module bytes and emit one machine-readable PASS/FAIL receipt without GitHub Actions, network transport, production evidence acquisition or authorization creation.
+## Immediate next run — I107
+Prefer execution of the notification-safe isolated local verification receipt harness as soon as a repository-local Python runtime is actually available. Run `python3 implementation/i106_local_runtime_receipt.py`, inspect `I106_LOCAL_RUNTIME_RECEIPT.json`, and only if it is PASS bind its exact dependency hashes into the preauthorization consistency chain.
 
 Do not perform the production GET and do not trigger repeated failing PR CI solely to create evidence. If runtime remains unavailable, continue only deterministic network-inert hardening that preserves the four independent blockers.
 
