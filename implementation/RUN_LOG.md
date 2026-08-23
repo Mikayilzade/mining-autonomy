@@ -72,4 +72,12 @@ Added `i108_runtime_receipt_lineage_validator.py` and detailed run documentation
 
 The runtime receipt remains absent, therefore `runtime_regression_verification=false`. The other three blockers remain independently false: no fresh-real evidence, no current eligible non-synthetic Resource Router route and no exact explicit authorization. No production network request, credentials, authorization, task action, paid infrastructure, spend/value movement or GitHub Actions dispatch occurred.
 
-Next: **I109 — when repository-local Python is available, execute I106 -> I107 -> I108 and accept runtime verification only if all agree; otherwise bind I108 exact-source lineage into the I104/I105 preauthorization consistency view without widening discovery or performing the production GET.**
+## I109 — 2026-08-23
+Status: **completed scoped safe checkpoint — lineage/preauthorization integration authored, runtime receipt still pending**
+Stage: exact-current-source runtime lineage -> I104/I105 four-blocker consistency binding
+
+Added `i109_lineage_preauthorization_consistency.py` plus detailed run documentation. I109 reuses I105 and I108, requires all three non-runtime blockers projected by I108 to remain exactly equal to current I100-derived state, allows the runtime blocker only when a present I106 receipt passes I108 exact-source lineage, and records SHA-256 bindings for the I105-I108 source chain. Any widening/substitution or network/execution capability fails closed.
+
+The repository-local runtime is still unavailable through the connector, so I106 -> I107 -> I108 -> I109 was not executed and no result receipt was fabricated. All four production-observation blockers remain false. No production network request, credentials, authorization, task action, paid infrastructure, spend/value movement or GitHub Actions dispatch occurred.
+
+Next: **I110 — when repository-local Python is available, execute I106 -> I107 -> I108 -> I109 and accept runtime verification only if all agree; otherwise add a deterministic exact I109 result/source-chain receipt contract without widening discovery or performing the production GET.**
