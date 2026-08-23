@@ -1,18 +1,38 @@
-name: implementation-tests
+name: implementation-runtime-chain
 on:
   workflow_dispatch:
-  pull_request:
-    paths: ['implementation/**', '.github/workflows/implementation-tests.yml']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: implementation-runtime-chain-manual
+  cancel-in-progress: false
+
 jobs:
-  test:
+  runtime-chain:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install test runner
-        run: python -m pip install --disable-pip-version-check pytest
-      - name: Run all implementation tests
-        working-directory: implementation
-        run: python -m pytest -q
+      - name: Run exact local I106-I112 chain
+        run: python3 implementation/i113_local_runtime_chain_runner.py
+      - name: Upload runtime receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: i113-runtime-chain-receipts
+          path: |
+            implementation/I106_LOCAL_RUNTIME_RECEIPT.json
+            implementation/I107_RUNTIME_RECEIPT_BINDING_RESULT.json
+            implementation/I108_RUNTIME_RECEIPT_LINEAGE_RESULT.json
+            implementation/I109_LINEAGE_PREAUTHORIZATION_CONSISTENCY_RESULT.json
+            implementation/I110_I109_RESULT_CHAIN_CONTRACT_RESULT.json
+            implementation/I111_PREOBSERVATION_ARTIFACT_MANIFEST.json
+            implementation/I112_I111_MANIFEST_OFFLINE_VERIFIER_RESULT.json
+            implementation/I113_LOCAL_RUNTIME_CHAIN_RESULT.json
+          if-no-files-found: warn
+          retention-days: 1

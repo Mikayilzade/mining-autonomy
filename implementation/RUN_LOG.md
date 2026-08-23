@@ -32,74 +32,52 @@ Stage: exact path binding -> fresh review/evidence contracts -> Resource Router 
 
 Bound the exact PayanAgent read-only request, added offline verification/evidence sequencing/readiness contracts, connected I101 Resource Router materialization into I100 via synthetic compatibility fixtures, and hardened I100 so synthetic routes can never become production eligible. Runtime self-tests remain notification-safe isolated-run debt; repeated failing PR CI was deliberately avoided.
 
-## I104 — 2026-08-23
-Status: **completed scoped network-inert safety checkpoint**
-Stage: machine-readable preauthorization blocker separation
+## I104–I105 — 2026-08-23
+Status: **completed scoped network-inert safety checkpoints**
+Stage: blocker separation + deterministic consistency validation
 
-Added `I104_PREAUTHORIZATION_BLOCKERS.json`. Four blockers remain independent and non-substitutable: fresh-real execution evidence; current materialized eligible non-synthetic Resource Router route; exact explicit user authorization; and notification-safe runtime regression verification with exact module hashes. All remain false.
+Separated fresh-real evidence, current eligible non-synthetic Resource Router route, exact authorization and runtime verification into independent AND-gates, then cross-checked them against I100 without allowing source state to substitute for runtime evidence.
 
-## I105 — 2026-08-23
-Status: **completed scoped network-inert safety checkpoint**
-Stage: deterministic I104/I100 preauthorization consistency validation
+## I106–I112 — 2026-08-23
+Status: **completed scoped source checkpoints — runtime receipts pending**
+Stage: notification-safe local runtime receipt + exact source/result lineage
 
-Added `i105_preauthorization_consistency_validator.py`. It derives the three non-runtime blockers from I100, keeps runtime verification independent, recomputes the four-gate AND condition and fails closed on readiness/observation disagreement or unexpected network/execution claims.
-
-## I106 — 2026-08-23
-Status: **completed scoped safe checkpoint — harness authored, receipt pending**
-Stage: notification-safe local exact-hash runtime receipt harness
-
-Added `i106_local_runtime_receipt.py`. It targets I099-I102 self-tests, hashes their dependency closure before/after execution, rejects network-capable imports and emits one bounded PASS/FAIL receipt. No repository-local executable checkout was available, so no receipt was fabricated.
-
-## I107 — 2026-08-23
-Status: **completed scoped safe checkpoint — binder authored, receipt pending**
-Stage: exact-hash runtime receipt binding contract
-
-Added `i107_runtime_receipt_binding_validator.py`. It validates a future I106 PASS receipt and may project only the runtime-regression blocker; market evidence, Resource Router materialization and authorization remain independent.
-
-## I108 — 2026-08-23
-Status: **completed scoped safe checkpoint — exact-source lineage validator authored, receipt pending**
-Stage: runtime receipt stale-replay/current-source lineage hardening
-
-Added `i108_runtime_receipt_lineage_validator.py`. A future receipt must match the exact current I099-I102 dependency closure plus target order/module/arguments; stale or altered-target receipts fail closed.
-
-## I109 — 2026-08-23
-Status: **completed scoped safe checkpoint — lineage/preauthorization integration authored**
-Stage: exact-current-source runtime lineage -> I104/I105 four-blocker consistency binding
-
-Added `i109_lineage_preauthorization_consistency.py`. It requires all three non-runtime blockers to remain equal to current I100-derived state and permits the runtime blocker only from a present I106 receipt that passes I108 exact-source lineage.
-
-## I110 — 2026-08-23
-Status: **completed scoped safe checkpoint — exact result/source-chain contract authored**
-Stage: I109 deterministic result replay/source drift hardening
-
-Added `i110_i109_result_chain_contract.py`. It recomputes I109 from current I104/I100 plus optional I106 receipt, verifies current I105-I109 source bindings and cannot widen non-runtime blockers or authorize observation.
-
-## I111 — 2026-08-23
-Status: **completed scoped network-inert safety checkpoint — manifest authored; runtime execution pending**
-Stage: compact pre-observation artifact/source manifest
-
-Added `i111_preobservation_artifact_manifest.py` and `RUN_I111_PREOBSERVATION_ARTIFACT_MANIFEST.md`. The generator binds exact SHA-256 hashes for current I100/I104 and I105-I110, records optional I106/I109/I110 result presence/hashes, projects all four I104 blockers without substitution, and explicitly records that it cannot create evidence, a Resource Router route, authorization, network capability, task action, credentials, paid infrastructure, spend or value movement.
-
-Repository-local Python remains unavailable through this connector, so I106 -> I107 -> I108 -> I109 -> I110 -> I111 was not executed and no result was fabricated. No production DNS/HTTP/socket/TLS request occurred and no CI workflow was dispatched.
-
-## I112 — 2026-08-23
-Status: **completed scoped network-inert source checkpoint — verifier authored; runtime execution pending**
-Stage: deterministic offline verification of future I111 generated manifest
-
-Added `i112_i111_manifest_offline_verifier.py` and `RUN_I112_I111_MANIFEST_OFFLINE_VERIFIER.md`. The verifier recomputes I111 from exact current repository-local bytes, requires a generated I111 JSON to match exactly, binds source/result SHA-256 values, and fails closed on schema/run drift, capability/permission widening, four-gate authorization, or any blocker presented as satisfied through this offline layer. It explicitly cannot mint runtime verification, fresh-real evidence, a Resource Router route, authorization, network capability, credentials, paid work, spend or value movement.
-
-Repository-local Python remains unavailable through this connector, so no result JSON was fabricated and no production DNS/HTTP/socket/TLS request or CI workflow was dispatched.
+Authored the local I099-I102 self-test harness, receipt binding, stale-replay/current-source validation, preauthorization consistency, result/source-chain contract, compact pre-observation manifest and exact-current offline manifest verifier. No runtime result was fabricated.
 
 ## I113 — 2026-08-23
 Status: **completed scoped implementation checkpoint — one-command runner authored; execution pending**
 Stage: operationalize exact local I106-I112 runtime chain
 
-Added `i113_local_runtime_chain_runner.py` and `RUN_I113_LOCAL_RUNTIME_CHAIN_RUNNER.md`. The runner invokes I106-I112 in order with repository-local defaults, stops on first failure, verifies expected outputs exist, hashes each generated result, and verifies the I106-I112 source bytes remain stable during execution. It clears proxy environment variables for child processes, does not dispatch CI, and adds no network/execution/authorization/resource-route capability.
-
-A direct repository clone was attempted in the available shell/container to execute the chain, but that environment could not resolve `github.com`; the GitHub connector is source access rather than a mounted executable checkout. No runtime receipt was fabricated. No production DNS/HTTP/socket/TLS request or value-moving action occurred.
+Added `i113_local_runtime_chain_runner.py` and `RUN_I113_LOCAL_RUNTIME_CHAIN_RUNNER.md`. The runner invokes I106-I112 in order, stops on first failure, verifies outputs/hashes and detects source mutation. The available container could not resolve `github.com`, so no checkout/run occurred.
 
 Files: `implementation/i113_local_runtime_chain_runner.py`, `implementation/RUN_I113_LOCAL_RUNTIME_CHAIN_RUNNER.md`, `STATUS.md`, `implementation/RUN_LOG.md`.
 
 Risks: runtime verification remains unproven until I113 executes in an exact current checkout; non-runtime blockers remain false and independent.
 
-Next: **At the first repository-local Python checkout run `python3 implementation/i113_local_runtime_chain_runner.py`. If it returns `PASS_BLOCKED`, accept only the runtime-chain evidence. Do not perform the production GET until fresh-real evidence, a current eligible non-synthetic Resource Router route with positive conservative margin, and exact explicit user authorization are separately present.**
+Next: run I113 at the first executable current checkout.
+
+## I114 — 2026-08-23
+Status: **completed scoped operational checkpoint — runtime still unavailable**
+Stage: runtime availability recheck / checkpoint preservation
+
+Re-read the current repository state and retried obtaining a fresh shallow checkout in the available execution container. DNS resolution for `github.com` again failed before checkout, so I113 was not executed and no runtime receipt was fabricated. No new safety layer, production observation, CI dispatch, credential use, spend or value movement occurred.
+
+Files: `implementation/RUN_I114_RUNTIME_AVAILABILITY_RECHECK.md`, `STATUS.md`.
+
+Risks: the current automation/container remains unsuitable for repository-local execution; this is an environment limitation only.
+
+Next: obtain an executable current checkout without manufacturing extra gates.
+
+## I115 — 2026-08-23
+Status: **completed scoped operational checkpoint — manual runtime backend authored; execution pending**
+Stage: notification-safe GitHub-hosted runtime backend
+
+Converted `.github/workflows/implementation-tests.yml` from `workflow_dispatch + pull_request` to **manual-only `workflow_dispatch`**, eliminating automatic PR workflow runs that could generate repeated failure emails. Replaced the pytest-install/test path with the exact stdlib-based I113 runtime chain, read-only permissions, a 10-minute timeout, manual concurrency, and 1-day upload of I106-I113 receipts.
+
+This creates a concrete free/conditional CI execution backend that can obtain an exact checkout without treating GitHub Actions capacity as unlimited or economically free. The workflow was not dispatched because the available connector exposes no workflow-dispatch action; no result was fabricated.
+
+Files: `.github/workflows/implementation-tests.yml`, `implementation/RUN_I115_NOTIFICATION_SAFE_MANUAL_RUNTIME_BACKEND.md`, `STATUS.md`, `implementation/RUN_LOG.md`.
+
+Risks: a manual failure may still generate one GitHub notification; Actions quota/availability is limited; PASS_BLOCKED can satisfy only runtime verification.
+
+Next: when manual dispatch is available, run `implementation-runtime-chain` once on current `main`, inspect I106-I113 receipts, and keep fresh-real evidence, non-synthetic positive-margin route and exact authorization as separate blockers.
