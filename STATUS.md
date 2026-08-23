@@ -3,10 +3,13 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I127 — exact local evidence packet**
+Last completed implementation run: **I128 — python_local resource completion**
 Last updated: **2026-08-23**
 
 ## Latest durable files
+- `implementation/RUN_I128_PYTHON_LOCAL_RESOURCE_COMPLETION.md`
+- `implementation/i128_python_local_resource_completion.py`
+- `implementation/test_i128_python_local_resource_completion.py`
 - `implementation/RUN_I127_EXACT_LOCAL_EVIDENCE_PACKET.md`
 - `implementation/i127_exact_local_evidence_packet.py`
 - `implementation/test_i127_exact_local_evidence_packet.py`
@@ -14,19 +17,26 @@ Last updated: **2026-08-23**
 - `implementation/i126_python_local_config_invariant.py`
 - `implementation/resource_profile_evidence.py`
 - `implementation/i124_runtime_resource_bootstrap.py`
-- `implementation/RUN_I125_RESOURCE_PROMOTABILITY_AUDIT.md`
 - `implementation/i123_execution_backend_portfolio.py`
 - `.github/workflows/implementation-tests.yml`
 - `implementation/i113_local_runtime_chain_runner.py`
 
-## I127 outcome
-I127 converts the verified inert I124 `python_local` probe into exact hash-bound I050 `system_probe` evidence, merges only the narrow I126 configuration invariants, attests the combined records through I050, and projects the resulting evidence state into I123.
+## I128 outcome
+I128 closes the remaining `python_local` quota/rate semantic ambiguity without treating local execution as unlimited. For exact `python_local` / `deterministic_python` only, `quota_units_remaining=None` and `rate_limit_per_minute=None` mean there is no external provider quota/rate-limit primitive at the repository-local executor interface. They do **not** mean infinite CPU, unlimited parallelism or zero opportunity cost.
 
-A complete reproducible packet is additionally verified through the existing I066 materialization compatibility path. I127 never creates a current resource route, market evidence or authorization.
+The complete local evidence assembly is now:
 
-With I124 + I126 alone, the remaining exact dynamic local gaps are now reduced to three parameters: `quota_units_remaining`, `electricity_per_task_usd`, and `rate_limit_per_minute`. Optional local additional evidence is accepted only for those parameters and must be hash-valid before I050 revalidation.
+`I056/I053 measured probe + I126 exact config invariants + I128 local-interface semantics + optional measured energy/tariff -> I050 -> I066 -> I123`.
 
-The new module/tests were source-compiled before commit. Exact-current repository runtime is still unavailable in the present execution container because GitHub DNS resolution fails, so no runtime/resource PASS is claimed.
+A successful fixed probe supplies availability, programmatic access, latency, reliability, quality and measured max parallelism. I126 supplies only five intrinsic software/interface facts. I128 supplies only provider-quota/rate semantics. Electricity remains measured/explicit and is never inferred.
+
+Therefore, with a valid current probe and I126/I128, the strict I050 resource gap is reduced to exactly **`electricity_per_task_usd`**. If genuine measured energy plus an explicit electricity tariff are supplied, the source path can reach `calibrated_reproducible -> materialized_reproducible -> measured_reproducible BackendEvidence`.
+
+I128 still creates no production market route, demand evidence or authorization. It can report `RESOURCE_AND_RUNTIME_READY` only when a complete resource packet and a fresh I113 `PASS_BLOCKED` receipt both exist.
+
+The current connector still exposes no executable exact-current checkout or authenticated manual Actions dispatch, so no runtime/resource PASS is claimed.
+
+A temporary duplicate I127 draft created while STATUS lagged behind `implementation/RUN_LOG.md` was removed. Authoritative numbering is I127 exact local evidence packet, then I128 resource completion.
 
 ## Current ranking
 1. PayanAgent
@@ -38,31 +48,47 @@ The new module/tests were source-compiled before commit. Exact-current repositor
 ## Durable rules
 - Real demand/fill remains the dominant market unknown.
 - No irreversible/paid action without explicit user authorization.
-- Resource routing never widens market/policy/authorization eligibility.
-- Synthetic/default resources remain planning references only.
-- Deterministic/local filters execute before AI; AI only when required.
-- Fixed/sunk cost and true marginal cost remain separate.
-- ChatGPT/Codex subscription is fixed/sunk limited support, not a free autonomous API.
-- I126 config invariants are python_local-only and cannot evidence runtime/electricity/quota/rate facts.
-- I127 is the exact I124 -> I050/I066/I123 evidence packet layer.
-- I113 remains the notification-safe exact runtime chain; hosted runtime remains manual-only.
-- No production DNS/HTTP request has yet been performed.
+- Resource routing never widens upstream policy/demand eligibility.
+- Synthetic/default resources are planning references only.
+- Deterministic/local filters execute before AI; AI is used only when required by acceptance criteria.
+- Fixed/sunk cost and true marginal task cost remain separate; finite capacity/opportunity cost stays explicit.
+- ChatGPT/Codex subscription is fixed/sunk limited support, not a free unlimited autonomous API.
+- I048-I067 remain the core Resource Router/calibration/feedback/materialization chain; I123 is the portfolio selector; I124 is the runtime/resource bootstrap; I126 supplies exact python_local intrinsic config facts; I127 creates the exact evidence packet; I128 closes local provider quota/rate semantics.
+- `backend_config_invariant` remains python_local-only and cannot replace host/runtime/economic facts.
+- I128 `None` quota/rate semantics mean no external provider layer, not unlimited host capacity.
+- Electricity, actual host runtime behavior and opportunity cost remain measured/explicit.
+- Free/conditional CI quota/capacity/policy remains a separate evidence branch and is not inferred from a green job.
+- I104 keeps fresh-real evidence, non-synthetic route, exact authorization and runtime verification as independent AND-gates.
+- I113 v2 remains the exact notification-safe runtime chain; hosted runtime remains manual-only and automatic push/PR CI stays disabled.
+- No production DNS/HTTP request has yet been performed by this implementation chain.
 
 ## Current blockers
-1. Remaining `python_local` dynamic facts: quota semantics, electricity per task and rate-limit semantics — **not yet evidenced**
-2. Current exact-source runtime-regression receipt chain — **absent**
-3. Fresh-real market/policy/DNS/TLS/rebinding evidence — **false**
-4. Current eligible non-synthetic positive-margin Resource Router route — **false**
-5. Exact explicit authorization for the one-shot production observation — **false**
+1. `python_local` structural evidence-model contradiction: **resolved (I126)**
+2. `python_local` quota/rate interface semantics: **resolved narrowly (I128)**
+3. Genuine current `electricity_per_task_usd`: **not measured/materialized**
+4. Current exact-source I113 runtime receipt: **absent**
+5. Fresh-real market/policy/DNS/TLS/rebinding evidence: **false**
+6. Current eligible non-synthetic positive-margin Resource Router route: **false**
+7. Exact explicit authorization for the one-shot production observation: **false**
 
 ## Immediate next broad run
-At the first executable exact-current checkout run:
+Do not return to broad discovery or add another micro safety layer unless a concrete defect appears.
 
-`python implementation/i127_exact_local_evidence_packet.py --root .`
+At the first executable exact-current checkout run once:
 
-Then in the same broad stage measure/source only the three remaining local facts where reliable no-spend telemetry or exact source evidence exists. Leave them unknown rather than guessing. If the packet becomes complete, feed the materialized backend into I123 and produce the final local resource-readiness decision. Free/conditional CI quota/capacity remains a separate branch.
+`python implementation/i128_python_local_resource_completion.py --root .`
 
-Do not restore automatic CI, rerun stale historical PR CI, or perform the production GET. A later one-shot observation still independently requires fresh execution-time market evidence, a current positive non-synthetic route and exact explicit authorization.
+Then in the same broad stage:
+1. consume the fresh I113 v2 receipt;
+2. run the fixed local probe and assemble I126 + I128 evidence;
+3. measure energy per task only if reliable no-spend host telemetry exists;
+4. use an explicit electricity tariff only from a real user/source input; never guess it;
+5. if complete, materialize through I050/I066 and rerun I123 using the resulting current non-synthetic backend evidence;
+6. produce one current resource-readiness/economics packet before any market observation.
+
+If energy telemetry is unavailable, keep the single resource gap explicit rather than manufacturing zero cost. If authenticated current-main manual Actions dispatch becomes available first, execute exactly one manual runtime run; CI quota/capacity remains separate.
+
+Do not restore automatic CI, rerun stale historical PR CI, or perform the production GET. The later one-shot observation still independently requires fresh execution-time market evidence, a current eligible non-synthetic positive-margin route, and exact explicit user authorization.
 
 ## Completion gate
 Implementation completes only with confirmed positive economics on real permitted tests or exhaustion of reasonable candidates by control passes.
