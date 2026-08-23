@@ -1,5 +1,3 @@
-from pathlib import Path
-
 import i124_runtime_resource_bootstrap as m
 
 
@@ -11,6 +9,10 @@ def good_probe(missing=()):
         "quality_probability_observed": 1.0,
         "session_replay": {"missing_parameters": list(missing)},
     }
+
+
+def good_runtime():
+    return {"state": "PASS_BLOCKED", "receipt": {"result": "PASS_BLOCKED"}}
 
 
 def test_partial_probe_never_becomes_measured_reproducible():
@@ -33,14 +35,14 @@ def test_failed_probe_fails_closed():
 
 
 def test_i113_runtime_alone_does_not_materialize_free_ci():
-    ev, blockers = m._free_ci_evidence({"state": "PASS_BLOCKED", "receipt": {"state": "PASS_BLOCKED"}})
+    ev, blockers = m._free_ci_evidence(good_runtime())
     assert ev.current_reproducible
     assert not ev.capacity_verified
     assert "free_tier_ci_capacity_quota_not_materialized" in blockers
 
 
 def test_result_keeps_independent_market_and_authorization_blockers(monkeypatch, tmp_path):
-    monkeypatch.setattr(m, "_run_i113", lambda root, timeout: {"state": "PASS_BLOCKED", "receipt": {"state": "PASS_BLOCKED"}})
+    monkeypatch.setattr(m, "_run_i113", lambda root, timeout: good_runtime())
     monkeypatch.setattr(m, "_run_python_local_probe", lambda observed_at, repetitions: good_probe(("electricity_per_task_usd",)))
     result = m.build_result(tmp_path, repetitions=20)
     assert result["state"] == "PASS_BLOCKED"
@@ -51,7 +53,7 @@ def test_result_keeps_independent_market_and_authorization_blockers(monkeypatch,
 
 
 def test_complete_local_resource_does_not_clear_market_or_auth(monkeypatch, tmp_path):
-    monkeypatch.setattr(m, "_run_i113", lambda root, timeout: {"state": "PASS_BLOCKED", "receipt": {"state": "PASS_BLOCKED"}})
+    monkeypatch.setattr(m, "_run_i113", lambda root, timeout: good_runtime())
     monkeypatch.setattr(m, "_run_python_local_probe", lambda observed_at, repetitions: good_probe(()))
     result = m.build_result(tmp_path, repetitions=20)
     assert result["state"] == "READY_FOR_PORTFOLIO_MATERIALIZATION"
