@@ -44,8 +44,16 @@ No production DNS/HTTP/socket/TLS request, credentials, authorization, task acce
 Status: **completed scoped network-inert safety checkpoint**
 Stage: deterministic I104/I100 preauthorization consistency validation
 
-Added `i105_preauthorization_consistency_validator.py` and detailed run documentation. The validator derives fresh-real evidence, current materialized eligible non-synthetic Resource Router route and exact authorization blocker state from I100, keeps runtime verification independently false absent a separate exact-hash receipt, recomputes the four-gate AND condition, and fails closed on readiness/observation disagreement or unexpected network/execution claims.
+Added `i105_preauthorization_consistency_validator.py` and detailed run documentation. The validator derives fresh-real evidence, current materialized eligible non-synthetic Resource / Execution Router route and exact authorization blocker state from I100, keeps runtime verification independently false absent a separate exact-hash receipt, recomputes the four-gate AND condition, and fails closed on readiness/observation disagreement or unexpected network/execution claims.
 
 Current durable state remains blocked on all four categories. No production network request, credentials, authorization creation, task action, spend/value movement or GitHub Actions dispatch occurred.
 
-Next: **I106 — prefer the notification-safe isolated local exact-hash runtime receipt harness for I099-I102/I100; if runtime remains unavailable, continue only deterministic network-inert hardening.**
+## I106 — 2026-08-23
+Status: **completed scoped safe checkpoint — harness authored, receipt pending**
+Stage: notification-safe local exact-hash runtime receipt harness
+
+Added `i106_local_runtime_receipt.py`. It targets the existing I099/I100/I101/I102 self-tests, computes their local dependency closure, rejects network-capable imports, hashes exact dependency bytes before/after execution, captures bounded subprocess results and writes one machine-readable PASS/FAIL receipt. A PASS can satisfy only the independent runtime-regression checkpoint; it cannot create fresh-real evidence, a non-synthetic materialized Resource Router route or exact authorization.
+
+This run had source access through the GitHub connector but no repository-mounted executable runtime. Direct container clone failed on DNS resolution for `github.com`, so the harness was not executed and no PASS receipt was inferred or fabricated. All four production-observation blockers remain unsatisfied. No production network request, credentials, authorization, task action, paid infrastructure, spend/value movement or GitHub Actions dispatch occurred.
+
+Next: **I107 — execute `implementation/i106_local_runtime_receipt.py` at the first repository-local Python runtime and bind a PASS exact-hash receipt into the preauthorization chain; otherwise continue deterministic network-inert hardening only.**
