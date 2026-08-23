@@ -3,10 +3,13 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I122 — runtime connector capability audit / stale rerun rejection**
+Last completed implementation run: **I123 — execution backend portfolio / deterministic-first routing**
 Last updated: **2026-08-23**
 
 ## Latest durable files
+- `implementation/RUN_I123_EXECUTION_BACKEND_PORTFOLIO.md`
+- `implementation/i123_execution_backend_portfolio.py`
+- `implementation/test_i123_execution_backend_portfolio.py`
 - `implementation/RUN_I122_RUNTIME_CONNECTOR_CAPABILITY_AUDIT.md`
 - `implementation/RUN_I121_NOTIFICATION_SAFE_MANUAL_RUNTIME_OUTCOME.md`
 - `.github/workflows/implementation-tests.yml`
@@ -33,27 +36,23 @@ Last updated: **2026-08-23**
 - `implementation/i107_runtime_receipt_binding_validator.py`
 - `implementation/RUN_I106_NOTIFICATION_SAFE_LOCAL_RUNTIME_RECEIPT_HARNESS.md`
 - `implementation/i106_local_runtime_receipt.py`
-- `implementation/RUN_I105_PREAUTHORIZATION_CONSISTENCY_VALIDATION.md`
-- `implementation/i105_preauthorization_consistency_validator.py`
 - `implementation/RUN_I104_PREAUTHORIZATION_BLOCKER_REPORT.md`
 - `implementation/I104_PREAUTHORIZATION_BLOCKERS.json`
-- `implementation/RUN_I103_SYNTHETIC_RESOURCE_ROUTE_QUARANTINE.md`
-- `implementation/i100_execution_readiness_manifest.py`
-- `implementation/RUN_I102_I101_I100_COMPATIBILITY_ADAPTER.md`
-- `implementation/I102_SYNTHETIC_COMPATIBILITY_FIXTURES.json`
-- `implementation/i102_i101_i100_compatibility_adapter.py`
 - `implementation/RUN_I101_FRESH_REAL_EVIDENCE_ROUTE_CONTRACT.md`
-- `implementation/I101_FRESH_REAL_EVIDENCE_ROUTE_CONTRACT.json`
 - `implementation/i101_fresh_real_evidence_route_contract.py`
 - `implementation/RUN_I100_EXECUTION_READINESS_MANIFEST.md`
 - `implementation/I100_EXECUTION_READINESS_RESULT.json`
 
-## I122 outcome
-I122 rechecked the actual GitHub connector execution surface instead of adding another source-only gate. Manual `workflow_dispatch` is still not exposed. The connector now exposes rerun controls for existing jobs/runs, but the only relevant known failed CI is historical PR #1 run `32574545296` / job `97034830749` on stale head `0575cc0...` using the old PR test workflow, not the current I115-I121 manual current-main runtime backend.
+## I123 outcome
+I123 extends the existing I048 Resource / Execution Router into a portfolio-level deterministic-first route selector instead of adding another independent economics model.
 
-Rerunning that historical job was explicitly rejected: it would execute stale source/workflow semantics, fail current-main binding, and risk recreating notification spam. No workflow was dispatched or rerun.
+It keeps all eight required backend families visible: local deterministic Python; local CPU/GPU/model; fixed/limited ChatGPT/Codex subscription support with no assumed programmatic API; cheap external API; stronger external API; free/conditional CI/cloud; owned PC; future VPS/server.
 
-Current durable state remains blocked: fresh-real evidence false; current eligible non-synthetic Resource Router route false; exact authorization false; current exact-source runtime-regression receipt chain absent.
+For each backend, I123 adds explicit production-evidence state: measured/reproducible provenance, currentness, synthetic/non-synthetic status, capacity verification, current policy evidence, and credential/spend/infrastructure authorization. Existing I048/I101 cost accounting remains authoritative for fixed-vs-marginal cost, quota, latency, reliability, quality, parallelism, rate limit, electricity, API/model cost, retries, human maintenance, opportunity cost, marketplace/transaction/gas/withdrawal/conversion fees, acceptance probability and dispute/non-payment risk.
+
+Routing order is now explicit: **deterministic/local first -> existing task/economics gates -> current reproducible non-synthetic materialization -> AI only if needed -> cheapest qualifying backend**.
+
+The current I123 snapshot creates no live route. All backend evidence remains planning-only; therefore `eligible_non_synthetic_route_exists=false`. Both I123 Python files passed source compilation in the authoring environment; the exact current-main runtime remains pending and no runtime PASS was fabricated.
 
 ## Current ranking
 1. PayanAgent
@@ -63,39 +62,43 @@ Current durable state remains blocked: fresh-real evidence false; current eligib
 5. AgentGigs.io
 
 ## Durable rules
-- Real demand/fill remains the dominant unknown.
+- Real demand/fill remains the dominant market unknown.
 - No irreversible/paid action without explicit user authorization.
 - Resource routing never widens upstream policy/demand eligibility.
-- Synthetic/default resources remain planning references; only current reproducible non-synthetic materialized resources are selectable.
-- Exact scope remains one production GET, no credentials, no action.
-- ChatGPT/Codex subscription is fixed/sunk limited support, not a free autonomous API.
-- I048-I067 implement the Resource / Execution Router chain: fixed-vs-marginal economics, materialized-resource selection, measured feedback and unchanged-task rerouting.
-- I101 defines production route materialization: current materialization + policy eligibility + capacity/reliability/quality + full marginal cost accounting + positive conservative margin are mandatory.
-- I102 proves the authored compatibility path using synthetic fixtures while preserving synthetic provenance into I100; it does not create production evidence or authorization.
-- I103 independently rejects synthetic Resource Router routes even when all other route booleans are green.
-- I104 makes fresh-real evidence, non-synthetic route, exact authorization and runtime verification four independent AND-gates.
-- I105-I112 preserve exact source/result lineage for the runtime blocker without widening non-runtime blockers.
-- I113 v2 is the one-command local runner for I106-I112 and requires fresh per-step outputs while capturing timeout/launch failures fail-closed.
-- I114 and I120 confirm the current execution container still cannot obtain a repository-local checkout.
-- I115 provides a manual-only GitHub-hosted execution backend for I113 and removes automatic PR workflow runs to reduce notification spam.
-- I117 pins the manual runtime backend's GitHub Actions dependencies to immutable reviewed commits and disables persisted checkout credentials.
-- I118 records hosted-runner/Python provenance; I119 enforces exact current-main source binding before I113.
-- I121 separates GitHub job status from runtime evidence status: expected `FAIL_CLOSED` or source-binding refusal can remain notification-quiet while artifacts stay authoritative and fail-closed.
-- I122 confirms rerun controls for stale historical CI are not a substitute for current-main manual dispatch and must not be used to manufacture runtime evidence.
-- GitHub Actions free/conditional capacity is a limited resource, not assumed unlimited or zero-opportunity-cost.
-- Observation-route economics and future paid-task execution economics are separate.
-- Fast watchers may poll more often than hourly only where API/ToS permits and should avoid constant LLM use; no product/rate-limit bypass.
-- Watcher architecture remains cheap polling/webhook/WebSocket/cron -> local deterministic filter/dedupe -> policy/economics gate -> AI only for promising work.
+- Synthetic/default resources are planning references only; production selection requires current reproducible non-synthetic materialization.
+- ChatGPT/Codex subscription is fixed/sunk limited support, not a free unlimited autonomous API and not assumed programmatically accessible.
+- Fixed/sunk cost and true marginal task cost remain separate; finite quota/opportunity cost stays explicit.
+- Deterministic/local filters execute before AI; AI is used only when required by acceptance criteria.
+- I048-I067 implement the core Resource Router, calibration, measured feedback and materialized rerouting.
+- I101 defines production route materialization; I102/I103 preserve synthetic quarantine.
+- I104 keeps fresh-real evidence, non-synthetic route, exact authorization and runtime verification as independent AND-gates.
+- I105-I112 preserve runtime source/result lineage; I113 v2 is the notification-safe one-command local chain.
+- I115/I117/I118/I119/I121 provide the manual-only, pinned, current-main-bound, notification-safe GitHub-hosted runtime backend.
+- I122 confirms stale PR reruns cannot substitute for current-main manual dispatch.
+- I123 adds portfolio-level backend evidence/routing without enabling execution.
+- GitHub Actions free/conditional capacity is limited and has quota/opportunity cost; it is not assumed unlimited or economically free.
+- Observation economics and paid-task fulfillment economics are separate.
+- Fast watchers may use permitted Python/webhook/WebSocket/cron -> local parse/filter/dedupe -> policy/economics -> AI only for promising work. No rate-limit/product/CAPTCHA/KYC/geofencing bypass.
 - No real production DNS/HTTP request has yet been performed by this implementation chain.
 
+## Current blockers
+1. Fresh-real market/policy/DNS/TLS/rebinding evidence: **false**
+2. Current eligible non-synthetic Resource Router route: **false**
+3. Exact explicit authorization for the one-shot production observation: **false**
+4. Current exact-source runtime-regression receipt chain: **absent**
+
 ## Immediate next run
-Do **not** add another source-only safety layer unless a concrete new gap is identified.
+Take one **broader no-spend runtime + resource bootstrap stage**, not another micro safety layer.
 
-At the first environment with authenticated manual GitHub Actions dispatch capability, execute exactly one `implementation-runtime-chain` run from current `main`. Accept runtime-regression evidence only when `I118_RUNTIME_ENVIRONMENT_PROVENANCE.json` has `source_binding_pass=true`, I113 v2 returns `PASS_BLOCKED`, and `I121_RUNTIME_WORKFLOW_OUTCOME.json` reports `evidence_acceptable=true`.
+Prepare one portable repository-local command/bundle that can, when execution capability becomes available:
+1. run the exact current I113 chain once;
+2. run the existing no-spend local resource calibration/materialization path;
+3. convert measured results into I123 `BackendEvidence`;
+4. emit one review packet showing whether `python_local` or the free/conditional CI backend has become current `measured_reproducible` non-synthetic capacity.
 
-If manual dispatch and executable checkout are both unavailable, preserve this checkpoint rather than manufacturing additional gates, rerunning stale PR CI, or restoring automatic CI. Do not perform the production GET solely because runtime verification later passes.
+If authenticated manual GitHub Actions dispatch or an executable checkout becomes available first, execute exactly one current-main `implementation-runtime-chain` run. Accept runtime evidence only when I118/I119 has `source_binding_pass=true`, I113 v2 returns `PASS_BLOCKED`, and I121 has `evidence_acceptable=true`.
 
-The actual production observation still requires later separate explicit user authorization plus fresh real policy/DNS/pinning/TLS/rebinding evidence acquired at execution time and a current materialized eligible non-synthetic route with positive conservative expected margin.
+Do not restore automatic push/PR CI, rerun stale historical PR CI, or perform the production GET from this checkpoint. The later one-shot observation still separately requires fresh execution-time evidence, a current eligible non-synthetic positive-margin route, and exact explicit user authorization.
 
 ## Completion gate
 Implementation completes only with confirmed positive economics on real permitted tests or exhaustion of reasonable candidates by control passes.

@@ -6,9 +6,12 @@ Do not reconstruct this project from chat memory. Read repository state first.
 Read `START_HERE.md`, `STATUS.md`, `METHODOLOGY.md`, `HANDOFF.md`, `RUN_LOG.md`, `CATALOG.md`, `implementation/RUN_LOG.md`, and latest files named in `STATUS.md`.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I122 COMPLETE as scoped checkpoints**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I123 COMPLETE as scoped checkpoints**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I123_EXECUTION_BACKEND_PORTFOLIO.md`
+- `implementation/i123_execution_backend_portfolio.py`
+- `implementation/test_i123_execution_backend_portfolio.py`
 - `implementation/RUN_I122_RUNTIME_CONNECTOR_CAPABILITY_AUDIT.md`
 - `implementation/RUN_I121_NOTIFICATION_SAFE_MANUAL_RUNTIME_OUTCOME.md`
 - `.github/workflows/implementation-tests.yml`
@@ -18,37 +21,49 @@ Latest files:
 - `implementation/RUN_I117_MANUAL_RUNTIME_BACKEND_SUPPLY_CHAIN_PINNING.md`
 - `implementation/RUN_I116_RUNTIME_RUNNER_STALE_ARTIFACT_TIMEOUT_HARDENING.md`
 - `implementation/i113_local_runtime_chain_runner.py`
-- `implementation/RUN_I115_NOTIFICATION_SAFE_MANUAL_RUNTIME_BACKEND.md`
-- `implementation/RUN_I114_RUNTIME_AVAILABILITY_RECHECK.md`
-- `implementation/RUN_I113_LOCAL_RUNTIME_CHAIN_RUNNER.md`
 
-## I122 result
-I122 re-audited the real execution surface. The connector still does not expose `workflow_dispatch`, so the current manual-only runtime backend cannot be started from this environment. It does expose rerun controls for existing jobs/runs, but the inspected available failed job is historical PR #1 run `32574545296` / job `97034830749` on stale head `0575cc0...`, using the pre-I115 PR test workflow rather than the current I113/I118/I121 current-main artifact chain.
+## I123 result
+I123 broadens the Resource / Execution Router from individual quotes/materialization into a portfolio-level backend-evidence decision layer while reusing the existing I048 economics model.
 
-That rerun path was deliberately rejected. Rerunning stale PR CI would violate exact current-main source binding, execute obsolete workflow semantics, and risk renewed GitHub failure-email spam. No workflow was dispatched or rerun and no runtime evidence was fabricated.
+It covers deterministic Python, local model/CPU/GPU, fixed/limited ChatGPT/Codex subscription support, cheap and strong external APIs, free/conditional CI, owned PC and future VPS. It requires measured/reproducible, current, non-synthetic capacity/policy evidence before production selection and separately preserves credential/spend/infrastructure authorization requirements.
 
-Current state remains `BLOCKED`: fresh-real evidence absent; eligible non-synthetic current route absent; exact authorization absent; current exact-source runtime regression receipt chain absent.
+The routing order is now explicit: **deterministic/local first -> existing task/economics gates -> current reproducible non-synthetic materialization -> AI only if needed -> cheapest qualifying backend**. Observation and paid-task economics remain distinct.
+
+The current I123 evidence snapshot is planning-only, so no backend is production-selectable and no live route was created. Both new Python files passed source compilation in the authoring environment; the full exact-current repository runtime remains pending and no runtime PASS was fabricated.
+
+Current state remains `BLOCKED`: fresh-real evidence absent; eligible non-synthetic current route absent; exact authorization absent; exact-current runtime regression receipt chain absent.
 
 ## Target flow
-`cheap watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-calibrated Resource Router -> measured feedback/current resource materialization -> market readiness -> exact human-decision/authorization lineage -> network-incapable handoff/review -> adapter/source binding -> activation request/decision/consumption -> synthetic invocation-bound replay -> exact real-read-only request -> explicit final review/decision -> fresh-evidence authorization consumption -> I089 final invocation gate -> I090 single-use executor -> I091 concrete pinned HTTPS/JSON boundary -> I092 exact path/query contract -> I093 fresh-lineage integration -> I094 native-builder regression hardening -> I095 baseline-control isolation -> I096 fresh exact blocked review packet -> I097 offline packet verifier/authorization binding -> I098 fresh evidence artifact contract -> I099 synthetic evidence sequencing/I097 projection -> I100 execution-readiness manifest -> I101 fresh-real-evidence/route-materialization contract -> I102 compatibility adapter/synthetic fixtures -> I103 synthetic-route quarantine hardening -> I104 blocker separation -> I105 deterministic consistency validation -> I106-I112 exact runtime/result lineage -> I113 v2 local runtime chain -> I115/I117/I118/I119/I121 manual GitHub-hosted execution backend -> I122 connector capability audit -> separately authorized one-shot real observation -> measured demand/economics feedback`.
+`cheap watcher -> deterministic local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> I123 portfolio Resource Router -> measured feedback/current resource materialization -> market readiness -> exact human-decision/authorization lineage -> network-incapable handoff/review -> adapter/source binding -> activation request/decision/consumption -> synthetic invocation-bound replay -> exact real-read-only request -> explicit final review/decision -> fresh-evidence authorization consumption -> I089 final invocation gate -> I090 single-use executor -> I091-I103 exact path/evidence/route compatibility -> I104-I112 blocker/source/result lineage -> I113 v2 local runtime chain -> I115/I117/I118/I119/I121 manual GitHub-hosted backend -> I122 connector audit -> broad no-spend runtime+resource bootstrap -> separately authorized one-shot real observation -> measured demand/economics feedback`.
 
 ## Immediate next run
-Do **not** add another source-only safety layer unless implementation inspection finds a concrete new defect.
+Do not add another micro safety layer unless a concrete defect is found.
 
-At the first environment with authenticated manual GitHub Actions dispatch capability, execute exactly one `implementation-runtime-chain` run from current `main`. Accept runtime evidence only from uploaded artifacts when I118/I119 has `source_binding_pass=true`, I113 v2 has `PASS_BLOCKED`, and I121 has `evidence_acceptable=true`.
+Build one portable **no-spend runtime + resource bootstrap bundle** that can, once an executable current checkout or authenticated manual Actions dispatch exists:
+1. run I113 exactly once;
+2. run the already-authored no-spend local calibration/materialization path;
+3. project measured resource facts into I123 `BackendEvidence`;
+4. emit one compact review packet proving whether `python_local` or free/conditional CI has become current reproducible non-synthetic capacity.
 
-If dispatch and executable checkout remain unavailable, preserve this checkpoint. Do not use rerun controls on stale historical PR CI, re-enable automatic push/PR CI solely to obtain runtime evidence, or perform the production GET.
+If valid manual dispatch becomes available first, execute exactly one current-main `implementation-runtime-chain` and accept runtime artifacts only when I118/I119 `source_binding_pass=true`, I113 is `PASS_BLOCKED`, and I121 `evidence_acceptable=true`.
+
+Do not rerun stale PR CI, restore automatic push/PR triggers, or perform the production GET.
 
 ## Hard boundary
 No spend, KYC, wallets, paid work acceptance, publication, settlement, real credentials, CAPTCHA/geofence/rate-limit bypass or value movement without separate explicit authorization. One read-only observation can never imply broader permission.
 
 ## Resource boundary
-ChatGPT/Codex subscription is fixed/sunk limited support, not a free autonomous API. I048-I067 implement the core Resource / Execution Router; I101 defines production route materialization; I102 proves the network-inert compatibility shape; I103 quarantines synthetic provenance; I104 separates the four preauthorization blockers; I105-I112 preserve exact source/result lineage; I113 v2 orchestrates the local chain; I115 provides the manual-only free/conditional CI backend; I117 pins action dependencies and removes persisted checkout credentials; I118 records runner/runtime provenance; I119 enforces exact current-main source binding before runtime execution; I121 makes artifact evidence authoritative while preventing expected fail-closed states from producing avoidable CI failure notifications; I122 confirms stale reruns cannot substitute for current-main manual dispatch. Only genuinely available programmatic backends with current reproducible non-synthetic evidence may be live candidates. Resource routing never widens market/policy eligibility.
+- ChatGPT/Codex subscription is fixed/sunk limited support, not a free autonomous API and not assumed programmatically accessible.
+- Only current reproducible non-synthetic materialized backends may become production-selectable.
+- Free/conditional CI has quota/capacity/opportunity cost and is not unlimited.
+- External paid APIs and future VPS remain blocked until separate credentials/spend/infrastructure authorization.
+- Observation economics and paid-task fulfillment economics are independent.
+- Resource routing never widens upstream market/policy/authorization eligibility.
 
-Future watchers may poll faster than hourly using Python/webhook/WebSocket/cron only when API/ToS permits. They should use cheap polling -> local filter/dedupe -> AI only for promising work and must not attempt to bypass ChatGPT scheduling limits or platform controls.
+Future watchers may run faster than hourly through Python/webhook/WebSocket/cron only when API/ToS allows it. Use cheap polling -> local deterministic filtering/dedupe -> AI only for promising tasks. Never bypass platform/product limits.
 
 ## Git/CI
-Prefer one coherent commit per run where tooling permits. Keep push-triggered and PR-triggered CI disabled for this runtime path. The implementation runtime workflow is manual-only. Expected evidence-level refusal/failure should be represented in artifacts rather than noisy workflow failure status where possible. Do not rerun stale PR workflows merely because rerun controls are available. Avoid repeated failing CI solely for baseline evidence because it can generate GitHub email spam.
+Prefer one coherent commit per broad stage. Keep push-triggered and PR-triggered CI disabled for the runtime path. The implementation runtime workflow remains manual-only. Expected fail-closed state belongs in artifacts rather than notification-generating workflow failures. Do not rerun stale PR workflows merely because rerun controls exist.
 
 ## Completion
 Implementation remains incomplete until a permitted real test demonstrates positive economics or reasonable candidates are exhausted and confirmed by control passes.
