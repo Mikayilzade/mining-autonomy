@@ -61,3 +61,17 @@ Files: `i151_source_bound_runtime_snapshot.py`, `test_i151_source_bound_runtime_
 Risks/blockers: full exact-current I113 runtime execution absent; genuine local energy + explicit tariff absent; measured conservative Resource Router route absent; PayanAgent geography/provider-access evidence absent; exact bounded observation authorization absent.
 
 Next: materialize the complete current source-bound runtime bundle and execute I113; do not reopen discovery or repeat PayanAgent geography searches without new evidence.
+
+## I157 — 2026-08-24
+Status: **completed policy/evidence checkpoint**
+Stage: `free_tier_ci` production-eligibility closure
+
+Revalidated the existing `free_tier_ci` branch against current first-party GitHub Actions billing, hosted-runner, limits and Additional Product Terms. Repository metadata confirms `Mikayilzade/mining-autonomy` is public. Standard GitHub-hosted runners are priced free for public repositories, but that pricing fact does not imply infinite capacity or permission for arbitrary external paid-task execution.
+
+GitHub Additional Product Terms restrict GitHub-hosted runner activity to production/testing/deployment/publication work related to the associated software project and prohibit cryptomining, disproportionate server burden and commercial resale patterns. Therefore GitHub-hosted Actions is classified **SUPPORT_TESTING_ONLY** for this project's generic external earning workloads and is not a production Resource/Execution Router candidate.
+
+Added `i157_free_tier_ci_policy_gate.py`, `test_i157_free_tier_ci_policy_gate.py` and `RUN_I157_FREE_TIER_CI_POLICY_GATE.md`. Focused local verification: **3 tests passed**. No workflow was dispatched; no credentials, production market request, task action, paid infrastructure, spend or value movement occurred.
+
+Risks/blockers: no current measured non-synthetic production execution route; `python_local` lacks genuine energy+tariff evidence in this environment; GitHub-hosted `free_tier_ci` is policy-ineligible for generic paid external work; PayanAgent geography/access and exact bounded-observation authorization remain unresolved.
+
+Next: advance I134/I137 to the existing `local_model` no-new-spend evidence branch. Detect only genuinely available local model/CPU/GPU interfaces and measure current quality/capacity/latency/reliability/energy/opportunity cost without downloads, credentials or spend. If not materializable, mark it exhausted and continue to `owned_pc`; do not reopen discovery.
