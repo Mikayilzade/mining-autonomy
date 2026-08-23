@@ -64,4 +64,12 @@ Added `i107_runtime_receipt_binding_validator.py` and detailed run documentation
 
 A repository-local executable checkout remained unavailable; direct GitHub resolution failed again, so I106 was not executed and the runtime receipt remains absent. No production request, credentials, authorization, task action, paid infrastructure, spend/value movement or GitHub Actions dispatch occurred.
 
-Next: **I108 — when repository-local Python is available, execute I106 then I107 and bind only a valid exact-hash receipt; otherwise continue deterministic network-inert hardening, preferably receipt-lineage/anti-replay hardening, without widening discovery or performing the production GET.**
+## I108 — 2026-08-23
+Status: **completed scoped safe checkpoint — exact-source lineage validator authored, receipt still pending**
+Stage: runtime receipt stale-replay / current-source lineage hardening
+
+Added `i108_runtime_receipt_lineage_validator.py` and detailed run documentation. I108 reuses I107 structural receipt validation, recomputes the current local I099-I102 dependency closure from I106 targets, and requires a future PASS receipt to match that exact SHA-256 map plus the current target order, module filenames and arguments. Missing/extra/changed dependency entries or altered target specifications fail closed. Current I106/I107 script hashes are recorded as lineage diagnostics.
+
+The runtime receipt remains absent, therefore `runtime_regression_verification=false`. The other three blockers remain independently false: no fresh-real evidence, no current eligible non-synthetic Resource Router route and no exact explicit authorization. No production network request, credentials, authorization, task action, paid infrastructure, spend/value movement or GitHub Actions dispatch occurred.
+
+Next: **I109 — when repository-local Python is available, execute I106 -> I107 -> I108 and accept runtime verification only if all agree; otherwise bind I108 exact-source lineage into the I104/I105 preauthorization consistency view without widening discovery or performing the production GET.**
