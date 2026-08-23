@@ -3,10 +3,11 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I119 — fail-closed runtime source binding**
+Last completed implementation run: **I120 — runtime backend availability recheck**
 Last updated: **2026-08-23**
 
 ## Latest durable files
+- `implementation/RUN_I120_RUNTIME_BACKEND_AVAILABILITY_RECHECK.md`
 - `implementation/RUN_I119_FAIL_CLOSED_RUNTIME_SOURCE_BINDING.md`
 - `.github/workflows/implementation-tests.yml`
 - `implementation/RUN_I118_RUNTIME_ENVIRONMENT_PROVENANCE.md`
@@ -45,10 +46,10 @@ Last updated: **2026-08-23**
 - `implementation/RUN_I100_EXECUTION_READINESS_MANIFEST.md`
 - `implementation/I100_EXECUTION_READINESS_RESULT.json`
 
-## I119 outcome
-I119 closed a concrete runtime-evidence defect in the manual GitHub-hosted backend. I118 recorded `GITHUB_SHA` and checked-out `HEAD` but did not enforce them before I113 ran. The workflow now records `GITHUB_REF`, checks `GITHUB_SHA == checked_out_head`, requires the dispatch ref to be `refs/heads/main`, records `source_binding_pass`, and exits before I113 on any mismatch while still uploading provenance for audit.
+## I120 outcome
+I120 followed the existing immediate action without adding a new source-only gate. A fresh shallow clone was retried in the available execution container, but DNS resolution for `github.com` again failed before checkout, so I113 v2 could not run locally. The current GitHub connector surface was also inspected and exposes repository read/write operations but no workflow-dispatch action, so the already-authored manual-only GitHub Actions backend could not be triggered from this run.
 
-The workflow remains manual-only `workflow_dispatch`, `contents: read`, explicit `ubuntu-24.04`, pinned action SHAs, no persisted checkout credentials, a 10-minute timeout and 1-day artifact retention. No workflow was dispatched in I119; no runtime result was fabricated and no production network/value-moving action occurred.
+The existing workflow was rechecked and remains manual-only `workflow_dispatch`, `contents: read`, explicit `ubuntu-24.04`, pinned action SHAs, no persisted checkout credentials, 10-minute timeout, exact current-main source binding before I113, and 1-day receipt retention. No workflow was dispatched, no runtime result was fabricated, and no production network/value-moving action occurred.
 
 Current durable state remains blocked: fresh-real evidence false; current eligible non-synthetic Resource Router route false; exact authorization false; current exact-source runtime-regression receipt chain absent.
 
@@ -73,7 +74,7 @@ Current durable state remains blocked: fresh-real evidence false; current eligib
 - I104 makes fresh-real evidence, non-synthetic route, exact authorization and runtime verification four independent AND-gates.
 - I105-I112 preserve exact source/result lineage for the runtime blocker without widening non-runtime blockers.
 - I113 v2 is the one-command local runner for I106-I112 and requires fresh per-step outputs while capturing timeout/launch failures fail-closed.
-- I114 confirms the current execution container still cannot obtain a repository-local checkout.
+- I114 and I120 confirm the current execution container still cannot obtain a repository-local checkout.
 - I115 provides a manual-only GitHub-hosted execution backend for I113 and removes automatic PR workflow runs to reduce notification spam.
 - I117 pins the manual runtime backend's GitHub Actions dependencies to immutable reviewed commits and disables persisted checkout credentials.
 - I118 removes the moving `ubuntu-latest` alias from this evidence path and records hosted-runner/Python provenance.
@@ -87,9 +88,11 @@ Current durable state remains blocked: fresh-real evidence false; current eligib
 ## Immediate next run
 Do **not** add another source-only safety layer unless a concrete new gap is identified.
 
-When manual GitHub Actions dispatch is available, run `implementation-runtime-chain` once from current `main`. Require I118/I119 provenance `source_binding_pass=true` and I113 v2 `PASS_BLOCKED` before accepting runtime-regression evidence.
+At the first environment with either a real current repository checkout plus Python or authenticated manual GitHub Actions dispatch capability, execute exactly one `implementation-runtime-chain` run from current `main`. Require I118/I119 provenance `source_binding_pass=true` and I113 v2 `PASS_BLOCKED` before accepting runtime-regression evidence.
 
-Do not perform the production GET solely because runtime verification passes. The actual production observation still requires later separate explicit user authorization plus fresh real policy/DNS/pinning/TLS/rebinding evidence acquired at execution time and a current materialized eligible non-synthetic route with positive conservative expected margin.
+If neither capability is available, preserve the checkpoint rather than manufacture additional gates or revive automatic CI. Do not perform the production GET solely because runtime verification later passes.
+
+The actual production observation still requires later separate explicit user authorization plus fresh real policy/DNS/pinning/TLS/rebinding evidence acquired at execution time and a current materialized eligible non-synthetic route with positive conservative expected margin.
 
 ## Completion gate
 Implementation completes only with confirmed positive economics on real permitted tests or exhaustion of reasonable candidates by control passes.
