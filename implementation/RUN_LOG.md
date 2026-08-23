@@ -16,28 +16,28 @@ Added exact python_local-only backend-config invariant evidence for intrinsic so
 Status: **completed source checkpoint — runtime pending**
 Stage: exact local evidence packet
 
-Added `i127_exact_local_evidence_packet.py` and tests. I127 can run I124, convert its verified inert fixed local probe into exact I050 evidence, merge I126 invariants, attest through I050, project to I123, and verify a complete reproducible bundle through I066.
-
-The default exact gap after I124 + I126 is reduced to three dynamic parameters only: `quota_units_remaining`, `electricity_per_task_usd`, and `rate_limit_per_minute`. Optional local additional evidence is restricted to these parameters and remains subject to hash and I050 validation. No current route, market evidence, authorization, credentials, spend or value movement is created.
-
-Files: `RUN_I127_EXACT_LOCAL_EVIDENCE_PACKET.md`, `i127_exact_local_evidence_packet.py`, `test_i127_exact_local_evidence_packet.py`, `STATUS.md`, `HANDOFF.md`.
+Added `i127_exact_local_evidence_packet.py` and tests. I127 converts verified inert local probe facts into exact I050 evidence, merges I126 invariants, projects to I123 and verifies complete bundles through I066.
 
 ## I128 — 2026-08-23
 Status: **completed source checkpoint — runtime / real energy evidence pending**
 Stage: python_local resource completion and quota/rate semantic closure
 
-Added `i128_python_local_resource_completion.py`, focused tests and `RUN_I128_PYTHON_LOCAL_RESOURCE_COMPLETION.md`.
+Added `i128_python_local_resource_completion.py` and tests. Exact python_local `quota_units_remaining=None` and `rate_limit_per_minute=None` now mean no external provider quota/rate primitive, not infinite host capacity. The remaining strict resource gap became only `electricity_per_task_usd`.
 
-I128 resolves two of I127's three remaining local fields without manufacturing host capacity. For exact `python_local` / `deterministic_python` only, `quota_units_remaining=None` and `rate_limit_per_minute=None` are now documented and hash-bound as local-interface semantics meaning no external provider quota/rate primitive. They are explicitly not interpreted as infinite CPU, unlimited parallelism or zero opportunity cost.
+## I129 — 2026-08-23
+Status: **completed source checkpoint — real measurement pending**
+Stage: verifiable local energy measurement receipt
 
-The resulting source path is: fixed I056/I053 local probe + I126 config invariants + I128 interface semantics + optional measured energy/tariff -> I050 -> I066 -> I123. With valid probe/config/interface evidence and no energy input, the exact strict resource gap is only `electricity_per_task_usd`. Supplying measured energy plus an explicit tariff can close the resource source path, but does not create market demand, a production route or authorization.
+Added `i129_energy_measurement_receipt.py`, negative/conversion tests and `RUN_I129_ENERGY_MEASUREMENT_RECEIPT.md`.
 
-`run_no_spend_bundle()` also consumes I113 once; `RESOURCE_AND_RUNTIME_READY` requires both complete reproducible resource evidence and a fresh I113 `PASS_BLOCKED` receipt. Current connector/runtime limitations prevented execution, so no PASS was claimed.
+I129 defines the acquisition contract for the final python_local marginal-energy fact: independently observed before/after joule readings around an exact workload, positive task count, counter source+digest, explicit electricity tariff source+digest, UTC timestamp and freshness. It computes kWh/task, binds the full packet to a canonical receipt hash, re-verifies it, then converts it to the existing I054/I128 `EnergyMeasurement`.
 
-A temporary duplicate I127 draft created because STATUS lagged behind this log was deleted and the new work was renumbered I128. Authoritative sequence is I127 exact local evidence packet -> I128 resource completion.
+Fail-closed checks cover counter reset/wrap, missing provenance, invalid task count, negative values, stale/future/tampered receipts and scope drift. I129 never guesses energy/tariff and does not infer whole-machine coverage from a package counter.
 
-Files: `RUN_I128_PYTHON_LOCAL_RESOURCE_COMPLETION.md`, `i128_python_local_resource_completion.py`, `test_i128_python_local_resource_completion.py`, `STATUS.md`, `HANDOFF.md`, `implementation/RUN_LOG.md`.
+A fresh public clone attempt from the available execution container again failed with `Could not resolve host: github.com`; therefore no exact-current runtime or measured energy PASS was claimed.
 
-Risks: electricity-per-task remains unknown until genuinely measured; local interface `None` semantics must never be reused as a physical capacity claim or for CI/API/VPS/subscription backends; exact-current runtime evidence is still absent.
+Files: `RUN_I129_ENERGY_MEASUREMENT_RECEIPT.md`, `i129_energy_measurement_receipt.py`, `test_i129_energy_measurement_receipt.py`, `STATUS.md`, `HANDOFF.md`, `implementation/RUN_LOG.md`.
 
-Next: at the first executable exact-current checkout run I128 once, measure energy only if reliable no-spend telemetry exists, combine with an explicit real tariff, materialize through I050/I066, rerun I123, and emit one current resource-readiness/economics packet before any separately authorized market observation.
+Risks: real energy telemetry and tariff provenance are still absent; exact-current I113 runtime receipt is absent; market demand/positive-margin route/authorization remain independent false gates.
+
+Next: at the first executable exact-current checkout run I113 + I128 once; if trustworthy telemetry exists, create and verify I129 energy receipt with explicit real tariff, feed through I128/I050/I066, rerun I123 and emit one current resource-readiness/economics packet. Otherwise preserve the electricity gap. Do not perform the production GET.
