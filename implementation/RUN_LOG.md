@@ -111,3 +111,29 @@ Files: `.github/workflows/implementation-tests.yml`, `implementation/RUN_I117_MA
 Risks: pinned actions require explicit reviewed maintenance to receive future fixes; runtime verification is still absent until one manual run executes current main.
 
 Next: when dispatch capability is available, run `implementation-runtime-chain` once on current `main`. Accept runtime evidence only from I113 v2 `PASS_BLOCKED`; keep fresh-real evidence, current eligible non-synthetic positive-margin Resource Router route and exact explicit authorization as independent blockers.
+
+## I118 — 2026-08-23
+Status: **completed scoped operational hardening — execution pending**
+Stage: stable hosted-runner target + runtime environment provenance
+
+Changed the manual backend from moving `ubuntu-latest` to explicit `ubuntu-24.04` and added `I118_RUNTIME_ENVIRONMENT_PROVENANCE.json` generation before I113. The future artifact records workflow SHA, checked-out HEAD, runner OS/architecture, image OS/version when exposed, Python runtime/platform and explicit no-network/no-value-moving claims. No workflow was dispatched.
+
+Files: `.github/workflows/implementation-tests.yml`, `implementation/RUN_I118_RUNTIME_ENVIRONMENT_PROVENANCE.md`, `STATUS.md`.
+
+Risks: the hosted image still evolves; provenance records that fact but does not make the image immutable. Runtime verification remains absent.
+
+Next: dispatch once from current main when manual dispatch is available and bind runtime evidence to the recorded source/environment.
+
+## I119 — 2026-08-23
+Status: **completed scoped operational defect fix — execution pending**
+Stage: fail-closed exact current-main source binding before runtime execution
+
+Inspected I118 and found a concrete enforcement gap: `GITHUB_SHA` and checked-out `HEAD` were recorded but only intended for post-run review, so I113 could execute on an unexpected checkout/ref before that mismatch was noticed. The workflow now records `GITHUB_REF`, computes `head_matches_github_sha`, `ref_matches_main`, and `source_binding_pass`, and exits before I113 unless both exact SHA and `refs/heads/main` checks pass. The provenance file is still uploaded through the `always()` artifact step for audit.
+
+No automatic trigger was added and no workflow was dispatched. No Actions evidence, production observation, credentials, spend or value movement was fabricated or performed.
+
+Files: `.github/workflows/implementation-tests.yml`, `implementation/RUN_I119_FAIL_CLOSED_RUNTIME_SOURCE_BINDING.md`, `STATUS.md`, `HANDOFF.md`, `implementation/RUN_LOG.md`.
+
+Risks: runtime verification is still absent until one manual current-main run actually executes; a manual failed run can still create one GitHub notification.
+
+Next: when manual dispatch is available, dispatch `implementation-runtime-chain` once from current `main`. Accept runtime evidence only when `source_binding_pass=true` and I113 v2 returns `PASS_BLOCKED`; keep the three non-runtime blockers independent.
