@@ -151,3 +151,17 @@ Files: `implementation/RUN_I120_RUNTIME_BACKEND_AVAILABILITY_RECHECK.md`, `STATU
 Risks: runtime verification remains absent; repeated source-only hardening or automatic CI revival would add noise and notification risk without solving the actual environment capability gap.
 
 Next: at the first environment with a real current checkout plus Python or authenticated manual Actions dispatch, execute exactly one `implementation-runtime-chain` run from current `main`; require `source_binding_pass=true` and I113 v2 `PASS_BLOCKED`, while keeping the three non-runtime blockers independent.
+
+## I121 — 2026-08-23
+Status: **completed scoped operational hardening — execution pending**
+Stage: notification-safe manual runtime outcome semantics
+
+Inspected the manual I115-I120 runtime backend and identified a concrete notification defect: expected evidence-level source-binding refusal or I113 `FAIL_CLOSED` could still mark the GitHub job failed and generate a failure email, even though runtime evidence is already defined by receipts rather than CI badge state.
+
+Updated the workflow so provenance is always written first, I113 runs only when exact current-main binding passes, the I113 step is non-fatal to workflow status, and an always-run `I121_RUNTIME_WORKFLOW_OUTCOME.json` becomes the compact outcome record. It sets `evidence_acceptable=true` only when source binding is valid and the fresh I113 receipt says `PASS_BLOCKED`. Workflow status is explicitly non-authoritative. Automatic push/PR triggers remain disabled.
+
+Files: `.github/workflows/implementation-tests.yml`, `implementation/RUN_I121_NOTIFICATION_SAFE_MANUAL_RUNTIME_OUTCOME.md`, `STATUS.md`, `HANDOFF.md`, `implementation/RUN_LOG.md`.
+
+Risks: checkout/setup/infrastructure failures before outcome generation can still fail the workflow; a green job must never be interpreted as runtime PASS without the artifact chain. Runtime verification remains absent until one manual current-main run actually executes.
+
+Next: when authenticated manual dispatch is available, run `implementation-runtime-chain` exactly once from current `main`; accept runtime evidence only if provenance has `source_binding_pass=true`, I113 v2 has `PASS_BLOCKED`, and I121 has `evidence_acceptable=true`. If dispatch remains unavailable, preserve the checkpoint and do not restore automatic CI.

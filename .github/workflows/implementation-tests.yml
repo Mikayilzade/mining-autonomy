@@ -20,7 +20,8 @@ jobs:
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: '3.12'
-      - name: Capture and enforce runtime source provenance
+      - name: Capture runtime source provenance
+        id: provenance
         shell: bash
         run: |
           python3 - <<'PY'
@@ -35,8 +36,8 @@ jobs:
           ref_matches_main = github_ref == "refs/heads/main"
           source_binding_pass = head_matches_github_sha and ref_matches_main
           data = {
-              "schema": "mining-autonomy/i118-runtime-environment-provenance/v2",
-              "run": "I118/I119",
+              "schema": "mining-autonomy/i118-runtime-environment-provenance/v3",
+              "run": "I118/I119/I121",
               "github_sha": github_sha,
               "github_ref": github_ref,
               "checked_out_head": checked_out_head,
@@ -59,11 +60,64 @@ jobs:
           Path("implementation/I118_RUNTIME_ENVIRONMENT_PROVENANCE.json").write_text(
               json.dumps(data, indent=2, sort_keys=True) + "\n", encoding="utf-8"
           )
-          if not source_binding_pass:
-              raise SystemExit("runtime source provenance mismatch; refusing I113 execution")
+          PY
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          data = json.load(open("implementation/I118_RUNTIME_ENVIRONMENT_PROVENANCE.json", encoding="utf-8"))
+          print("source_binding_pass=" + ("true" if data.get("source_binding_pass") is True else "false"))
           PY
       - name: Run exact local I106-I112 chain
+        id: runtime
+        if: steps.provenance.outputs.source_binding_pass == 'true'
+        continue-on-error: true
         run: python3 implementation/i113_local_runtime_chain_runner.py
+      - name: Record authoritative runtime outcome without failing the workflow
+        if: always()
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          provenance_path = Path("implementation/I118_RUNTIME_ENVIRONMENT_PROVENANCE.json")
+          receipt_path = Path("implementation/I113_LOCAL_RUNTIME_CHAIN_RESULT.json")
+          errors = []
+          try:
+              provenance = json.loads(provenance_path.read_text(encoding="utf-8")) if provenance_path.is_file() else {}
+          except Exception as exc:
+              provenance = {}
+              errors.append(f"provenance_unreadable: {exc}")
+          try:
+              receipt = json.loads(receipt_path.read_text(encoding="utf-8")) if receipt_path.is_file() else {}
+          except Exception as exc:
+              receipt = {}
+              errors.append(f"i113_receipt_unreadable: {exc}")
+          source_binding_pass = provenance.get("source_binding_pass") is True
+          i113_result = receipt.get("result") if receipt else None
+          evidence_acceptable = source_binding_pass and i113_result == "PASS_BLOCKED"
+          outcome = {
+              "schema": "mining-autonomy/i121-manual-runtime-workflow-outcome/v1",
+              "run": "I121",
+              "source_binding_pass": source_binding_pass,
+              "i113_receipt_present": receipt_path.is_file(),
+              "i113_result": i113_result,
+              "evidence_acceptable": evidence_acceptable,
+              "workflow_status_is_not_evidence": True,
+              "runtime_step_outcome": os.environ.get("RUNTIME_STEP_OUTCOME"),
+              "fresh_real_evidence_created": False,
+              "resource_route_created": False,
+              "authorization_created": False,
+              "production_observation_performed": False,
+              "credentials_used": False,
+              "spend_or_value_movement": False,
+              "errors": errors,
+          }
+          Path("implementation/I121_RUNTIME_WORKFLOW_OUTCOME.json").write_text(
+              json.dumps(outcome, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+          )
+          print(json.dumps(outcome, indent=2, sort_keys=True))
+          PY
+        env:
+          RUNTIME_STEP_OUTCOME: ${{ steps.runtime.outcome }}
       - name: Upload runtime receipts
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
@@ -79,5 +133,6 @@ jobs:
             implementation/I112_I111_MANIFEST_OFFLINE_VERIFIER_RESULT.json
             implementation/I113_LOCAL_RUNTIME_CHAIN_RESULT.json
             implementation/I118_RUNTIME_ENVIRONMENT_PROVENANCE.json
+            implementation/I121_RUNTIME_WORKFLOW_OUTCOME.json
           if-no-files-found: warn
           retention-days: 1
