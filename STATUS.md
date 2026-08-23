@@ -3,10 +3,13 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I153 — source-bound runtime transport path verified**
+Last completed implementation run: **I154 — exact I113 runtime closure bound**
 Last updated: **2026-08-24**
 
 ## Latest durable files
+- `implementation/RUN_I154_EXACT_I113_RUNTIME_CLOSURE.md`
+- `implementation/i154_exact_i113_runtime_closure.py`
+- `implementation/test_i154_exact_i113_runtime_closure.py`
 - `implementation/RUN_I151_I153_SOURCE_BOUND_RUNTIME_TRANSPORT.md`
 - `implementation/i151_source_bound_runtime_snapshot.py`
 - `implementation/test_i151_source_bound_runtime_snapshot.py`
@@ -24,20 +27,20 @@ Last updated: **2026-08-24**
 - `implementation/i123_execution_backend_portfolio.py`
 - `implementation/i113_local_runtime_chain_runner.py`
 
-## I151–I153 outcome
-The runtime branch advanced without reopening discovery or weakening exact-current source requirements.
+## I154 outcome
+I154 removes the remaining ambiguity about what must be materialized before local I113 execution.
 
-A fresh direct `git clone` again failed because the execution container cannot resolve `github.com`. I151 therefore adds a cryptographically source-bound snapshot transport: repository files may be materialized by a trusted non-git transport, but each file must match its exact Git blob SHA and the bundle must be bound to explicit repository/commit/tree identity before it is eligible for local I113 execution. Duplicate, missing, invalid-identity or byte-mismatched snapshots fail closed.
+The pre-stage current-main identity was observed as commit `3699c39aa3e61f217afd37cb44b7cfa0c33a1082`, tree `efb9a4d06e18a5d2ec9421aaaa1c7d379c6e8db9`. The exact source/artifact closure is now encoded as **19 Git blobs**: four seed JSON artifacts plus fifteen Python modules spanning I097/I098, I099–I102, I105 and I106–I113. Every entry is bound to its exact Git blob SHA.
 
-The pre-stage current-main identity was observed through the GitHub connector as commit `52b487db4aae957da1a089c791297dcb72045796`, tree `2894476287fa900ae8ab0dda715c2e84334774a6`, and exact I106–I113 top-level blob identities were captured in the run record. Focused I151 verification tests executed locally: **2 passed**.
+`i154_exact_i113_runtime_closure.py` validates the identity and fails closed on missing, duplicated, invalid or byte-mismatched materialization. Focused local verification tests: **3 passed**.
 
-This is not an I113 PASS. The remaining runtime action is now precise: materialize the complete current I106–I113 dependency/artifact closure through the source-bound transport, then execute I113. `git clone` is no longer a required transport assumption.
+A fresh direct `git clone` still fails because the execution container cannot resolve `github.com`; the failure is transport-only. Connector/snapshot materialization remains the supported path. This is **not** an I113 PASS and does not authorize execution outside the already network-inert local verification chain.
 
 ## Current control chain
-`source-bound current snapshot -> I113 runtime + I128/I129 resource measurement -> I050/I066/I123 -> I130/I131/I133 economics -> I136 portfolio -> I137 fallback -> I138 readiness -> I142/I145/I148 source evidence -> I143 selection -> I140 bounded observation -> I141 economic-test packet`.
+`source-bound exact 19-blob closure -> I113 runtime + I128/I129 resource measurement -> I050/I066/I123 -> I130/I131/I133 economics -> I136 portfolio -> I137 fallback -> I138 readiness -> I142/I145/I148 source evidence -> I143 selection -> I140 bounded observation -> I141 economic-test packet`.
 
 ## Current blockers
-1. complete exact-current I106–I113 bundle has not yet been materialized/executed, so I113 receipt remains **absent**;
+1. the exact 19-blob I113 closure is identified but has not yet been fully materialized into one local runtime directory, so I113 receipt remains **absent**;
 2. genuine measured energy + explicit tariff provenance for `python_local`: **absent**;
 3. current measured non-synthetic route surviving conservative economics + watcher overhead: **false**;
 4. PayanAgent explicit geography/provider-access evidence: **absent; public-doc search converged**;
@@ -54,7 +57,7 @@ This is not an I113 PASS. The remaining runtime action is now precise: materiali
 - No spend, credentials, registration, wallet, task acceptance, fulfillment, purchase or value movement before separate authorization.
 
 ## Immediate next broad run
-Use I151 to materialize the **complete** current runtime dependency/artifact closure and execute I113 in one broad stage. If runtime passes, continue in the same cycle through I128/I129 -> I050/I066/I123 -> I133/I136 -> I138 where genuine evidence is available.
+Materialize all **19 exact blobs** from the I154-bound snapshot into one local directory, run the I154 byte verifier, and only on `SOURCE_BOUND_I113_CLOSURE_READY` execute I113. If runtime passes, continue in the same cycle through I128/I129 -> I050/I066/I123 -> I133/I136 -> I138 where genuine evidence is available.
 
 If `python_local` cannot be materially evidenced or fails conservative economics, advance immediately through I137/I134 to the next existing no-new-spend backend branch. Do not reopen discovery.
 
