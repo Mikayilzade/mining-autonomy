@@ -92,4 +92,28 @@ Files: `i136_conservative_portfolio_evaluator.py`, `i137_resource_fallback_ladde
 
 Risks: real local energy/tariff evidence absent; exact runtime receipt absent; free-tier CI remains unmaterialized; fresh real market demand/policy evidence absent; exact observation authorization absent.
 
-Next: keep the stage broad. At the first executable current checkout run I113 + I128/I129 -> I050/I066/I123 -> I133/I136 -> I138 in one cycle. If local materialization/economics fails, advance via I137/I134 to the next existing no-new-spend branch in the same cycle where practical. Do not restore automatic CI or perform the production GET.
+## I139 — 2026-08-23
+Status: **completed source checkpoint**
+Stage: conservative portfolio input-integrity hardening
+
+Hardened I136 against duplicate backend definitions, duplicate evidence, unknown watcher-budget backend IDs and one-shot iterable loss. This is a concrete orchestration defect fix before empirical evidence is consumed.
+
+## I140 — 2026-08-23
+Status: **completed source checkpoint**
+Stage: bounded no-spend read-only observation design
+
+Added `i140_readonly_observation_design.py`. The plan requires current policy evidence, confirmed public read-only access, no credentials/paid account/CAPTCHA, allowed geography, explicit provider/API minimum interval, a hard request cap and zero external paid-request cost. It defines stop rules and the actual demand/economics fields to collect without performing a network request.
+
+## I141 — 2026-08-23
+Status: **completed broad source checkpoint — empirical execution pending**
+Stage: integrated bounded economic-test packet
+
+Added `i141_economic_test_packet.py`, broad tests and `RUN_I139_I141_BOUNDED_ECONOMIC_TEST_DESIGN.md`. I141 requires I138 readiness, a current I136 conservative route and an I140 bounded observation plan before it can emit `READY_FOR_SEPARATELY_AUTHORIZED_READONLY_ECONOMIC_TEST`. The packet is still a manifest only and does not enable network, task acceptance, credentials, spend or value movement.
+
+The result contract now makes zero eligible demand an explicit measurable outcome and carries public payout/fee/availability, unique-arrival, parse/latency and conservative-margin fields needed to decide whether a later tiny real-task test is justified.
+
+Files: `i140_readonly_observation_design.py`, `i141_economic_test_packet.py`, `test_i139_i141_broad_observation_readiness.py`, `RUN_I139_I141_BOUNDED_ECONOMIC_TEST_DESIGN.md`, hardened `i136_conservative_portfolio_evaluator.py`, `STATUS.md`, `HANDOFF.md`, `implementation/RUN_LOG.md`.
+
+Risks: exact-current runtime still absent; real `python_local` energy+tariff evidence absent; concrete fresh market/policy evidence absent; exact bounded observation authorization absent.
+
+Next: keep the next executable stage broad. Run I113 + I128/I129 -> I050/I066/I123 -> I133/I136 -> I138. If local survives, instantiate I140/I141 against the highest-ranked currently permitted public source and use only the exact bounded read-only authorization represented by the manifest. If local fails, advance through I137/I134 to the next existing no-new-spend branch. Do not accept paid work or move value during observation.
