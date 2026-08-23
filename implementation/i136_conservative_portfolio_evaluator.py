@@ -50,9 +50,16 @@ def evaluate_portfolio(
 ) -> ConservativePortfolioDecision:
     bs = tuple(backends)
     es = tuple(evidence)
-    em = {e.backend_id: e for e in es}
-    if len(em) != len(es):
+    backend_ids = [b.backend_id for b in bs]
+    if len(backend_ids) != len(set(backend_ids)):
+        raise ValueError("duplicate_backend_definition")
+    evidence_ids = [e.backend_id for e in es]
+    if len(evidence_ids) != len(set(evidence_ids)):
         raise ValueError("duplicate_backend_evidence")
+    unknown_budgets = set(watcher_budgets) - set(backend_ids)
+    if unknown_budgets:
+        raise ValueError("watcher_budget_unknown_backend:" + ",".join(sorted(unknown_budgets)))
+    em = {e.backend_id: e for e in es}
 
     rows=[]
     gates=[]
@@ -117,7 +124,7 @@ def evaluate_portfolio(
 def payload(result: ConservativePortfolioDecision) -> dict:
     body=asdict(result)
     body.update({
-        "schema":"mining-autonomy/i136-conservative-portfolio-evaluator/v1",
+        "schema":"mining-autonomy/i136-conservative-portfolio-evaluator/v2",
         "run":"I136",
         "production_observation_performed":False,
         "task_acceptance_performed":False,
