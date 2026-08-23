@@ -90,4 +90,16 @@ Added `i112_i111_manifest_offline_verifier.py` and `RUN_I112_I111_MANIFEST_OFFLI
 
 Repository-local Python remains unavailable through this connector, so no result JSON was fabricated and no production DNS/HTTP/socket/TLS request or CI workflow was dispatched.
 
-Next: **At the first repository-local Python checkout, execute I106 -> I107 -> I108 -> I109 -> I110 -> I111, then run I112 against the generated I111 manifest. Do not add further source-only safety layers without a concrete new gap; the later one-shot production observation remains separately gated by fresh real evidence, a current eligible non-synthetic route with positive conservative margin, and exact explicit user authorization.**
+## I113 — 2026-08-23
+Status: **completed scoped implementation checkpoint — one-command runner authored; execution pending**
+Stage: operationalize exact local I106-I112 runtime chain
+
+Added `i113_local_runtime_chain_runner.py` and `RUN_I113_LOCAL_RUNTIME_CHAIN_RUNNER.md`. The runner invokes I106-I112 in order with repository-local defaults, stops on first failure, verifies expected outputs exist, hashes each generated result, and verifies the I106-I112 source bytes remain stable during execution. It clears proxy environment variables for child processes, does not dispatch CI, and adds no network/execution/authorization/resource-route capability.
+
+A direct repository clone was attempted in the available shell/container to execute the chain, but that environment could not resolve `github.com`; the GitHub connector is source access rather than a mounted executable checkout. No runtime receipt was fabricated. No production DNS/HTTP/socket/TLS request or value-moving action occurred.
+
+Files: `implementation/i113_local_runtime_chain_runner.py`, `implementation/RUN_I113_LOCAL_RUNTIME_CHAIN_RUNNER.md`, `STATUS.md`, `implementation/RUN_LOG.md`.
+
+Risks: runtime verification remains unproven until I113 executes in an exact current checkout; non-runtime blockers remain false and independent.
+
+Next: **At the first repository-local Python checkout run `python3 implementation/i113_local_runtime_chain_runner.py`. If it returns `PASS_BLOCKED`, accept only the runtime-chain evidence. Do not perform the production GET until fresh-real evidence, a current eligible non-synthetic Resource Router route with positive conservative margin, and exact explicit user authorization are separately present.**
