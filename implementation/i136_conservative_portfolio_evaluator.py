@@ -49,8 +49,9 @@ def evaluate_portfolio(
     watcher_budgets: Mapping[str, WatcherBudget],
 ) -> ConservativePortfolioDecision:
     bs = tuple(backends)
-    em = {e.backend_id: e for e in evidence}
-    if len(em) != len(tuple(evidence)):
+    es = tuple(evidence)
+    em = {e.backend_id: e for e in es}
+    if len(em) != len(es):
         raise ValueError("duplicate_backend_evidence")
 
     rows=[]
@@ -60,7 +61,7 @@ def evaluate_portfolio(
         blockers = production_blockers(backend, em.get(backend.backend_id))
         budget = watcher_budgets.get(backend.backend_id)
         if budget is None:
-            row = ConservativePortfolioRow(
+            rows.append(ConservativePortfolioRow(
                 backend_id=backend.backend_id,
                 family=backend.family,
                 evidence_blockers=tuple(dict.fromkeys((*blockers, "watcher_budget_missing"))),
@@ -68,13 +69,12 @@ def evaluate_portfolio(
                 economics_survives=False,
                 worst_adjusted_margin_usd=None,
                 production_candidate=False,
-            )
-            rows.append(row)
+            ))
             continue
         gate = assess_conservative_route(task, backend, budget)
         gates.append(gate)
         candidate = not blockers and gate.conservative_route_survives
-        row = ConservativePortfolioRow(
+        rows.append(ConservativePortfolioRow(
             backend_id=backend.backend_id,
             family=backend.family,
             evidence_blockers=blockers,
@@ -82,8 +82,7 @@ def evaluate_portfolio(
             economics_survives=gate.conservative_route_survives,
             worst_adjusted_margin_usd=gate.worst_adjusted_margin_usd,
             production_candidate=candidate,
-        )
-        rows.append(row)
+        ))
         if candidate:
             candidates.append((backend, gate))
 
