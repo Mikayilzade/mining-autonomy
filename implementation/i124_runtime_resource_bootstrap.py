@@ -18,6 +18,7 @@ import sys
 from typing import Any
 
 from i123_execution_backend_portfolio import BackendEvidence, MEASURED
+from i126_python_local_config_invariant import build_python_local_config_invariants
 from python_local_calibration_fixture import (
     run_python_local_fixture,
     transcript_to_json,
@@ -26,7 +27,7 @@ from python_local_calibration_fixture import (
 from local_calibration_session import build_session_bundle, replay_session_bundle, session_to_json
 from resource_router import default_backend_families
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 DEFAULT_OUTPUT = "I124_RUNTIME_RESOURCE_BOOTSTRAP_RESULT.json"
 I113_OUTPUT = "I113_LOCAL_RUNTIME_CHAIN_RESULT.json"
 
@@ -85,11 +86,15 @@ def _run_python_local_probe(observed_at: str, repetitions: int) -> dict[str, Any
     replay = replay_python_local_transcript(backend, raw)
     session = build_session_bundle(backend, raw, collector_observed_at_utc=observed_at)
     report = replay_session_bundle(backend, session_to_json(session))
+    config = build_python_local_config_invariants(asdict(backend), observed_at=observed_at)
     successes = replay.probe_summary.successful_runs
     count = replay.probe_summary.observation_count
     reliability = successes / count if count else 0.0
     quality_passes = sum(1 for row in transcript.observations if row.quality_passed)
     quality = quality_passes / count if count else 0.0
+    raw_missing = set(report.missing_parameters)
+    config_parameters = set(config.emitted_parameters)
+    effective_missing = tuple(sorted(raw_missing - config_parameters))
     return {
         "state": "MEASURED_LOCAL_PROBE_COMPLETE" if replay.verified else "FAIL_CLOSED",
         "backend_id": backend.backend_id,
@@ -105,6 +110,9 @@ def _run_python_local_probe(observed_at: str, repetitions: int) -> dict[str, Any
         "portable_transcript_digest": replay.portable_transcript_digest,
         "session_digest": session.immutable_session_digest,
         "session_replay": asdict(report),
+        "i126_config_invariant_parameters": tuple(config.emitted_parameters),
+        "i126_config_invariants_ready": True,
+        "effective_missing_parameters_after_i126": effective_missing,
         "network_enabled": False,
         "credentials_used": False,
         "spend_performed": False,
@@ -123,24 +131,40 @@ def _project_i123_evidence(probe: dict[str, Any]) -> tuple[BackendEvidence, tupl
         blockers.append("observed_reliability_below_threshold")
     if probe.get("quality_probability_observed", 0.0) < 0.90:
         blockers.append("observed_quality_below_threshold")
-    report = probe.get("session_replay") or {}
-    missing = set(report.get("missing_parameters") or ())
+
+    if "effective_missing_parameters_after_i126" in probe:
+        missing = set(probe.get("effective_missing_parameters_after_i126") or ())
+        if not probe.get("i126_config_invariants_ready"):
+            blockers.append("python_local_config_invariants_not_ready")
+    else:
+        # Backward-compatible unit fixtures without I126 metadata remain conservative.
+        report = probe.get("session_replay") or {}
+        missing = set(report.get("missing_parameters") or ())
+
     if missing:
         blockers.append("i050_critical_resource_facts_incomplete")
     if "electricity_per_task_usd" in missing:
         blockers.append("electricity_cost_not_measured")
+    if "quota_units_remaining" in missing:
+        blockers.append("quota_capacity_not_evidenced")
+    if "rate_limit_per_minute" in missing:
+        blockers.append("rate_limit_not_evidenced")
+
     complete = measured_ok and not blockers
     evidence = BackendEvidence(
         backend_id="python_local",
         provenance_class=MEASURED if complete else "measured_partial",
         current_reproducible=measured_ok,
         non_synthetic=measured_ok,
-        capacity_verified=measured_ok,
+        capacity_verified=complete,
         policy_evidence_current=measured_ok,
         credentials_authorized=False,
         spend_authorized=False,
         infrastructure_authorized=False,
-        evidence_note="I124 fixed local probe; production-selectable only after all I050 critical economics/capacity facts are current and reproducible.",
+        evidence_note=(
+            "I124 v2 fixed local probe plus I126 exact python_local config invariants. "
+            "Production-selectable only after all remaining dynamic I050 economics/capacity facts are current and reproducible."
+        ),
     )
     return evidence, tuple(dict.fromkeys(blockers))
 
