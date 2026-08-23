@@ -12,12 +12,20 @@ from hashlib import sha256
 import json
 from typing import Any, Iterable, Mapping, Optional
 
+BACKEND_CONFIG_INVARIANT_SOURCE_KIND = "backend_config_invariant"
 SOURCE_KINDS = {
     "synthetic_reference",
     "user_declared",
     "measured_local",
     "provider_first_party",
     "system_probe",
+    BACKEND_CONFIG_INVARIANT_SOURCE_KIND,
+}
+REPRODUCIBLE_SOURCE_KINDS = {
+    "provider_first_party",
+    "measured_local",
+    "system_probe",
+    BACKEND_CONFIG_INVARIANT_SOURCE_KIND,
 }
 
 CRITICAL_PARAMETERS = (
@@ -59,11 +67,37 @@ OPTIONAL_NONNEGATIVE_FLOAT_PARAMETERS = {
     "rate_limit_per_minute",
 }
 
+# I126: only these intrinsic software/interface facts may use the reproducible
+# repository-config invariant source. Runtime capacity, quota/rate limits,
+# electricity, latency, reliability and quality are intentionally excluded.
+PYTHON_LOCAL_CONFIG_INVARIANTS = {
+    "requires_credentials": False,
+    "requires_paid_account": False,
+    "requires_new_spend": False,
+    "fixed_monthly_cost_usd": 0.0,
+    "sunk_or_already_committed": True,
+}
+PYTHON_LOCAL_CONFIG_INVARIANT_SCOPE = "intrinsic_python_local_software_interface_only"
+
 
 def _canonical_hash(value: Any) -> str:
     return sha256(
         json.dumps(value, sort_keys=True, separators=(",", ":"), default=str).encode("utf-8")
     ).hexdigest()
+
+
+def backend_config_invariant_source_ref(backend_id: str, parameter: str) -> str:
+    return f"repo-invariant:{backend_id}:{parameter}:v1"
+
+
+def backend_config_invariant_digest(backend_id: str, parameter: str, value: Any) -> str:
+    return _canonical_hash({
+        "schema": "mining-autonomy/backend-config-invariant/v1",
+        "scope": PYTHON_LOCAL_CONFIG_INVARIANT_SCOPE,
+        "backend_id": backend_id,
+        "parameter": parameter,
+        "value": value,
+    })
 
 
 def _parse_utc(value: str) -> datetime:
@@ -188,6 +222,25 @@ def _validate_value(parameter: str, value: Any) -> Optional[str]:
     return "unsupported_parameter"
 
 
+def _validate_backend_config_invariant(evidence: ResourceEvidence) -> Optional[str]:
+    if evidence.backend_id != "python_local":
+        return "backend_config_invariant_python_local_only"
+    if evidence.parameter not in PYTHON_LOCAL_CONFIG_INVARIANTS:
+        return "backend_config_invariant_parameter_not_allowed"
+    expected_value = PYTHON_LOCAL_CONFIG_INVARIANTS[evidence.parameter]
+    if json.dumps(evidence.value, sort_keys=True) != json.dumps(expected_value, sort_keys=True):
+        return "backend_config_invariant_value_mismatch"
+    expected_ref = backend_config_invariant_source_ref(evidence.backend_id, evidence.parameter)
+    if evidence.source_ref != expected_ref:
+        return "backend_config_invariant_source_ref_mismatch"
+    expected_digest = backend_config_invariant_digest(
+        evidence.backend_id, evidence.parameter, expected_value
+    )
+    if evidence.source_content_digest != expected_digest:
+        return "backend_config_invariant_digest_mismatch"
+    return None
+
+
 def _evidence_status(
     evidence: ResourceEvidence,
     *,
@@ -222,7 +275,11 @@ def _evidence_status(
         return "stale_evidence"
     if evidence.source_kind == "synthetic_reference":
         return "synthetic_reference_not_live_evidence"
-    if evidence.source_kind in {"provider_first_party", "measured_local", "system_probe"}:
+    if evidence.source_kind == BACKEND_CONFIG_INVARIANT_SOURCE_KIND:
+        invariant_error = _validate_backend_config_invariant(evidence)
+        if invariant_error:
+            return invariant_error
+    if evidence.source_kind in REPRODUCIBLE_SOURCE_KINDS:
         digest = evidence.source_content_digest
         if not digest or len(digest) < 16:
             return "reproducible_source_digest_required"
@@ -316,8 +373,7 @@ def attest_resource_profile(
 
     contains_declared = any(x.source_kind == "user_declared" for x in selected)
     reproducible = bool(selected) and all(
-        x.source_kind in {"provider_first_party", "measured_local", "system_probe"}
-        for x in selected
+        x.source_kind in REPRODUCIBLE_SOURCE_KINDS for x in selected
     )
     bundle_hash = None
     if selected:
