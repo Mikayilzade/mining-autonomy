@@ -97,3 +97,17 @@ Files: `implementation/i113_local_runtime_chain_runner.py`, `implementation/RUN_
 Risks: runtime verification is still absent until the manual backend executes current main; this fix changes only evidence integrity of that future run.
 
 Next: manually dispatch `implementation-runtime-chain` once when dispatch capability is available and accept runtime evidence only from a fresh I113 v2 `PASS_BLOCKED` result.
+
+## I117 — 2026-08-23
+Status: **completed scoped operational hardening — execution pending**
+Stage: immutable GitHub Actions dependency pinning for manual runtime backend
+
+Inspected the already-selected I115 workflow and identified a reproducibility/supply-chain defect in the exact runtime-evidence path: checkout/setup/upload were referenced by mutable major-version tags. Fresh official GitHub release and commit pages were checked on 2026-08-23, then the workflow was pinned to immutable full SHAs for checkout v4.4.0, setup-python v5.6.0 and upload-artifact v4.6.2. Checkout now sets `persist-credentials: false` because the runtime chain does not need authenticated git after repository readout.
+
+The workflow remains manual-only `workflow_dispatch`, `contents: read`, bounded to one I113 v2 run, 10-minute timeout and 1-day receipt retention. No workflow dispatch occurred in I117, so no runtime result was fabricated and no intentional CI notification was generated.
+
+Files: `.github/workflows/implementation-tests.yml`, `implementation/RUN_I117_MANUAL_RUNTIME_BACKEND_SUPPLY_CHAIN_PINNING.md`, `STATUS.md`, `HANDOFF.md`, `implementation/RUN_LOG.md`.
+
+Risks: pinned actions require explicit reviewed maintenance to receive future fixes; runtime verification is still absent until one manual run executes current main.
+
+Next: when dispatch capability is available, run `implementation-runtime-chain` once on current `main`. Accept runtime evidence only from I113 v2 `PASS_BLOCKED`; keep fresh-real evidence, current eligible non-synthetic positive-margin Resource Router route and exact explicit authorization as independent blockers.

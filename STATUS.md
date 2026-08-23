@@ -3,14 +3,15 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I116 — runtime runner stale-artifact / timeout hardening**
+Last completed implementation run: **I117 — manual runtime backend supply-chain pinning**
 Last updated: **2026-08-23**
 
 ## Latest durable files
+- `implementation/RUN_I117_MANUAL_RUNTIME_BACKEND_SUPPLY_CHAIN_PINNING.md`
+- `.github/workflows/implementation-tests.yml`
 - `implementation/RUN_I116_RUNTIME_RUNNER_STALE_ARTIFACT_TIMEOUT_HARDENING.md`
 - `implementation/i113_local_runtime_chain_runner.py`
 - `implementation/RUN_I115_NOTIFICATION_SAFE_MANUAL_RUNTIME_BACKEND.md`
-- `.github/workflows/implementation-tests.yml`
 - `implementation/RUN_I114_RUNTIME_AVAILABILITY_RECHECK.md`
 - `implementation/RUN_I113_LOCAL_RUNTIME_CHAIN_RUNNER.md`
 - `implementation/RUN_I112_I111_MANIFEST_OFFLINE_VERIFIER.md`
@@ -42,12 +43,12 @@ Last updated: **2026-08-23**
 - `implementation/RUN_I100_EXECUTION_READINESS_MANIFEST.md`
 - `implementation/I100_EXECUTION_READINESS_RESULT.json`
 
-## I116 outcome
-I116 inspected the already-selected I113 runtime path and found two concrete operational defects rather than adding another safety layer. First, I113 did not clear old expected JSON outputs before each step, so a stale artifact could be mistaken for freshly-created output if a later step returned 0 without writing a new file. Second, timeout/process-launch exceptions could escape before the I113 receipt was written.
+## I117 outcome
+I117 hardened the already-selected I115 manual GitHub-hosted runtime backend without adding another policy gate. Fresh official GitHub release/commit evidence was checked on 2026-08-23, then `actions/checkout`, `actions/setup-python` and `actions/upload-artifact` were pinned from mutable major tags to immutable full commit SHAs. Checkout now also uses `persist-credentials: false` because the exact runtime chain needs only read access after checkout.
 
-I113 is now v2: each expected step output is deleted immediately before invocation; PASS requires return code 0 plus a fresh output; timeout and launch failures are serialized as deterministic `FAIL_CLOSED`; source-hash and capability boundaries are preserved.
+The workflow remains manual-only `workflow_dispatch`, read-only, bounded to one I113 v2 run and short receipt retention. No workflow was dispatched in I117, so no Actions quota was consumed and no notification was intentionally generated. No runtime receipt was fabricated.
 
-No runtime execution or workflow dispatch occurred in this run. Current durable state remains blocked: fresh-real evidence false; current eligible non-synthetic Resource Router route false; exact authorization false; current exact-source runtime-regression receipt chain absent.
+Current durable state remains blocked: fresh-real evidence false; current eligible non-synthetic Resource Router route false; exact authorization false; current exact-source runtime-regression receipt chain absent.
 
 ## Current ranking
 1. PayanAgent
@@ -69,9 +70,10 @@ No runtime execution or workflow dispatch occurred in this run. Current durable 
 - I103 independently rejects synthetic Resource Router routes even when all other route booleans are green.
 - I104 makes fresh-real evidence, non-synthetic route, exact authorization and runtime verification four independent AND-gates.
 - I105-I112 preserve exact source/result lineage for the runtime blocker without widening non-runtime blockers.
-- I113 v2 is the one-command local runner for I106-I112 and now requires fresh per-step outputs while capturing timeout/launch failures fail-closed.
+- I113 v2 is the one-command local runner for I106-I112 and requires fresh per-step outputs while capturing timeout/launch failures fail-closed.
 - I114 confirms the current execution container still cannot obtain a repository-local checkout.
 - I115 provides a manual-only GitHub-hosted execution backend for I113 and removes automatic PR workflow runs to reduce notification spam.
+- I117 pins the manual runtime backend's GitHub Actions dependencies to immutable reviewed commits and disables persisted checkout credentials.
 - GitHub Actions free/conditional capacity is a limited resource, not assumed unlimited or zero-opportunity-cost.
 - Observation-route economics and future paid-task execution economics are separate.
 - Fast watchers may poll more often than hourly only where API/ToS permits and should avoid constant LLM use; no product/rate-limit bypass.
