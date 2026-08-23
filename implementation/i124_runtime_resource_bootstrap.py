@@ -51,7 +51,12 @@ def _run_i113(root: Path, timeout_seconds: int) -> dict[str, Any]:
     output = root / "implementation" / I113_OUTPUT
     if output.exists():
         output.unlink()
-    command = [sys.executable, str(root / "implementation" / "i113_local_runtime_chain_runner.py"), "--root", str(root)]
+    command = [
+        sys.executable,
+        str(root / "implementation" / "i113_local_runtime_chain_runner.py"),
+        "--output",
+        str(output),
+    ]
     try:
         proc = subprocess.run(command, cwd=root, text=True, capture_output=True, timeout=timeout_seconds, check=False)
     except subprocess.TimeoutExpired as exc:
@@ -65,7 +70,7 @@ def _run_i113(root: Path, timeout_seconds: int) -> dict[str, Any]:
         except Exception as exc:
             return {"state": "FAIL_CLOSED", "reason": "i113_output_parse_error", "returncode": proc.returncode, "error_type": type(exc).__name__}
     return {
-        "state": "PASS_BLOCKED" if proc.returncode == 0 and isinstance(payload, dict) and payload.get("state") == "PASS_BLOCKED" else "FAIL_CLOSED",
+        "state": "PASS_BLOCKED" if proc.returncode == 0 and isinstance(payload, dict) and payload.get("result") == "PASS_BLOCKED" else "FAIL_CLOSED",
         "returncode": proc.returncode,
         "receipt_present": payload is not None,
         "receipt": payload,
@@ -118,9 +123,6 @@ def _project_i123_evidence(probe: dict[str, Any]) -> tuple[BackendEvidence, tupl
         blockers.append("observed_reliability_below_threshold")
     if probe.get("quality_probability_observed", 0.0) < 0.90:
         blockers.append("observed_quality_below_threshold")
-    # The fixed fixture proves executable local capacity and no credential/spend
-    # use for this route. It does not measure electricity or establish unlimited
-    # quota/parallel capacity; those remain economics/materialization blockers.
     report = probe.get("session_replay") or {}
     missing = set(report.get("missing_parameters") or ())
     if missing:
@@ -146,7 +148,7 @@ def _project_i123_evidence(probe: dict[str, Any]) -> tuple[BackendEvidence, tupl
 def _free_ci_evidence(runtime: dict[str, Any]) -> tuple[BackendEvidence, tuple[str, ...]]:
     blockers = ["free_tier_ci_capacity_quota_not_materialized", "free_tier_ci_policy_capacity_evidence_not_materialized"]
     receipt = runtime.get("receipt") or {}
-    source_current = runtime.get("state") == "PASS_BLOCKED" and receipt.get("state") == "PASS_BLOCKED"
+    source_current = runtime.get("state") == "PASS_BLOCKED" and receipt.get("result") == "PASS_BLOCKED"
     evidence = BackendEvidence(
         backend_id="free_tier_ci",
         provenance_class="runtime_observed_partial" if source_current else "planning_reference",
