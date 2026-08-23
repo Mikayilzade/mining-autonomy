@@ -6,9 +6,11 @@ Do not reconstruct this project from chat memory. Read repository state first.
 Read `START_HERE.md`, `STATUS.md`, `METHODOLOGY.md`, `HANDOFF.md`, `RUN_LOG.md`, `CATALOG.md`, `implementation/RUN_LOG.md`, and latest files named in `STATUS.md`.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I112 COMPLETE as scoped checkpoints**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation Runs **I001–I113 COMPLETE as scoped checkpoints**. Project: **IMPLEMENTATION IN PROGRESS**.
 
 Latest files:
+- `implementation/RUN_I113_LOCAL_RUNTIME_CHAIN_RUNNER.md`
+- `implementation/i113_local_runtime_chain_runner.py`
 - `implementation/RUN_I112_I111_MANIFEST_OFFLINE_VERIFIER.md`
 - `implementation/i112_i111_manifest_offline_verifier.py`
 - `implementation/RUN_I111_PREOBSERVATION_ARTIFACT_MANIFEST.md`
@@ -38,32 +40,32 @@ Latest files:
 - `implementation/RUN_I100_EXECUTION_READINESS_MANIFEST.md`
 - `implementation/I100_EXECUTION_READINESS_RESULT.json`
 
-## I112 result
-I112 added `i112_i111_manifest_offline_verifier.py`, the explicit fallback named by I111 for environments where repository-local Python is unavailable. It imports current I111, deterministically recomputes the expected generated manifest from exact current bytes, requires an existing generated I111 JSON to match exactly, binds source/result SHA-256 values, and fails closed on schema/run drift, capability/permission widening, a four-gate authorized state, or any blocker presented as satisfied through this offline layer.
+## I113 result
+I113 added `i113_local_runtime_chain_runner.py`, an operational one-command repository-local runner for the exact already-authored I106 -> I107 -> I108 -> I109 -> I110 -> I111 -> I112 chain. It stops on the first failure, verifies expected output artifacts, hashes generated results, and detects mutation of the I106-I112 source files during execution. It adds no new safety/policy gate and no network/execution/authorization/resource-route capability.
 
-The verifier explicitly cannot create fresh-real evidence, a Resource / Execution Router route, authorization, runtime PASS, credentials, network capability, task action, paid infrastructure, spend or value movement. It emits `runtime_regression_verification=false` and cannot substitute for I106-I110 runtime lineage.
+The available shell/container could not resolve `github.com`, so a real repository-local clone could not be created there. The GitHub connector exposes source but not an executable mounted checkout. Therefore I113 was not executed and no runtime result was fabricated. No production DNS/HTTP/socket/TLS call, credentials, authorization, paid task action, spend or value movement occurred. No CI workflow was dispatched.
 
-The repository-local runtime remains unavailable through this connector, so I106 -> I107 -> I108 -> I109 -> I110 -> I111 -> I112 was not executed and no JSON receipt/result was fabricated. Current state remains `BLOCKED`: fresh-real evidence absent; eligible non-synthetic current route absent; exact authorization absent; current exact-source runtime regression receipt chain absent. No production DNS/HTTP/socket/TLS call, credentials, bidding, task acceptance, spend or value movement occurred. No CI workflow was dispatched.
-
-I112 closes the exact source-only fallback gap previously named in STATUS. Do not keep adding safety layers without a concrete new defect.
+Current state remains `BLOCKED`: fresh-real evidence absent; eligible non-synthetic current route absent; exact authorization absent; current exact-source runtime regression receipt chain absent.
 
 ## Target flow
-`cheap watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-calibrated Resource Router -> measured feedback/current resource materialization -> market readiness -> exact human-decision/authorization lineage -> network-incapable handoff/review -> adapter/source binding -> activation request/decision/consumption -> synthetic invocation-bound replay -> exact real-read-only request -> explicit final review/decision -> fresh-evidence authorization consumption -> I089 final invocation gate -> I090 single-use executor -> I091 concrete pinned HTTPS/JSON boundary -> I092 exact path/query contract -> I093 fresh-lineage integration -> I094 native-builder regression hardening -> I095 baseline-control isolation -> I096 fresh exact blocked review packet -> I097 offline packet verifier/authorization binding -> I098 fresh evidence artifact contract -> I099 synthetic evidence sequencing/I097 projection -> I100 execution-readiness manifest -> I101 fresh-real-evidence/route-materialization contract -> I102 compatibility adapter/synthetic fixtures -> I103 synthetic-route quarantine hardening -> I104 blocker separation -> I105 deterministic consistency validation -> I106 notification-safe local runtime receipt harness -> I107 receipt binding contract -> I108 exact-source lineage/stale-replay hardening -> I109 lineage-aware preauthorization consistency -> I110 exact I109 result/source-chain contract -> I111 compact pre-observation artifact manifest -> I112 offline exact-current I111 manifest verifier -> repository-local exact runtime chain -> separately authorized one-shot real observation -> measured demand/economics feedback`.
+`cheap watcher -> local filter/dedupe -> policy/rights/quality/demand gate -> TaskEconomics -> evidence-calibrated Resource Router -> measured feedback/current resource materialization -> market readiness -> exact human-decision/authorization lineage -> network-incapable handoff/review -> adapter/source binding -> activation request/decision/consumption -> synthetic invocation-bound replay -> exact real-read-only request -> explicit final review/decision -> fresh-evidence authorization consumption -> I089 final invocation gate -> I090 single-use executor -> I091 concrete pinned HTTPS/JSON boundary -> I092 exact path/query contract -> I093 fresh-lineage integration -> I094 native-builder regression hardening -> I095 baseline-control isolation -> I096 fresh exact blocked review packet -> I097 offline packet verifier/authorization binding -> I098 fresh evidence artifact contract -> I099 synthetic evidence sequencing/I097 projection -> I100 execution-readiness manifest -> I101 fresh-real-evidence/route-materialization contract -> I102 compatibility adapter/synthetic fixtures -> I103 synthetic-route quarantine hardening -> I104 blocker separation -> I105 deterministic consistency validation -> I106 notification-safe local runtime receipt harness -> I107 receipt binding contract -> I108 exact-source lineage/stale-replay hardening -> I109 lineage-aware preauthorization consistency -> I110 exact I109 result/source-chain contract -> I111 compact pre-observation artifact manifest -> I112 offline exact-current I111 manifest verifier -> I113 one-command repository-local runtime chain -> separately authorized one-shot real observation -> measured demand/economics feedback`.
 
 ## Immediate next run
 Do **not** add another source-only safety layer unless implementation inspection finds a concrete new gap.
 
-At the first repository-local Python checkout execute I106, then only on valid PASS continue I107 -> I108 -> I109 -> I110 -> I111 and run I112 against the generated I111 manifest. Runtime verification may become true only if the entire exact-current-source/result chain agrees and no non-runtime blocker is widened.
+At the first repository-local Python checkout run:
 
-If repository-local runtime is still unavailable and no concrete new source defect exists, preserve the checkpoint rather than manufacturing more gates. Do not perform the production GET and do not repeatedly push failing PR CI solely for evidence.
+`python3 implementation/i113_local_runtime_chain_runner.py`
 
-The real read-only production observation remains separately blocked until exact explicit user authorization plus fresh real execution-time policy/DNS/pinning/TLS/rebinding evidence and a current materialized eligible non-synthetic Resource Router route with positive conservative margin are all present.
+Only if I113 returns `PASS_BLOCKED` may the runtime-regression evidence be treated as current. Even then, fresh-real market/policy/DNS/TLS/rebinding evidence, a current materialized eligible non-synthetic Resource Router route with positive conservative margin, and exact explicit user authorization remain separate independent blockers.
+
+If repository-local runtime is still unavailable and no concrete source defect exists, preserve this checkpoint rather than manufacture additional gates. Do not perform the production GET and do not repeatedly push failing PR CI solely for evidence.
 
 ## Hard boundary
 No spend, KYC, wallets, paid work acceptance, publication, settlement, real credentials, CAPTCHA/geofence/rate-limit bypass or value movement without separate explicit authorization. One read-only observation can never imply broader permission.
 
 ## Resource boundary
-ChatGPT/Codex subscription is fixed/sunk limited support, not a free autonomous API. I048-I067 implement the core Resource / Execution Router; I101 defines production route materialization; I102 proves the network-inert compatibility shape; I103 independently quarantines synthetic route provenance at I100; I104 separates the four preauthorization blockers; I105 cross-checks I104 against I100 without collapsing runtime verification into source state; I106 provides but has not yet executed the exact-hash local runtime receipt harness; I107 binds a future valid receipt only to the runtime blocker; I108 additionally requires that receipt to match the exact current checkout dependency closure and current test specification; I109 binds that runtime lineage projection into the preauthorization consistency view; I110 binds the resulting I109 receipt to the exact current I105-I109 source chain; I111 binds the entire current I100/I104/I105-I110 pre-observation artifact set into a compact exact-hash manifest; I112 verifies a future generated I111 manifest against exact current deterministic recomputation but cannot mint any blocker or capability. Only genuinely available programmatic backends with current reproducible non-synthetic evidence may be live candidates. Resource routing never widens market/policy eligibility.
+ChatGPT/Codex subscription is fixed/sunk limited support, not a free autonomous API. I048-I067 implement the core Resource / Execution Router; I101 defines production route materialization; I102 proves the network-inert compatibility shape; I103 independently quarantines synthetic route provenance at I100; I104 separates the four preauthorization blockers; I105 cross-checks I104 against I100 without collapsing runtime verification into source state; I106-I112 define the exact runtime/result lineage; I113 only orchestrates that local chain. Only genuinely available programmatic backends with current reproducible non-synthetic evidence may be live candidates. Resource routing never widens market/policy eligibility.
 
 Future watchers may poll faster than hourly using Python/webhook/WebSocket/cron only when API/ToS permits. They should use cheap polling -> local filter/dedupe -> AI only for promising work and must not attempt to bypass ChatGPT scheduling limits or platform controls.
 
