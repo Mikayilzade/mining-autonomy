@@ -222,14 +222,25 @@ def _validate_value(parameter: str, value: Any) -> Optional[str]:
     return "unsupported_parameter"
 
 
-def _validate_backend_config_invariant(evidence: ResourceEvidence) -> Optional[str]:
+def _validate_backend_config_invariant(
+    evidence: ResourceEvidence,
+    reference_backend: Mapping[str, Any],
+) -> Optional[str]:
     if evidence.backend_id != "python_local":
         return "backend_config_invariant_python_local_only"
+    if str(reference_backend.get("backend_id") or "") != "python_local":
+        return "backend_config_invariant_reference_backend_mismatch"
+    if str(reference_backend.get("family") or "") != "deterministic_python":
+        return "backend_config_invariant_reference_family_mismatch"
     if evidence.parameter not in PYTHON_LOCAL_CONFIG_INVARIANTS:
         return "backend_config_invariant_parameter_not_allowed"
     expected_value = PYTHON_LOCAL_CONFIG_INVARIANTS[evidence.parameter]
     if json.dumps(evidence.value, sort_keys=True) != json.dumps(expected_value, sort_keys=True):
         return "backend_config_invariant_value_mismatch"
+    if evidence.parameter not in reference_backend:
+        return "backend_config_invariant_reference_parameter_missing"
+    if json.dumps(reference_backend[evidence.parameter], sort_keys=True) != json.dumps(expected_value, sort_keys=True):
+        return "backend_config_invariant_reference_value_mismatch"
     expected_ref = backend_config_invariant_source_ref(evidence.backend_id, evidence.parameter)
     if evidence.source_ref != expected_ref:
         return "backend_config_invariant_source_ref_mismatch"
@@ -246,6 +257,7 @@ def _evidence_status(
     *,
     backend_id: str,
     expected_reference_hash: str,
+    reference_backend: Mapping[str, Any],
     now: datetime,
 ) -> Optional[str]:
     if evidence.backend_id != backend_id:
@@ -276,7 +288,7 @@ def _evidence_status(
     if evidence.source_kind == "synthetic_reference":
         return "synthetic_reference_not_live_evidence"
     if evidence.source_kind == BACKEND_CONFIG_INVARIANT_SOURCE_KIND:
-        invariant_error = _validate_backend_config_invariant(evidence)
+        invariant_error = _validate_backend_config_invariant(evidence, reference_backend)
         if invariant_error:
             return invariant_error
     if evidence.source_kind in REPRODUCIBLE_SOURCE_KINDS:
@@ -325,7 +337,11 @@ def attest_resource_profile(
         failures: list[str] = []
         for record in candidates:
             reason = _evidence_status(
-                record, backend_id=backend_id, expected_reference_hash=ref_hash, now=now
+                record,
+                backend_id=backend_id,
+                expected_reference_hash=ref_hash,
+                reference_backend=backend,
+                now=now,
             )
             if reason is None:
                 valid.append(record)
