@@ -3,10 +3,12 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I110 — exact I109 result/source-chain receipt contract**
+Last completed implementation run: **I111 — compact pre-observation artifact manifest**
 Last updated: **2026-08-23**
 
 ## Latest durable files
+- `implementation/RUN_I111_PREOBSERVATION_ARTIFACT_MANIFEST.md`
+- `implementation/i111_preobservation_artifact_manifest.py`
 - `implementation/RUN_I110_I109_RESULT_CHAIN_CONTRACT.md`
 - `implementation/i110_i109_result_chain_contract.py`
 - `implementation/RUN_I109_LINEAGE_PREAUTHORIZATION_CONSISTENCY.md`
@@ -32,12 +34,12 @@ Last updated: **2026-08-23**
 - `implementation/RUN_I100_EXECUTION_READINESS_MANIFEST.md`
 - `implementation/I100_EXECUTION_READINESS_RESULT.json`
 
-## I110 outcome
-I110 added a deterministic, network-inert exact I109 result/source-chain receipt contract. It recomputes I109 from current I104/I100 plus the optional I106 receipt, requires any observed I109 result to exactly match the current safety-relevant projection, verifies I109 embedded I105-I108 source bindings, and records the current I109 hash to close the I105-I109 source-chain boundary.
+## I111 outcome
+I111 added a compact deterministic pre-observation artifact manifest generator. It binds exact SHA-256 hashes for current I100/I104 plus the I105-I110 safety/runtime source chain, records future I106/I109/I110 runtime result presence/hashes without treating them as permission, and keeps all four preauthorization blockers independent.
 
-The contract cannot create fresh-real evidence, a Resource Router route, authorization or execution power. It also fails closed if a non-runtime blocker unexpectedly becomes true at this checkpoint, forcing separate upstream review rather than inference through runtime evidence.
+The manifest is explicitly network-incapable and cannot create fresh-real evidence, a Resource / Execution Router route, authorization, task execution, credentials, paid infrastructure, spend or value movement. It fails closed if a non-runtime blocker unexpectedly becomes true at this layer, if I100 becomes network-ready, if I104 permits production observation, or if incompatible external effects are already recorded.
 
-This environment still exposes repository source through GitHub but not a repository-mounted executable checkout, so I106 -> I107 -> I108 -> I109 -> I110 was not executed and no runtime result was fabricated. Runtime verification remains false.
+This environment still exposes repository source through GitHub but not a repository-mounted executable checkout, so I106 -> I107 -> I108 -> I109 -> I110 -> I111 was not executed and no runtime/result artifact was fabricated. Runtime verification remains false.
 
 Current durable state remains blocked: fresh-real evidence false; current eligible non-synthetic Resource Router route false; exact authorization false; current exact-source runtime-regression receipt chain absent. No production DNS/HTTP/socket/TLS request, credentials, authorization, task acceptance/submission, paid infrastructure, payment or value movement occurred. No Actions workflow was dispatched.
 
@@ -66,15 +68,16 @@ Current durable state remains blocked: fresh-real evidence false; current eligib
 - I108 requires any future I106 PASS receipt to match the exact current repository dependency closure and current I106 test specification before the runtime blocker can be accepted; stale or altered-target receipts fail closed.
 - I109 binds that exact-current-source runtime projection into the I104/I105 consistency chain and requires all three non-runtime blockers to remain unchanged and independently derived.
 - I110 binds any future I109 result to a current deterministic recomputation and exact I105-I109 source chain; runtime-result replay cannot widen non-runtime blockers.
+- I111 binds the exact current I100/I104/I105-I110 pre-observation artifact chain into a compact manifest and explicitly records network incapability; it cannot mint any blocker or permission.
 - Observation-route economics and future paid-task execution economics are separate.
 - Fast watchers may poll more often than hourly only where API/ToS permits and should avoid constant LLM use; no product/rate-limit bypass.
 - Watcher architecture remains cheap polling/webhook/WebSocket/cron -> local deterministic filter/dedupe -> policy/economics gate -> AI only for promising work.
 - No real DNS/HTTP request has yet been performed by this implementation chain.
 
-## Immediate next run — I111
-At the first repository-local Python runtime, execute I106 -> I107 -> I108 -> I109 -> I110 in order. Accept runtime regression verification only if all outputs agree, I108 confirms exact current-source lineage, I109 confirms no non-runtime blocker widening, and I110 confirms exact current I105-I109 result/source-chain lineage.
+## Immediate next run — I112
+At the first repository-local Python runtime, execute I106 -> I107 -> I108 -> I109 -> I110 -> I111 in order. Accept runtime regression verification only if all outputs agree, exact current-source lineage is confirmed, no non-runtime blocker is widened, and the I111 manifest binds the same exact artifacts.
 
-Do not perform the production GET and do not trigger repeated failing PR CI solely to create evidence. If runtime remains unavailable, continue deterministic network-inert hardening that preserves the four independent blockers, preferably by binding I110 into a compact pre-observation artifact manifest with exact source/result hashes and explicit network incapability.
+Do not perform the production GET and do not trigger repeated failing PR CI solely to create evidence. If runtime remains unavailable, add a deterministic offline verifier for the future I111 manifest/result pair that cannot mint fresh-real evidence, a Resource Router route, authorization, runtime PASS, or network capability.
 
 The actual production observation still requires later separate explicit user authorization plus fresh real policy/DNS/pinning/TLS/rebinding evidence acquired at execution time and a current materialized eligible non-synthetic route.
 
