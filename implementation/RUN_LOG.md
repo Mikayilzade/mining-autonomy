@@ -33,4 +33,28 @@ Durable file: `RUN_I142_I144_MARKET_SOURCE_EVIDENCE.md`.
 
 No production task endpoint GET, credentials, registration, wallet, bid, claim, spend, task acceptance or value movement occurred. Automatic CI remains disabled.
 
-Next: resolve one concrete source to I142 completeness rather than adding architecture micro-gates. Independent runtime/resource blockers remain: exact-current runtime and genuine local energy+tariff evidence. Only when both resource and source evidence gates pass should I140/I141 be instantiated and exact bounded observation authorization requested.
+## I145 — 2026-08-23
+Status: **completed source checkpoint**
+Stage: reproducible PayanAgent source evidence
+
+Added `i145_payanagent_source_checkpoint.py` and focused tests. Current first-party docs resolve six I142 fields: public request list/detail reads, current zero platform fee, direct provider payout semantics, public endpoint rate limit of 30 req/min/IP, and explicit API-first autonomous/programmatic operation. Geography/access is intentionally omitted because no explicit supported-country/global/Azerbaijan rule was found.
+
+## I146 — 2026-08-23
+Status: **completed source decision checkpoint**
+Stage: active candidate narrowing
+
+Deferred Zentience for the current implementation path because its authoritative/public surface still leaves enough fee/polling/geography ambiguity to fail I142. Advanced PayanAgent as the active source target without reopening discovery.
+
+## I147 — 2026-08-23
+Status: **completed broad source checkpoint — one source blocker remains**
+Stage: bounded-observation parameters prepared
+
+Prepared, but did not authorize or instantiate as ready, a PayanAgent observation profile: public requests/receipts only, no credentials/wallet/registration/payment, 5-second candidate interval (12/min versus documented 30/min ceiling), 20-request hard cap, deterministic local dedupe before AI, and immediate stop on auth/rate/geography/challenge/policy-drift signals.
+
+Durable file: `RUN_I145_I147_PAYANAGENT_SOURCE_NARROWING.md`.
+
+No production PayanAgent task-list/receipt GET, registration, API key, wallet, payment, bid, task acceptance, fulfillment, CI dispatch, paid infrastructure or value movement occurred.
+
+Risks/blockers: PayanAgent explicit geography/access rule remains absent; exact-current I113 runtime remains absent; genuine local energy + explicit tariff evidence remains absent; current measured conservative backend route remains false; exact bounded observation authorization remains absent.
+
+Next: make one authoritative-first-party attempt to resolve PayanAgent geography/access. If no explicit rule exists, preserve the source blocker and mark it `policy_contact_or_user-local-access-required` rather than guessing. Independently, run the full resource/runtime cycle when exact-current execution becomes available. Only then instantiate I140/I141 and request/use exact bounded observation authorization.
