@@ -1,3 +1,5 @@
+import math
+
 import pytest
 
 import i182_external_meter_energy_bridge as i182
@@ -92,6 +94,34 @@ def test_unit_conversion_overflow_fails_closed():
     assert result.state == "PASS_BLOCKED"
     assert "converted_reading_before_not_finite" in result.errors
     assert "converted_reading_after_not_finite" in result.errors
+
+
+def test_conversion_precision_collapse_cannot_become_zero_energy_cost():
+    before = 1e24
+    after = math.nextafter(before, math.inf)
+    assert after > before
+    assert before * i182.JOULES_PER_KWH == after * i182.JOULES_PER_KWH
+
+    result = i182.bridge_external_meter(
+        _session(reading_unit="kwh", reading_before=before, reading_after=after)
+    )
+
+    assert result.state == "PASS_BLOCKED"
+    assert "positive_converted_energy_delta_required" in result.errors
+    assert result.energy_kwh_per_task is None
+    assert result.i166_energy_fields_ready is False
+
+
+def test_extreme_task_count_cannot_crash_or_underflow_to_zero_energy():
+    result = i182.bridge_external_meter(_session(task_count=10 ** 400))
+
+    assert result.state == "PASS_BLOCKED"
+    assert (
+        "energy_per_task_arithmetic_invalid" in result.errors
+        or "positive_finite_energy_per_task_required" in result.errors
+    )
+    assert result.energy_kwh_per_task is None
+    assert result.i166_energy_fields_ready is False
 
 
 def test_safety_flags_remain_inert():
