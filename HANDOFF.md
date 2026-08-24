@@ -6,7 +6,7 @@ Do not reconstruct this project from chat memory. Read repository state first.
 Read `START_HERE.md`, `STATUS.md`, `METHODOLOGY.md`, `HANDOFF.md`, `RUN_LOG.md`, `CATALOG.md`, `implementation/RUN_LOG.md`, and the latest implementation files named in `STATUS.md`.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation through **I187 COMPLETE as scoped repository-side checkpoints**. Project remains **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation through **I188 COMPLETE as scoped repository-side checkpoints**. Project remains **IMPLEMENTATION IN PROGRESS**.
 
 ## Current owned-PC / Router chain
 - I156: exact runtime chain; I113 = **PASS_BLOCKED**, 7/7 clean.
@@ -22,20 +22,21 @@ Discovery Runs **001–062 COMPLETE**. Implementation through **I187 COMPLETE as
 - I181: inert local cumulative-energy-interface inventory; it never reads energy.
 - I182–I184: external whole-system cumulative-meter fallback plus finite/positive arithmetic hardening.
 - I185: hardens I129 local-energy receipt against zero/non-finite/underflow paths.
-- I186: independent audit confirms generic `resource_evidence_adapter` still had the same class of defect.
+- I186: independent audit confirms generic `resource_evidence_adapter` had the same class of defect.
 - I187: patches that generic adapter defect directly.
+- I188: hardens the base I048 Resource / Execution Router against non-finite/nonnumeric economics, quota/capacity/probability/latency/rate-limit values and arithmetic overflow before I123 routing.
 
-## Latest result: I187
-`resource_evidence_adapter.build_resource_evidence()` now independently rejects bool/nonnumeric/non-finite energy and tariff inputs, requires strictly positive measured per-task energy, rejects non-finite multiplication, and rejects zero/round-to-zero emitted electricity cost at the adapter precision boundary. Zero tariff stays blocked until a separate provenance contract exists for a genuinely zero applicable tariff.
+## Latest result: I188
+`resource_router.py` now independently requires numeric non-boolean finite arithmetic inputs for backend costs, fixed-cost allocation, quota/capacity economics, probabilities, task payouts/fees/thresholds, latency and rate limits. Multiplication/sum overflow fails closed. Finite probability clamping semantics are retained. Bool/non-integer parallelism is rejected rather than treated as one worker. Watcher interval/platform-minimum typing is also hardened without changing no-bypass policy.
 
 Current blobs:
-- adapter: `19b2c482e4b2edcf1fe8129b183d1b0a0ebe992d`
-- adapter tests: `e2f4b2415b006c5e342a2d86665a41acde761b9e`
+- Router: `366a7d5071db02276ecd10d4c66eb3012a4ea7e2`
+- I188 regressions: `5447f4c80c845e84d023ede3f48bbb9aa3e779aa`
 
-Focused regressions were authored. A network-free isolated arithmetic sanity check passed; a complete byte-identical pytest dependency closure was not materialized, so no false full-suite PASS is claimed. No CI was dispatched.
+The current GitHub source was re-read after patching. A byte-identical local pytest attempt was blocked by DNS resolution failure for `raw.githubusercontent.com`; no false PASS is claimed and CI was not dispatched merely for status.
 
 ## Current control chain
-`I113 exact runtime PASS_BLOCKED -> Resource/Execution Router evidence ladder -> I161/I162/I163/I164/I165/I166 real user-PC materialization -> I167/I168 -> I173/I174/I175 -> I181 local-counter preflight OR hardened I182 external-meter route -> hardened I129/generic I054 energy evidence -> I180/I178/I179 -> I177/I169 -> exact I050 -> I066 -> I123 -> conservative economics/portfolio/readiness -> separately authorized bounded observation -> economic-test packet`.
+`I113 exact runtime PASS_BLOCKED -> Resource/Execution Router evidence ladder -> I161/I162/I163/I164/I165/I166 real user-PC materialization -> I167/I168 -> I173/I174/I175 -> I181 local-counter preflight OR hardened I182 external-meter route -> hardened I129/generic I054 energy evidence -> I180/I178/I179 -> I177/I169 -> exact I050 -> I066 -> hardened I048/I188 -> I123 -> conservative economics/portfolio/readiness -> separately authorized bounded observation -> economic-test packet`.
 
 ## Real remaining blockers
 - I181 has not been run on the actual owned PC, so built-in cumulative-counter availability is unknown.
@@ -49,7 +50,7 @@ Focused regressions were authored. A network-free isolated arithmetic sanity che
 - PayanAgent geography/provider-access public evidence remains unresolved; do not repeat broad searches without new first-party material.
 
 ## Immediate next broad run
-The repository-side I186 defect is closed. Do not add layers that merely repackage missing real evidence.
+The base Router numeric defect is closed. Do not add layers that merely repackage missing real evidence.
 
 The next genuine forward step is on the actual owned PC:
 1. run I181;
@@ -59,6 +60,8 @@ The next genuine forward step is on the actual owned PC:
 5. run exact I178 then exact I179 with explicit ownership confirmation and explicit UTC `observed_at`.
 
 If neither measurement route exists, keep energy blocked. Do not estimate energy and do not purchase hardware without separate authorization.
+
+Until a real I179 result exists, repository-side work should only remove concrete fail-open/correctness defects in direct Router/economics consumers. Do not create more packaging wrappers around absent evidence.
 
 Do not apply any I050/I123 hybrid patch unless a genuine I179/I177 result reaches exactly the two accounting declarations as the only source-class blocker; rebind I176 to then-current sources first.
 
