@@ -3,57 +3,78 @@
 Do not reconstruct this project from chat memory. Read repository state first.
 
 ## Resume protocol
-Read `START_HERE.md`, `STATUS.md`, `METHODOLOGY.md`, `HANDOFF.md`, `RUN_LOG.md`, `CATALOG.md`, `implementation/RUN_LOG.md`, and latest files named in `STATUS.md`.
+Read `START_HERE.md`, `STATUS.md`, `METHODOLOGY.md`, `HANDOFF.md`, `RUN_LOG.md`, `CATALOG.md`, `implementation/RUN_LOG.md`, and the latest implementation files named in `STATUS.md`.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation through **I177 COMPLETE as scoped repository-side checkpoints**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation through **I182 COMPLETE as scoped repository-side checkpoints**. Project remains **IMPLEMENTATION IN PROGRESS**.
 
-## Latest chain
+## Current owned-PC / Router chain
 - I156: exact runtime chain; I113 = **PASS_BLOCKED**, 7/7 clean.
 - I157: GitHub-hosted `free_tier_ci` = **SUPPORT_TESTING_ONLY**.
-- I158: no usable local model/GPU interface observed in this environment.
+- I158: no usable local model/GPU interface observed in the current execution environment.
 - I159–I166: portable owned-PC measurement/materialization gates; real user-PC evidence still required.
-- I167: real owned-PC evidence -> Router resource bridge.
-- I168: only 7/14 I050 facts can be honestly derived from measured/resource evidence.
+- I167: accepted real owned-PC evidence -> Router resource facts.
+- I168: only seven I050 facts can be honestly derived from measured/resource evidence.
 - I169: strict readiness before exact I050; declarations are not relabelled reproducible.
 - I170: five interface controls + two owner/accounting controls.
 - I171: production interface proof must bind the exact task executor source closure, task family and acceptance contract.
-- I172: review-only owned-PC hybrid boundary; declarations allowed only for the two accounting facts; no I050/I123 change.
-- I173: concrete deterministic dry-run executor `structured_json_normalization_v1` with machine-checkable acceptance criteria. Current bound blob: `29485940ac92c26616a9b60ee9e309110a4fbe62`.
-- I174: exact-source AST/interface proof bound only to I173; current blob `569ec58988abdfa055cd172358a39ed88e36e5f3`.
-- I175: binds I174 through I171 `production_task_executor` scope and exposes only the five interface facts as `system_probe`.
-- I176: comparator-only hypothetical owned-PC accounting exception; **no patch applied**.
-- I177: fail-closed assembler combining future real I168 evidence + exact I175 interface facts + exactly two truthful accounting records, then calling current I169. I177 never executes I050/I066/I123.
+- I172/I176: review/comparator only; no I050/I123 change.
+- I173: deterministic dry-run executor `structured_json_normalization_v1` with machine-checkable acceptance criteria.
+- I174/I175: exact-source interface proof + production-scope binding.
+- I177: fail-closed assembler combining future real I168 evidence + exact I175 interface facts + exactly two truthful accounting records, then calling current I169.
+- I178: exact source-tree/input handoff validator.
+- I179: one-command local chain through I177/I169; never executes I050/I066/I123.
+- I180: blank NON_EVIDENCE templates, concise handoff package and source-drift checks.
+- I181: inert local cumulative-energy-interface inventory; it never reads energy.
+- I182: fail-closed bridge for genuine readings from an already-available external whole-system cumulative meter when no suitable built-in counter exists.
 
 ## Current control chain
-`I113 exact runtime PASS_BLOCKED -> Resource/Execution Router evidence ladder -> I161/I162/I163/I164/I165/I166 real user-PC materialization -> I167 -> I168 -> I173/I174/I175 production interface proof -> I177 -> I169 -> exact I050 -> I066 -> I123 -> conservative economics/portfolio/readiness -> separately authorized bounded observation -> economic-test packet`.
+`I113 exact runtime PASS_BLOCKED -> Resource/Execution Router evidence ladder -> I161/I162/I163/I164/I165/I166 real user-PC materialization -> I167 -> I168 -> I173/I174 -> I175/I171 -> I181 local-counter preflight OR I182 external-meter bridge -> I180 package -> I178/I179 -> I177/I169 -> exact I050 -> I066 -> I123 -> conservative economics/portfolio/readiness -> separately authorized bounded observation -> economic-test packet`.
 
-I170/I172/I176 remain policy review/control branches only.
+## Latest result: I182
+I182 removes a distinct measurement-path blocker without fabricating evidence. It accepts only caller-supplied cumulative before/after readings from an already-available external physical meter, supports `joule`, `Wh` and `kWh`, and emits only the four joule-shaped energy fields already expected by I166/I162.
 
-## Key current result
-Repository-side evidence plumbing is no longer the main blocker. I177 can assemble the complete seven-control set without copying Router defaults or inventing accounting facts.
+Promotion requires:
+- whole-system AC-input scope;
+- exclusive PC load during the measurement window;
+- same cumulative counter for before and after;
+- positive task count;
+- real non-placeholder/non-estimated source/session references plus source digest;
+- strictly positive measurable energy delta.
 
-If accounting evidence is `user_declared`, I177 can reach only `ASSEMBLED_DECLARED_ACCOUNTING_BOUNDARY`; current strict I123 remains blocked. If accounting evidence is genuinely reproducible under current source classes, I177 may reach `ASSEMBLED_READY_FOR_EXACT_I050`, which permits only a later exact I050 attempt. I066/I123 still remain later gates.
+Component-only/shared-load/instantaneous-power/reset-wrap/zero-delta sessions fail closed. I182 never reads or purchases hardware and never fills tariff, availability, opportunity cost, accounting or market facts.
+
+Current I182 blobs:
+- module `eab56be15068a67fa893e047b3d329ea83900148`
+- tests `5690c6b754b64fc7d511a15ec691a38a9aafee20`
+
+Seven focused tests are authored. Exact raw Git materialization from the current host was blocked by DNS to `raw.githubusercontent.com`, so no exact-local pytest PASS is claimed and no CI was dispatched merely to obtain one.
 
 ## Real remaining blockers
-- No genuine I166 packet from the actual owned PC.
-- Availability, trustworthy energy readings if available, applicable tariff and opportunity-cost provenance are not materialized.
-- Exact I173/I174/I175 dependency materialization/execution from current Git bytes remains pending where feasible.
+- I181 has not been run on the actual owned PC, so built-in cumulative-counter availability is unknown.
+- No genuine I166 packet from the actual owned PC exists.
+- Availability, trustworthy energy, applicable tariff and opportunity-cost provenance are not materialized.
+- If no local counter exists, I182 still requires a genuine already-available whole-system cumulative external meter; it does not authorize purchasing one.
 - The two accounting facts need truthful explicit provenance.
+- If accounting remains `user_declared`, current strict I050/I123 does not promote it.
+- Exact I050/I066 remain later evidence gates.
+- Task payout, platform/payment fees, retries, maintenance, acceptance/dispute/nonpayment economics remain unknown until a separately authorized real observation/test path exists.
 - Any future real market task must independently demonstrate compatibility with I173 acceptance criteria.
-- Task payout, fees, retries, maintenance, acceptance/dispute/nonpayment economics remain unknown until a separately authorized real observation/test path exists.
-- PayanAgent geography/provider-access evidence remains unresolved; do not repeat broad searches without new first-party material.
+- PayanAgent geography/provider-access public evidence remains unresolved; do not repeat broad searches without new first-party material.
 
 ## Immediate next broad run
-Prefer repository-side `I178`: create an inert machine-readable **real-run manifest/blocker validator** for the actual I166 -> I168 -> I177 path. It should enumerate exact required artifacts/source identities, distinguish values that must be measured vs explicitly supplied, reject placeholders, and output a blocker report. It must not auto-fill energy, tariff, availability, accounting, opportunity cost or market facts.
+The next genuine forward step is on the actual owned PC:
+1. run I181;
+2. use a validated local cumulative counter if present;
+3. otherwise use I182 only if a trustworthy whole-system cumulative external meter is already available;
+4. supply genuine availability, applicable tariff, opportunity-cost and accounting provenance;
+5. run exact I178 then exact I179 with explicit ownership confirmation and explicit UTC `observed_at`.
 
-If exact local byte materialization is possible in the current runtime, also verify the current I173 -> I174 -> I175 path without dispatching CI solely for a green result.
+If neither measurement route exists, keep energy blocked. Do not estimate energy and do not purchase hardware without separate authorization.
 
-The real forward path stays: actual user-PC I166/I165 -> I167 -> I168 -> exact I175 proof -> truthful accounting -> I177 -> I169 -> exact I050 -> I066 -> I123.
+Until a real I181/I182/I179 result exists, avoid repository layers that merely repackage the same missing evidence. Repository-side work should only proceed for a newly identified distinct blocker.
 
-If no trustworthy joule counter exists, keep energy blocked rather than estimate it.
-
-Do not apply any I050/I123 hybrid patch unless a genuine assembled bundle reaches exactly the two accounting declarations as the only source-class blocker. Rebind I176 to then-current sources before any review/change.
+Do not apply any I050/I123 hybrid patch unless a genuine I179/I177 result reaches exactly the two accounting declarations as the only source-class blocker; rebind I176 to then-current sources first.
 
 ## Resource / Execution Router rules
 Deterministic/local filtering first; AI only when needed. Compare marginal + fixed/sunk economics, quota/capacity, latency, reliability, quality, parallelism, rate limits, energy, API/model costs, retries, maintenance, marketplace/payment fees, payment/acceptance risk and opportunity cost. Subscription capabilities are fixed/sunk limited support, not a free unlimited API.
