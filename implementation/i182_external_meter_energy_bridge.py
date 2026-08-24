@@ -9,9 +9,10 @@ by I166/I162.
 
 A promotable bridge requires whole-system AC-input scope, an exclusive PC load during
 the measurement window, the same cumulative counter for before/after readings, a
-positive task count, explicit real provenance and a source-content digest. Component-
-only meters, instantaneous power, inferred/estimated readings, missing provenance and
-counter reset/wrap remain blocked.
+positive measurable energy delta, a positive task count, explicit real provenance and
+a source-content digest. Component-only meters, instantaneous power, inferred/estimated
+readings, missing provenance, counter reset/wrap and zero-resolution sessions remain
+blocked.
 
 No network, credentials, subprocess, package install, privilege escalation, CI,
 account creation, hardware purchase, spend, market action or value movement occurs.
@@ -119,13 +120,17 @@ def bridge_external_meter(session: ExternalMeterSession) -> BridgeResult:
 
     before = session.reading_before
     after = session.reading_after
-    if isinstance(before, bool) or not isinstance(before, (int, float)) or float(before) < 0:
+    numeric_before = isinstance(before, (int, float)) and not isinstance(before, bool)
+    numeric_after = isinstance(after, (int, float)) and not isinstance(after, bool)
+    if not numeric_before or float(before) < 0:
         errors.append("invalid_reading_before")
-    if isinstance(after, bool) or not isinstance(after, (int, float)) or float(after) < 0:
+    if not numeric_after or float(after) < 0:
         errors.append("invalid_reading_after")
-    if isinstance(before, (int, float)) and not isinstance(before, bool) and isinstance(after, (int, float)) and not isinstance(after, bool):
+    if numeric_before and numeric_after:
         if float(after) < float(before):
             errors.append("meter_counter_wrap_reset_or_negative_delta")
+        elif float(after) == float(before):
+            errors.append("positive_measurable_energy_delta_required")
     if isinstance(session.task_count, bool) or not isinstance(session.task_count, int) or session.task_count <= 0:
         errors.append("positive_task_count_required")
 
