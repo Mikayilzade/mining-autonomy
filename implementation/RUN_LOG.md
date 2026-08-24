@@ -55,4 +55,12 @@ No API calls, credentials, accounts, CI dispatch, infrastructure rental, task ac
 
 Risks/blockers: genuine local/owned-PC resource measurements absent; external API live materialization authorization absent; VPS spend authorization absent; current measured production route absent; PayanAgent geography/access evidence absent; exact bounded-observation authorization absent.
 
-Next: advance I138 experiment-readiness/control using I156–I160 and emit a fail-closed boundary separating autonomous preparation from user-PC measurement, credential, spend/infrastructure, source-geography and bounded-observation authorization gates. Do not reopen discovery.
+## I161 — 2026-08-24
+Status: **completed fail-closed readiness checkpoint**
+Stage: experiment boundary after I156–I160
+
+Added `i161_experiment_boundary.py` and `RUN_I161_EXPERIMENT_BOUNDARY.md`. Consolidated five non-substitutable external boundaries: user-PC measurement, external API credentials/live measurement authorization, VPS spend/infrastructure authorization, PayanAgent provider-geography evidence, and exact bounded-observation authorization.
+
+I161 preserves I156 runtime as a separate satisfied regression fact and verifies I160 backend classifications have not drifted. It does not allow runtime evidence to substitute for a measured positive route, geography eligibility or observation authorization. Current default state: **FAIL_CLOSED_EXTERNAL_BOUNDARIES**; current measured positive conservative route remains absent.
+
+Next inert packet: prepare a portable user-PC measurement procedure around I159/I129. Do not claim measurements until produced on the user's machine; do not substitute synthetic economics.
