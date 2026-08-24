@@ -78,3 +78,21 @@ Focused local verification: **4 passed**. Test fixtures are not claims about the
 Risks/blockers: user-PC execution has not happened; trustworthy local joule counter may be unavailable; tariff/availability/opportunity cost need explicit provenance; measured positive route, PayanAgent geography and exact bounded-observation authorization remain absent.
 
 Next: prepare a minimal deterministic benchmark/session wrapper that can feed I162 locally without network or paid installs. Keep energy/tariff/availability/opportunity cost external when the OS cannot measure them; do not reopen discovery.
+
+## I163 — 2026-08-24
+Status: **completed preparation checkpoint; test execution pending exact local checkout**
+Stage: user-PC deterministic benchmark/session wrapper
+
+Added `i163_user_pc_benchmark_session.py`, focused tests, and `RUN_I163_USER_PC_BENCHMARK_SESSION.md`.
+
+The wrapper reuses the fixed local JSON-transform fixture and measures quality acceptance probability, latency, reliability and safe parallelism actually exercised during the session. Python-visible logical CPU count only bounds candidate levels and is never substituted for measured capacity. A concurrency level is promoted only when every attempted work unit succeeds and matches the exact expected output. The session emits a hash-bound measurement-environment reference and an I162-compatible benchmark projection.
+
+Availability, joule/energy readings, electricity tariff and opportunity cost remain explicit external facts and are intentionally not inferred. Ownership confirmation alone cannot complete the I159/I162 route while those facts are missing.
+
+Focused tests were authored for concurrency bounds, retained external blockers, ownership-without-economics and invalid parameters. A direct fresh clone was attempted only to execute these local tests, but the execution container could not resolve `github.com`. No CI workflow was dispatched, so the tests are **not claimed as executed/passed in this run**.
+
+No production market/API request, credentials, downloads/paid installs, CI dispatch, account creation, infrastructure rental, task acceptance/submission, spend, settlement or value movement occurred.
+
+Risks/blockers: real user-PC execution absent; trustworthy energy counter may be unavailable; availability/tariff/opportunity cost need explicit provenance; current measured positive route, PayanAgent geography/access evidence and exact bounded-observation authorization remain absent.
+
+Next: run I163 focused tests in an exact source-bound local checkout, then execute I163 on the user-owned PC with explicit ownership confirmation. Feed its benchmark/session metrics into I162/I159 and separately add only genuinely observed availability, energy/tariff and opportunity-cost evidence. Do not estimate missing facts or reopen discovery.
