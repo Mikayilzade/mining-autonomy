@@ -6,51 +6,65 @@ Do not reconstruct this project from chat memory. Read repository state first.
 Read `START_HERE.md`, `STATUS.md`, `METHODOLOGY.md`, `HANDOFF.md`, `RUN_LOG.md`, `CATALOG.md`, `implementation/RUN_LOG.md`, and latest files named in `STATUS.md`.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation through **I172 COMPLETE as scoped repository-side checkpoints**. Project: **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation through **I177 COMPLETE as scoped repository-side checkpoints**. Project: **IMPLEMENTATION IN PROGRESS**.
 
-Latest broad stages:
+## Latest chain
 - I156: exact runtime chain; I113 = **PASS_BLOCKED**, 7/7 clean.
 - I157: GitHub-hosted `free_tier_ci` = **SUPPORT_TESTING_ONLY**.
 - I158: no usable local model/GPU interface observed in this environment.
-- I159–I166: portable owned-PC measurement/materialization/evidence gates. Real user-PC measurements still required.
-- I167: fail-closed bridge from future real I166 evidence into Router-shaped resource facts; no production promotion.
-- I168: maps only 7/14 I050 parameters that real I166/I167 evidence can honestly support. Synthetic Router defaults remain forbidden as evidence.
-- I169: readiness gate before exact I050/I066; `user_declared` facts are not relabelled `measured_reproducible`.
-- I170: five remaining controls are exact-interface facts; two are owner/accounting facts (`fixed_monthly_cost_usd`, `sunk_or_already_committed`).
-- I171: benchmark evidence is scope-bound. I163 is `benchmark_only`; it cannot prove controls for an unknown future paid-task executor. Production interface evidence needs an exact task executor source closure + task family + acceptance contract.
-- I172: review-only `owned_pc` hybrid evidence contract. `user_declared` is allowed only for the two accounting facts. Every other I050 critical parameter stays reproducible. Contract cannot widen another backend, consume/create credentials/spend/infrastructure authorization, modify I050/I123, or enable production routing.
+- I159–I166: portable owned-PC measurement/materialization gates; real user-PC evidence still required.
+- I167: real owned-PC evidence -> Router resource bridge.
+- I168: only 7/14 I050 facts can be honestly derived from measured/resource evidence.
+- I169: strict readiness before exact I050; declarations are not relabelled reproducible.
+- I170: five interface controls + two owner/accounting controls.
+- I171: production interface proof must bind the exact task executor source closure, task family and acceptance contract.
+- I172: review-only owned-PC hybrid boundary; declarations allowed only for the two accounting facts; no I050/I123 change.
+- I173: concrete deterministic dry-run executor `structured_json_normalization_v1` with machine-checkable acceptance criteria. Current bound blob: `29485940ac92c26616a9b60ee9e309110a4fbe62`.
+- I174: exact-source AST/interface proof bound only to I173; current blob `569ec58988abdfa055cd172358a39ed88e36e5f3`.
+- I175: binds I174 through I171 `production_task_executor` scope and exposes only the five interface facts as `system_probe`.
+- I176: comparator-only hypothetical owned-PC accounting exception; **no patch applied**.
+- I177: fail-closed assembler combining future real I168 evidence + exact I175 interface facts + exactly two truthful accounting records, then calling current I169. I177 never executes I050/I066/I123.
 
 ## Current control chain
-`I113 exact runtime PASS_BLOCKED -> Resource/Execution Router evidence ladder -> I161/I162/I163/I164/I165/I166 real user-PC materialization -> I167 Router bridge -> I168 partial I050 evidence -> I170 source policy -> I171 production-executor scope binding -> I172 hybrid review boundary -> I169 readiness -> exact I050 -> I066 -> I123 -> I130/I131/I133 conservative economics -> I136/I137/I138 readiness -> I142/I145/I148 source evidence -> I143 -> I140 -> I141 economic-test packet`.
+`I113 exact runtime PASS_BLOCKED -> Resource/Execution Router evidence ladder -> I161/I162/I163/I164/I165/I166 real user-PC materialization -> I167 -> I168 -> I173/I174/I175 production interface proof -> I177 -> I169 -> exact I050 -> I066 -> I123 -> conservative economics/portfolio/readiness -> separately authorized bounded observation -> economic-test packet`.
 
-## Runtime/resource result
-`python_local` still lacks trustworthy measured energy + tariff provenance. `free_tier_ci` remains support/testing-only. `local_model` has no usable interface in this runtime. `subscription_assistant` is support-only, not a free autonomous API. External APIs need separate credential/live-measurement authorization. Future VPS needs separate spend/infrastructure authorization.
+I170/I172/I176 remain policy review/control branches only.
 
-For `owned_pc`, repository-side evidence plumbing is now deep enough to prevent synthetic promotion, but no real user-PC evidence packet exists. Real availability, benchmark metrics, energy-counter readings, applicable tariff and opportunity cost must be genuinely produced/provided with provenance.
+## Key current result
+Repository-side evidence plumbing is no longer the main blocker. I177 can assemble the complete seven-control set without copying Router defaults or inventing accounting facts.
 
-I168 can map only: availability, programmatic access, electricity per task, latency, reliability, quality and measured parallelism. The five interface controls must be proved against the exact future production executor. The two accounting controls cannot be faked as machine measurements.
+If accounting evidence is `user_declared`, I177 can reach only `ASSEMBLED_DECLARED_ACCOUNTING_BOUNDARY`; current strict I123 remains blocked. If accounting evidence is genuinely reproducible under current source classes, I177 may reach `ASSEMBLED_READY_FOR_EXACT_I050`, which permits only a later exact I050 attempt. I066/I123 still remain later gates.
 
-I172 is **review-only**. Current I050/I123 semantics remain unchanged and no hybrid exception has been applied.
-
-## Source result
-PayanAgent public-doc geography remains converged at `WAIT_FOR_POLICY_CONTACT_OR_SEPARATELY_AUTHORIZED_LOCAL_ACCESS`. Do not repeat broad geography searches unless new first-party material appears. No production PayanAgent task-list/receipt GET has occurred.
+## Real remaining blockers
+- No genuine I166 packet from the actual owned PC.
+- Availability, trustworthy energy readings if available, applicable tariff and opportunity-cost provenance are not materialized.
+- Exact I173/I174/I175 dependency materialization/execution from current Git bytes remains pending where feasible.
+- The two accounting facts need truthful explicit provenance.
+- Any future real market task must independently demonstrate compatibility with I173 acceptance criteria.
+- Task payout, fees, retries, maintenance, acceptance/dispute/nonpayment economics remain unknown until a separately authorized real observation/test path exists.
+- PayanAgent geography/provider-access evidence remains unresolved; do not repeat broad searches without new first-party material.
 
 ## Immediate next broad run
-Build/select one concrete deterministic offline/dry-run executor for a permitted task family already represented in the implementation architecture. Give it machine-checkable acceptance criteria, bind the complete Git source closure and acceptance-contract identity through I171, and only then prepare reproducible evidence for the five I170 interface controls.
+Prefer repository-side `I178`: create an inert machine-readable **real-run manifest/blocker validator** for the actual I166 -> I168 -> I177 path. It should enumerate exact required artifacts/source identities, distinguish values that must be measured vs explicitly supplied, reject placeholders, and output a blocker report. It must not auto-fill energy, tariff, availability, accounting, opportunity cost or market facts.
 
-Do not call a production market merely to obtain a task. Do not reuse I163 benchmark-only evidence as production-executor evidence.
+If exact local byte materialization is possible in the current runtime, also verify the current I173 -> I174 -> I175 path without dispatching CI solely for a green result.
 
-Real forward path still requires I166/I165 on the actual user-owned PC with genuine provenance-bound facts, then I167 -> I168 -> I169 -> exact I050/I066. If no trustworthy joule counter exists, keep energy blocked rather than estimating it.
+The real forward path stays: actual user-PC I166/I165 -> I167 -> I168 -> exact I175 proof -> truthful accounting -> I177 -> I169 -> exact I050 -> I066 -> I123.
 
-If the accounting facts genuinely remain `user_declared`, use I172 only as the reviewed design boundary. Any future patch must remain `owned_pc`-only and prove it cannot widen another backend/source/authorization gate. Do not apply a production policy exception prematurely.
+If no trustworthy joule counter exists, keep energy blocked rather than estimate it.
 
-## Hard/resource boundary
+Do not apply any I050/I123 hybrid patch unless a genuine assembled bundle reaches exactly the two accounting declarations as the only source-class blocker. Rebind I176 to then-current sources before any review/change.
+
+## Resource / Execution Router rules
+Deterministic/local filtering first; AI only when needed. Compare marginal + fixed/sunk economics, quota/capacity, latency, reliability, quality, parallelism, rate limits, energy, API/model costs, retries, maintenance, marketplace/payment fees, payment/acceptance risk and opportunity cost. Subscription capabilities are fixed/sunk limited support, not a free unlimited API.
+
+Sub-hour watchers may exist as separate Python/webhook/WebSocket/cron components only within provider/API/ToS limits: cheap polling -> local dedupe/filter -> selective AI. Do not bypass rate limits or product limits.
+
+## Hard boundary
 No spend, KYC, wallets, paid work acceptance, publication, settlement, real credentials, registration, CAPTCHA/geofence/rate-limit/product-limit bypass or value movement without separate explicit authorization.
 
-Permitted future sub-hour watchers use cheap polling/webhook/WebSocket -> local dedupe/filter -> selective AI only within provider/API/ToS limits. Fixed/sunk and marginal cost, energy, quota/opportunity cost, API/model fees, retries, maintenance, watcher overhead and payment risk remain separate.
-
 ## Git/CI
-Keep automatic runtime triggers disabled. GitHub Actions remains support/testing-only for this project; do not dispatch it as a monetization compute backend.
+Automatic runtime triggers remain disabled. GitHub Actions is support/testing-only; do not dispatch CI merely for status or use it as a monetization compute backend.
 
 ## Completion
-Implementation remains incomplete until a permitted real test demonstrates positive economics or reasonable candidates are exhausted and confirmed by control passes.
+Implementation remains incomplete until a permitted real test demonstrates confirmed positive economics or reasonable candidates are exhausted and confirmed by control passes.
