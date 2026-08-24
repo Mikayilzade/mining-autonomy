@@ -116,3 +116,19 @@ Focused tests were authored for null template semantics, fixture provenance reje
 No production market/API request, credentials, downloads/paid installs, CI dispatch, account creation, paid infrastructure, task acceptance/submission, spend, settlement, payment or value movement occurred.
 
 Next: execute I166/I165 on the actual user-owned PC with genuine provenance-bound external facts. If I162 reaches `USER_PC_PACKET_COMPLETE`, feed that packet into I050/I066/I123 -> I130/I131/I133 -> I136/I138 conservative economics/readiness. Otherwise preserve the missing fact as an explicit blocker and do not reopen discovery.
+
+## I167 — 2026-08-24
+Status: **completed repository-side bridge checkpoint**
+Stage: real owned-PC evidence -> Resource / Execution Router facts
+
+Added `i167_owned_pc_router_bridge.py`, focused tests, and `RUN_I167_OWNED_PC_ROUTER_BRIDGE.md`.
+
+I167 accepts only a complete I166 -> I165 -> I162 -> I159 chain and maps only measured owned-PC facts into Router-shaped fields: availability, latency, reliability, quality, parallelism, energy-derived electricity cost and latency-bound opportunity cost. It independently rejects nonproduction provenance again.
+
+The bridge deliberately stops before production promotion: its I123-shaped evidence candidate remains `current_reproducible=false` and `policy_evidence_current=false` until the I050/I066 attestation path binds source and policy state. Real payout/acceptance criteria, platform/payment fees, dispute/nonpayment/acceptance risk, retry/failure cost, maintenance economics, market policy/geography and observation/value-moving authorization remain explicit blockers.
+
+Focused local verification from exact authored bytes: **3 passed**. Repository module/test Git blob SHAs matched local authored bytes. The separate I166 exact-source test blocker remains open because this runtime still cannot clone/resolve `github.com`; no CI was dispatched solely for testing.
+
+No production market/API request, credentials, accounts, CI dispatch, paid infrastructure, task action, spend or value movement occurred.
+
+Next: when real I166 user-PC evidence exists, feed it through I167 and then bind the candidate through I050/I066 before I123 promotion. Until then, only prepare the I167 -> I050/I066 adapter contract; do not invent resource or market evidence.
