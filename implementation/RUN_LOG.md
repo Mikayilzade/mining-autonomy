@@ -64,3 +64,17 @@ Added `i161_experiment_boundary.py` and `RUN_I161_EXPERIMENT_BOUNDARY.md`. Conso
 I161 preserves I156 runtime as a separate satisfied regression fact and verifies I160 backend classifications have not drifted. It does not allow runtime evidence to substitute for a measured positive route, geography eligibility or observation authorization. Current default state: **FAIL_CLOSED_EXTERNAL_BOUNDARIES**; current measured positive conservative route remains absent.
 
 Next inert packet: prepare a portable user-PC measurement procedure around I159/I129. Do not claim measurements until produced on the user's machine; do not substitute synthetic economics.
+
+## I162 — 2026-08-24
+Status: **completed fail-closed preparation checkpoint**
+Stage: portable user-PC measurement procedure
+
+Added `i162_user_pc_measurement_procedure.py`, focused tests, and `RUN_I162_USER_PC_MEASUREMENT_PROCEDURE.md`. The harness binds Python-visible local identity to an explicit ownership confirmation and delegates all economically material facts to provenance-bound inputs: benchmark quality/latency/reliability/parallelism, observed availability, before/after joule counter readings, explicit tariff, and opportunity cost.
+
+Energy is derived only from explicit counter deltas; partial/reset/missing counters fail closed. Synthetic energy/tariff, CPU-count-as-parallelism, one-run reliability, inferred 24/7 availability, and zero opportunity cost from sunk ownership/subscription are explicitly rejected substitutions. The resulting packet is evaluated by I159 and can be complete only when I159 says `production_evidence_ready=true`.
+
+Focused local verification: **4 passed**. Test fixtures are not claims about the user's PC or tariff. No network, credentials, downloads, CI dispatch, paid infrastructure, task action, spend or value movement occurred.
+
+Risks/blockers: user-PC execution has not happened; trustworthy local joule counter may be unavailable; tariff/availability/opportunity cost need explicit provenance; measured positive route, PayanAgent geography and exact bounded-observation authorization remain absent.
+
+Next: prepare a minimal deterministic benchmark/session wrapper that can feed I162 locally without network or paid installs. Keep energy/tariff/availability/opportunity cost external when the OS cannot measure them; do not reopen discovery.
