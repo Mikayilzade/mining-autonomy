@@ -80,7 +80,7 @@ Risks/blockers: user-PC execution has not happened; trustworthy local joule coun
 Next: prepare a minimal deterministic benchmark/session wrapper that can feed I162 locally without network or paid installs. Keep energy/tariff/availability/opportunity cost external when the OS cannot measure them; do not reopen discovery.
 
 ## I163 — 2026-08-24
-Status: **completed preparation checkpoint; test execution pending exact local checkout**
+Status: **completed preparation checkpoint; later test-closed by I164**
 Stage: user-PC deterministic benchmark/session wrapper
 
 Added `i163_user_pc_benchmark_session.py`, focused tests, and `RUN_I163_USER_PC_BENCHMARK_SESSION.md`.
@@ -89,10 +89,30 @@ The wrapper reuses the fixed local JSON-transform fixture and measures quality a
 
 Availability, joule/energy readings, electricity tariff and opportunity cost remain explicit external facts and are intentionally not inferred. Ownership confirmation alone cannot complete the I159/I162 route while those facts are missing.
 
-Focused tests were authored for concurrency bounds, retained external blockers, ownership-without-economics and invalid parameters. A direct fresh clone was attempted only to execute these local tests, but the execution container could not resolve `github.com`. No CI workflow was dispatched, so the tests are **not claimed as executed/passed in this run**.
-
 No production market/API request, credentials, downloads/paid installs, CI dispatch, account creation, infrastructure rental, task acceptance/submission, spend, settlement or value movement occurred.
 
-Risks/blockers: real user-PC execution absent; trustworthy energy counter may be unavailable; availability/tariff/opportunity cost need explicit provenance; current measured positive route, PayanAgent geography/access evidence and exact bounded-observation authorization remain absent.
+## I164–I165 — 2026-08-24
+Status: **completed source/test closure + materializer checkpoint**
+Stage: lightweight benchmark core and one-shot user-PC materialization
 
-Next: run I163 focused tests in an exact source-bound local checkout, then execute I163 on the user-owned PC with explicit ownership confirmation. Feed its benchmark/session metrics into I162/I159 and separately add only genuinely observed availability, energy/tariff and opportunity-cost evidence. Do not estimate missing facts or reopen discovery.
+I164 extracted the fixed deterministic benchmark primitives from the heavier calibration graph without changing benchmark identity or expected digest. Exact connector-materialized I159/I162/I163/I164 closure was verified by Git blob SHA and executed locally: **6 passed**.
+
+I165 added a one-shot local materializer that runs I163, imports benchmark fields only from that measured session, rejects external benchmark overrides, merges only explicit availability/energy/tariff/opportunity-cost fields, and feeds I162 using the same identity/environment binding. Combined exact-current I163/I164/I165 focused tests: **9 passed**.
+
+Unit-test `test-fixture:*` values prove control logic only and are not production evidence. No CI workflow was dispatched and no production/value-moving external action occurred.
+
+## I166 — 2026-08-24
+Status: **completed fail-closed preparation checkpoint; tests authored**
+Stage: real user-PC external-evidence gate
+
+Added `i166_user_pc_real_evidence_gate.py`, `test_i166_user_pc_real_evidence_gate.py`, and `RUN_I166_USER_PC_REAL_EVIDENCE_GATE.md`.
+
+I166 prevents I165's test/synthetic provenance from being accidentally promoted as real evidence. It requires explicit user-owned-PC confirmation; complete availability, energy-counter, tariff and opportunity-cost groups; real-looking non-placeholder provenance strings; valid availability/energy/cost ranges; and it rejects unsupported external fields. Its template is all-null and explicitly non-evidence.
+
+I166 performs no measurement itself and cannot prove that a provenance string is truthful. Real measurements must still be produced on the user's actual PC or from an applicable real source. If no trustworthy joule counter exists, energy remains blocked rather than estimated.
+
+Focused tests were authored for null template semantics, fixture provenance rejection, ownership confirmation, partial-group rejection, complete gate acceptance, and invalid ranges. No CI workflow was dispatched solely to obtain a result, so I166 tests are not claimed as passed in this checkpoint.
+
+No production market/API request, credentials, downloads/paid installs, CI dispatch, account creation, paid infrastructure, task acceptance/submission, spend, settlement, payment or value movement occurred.
+
+Next: execute I166/I165 on the actual user-owned PC with genuine provenance-bound external facts. If I162 reaches `USER_PC_PACKET_COMPLETE`, feed that packet into I050/I066/I123 -> I130/I131/I133 -> I136/I138 conservative economics/readiness. Otherwise preserve the missing fact as an explicit blocker and do not reopen discovery.
