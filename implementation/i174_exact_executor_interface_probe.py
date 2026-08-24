@@ -25,23 +25,15 @@ EXPECTED_ACCEPTANCE_CONTRACT_ID = "structured-json-normalization-acceptance-v1"
 EXPECTED_ROUTER_CAPABILITY = "transform"
 
 ALLOWED_IMPORT_ROOTS = frozenset({"__future__", "dataclasses", "hashlib", "json", "typing"})
-FORBIDDEN_CALL_NAMES = frozenset({
-    "open", "exec", "eval", "compile", "__import__", "input", "breakpoint",
-})
+FORBIDDEN_CALL_NAMES = frozenset({"open", "exec", "eval", "compile", "__import__", "input", "breakpoint"})
 FORBIDDEN_NAME_ROOTS = frozenset({
     "socket", "requests", "urllib", "http", "subprocess", "os", "pathlib", "shutil",
     "ctypes", "importlib", "ftplib", "smtplib", "ssl", "asyncio", "multiprocessing",
 })
 REQUIRED_FALSE_DEFAULTS = (
-    "network_enabled",
-    "credentials_used",
-    "provider_account_used",
-    "paid_service_used",
-    "external_quota_used",
-    "external_rate_limit_used",
-    "task_acceptance_or_submission",
-    "spend_or_value_movement",
-    "production_execution_enabled",
+    "network_enabled", "credentials_used", "provider_account_used", "paid_service_used",
+    "external_quota_used", "external_rate_limit_used", "task_acceptance_or_submission",
+    "spend_or_value_movement", "production_execution_enabled",
 )
 
 
@@ -112,7 +104,8 @@ def inspect_source(source_text: str, *, expected_git_blob_sha: str = TARGET_GIT_
     source_bytes = source_text.encode("utf-8")
     actual_blob = git_blob_sha(source_bytes)
     source_digest = sha256(source_bytes).hexdigest()
-    if actual_blob != expected_git_blob_sha or expected_git_blob_sha != TARGET_GIT_BLOB_SHA:
+    exact_target_blob = actual_blob == expected_git_blob_sha == TARGET_GIT_BLOB_SHA
+    if not exact_target_blob:
         errors.append("target_git_blob_sha_mismatch")
 
     try:
@@ -139,9 +132,8 @@ def inspect_source(source_text: str, *, expected_git_blob_sha: str = TARGET_GIT_
             root = (node.module or "").split(".", 1)[0]
             if root not in ALLOWED_IMPORT_ROOTS:
                 errors.append(f"nonwhitelisted_import:{root}")
-        elif isinstance(node, ast.Call):
-            if isinstance(node.func, ast.Name) and node.func.id in FORBIDDEN_CALL_NAMES:
-                errors.append(f"forbidden_call:{node.func.id}")
+        elif isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id in FORBIDDEN_CALL_NAMES:
+            errors.append(f"forbidden_call:{node.func.id}")
         elif isinstance(node, ast.Name) and node.id in FORBIDDEN_NAME_ROOTS:
             errors.append(f"forbidden_name_root:{node.id}")
 
@@ -161,16 +153,14 @@ def inspect_source(source_text: str, *, expected_git_blob_sha: str = TARGET_GIT_
         if name not in false_defaults:
             errors.append(f"inert_default_not_false:{name}")
 
-    # I173 is intentionally one self-contained production-shaped source file.
-    # Because all imports are whitelisted pure-library dependencies and there are no
-    # local-module imports, the repository source closure for executor logic is one blob.
-    source_closure_complete = not any(error.startswith("nonwhitelisted_import:") for error in errors)
-    errors = tuple(sorted(set(errors)))
-    proved = not errors and source_closure_complete
+    import_safe = not any(error.startswith("nonwhitelisted_import:") for error in errors)
+    source_closure_complete = bool(exact_target_blob and import_safe)
+    errors_tuple = tuple(sorted(set(errors)))
+    proved = not errors_tuple and source_closure_complete
 
     return InterfaceProof(
         state="EXACT_EXECUTOR_INTERFACE_PROVED" if proved else "PASS_BLOCKED",
-        errors=errors,
+        errors=errors_tuple,
         target_path=TARGET_PATH,
         git_blob_sha=actual_blob,
         source_sha256=source_digest,
@@ -197,12 +187,10 @@ def payload(result: InterfaceProof) -> dict[str, Any]:
     body.update({
         "schema": SCHEMA,
         "run": "I174",
-        "interface_parameters_proved": (
-            [
-                "requires_credentials", "requires_paid_account", "requires_new_spend",
-                "quota_units_remaining", "rate_limit_per_minute",
-            ] if result.state == "EXACT_EXECUTOR_INTERFACE_PROVED" else []
-        ),
+        "interface_parameters_proved": ([
+            "requires_credentials", "requires_paid_account", "requires_new_spend",
+            "quota_units_remaining", "rate_limit_per_minute",
+        ] if result.state == "EXACT_EXECUTOR_INTERFACE_PROVED" else []),
         "scope_limit": "exact I173 Git blob only",
         "next_gate": (
             "Feed this exact-source proof into I171 with I173 as a production_task_executor scope. "
