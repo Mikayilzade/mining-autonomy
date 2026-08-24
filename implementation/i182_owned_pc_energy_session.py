@@ -10,8 +10,9 @@ market facts remain separate inputs.
 
 A non-root filesystem is treated as TEST_ONLY even when ownership confirmation is set,
 so fixture tests cannot be promoted as real evidence. Counter wrap/reset, zero delta,
-I173 source drift, rejected executor outputs, unreadable/non-I181 candidates and
-missing ownership confirmation all fail closed.
+I173/I181 source drift, rejected executor outputs, unreadable/non-I181 candidates and
+missing ownership confirmation all fail closed. The exact repository files and the
+actually imported Python modules must be the same files and match their bound Git blobs.
 
 No network, subprocess, credential, package install, elevation, CI, market action,
 paid infrastructure, spend, settlement, payment or value movement is performed.
@@ -31,6 +32,8 @@ import i181_local_energy_interface_inventory as i181
 SCHEMA = "mining-autonomy/i182-owned-pc-energy-session/v1"
 I173_PATH = "implementation/i173_structured_json_transform_executor.py"
 I173_BLOB_SHA = "29485940ac92c26616a9b60ee9e309110a4fbe62"
+I181_PATH = "implementation/i181_local_energy_interface_inventory.py"
+I181_BLOB_SHA = "b1dd8714d805d9ccefcab150889138eeffc94a08"
 MICROJOULES_PER_JOULE = 1_000_000.0
 DEFAULT_TASK_COUNT = 2000
 WORKLOAD_PAYLOAD = {
@@ -50,6 +53,7 @@ class EnergySessionResult:
     counter_path: str
     counter_kind: str | None
     executor_blob_sha: str | None
+    detector_blob_sha: str | None
     task_count: int
     successful_tasks: int
     energy_before_joules: float | None
@@ -86,17 +90,31 @@ def _read_microjoule_counter(path: Path) -> int:
     text = path.read_text(encoding="utf-8").strip()
     if not text or not text.isdigit():
         raise ValueError("counter_value_must_be_nonnegative_integer_microjoules")
-    value = int(text)
-    if value < 0:
-        raise ValueError("counter_value_negative")
-    return value
+    return int(text)
+
+
+def _bound_module_check(repo_root: Path, relative_path: str, expected_sha: str, module: Any, label: str) -> tuple[str | None, list[str]]:
+    errors: list[str] = []
+    repo_file = repo_root / relative_path
+    if not repo_file.is_file():
+        return None, [f"{label}_source_missing"]
+    actual = git_blob_sha(repo_file.read_bytes())
+    if actual != expected_sha:
+        errors.append(f"{label}_source_blob_mismatch")
+    imported = Path(str(getattr(module, "__file__", ""))).resolve()
+    if imported != repo_file.resolve():
+        errors.append(f"{label}_import_path_mismatch")
+    elif git_blob_sha(imported.read_bytes()) != expected_sha:
+        errors.append(f"{label}_imported_blob_mismatch")
+    return actual, errors
 
 
 def _blocked(
     *, counter_path: str, task_count: int, confirm_user_owned_pc: bool,
     test_only_root: bool, blockers: list[str], counter_kind: str | None = None,
-    executor_blob_sha: str | None = None, successful_tasks: int = 0,
-    before_j: float | None = None, after_j: float | None = None,
+    executor_blob_sha: str | None = None, detector_blob_sha: str | None = None,
+    successful_tasks: int = 0, before_j: float | None = None,
+    after_j: float | None = None,
 ) -> EnergySessionResult:
     return EnergySessionResult(
         state="PASS_BLOCKED",
@@ -104,6 +122,7 @@ def _blocked(
         counter_path=counter_path,
         counter_kind=counter_kind,
         executor_blob_sha=executor_blob_sha,
+        detector_blob_sha=detector_blob_sha,
         task_count=task_count,
         successful_tasks=successful_tasks,
         energy_before_joules=before_j,
@@ -132,14 +151,10 @@ def run_energy_session(
     if not confirm_user_owned_pc:
         blockers.append("explicit_user_owned_pc_confirmation_required")
 
-    executor_file = repo_root / I173_PATH
-    executor_blob: str | None = None
-    if not executor_file.is_file():
-        blockers.append("i173_source_missing")
-    else:
-        executor_blob = git_blob_sha(executor_file.read_bytes())
-        if executor_blob != I173_BLOB_SHA:
-            blockers.append("i173_source_blob_mismatch")
+    executor_blob, executor_errors = _bound_module_check(repo_root, I173_PATH, I173_BLOB_SHA, i173, "i173")
+    detector_blob, detector_errors = _bound_module_check(repo_root, I181_PATH, I181_BLOB_SHA, i181, "i181")
+    blockers.extend(executor_errors)
+    blockers.extend(detector_errors)
 
     inventory = i181.inventory_local_energy_interfaces(root=fs_root, system="Linux")
     candidate = next(
@@ -154,7 +169,7 @@ def run_energy_session(
             counter_path=counter_path, task_count=task_count,
             confirm_user_owned_pc=confirm_user_owned_pc, test_only_root=test_only_root,
             blockers=blockers, counter_kind=candidate.interface_kind if candidate else None,
-            executor_blob_sha=executor_blob,
+            executor_blob_sha=executor_blob, detector_blob_sha=detector_blob,
         )
 
     counter_file = fs_root / counter_path.lstrip("/")
@@ -166,6 +181,7 @@ def run_energy_session(
             confirm_user_owned_pc=confirm_user_owned_pc, test_only_root=test_only_root,
             blockers=[f"counter_before_read_failed:{type(exc).__name__}"],
             counter_kind=candidate.interface_kind, executor_blob_sha=executor_blob,
+            detector_blob_sha=detector_blob,
         )
 
     successful = 0
@@ -177,7 +193,7 @@ def run_energy_session(
                 confirm_user_owned_pc=confirm_user_owned_pc, test_only_root=test_only_root,
                 blockers=["i173_workload_acceptance_failed"],
                 counter_kind=candidate.interface_kind, executor_blob_sha=executor_blob,
-                successful_tasks=successful,
+                detector_blob_sha=detector_blob, successful_tasks=successful,
                 before_j=before_uj / MICROJOULES_PER_JOULE,
             )
         successful += 1
@@ -190,7 +206,7 @@ def run_energy_session(
             confirm_user_owned_pc=confirm_user_owned_pc, test_only_root=test_only_root,
             blockers=[f"counter_after_read_failed:{type(exc).__name__}"],
             counter_kind=candidate.interface_kind, executor_blob_sha=executor_blob,
-            successful_tasks=successful,
+            detector_blob_sha=detector_blob, successful_tasks=successful,
             before_j=before_uj / MICROJOULES_PER_JOULE,
         )
 
@@ -202,7 +218,8 @@ def run_energy_session(
             confirm_user_owned_pc=confirm_user_owned_pc, test_only_root=test_only_root,
             blockers=["counter_wrap_or_reset_detected_rerun_shorter_session"],
             counter_kind=candidate.interface_kind, executor_blob_sha=executor_blob,
-            successful_tasks=successful, before_j=before_j, after_j=after_j,
+            detector_blob_sha=detector_blob, successful_tasks=successful,
+            before_j=before_j, after_j=after_j,
         )
     delta_j = after_j - before_j
     if delta_j <= 0:
@@ -211,7 +228,8 @@ def run_energy_session(
             confirm_user_owned_pc=confirm_user_owned_pc, test_only_root=test_only_root,
             blockers=["zero_energy_delta_counter_resolution_insufficient"],
             counter_kind=candidate.interface_kind, executor_blob_sha=executor_blob,
-            successful_tasks=successful, before_j=before_j, after_j=after_j,
+            detector_blob_sha=detector_blob, successful_tasks=successful,
+            before_j=before_j, after_j=after_j,
         )
 
     kwh_per_task = delta_j / 3_600_000.0 / task_count
@@ -219,6 +237,7 @@ def run_energy_session(
         "counter_path": counter_path,
         "counter_kind": candidate.interface_kind,
         "counter_metadata": candidate.metadata,
+        "i181_blob_sha": detector_blob,
         "executor_blob_sha": executor_blob,
         "executor_id": i173.EXECUTOR_ID,
         "task_family": i173.TASK_FAMILY,
@@ -244,6 +263,7 @@ def run_energy_session(
         counter_path=counter_path,
         counter_kind=candidate.interface_kind,
         executor_blob_sha=executor_blob,
+        detector_blob_sha=detector_blob,
         task_count=task_count,
         successful_tasks=successful,
         energy_before_joules=before_j,
