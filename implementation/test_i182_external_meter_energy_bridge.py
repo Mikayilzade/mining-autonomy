@@ -77,6 +77,23 @@ def test_zero_delta_is_not_allowed_to_claim_zero_electricity_cost():
     assert result.i166_energy_fields_ready is False
 
 
+def test_non_finite_meter_readings_fail_closed():
+    for value in (float("nan"), float("inf"), float("-inf")):
+        before = i182.bridge_external_meter(_session(reading_before=value))
+        after = i182.bridge_external_meter(_session(reading_after=value))
+        assert before.state == "PASS_BLOCKED"
+        assert after.state == "PASS_BLOCKED"
+        assert "invalid_reading_before" in before.errors
+        assert "invalid_reading_after" in after.errors
+
+
+def test_unit_conversion_overflow_fails_closed():
+    result = i182.bridge_external_meter(_session(reading_unit="kwh", reading_before=1e308, reading_after=1.1e308))
+    assert result.state == "PASS_BLOCKED"
+    assert "converted_reading_before_not_finite" in result.errors
+    assert "converted_reading_after_not_finite" in result.errors
+
+
 def test_safety_flags_remain_inert():
     result = i182.bridge_external_meter(_session())
     assert result.network_enabled is False
