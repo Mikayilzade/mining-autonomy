@@ -71,7 +71,12 @@ def test_backend_cost_multiplication_overflow_fails_closed():
     ],
 )
 def test_nonfinite_capacity_probability_and_fixed_fields_fail_closed(field, value):
-    backend = replace(_backend(), fixed_monthly_cost_usd=1.0, allocation_basis_tasks_per_month=100.0, **{field: value})
+    base = replace(
+        _backend(),
+        fixed_monthly_cost_usd=1.0,
+        allocation_basis_tasks_per_month=100.0,
+    )
+    backend = replace(base, **{field: value})
     with pytest.raises(ValueError):
         rr.quote_backend(_task(), backend)
 
