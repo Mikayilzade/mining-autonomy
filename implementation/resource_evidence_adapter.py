@@ -8,6 +8,7 @@ movement occurs here.
 from __future__ import annotations
 
 from dataclasses import dataclass
+import math
 from typing import Any, Iterable, Mapping, Optional
 
 from resource_calibration_acquisition import CalibrationAcquisitionPlan, ProbeSummary
@@ -65,6 +66,16 @@ def _same_numeric(a: Any, b: Any) -> bool:
     if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
         return False
     return abs(float(a) - float(b)) <= 1e-9
+
+
+def _finite_nonboolean_number(value: Any, *, field: str) -> float:
+    """Normalize adapter arithmetic inputs through an explicit finite-number contract."""
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise ValueError(f"{field}_must_be_finite_number")
+    number = float(value)
+    if not math.isfinite(number):
+        raise ValueError(f"{field}_must_be_finite_number")
+    return number
 
 
 def _validate_probe_summary(plan: CalibrationAcquisitionPlan, summary: ProbeSummary) -> str:
@@ -179,15 +190,36 @@ def build_resource_evidence(
         requirement = requirements[parameter]
         if parameter in emitted:
             raise ValueError(f"duplicate_parameter_input:{parameter}")
-        if energy_measurement.energy_kwh_per_task < 0 or energy_measurement.tariff_usd_per_kwh < 0:
+
+        energy_kwh = _finite_nonboolean_number(
+            energy_measurement.energy_kwh_per_task,
+            field="energy_kwh_per_task",
+        )
+        tariff = _finite_nonboolean_number(
+            energy_measurement.tariff_usd_per_kwh,
+            field="tariff_usd_per_kwh",
+        )
+        if energy_kwh < 0 or tariff < 0:
             raise ValueError("energy_inputs_must_be_nonnegative")
+        if energy_kwh == 0:
+            raise ValueError("energy_kwh_per_task_must_be_positive")
         if not energy_measurement.source_ref.strip():
             raise ValueError("energy_source_ref_required")
         if not energy_measurement.source_content_digest or len(energy_measurement.source_content_digest) < 16:
             raise ValueError("energy_source_digest_required")
         if energy_measurement.max_age_seconds <= 0:
             raise ValueError("energy_max_age_must_be_positive")
-        value = round(float(energy_measurement.energy_kwh_per_task) * float(energy_measurement.tariff_usd_per_kwh), 12)
+
+        raw_value = energy_kwh * tariff
+        if not math.isfinite(raw_value):
+            raise ValueError("electricity_cost_must_be_finite")
+        value = round(raw_value, 12)
+        if not math.isfinite(value) or value <= 0:
+            # There is no separate zero-tariff provenance contract today. A zero
+            # product (including adapter-precision round-to-zero) must therefore
+            # remain blocked rather than masquerading as measured-local zero cost.
+            raise ValueError("electricity_cost_must_be_positive_at_adapter_precision")
+
         emitted[parameter] = make_evidence(
             evidence_id=_evidence_id("energy", parameter),
             backend_id=plan.backend_id,
