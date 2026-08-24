@@ -75,3 +75,27 @@ Added `i157_free_tier_ci_policy_gate.py`, `test_i157_free_tier_ci_policy_gate.py
 Risks/blockers: no current measured non-synthetic production execution route; `python_local` lacks genuine energy+tariff evidence in this environment; GitHub-hosted `free_tier_ci` is policy-ineligible for generic paid external work; PayanAgent geography/access and exact bounded-observation authorization remain unresolved.
 
 Next: advance I134/I137 to the existing `local_model` no-new-spend evidence branch. Detect only genuinely available local model/CPU/GPU interfaces and measure current quality/capacity/latency/reliability/energy/opportunity cost without downloads, credentials or spend. If not materializable, mark it exhausted and continue to `owned_pc`; do not reopen discovery.
+
+## I158 — 2026-08-24
+Status: **completed local evidence checkpoint**
+Stage: `local_model` no-spend evidence gate
+
+A local-only probe found no usable local model/GPU interface in the current execution environment. Added a fail-closed evidence gate requiring bound model/interface identity, programmatic access, measured quality/capacity/latency/reliability and measured energy with explicit tariff provenance. No model was downloaded or installed. Current state: **NO_LOCAL_MODEL_INTERFACE_OBSERVED**. This does not describe the user's physical PC.
+
+Next: advance the fallback ladder to `owned_pc` with a portable evidence-only packet; do not infer user hardware from this container.
+
+## I159 — 2026-08-24
+Status: **completed portable evidence checkpoint**
+Stage: `owned_pc` autonomous measurement boundary
+
+Added `i159_owned_pc_evidence_packet.py` and focused tests. The gate requires user-PC-bound provenance for hardware/OS/interface identity, deterministic programmatic access, benchmark identity, measured acceptance quality, latency, reliability, parallelism, availability, per-task energy, electricity tariff and opportunity cost. A complete packet promotes evidence only; execution remains disabled pending downstream economics and authorization.
+
+Current autonomous state: **LOCAL_MATERIALIZATION_REQUIRED** because this environment has no trustworthy measurement channel to the user's physical PC. The execution container is explicitly not accepted as owned-PC evidence. Focused local verification: **4 passed**.
+
+No production market request, credential use, CI dispatch, downloads, task acceptance, paid infrastructure, spend or value movement occurred.
+
+Files: `i159_owned_pc_evidence_packet.py`, `test_i159_owned_pc_evidence_packet.py`, `RUN_I159_OWNED_PC_EVIDENCE_PACKET.md`, `STATUS.md`, `HANDOFF.md`, `implementation/RUN_LOG.md`.
+
+Risks/blockers: `owned_pc` requires locally generated measurement provenance; no current measured non-synthetic production route exists; PayanAgent geography/access and exact bounded-observation authorization remain unresolved.
+
+Next: run a control pass over the remaining existing backend families (`subscription_assistant`, `cheap_external_api`, `strong_external_api`, `future_paid_vps`) and classify support-only versus authorization-gated/evidence-preparable paths without credentials or spend. Do not reopen discovery.
