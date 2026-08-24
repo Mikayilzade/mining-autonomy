@@ -21,7 +21,7 @@ from time import perf_counter
 from typing import Any
 
 import i162_user_pc_measurement_procedure as i162
-from python_local_calibration_fixture import (
+from i164_fixed_benchmark_core import (
     BENCHMARK_ID,
     EXPECTED_OUTPUT,
     EXPECTED_OUTPUT_DIGEST,
