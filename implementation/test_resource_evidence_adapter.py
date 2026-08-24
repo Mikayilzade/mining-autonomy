@@ -1,3 +1,6 @@
+import math
+from datetime import datetime, timezone
+
 import pytest
 
 from resource_calibration_acquisition import ProbeObservation, build_local_no_spend_plan, evaluate_probe_transcript
@@ -8,7 +11,6 @@ from resource_evidence_adapter import (
     normalize_probe_summary_for_evidence,
 )
 from resource_profile_evidence import CRITICAL_PARAMETERS, attest_resource_profile
-from datetime import datetime, timezone
 
 
 def reference():
@@ -32,6 +34,17 @@ def decl(parameter, value, *, n=1):
         observed_at="2026-08-21T00:00:00+00:00",
         max_age_seconds=86400,
         source_ref=f"user-declaration:{n}:{parameter}",
+    )
+
+
+def energy_measurement(energy=0.05, tariff=0.12):
+    return EnergyMeasurement(
+        energy_kwh_per_task=energy,
+        tariff_usd_per_kwh=tariff,
+        observed_at="2026-08-21T00:00:00+00:00",
+        max_age_seconds=86400,
+        source_ref="meter+tariff:synthetic",
+        source_content_digest="b" * 64,
     )
 
 
@@ -70,15 +83,7 @@ def test_declarations_preserve_user_declared_kind_and_never_get_digest_fabricate
 
 def test_energy_measurement_derives_only_electricity_cost_with_measured_local_provenance():
     plan, probe = summary()
-    energy = EnergyMeasurement(
-        energy_kwh_per_task=0.05,
-        tariff_usd_per_kwh=0.12,
-        observed_at="2026-08-21T00:00:00+00:00",
-        max_age_seconds=86400,
-        source_ref="meter+tariff:synthetic",
-        source_content_digest="b" * 64,
-    )
-    result = build_resource_evidence(plan, probe_summary=probe, energy_measurement=energy)
+    result = build_resource_evidence(plan, probe_summary=probe, energy_measurement=energy_measurement())
     record = next(r for r in result.records if r.parameter == "electricity_per_task_usd")
     assert record.value == pytest.approx(0.006)
     assert record.source_kind == "measured_local"
@@ -136,10 +141,77 @@ def test_probe_backend_binding_mismatch_rejected():
 def test_negative_energy_or_missing_digest_rejected():
     plan, _ = summary()
     with pytest.raises(ValueError, match="energy_inputs_must_be_nonnegative"):
-        build_resource_evidence(plan, energy_measurement=EnergyMeasurement(
-            -0.1, 0.12, "2026-08-21T00:00:00+00:00", 86400, "meter", "b" * 64
-        ))
+        build_resource_evidence(plan, energy_measurement=energy_measurement(-0.1, 0.12))
     with pytest.raises(ValueError, match="energy_source_digest_required"):
+        broken = energy_measurement()
         build_resource_evidence(plan, energy_measurement=EnergyMeasurement(
-            0.1, 0.12, "2026-08-21T00:00:00+00:00", 86400, "meter", "short"
+            broken.energy_kwh_per_task,
+            broken.tariff_usd_per_kwh,
+            broken.observed_at,
+            broken.max_age_seconds,
+            broken.source_ref,
+            "short",
         ))
+
+
+@pytest.mark.parametrize("bad", [float("nan"), float("inf"), float("-inf")])
+def test_nonfinite_energy_is_rejected_independently_of_i129(bad):
+    plan, _ = summary()
+    with pytest.raises(ValueError, match="energy_kwh_per_task_must_be_finite_number"):
+        build_resource_evidence(plan, energy_measurement=energy_measurement(bad, 0.12))
+
+
+@pytest.mark.parametrize("bad", [float("nan"), float("inf"), float("-inf")])
+def test_nonfinite_tariff_is_rejected_independently_of_i129(bad):
+    plan, _ = summary()
+    with pytest.raises(ValueError, match="tariff_usd_per_kwh_must_be_finite_number"):
+        build_resource_evidence(plan, energy_measurement=energy_measurement(0.05, bad))
+
+
+@pytest.mark.parametrize("bad", [True, False, "0.05", None])
+def test_boolean_or_nonnumeric_energy_is_rejected(bad):
+    plan, _ = summary()
+    with pytest.raises(ValueError, match="energy_kwh_per_task_must_be_finite_number"):
+        build_resource_evidence(plan, energy_measurement=energy_measurement(bad, 0.12))
+
+
+@pytest.mark.parametrize("bad", [True, False, "0.12", None])
+def test_boolean_or_nonnumeric_tariff_is_rejected(bad):
+    plan, _ = summary()
+    with pytest.raises(ValueError, match="tariff_usd_per_kwh_must_be_finite_number"):
+        build_resource_evidence(plan, energy_measurement=energy_measurement(0.05, bad))
+
+
+def test_zero_measured_energy_is_rejected():
+    plan, _ = summary()
+    with pytest.raises(ValueError, match="energy_kwh_per_task_must_be_positive"):
+        build_resource_evidence(plan, energy_measurement=energy_measurement(0.0, 0.12))
+
+
+def test_zero_tariff_stays_blocked_without_separate_zero_tariff_provenance_contract():
+    plan, _ = summary()
+    with pytest.raises(ValueError, match="electricity_cost_must_be_positive_at_adapter_precision"):
+        build_resource_evidence(plan, energy_measurement=energy_measurement(0.05, 0.0))
+
+
+def test_multiplication_overflow_is_rejected():
+    plan, _ = summary()
+    assert math.isfinite(1e308)
+    with pytest.raises(ValueError, match="electricity_cost_must_be_finite"):
+        build_resource_evidence(plan, energy_measurement=energy_measurement(1e308, 1e308))
+
+
+def test_positive_cost_that_rounds_to_zero_is_rejected():
+    plan, _ = summary()
+    with pytest.raises(ValueError, match="electricity_cost_must_be_positive_at_adapter_precision"):
+        build_resource_evidence(plan, energy_measurement=energy_measurement(1e-12, 1e-12))
+
+
+def test_small_but_representable_positive_cost_is_preserved():
+    plan, _ = summary()
+    result = build_resource_evidence(plan, energy_measurement=energy_measurement(1e-5, 1e-5))
+    record = next(r for r in result.records if r.parameter == "electricity_per_task_usd")
+    assert record.value == 1e-10
+    assert record.value > 0
+    assert math.isfinite(record.value)
+    assert record.source_kind == "measured_local"
