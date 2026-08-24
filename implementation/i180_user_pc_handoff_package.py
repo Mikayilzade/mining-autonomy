@@ -4,7 +4,13 @@
 I180 makes the operational handoff copy/paste-safe without creating evidence. It owns
 blank NON_EVIDENCE measurement/accounting templates, concise local instructions, and a
 source-drift check for the exact current I178/I179 entry points. Blank templates are
-required to FAIL I178 until every real fact is replaced by the user on the owned PC.
+required to FAIL the bound I178 structural contract until every real fact is replaced
+by the user on the owned PC.
+
+The module is self-contained on purpose. Its duplicated input-field contract is bound to
+exact I178 Git blob `9f227af...`; any I178 source drift blocks the package before use.
+I180 does not import/execute I178 or I179 and therefore cannot accidentally advance the
+real chain while merely validating/copying the package.
 
 No measurement is performed. No value is estimated. No network, credentials, CI,
 account creation, paid infrastructure, market observation, task action, spend,
@@ -13,12 +19,11 @@ settlement, payment, I050/I066/I123 execution or hybrid-policy application occur
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
+from hashlib import sha1
 from pathlib import Path
 import argparse
 import json
-from typing import Any
-
-import i178_user_pc_handoff_manifest as i178
+from typing import Any, Mapping
 
 SCHEMA = "mining-autonomy/i180-user-pc-handoff-package/v1"
 I178_PATH = "implementation/i178_user_pc_handoff_manifest.py"
@@ -26,10 +31,28 @@ I178_GIT_BLOB_SHA = "9f227af6402e973b4a3b898b0bd9929cb61393cd"
 I179_PATH = "implementation/i179_user_pc_real_chain_runner.py"
 I179_GIT_BLOB_SHA = "e0dac00cba1acbd9d5dbda6362867af298f50a0a"
 
+# Exact input-key contract duplicated from the bound I178 blob above. If I178 changes,
+# verify_runtime_bindings() fails before this package may be treated as current.
+MEASUREMENT_FIELDS = (
+    "measured_available_hours_per_day",
+    "availability_source_ref",
+    "energy_before_joules",
+    "energy_after_joules",
+    "energy_task_count",
+    "energy_source_ref",
+    "tariff_usd_per_kwh",
+    "tariff_source_ref",
+    "opportunity_cost_usd_per_hour",
+    "opportunity_cost_source_ref",
+)
+ACCOUNTING_PARAMETERS = (
+    "fixed_monthly_cost_usd",
+    "sunk_or_already_committed",
+)
+
 MEASUREMENT_TEMPLATE_NAME = "measurement.NON_EVIDENCE.json"
 ACCOUNTING_TEMPLATE_NAME = "accounting.NON_EVIDENCE.json"
 INSTRUCTIONS_NAME = "README.md"
-
 NON_EVIDENCE_NOTE = "NON_EVIDENCE_TEMPLATE_REPLACE_WITH_GENUINE_FACTS"
 
 
@@ -49,8 +72,8 @@ class PackageReport:
     runtime_bindings: tuple[RuntimeBindingCheck, ...]
     measurement_template_blank: bool
     accounting_template_blank: bool
-    measurement_template_rejected_by_i178: bool
-    accounting_template_rejected_by_i178: bool
+    measurement_template_rejected_by_bound_i178_contract: bool
+    accounting_template_rejected_by_bound_i178_contract: bool
     package_files_written: tuple[str, ...]
     real_evidence_created: bool = False
     real_chain_ready: bool = False
@@ -64,13 +87,15 @@ class PackageReport:
     production_execution_enabled: bool = False
 
 
+def git_blob_sha(data: bytes) -> str:
+    return sha1(f"blob {len(data)}\0".encode("ascii") + data).hexdigest()
+
+
 def measurement_template() -> dict[str, Any]:
-    """Return exactly I178's accepted measurement keys, all deliberately null."""
-    return {field: None for field in i178.MEASUREMENT_FIELDS}
+    return {field: None for field in MEASUREMENT_FIELDS}
 
 
 def accounting_template() -> dict[str, Any]:
-    """Return exactly two accounting rows; every promotable fact remains null."""
     return {
         "records": [
             {
@@ -83,7 +108,7 @@ def accounting_template() -> dict[str, Any]:
                 "source_content_digest": None,
                 "notes": NON_EVIDENCE_NOTE,
             }
-            for parameter in i178.ACCOUNTING_PARAMETERS
+            for parameter in ACCOUNTING_PARAMETERS
         ]
     }
 
@@ -107,12 +132,18 @@ def write_package(output_dir: Path) -> tuple[str, ...]:
     return tuple(str(path) for path in (measurement_path, accounting_path, instructions_path))
 
 
+def _binding_from_data(path: str, expected: str, data: bytes | None) -> RuntimeBindingCheck:
+    if data is None:
+        return RuntimeBindingCheck(path, expected, None, False, False)
+    actual = git_blob_sha(data)
+    return RuntimeBindingCheck(path, expected, actual, True, actual == expected)
+
+
 def _runtime_binding(root: Path, path: str, expected: str) -> RuntimeBindingCheck:
     target = root / path
     if not target.is_file():
-        return RuntimeBindingCheck(path, expected, None, False, False)
-    actual = i178.git_blob_sha(target.read_bytes())
-    return RuntimeBindingCheck(path, expected, actual, True, actual == expected)
+        return _binding_from_data(path, expected, None)
+    return _binding_from_data(path, expected, target.read_bytes())
 
 
 def verify_runtime_bindings(root: Path) -> tuple[RuntimeBindingCheck, ...]:
@@ -122,18 +153,44 @@ def verify_runtime_bindings(root: Path) -> tuple[RuntimeBindingCheck, ...]:
     )
 
 
-def _templates_are_blank(measurement: dict[str, Any], accounting: dict[str, Any]) -> tuple[bool, bool]:
+def _measurement_contract_complete(raw: Mapping[str, Any]) -> bool:
+    # Current bound I178 requires exactly these keys/no unknowns and every value non-null.
+    return set(raw) == set(MEASUREMENT_FIELDS) and all(raw.get(field) is not None for field in MEASUREMENT_FIELDS)
+
+
+def _accounting_contract_complete(raw: Mapping[str, Any]) -> bool:
+    rows = raw.get("records")
+    if not isinstance(rows, list):
+        return False
+    by_parameter: dict[str, Mapping[str, Any]] = {}
+    for row in rows:
+        if not isinstance(row, Mapping):
+            return False
+        parameter = row.get("parameter")
+        if parameter not in ACCOUNTING_PARAMETERS or parameter in by_parameter:
+            return False
+        by_parameter[str(parameter)] = row
+        if row.get("value") is None:
+            return False
+        if row.get("source_kind") is None or row.get("source_ref") is None:
+            return False
+        if row.get("observed_at") is None or row.get("max_age_seconds") is None:
+            return False
+    return set(by_parameter) == set(ACCOUNTING_PARAMETERS)
+
+
+def _templates_are_blank(measurement: Mapping[str, Any], accounting: Mapping[str, Any]) -> tuple[bool, bool]:
     measurement_blank = (
-        set(measurement) == set(i178.MEASUREMENT_FIELDS)
-        and all(measurement[field] is None for field in i178.MEASUREMENT_FIELDS)
+        set(measurement) == set(MEASUREMENT_FIELDS)
+        and all(measurement[field] is None for field in MEASUREMENT_FIELDS)
     )
     rows = accounting.get("records")
     accounting_blank = bool(
         isinstance(rows, list)
-        and len(rows) == len(i178.ACCOUNTING_PARAMETERS)
-        and {row.get("parameter") for row in rows if isinstance(row, dict)} == set(i178.ACCOUNTING_PARAMETERS)
+        and len(rows) == len(ACCOUNTING_PARAMETERS)
+        and {row.get("parameter") for row in rows if isinstance(row, Mapping)} == set(ACCOUNTING_PARAMETERS)
         and all(
-            isinstance(row, dict)
+            isinstance(row, Mapping)
             and row.get("value") is None
             and row.get("source_kind") is None
             and row.get("source_ref") is None
@@ -158,13 +215,8 @@ def inspect_package(root: Path, *, package_dir: Path | None = None) -> PackageRe
 
     measurement_path = package_dir / MEASUREMENT_TEMPLATE_NAME
     accounting_path = package_dir / ACCOUNTING_TEMPLATE_NAME
-    written = tuple(
-        str(path) for path in (
-            measurement_path,
-            accounting_path,
-            package_dir / INSTRUCTIONS_NAME,
-        ) if path.is_file()
-    )
+    readme_path = package_dir / INSTRUCTIONS_NAME
+    written = tuple(str(path) for path in (measurement_path, accounting_path, readme_path) if path.is_file())
 
     try:
         measurement = json.loads(measurement_path.read_text(encoding="utf-8"))
@@ -182,17 +234,15 @@ def inspect_package(root: Path, *, package_dir: Path | None = None) -> PackageRe
         blockers.append("measurement_template_not_blank_non_evidence")
     if not accounting_blank:
         blockers.append("accounting_template_not_blank_non_evidence")
+    if not readme_path.is_file():
+        blockers.append("handoff_instructions_missing")
 
-    measurement_rejected = False
-    accounting_rejected = False
-    if measurement_path.is_file():
-        measurement_rejected = not i178.check_measurement_input(measurement_path).structurally_complete
-    if accounting_path.is_file():
-        accounting_rejected = not i178.check_accounting_input(accounting_path).structurally_complete
+    measurement_rejected = not _measurement_contract_complete(measurement)
+    accounting_rejected = not _accounting_contract_complete(accounting)
     if not measurement_rejected:
-        blockers.append("measurement_template_must_fail_i178")
+        blockers.append("measurement_template_must_fail_bound_i178_contract")
     if not accounting_rejected:
-        blockers.append("accounting_template_must_fail_i178")
+        blockers.append("accounting_template_must_fail_bound_i178_contract")
 
     exact_runtime = all(binding.exact for binding in bindings)
     package_ready = bool(
@@ -201,7 +251,7 @@ def inspect_package(root: Path, *, package_dir: Path | None = None) -> PackageRe
         and accounting_blank
         and measurement_rejected
         and accounting_rejected
-        and (package_dir / INSTRUCTIONS_NAME).is_file()
+        and readme_path.is_file()
     )
     return PackageReport(
         state="PACKAGE_READY_NON_EVIDENCE" if package_ready and not blockers else "PASS_BLOCKED",
@@ -209,8 +259,8 @@ def inspect_package(root: Path, *, package_dir: Path | None = None) -> PackageRe
         runtime_bindings=bindings,
         measurement_template_blank=measurement_blank,
         accounting_template_blank=accounting_blank,
-        measurement_template_rejected_by_i178=measurement_rejected,
-        accounting_template_rejected_by_i178=accounting_rejected,
+        measurement_template_rejected_by_bound_i178_contract=measurement_rejected,
+        accounting_template_rejected_by_bound_i178_contract=accounting_rejected,
         package_files_written=written,
     )
 
@@ -220,9 +270,13 @@ def payload(result: PackageReport) -> dict[str, Any]:
     body.update({
         "schema": SCHEMA,
         "run": "I180",
-        "template_warning": "Blank templates are NON_EVIDENCE and are required to fail I178 until replaced with genuine facts.",
+        "bound_runtime_sources": {
+            I178_PATH: I178_GIT_BLOB_SHA,
+            I179_PATH: I179_GIT_BLOB_SHA,
+        },
+        "template_warning": "Blank templates are NON_EVIDENCE and are required to fail the bound I178 contract until replaced with genuine facts.",
         "next_gate": (
-            "Copy/fill working JSON files on the actual user-owned PC, run I178, then I179. "
+            "Copy/fill working JSON files on the actual user-owned PC, run exact I178, then exact I179. "
             "Do not modify the checked-in NON_EVIDENCE templates into fake passing examples."
         ),
     })
