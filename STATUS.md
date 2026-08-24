@@ -3,13 +3,14 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I182 — external physical-meter energy bridge**
+Last completed implementation run: **I183 — external-meter numeric hardening**
 Last updated: **2026-08-24**
 
 ## Latest durable files
-- `implementation/RUN_I182_EXTERNAL_METER_ENERGY_BRIDGE.md`
+- `implementation/RUN_I183_EXTERNAL_METER_NUMERIC_HARDENING.md`
 - `implementation/i182_external_meter_energy_bridge.py`
 - `implementation/test_i182_external_meter_energy_bridge.py`
+- `implementation/RUN_I182_EXTERNAL_METER_ENERGY_BRIDGE.md`
 - `implementation/RUN_I181_LOCAL_ENERGY_INTERFACE_INVENTORY.md`
 - `implementation/i181_local_energy_interface_inventory.py`
 - `implementation/test_i181_local_energy_interface_inventory.py`
@@ -38,27 +39,25 @@ Last updated: **2026-08-24**
 - `implementation/resource_feedback_materialization.py`
 - `implementation/i123_execution_backend_portfolio.py`
 
-## I182 outcome
-I182 removes a distinct owned-PC blocker that remains after I181: a machine with no trustworthy built-in cumulative energy counter may still obtain genuine energy evidence from an **already-available external physical cumulative meter** without estimating energy or changing current I166/I162 semantics.
+## I183 outcome
+I183 closes a concrete fail-closed integrity gap in the existing I182 external-meter bridge instead of adding another packaging layer. Python non-finite floats (`NaN`, `+Infinity`, `-Infinity`) could evade ordinary nonnegative/reset comparisons, and very large finite Wh/kWh values could overflow to infinite joules during unit conversion.
 
-I182 never reads or purchases hardware. Caller-supplied cumulative before/after readings may be expressed as `joule`, `Wh`, or `kWh`; I182 converts them to the exact four fields already expected by I166/I162:
-- `energy_before_joules`
-- `energy_after_joules`
-- `energy_task_count`
-- `energy_source_ref`
+I182 now requires both cumulative readings to be finite real numeric values and requires converted joule readings to remain finite before any I166 energy fields can be promoted. All prior scope/provenance/exclusive-load/same-counter/positive-delta/task-count rules remain unchanged.
 
-Promotion requires whole-system AC-input scope, exclusive PC load during the session, the same cumulative counter, positive task count, non-placeholder/non-estimated meter/session provenance, a source digest, and a **strictly positive measurable energy delta**. Component-only meters, shared-load sessions, instantaneous-power readings, counter reset/wrap, unsupported units and zero-delta sessions fail closed. Zero delta is explicitly rejected so meter resolution cannot be interpreted as zero electricity cost.
+Exact current Git bytes were materialized locally and tested with network/proxy variables removed:
+- I182 module: `c051ac5e4d70ce1e38623c3d2910924ed159bde5`
+- I182 tests: `24e20a1c944b81392353cb1cc753cdce0e8418e1`
+- result: **9 passed in 0.05s**
 
-Current blobs:
-- I182 module: `eab56be15068a67fa893e047b3d329ea83900148`
-- I182 tests: `5690c6b754b64fc7d511a15ec691a38a9aafee20`
+No CI workflow was dispatched. No production market/API request, credentials, subprocess-based device access, downloads/installs, privilege escalation, account creation, hardware purchase, paid infrastructure, task acceptance/submission, spend, settlement, payment or value movement occurred.
 
-Seven focused tests were authored. Exact raw Git materialization from the current execution host was blocked by DNS access to `raw.githubusercontent.com`, so this run does **not** claim an exact-local pytest PASS for I182. No CI workflow was dispatched merely to obtain a green result.
+## I182 retained outcome
+I182 remains the optional fallback when the actual owned PC exposes no trustworthy built-in cumulative energy counter. It never reads or purchases hardware. Caller-supplied cumulative readings from an already-available physical meter may use `joule`, `Wh`, or `kWh` and are converted only after fail-closed validation.
 
-No production market/API request, credentials, subprocess-based device access, downloads/installs, privilege escalation, account creation, hardware purchase, paid infrastructure, CI dispatch, task acceptance/submission, spend, settlement, payment or value movement occurred.
+Promotion requires whole-system AC-input scope, exclusive PC load, the same cumulative counter, positive task count, non-placeholder/non-estimated meter/session provenance, source digest, finite readings/conversions and a strictly positive measurable energy delta. Component-only/shared-load/instantaneous-power/reset-wrap/zero-delta/non-finite/overflow sessions fail closed.
 
 ## I181 retained outcome
-I181 inventories already-present local energy interfaces without reading an energy value. Linux powercap `energy_uj` and hwmon `energy*_input` may be reported as cumulative candidates after readability checks. Instantaneous hwmon power and battery stored-energy are never promoted to workload-energy evidence. Windows/macOS remain fail-closed in the inert stdlib-only detector.
+I181 inventories already-present local energy interfaces without reading an energy value. Linux powercap `energy_uj` and hwmon `energy*_input` may be reported as cumulative candidates after readability checks. Instantaneous hwmon power and battery stored-energy are never promoted. Windows/macOS remain fail-closed in the inert stdlib-only detector.
 
 Current execution host had zero supported candidates; that is not evidence about the user's actual PC.
 
@@ -77,7 +76,7 @@ Current execution host had zero supported candidates; that is not evidence about
 - I179: one-command local chain through I177/I169; never executes I050/I066/I123.
 - I180: blank NON_EVIDENCE handoff package and source-drift checks.
 - I181: local cumulative-counter inventory.
-- I182: optional external whole-system cumulative-meter conversion/provenance bridge when no built-in counter exists.
+- I182/I183: optional external whole-system cumulative-meter bridge, now hardened against non-finite and conversion-overflow inputs.
 
 ## Other retained checkpoints
 - I156 exact-source I113 runtime: **PASS_BLOCKED**, 7/7 clean.
@@ -89,14 +88,14 @@ Current execution host had zero supported candidates; that is not evidence about
 - PayanAgent geography/provider-access public-doc search is converged; do not repeat without new first-party evidence.
 
 ## Current control chain
-`I113 exact runtime PASS_BLOCKED -> Resource/Execution Router evidence ladder -> I161/I162/I163/I164/I165/I166 real user-PC materialization -> I167 -> I168 -> I173/I174 -> I175/I171 -> I181 local-counter preflight OR I182 external-meter bridge -> I180 package -> I178/I179 operational handoff -> I177/I169 readiness -> exact I050 -> I066 -> I123 Router -> I130/I131/I133 economics -> I136/I137/I138 readiness -> I142/I145/I148 source evidence -> I143 selection -> I140 bounded observation -> I141 economic-test packet`.
+`I113 exact runtime PASS_BLOCKED -> Resource/Execution Router evidence ladder -> I161/I162/I163/I164/I165/I166 real user-PC materialization -> I167 -> I168 -> I173/I174 -> I175/I171 -> I181 local-counter preflight OR hardened I182/I183 external-meter bridge -> I180 package -> I178/I179 operational handoff -> I177/I169 readiness -> exact I050 -> I066 -> I123 Router -> I130/I131/I133 economics -> I136/I137/I138 readiness -> I142/I145/I148 source evidence -> I143 selection -> I140 bounded observation -> I141 economic-test packet`.
 
 ## Current blockers
 1. runtime regression remains materially demonstrated by I156;
 2. `owned_pc`: I181 has not yet been run on the actual owned PC, so built-in cumulative-counter availability is unknown;
 3. `owned_pc`: no genuine I166 packet exists yet;
 4. genuine availability, energy, applicable electricity tariff and opportunity-cost provenance are not materialized;
-5. if no local counter exists, I182 still requires a genuine already-available whole-system cumulative external meter and real readings; it does not authorize hardware purchase;
+5. if no local counter exists, hardened I182 still requires a genuine already-available whole-system cumulative external meter and real readings; it does not authorize hardware purchase;
 6. the two accounting controls require explicit truthful real provenance;
 7. if accounting remains `user_declared`, current strict I050/I123 does not promote it; I172/I176 remain review-only;
 8. exact I050 and I066 execution for `owned_pc` is not evidence-permitted/materialized;
@@ -121,14 +120,14 @@ Current execution host had zero supported candidates; that is not evidence about
 - I177/I178/I179 cannot invent evidence or execute I050/I066/I123.
 - I180 templates are NON_EVIDENCE.
 - I181 inventory output is never energy evidence.
-- I182 performs arithmetic/provenance binding only; it does not prove caller readings are truthful and cannot convert a zero-resolution session into zero cost.
+- I182/I183 perform arithmetic/provenance validation only; caller truth is not proven, zero-resolution is not zero cost, and non-finite/overflow readings are rejected.
 - No spend, credentials, registration, wallet, KYC, task acceptance, fulfillment, purchase, settlement or value movement before separate explicit authorization.
 
 ## Immediate next broad run
 The next genuine forward step is on the **actual owned PC**:
 1. run I181;
 2. if a readable local cumulative counter exists, validate its domain/scope/wrap semantics and collect genuine before/after readings around the bound workload;
-3. otherwise, if an already-available trustworthy whole-system cumulative external meter exists, use I182 with genuine before/after readings; do not purchase measurement hardware without separate authorization;
+3. otherwise, if an already-available trustworthy whole-system cumulative external meter exists, use hardened I182 with genuine before/after readings; do not purchase measurement hardware without separate authorization;
 4. create separate working measurement/accounting JSON with real availability, applicable tariff, opportunity-cost and accounting provenance;
 5. run exact I178, then exact I179 with explicit ownership confirmation and explicit UTC `observed_at`.
 
