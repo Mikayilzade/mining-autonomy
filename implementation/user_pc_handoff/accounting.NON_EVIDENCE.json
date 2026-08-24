@@ -1,0 +1,24 @@
+{
+  "records": [
+    {
+      "max_age_seconds": null,
+      "notes": "NON_EVIDENCE_TEMPLATE_REPLACE_WITH_GENUINE_FACTS",
+      "observed_at": null,
+      "parameter": "fixed_monthly_cost_usd",
+      "source_content_digest": null,
+      "source_kind": null,
+      "source_ref": null,
+      "value": null
+    },
+    {
+      "max_age_seconds": null,
+      "notes": "NON_EVIDENCE_TEMPLATE_REPLACE_WITH_GENUINE_FACTS",
+      "observed_at": null,
+      "parameter": "sunk_or_already_committed",
+      "source_content_digest": null,
+      "source_kind": null,
+      "source_ref": null,
+      "value": null
+    }
+  ]
+}
