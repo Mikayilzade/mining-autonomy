@@ -1,0 +1,12 @@
+{
+  "availability_source_ref": null,
+  "energy_after_joules": null,
+  "energy_before_joules": null,
+  "energy_source_ref": null,
+  "energy_task_count": null,
+  "measured_available_hours_per_day": null,
+  "opportunity_cost_source_ref": null,
+  "opportunity_cost_usd_per_hour": null,
+  "tariff_source_ref": null,
+  "tariff_usd_per_kwh": null
+}
