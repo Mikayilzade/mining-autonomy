@@ -7,14 +7,16 @@ EnergyMeasurement path.
 
 Supported counter unit is joules. The caller must obtain readings from a trustworthy
 local meter/telemetry source. Counter wrap/reset, missing source identity, zero work,
-negative deltas, stale/mismatched receipt content, and non-explicit tariffs fail closed.
-No network, credentials, spend, market action or value movement occurs here.
+non-positive/non-finite energy, stale/mismatched receipt content, non-finite tariffs and
+non-explicit tariffs fail closed. No network, credentials, spend, market action or value
+movement occurs here.
 """
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass, replace
 from datetime import datetime, timezone
 from hashlib import sha256
+from math import isfinite
 import json
 from typing import Any, Mapping
 
@@ -58,7 +60,12 @@ def _digest(value: Any) -> str:
 
 
 def _parse_utc(value: str) -> datetime:
-    dt = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError("observed_at_must_be_utc")
+    try:
+        dt = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise ValueError("observed_at_must_be_utc") from exc
     if dt.tzinfo is None or dt.utcoffset() != timezone.utc.utcoffset(dt):
         raise ValueError("observed_at_must_be_utc")
     return dt
@@ -70,6 +77,14 @@ def _hash_body(receipt: EnergyReceipt) -> dict[str, Any]:
     return body
 
 
+def _nonempty_text(value: Any) -> bool:
+    return isinstance(value, str) and bool(value.strip())
+
+
+def _digest_identity(value: Any) -> bool:
+    return isinstance(value, str) and len(value) >= 16
+
+
 def build_energy_receipt(
     *, workload_id: str, task_count: int, counter_source_ref: str,
     counter_source_digest: str, energy_before_joules: float,
@@ -77,26 +92,36 @@ def build_energy_receipt(
     tariff_source_ref: str, tariff_source_digest: str, observed_at: str,
     max_age_seconds: int = 604800,
 ) -> EnergyReceipt:
-    if not workload_id.strip():
+    if not _nonempty_text(workload_id):
         raise ValueError("workload_id_required")
-    if task_count <= 0:
+    if isinstance(task_count, bool) or not isinstance(task_count, int) or task_count <= 0:
         raise ValueError("positive_task_count_required")
-    if not counter_source_ref.strip() or len(counter_source_digest) < 16:
+    if not _nonempty_text(counter_source_ref) or not _digest_identity(counter_source_digest):
         raise ValueError("counter_source_identity_required")
-    if not tariff_source_ref.strip() or len(tariff_source_digest) < 16:
+    if not _nonempty_text(tariff_source_ref) or not _digest_identity(tariff_source_digest):
         raise ValueError("explicit_tariff_source_required")
     _parse_utc(observed_at)
-    if max_age_seconds <= 0:
+    if isinstance(max_age_seconds, bool) or not isinstance(max_age_seconds, int) or max_age_seconds <= 0:
         raise ValueError("positive_max_age_required")
-    before = float(energy_before_joules)
-    after = float(energy_after_joules)
-    if before < 0 or after < 0 or after < before:
-        raise ValueError("energy_counter_wrap_reset_or_negative_delta")
-    tariff = float(tariff_usd_per_kwh)
-    if tariff < 0:
-        raise ValueError("tariff_must_be_nonnegative")
+    try:
+        before = float(energy_before_joules)
+        after = float(energy_after_joules)
+        tariff = float(tariff_usd_per_kwh)
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise ValueError("numeric_energy_and_tariff_required") from exc
+    if not isfinite(before) or not isfinite(after) or before < 0 or after < 0 or after < before:
+        raise ValueError("energy_counter_wrap_reset_or_nonfinite")
     delta = after - before
-    per_task = delta / JOULES_PER_KWH / task_count
+    if not isfinite(delta) or delta <= 0:
+        raise ValueError("positive_finite_energy_delta_required")
+    if not isfinite(tariff) or tariff < 0:
+        raise ValueError("tariff_must_be_finite_nonnegative")
+    try:
+        per_task = delta / JOULES_PER_KWH / task_count
+    except (OverflowError, ZeroDivisionError) as exc:
+        raise ValueError("energy_per_task_arithmetic_invalid") from exc
+    if not isfinite(per_task) or per_task <= 0:
+        raise ValueError("positive_finite_energy_per_task_required")
     draft = EnergyReceipt(
         schema=SCHEMA, backend_id="python_local", workload_id=workload_id,
         task_count=task_count, counter_source_ref=counter_source_ref,
