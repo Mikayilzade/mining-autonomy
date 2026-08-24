@@ -6,7 +6,7 @@ Do not reconstruct this project from chat memory. Read repository state first.
 Read `START_HERE.md`, `STATUS.md`, `METHODOLOGY.md`, `HANDOFF.md`, `RUN_LOG.md`, `CATALOG.md`, `implementation/RUN_LOG.md`, and the latest implementation files named in `STATUS.md`.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation through **I182 COMPLETE as scoped repository-side checkpoints**. Project remains **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation through **I183 COMPLETE as scoped repository-side checkpoints**. Project remains **IMPLEMENTATION IN PROGRESS**.
 
 ## Current owned-PC / Router chain
 - I156: exact runtime chain; I113 = **PASS_BLOCKED**, 7/7 clean.
@@ -27,34 +27,25 @@ Discovery Runs **001–062 COMPLETE**. Implementation through **I182 COMPLETE as
 - I180: blank NON_EVIDENCE templates, concise handoff package and source-drift checks.
 - I181: inert local cumulative-energy-interface inventory; it never reads energy.
 - I182: fail-closed bridge for genuine readings from an already-available external whole-system cumulative meter when no suitable built-in counter exists.
+- I183: hardens I182 against non-finite (`NaN`/infinity) readings and Wh/kWh -> joule overflow.
 
 ## Current control chain
-`I113 exact runtime PASS_BLOCKED -> Resource/Execution Router evidence ladder -> I161/I162/I163/I164/I165/I166 real user-PC materialization -> I167 -> I168 -> I173/I174 -> I175/I171 -> I181 local-counter preflight OR I182 external-meter bridge -> I180 package -> I178/I179 -> I177/I169 -> exact I050 -> I066 -> I123 -> conservative economics/portfolio/readiness -> separately authorized bounded observation -> economic-test packet`.
+`I113 exact runtime PASS_BLOCKED -> Resource/Execution Router evidence ladder -> I161/I162/I163/I164/I165/I166 real user-PC materialization -> I167 -> I168 -> I173/I174 -> I175/I171 -> I181 local-counter preflight OR hardened I182/I183 external-meter bridge -> I180 package -> I178/I179 -> I177/I169 -> exact I050 -> I066 -> I123 -> conservative economics/portfolio/readiness -> separately authorized bounded observation -> economic-test packet`.
 
-## Latest result: I182
-I182 removes a distinct measurement-path blocker without fabricating evidence. It accepts only caller-supplied cumulative before/after readings from an already-available external physical meter, supports `joule`, `Wh` and `kWh`, and emits only the four joule-shaped energy fields already expected by I166/I162.
+## Latest result: I183
+A source audit found a numeric fail-closed gap in I182: Python `NaN` and infinity are floats and could evade ordinary comparisons, while huge finite Wh/kWh values could overflow to infinite joules. I182 now requires finite raw readings and finite converted joule values before promotion.
 
-Promotion requires:
-- whole-system AC-input scope;
-- exclusive PC load during the measurement window;
-- same cumulative counter for before and after;
-- positive task count;
-- real non-placeholder/non-estimated source/session references plus source digest;
-- strictly positive measurable energy delta.
+Current I182 blobs after hardening:
+- module `c051ac5e4d70ce1e38623c3d2910924ed159bde5`
+- tests `24e20a1c944b81392353cb1cc753cdce0e8418e1`
 
-Component-only/shared-load/instantaneous-power/reset-wrap/zero-delta sessions fail closed. I182 never reads or purchases hardware and never fills tariff, availability, opportunity cost, accounting or market facts.
-
-Current I182 blobs:
-- module `eab56be15068a67fa893e047b3d329ea83900148`
-- tests `5690c6b754b64fc7d511a15ec691a38a9aafee20`
-
-Seven focused tests are authored. Exact raw Git materialization from the current host was blocked by DNS to `raw.githubusercontent.com`, so no exact-local pytest PASS is claimed and no CI was dispatched merely to obtain one.
+Exact current Git bytes were materialized locally and tested with network/proxy variables removed: **9 passed in 0.05s**. No CI was dispatched. I182/I183 still do not read or purchase hardware, prove caller truth, fill tariff/availability/opportunity-cost/accounting facts, authorize I050/I066/I123, or perform a market/value-moving action.
 
 ## Real remaining blockers
 - I181 has not been run on the actual owned PC, so built-in cumulative-counter availability is unknown.
 - No genuine I166 packet from the actual owned PC exists.
 - Availability, trustworthy energy, applicable tariff and opportunity-cost provenance are not materialized.
-- If no local counter exists, I182 still requires a genuine already-available whole-system cumulative external meter; it does not authorize purchasing one.
+- If no local counter exists, hardened I182 still requires a genuine already-available whole-system cumulative external meter; it does not authorize purchasing one.
 - The two accounting facts need truthful explicit provenance.
 - If accounting remains `user_declared`, current strict I050/I123 does not promote it.
 - Exact I050/I066 remain later evidence gates.
@@ -66,7 +57,7 @@ Seven focused tests are authored. Exact raw Git materialization from the current
 The next genuine forward step is on the actual owned PC:
 1. run I181;
 2. use a validated local cumulative counter if present;
-3. otherwise use I182 only if a trustworthy whole-system cumulative external meter is already available;
+3. otherwise use hardened I182 only if a trustworthy whole-system cumulative external meter is already available;
 4. supply genuine availability, applicable tariff, opportunity-cost and accounting provenance;
 5. run exact I178 then exact I179 with explicit ownership confirmation and explicit UTC `observed_at`.
 
