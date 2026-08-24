@@ -11,8 +11,8 @@ A promotable bridge requires whole-system AC-input scope, an exclusive PC load d
 the measurement window, the same cumulative counter for before/after readings, a
 positive measurable energy delta, a positive task count, explicit real provenance and
 a source-content digest. Component-only meters, instantaneous power, inferred/estimated
-readings, missing provenance, counter reset/wrap and zero-resolution sessions remain
-blocked.
+readings, missing provenance, non-finite/overflow readings, counter reset/wrap and
+zero-resolution sessions remain blocked.
 
 No network, credentials, subprocess, package install, privilege escalation, CI,
 account creation, hardware purchase, spend, market action or value movement occurs.
@@ -21,6 +21,7 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 from hashlib import sha256
+from math import isfinite
 import argparse
 import json
 from pathlib import Path
@@ -122,17 +123,27 @@ def bridge_external_meter(session: ExternalMeterSession) -> BridgeResult:
     after = session.reading_after
     numeric_before = isinstance(before, (int, float)) and not isinstance(before, bool)
     numeric_after = isinstance(after, (int, float)) and not isinstance(after, bool)
-    if not numeric_before or float(before) < 0:
+    finite_before = numeric_before and isfinite(float(before))
+    finite_after = numeric_after and isfinite(float(after))
+    if not finite_before or float(before) < 0:
         errors.append("invalid_reading_before")
-    if not numeric_after or float(after) < 0:
+    if not finite_after or float(after) < 0:
         errors.append("invalid_reading_after")
-    if numeric_before and numeric_after:
+    if finite_before and finite_after:
         if float(after) < float(before):
             errors.append("meter_counter_wrap_reset_or_negative_delta")
         elif float(after) == float(before):
             errors.append("positive_measurable_energy_delta_required")
     if isinstance(session.task_count, bool) or not isinstance(session.task_count, int) or session.task_count <= 0:
         errors.append("positive_task_count_required")
+
+    if unit in SUPPORTED_UNITS and finite_before and finite_after:
+        converted_before = _convert_to_joules(float(before), unit)
+        converted_after = _convert_to_joules(float(after), unit)
+        if not isfinite(converted_before):
+            errors.append("converted_reading_before_not_finite")
+        if not isfinite(converted_after):
+            errors.append("converted_reading_after_not_finite")
 
     if errors:
         return BridgeResult(
