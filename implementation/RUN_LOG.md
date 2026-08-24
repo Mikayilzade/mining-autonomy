@@ -120,3 +120,21 @@ Current blobs:
 No CI workflow was dispatched. No real measurement or market/value-moving action occurred.
 
 Next: the genuine forward step remains on the actual owned PC. Run I181; use a validated built-in cumulative counter if present, otherwise I182 only with an already-available trustworthy whole-system cumulative meter. Then provide real tariff, availability, opportunity-cost and accounting provenance and run exact I178/I179. Do not add further packaging layers unless a distinct correctness/safety defect is found.
+
+## I189 — 2026-08-25
+Status: **completed repository-side correctness/safety checkpoint; focused tests authored**
+Stage: direct I123 Resource / Execution Router boolean/control-plane hardening
+
+Source audit found a distinct fail-open class after I188 numeric hardening: Python dataclass annotations did not enforce runtime booleans, while I123 used truthiness for backend policy/programmatic/availability/sunk-cost controls, evidence flags, authorization flags and `ai_allowed`.
+
+I123 now requires exact booleans for those controls, rejects empty/duplicate backend identities, rejects malformed evidence identity/provenance, and validates direct `production_blockers()` calls as well as portfolio routing. Truthy strings such as `"false"` can no longer act as production facts or AI-escalation authorization.
+
+Focused regression coverage is in `test_i189_i123_boolean_control_hardening.py`. Tests are authored but this run does not claim a byte-identical full pytest PASS because raw GitHub/DNS materialization remains unavailable and CI was not dispatched merely for status.
+
+Current blobs:
+- hardened I123: `fa7de3bdc814adec81496d938ebd8814bff504ad`
+- I189 regressions: `f91bfb1ca6004c3a987d06e2719d482f5453ba65`
+
+No market/API observation, credentials, paid infrastructure, account creation, KYC/wallet action, hardware purchase, task acceptance/fulfillment, publication, settlement, spend or value movement occurred.
+
+Next: the genuine forward step remains the real owned-PC evidence path. Repository-side continuation before that should only audit direct downstream Router/economics/readiness consumers for distinct fail-open behavior; do not add packaging wrappers around absent evidence.

@@ -67,9 +67,46 @@ class PortfolioDecision:
     value_movement_enabled: bool = False
 
 
+def _require_bool(value: object, *, field: str) -> bool:
+    if type(value) is not bool:
+        raise ValueError(f"{field}_must_be_boolean")
+    return value
+
+
+def _validate_backend_controls(backend: ExecutionBackend) -> None:
+    for field in (
+        "programmatic_access",
+        "policy_allowed",
+        "currently_available",
+        "requires_credentials",
+        "requires_paid_account",
+        "requires_new_spend",
+        "sunk_or_already_committed",
+    ):
+        _require_bool(getattr(backend, field), field=f"backend_{field}")
+
+
+def _validate_evidence(item: BackendEvidence) -> None:
+    if not isinstance(item.backend_id, str) or not item.backend_id.strip():
+        raise ValueError("backend_evidence_id_required")
+    if not isinstance(item.provenance_class, str) or not item.provenance_class.strip():
+        raise ValueError("backend_evidence_provenance_class_required")
+    for field in (
+        "current_reproducible",
+        "non_synthetic",
+        "capacity_verified",
+        "policy_evidence_current",
+        "credentials_authorized",
+        "spend_authorized",
+        "infrastructure_authorized",
+    ):
+        _require_bool(getattr(item, field), field=f"evidence_{field}")
+
+
 def _evidence_map(items: Iterable[BackendEvidence]) -> dict[str, BackendEvidence]:
     result: dict[str, BackendEvidence] = {}
     for item in items:
+        _validate_evidence(item)
         if item.backend_id in result:
             raise ValueError(f"duplicate backend evidence: {item.backend_id}")
         result[item.backend_id] = item
@@ -80,6 +117,10 @@ def production_blockers(
     backend: ExecutionBackend,
     evidence: Optional[BackendEvidence],
 ) -> tuple[str, ...]:
+    _validate_backend_controls(backend)
+    if evidence is not None:
+        _validate_evidence(evidence)
+
     blockers: list[str] = []
     if backend.automation_role != "autonomous" or not backend.programmatic_access:
         blockers.append("no_autonomous_programmatic_path")
@@ -128,21 +169,31 @@ def portfolio_quotes(
     evidence: Iterable[BackendEvidence],
 ) -> tuple[PortfolioQuote, ...]:
     evidence_by_id = _evidence_map(evidence)
-    return tuple(
-        PortfolioQuote(
-            backend_id=backend.backend_id,
-            family=backend.family,
-            ai_backend=backend.family in AI_FAMILIES,
-            base_quote=quote_backend(task, backend),
-            production_blockers=production_blockers(
-                backend, evidence_by_id.get(backend.backend_id)
-            ),
+    seen_backend_ids: set[str] = set()
+    result: list[PortfolioQuote] = []
+    for backend in tuple(backends):
+        _validate_backend_controls(backend)
+        if not isinstance(backend.backend_id, str) or not backend.backend_id.strip():
+            raise ValueError("backend_id_required")
+        if backend.backend_id in seen_backend_ids:
+            raise ValueError(f"duplicate backend: {backend.backend_id}")
+        seen_backend_ids.add(backend.backend_id)
+        result.append(
+            PortfolioQuote(
+                backend_id=backend.backend_id,
+                family=backend.family,
+                ai_backend=backend.family in AI_FAMILIES,
+                base_quote=quote_backend(task, backend),
+                production_blockers=production_blockers(
+                    backend, evidence_by_id.get(backend.backend_id)
+                ),
+            )
         )
-        for backend in backends
-    )
+    return tuple(result)
 
 
 def _eligible(quotes: Iterable[PortfolioQuote], *, ai: bool) -> list[PortfolioQuote]:
+    _require_bool(ai, field="eligible_ai")
     return [
         q for q in quotes
         if q.ai_backend is ai
@@ -174,6 +225,7 @@ def route_portfolio(
 ) -> PortfolioDecision:
     if task_kind not in {"paid_task", "observation"}:
         raise ValueError("task_kind must be paid_task or observation")
+    _require_bool(ai_allowed, field="ai_allowed")
     quotes = portfolio_quotes(task, backends, evidence)
 
     deterministic = _eligible(quotes, ai=False)
