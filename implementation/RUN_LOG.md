@@ -79,12 +79,26 @@ I182 does not read or purchase a meter. It accepts only caller-supplied cumulati
 
 Promotion requires whole-system AC-input scope, exclusive PC load, the same cumulative counter, positive task count, non-placeholder/non-estimated provenance, a source digest and a strictly positive measurable energy delta. Component-only/shared-load/instantaneous-power/reset-wrap/zero-resolution sessions fail closed. Zero delta is explicitly rejected so meter resolution cannot become an artificial zero electricity cost.
 
-Focused tests authored: **7**. Exact raw Git materialization from the current execution host was blocked by DNS to `raw.githubusercontent.com`; therefore I182 does **not** claim an exact-local pytest PASS in this run. CI was not dispatched merely for a green result.
+Focused tests authored: **7**. Exact raw Git materialization from the current execution host was blocked by DNS to `raw.githubusercontent.com`; therefore I182 did **not** claim an exact-local pytest PASS in that run. CI was not dispatched merely for a green result.
 
-Current blobs:
+Initial I182 blobs:
 - module: `eab56be15068a67fa893e047b3d329ea83900148`
 - tests: `5690c6b754b64fc7d511a15ec691a38a9aafee20`
 
 No production market/API request, credentials, subprocess-based device access, software install, privilege escalation, account creation, hardware purchase, paid infrastructure, CI dispatch, task acceptance/submission, spend, settlement, payment or value movement occurred.
 
-Next: on the actual owned PC run I181. If a validated local cumulative counter exists, use it for real before/after readings. Otherwise I182 may be used only with an already-available trustworthy whole-system cumulative external meter. Then supply real tariff, availability, opportunity-cost and accounting provenance and run exact I178/I179. If neither measurement path exists, keep energy blocked; do not estimate and do not purchase hardware without separate authorization.
+## I183 — 2026-08-24
+Status: **completed external-meter numeric hardening checkpoint**
+Stage: fail-closed finite-number and conversion-overflow validation
+
+Source audit found that Python `float('nan')` and infinities could bypass ordinary nonnegative/reset comparisons, and very large finite Wh/kWh values could overflow during conversion to joules. I182 was hardened to require finite cumulative readings and finite converted joule values before any energy fields can be promoted.
+
+Regression coverage now includes `NaN`, `+Infinity`, `-Infinity`, and kWh conversion overflow. Exact current Git bytes were materialized locally and tested with network/proxy variables removed: **9 passed in 0.05s**.
+
+Current blobs:
+- module: `c051ac5e4d70ce1e38623c3d2910924ed159bde5`
+- tests: `24e20a1c944b81392353cb1cc753cdce0e8418e1`
+
+No CI workflow was dispatched. No real measurement or market/value-moving action occurred.
+
+Next: on the actual owned PC run I181. If a validated local cumulative counter exists, use it for real before/after readings. Otherwise hardened I182 may be used only with an already-available trustworthy whole-system cumulative external meter. Then supply real tariff, availability, opportunity-cost and accounting provenance and run exact I178/I179. If neither measurement path exists, keep energy blocked; do not estimate and do not purchase hardware without separate authorization.
