@@ -3,10 +3,13 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I180 — inert user-PC handoff package**
+Last completed implementation run: **I181 — inert local energy-interface inventory**
 Last updated: **2026-08-24**
 
 ## Latest durable files
+- `implementation/RUN_I181_LOCAL_ENERGY_INTERFACE_INVENTORY.md`
+- `implementation/i181_local_energy_interface_inventory.py`
+- `implementation/test_i181_local_energy_interface_inventory.py`
 - `implementation/RUN_I180_USER_PC_HANDOFF_PACKAGE.md`
 - `implementation/i180_user_pc_handoff_package.py`
 - `implementation/test_i180_user_pc_handoff_package.py`
@@ -37,37 +40,27 @@ Last updated: **2026-08-24**
 - `implementation/resource_feedback_materialization.py`
 - `implementation/i123_execution_backend_portfolio.py`
 
-## I180 outcome
-I180 completes the inert packaging checkpoint for the existing one-command user-PC path. It adds checked-in blank **NON_EVIDENCE** measurement/accounting templates, concise handoff instructions, deterministic package generation, and source-drift checks bound to the exact current I178/I179 runtime entry points.
+## I181 outcome
+I181 removes one distinct owned-PC blocker without fabricating energy: it inventories only already-present local operating-system energy interfaces and reports whether a plausible cumulative counter exists for later genuine before/after readings.
 
-Bound runtime blobs:
-- I178: `9f227af6402e973b4a3b898b0bd9929cb61393cd`
-- I179: `e0dac00cba1acbd9d5dbda6362867af298f50a0a`
+Linux handling is fail-closed:
+- readable `/sys/class/powercap/**/energy_uj` may be reported as a cumulative candidate;
+- readable hwmon `energy*_input` may be reported as a cumulative candidate;
+- hwmon `power*_input` is instantaneous power and is never promoted as a before/after energy counter;
+- battery `energy_now` is not promoted as workload energy because charging/background load/battery behavior confound attribution.
 
-The templates contain null promotable values and are intentionally required to fail the bound I178 structural contract. I180 never auto-fills, estimates, measures or repairs evidence. It is self-contained and does not import/execute I178/I179 merely to inspect/package files.
+Windows/macOS remain blocked in this inert stdlib-only detector rather than shelling out to vendor tools, installing drivers, or requesting elevation.
 
-Exact-local focused closure was verified from byte-identical current Git blobs:
-- I180 module: `33e32b70ce9c5495111e5e5745c4439431889d8b`
-- I180 tests: `9f427c505818c357542b03932cc29e1f64f62551`
-- result: **6 passed in 0.11s** with network/proxy disabled.
+A detected counter is **candidate only**. I181 never reads an energy value and never creates I166 evidence. Counter scope/domain and wrap semantics must be validated on the actual owned PC before real readings can enter I166/I162/I129.
 
-Checked-in package blobs:
-- measurement template: `e79aa961db042a94e66b60cdc95224841a00f0e9`
-- accounting template: `ce3e89190192b3607874894b8a32986cb8326a3f`
-- handoff README: `29dd08ee950c4acc9c0583cd79164a7b2fec38c9`
+Exact-local focused closure from byte-identical current Git blobs:
+- module: `b1dd8714d805d9ccefcab150889138eeffc94a08`
+- tests: `44bb833a063e5fbb4458ec06de8fdf22983474e0`
+- result: **6 passed in 0.05s** with proxy/network environment disabled.
 
-No production market/API request, credentials, downloads/paid installs, CI dispatch, account creation, paid infrastructure, market observation, task acceptance/submission, I050/I066/I123 execution, hybrid policy patch, spend, settlement, payment or value movement occurred.
+Current execution-host sanity check returned Linux `NO_SUPPORTED_LOCAL_ENERGY_INTERFACE_FOUND`, candidates `0`, energy values read `false`, evidence created `false`. This is only the current host and is **not** evidence about the user's owned PC.
 
-## I178-I179 retained outcome
-I178 verifies exact source-tree Git blob identities, structural completeness of caller measurement/accounting JSON, ownership confirmation and emits blockers without treating file presence as truth.
-
-I179 composes the real local path in one command while preserving all fail-closed gates:
-
-`I178 -> I166/I165 -> I167 -> I168 -> I174 -> I175/I171 -> I177/I169`
-
-I179 can only reach `REAL_CHAIN_READY_FOR_SEPARATE_EXACT_I050`, `REAL_CHAIN_DECLARED_ACCOUNTING_BOUNDARY`, or `PASS_BLOCKED`. It never executes I050/I066/I123 or applies I176.
-
-## Previous owned-PC evidence path
+## Retained owned-PC path
 - I159-I166: portable real user-PC measurement/materialization path.
 - I167: Router resource bridge from future real I166 evidence.
 - I168: emits only 7/14 I050 parameters supported by accepted measured evidence.
@@ -76,10 +69,13 @@ I179 can only reach `REAL_CHAIN_READY_FOR_SEPARATE_EXACT_I050`, `REAL_CHAIN_DECL
 - I171: production-executor scope binding required; benchmark-only substitution forbidden.
 - I172: review-only narrow owned_pc hybrid contract; no I050/I123 change.
 - I173: deterministic offline `structured_json_normalization_v1` executor with machine-checkable acceptance contract.
-- I174: exact-source AST/interface proof bound to I173 blob `29485940ac92c26616a9b60ee9e309110a4fbe62`.
+- I174: exact-source AST/interface proof bound to I173.
 - I175: exposes five production-scoped interface controls only after I171 binding.
 - I176: review-only comparator for possible future owned_pc accounting exception; no patch applied.
 - I177: assembles future real I168 evidence + exact I175 controls + exactly two truthful accounting facts into I169 readiness.
+- I178: exact source-tree/input structural handoff validator.
+- I179: one-command local chain `I178 -> I166/I165 -> I167 -> I168 -> I174 -> I175/I171 -> I177/I169`; it never executes I050/I066/I123.
+- I180: exact-tested NON_EVIDENCE templates + handoff packaging bound to current I178/I179 entry points.
 
 ## Other retained checkpoints
 - I156 exact-source I113 runtime: **PASS_BLOCKED**, 7/7 clean.
@@ -88,7 +84,7 @@ I179 can only reach `REAL_CHAIN_READY_FOR_SEPARATE_EXACT_I050`, `REAL_CHAIN_DECL
 - PayanAgent geography/provider-access public-doc search is converged; do not repeat without new first-party material.
 
 ## Current control chain
-`I113 exact runtime PASS_BLOCKED -> Resource/Execution Router evidence ladder -> I161/I162/I163/I164/I165/I166 real user-PC materialization -> I167 -> I168 -> I173/I174 -> I175/I171 -> I180 package -> I178/I179 operational handoff -> I177/I169 readiness -> exact I050 -> I066 -> I123 Router -> I130/I131/I133 economics -> I136/I137/I138 readiness -> I142/I145/I148 source evidence -> I143 selection -> I140 bounded observation -> I141 economic-test packet`.
+`I113 exact runtime PASS_BLOCKED -> Resource/Execution Router evidence ladder -> I161/I162/I163/I164/I165/I166 real user-PC materialization -> I167 -> I168 -> I173/I174 -> I175/I171 -> I181 energy-interface preflight -> I180 package -> I178/I179 operational handoff -> I177/I169 readiness -> exact I050 -> I066 -> I123 Router -> I130/I131/I133 economics -> I136/I137/I138 readiness -> I142/I145/I148 source evidence -> I143 selection -> I140 bounded observation -> I141 economic-test packet`.
 
 I170/I172/I176 remain policy/review branches only; none changes I050/I123 today.
 
@@ -97,11 +93,11 @@ I170/I172/I176 remain policy/review branches only; none changes I050/I123 today.
 2. `python_local`: trustworthy measured energy + explicit applicable tariff provenance absent;
 3. `free_tier_ci`: support/testing-only for generic external paid work;
 4. `local_model`: no usable local model/GPU interface observed in this environment;
-5. `owned_pc`: the real I179 chain must run on the actual user-owned PC with explicit ownership confirmation;
-6. genuine availability, trustworthy energy readings if available, explicit applicable tariff and explicit opportunity-cost provenance are not materialized;
-7. no real I166 packet exists yet to feed I167/I168;
-8. the two accounting controls require explicit truthful real provenance;
-9. I180 packaging is complete, but it deliberately contains no real evidence;
+5. `owned_pc`: I181 has not yet been run on the actual owned PC, so a suitable local cumulative energy counter is still unknown;
+6. `owned_pc`: the real I179 chain must run on the actual owned PC with explicit ownership confirmation;
+7. genuine availability, trustworthy energy readings if available, explicit applicable tariff and explicit opportunity-cost provenance are not materialized;
+8. no real I166 packet exists yet to feed I167/I168;
+9. the two accounting controls require explicit truthful real provenance;
 10. if accounting remains `user_declared`, current strict I050/I123 does not promote it; I172/I176 remain review-only;
 11. exact I050 and I066 execution for `owned_pc` is not evidence-permitted/materialized;
 12. task-specific retry/failure, maintenance, payout, platform/payment fees and acceptance/dispute/nonpayment economics remain unknown for a real market candidate;
@@ -134,14 +130,19 @@ I170/I172/I176 remain policy/review branches only; none changes I050/I123 today.
 - I178 validates source/input structure only; it cannot certify truth of caller evidence.
 - I179 composes existing gates only; it cannot execute I050/I066/I123 or apply the hybrid proposal.
 - I180 templates are NON_EVIDENCE and must remain null until copied to separate working files and replaced with genuine facts.
+- I181 inventory output is never energy evidence; a detected interface remains a candidate until a real owned-PC session validates scope/semantics and records genuine readings.
 - No spend, credentials, registration, wallet, task acceptance, fulfillment, purchase or value movement before separate authorization.
 
 ## Immediate next broad run
-The repository-side owned-PC handoff is now packaged and operationally complete. The next genuine forward step is **outside this execution environment**: copy/use the handoff on the actual owned PC, create separate working measurement/accounting JSON from genuine facts, run exact I178, then run exact I179 with explicit ownership confirmation and explicit UTC `observed_at`.
+The next genuine forward step is on the **actual owned PC**:
+1. run I181 locally;
+2. if it finds a readable cumulative candidate, validate its domain/scope and wrap semantics and collect genuine before/after readings around the bound workload;
+3. create separate working measurement/accounting JSON with truthful provenance;
+4. run exact I178, then exact I179 with explicit ownership confirmation and explicit UTC `observed_at`.
 
-If no trustworthy energy counter/meter exists, keep the path blocked rather than estimate energy.
+If I181 finds no suitable counter, keep the energy blocker explicit rather than estimate energy. An external physical meter may later be used only as a separately provenance-bound real source; I181 does not infer one.
 
-Until a real I179 result exists, do not keep adding layers that merely repackage the same missing evidence. Repository-side work should only proceed if it removes a distinct blocker without fabricating real-world facts—for example, a purely local detector that inventories trustworthy energy-counter interfaces on the actual PC without claiming energy when none exists. Such a detector must remain inert and must not install software or use network access.
+Until a real I181/I179 result exists, avoid adding repository layers that merely repackage the same missing evidence. Repository-side work should proceed only for a newly identified distinct blocker.
 
 Do not apply any I050/I123 hybrid patch unless a genuine I179/I177 result reaches exactly the two accounting declarations as the only remaining source-class blocker. Rebind I176 to then-current sources before any review.
 
