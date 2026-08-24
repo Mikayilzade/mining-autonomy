@@ -3,19 +3,21 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I179 — inert one-command real user-PC evidence chain runner**
+Last completed implementation run: **I180 — inert user-PC handoff package**
 Last updated: **2026-08-24**
 
 ## Latest durable files
+- `implementation/RUN_I180_USER_PC_HANDOFF_PACKAGE.md`
+- `implementation/i180_user_pc_handoff_package.py`
+- `implementation/test_i180_user_pc_handoff_package.py`
+- `implementation/user_pc_handoff/measurement.NON_EVIDENCE.json`
+- `implementation/user_pc_handoff/accounting.NON_EVIDENCE.json`
+- `implementation/user_pc_handoff/README.md`
 - `implementation/RUN_I178_I179_USER_PC_HANDOFF_AND_CHAIN_RUNNER.md`
 - `implementation/i179_user_pc_real_chain_runner.py`
-- `implementation/test_i179_user_pc_real_chain_runner.py`
 - `implementation/i178_user_pc_handoff_manifest.py`
-- `implementation/test_i178_user_pc_handoff_manifest.py`
 - `implementation/RUN_I177_OWNED_PC_EVIDENCE_ASSEMBLY.md`
 - `implementation/i177_owned_pc_evidence_assembly.py`
-- `implementation/test_i177_owned_pc_evidence_assembly.py`
-- `implementation/RUN_I173_I176_PRODUCTION_EXECUTOR_AND_HYBRID_COMPARATOR.md`
 - `implementation/i176_owned_pc_hybrid_patch_comparator.py`
 - `implementation/i175_i171_production_scope_binding.py`
 - `implementation/i174_exact_executor_interface_probe.py`
@@ -35,56 +37,58 @@ Last updated: **2026-08-24**
 - `implementation/resource_feedback_materialization.py`
 - `implementation/i123_execution_backend_portfolio.py`
 
-## I178-I179 outcome
-I178 makes the owned-PC handoff machine-checkable. It embeds the exact current Git blob identities for the source chain needed to reach I177 plus downstream I050/I066/I123 bindings, verifies local files by Git blob SHA, validates only structural completeness of caller measurement/accounting JSON and emits a blocker report. It never fills missing values or treats file presence as truthful evidence.
+## I180 outcome
+I180 completes the inert packaging checkpoint for the existing one-command user-PC path. It adds checked-in blank **NON_EVIDENCE** measurement/accounting templates, concise handoff instructions, deterministic package generation, and source-drift checks bound to the exact current I178/I179 runtime entry points.
 
-Current I178 blob: `9f227af6402e973b4a3b898b0bd9929cb61393cd`. Six focused test functions are authored.
+Bound runtime blobs:
+- I178: `9f227af6402e973b4a3b898b0bd9929cb61393cd`
+- I179: `e0dac00cba1acbd9d5dbda6362867af298f50a0a`
 
-I179 makes the real local path one-command while preserving all existing fail-closed gates:
+The templates contain null promotable values and are intentionally required to fail the bound I178 structural contract. I180 never auto-fills, estimates, measures or repairs evidence. It is self-contained and does not import/execute I178/I179 merely to inspect/package files.
+
+Exact-local focused closure was verified from byte-identical current Git blobs:
+- I180 module: `33e32b70ce9c5495111e5e5745c4439431889d8b`
+- I180 tests: `9f427c505818c357542b03932cc29e1f64f62551`
+- result: **6 passed in 0.11s** with network/proxy disabled.
+
+Checked-in package blobs:
+- measurement template: `e79aa961db042a94e66b60cdc95224841a00f0e9`
+- accounting template: `ce3e89190192b3607874894b8a32986cb8326a3f`
+- handoff README: `29dd08ee950c4acc9c0583cd79164a7b2fec38c9`
+
+No production market/API request, credentials, downloads/paid installs, CI dispatch, account creation, paid infrastructure, market observation, task acceptance/submission, I050/I066/I123 execution, hybrid policy patch, spend, settlement, payment or value movement occurred.
+
+## I178-I179 retained outcome
+I178 verifies exact source-tree Git blob identities, structural completeness of caller measurement/accounting JSON, ownership confirmation and emits blockers without treating file presence as truth.
+
+I179 composes the real local path in one command while preserving all fail-closed gates:
 
 `I178 -> I166/I165 -> I167 -> I168 -> I174 -> I175/I171 -> I177/I169`
 
-It requires exact source-tree acceptance from I178, explicit user-owned-PC confirmation, caller-provided measurement JSON, caller-provided accounting JSON and an explicit UTC observation timestamp. It does not use implicit/current time to create evidence.
-
-I179 can only reach `REAL_CHAIN_READY_FOR_SEPARATE_EXACT_I050`, `REAL_CHAIN_DECLARED_ACCOUNTING_BOUNDARY`, or `PASS_BLOCKED`. Even the strict-ready state does not execute I050. The declared-accounting state does not apply I176's hypothetical patch. Current I179 blob: `e0dac00cba1acbd9d5dbda6362867af298f50a0a`. Four focused orchestration tests are authored.
-
-This run does **not** claim a new byte-for-byte exact-local execution of the complete I178/I179 dependency closure. Normal Git/DNS materialization remains unavailable in the current execution environment, and CI was not dispatched merely to obtain a green result.
-
-No production market/API request, credentials, downloads/paid installs, account creation, paid infrastructure, market observation, task acceptance/submission, I050/I066/I123 execution, hybrid policy patch, spend, settlement, payment or value movement occurred.
+I179 can only reach `REAL_CHAIN_READY_FOR_SEPARATE_EXACT_I050`, `REAL_CHAIN_DECLARED_ACCOUNTING_BOUNDARY`, or `PASS_BLOCKED`. It never executes I050/I066/I123 or applies I176.
 
 ## Previous owned-PC evidence path
-I159-I166: portable real user-PC measurement/materialization path.
-
-I167: Router resource bridge from a future real I166 packet.
-
-I168: source-bound adapter that emits only 7/14 I050 parameters from accepted measured evidence.
-
-I169: strict readiness gate; `user_declared` evidence is never relabelled reproducible.
-
-I170: splits the remaining seven controls into five exact-interface facts and two owner/accounting facts.
-
-I171: requires production-executor scope binding rather than benchmark-only substitution.
-
-I172: review-only narrow hybrid contract; no I050/I123 change.
-
-I173: deterministic offline `structured_json_normalization_v1` executor with machine-checkable acceptance contract.
-
-I174: exact-source AST/interface proof bound to I173 blob `29485940ac92c26616a9b60ee9e309110a4fbe62`.
-
-I175: binds the I174 proof through I171 and exposes five production-scoped interface controls as `system_probe` facts.
-
-I176: review-only comparator for a possible future owned_pc-only accounting exception; no patch applied.
-
-I177: assembles future real I168 measured evidence + exact I175 interface facts + exactly two truthful accounting facts into current I169 readiness without inventing evidence.
+- I159-I166: portable real user-PC measurement/materialization path.
+- I167: Router resource bridge from future real I166 evidence.
+- I168: emits only 7/14 I050 parameters supported by accepted measured evidence.
+- I169: strict readiness; `user_declared` is never relabelled reproducible.
+- I170: remaining seven controls split into five exact-interface facts + two owner/accounting facts.
+- I171: production-executor scope binding required; benchmark-only substitution forbidden.
+- I172: review-only narrow owned_pc hybrid contract; no I050/I123 change.
+- I173: deterministic offline `structured_json_normalization_v1` executor with machine-checkable acceptance contract.
+- I174: exact-source AST/interface proof bound to I173 blob `29485940ac92c26616a9b60ee9e309110a4fbe62`.
+- I175: exposes five production-scoped interface controls only after I171 binding.
+- I176: review-only comparator for possible future owned_pc accounting exception; no patch applied.
+- I177: assembles future real I168 evidence + exact I175 controls + exactly two truthful accounting facts into I169 readiness.
 
 ## Other retained checkpoints
 - I156 exact-source I113 runtime: **PASS_BLOCKED**, 7/7 clean.
-- I157 `free_tier_ci`: **SUPPORT_TESTING_ONLY**.
+- I157 `free_tier_ci`: **SUPPORT_TESTING_ONLY** for generic external paid work.
 - I158 `local_model`: no usable local model/GPU interface observed in this environment.
 - PayanAgent geography/provider-access public-doc search is converged; do not repeat without new first-party material.
 
 ## Current control chain
-`I113 exact runtime PASS_BLOCKED -> Resource/Execution Router evidence ladder -> I161/I162/I163/I164/I165/I166 real user-PC materialization -> I167 -> I168 -> I173/I174 -> I175/I171 -> I178/I179 operational handoff -> I177/I169 readiness -> exact I050 -> I066 -> I123 Router -> I130/I131/I133 economics -> I136/I137/I138 readiness -> I142/I145/I148 source evidence -> I143 selection -> I140 bounded observation -> I141 economic-test packet`.
+`I113 exact runtime PASS_BLOCKED -> Resource/Execution Router evidence ladder -> I161/I162/I163/I164/I165/I166 real user-PC materialization -> I167 -> I168 -> I173/I174 -> I175/I171 -> I180 package -> I178/I179 operational handoff -> I177/I169 readiness -> exact I050 -> I066 -> I123 Router -> I130/I131/I133 economics -> I136/I137/I138 readiness -> I142/I145/I148 source evidence -> I143 selection -> I140 bounded observation -> I141 economic-test packet`.
 
 I170/I172/I176 remain policy/review branches only; none changes I050/I123 today.
 
@@ -97,9 +101,9 @@ I170/I172/I176 remain policy/review branches only; none changes I050/I123 today.
 6. genuine availability, trustworthy energy readings if available, explicit applicable tariff and explicit opportunity-cost provenance are not materialized;
 7. no real I166 packet exists yet to feed I167/I168;
 8. the two accounting controls require explicit truthful real provenance;
-9. the current environment still lacks a complete byte-for-byte exact local checkout for full I173-I179 regression execution;
+9. I180 packaging is complete, but it deliberately contains no real evidence;
 10. if accounting remains `user_declared`, current strict I050/I123 does not promote it; I172/I176 remain review-only;
-11. exact I050 and I066 execution for `owned_pc` is not yet evidence-permitted/materialized;
+11. exact I050 and I066 execution for `owned_pc` is not evidence-permitted/materialized;
 12. task-specific retry/failure, maintenance, payout, platform/payment fees and acceptance/dispute/nonpayment economics remain unknown for a real market candidate;
 13. any future real market task must independently prove compatibility with I173's acceptance contract;
 14. `subscription_assistant`: support-only; no autonomous API assumed;
@@ -127,16 +131,19 @@ I170/I172/I176 remain policy/review branches only; none changes I050/I123 today.
 - Any I173 source change invalidates I174/I175 until rebound.
 - I176 is comparator-only; no policy patch is applied.
 - I177 may assemble evidence but may not invent evidence or execute I050/I066/I123.
-- I178 validates source/input structure only; it cannot certify the truth of caller evidence.
+- I178 validates source/input structure only; it cannot certify truth of caller evidence.
 - I179 composes existing gates only; it cannot execute I050/I066/I123 or apply the hybrid proposal.
+- I180 templates are NON_EVIDENCE and must remain null until copied to separate working files and replaced with genuine facts.
 - No spend, credentials, registration, wallet, task acceptance, fulfillment, purchase or value movement before separate authorization.
 
 ## Immediate next broad run
-The repository-side user-PC path is now operationally one-command. The real forward step is to run I179 on the actual owned PC with genuine provenance-bound measurement and accounting inputs. If no trustworthy energy counter/meter exists, keep the path blocked rather than estimate energy.
+The repository-side owned-PC handoff is now packaged and operationally complete. The next genuine forward step is **outside this execution environment**: copy/use the handoff on the actual owned PC, create separate working measurement/accounting JSON from genuine facts, run exact I178, then run exact I179 with explicit ownership confirmation and explicit UTC `observed_at`.
 
-Until a real PC run is available, the next safe repository work is an inert template/package checkpoint: create blank **non-evidence** measurement/accounting templates and concise handoff instructions, plus source-drift checks that make copying the required files to the user PC less error-prone. Templates must contain null placeholders and must be rejected by I178/I166 until replaced with genuine facts.
+If no trustworthy energy counter/meter exists, keep the path blocked rather than estimate energy.
 
-Do not apply an I050/I123 hybrid patch unless a genuine I179/I177 result reaches exactly the two accounting declarations as the only source-class blocker. Rebind I176 to then-current sources before any review.
+Until a real I179 result exists, do not keep adding layers that merely repackage the same missing evidence. Repository-side work should only proceed if it removes a distinct blocker without fabricating real-world facts—for example, a purely local detector that inventories trustworthy energy-counter interfaces on the actual PC without claiming energy when none exists. Such a detector must remain inert and must not install software or use network access.
+
+Do not apply any I050/I123 hybrid patch unless a genuine I179/I177 result reaches exactly the two accounting declarations as the only remaining source-class blocker. Rebind I176 to then-current sources before any review.
 
 Do not perform production market/API calls, credential use, paid installs, account creation, infrastructure rental, spend or task/value-moving actions. Do not reopen discovery.
 
