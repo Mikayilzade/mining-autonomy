@@ -3,13 +3,14 @@
 Project state: **IMPLEMENTATION IN PROGRESS**
 
 Discovery phase: **COMPLETE (Runs 001–062)**
-Last completed implementation run: **I183 — external-meter numeric hardening**
+Last completed implementation run: **I184 — external-meter positive-energy arithmetic hardening**
 Last updated: **2026-08-24**
 
 ## Latest durable files
-- `implementation/RUN_I183_EXTERNAL_METER_NUMERIC_HARDENING.md`
+- `implementation/RUN_I184_EXTERNAL_METER_POSITIVE_ENERGY_HARDENING.md`
 - `implementation/i182_external_meter_energy_bridge.py`
 - `implementation/test_i182_external_meter_energy_bridge.py`
+- `implementation/RUN_I183_EXTERNAL_METER_NUMERIC_HARDENING.md`
 - `implementation/RUN_I182_EXTERNAL_METER_ENERGY_BRIDGE.md`
 - `implementation/RUN_I181_LOCAL_ENERGY_INTERFACE_INVENTORY.md`
 - `implementation/i181_local_energy_interface_inventory.py`
@@ -39,22 +40,28 @@ Last updated: **2026-08-24**
 - `implementation/resource_feedback_materialization.py`
 - `implementation/i123_execution_backend_portfolio.py`
 
-## I183 outcome
-I183 closes a concrete fail-closed integrity gap in the existing I182 external-meter bridge instead of adding another packaging layer. Python non-finite floats (`NaN`, `+Infinity`, `-Infinity`) could evade ordinary nonnegative/reset comparisons, and very large finite Wh/kWh values could overflow to infinite joules during unit conversion.
+## I184 outcome
+I184 closes a second concrete arithmetic integrity gap in the existing I182 external-meter bridge without adding another packaging layer.
 
-I182 now requires both cumulative readings to be finite real numeric values and requires converted joule readings to remain finite before any I166 energy fields can be promoted. All prior scope/provenance/exclusive-load/same-counter/positive-delta/task-count rules remain unchanged.
+I183 already rejected non-finite raw readings and Wh/kWh conversion overflow. A source audit found two remaining ways conservative electricity accounting could still be undermined:
+- distinct positive raw readings can collapse to the same floating-point joule value after unit conversion, producing a zero converted delta;
+- an extreme positive task count can overflow/underflow float arithmetic or raise during per-task energy calculation.
 
-Exact current Git bytes were materialized locally and tested with network/proxy variables removed:
-- I182 module: `c051ac5e4d70ce1e38623c3d2910924ed159bde5`
-- I182 tests: `24e20a1c944b81392353cb1cc753cdce0e8418e1`
-- result: **9 passed in 0.05s**
+I182 now requires the converted joule delta itself to remain finite and strictly positive, computes per-task energy inside fail-closed arithmetic handling, and requires derived per-task kWh to remain finite and strictly positive. Conversion precision collapse or per-task overflow/underflow blocks rather than becoming artificial zero electricity cost.
 
-No CI workflow was dispatched. No production market/API request, credentials, subprocess-based device access, downloads/installs, privilege escalation, account creation, hardware purchase, paid infrastructure, task acceptance/submission, spend, settlement, payment or value movement occurred.
+Exact byte-identical current Git payloads were locally materialized and Git-blob checked:
+- I182 module: `c0576d24e347e7880fd181be5f16caac30ba46ef`
+- I182 tests: `bd32d9cb7b3c5507b1bb6a19a5aec8cfbf9990ae`
+- result: **11 passed in 0.09s** with proxy/network environment variables removed.
 
-## I182 retained outcome
+A direct `raw.githubusercontent.com` fetch remained unavailable due DNS resolution in the current execution environment; CI was not dispatched merely to obtain a green result.
+
+No production market/API request, credentials, subprocess device access, downloads/installs, privilege escalation, account creation, hardware purchase, paid infrastructure, task acceptance/submission, spend, settlement, payment or value movement occurred.
+
+## I182–I183 retained outcome
 I182 remains the optional fallback when the actual owned PC exposes no trustworthy built-in cumulative energy counter. It never reads or purchases hardware. Caller-supplied cumulative readings from an already-available physical meter may use `joule`, `Wh`, or `kWh` and are converted only after fail-closed validation.
 
-Promotion requires whole-system AC-input scope, exclusive PC load, the same cumulative counter, positive task count, non-placeholder/non-estimated meter/session provenance, source digest, finite readings/conversions and a strictly positive measurable energy delta. Component-only/shared-load/instantaneous-power/reset-wrap/zero-delta/non-finite/overflow sessions fail closed.
+Promotion requires whole-system AC-input scope, exclusive PC load, the same cumulative counter, positive task count, non-placeholder/non-estimated meter/session provenance, source digest, finite readings/conversions, a strictly positive converted energy delta and finite positive per-task energy. Component-only/shared-load/instantaneous-power/reset-wrap/zero-delta/non-finite/overflow/precision-collapse sessions fail closed.
 
 ## I181 retained outcome
 I181 inventories already-present local energy interfaces without reading an energy value. Linux powercap `energy_uj` and hwmon `energy*_input` may be reported as cumulative candidates after readability checks. Instantaneous hwmon power and battery stored-energy are never promoted. Windows/macOS remain fail-closed in the inert stdlib-only detector.
@@ -76,7 +83,7 @@ Current execution host had zero supported candidates; that is not evidence about
 - I179: one-command local chain through I177/I169; never executes I050/I066/I123.
 - I180: blank NON_EVIDENCE handoff package and source-drift checks.
 - I181: local cumulative-counter inventory.
-- I182/I183: optional external whole-system cumulative-meter bridge, now hardened against non-finite and conversion-overflow inputs.
+- I182/I183/I184: optional external whole-system cumulative-meter bridge, hardened against non-finite values, conversion overflow, conversion precision collapse and per-task arithmetic failure/underflow.
 
 ## Other retained checkpoints
 - I156 exact-source I113 runtime: **PASS_BLOCKED**, 7/7 clean.
@@ -88,7 +95,7 @@ Current execution host had zero supported candidates; that is not evidence about
 - PayanAgent geography/provider-access public-doc search is converged; do not repeat without new first-party evidence.
 
 ## Current control chain
-`I113 exact runtime PASS_BLOCKED -> Resource/Execution Router evidence ladder -> I161/I162/I163/I164/I165/I166 real user-PC materialization -> I167 -> I168 -> I173/I174 -> I175/I171 -> I181 local-counter preflight OR hardened I182/I183 external-meter bridge -> I180 package -> I178/I179 operational handoff -> I177/I169 readiness -> exact I050 -> I066 -> I123 Router -> I130/I131/I133 economics -> I136/I137/I138 readiness -> I142/I145/I148 source evidence -> I143 selection -> I140 bounded observation -> I141 economic-test packet`.
+`I113 exact runtime PASS_BLOCKED -> Resource/Execution Router evidence ladder -> I161/I162/I163/I164/I165/I166 real user-PC materialization -> I167 -> I168 -> I173/I174 -> I175/I171 -> I181 local-counter preflight OR hardened I182/I183/I184 external-meter bridge -> I180 package -> I178/I179 operational handoff -> I177/I169 readiness -> exact I050 -> I066 -> I123 Router -> I130/I131/I133 economics -> I136/I137/I138 readiness -> I142/I145/I148 source evidence -> I143 selection -> I140 bounded observation -> I141 economic-test packet`.
 
 ## Current blockers
 1. runtime regression remains materially demonstrated by I156;
@@ -96,13 +103,14 @@ Current execution host had zero supported candidates; that is not evidence about
 3. `owned_pc`: no genuine I166 packet exists yet;
 4. genuine availability, energy, applicable electricity tariff and opportunity-cost provenance are not materialized;
 5. if no local counter exists, hardened I182 still requires a genuine already-available whole-system cumulative external meter and real readings; it does not authorize hardware purchase;
-6. the two accounting controls require explicit truthful real provenance;
-7. if accounting remains `user_declared`, current strict I050/I123 does not promote it; I172/I176 remain review-only;
-8. exact I050 and I066 execution for `owned_pc` is not evidence-permitted/materialized;
-9. task-specific payout, retry/failure, maintenance, platform/payment fees and acceptance/dispute/nonpayment economics remain unknown for a real market candidate;
-10. any future real market task must independently prove compatibility with I173 acceptance criteria;
-11. current measured non-synthetic production route surviving conservative economics + watcher overhead: **false**;
-12. exact authorization for later bounded read-only production observation: **false**.
+6. meter resolution/measurement uncertainty remains external real-world provenance and is not inferred by I182;
+7. the two accounting controls require explicit truthful real provenance;
+8. if accounting remains `user_declared`, current strict I050/I123 does not promote it; I172/I176 remain review-only;
+9. exact I050 and I066 execution for `owned_pc` is not evidence-permitted/materialized;
+10. task-specific payout, retry/failure, maintenance, platform/payment fees and acceptance/dispute/nonpayment economics remain unknown for a real market candidate;
+11. any future real market task must independently prove compatibility with I173 acceptance criteria;
+12. current measured non-synthetic production route surviving conservative economics + watcher overhead: **false**;
+13. exact authorization for later bounded read-only production observation: **false**.
 
 ## Durable rules
 - Do not reopen broad discovery without a genuinely missing mechanism.
@@ -120,7 +128,7 @@ Current execution host had zero supported candidates; that is not evidence about
 - I177/I178/I179 cannot invent evidence or execute I050/I066/I123.
 - I180 templates are NON_EVIDENCE.
 - I181 inventory output is never energy evidence.
-- I182/I183 perform arithmetic/provenance validation only; caller truth is not proven, zero-resolution is not zero cost, and non-finite/overflow readings are rejected.
+- I182/I183/I184 perform arithmetic/provenance validation only; caller truth is not proven, zero-resolution is not zero cost, and non-finite/overflow/precision-collapse/per-task underflow paths are rejected.
 - No spend, credentials, registration, wallet, KYC, task acceptance, fulfillment, purchase, settlement or value movement before separate explicit authorization.
 
 ## Immediate next broad run
@@ -133,7 +141,7 @@ The next genuine forward step is on the **actual owned PC**:
 
 If neither a local cumulative counter nor an already-available trustworthy external meter exists, keep energy blocked rather than estimate it.
 
-Until a real I181/I182/I179 result exists, do not add repository layers that merely repackage the same missing evidence. Repository-side work should proceed only when it removes a newly identified distinct blocker without fabricating real-world facts.
+Until a real I181/I182/I179 result exists, do not add repository layers that merely repackage the same missing evidence. Repository-side work should proceed only when it removes a newly identified distinct blocker/correctness defect without fabricating real-world facts.
 
 Do not apply an I050/I123 hybrid patch unless a genuine I179/I177 result reaches exactly the two accounting declarations as the only source-class blocker, and rebind I176 to then-current sources first.
 
