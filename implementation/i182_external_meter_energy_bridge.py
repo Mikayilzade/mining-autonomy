@@ -11,8 +11,9 @@ A promotable bridge requires whole-system AC-input scope, an exclusive PC load d
 the measurement window, the same cumulative counter for before/after readings, a
 positive measurable energy delta, a positive task count, explicit real provenance and
 a source-content digest. Component-only meters, instantaneous power, inferred/estimated
-readings, missing provenance, non-finite/overflow readings, counter reset/wrap and
-zero-resolution sessions remain blocked.
+readings, missing provenance, non-finite/overflow readings, counter reset/wrap,
+conversion-precision collapse, non-positive/underflowed per-task energy and zero-
+resolution sessions remain blocked.
 
 No network, credentials, subprocess, package install, privilege escalation, CI,
 account creation, hardware purchase, spend, market action or value movement occurs.
@@ -134,9 +135,14 @@ def bridge_external_meter(session: ExternalMeterSession) -> BridgeResult:
             errors.append("meter_counter_wrap_reset_or_negative_delta")
         elif float(after) == float(before):
             errors.append("positive_measurable_energy_delta_required")
-    if isinstance(session.task_count, bool) or not isinstance(session.task_count, int) or session.task_count <= 0:
+    valid_task_count = not isinstance(session.task_count, bool) and isinstance(session.task_count, int) and session.task_count > 0
+    if not valid_task_count:
         errors.append("positive_task_count_required")
 
+    converted_before: float | None = None
+    converted_after: float | None = None
+    converted_delta: float | None = None
+    per_task: float | None = None
     if unit in SUPPORTED_UNITS and finite_before and finite_after:
         converted_before = _convert_to_joules(float(before), unit)
         converted_after = _convert_to_joules(float(after), unit)
@@ -144,6 +150,20 @@ def bridge_external_meter(session: ExternalMeterSession) -> BridgeResult:
             errors.append("converted_reading_before_not_finite")
         if not isfinite(converted_after):
             errors.append("converted_reading_after_not_finite")
+        if isfinite(converted_before) and isfinite(converted_after):
+            converted_delta = converted_after - converted_before
+            if not isfinite(converted_delta):
+                errors.append("converted_energy_delta_not_finite")
+            elif converted_delta <= 0:
+                errors.append("positive_converted_energy_delta_required")
+            elif valid_task_count:
+                try:
+                    per_task = converted_delta / JOULES_PER_KWH / session.task_count
+                except (OverflowError, ZeroDivisionError):
+                    errors.append("energy_per_task_arithmetic_invalid")
+                else:
+                    if not isfinite(per_task) or per_task <= 0:
+                        errors.append("positive_finite_energy_per_task_required")
 
     if errors:
         return BridgeResult(
@@ -159,10 +179,13 @@ def bridge_external_meter(session: ExternalMeterSession) -> BridgeResult:
             i166_energy_fields_ready=False,
         )
 
-    before_j = _convert_to_joules(float(before), unit)
-    after_j = _convert_to_joules(float(after), unit)
-    delta_j = after_j - before_j
-    per_task = delta_j / JOULES_PER_KWH / session.task_count
+    assert converted_before is not None
+    assert converted_after is not None
+    assert converted_delta is not None
+    assert per_task is not None
+    before_j = converted_before
+    after_j = converted_after
+    delta_j = converted_delta
     binding = {
         "schema": SCHEMA,
         "meter_source_ref": session.meter_source_ref,
