@@ -6,7 +6,7 @@ Do not reconstruct this project from chat memory. Read repository state first.
 Read `START_HERE.md`, `STATUS.md`, `METHODOLOGY.md`, `HANDOFF.md`, `RUN_LOG.md`, `CATALOG.md`, `implementation/RUN_LOG.md`, and the latest implementation files named in `STATUS.md`.
 
 ## Current checkpoint
-Discovery Runs **001–062 COMPLETE**. Implementation through **I189 COMPLETE as scoped repository-side checkpoints**. Project remains **IMPLEMENTATION IN PROGRESS**.
+Discovery Runs **001–062 COMPLETE**. Implementation through **I193 COMPLETE as scoped repository-side checkpoints**. Project remains **IMPLEMENTATION IN PROGRESS**.
 
 ## Current owned-PC / Router chain
 - I156: exact runtime chain; I113 = **PASS_BLOCKED**, 7/7 clean.
@@ -21,23 +21,21 @@ Discovery Runs **001–062 COMPLETE**. Implementation through **I189 COMPLETE as
 - I180: blank NON_EVIDENCE templates, concise handoff package and source-drift checks.
 - I181: inert local cumulative-energy-interface inventory; it never reads energy.
 - I182–I184: external whole-system cumulative-meter fallback plus finite/positive arithmetic hardening.
-- I185: hardens I129 local-energy receipt against zero/non-finite/underflow paths.
-- I186: independent audit confirms generic `resource_evidence_adapter` had the same class of defect.
-- I187: patches that generic adapter defect directly.
-- I188: hardens the base I048 Resource / Execution Router against non-finite/nonnumeric economics, quota/capacity/probability/latency/rate-limit values and arithmetic overflow before I123 routing.
-- I189: hardens direct I123 production-portfolio control/evidence booleans, duplicate backend identity handling and AI escalation typing.
+- I185/I187: local/generic energy evidence numeric hardening.
+- I188: base Resource Router finite/type hardening.
+- I189: direct I123 boolean/control-plane hardening.
+- I190: isolated semantically out-of-domain finite economics fail-open.
+- I191: closed probability/cost semantic-domain repair paths in `resource_router.py`.
+- I192: enforced strict-positive conservative margin invariant and nonnegative margin thresholds.
+- I193: isolated source-less measured-evidence / authorization-origin promotion gap at direct I123 boundary.
 
-## Latest result: I189
-`i123_execution_backend_portfolio.py` now requires exact booleans for backend policy/programmatic/availability/spend/sunk-cost controls and all evidence/authorization flags. It rejects non-empty/duplicate identity problems and non-boolean `ai_allowed`. Python truthy strings such as `"false"` can no longer act as production facts or authorization in I123.
+## Latest result: I193
+`BackendEvidence` can currently be self-labelled `measured_reproducible` with production truth flags but without a source artifact identity/digest/time/class binding. The authorization booleans are exact after I189 but likewise have no separate authorization-origin/reference contract. That conflicts with the retained rule that declarations are not relabelled reproducible and external spend/credential/infrastructure authorization must be separately explicit.
 
-Current blobs:
-- hardened I123: `fa7de3bdc814adec81496d938ebd8814bff504ad`
-- I189 regressions: `f91bfb1ca6004c3a987d06e2719d482f5453ba65`
-
-Focused tests are authored. No false full pytest PASS is claimed because raw GitHub/DNS materialization remains unavailable in this execution host; CI was not dispatched merely for status.
+I193 is an audit only. It did not invent genuine provenance, create authorization, dispatch CI, observe a market, use credentials, or move value.
 
 ## Current control chain
-`I113 exact runtime PASS_BLOCKED -> Resource/Execution Router evidence ladder -> I161/I162/I163/I164/I165/I166 real user-PC materialization -> I167/I168 -> I173/I174/I175 -> I181 local-counter preflight OR hardened I182 external-meter route -> hardened I129/generic I054 energy evidence -> I180/I178/I179 -> I177/I169 -> exact I050 -> I066 -> hardened I048/I188 -> hardened I123/I189 -> conservative economics/portfolio/readiness -> separately authorized bounded observation -> economic-test packet`.
+`I113 exact runtime PASS_BLOCKED -> Resource/Execution Router evidence ladder -> I161/I162/I163/I164/I165/I166 real user-PC materialization -> I167/I168 -> I173/I174/I175 -> I181 local-counter preflight OR hardened I182 external-meter route -> hardened I129/generic I054 energy evidence -> I180/I178/I179 -> I177/I169 -> exact I050 -> I066 -> hardened I048/I188/I191/I192 -> hardened I123/I189 -> I193 origin-boundary hardening target -> conservative economics/portfolio/readiness -> separately authorized bounded observation -> economic-test packet`.
 
 ## Real remaining blockers
 - I181 has not been run on the actual owned PC, so built-in cumulative-counter availability is unknown.
@@ -47,24 +45,23 @@ Focused tests are authored. No false full pytest PASS is claimed because raw Git
 - The two accounting facts need truthful explicit provenance.
 - Exact I050/I066 remain later evidence gates.
 - Task payout, platform/payment fees, retries, maintenance, acceptance/dispute/nonpayment economics remain unknown until a separately authorized real observation/test path exists.
-- Any future real market task must independently demonstrate compatibility with I173 acceptance criteria.
-- PayanAgent geography/provider-access public evidence remains unresolved; do not repeat broad searches without new first-party material.
+- No current measured non-synthetic route survives the full conservative economics + watcher-overhead chain.
+- Authorization for bounded read-only production observation remains false.
+- I123 still needs explicit source-origin and separate authorization-origin binding before its `production_route_ready` state can be relied on for a real test.
 
 ## Immediate next broad run
-The direct I123 boolean/control-plane defect is closed. Do not add layers that merely repackage missing real evidence.
+Patch `implementation/i123_execution_backend_portfolio.py` narrowly per I193:
+1. source-bind `measured_reproducible` evidence with machine-checkable artifact identity/digest plus explicit observation time/class;
+2. reject planning/declaration/synthetic origins from promotion;
+3. require separate explicit authorization-origin/reference for credentials/new spend/paid infrastructure flags;
+4. fail closed on unknown/malformed/blank origin metadata;
+5. add adversarial regressions while preserving I191/I192 economics and deterministic-first cheapest-qualified routing.
 
-The next genuine forward step is on the actual owned PC:
-1. run I181;
-2. use a validated local cumulative counter if present;
-3. otherwise use hardened I182 only if a trustworthy whole-system cumulative external meter is already available;
-4. supply genuine availability, applicable tariff, opportunity-cost and accounting provenance;
-5. run exact I178 then exact I179 with explicit ownership confirmation and explicit UTC `observed_at`.
+Do not invent a genuine source artifact or add packaging layers around absent real evidence.
+
+The next genuine forward step is still on the actual owned PC: run I181, use a validated built-in cumulative counter if present or hardened I182 only with an already-available trustworthy whole-system cumulative external meter, supply genuine tariff/availability/opportunity-cost/accounting provenance, then run exact I178/I179 with explicit ownership and UTC `observed_at`.
 
 If neither measurement route exists, keep energy blocked. Do not estimate energy and do not purchase hardware without separate authorization.
-
-Until a real I179 result exists, repository-side work should only remove concrete fail-open/correctness defects in direct Router/economics/readiness consumers. The next useful audit target is the conservative economics/readiness consumer immediately after I123, especially runtime type/finite handling and evidence/source-class promotion.
-
-Do not apply any I050/I123 hybrid patch unless a genuine I179/I177 result reaches exactly the two accounting declarations as the only source-class blocker; rebind I176 to then-current sources first.
 
 ## Resource / Execution Router rules
 Deterministic/local filtering first; AI only when needed. Compare marginal + fixed/sunk economics, quota/capacity, latency, reliability, quality, parallelism, rate limits, energy, API/model costs, retries, maintenance, marketplace/payment fees, payment/acceptance risk and opportunity cost. Subscription capabilities are fixed/sunk limited support, not a free unlimited API.
