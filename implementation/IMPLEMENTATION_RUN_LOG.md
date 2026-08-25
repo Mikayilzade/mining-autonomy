@@ -27,3 +27,17 @@ Files changed/added: `implementation/evaluator.py`, `implementation/test_evaluat
 Risks/limitations: adapter mappings need live raw-payload conformance; keyword policy layer is not production-sufficient; ledger is locally tamper-evident but not externally anchored; test pricing is not current production pricing; CI pass must be observed rather than assumed.
 
 Next: I006 integration/robustness — inspect CI, realistic sanitized snapshots/CLI regression, persistent replay dedup, execution-duration/deadline + confidence reserve, result-quality contracts, adapter conformance specification; opportunistic read-only PayanAgent sampling only if public raw data becomes accessible.
+
+## I196 — post-fixed conservative margin guard
+Date: 2026-08-25
+Status: completed repository-side safety/economics hardening.
+
+Done: audited the existing I123 Resource / Execution Router production-selection boundary and found a real fail-open for known non-sunk fixed-cost allocation. Hardened I123 so production eligibility now requires conservative margin to remain positive and above configured absolute/ratio thresholds after fixed-cost allocation; route tie-breaking now uses post-fixed expected margin. Added synthetic regression coverage for blocked-loss and still-profitable allocation cases.
+
+Conclusions: fixed/sunk cost remains separate from marginal cost, but non-sunk allocated fixed cost cannot be ignored at task acceptance. No real backend/evidence/authorization was created; no spend or external action occurred.
+
+Risks: lower-level `resource_router.route_task()` remains planning/dry-run only and must not be promoted directly to production without the same post-fixed guard. Actual owned-PC energy/availability/opportunity-cost/accounting evidence remains absent.
+
+Files: `implementation/i123_execution_backend_portfolio.py`, `implementation/test_i196_i123_fixed_cost_margin.py`, `implementation/RUN_I196_POST_FIXED_MARGIN_GUARD.md`, `STATUS.md`, `HANDOFF.md`, this log.
+
+Next: run I181 on the actual owned PC; use validated built-in cumulative energy measurement or already-available hardened I182 external-meter route; then materialize genuine tariff/availability/opportunity-cost/accounting provenance and run exact I178/I179. No estimation or hardware purchase if no trustworthy route exists.
