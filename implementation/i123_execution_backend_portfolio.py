@@ -148,6 +148,21 @@ def production_blockers(backend: ExecutionBackend, evidence: Optional[BackendEvi
         if backend.family == "paid_vps_server" and not evidence.infrastructure_authorized: blockers.append("infrastructure_not_authorized")
     return tuple(dict.fromkeys(blockers))
 
+def _post_fixed_economic_blockers(task: TaskEconomics, quote: BackendQuote) -> tuple[str, ...]:
+    """Production gate: allocated non-sunk fixed cost must preserve conservative margin."""
+    blockers = []
+    after = quote.expected_margin_after_fixed_allocation_usd
+    if after is None:
+        blockers.append("fixed_cost_allocation_basis_unknown")
+        return tuple(blockers)
+    payout = float(task.gross_payout_usd)
+    ratio_after = after / payout if payout > 0 else -1.0
+    if after <= 0.0:
+        blockers.append("nonpositive_margin_after_fixed_allocation")
+    if after < float(task.minimum_expected_margin_usd) or ratio_after < float(task.minimum_expected_margin_ratio):
+        blockers.append("insufficient_conservative_margin_after_fixed_allocation")
+    return tuple(dict.fromkeys(blockers))
+
 def portfolio_quotes(task, backends, evidence):
     evidence_by_id = _evidence_map(evidence); seen=set(); result=[]
     for backend in tuple(backends):
@@ -155,7 +170,9 @@ def portfolio_quotes(task, backends, evidence):
         if not isinstance(backend.backend_id, str) or not backend.backend_id.strip(): raise ValueError("backend_id_required")
         if backend.backend_id in seen: raise ValueError(f"duplicate backend: {backend.backend_id}")
         seen.add(backend.backend_id)
-        result.append(PortfolioQuote(backend.backend_id, backend.family, backend.family in AI_FAMILIES, quote_backend(task, backend), production_blockers(backend, evidence_by_id.get(backend.backend_id))))
+        base = quote_backend(task, backend)
+        blockers = production_blockers(backend, evidence_by_id.get(backend.backend_id)) + _post_fixed_economic_blockers(task, base)
+        result.append(PortfolioQuote(backend.backend_id, backend.family, backend.family in AI_FAMILIES, base, tuple(dict.fromkeys(blockers))))
     return tuple(result)
 
 def _eligible(quotes, *, ai):
@@ -163,7 +180,10 @@ def _eligible(quotes, *, ai):
     return [q for q in quotes if q.ai_backend is ai and not q.base_quote.planning_reasons and not q.production_blockers]
 
 def _cheapest(quotes):
-    return sorted(quotes, key=lambda q:(q.base_quote.marginal_cost_usd,-q.base_quote.expected_margin_before_fixed_allocation_usd,-q.base_quote.success_probability,q.base_quote.latency_seconds,q.backend_id))[0]
+    def key(q):
+        post_fixed = q.base_quote.expected_margin_after_fixed_allocation_usd
+        return (q.base_quote.marginal_cost_usd,-post_fixed,-q.base_quote.success_probability,q.base_quote.latency_seconds,q.backend_id)
+    return sorted(quotes, key=key)[0]
 
 def route_portfolio(task, backends, evidence, *, task_kind="paid_task", ai_allowed=True):
     if task_kind not in {"paid_task","observation"}: raise ValueError("task_kind must be paid_task or observation")
@@ -188,7 +208,7 @@ def current_snapshot():
     paid=TaskEconomics(task_id="synthetic_paid_probe",required_capabilities=frozenset({"extract","validate"}),gross_payout_usd=1.0,platform_fee_rate=0.05,dispute_probability=0.05,nonpayment_probability=0.05,acceptance_probability=0.80,minimum_success_probability=0.90,minimum_expected_margin_usd=0.10,minimum_expected_margin_ratio=0.10)
     obs=TaskEconomics(task_id="synthetic_observation_value_probe",required_capabilities=frozenset({"extract","validate"}),gross_payout_usd=0.10,minimum_success_probability=0.90,minimum_expected_margin_usd=0.01,minimum_expected_margin_ratio=0.05)
     decisions=(route_portfolio(paid,backends,evidence,task_kind="paid_task"),route_portfolio(obs,backends,evidence,task_kind="observation",ai_allowed=False))
-    return {"schema":"mining-autonomy/i123-execution-backend-portfolio/v2","run":"I123","artifact_class":"planning_reference","synthetic_fixture":True,"production_route_created":False,"authorization_created":False,"network_observation_performed":False,"credentials_used":False,"paid_infrastructure_created":False,"spend_or_value_movement":False,"routing_rule":"deterministic_first_then_ai_only_if_needed_then_cheapest_qualifying_positive_margin","fixed_vs_marginal_rule":"fixed/sunk cost remains separate; full monthly subscription cost is not charged to each task and finite capacity/opportunity cost is not treated as free","task_kind_separation":"observation economics never prove paid-task fulfillment economics","origin_binding_rule":"measured_reproducible requires promotable source class + artifact id + sha256 + explicit UTC observation time; sensitive authorization requires separate explicit_user_authorization reference","backend_evidence":[asdict(x) for x in evidence],"decisions":[asdict(x) for x in decisions],"current_route_summary":{"eligible_non_synthetic_route_exists":False,"reason":"No backend has current source-bound measured_reproducible non-synthetic evidence in the current checkpoint."}}
+    return {"schema":"mining-autonomy/i123-execution-backend-portfolio/v3","run":"I123","artifact_class":"planning_reference","synthetic_fixture":True,"production_route_created":False,"authorization_created":False,"network_observation_performed":False,"credentials_used":False,"paid_infrastructure_created":False,"spend_or_value_movement":False,"routing_rule":"deterministic_first_then_ai_only_if_needed_then_cheapest_qualifying_positive_margin_after_fixed_allocation","fixed_vs_marginal_rule":"fixed/sunk cost remains separate; non-sunk allocated fixed cost must preserve conservative per-task margin; full monthly subscription cost is not charged to each task and finite capacity/opportunity cost is not treated as free","task_kind_separation":"observation economics never prove paid-task fulfillment economics","origin_binding_rule":"measured_reproducible requires promotable source class + artifact id + sha256 + explicit UTC observation time; sensitive authorization requires separate explicit_user_authorization reference","backend_evidence":[asdict(x) for x in evidence],"decisions":[asdict(x) for x in decisions],"current_route_summary":{"eligible_non_synthetic_route_exists":False,"reason":"No backend has current source-bound measured_reproducible non-synthetic evidence in the current checkpoint."}}
 
 def main():
     p=argparse.ArgumentParser(); p.add_argument("--output",default=str(Path(__file__).with_name("I123_EXECUTION_BACKEND_PORTFOLIO.json"))); a=p.parse_args(); payload=current_snapshot(); text=json.dumps(payload,indent=2,sort_keys=True)+"\n"; Path(a.output).write_text(text,encoding="utf-8"); print(text,end=""); return 0
