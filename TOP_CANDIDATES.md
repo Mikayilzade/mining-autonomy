@@ -1,145 +1,163 @@
 # Top Candidates — Decision View
 
 **Updated:** 2026-08-25  
-This is a decision-oriented interpretation of the existing research and implementation evidence. It does not reopen discovery and does not authorize production actions.
+This is a decision-oriented interpretation of the canonical implementation shortlist and later evidence. It does not reopen discovery and does not authorize production actions.
 
-## 1. PayanAgent — first market-side validation target
+## 1. PayanAgent — primary dry-run/read-only target
 
-### Why it is first
+### Why it ranked first
 
-I001 ranked PayanAgent `SELECT` because it was the closest match to the project’s preferred mechanism: a server-native machine-to-machine task/agent surface that could potentially be watched and fulfilled programmatically. The next useful validation was designed to be read-only rather than account creation or paid commitment.
+Canonical I001 ranked PayanAgent first because it most directly matched the original objective: machine-readable paid work with a programmable request/bid/fulfilment path and very low pre-revenue capital requirements.
 
-### What is actually known
+### Evidence already obtained
 
-- Discovery found a documented machine-readable surface and accountless/free-path claims.
-- It was considered a high autonomous-fit candidate.
-- A bounded read-only production validation was selected as the next market-side evidence step.
+- I001 documented an API-first marketplace with discover/request/bid/fulfil/approve concepts and USDC settlement on Base.
+- The first-party surface claimed a large number of offers and exposed receipt/settlement concepts.
+- I001 explicitly warned that a large offer count is **supply, not worker demand**.
+- I002 designed/rechecked the read-only sampler path but did not establish quantitative public-feed demand from this environment.
 
-### What is **not** known
+### Missing before a profit decision
 
-- Real current task/request volume usable by this project.
-- Real payout/settlement/yield at the task level.
-- Acceptance probability and rejection/dispute/non-payment behavior.
-- Full platform/payment/withdrawal/conversion costs.
-- Real end-to-end conservative margin after execution and watcher overhead.
-
-### Current verdict
-
-**Best market-side candidate, but unproven and blocked on evidence.** Current authorization for bounded read-only production observation is false. Do not register, use credentials, accept tasks or move value under this status.
-
-### Next safe decision
-
-If the user wants market-side progress, separately authorize a **bounded read-only public production observation** that still excludes registration, credentials/API keys, identity creation with side effects, task acceptance/fulfillment, wallet/KYC and payment/settlement actions.
-
----
-
-## 2. Owned-PC provider economics — prerequisite across several paths
-
-This is not one marketplace; it is the execution-cost prerequisite shared by compute/provider candidates such as io.net/Salad-style work and potentially by task-market execution itself.
-
-### Why it matters
-
-Without measured owned-PC energy, availability and opportunity cost, the Router cannot honestly say whether a small payout is profitable. Treating owned hardware as “free” would be a false margin signal even though the purchase itself is sunk.
-
-### What is already implemented
-
-The Resource / Execution Router distinguishes fixed/sunk cost from marginal task cost and rejects production routes that fail conservative post-fixed margin thresholds. The accounting architecture therefore exists; the missing part is genuine input evidence.
-
-### Current blocker
-
-I181 has not run on the actual owned PC, so built-in cumulative energy-counter availability is unknown. No genuine I166 evidence packet exists yet.
-
-### Next safe decision
-
-**Run I181 locally with no spend.** If a valid built-in cumulative counter exists, collect genuine observations. If it does not, use I182 only with an already-owned/available trustworthy whole-system cumulative external meter. Do not estimate energy and do not buy hardware under the current gate.
-
----
-
-## 3. Rider RepLayer — high-fit reserve candidate
-
-### Why it stayed high
-
-I001 ranked it second because the machine-readable Repls/task concept fit the desired server-native autonomous model.
-
-### What blocks promotion
-
-A public production task/offer surface and current real economics were not confirmed sufficiently to promote it ahead of PayanAgent.
+- current paid bespoke-request density;
+- budgets/payouts actually collectible by a worker;
+- bid competition and probability of being hired/accepted;
+- approval/rejection/dispute/non-payment behavior;
+- payment/withdrawal/conversion/gas costs where applicable;
+- execution + watcher + maintenance cost.
 
 ### Current verdict
 
-**WATCHLIST / PARKED.** Preserve as a reserve candidate, but do not spend another broad discovery cycle on it while the first target and the execution-cost evidence are unresolved.
+**Best first market-side validation target, but unproven.** Current bounded read-only production-observation authorization is false, so no external production probing that depends on that gate should occur yet.
+
+### Next safe action
+
+After separate authorization, run only bounded read-only observation of publicly reachable machine-readable request/receipt/economic surfaces where ToS/API rules permit it. Still no registration, credentials, bidding, task acceptance, fulfillment, wallet/KYC or value movement.
 
 ---
 
-## 4. io.net / compute-provider class — economically measurable, hardware-sensitive
+## 2. OKX.AI A2A ASP — strong second task-market target
 
-### Why it matters
+### Why it ranked second
 
-Compute-provider paths are attractive because work and resource consumption can in principle be measured programmatically. They can also fit an owned machine better than human-task platforms.
+I001 documented an unusually direct workflow: a provider can browse/open tasks, negotiate to take an order, complete work and be paid after approval through escrow. This fits the project better than passive resource markets if real task flow exists.
 
-### Why it is not first
+### Evidence already obtained
 
-Provider eligibility, supported hardware/geography/terms, work supply, payout path and the project’s real electricity/opportunity cost are all material. A nominal provider payout without those inputs does not establish profit.
+- Official workflow supported active task intake and negotiation.
+- Escrow/release/arbitration mechanics were documented.
+- I003 did **not** establish anonymous live-task observability; the legitimate provider observation path appeared onboarding-gated.
+
+### Main risks/blockers
+
+- current task density and prices remain unmeasured;
+- provider onboarding/review is material;
+- wallet/geography/KYC eligibility must be confirmed before any account action;
+- rejected delivery/arbitration can create downside, so headline bounty is not enough.
 
 ### Current verdict
 
-**WATCHLIST / PARKED until local cost evidence exists.** I181 is a prerequisite to a serious economic decision here.
+**PRIMARY VALIDATION TARGET, but blocked before real use.** Keep it second; do not register or take orders under current gates.
 
 ---
 
-## 5. Salad provider class — consumer-resource reserve
+## 3. agent2agent.market — excellent architecture, weak observed demand
 
 ### Strength
 
-Discovery confirmed the broader Salad consumer CPU/GPU/internet reward model, so this is a real provider-style mechanism rather than a purely speculative category.
+The documented worker flow was highly machine-native: register, browse task feed, accept, submit a signed deliverable and receive USDC after approval.
 
-### Weakness
+### Decisive evidence
 
-The exact provider/server applicability, current work supply, payout and unit economics for this project remain unresolved. It is less aligned with the preferred server-native machine-task route than PayanAgent.
+At the I001 public snapshot, the app showed **0 open tasks and no live activity on Base Sepolia**. That is a demand warning, not a permanent rejection, and testnet/live-state ambiguity remains.
 
 ### Current verdict
 
-**WATCHLIST / PARKED.** Revisit after owned-PC cost evidence is real or if higher-priority server-native task candidates fail.
+**WATCH + ADAPTER TARGET; not first money test.** A future demand change could promote it, but no reason exists to outrank PayanAgent/OKX today.
 
 ---
 
-## 6. Storj — established but lower-priority spare-resource path
+## 4. AgentGigs.io — technically strong, demand + geography gated
 
 ### Strength
 
-Storage/bandwidth provider mechanics are conceptually straightforward and can run for long periods with limited interaction.
+I001 documented a full autonomous lifecycle through REST API, webhooks/SSE, escrow and Stripe Connect payouts after one-time setup.
 
-### Weakness
+### Decisive evidence
 
-Capacity utilization, payout, egress/bandwidth costs, maintenance and time-to-meaningful-revenue all matter. It is less aligned with the project’s first-priority paid machine-task market.
+The public jobs page snapshot showed **0 total/open jobs**. Even if demand appears later, payout geography and Stripe Connect KYC/bank availability are immediate gates.
 
 ### Current verdict
 
-**WATCHLIST / secondary provider path.** Useful as diversification later, not as the next experiment while the primary evidence gates are open.
+**WATCH / GEO-GATED.** Do not create/verify an account until both demand and payout eligibility justify the effort.
 
 ---
 
-## 7. Grass — eligibility-sensitive device/bandwidth path
+## 5. MCPize — passive seller experiment candidate
 
-The mechanism fits passive contribution better than machine-task execution, but geography/account/device policy and payout quality are material. It should not be automated on assumptions about server/VPS/device eligibility.
+### Why it differs from task markets
 
-**Current verdict: WATCHLIST / PARKED.** Require explicit current rules and economics before any automation.
+Instead of hunting jobs, the model is to publish a cheap deterministic/MCP capability and wait for paid calls. That could eventually pair well with the Resource Router because deterministic execution can be extremely cheap.
+
+### Evidence already obtained
+
+I001 documented one-command deployment/marketplace listing, subscription or per-call monetization, first-party platform/vendor claims, and a **20% platform fee** for monetized servers under the referenced terms snapshot.
+
+### What is still missing
+
+- buyer demand for a specific capability we can legally provide;
+- realistic paid calls/month;
+- payout geography/KYC;
+- hosting, model/API, maintenance and failure costs;
+- conservative break-even and margin using real observations.
+
+### Current verdict
+
+**PASSIVE SELLER EXPERIMENT CANDIDATE / PARKED.** Model it; do not publish or onboard under current gates.
 
 ---
 
-## 8. Skyfire and BTCPay/MCP — infrastructure before income
+## 6. OKX.AI A2MCP — secondary passive target
 
-Skyfire is interesting for machine payments, but its onboarding/account/payment dependencies make it a poor first zero-spend validation target. BTCPay/payment-gated MCP is even clearer: it can help collect payment for a service, but it does not create paid demand by itself.
+Marketplace/listing mechanics exist, but buyer volume remains unmeasured and x402/wallet/review dependencies are material.
 
-**Current verdict:** Skyfire = `WATCHLIST`; BTCPay/payment-gated MCP = `COMPONENT`, not standalone income.
+**Current verdict: SECONDARY PASSIVE TARGET.** Lower priority than the two direct task-market targets and MCPize modeling.
+
+---
+
+## 7. API Mart — low-evidence watchlist
+
+I001 carried API Mart forward with low/unproven discovery evidence. Upstream/resale rights, wallet/geography, demand and actual margin all remain unresolved.
+
+**Current verdict: WATCHLIST / PARKED.** No reason to spend scarce validation effort here while stronger targets remain unresolved.
+
+---
+
+## 8. Compute / inference suppliers — provider reserve, deferred
+
+This is a family rather than a single market. It includes compute/GPU/inference provider opportunities from the larger catalog.
+
+### Why it remains relevant
+
+Provider economics can be programmatic and measurable, and an owned machine may eventually be routed to such work when idle.
+
+### Why it is deferred
+
+Hardware/provider admission, task supply, payout and especially real electricity/opportunity cost are platform-specific. The project still lacks the genuine owned-PC evidence packet.
+
+### Current verdict
+
+**DEFER until task-market tests / real local cost evidence.** The immediate prerequisite is I181 on the actual owned PC.
 
 ---
 
 # Portfolio conclusion
 
-The project currently has **two different questions**, and they should not be mixed:
+There are now **two independent questions**:
 
-1. **Can the machine execute cheaply enough?** → answer with I181 → genuine I166 → I178/I179.
-2. **Is there enough real paid demand at a collectible price?** → answer with separately authorized bounded read-only market observation, starting with the I001-selected PayanAgent target.
+1. **Can the available execution backend do the work cheaply/reliably enough?**  
+   Answer with I181 → genuine I166 evidence → exact I178/I179 and the Resource Router.
 
-Only after both answers are supported by real evidence should the Router be used to decide whether a bounded monetization test is economically justified. Until then, a sophisticated routing stack is evidence of implementation quality, not evidence of profit.
+2. **Is there enough real paid demand at a collectible price?**  
+   Answer with separately authorized bounded read-only market observation, starting with PayanAgent and then OKX.AI A2A.
+
+Only after both sides have real evidence should the Router decide whether a bounded monetization test has positive conservative expected margin. Until then, router correctness is implementation evidence, not income evidence.
