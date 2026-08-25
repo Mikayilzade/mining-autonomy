@@ -2,18 +2,18 @@
 
 Project state: **IMPLEMENTATION IN PROGRESS**
 Discovery phase: **COMPLETE (Runs 001–062)**. Do not reopen broad discovery without a genuinely missing mechanism.
-Last completed implementation run: **I194 — I123 source / authorization origin binding hardening**
+Last completed implementation run: **I195 — I123 downstream consumer binding audit**
 Last updated: **2026-08-25**
 
 ## Latest durable files
+- `implementation/RUN_I195_I123_DOWNSTREAM_CONSUMER_AUDIT.md`
 - `implementation/RUN_I194_I123_ORIGIN_BINDING_HARDENING.md`
 - `implementation/test_i194_i123_origin_binding.py`
 - `implementation/i123_execution_backend_portfolio.py`
-- `implementation/RUN_I193_I123_EVIDENCE_ORIGIN_AUDIT.md`
 - `implementation/resource_router.py`
 
-## I194 outcome
-The I193 fail-open boundary is closed at direct I123: measured reproducible evidence is now source-bound to a promotable source class, artifact identity, SHA-256 digest and explicit UTC observation time. Planning/declaration/synthetic origins cannot promote. Sensitive authorization flags require a separate explicit-user-authorization origin/reference. Malformed origin metadata fails closed.
+## I195 outcome
+Audited direct downstream consumers of I123 for loss of I194 source/authorization bindings. No distinct production consumer/fail-open was found: current route readiness is evaluated inside I123 and focused tests; no separate repository code path was found that can consume `production_route_ready` while dropping the origin-bound evidence object. Per the prior next-action rule, do not add repository-only wrappers solely for packaging.
 
 No real evidence or authorization was invented; current dry-run fixtures remain blocked. Conservative positive-margin and deterministic-first Router invariants remain mandatory.
 
@@ -27,9 +27,9 @@ No real evidence or authorization was invented; current dry-run fixtures remain 
 7. Authorization for bounded read-only production observation: **false**.
 
 ## Immediate next broad run
-Audit direct downstream consumers of I123 for loss of the new source/authorization bindings. If no distinct fail-open exists, do not add more repository-only wrappers: the next genuine step is on the actual owned PC — run I181; use a validated built-in cumulative counter if present, otherwise hardened I182 only with an already-available trustworthy whole-system cumulative external meter; supply genuine tariff, availability, opportunity-cost and accounting provenance; then run exact I178/I179 with explicit ownership confirmation and explicit UTC `observed_at`.
+The next genuine step is on the actual owned PC — run I181; use a validated built-in cumulative counter if present, otherwise hardened I182 only with an already-available trustworthy whole-system cumulative external meter; supply genuine tariff, availability, opportunity-cost and accounting provenance; then run exact I178/I179 with explicit ownership confirmation and explicit UTC `observed_at`.
 
-If neither energy measurement route exists, keep energy blocked. Do not estimate energy and do not purchase hardware without separate authorization.
+If neither energy measurement route exists, keep energy blocked. Do not estimate energy and do not purchase hardware without separate authorization. Do not resume repository-only hardening unless new code/evidence creates a distinct boundary to audit.
 
 ## Hard boundary
 No spend, credentials, registration, wallet/KYC, paid infrastructure, hardware purchase, task acceptance/fulfillment, publication, settlement or value movement without separate explicit authorization. No CAPTCHA/rate-limit/KYC/geofence/product-limit bypass.
