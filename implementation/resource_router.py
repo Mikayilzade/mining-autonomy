@@ -233,9 +233,9 @@ def quote_backend(task: TaskEconomics, backend: ExecutionBackend) -> BackendQuot
     if not math.isfinite(ratio):
         raise ValueError("expected_margin_ratio_must_be_finite")
 
-    minimum_margin = _finite_number(task.minimum_expected_margin_usd, field="minimum_expected_margin_usd")
-    minimum_ratio = _finite_number(task.minimum_expected_margin_ratio, field="minimum_expected_margin_ratio")
-    if expected_margin < minimum_margin or ratio < minimum_ratio:
+    minimum_margin = _nonnegative_number(task.minimum_expected_margin_usd, field="minimum_expected_margin_usd")
+    minimum_ratio = _nonnegative_number(task.minimum_expected_margin_ratio, field="minimum_expected_margin_ratio")
+    if expected_margin <= 0.0 or ratio <= 0.0 or expected_margin < minimum_margin or ratio < minimum_ratio:
         planning_reasons.append("insufficient_conservative_expected_margin")
 
     latency = _nonnegative_number(backend.latency_seconds, field="latency_seconds")

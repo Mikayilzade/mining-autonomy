@@ -2,13 +2,15 @@
 
 Project state: **IMPLEMENTATION IN PROGRESS**
 Discovery phase: **COMPLETE (Runs 001–062)**. Do not reopen broad discovery without a genuinely missing mechanism.
-Last completed implementation run: **I191 — Resource Router semantic-domain hardening**
+Last completed implementation run: **I192 — Resource Router positive conservative-margin hardening**
 Last updated: **2026-08-25**
 
 ## Latest durable files
+- `implementation/RUN_I192_RESOURCE_ROUTER_POSITIVE_MARGIN_HARDENING.md`
+- `implementation/test_i192_resource_router_positive_margin.py`
+- `implementation/resource_router.py`
 - `implementation/RUN_I191_RESOURCE_ROUTER_SEMANTIC_DOMAIN_HARDENING.md`
 - `implementation/test_i191_resource_router_semantic_domains.py`
-- `implementation/resource_router.py`
 - `implementation/RUN_I190_CONSERVATIVE_ECONOMICS_DOMAIN_AUDIT.md`
 - `implementation/RUN_I189_I123_BOOLEAN_CONTROL_HARDENING.md`
 - `implementation/i123_execution_backend_portfolio.py`
@@ -25,21 +27,20 @@ Last updated: **2026-08-25**
 - `implementation/i179_user_pc_real_chain_runner.py`
 - `implementation/i178_user_pc_handoff_manifest.py`
 
-## I191 outcome
-I190's concrete conservative-economics fail-open defect is patched in the base Resource / Execution Router. Finite but semantically invalid values are no longer silently repaired into optimistic economics.
+## I192 outcome
+The remaining signed-threshold fail-open in the base Resource / Execution Router is closed.
 
 The Router now:
-- requires backend reliability/quality and task acceptance/dispute/nonpayment/minimum-success probabilities in `[0,1]`;
-- treats `platform_fee_rate` explicitly as a fraction in `[0,1]`;
-- rejects negative payout, fees, marginal resource costs, energy/API/retry/maintenance/opportunity costs, units, fixed cost, quota/capacity, latency and rate-limit values where negative semantics are unsupported;
-- requires a positive allocation basis when a non-sunk positive fixed cost must be allocated;
-- preserves signed minimum expected-margin thresholds for now (intentional policy thresholds, not measured economic inputs);
-- preserves dry-run-only routing and all existing authorization/value-movement blockers.
+- requires `minimum_expected_margin_usd` and `minimum_expected_margin_ratio` to be finite, non-boolean and non-negative;
+- always requires strictly positive conservative expected margin and margin ratio before planning eligibility, even when configured thresholds are zero;
+- allows thresholds to make policy stricter but never weaker than the strict-positive invariant;
+- keeps sunk/fixed subscription cost separate from true per-task marginal cost rather than charging a full monthly subscription to each task;
+- preserves cheapest-eligible-backend routing, dry-run-only behavior and every existing authorization/value-movement blocker.
 
-Focused staged verification for I191: **29 passed in 0.18s**. No CI workflow was dispatched.
+Focused local regression for I192: **38 passed in 0.05s** across I191 + I192. No CI workflow was dispatched.
 
 ## Retained safety/correctness chain
-`I113 PASS_BLOCKED -> resource evidence ladder -> I159–I166 owned-PC materialization -> I167/I168 Router facts -> I173/I174/I175 production interface proof -> I181 local-counter preflight OR hardened I182 external-meter route -> hardened I129/generic I054 energy evidence -> I180/I178/I179 handoff -> I177/I169 readiness -> exact I050 -> I066 -> hardened I048/I188/I191 -> hardened I123/I189 -> conservative economics/readiness -> separately authorized bounded observation -> economic-test packet`.
+`I113 PASS_BLOCKED -> resource evidence ladder -> I159–I166 owned-PC materialization -> I167/I168 Router facts -> I173/I174/I175 production interface proof -> I181 local-counter preflight OR hardened I182 external-meter route -> hardened I129/generic I054 energy evidence -> I180/I178/I179 handoff -> I177/I169 readiness -> exact I050 -> I066 -> hardened I048/I188/I191/I192 -> hardened I123/I189 -> conservative economics/readiness -> separately authorized bounded observation -> economic-test packet`.
 
 Router rules remain mandatory: deterministic/local filtering first; AI only when needed; compare marginal cost separately from fixed/sunk cost and include quota/capacity, latency, reliability, quality, parallelism, rate limits, energy, API/model cost, retry/failure, maintenance, marketplace/payment fees, acceptance/dispute/nonpayment risk and opportunity cost. Subscription capabilities are fixed/sunk limited support, not a free unlimited API. Sub-hour watchers may only use permitted API/ToS paths: cheap polling -> local dedupe/filter -> selective AI.
 
@@ -54,7 +55,7 @@ Router rules remain mandatory: deterministic/local filtering first; AI only when
 8. Authorization for bounded read-only production observation: **false**.
 
 ## Immediate next broad run
-Do a narrow post-I191 downstream re-audit of the direct I123 -> conservative economics/readiness boundary for remaining concrete fail-open behavior, especially source/evidence promotion and signed-threshold semantics. Do not add packaging layers around absent real evidence.
+Do a narrow post-I192 audit of the direct I123 -> conservative economics/readiness boundary for remaining concrete source/evidence promotion fail-open behavior. Fix only a concrete defect. Do not add packaging layers around absent real evidence.
 
 The next genuine forward step remains on the actual owned PC: run I181; use a validated built-in cumulative counter if present, otherwise hardened I182 only with an already-available trustworthy whole-system cumulative external meter; supply genuine applicable tariff, availability, opportunity-cost and accounting provenance; run exact I178 then exact I179 with explicit ownership confirmation and explicit UTC `observed_at`.
 
